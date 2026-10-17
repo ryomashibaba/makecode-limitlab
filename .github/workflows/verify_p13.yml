@@ -1,0 +1,26 @@
+name: Verify P1.3 endurance diagnostics
+on:
+  push:
+    paths:
+      - 'makecode/endurance_p1_3.ts'
+      - 'makecode/COPY_P13.*'
+      - 'tests/test_runtime.js'
+      - 'tests/makecode_stub.d.ts'
+      - 'build/endurance_p1_3.js'
+      - '.github/workflows/verify_p13.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile P1.3 with TypeScript
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/endurance_p1_3.js tests/makecode_stub.d.ts makecode/endurance_p1_3.ts
+      - name: Confirm generated code matches committed mock artifact
+        run: git diff --exit-code -- build/endurance_p1_3.js
+      - name: Run Minecraft mock scenarios
+        run: node tests/test_runtime.js
