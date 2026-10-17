@@ -7,7 +7,7 @@ Minecraft Education MakeCodeの技術的限界を、施工・動的更新・フ�
 - **MakeCode P1.0 ソース:** [makecode/main.ts](makecode/main.ts)
 - **クラウドChat開発の方針:** [CLOUD_CHAT_HANDOFF.md](CLOUD_CHAT_HANDOFF.md)
 - **公開手順（履歴）:** [PUBLISH_JA.md](PUBLISH_JA.md)
-- **GitHub Actions:** [自動検証](../../actions/workflows/verify.yml) — Python / JavaScript / P1.0ソース一致チェック
+- **GitHub Actions:** [自動検証](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify.yml) — Python / JavaScript / P1.0ソース一致チェック
 
 ## 検証状態
 
