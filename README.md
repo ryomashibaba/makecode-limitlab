@@ -6,11 +6,12 @@ Minecraft Education MakeCodeの技術的限界を、施工・動的更新・フ�
 - **計測結果ダッシュボード:** [docs/index.html](docs/index.html)（GitHub Pagesを有効にするまでローカル閲覧可能）
 - **MakeCode P1.0 ソース:** [makecode/main.ts](makecode/main.ts)
 - **クラウドChat開発の方針:** [CLOUD_CHAT_HANDOFF.md](CLOUD_CHAT_HANDOFF.md)
-- **公開手順:** [PUBLISH_JA.md](PUBLISH_JA.md)
+- **公開手順（履歴）:** [PUBLISH_JA.md](PUBLISH_JA.md)
+- **GitHub Actions:** [自動検証](../../actions/workflows/verify.yml) — Python / JavaScript / P1.0ソース一致チェック
 
 ## 検証状態
 
-P0.6〜P0.8の各段階はMinecraft Education実機でPASS。P1.0の4,096・16,384ブロック統合試験は**実機未確認**です。オフライン模擬テストの成功を、Minecraftでの成功と混同しません。
+P0.6〜P0.8の各段階はMinecraft Education実機でPASS。P1.0は**4,096・16,384ブロックのfill/clone比較、更新3方式、256KiBまでのI/Oが実機ログ上PASS**。QUICK安定性と最終CSVは未確認のため、P1.0全体の最終PASSは保留です。オフライン模擬テストの成功を、Minecraftでの成功と混同しません。
 
 ## 公開・プライバシー方針
 
