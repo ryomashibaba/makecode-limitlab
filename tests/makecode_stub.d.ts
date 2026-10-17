@@ -1,0 +1,11 @@
+type Position = { x:number; y:number; z:number };
+declare const Axis: { X:number; Y:number; Z:number };
+declare const AIR: number;
+declare const STONE: number;
+declare const GOLD_BLOCK: number;
+declare const FillOperation: { Replace: number };
+declare const player: { say: (s:string)=>void; position: ()=>{getValue:(a:number)=>number}; onChat:(cmd:string,cb:()=>void)=>void };
+declare const blocks: {testForBlock:(mat:number,pos:Position)=>boolean; fill:(mat:number,a:Position,b:Position,mode:number)=>void};
+declare const loops: {runInBackground:(cb:()=>void)=>void; pause:(ms:number)=>void};
+declare const file: {writeFile:(path:string,data:string)=>void;readFile:(path:string)=>string};
+declare function world(x:number,y:number,z:number):Position;
