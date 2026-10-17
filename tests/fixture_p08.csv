@@ -1,0 +1,11 @@
+Method,Trial,Blocks,Status,DestinationZ
+fill,1,512,PASS,120
+fill,2,512,PASS,120
+fill,3,512,PASS,120
+fill,4,512,PASS,120
+fill,5,512,PASS,120
+clone,1,512,PASS,130
+clone,2,512,PASS,130
+clone,3,512,PASS,130
+clone,4,512,PASS,130
+clone,5,512,PASS,130
