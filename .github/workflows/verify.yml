@@ -1,0 +1,24 @@
+name: Verify LimitLab
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate Python CSV reader
+        run: python -m unittest discover -s tests -v
+      - name: Validate static dashboard and CSV reader
+        run: |
+          node --check docs/app.js
+          node tests/test_site.js
+      - name: Verify P1.0 MakeCode source remains unchanged
+        run: python tools/verify_source.py
