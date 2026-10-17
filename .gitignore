@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.log
+private_results/
+user_results/
+USER_UPLOAD_THIS_*.csv
+*.zip
