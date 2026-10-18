@@ -1,5 +1,7 @@
 # MakeCode LimitLab P2.0 — 単一clone 196,608 → 262,144の境界調査
 
+> 2026-10-18追記：ユーザー提供P2.0 CSVで単一clone196,608・262,144の全域PASSと最終ALL_PASSを確認しました。以下は開発時点の記録です。次工程は[P2.1方針監査](../docs/P21_DIRECTION_AUDIT_JA.md)。個人CSVは非公開です。
+
 ## 実機で確認済みの記録
 
 - P1.6：単一fill・clone各32,768ブロックPASS、分割施工65,536ブロックPASS。

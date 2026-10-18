@@ -7,3 +7,7 @@ private_results/
 user_results/
 USER_UPLOAD_THIS_*.csv
 *.zip
+build/limitlab_p2_0.js
+build/limitlab_p2_1.js
+build/p21_mock_status.csv
+makecode/PASTE_THIS_P21.ts
