@@ -10,9 +10,18 @@ $results = Join-Path $root 'results'
 [void][IO.Directory]::CreateDirectory($logs)
 [void][IO.Directory]::CreateDirectory($results)
 
-$fileHash = (Get-FileHash -LiteralPath $src -Algorithm SHA256).Hash.ToLowerInvariant()
-if ($fileHash -ne '653bf4977d1e032f4ada85a9bbfcb02d5a927c4a1a3863c3d2cad2d71b4e73aa') { throw 'Source SHA256 verification failed. Do not paste.' }
+# Git on Windows can check out LF files using CRLF. Hash the normalized text
+# rather than raw bytes; this preserves integrity without false failures.
 $code = [IO.File]::ReadAllText($src, [Text.Encoding]::UTF8)
+$normalizedSource = $code.Replace("`r`n", "`n").Replace("`r", "`n")
+$shaCheck = [Security.Cryptography.SHA256]::Create()
+try {
+    $hashBytes = [Text.Encoding]::UTF8.GetBytes($normalizedSource)
+    $fileHash = [BitConverter]::ToString($shaCheck.ComputeHash($hashBytes)).Replace('-', '').ToLowerInvariant()
+} finally { $shaCheck.Dispose() }
+if ($fileHash -ne '653bf4977d1e032f4ada85a9bbfcb02d5a927c4a1a3863c3d2cad2d71b4e73aa') { throw 'Source SHA256 verification failed. Do not paste.' }
+# Use a consistent line ending in the resulting clipboard and fallback text.
+$code = $normalizedSource
 if ($code.Length -lt 10000 -or -not $code.StartsWith('// LIMITLAB P1.4 START') -or
     -not $code.Contains('// LIMITLAB P1.4 END') -or
     -not $code.Contains('player.onChat("labauto14"') -or
