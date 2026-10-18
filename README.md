@@ -2,19 +2,19 @@
 
 Minecraft Education MakeCodeの施工・複製・更新・ファイルI/Oの限界を実機で調査し、**将来の巨大都市の高速生成に応用する**研究プロジェクトです。
 
-**最新版：P2.2.1 — 起動直後の応答・計画中の進捗・停止・軽量施工場所確認を改善。** P2.2はMinecraftで起動後のチャット応答が確認できず、ユーザーが中断しました。原因は未確定です。P2.2.1はSTART前のACKと途中の計算進捗を備え、**実機はまだ未検証**です。
+**最新版：P2.3 — FAST METRO DISTRICT（都市生成の基礎）**。P2.2.1はMinecraft実機でサンプル検査付きFAST完走（本人の体感1〜2分）。P2.3は192×192の道路・8棟の立体建築・中央公共広場を生成します。**P2.3のMinecraft実機は未検証**です。
 
 - **[P2.2.1 新版の実行・安全ガイド](makecode/README_P221_JA.md)** — `makecode/COPY_P221.cmd`、読み取り専用の`labarea221`、`labfast221`／`labverify221`
 - **[P2.2.1 応答性・安全性・計画監査](docs/P221_RESPONSE_AUDIT_JA.md)** / [PR #13](https://github.com/ryomashibaba/makecode-limitlab/pull/13)
 - **[P2.2 日本語の実行・安全ガイド](makecode/README_P22_JA.md)**
 - **[P2.2 方針・計画・効率監査](docs/P22_DIRECTION_AUDIT_JA.md)**
 - [P2.2 MakeCode本体](makecode/limitlab_p2_2.ts) / [P2.2 CI](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p22.yml) / [マージ済みPR #12](https://github.com/ryomashibaba/makecode-limitlab/pull/12)
-- **[GitHub main最新版ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)**：Windowsでは最新版の`makecode/COPY_P221.cmd`でコードをコピー
+- **[GitHub main最新版ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)**：Windowsでは最新版の`makecode/COPY_P23.cmd`でコードをコピー
 - [P2.1 日本語ガイド](makecode/README_P21_JA.md) / [P2.1 ソース](makecode/limitlab_p2_1.ts)
 - [P2.0 日本語ガイド](makecode/README_P20_JA.md) / [実測ダッシュボード](https://ryomashibaba.github.io/makecode-limitlab/)
 - 旧版：[P1.0](makecode/main.ts) / [P1.3](makecode/endurance_p1_3.ts) / [P1.4](makecode/limitlab_p1_4.ts) / [P1.5](makecode/limitlab_p1_5.ts) / [P1.6](makecode/limitlab_p1_6.ts) / [P1.7](makecode/limitlab_p1_7.ts) / [P1.7.1](makecode/limitlab_p1_7_1.ts) / [P1.8](makecode/limitlab_p1_8.ts) / [P1.9](makecode/limitlab_p1_9.ts)
 
-## Minecraft Education実機の確定記録（2026-10-18）
+## Minecraft Education実機の確定記録（2026-10-19）
 
 | フェーズ | 実機結果 |
 | --- | --- |
