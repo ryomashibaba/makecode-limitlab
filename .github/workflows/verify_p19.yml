@@ -1,0 +1,72 @@
+name: Verify LimitLab P1.9
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p1_9.ts'
+      - 'makecode/COPY_P19.*'
+      - 'makecode/README_P19_JA.md'
+      - 'tests/test_p19.js'
+      - 'tests/test_p19_tools.py'
+      - 'tools/analyze_p19.py'
+      - 'docs/P19_DIRECTION_AUDIT_JA.md'
+      - '.github/workflows/verify_p19.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  linux-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile MakeCode TypeScript using prior validated API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p1_9.js tests/makecode_p16_stub.d.ts makecode/limitlab_p1_9.ts
+      - name: Fifteen Minecraft world simulation scenarios
+        run: node tests/test_p19.js
+      - name: Fourteen CSV outcome unit tests
+        run: python -m unittest discover -s tests -p 'test_p19_tools.py' -v
+      - name: Original P1.0 source invariant
+        run: python tools/verify_source.py
+      - name: P1.9 safety and stop guards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          src=Path('makecode/limitlab_p1_9.ts').read_text()
+          assert 'let first = p19Probe(98304, 48)' in src
+          assert 'let second = p19Probe(131072, 64)' in src
+          assert 'let dx = [16, -176, 16, -176, 208, 16]' in src
+          assert 'candidate < 6' in src
+          assert 'p19ResetOwnTarget()' in src
+          assert 'WRITE_OUTSIDE_REQUESTED_VOLUME' in src
+          assert 'TEST FINISHED' in src and 'TEST STOPPED' in src
+          assert 'player.onChat("labreport19"' in src
+          assert 'loops.pause(100)' not in src
+          print('P1.9 static guards PASS')
+          PY
+  windows-source:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SHA-pinned Windows source prepare (no clipboard in CI)
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P19.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P1.9 PrepareOnly failed' }
+          $src=Get-Content -LiteralPath .\makecode\PASTE_THIS_P19.ts -Raw
+          if (-not $src.StartsWith('// LIMITLAB P1.9 START')) { throw 'Missing start marker' }
+          if (-not $src.Contains('// LIMITLAB P1.9 END')) { throw 'Missing end marker' }
+          if (-not $src.Contains('player.onChat("labauto19"')) { throw 'Missing run command' }
+          if ($src.Contains('__P19_ROOT__')) { throw 'Output location unresolved' }
+          Write-Host 'Windows P1.9 exact-source preparation PASS'
+      - name: Windows PowerShell 5.1 parse
+        shell: powershell
+        run: |
+          $tokens=$null
+          $errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P19.ps1),[ref]$tokens,[ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'P1.9 PowerShell parse failure' }
+          Write-Host 'P1.9 PowerShell syntax PASS'
