@@ -1,0 +1,72 @@
+name: Verify LimitLab P2.0
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p2_0.ts'
+      - 'makecode/COPY_P20.*'
+      - 'makecode/README_P20_JA.md'
+      - 'tests/test_p20.js'
+      - 'tests/test_p20_tools.py'
+      - 'tools/analyze_p20.py'
+      - 'docs/P20_DIRECTION_AUDIT_JA.md'
+      - '.github/workflows/verify_p20.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  linux-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile MakeCode TypeScript with existing verified API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p2_0.js tests/makecode_p16_stub.d.ts makecode/limitlab_p2_0.ts
+      - name: Fifteen Minecraft mock failure and capacity cases
+        run: node tests/test_p20.js
+      - name: Fifteen strict CSV verdict cases
+        run: python -m unittest discover -s tests -p 'test_p20_tools.py' -v
+      - name: Preserve original P1.0 source invariant
+        run: python tools/verify_source.py
+      - name: Verify P2.0 safe bounds and explicit completion
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('makecode/limitlab_p2_0.ts').read_text(encoding='utf-8')
+          assert 'let first = p20Probe(196608, 48)' in s
+          assert 'let second = p20Probe(262144, 64)' in s
+          assert 'candidate < 6' in s
+          assert 'p20ResetOwnedTarget()' in s
+          assert 'WRITE_OUTSIDE_REQUESTED_VOLUME' in s
+          assert 'TEST FINISHED' in s and 'TEST STOPPED' in s
+          assert 'player.onChat("labreport20"' in s
+          assert 'loops.pause(100)' not in s
+          assert 'blocks.fill(GOLD_BLOCK, p20At(0, y, 0), p20At(63, y, 63)' in s
+          print('P2.0 static safety invariants PASS')
+          PY
+  windows-source:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SHA-pinned Windows PowerShell 5.1 source preparation
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P20.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P2.0 Windows preparation failed' }
+          $src=Get-Content -LiteralPath .\makecode\PASTE_THIS_P20.ts -Raw
+          if (-not $src.StartsWith('// LIMITLAB P2.0 START')) { throw 'Missing source start marker' }
+          if (-not $src.Contains('// LIMITLAB P2.0 END')) { throw 'Missing source end marker' }
+          if (-not $src.Contains('player.onChat("labauto20"')) { throw 'Missing chat run command' }
+          if ($src.Contains('__P20_ROOT__')) { throw 'Output path not substituted' }
+          Write-Host 'P2.0 Windows source preparation PASS'
+      - name: Parse Windows PowerShell 5.1 helper
+        shell: powershell
+        run: |
+          $tokens=$null
+          $errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P20.ps1),[ref]$tokens,[ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'P2.0 PowerShell parse error' }
+          Write-Host 'P2.0 PowerShell syntax PASS'
