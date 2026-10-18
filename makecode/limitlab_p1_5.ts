@@ -54,6 +54,7 @@ function p15AirRef(): boolean {
                 if (!blocks.testForBlock(AIR, p15At(x, y, z))) return false;
             }
         }
+        loops.pause(1);
     }
     return true;
 }
@@ -66,6 +67,7 @@ function p15AirVolume(baseX: number): boolean {
                     p15At(baseX + x, y, z), TestForBlocksMask.All)) return false;
             }
         }
+        loops.pause(1); // cooperative stop checkpoint; never a long endurance wait
     }
     return true;
 }
@@ -115,7 +117,7 @@ function p15Source(): boolean {
         if (!p15MayContinue()) return false;
         blocks.fill(p15Mat(y), p15At(0, y, 0), p15At(15, y, 63), FillOperation.Replace);
         p15Count = y + 1;
-        if (p15Count % 8 == 0) p15Row("SOURCE", p15Count, 32, "PROGRESS", "layer_filled");
+        if (p15Count % 8 == 0) { p15Row("SOURCE", p15Count, 32, "PROGRESS", "layer_filled"); loops.pause(1); }
     }
     // Fully inspect the 512-cell pattern seed, then compare all 64 source tiles.
     p15Stage = "VERIFY_SOURCE";
@@ -145,7 +147,7 @@ function p15Fill(): boolean {
         if (!p15MayContinue()) return false;
         blocks.fill(p15Mat(y), p15At(24, y, 0), p15At(39, y, 63), FillOperation.Replace);
         p15Count = y + 1;
-        if (p15Count % 8 == 0) p15Row("FILL32768", p15Count, 32, "PROGRESS", "layer_filled");
+        if (p15Count % 8 == 0) { p15Row("FILL32768", p15Count, 32, "PROGRESS", "layer_filled"); loops.pause(1); }
     }
     p15Stage = "FILL_VERIFY";
     if (!p15Equal(0, 24)) {
@@ -168,6 +170,7 @@ function p15Clone(): boolean {
         if (!ok) { p15Reason = "CLONE_RETURN_FALSE"; return false; }
         p15Count = z / 8 + 1;
         p15Row("CLONE32768", p15Count, 8, "PROGRESS", "4096_block_tile");
+        loops.pause(1);
     }
     p15Stage = "CLONE_VERIFY";
     if (!p15Equal(0, 48)) {
