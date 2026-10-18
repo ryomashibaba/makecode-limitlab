@@ -48,8 +48,8 @@ def evaluate(path):
         commands = int(plan["Units"])
         nonair = int(plan["Total"])
         maxfill = int(m.group(3))
-        if commands < 1 or commands > 10000 or maxfill > 32768 or
-            nonair < 1 or nonair > w*h*d:
+        if (commands < 1 or commands > 10000 or maxfill > 32768 or
+                nonair < 1 or nonair > w*h*d):
             raise ValueError("unsafe plan bounds")
 
     source = hits("SOURCE","PASS")
@@ -78,12 +78,12 @@ def evaluate(path):
             verdict = "STOPPED"
         else:
             m=END.fullmatch(terminal["Detail"])
-            if m and has_stages and correct_progress and
+            if (m and has_stages and correct_progress and
                 commands == int(source[0]["Units"]) and
                 commands == int(source[0]["Total"]) and
                 hits("PATCH","PASS")[0]["Units"] == "1" and
                 int(m.group(3)) == expected_clones and
-                int(m.group(2)) >= commands+1:
+                int(m.group(2)) >= commands+1):
                 if mode == "FAST" and m.group(1) == "FAST_COMPLETED_SAMPLED" and not verify:
                     verdict = "FAST_COMPLETED_SAMPLED_NOT_EXACT"
                 elif mode == "VERIFY" and m.group(1) == "VERIFY_PASS_EXACT" and verify and refs:
