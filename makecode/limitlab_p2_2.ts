@@ -76,7 +76,9 @@ function p22Abort() {
     if (p22IO) p22Row("RUN", p22Done, p22Total, "STOP", p22Reason);
     p22Say("========== TEST STOPPED ==========");
     p22Say("Reason " + p22Reason + " - no cleanup / rollback / retry");
-    p22Say(p22IO ? "Send USER_UPLOAD_THIS_P22_STATUS.csv" : "CSV save/readback failed; preserve existing CSV");
+    p22Say(p22IO ? "Send USER_UPLOAD_THIS_P22_STATUS.csv" :
+        p22Reason == "LATCH_ALREADY_USED_OR_NOT_READY" ? "Existing CSV untouched; do not reset latch" :
+        "CSV save/readback failed; preserve existing CSV");
     p22Busy = false;
 }
 function p22Finish() {
@@ -393,7 +395,7 @@ function p22Run() {
     if (!p22Valid()) { p22Reason = "INVALID_PLAN"; p22Abort(); return; }
     // Persistent latch: distinct from P2.1. Helper creates once, never resets.
     if (file.readFile(P22_ONCE) != "READY_P22") {
-        p22Reason = "LATCH_ALREADY_USED_OR_NOT_READY"; p22Abort(); return;
+        p22Reason = "LATCH_ALREADY_USED_OR_NOT_READY"; p22IO = false; p22Abort(); return;
     }
     file.writeFile(P22_ONCE, "USED_P22");
     if (file.readFile(P22_ONCE) != "USED_P22") {
