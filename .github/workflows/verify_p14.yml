@@ -1,0 +1,59 @@
+name: Verify LimitLab P1.4
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p1_4.ts'
+      - 'makecode/COPY_P14.*'
+      - 'tests/makecode_p14_stub.d.ts'
+      - 'tests/test_p14.js'
+      - 'tests/test_p14_tools.py'
+      - 'tools/analyze_p14.py'
+      - 'tools/plan_volume.py'
+      - 'build/limitlab_p1_4.js'
+      - '.github/workflows/verify_p14.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P1.4 with TypeScript Minecraft stub
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p1_4.js tests/makecode_p14_stub.d.ts makecode/limitlab_p1_4.ts
+      - name: Compare generated JS to committed version
+        run: git diff --exit-code -- build/limitlab_p1_4.js
+      - name: Test 10 simulated Minecraft cases
+        run: node tests/test_p14.js
+      - name: Test local data inspection and safe planner
+        run: python -m unittest discover -s tests -p 'test_p14_tools.py' -v
+      - name: Ensure P1.0 source unchanged
+        run: python tools/verify_source.py
+  windows-clipboard-preflight:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify copy preparation in Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P14.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P1.4 code preparation failed' }
+          $prepared = Get-Content -LiteralPath .\makecode\PASTE_THIS_P14.ts -Raw
+          if (-not $prepared.StartsWith('// LIMITLAB P1.4 START')) { throw 'Missing header' }
+          if (-not $prepared.Contains('// LIMITLAB P1.4 END')) { throw 'Missing tail' }
+          if (-not $prepared.Contains('player.onChat("labauto14"')) { throw 'Missing entry command' }
+          if ($prepared.Contains('__P14_ROOT__')) { throw 'Unresolved output folder' }
+          Write-Host 'Windows preparation PASS'
+      - name: Parse PowerShell source
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          $ast = [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P14.ps1), [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'PowerShell syntax errors' }
+          Write-Host 'PowerShell parse PASS'
