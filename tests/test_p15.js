@@ -115,8 +115,11 @@ test('read-only 65536 plan does not write or build',()=>{
   assert.equal(s.stats().writes,0);assert.equal(s.stats().files.size,0);
   assert(s.messages.some(x=>x.includes('65536')));
 });
-test('user stop before start is recorded without writes',()=>{
-  const s=mock();s.stop();s.run();
-  // The run handler intentionally resets the prior stop; test the actual stopped state separately.
-  assert(s.rows().includes('P1.5,RUN,1,1,PASS'));
+test('user stop during source build prevents later construction',()=>{
+  // 8 air-reference and 12 preflight pauses, then first source heartbeat.
+  const s=mock({stopOnPause:21});s.run();
+  assert(s.rows().includes('STOP,USER_STOP'));
+  assert(s.stats().writes>0);
+  assert.equal(s.stats().clones,0);
+  assert(!s.rows().includes('32768_SOURCE_FILL_CLONE_EXACT'));
 });
