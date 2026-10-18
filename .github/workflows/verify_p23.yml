@@ -1,0 +1,79 @@
+name: Verify LimitLab P2.3
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p2_3.ts'
+      - 'makecode/COPY_P23.*'
+      - 'makecode/README_P23_JA.md'
+      - 'docs/P23_DIRECTION_AUDIT_JA.md'
+      - 'tests/test_p23.js'
+      - 'tests/test_p23_tools.py'
+      - 'tools/analyze_p23.py'
+      - '.github/workflows/verify_p23.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P2.3 city generator against existing Minecraft MakeCode API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p2_3.js tests/makecode_p16_stub.d.ts makecode/limitlab_p2_3.ts
+      - name: Sixteen independent whole-district Minecraft voxel/fault simulations
+        run: node tests/test_p23.js
+      - name: Sixteen strict private-CSV read-only verdict tests
+        run: python -m unittest discover -s tests -p 'test_p23_tools.py' -v
+      - name: Preserve all P1.0 source and P2.1 invariants
+        run: |
+          python tools/verify_source.py
+          python tools/verify_p21.py
+      - name: Assert city limits, external-world protection and honest FAST outcome
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('makecode/limitlab_p2_3.ts').read_text()
+          assert 'P23_WORLD = 192' in s and 'P23_HEIGHT = 84' in s
+          assert 'P23_MAX_FILL = 32768' in s and 'P23_MAX_CLONE = 262144' in s
+          assert 'p23RoadPlan()' in s and 'p23TowerPlan(c)' in s
+          assert 'p23PlazaPlan()' in s and 'p23ClonePositions.length != 5' in s
+          assert 'p23SiteSurvey()' in s and 'P23_ONCE' in s
+          assert 'FAST_COMPLETED_SAMPLED' in s and 'NOT full exact' in s
+          assert 'TEST FINISHED' in s and 'TEST STOPPED' in s
+          assert 'player.onChat("labcity23"' in s
+          assert 'player.onChat("labarea23"' in s
+          assert 'player.onChat("labstop23"' in s
+          assert 'loops.pause(100)' not in s
+          print('P2.3 city plan and fail-safe static guards PASS')
+          PY
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Windows PowerShell 5.1 SHA-pinned copy and persistent P23 latch
+        shell: powershell
+        run: |
+          $root=Join-Path $env:RUNNER_TEMP 'LimitLab_P23'
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P23.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'P2.3 source preparation failed' }
+          $code=[IO.File]::ReadAllText((Join-Path $PWD 'makecode/PASTE_THIS_P23.ts'))
+          if (-not $code.StartsWith('// LIMITLAB P2.3 START') -or -not $code.Contains('// LIMITLAB P2.3 END')) { throw 'Source markers invalid' }
+          if (-not $code.Contains('player.onChat("labcity23"') -or -not $code.Contains('player.onChat("labarea23"')) { throw 'Required commands missing' }
+          if ($code.Contains('__P23_ROOT__')) { throw 'Local output path unresolved' }
+          $latch=Join-Path $root 'logs/P23_ONCE.txt'
+          if ([IO.File]::ReadAllText($latch) -cne 'READY_P23') { throw 'Fresh P23 latch missing' }
+          [IO.File]::WriteAllText($latch,'USED_P23')
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P23.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'P2.3 second source preparation failed' }
+          if ([IO.File]::ReadAllText($latch) -cne 'USED_P23') { throw 'P23 used latch wrongly reset' }
+          $tokens=$null;$errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P23.ps1),[ref]$tokens,[ref]$errors)
+          if ($errors.Count -gt 0) { throw 'P2.3 PowerShell syntax failed' }
+          Write-Host 'P2.3 Windows SHA source and P23 latch preservation PASS'
