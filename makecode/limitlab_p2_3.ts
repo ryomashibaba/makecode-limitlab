@@ -305,8 +305,12 @@ function p23CloneBuildings(): boolean {
             p23At(p23TowerX(c),0,p23TowerZ(r)),CloneMask.Replace,CloneMode.Normal);
         if (!ok) {p23Reason="CLONE_RETURN_FALSE_AT_"+i;return false;}
         p23CloneCalls++;p23Done++;
-        if (!p23Test(GOLD_BLOCK,p23TowerX(c),4,p23TowerZ(r))) {
-            p23Reason="CLONE_CORNER_SAMPLE_FAILED_"+i;return false;
+        // Three inexpensive checkpoints: corner rib, base slab and upper roof.
+        // They cannot prove every block, but distinguish more partial clone failures.
+        if (!p23Test(GOLD_BLOCK,p23TowerX(c),4,p23TowerZ(r)) ||
+            !p23Test(STONE,p23TowerX(c)+6,1,p23TowerZ(r)+6) ||
+            !p23Test(STONE,p23TowerX(c)+6,p23TowerHeight(c)-1,p23TowerZ(r)+6)) {
+            p23Reason="CLONE_STRUCTURE_SAMPLE_FAILED_"+i;return false;
         }
         if (!p23Log("CLONE",p23Done,p23Total,"PROGRESS",
             "building_"+c+"_"+r+"_size"+n)) return false;
