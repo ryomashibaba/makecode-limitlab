@@ -4,6 +4,8 @@ Minecraft Education MakeCodeの施工・複製・更新・ファイルI/Oの限�
 
 **最新版：P2.3 — FAST METRO DISTRICT（都市生成の基礎）**。P2.2.1はMinecraft実機でサンプル検査付きFAST完走（本人の体感1〜2分）。P2.3は192×192の道路・8棟の立体建築・中央公共広場を生成します。**P2.3のMinecraft実機は未検証**です。
 
+- **[P2.3 日本語実行ガイド](makecode/README_P23_JA.md)** — `COPY_P23.cmd` と `labarea23`／`labcity23`
+- **[P2.3 方針・効率監査](docs/P23_DIRECTION_AUDIT_JA.md)** ／ [PR #14](https://github.com/ryomashibaba/makecode-limitlab/pull/14) ／ [P2.3 CI](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p23.yml)
 - **[P2.2.1 新版の実行・安全ガイド](makecode/README_P221_JA.md)** — `makecode/COPY_P221.cmd`、読み取り専用の`labarea221`、`labfast221`／`labverify221`
 - **[P2.2.1 応答性・安全性・計画監査](docs/P221_RESPONSE_AUDIT_JA.md)** / [PR #13](https://github.com/ryomashibaba/makecode-limitlab/pull/13)
 - **[P2.2 日本語の実行・安全ガイド](makecode/README_P22_JA.md)**
@@ -31,7 +33,8 @@ Minecraft Education MakeCodeの施工・複製・更新・ファイルI/Oの限�
 | **P2.0** | **単一clone 196,608・262,144まで実機全域PASS** |
 | **P2.1** | **309,386ブロックのSOURCE構築・全域検証PASS、分割clone 9/36でUSER_STOP。PATCH/最終検証は未実施** |
 | **P2.2** | **オフラインCI PASS。ただしMinecraftのチャットが無応答でユーザーが中断。実機完了は未確認** |
-| **P2.2.1** | **オフラインMinecraft模擬24件＋CSV判定20件・Windows準備PASS。Minecraft実機は未検証** |
+| **P2.2.1** | **実機FAST完走。SOURCE 68 fill＋PATCH 1 fill、大型clone 2回。550回のサンプル検査PASS。ユーザー体感1〜2分。全域一致は未検証** |
+| **P2.3** | **都市道路・8棟・中央広場を実装。Minecraft模擬16件とCSV判定16件・Windows CI PASS。Minecraft実機は未検証** |
 
 ## P2.2の高速化戦略
 
