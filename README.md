@@ -1,38 +1,37 @@
 # MakeCode LimitLab
 
-Minecraft Education MakeCodeの施工・動的更新・ファイル入出力・安定性の技術的限界を、専用テストワールドで実測する研究プロジェクトです。
+Minecraft Education MakeCodeの実際の技術的限界を、安全な専用テストワールドで調査する研究プロジェクトです。対象はブロック施工・複製・更新・File Read & Write・安定性です。
 
-**最新版：P1.8 — fillとcloneの単一命令境界を独立に調査（Minecraft実機は未検証）。** P1.7実機で観測したfill/cloneの違いを、重複実験を減らして追跡します。
+**最新版：P1.9 — 1命令の `clone` を98,304→131,072ブロックへ拡張（Minecraft Education実機は未検証）。** `fill`はこれまでの実機結果を保存し、重複試験しません。
 
-- **[P1.8 日本語の実行・安全ガイド](makecode/README_P18_JA.md)**
-- **[P1.8 方針ぶれ・計画・効率の監査](docs/P18_DIRECTION_AUDIT_JA.md)**
-- **[GitHub最新版ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)**：makecode/COPY_P18.cmdで1回コピー
-- [P1.8 MakeCode本体](makecode/limitlab_p1_8.ts) / [P1.8 GitHub Actions](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p18.yml)
-- [実測ダッシュボード](https://ryomashibaba.github.io/makecode-limitlab/)
-- 旧版：[P1.0](makecode/main.ts) / [P1.3](makecode/endurance_p1_3.ts) / [P1.4](makecode/limitlab_p1_4.ts) / [P1.5](makecode/limitlab_p1_5.ts) / [P1.6](makecode/limitlab_p1_6.ts) / [P1.7](makecode/limitlab_p1_7.ts) / [P1.7.1](makecode/limitlab_p1_7_1.ts)
+- **[P1.9 日本語の安全な実行手順](makecode/README_P19_JA.md)**
+- **[P1.9 方針監査](docs/P19_DIRECTION_AUDIT_JA.md)**
+- **[GitHub最新版ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)**（Windowsでは `makecode/COPY_P19.cmd` を使用）
+- [P1.9 MakeCodeソース](makecode/limitlab_p1_9.ts) / [P1.9 自動検証](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p19.yml)
+- [測定ダッシュボード](https://ryomashibaba.github.io/makecode-limitlab/)
+- 過去のソース：[P1.0](makecode/main.ts) / [P1.3](makecode/endurance_p1_3.ts) / [P1.4](makecode/limitlab_p1_4.ts) / [P1.5](makecode/limitlab_p1_5.ts) / [P1.6](makecode/limitlab_p1_6.ts) / [P1.7](makecode/limitlab_p1_7.ts) / [P1.7.1](makecode/limitlab_p1_7_1.ts) / [P1.8](makecode/limitlab_p1_8.ts)
 
-## Minecraft Educationで確認できた実機結果（2026-10-18）
+## Minecraft Education実機で確認できた成果（2026-10-18）
 
-| 版 | 観測できた成果 |
+| 版 | 実機結果 |
 | --- | --- |
-| P0.6–P0.8 | 小規模のplace/fill/cloneがPASS |
-| P1.0 | 4,096・16,384ブロック施工、更新3方式、256KiB I/OがPASS。耐久QUICKは手動停止 |
-| P1.3 | 24回QUICK＋300回SOAKの耐久試験PASS |
-| P1.4 | fill/clone 512ブロック各4試行PASS。待機工程は106/150で手動停止 |
-| P1.5 | 32,768ブロックの分割SOURCE/FILL/CLONEが全PASS |
-| P1.6 | 65,536ブロックの分割SOURCE/FILL/CLONEが全PASS。単一fill/clone各32,768ブロックも8/8 PASS |
-| **P1.7** | **単一fill 32,800ブロックはNO_WRITE、単一clone 32,800ブロックは全域PASS。33,024は未実施** |
-| P1.7.1 | 六地点の安全検査を実装。GitHub CIはPASS、Minecraft実機で修正版は未検証 |
-| **P1.8** | **GitHub CIはPASS、Minecraft実機は未検証** |
+| P0.6〜P0.8 | 小規模のplace/fill/cloneがPASS |
+| P1.0 | 4,096・16,384ブロックの施工、更新3方式、256KiB I/OがPASS。QUICK耐久は停止 |
+| P1.3 | 24回QUICKと300回SOAKがPASS |
+| P1.4 | 512ブロックのfill/cloneが各4回PASS。待機工程は106/150で手動停止 |
+| P1.5 | 32,768ブロックの分割SOURCE/FILL/CLONEがすべてPASS |
+| P1.6 | 65,536ブロックの分割SOURCE/FILL/CLONEがすべてPASS、単一fill/cloneも各32,768までPASS |
+| P1.7 | 単一fill 32,800がNO_WRITE、単一clone 32,800がPASS |
+| P1.7.1 | 安全候補の6地点探索を実装、CI PASS。修正版自身のMinecraft実機検証は未実施 |
+| **P1.8** | **単一fill 32,775がNO_WRITE、単一clone 33,024・40,960・65,536が実機PASS** |
+| **P1.9** | **TypeScript・Minecraft模擬・CSV判定・Windows準備のCIがPASS。実機はまだ未検証** |
 
-P1.8の新たな一命令テストは **fill 32,775（23×25×57）、clone 33,024 → 40,960 → 65,536**。fill結果によらずcloneを独立実施し、cloneの途中で失敗したら無条件に繰り返さず終了します。32,768や32,800の既存試験を繰り返しません。
+**P1.9は単一clone 98,304→131,072を段階的に検証**します。最初の命令が完全一致でPASSした場合だけ次の131,072を実施し、その間にP1.9自身の複製先だけを安全な小分け操作でAIRに戻します。
 
-書込み元・先の3領域と二つの参照領域を空気で事前検査し、X/Zに離れた6候補から一つを選びます。スクリプトの制御が戻ればMinecraftチャットに **TEST FINISHED / TEST STOPPED** を表示し、**labreport18** で後から再確認できます。Minecraft自体が長時間止まった場合の強制停止や完了通知は保証できません。
+2領域×131,072ブロック＋2参照キューブを事前AIR検査し、使える候補がなければ書き込みません。Minecraft側のAPI処理が停止した場合に強制キャンセルできる保証はありません。最終チャット表示は制御が戻った場合に限ります。専用の破棄可能なテストワールドでのみ実行してください。
 
-**重要：** 今回の結果からAPIの真の絶対上限を断定することはできません。形状・チャンク・ワールド環境も影響する可能性があります。Minecraft実機で未確認の試験をPASSと呼びません。
+**測定した体積・形状・環境で成功/不成功を確認できたという意味であり、Minecraft APIの普遍的な上限を断定していません。** CIの成功を実機の成功と混同せず、P1.9の結果CSVが得られるまで未検証とします。
 
-## 安全性と公開方針
+## 安全とプライバシー
 
-Publicリポジトリへユーザー個人のCSV・ローカルログ・スクリーンショット・ワールドデータは公開しません。MinecraftAIBuilderなど他のプロジェクトには触れません。実験は破棄可能な専用ワールドのみ。自動削除や停止後の自動再試行はしません。
-
-開発はChat主体。Workの利用をユーザーに強要せず、承認なしに切り替えません。
+ユーザー個人のCSV、PCログ、ワールドデータ、スクリーンショットはPublic GitHubへアップロードしません。MinecraftAIBuilderその他のリポジトリやワールドは操作しません。コマンドは一度限りで、失敗時の自動再実行・無断清掃は行いません。Chat主体の開発を継続します。
