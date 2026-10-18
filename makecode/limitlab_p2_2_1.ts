@@ -494,7 +494,7 @@ player.onChat("labreport221", function () {
         " fills " + p221FillCalls + " clones " + p221CloneCalls);
     p221Say("SAMPLED != FULL EXACT. Send USER_UPLOAD_THIS_P221_STATUS.csv");
 });
-player.onChat("labstop2211", function () {
+player.onChat("labstop221", function () {
     p221Stop = true; p221Say("STOP REQUESTED; waits for cooperative checkpoint");
 });
 player.onChat("labarea221", function () {
