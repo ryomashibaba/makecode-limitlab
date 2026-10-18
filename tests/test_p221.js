@@ -130,7 +130,7 @@ test('latch readback mismatch disallows construction',()=>{
 });
 test('occupied sample stops before first fill',()=>{
  const s=scenario({occupiedSample:true});s.fast();
- assert(s.stats().fillCalls===0&&s.rows().includes('STOP,SAMPLE_MISMATCH'));
+ assert(s.stats().fillCalls===0&&s.rows().includes('STOP,SITE_NOT_AIR'));
 });
 test('occupied halo stops before first fill',()=>{
  const s=scenario({occupiedHalo:true});s.fast();
