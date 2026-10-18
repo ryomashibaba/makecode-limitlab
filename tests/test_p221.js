@@ -173,12 +173,12 @@ test('immediate ACK precedes worker latch check and CPU planning',()=>{
 });
 test('planning yields and live status reports nonzero progress',()=>{
  const s=scenario({monitorPlan:true});s.fast();
- assert(s.messages.some(m=>m.includes('PLAN ') && m.includes('/770 fill')));
+ assert(s.messages.some(m=>m.includes('PLAN ') && m.includes('/125 fill')));
  assert(s.messages.some(m=>m.includes('PLAN COMPLETE')));
 });
 test('STOP while planning records final CSV and never writes Minecraft blocks',()=>{
  const s=scenario({stopAtPause:3});s.fast();
- assert(s.rows().includes('PLAN,0,770,BEGIN,cpu_only_no_world_writes'));
+ assert(s.rows().includes('PLAN,0,125,BEGIN,cpu_only_no_world_writes'));
  assert(s.rows().includes('STOP,USER_STOP'));
  assert.strictEqual(s.stats().fillCalls,0);
  assert.strictEqual(s.stats().cloneCalls,0);
