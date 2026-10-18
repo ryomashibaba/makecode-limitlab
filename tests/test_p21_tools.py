@@ -9,7 +9,7 @@ from tools.analyze_p21 import evaluate
 class TranscriptTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.text = (Path(__file__).resolve().parents[1] / 'build/p21_mock_status.csv').read_text()
+        cls.text = (Path(__file__).resolve().parent / 'fixtures/p21_synthetic.csv').read_text()
 
     def assess(self, text):
         with tempfile.TemporaryDirectory() as d:

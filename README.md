@@ -9,7 +9,7 @@ Minecraft Education MakeCodeの実際の技術的限界を、破棄可能な専�
 - [P2.1 MakeCodeソース](makecode/limitlab_p2_1.ts) / [P2.1 GitHub Actions](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p21.yml)
 - **[P2.0 日本語の実行手順・安全ガイド](makecode/README_P20_JA.md)**
 - **[P2.0 方針監査・次の汎用施工開発ゲート](docs/P20_DIRECTION_AUDIT_JA.md)**
-- **[GitHub最新版ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)** — makecode/COPY_P21.cmd でWindowsクリップボードへコピー（P2.1を含む版）
+- **[GitHub main ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)** — P2.1統合後はmakecode/COPY_P21.cmdでコピー。統合前の変更・CIは[P2.1 PR #11](https://github.com/ryomashibaba/makecode-limitlab/pull/11)を確認してください。
 - [P2.0 MakeCodeソース](makecode/limitlab_p2_0.ts) / [P2.0 GitHub Actions](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p20.yml)
 - [実測ダッシュボード](https://ryomashibaba.github.io/makecode-limitlab/)
 - 過去のソース：[P1.0](makecode/main.ts) / [P1.3](makecode/endurance_p1_3.ts) / [P1.4](makecode/limitlab_p1_4.ts) / [P1.5](makecode/limitlab_p1_5.ts) / [P1.6](makecode/limitlab_p1_6.ts) / [P1.7](makecode/limitlab_p1_7.ts) / [P1.7.1](makecode/limitlab_p1_7_1.ts) / [P1.8](makecode/limitlab_p1_8.ts) / [P1.9](makecode/limitlab_p1_9.ts)

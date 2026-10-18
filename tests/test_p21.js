@@ -100,7 +100,7 @@ let count=0;
 function test(n,f){f();count++;console.log('PASS',n);}
 function stopped(o,check){const s=scenario(o);s.run();assert(!s.csv().includes('FINISHED,ALL_PASS'));assert(s.messages.some(m=>m.includes('TEST STOPPED')));if(check)check(s);return s;}
 test('default 309386 block build and clipped chunk coverage',()=>{const s=scenario({large:true});s.run();assert(s.csv().includes('FINISHED,ALL_PASS'));assert.equal(s.stats().clones,36);oracle(s);});
-test('non-aligned small plan and independent full voxel oracle',()=>{const s=scenario();s.run();assert(s.csv().includes('FINISHED,ALL_PASS'));oracle(s);fs.mkdirSync(path.join(__dirname,'../build'),{recursive:true});fs.writeFileSync(path.join(__dirname,'../build/p21_mock_status.csv'),s.csv());});
+test('non-aligned small plan and independent full voxel oracle',()=>{const s=scenario();s.run();assert(s.csv().includes('FINISHED,ALL_PASS'));oracle(s);assert.equal(s.csv(),fs.readFileSync(path.join(__dirname,'fixtures/p21_synthetic.csv'),'utf8').replace(/\r\n/g,'\n'),'runtime transcript matches synthetic fixture');});
 test('all occupied candidates: zero world writes',()=>stopped({occupied:[0,1,2,3,4,5]},s=>assert.equal(s.stats().fills,0)));
 for(const opt of ['occupiedTarget','occupiedHalo','occupiedRef'])test(opt+' rejects candidate without destroying sentinel',()=>{const s=scenario({[opt]:true});s.run();assert(s.csv().includes('PREFLIGHT,2,6,PASS'));assert([...s.cells.values()].includes(99));});
 test('unloaded comparisons fail closed',()=>stopped({unloaded:true},s=>assert.equal(s.stats().fills,0)));
