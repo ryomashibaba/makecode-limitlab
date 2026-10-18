@@ -1,4 +1,4 @@
-// LIMITLAB P1.7.1.1 START — spatial preflight fallback fix.
+// LIMITLAB P1.7.1 START — spatial preflight fallback fix.
 // Minecraft Education MakeCode JS + File Read & Write extension.
 // DISCARDABLE LIMITLAB TEST WORLD ONLY. One-shot, no automatic cleanup/retry.
 // Proven P1.6 baseline: single fill / clone 32768 blocks each passed on hardware.
@@ -292,4 +292,4 @@ player.onChat("labplan171", function () {
     p17Say("32769 exact not tested; 33024 success is a verified lower bound only");
 });
 player.say("LimitLab P1.7.1 READY - disposable test world ONLY - labauto171");
-// LIMITLAB P1.7.1.1 END — spatial preflight fallback fix.
+// LIMITLAB P1.7.1 END — spatial preflight fallback fix.
