@@ -1,0 +1,77 @@
+name: Verify LimitLab P2.2
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p2_2.ts'
+      - 'makecode/COPY_P22.*'
+      - 'makecode/README_P22_JA.md'
+      - 'docs/P22_DIRECTION_AUDIT_JA.md'
+      - 'tests/test_p22.js'
+      - 'tests/test_p22_tools.py'
+      - 'tools/analyze_p22.py'
+      - '.github/workflows/verify_p22.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P2.2 against established Minecraft MakeCode API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p2_2.js tests/makecode_p16_stub.d.ts makecode/limitlab_p2_2.ts
+      - name: Eighteen independent voxel-oracle FAST/VERIFY and fault tests
+        run: node tests/test_p22.js
+      - name: Sixteen strict CSV FAST-vs-VERIFY verdict tests
+        run: python -m unittest discover -s tests -p 'test_p22_tools.py' -v
+      - name: Prior-source preservation and baseline CI guards
+        run: |
+          python tools/verify_source.py
+          python tools/verify_p21.py
+      - name: Assert fast operation bounds, data-provenance labels and one-shot
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('makecode/limitlab_p2_2.ts').read_text(encoding='utf-8')
+          assert 'P22_MAX_FILL = 32768' in s and 'P22_MAX_CLONE = 262144' in s
+          assert 'p22Commands.push' in s
+          assert 'p22PlanBlocks != p22ExpectedBlocks' in s
+          assert 'p22Sample(' in s and 'p22VerifyAll()' in s
+          assert 'FAST_COMPLETED_SAMPLED' in s and 'VERIFY_PASS_EXACT' in s
+          assert 'p22IO = false; p22Abort()' in s
+          assert 'TEST FINISHED' in s and 'TEST STOPPED' in s
+          assert 'player.onChat("labfast22"' in s and 'player.onChat("labverify22"' in s
+          assert 'loops.pause(100)' not in s
+          print('P2.2 source bounds, explicit mode and fail-closed safeguards PASS')
+          PY
+  windows-preparation:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SHA-pinned PowerShell 5.1 prepare and durable one-use record
+        shell: powershell
+        run: |
+          $root=Join-Path $env:RUNNER_TEMP 'LimitLab_P22'
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P22.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'P2.2 Windows source preparation failed' }
+          $code=[IO.File]::ReadAllText((Join-Path $PWD 'makecode/PASTE_THIS_P22.ts'))
+          if (-not $code.StartsWith('// LIMITLAB P2.2 START') -or -not $code.Contains('// LIMITLAB P2.2 END')) { throw 'Source markers missing' }
+          if (-not $code.Contains('player.onChat("labfast22"') -or -not $code.Contains('player.onChat("labverify22"')) { throw 'Modes missing' }
+          if ($code.Contains('__P22_ROOT__')) { throw 'Output placeholder not substituted' }
+          $latch=Join-Path $root 'logs/P22_ONCE.txt'
+          if ([IO.File]::ReadAllText($latch) -cne 'READY_P22') { throw 'Latch was not prepared' }
+          [IO.File]::WriteAllText($latch,'USED_P22')
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P22.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'Second prepare failed' }
+          if ([IO.File]::ReadAllText($latch) -cne 'USED_P22') { throw 'Existing latch was reset' }
+          $tokens=$null;$errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P22.ps1),[ref]$tokens,[ref]$errors)
+          if ($errors.Count -gt 0) { throw 'P2.2 PowerShell parse invalid' }
+          Write-Host 'P2.2 Windows source pinning and latch preservation PASS'
