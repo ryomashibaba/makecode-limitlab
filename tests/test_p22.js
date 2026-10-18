@@ -75,7 +75,8 @@ test('default 309386-block FAST uses <=90 fill and exactly two large clones',()=
  assert(r.includes('FINISHED,FAST_COMPLETED_SAMPLED_'));
  assert(h.cloneCalls===2);
  assert.deepEqual(h.cloneSizes,[82*40*77,82*9*77]);
- assert(h.fillCalls<=90,'uncompressed fills '+h.fillCalls);
+ assert(h.fillCalls===69,'expected 68 source fills + 1 patch, got '+h.fillCalls);
+ assert(r.includes('P2.2,PLAN,68,208010,PASS,'),'unexpected source plan ledger');
  assert(h.maxFill<=32768&&h.maxClone<=262144);
  assert(h.csvWrites<20,'too many CSV writes '+h.csvWrites);
  assert(h.checks<900,'too many FAST checks '+h.checks);
