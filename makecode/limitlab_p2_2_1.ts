@@ -298,11 +298,15 @@ function p221AreaPreview() {
     p221Say("SITE TARGET x" + (x + p221Destination()) + ".." +
         (x + p221Destination() + P221_W - 1) +
         " same Y and Z; sparse survey, NOT full protection");
+    p221Say("VERIFY references x" + (x + 2 * P221_W + 40) + ".." +
+        (x + 2 * P221_W + 63) + " y" + y + ".." + (y + 7) +
+        " z" + z + ".." + (z + 7));
 }
 function p221StartPosition(): boolean {
     p221Stage = "PREFLIGHT"; p221Done = 0; p221Total = 250;
     let p = player.position();
-    // Player must stand in a newly created disposable world above untouched air.
+    // Disposable test world only; reuse allowed only at a genuinely unused site.
+    // Sparse sample cannot prove that the rest of this large region is clear.
     p221BaseX = Math.floor(p.getValue(Axis.X)) + 16;
     p221BaseY = Math.floor(p.getValue(Axis.Y)) + 16;
     p221BaseZ = Math.floor(p.getValue(Axis.Z)) + 24;
