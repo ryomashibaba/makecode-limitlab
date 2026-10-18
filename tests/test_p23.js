@@ -54,7 +54,7 @@ function simulation(o={}) {
       assert(p.x>=16&&p.x<208&&p.y>=16&&p.y<100&&p.z>=24&&p.z<216,'clone outside district');
       put(p,id);
     }
-    if(o.corruptClone===cloneCalls)put(d,99);
+    if(o.corruptClone===cloneCalls)put({x:d.x,y:d.y+4,z:d.z},99);
     return true;
    }
   }
@@ -159,7 +159,7 @@ test('first clone return false prevents any further construction',()=>{
 test('corrupt first clone corner rejected immediately',()=>{
  const t=simulation({corruptClone:1});t.run();
  assert.equal(t.stat().cloneCalls,1);
- assert(t.rows().includes('STOP,CLONE_CORNER_SAMPLE_FAILED_0'));
+ assert(t.rows().includes('STOP,CLONE_STRUCTURE_SAMPLE_FAILED_0'));
 });
 test('repeat invocation and read-only commands never rewrite completed city',()=>{
  const t=simulation();t.run();const s=t.stat(),r=t.rows();
