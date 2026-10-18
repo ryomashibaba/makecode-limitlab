@@ -1,0 +1,82 @@
+name: Verify LimitLab P2.2.1
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p2_2_1.ts'
+      - 'makecode/COPY_P221.*'
+      - 'makecode/README_P221_JA.md'
+      - 'docs/P221_RESPONSE_AUDIT_JA.md'
+      - 'tests/test_p221.js'
+      - 'tests/test_p221_tools.py'
+      - 'tools/analyze_p221.py'
+      - '.github/workflows/verify_p221.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile responsive P2.2.1 against known MakeCode API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p2_2_1.js tests/makecode_p16_stub.d.ts makecode/limitlab_p2_2_1.ts
+      - name: Twenty-four Minecraft voxel simulations and fault injections
+        run: node tests/test_p221.js
+      - name: Twenty strict early-stop and FAST-vs-VERIFY verdict tests
+        run: python -m unittest discover -s tests -p 'test_p221_tools.py' -v
+      - name: Preserve all historical source and P2.1 requirements
+        run: |
+          python tools/verify_source.py
+          python tools/verify_p21.py
+      - name: Static rapid ACK, bounded preflight and stop/CSV guards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('makecode/limitlab_p2_2_1.ts').read_text()
+          assert 'COMMAND RECEIVED' in s
+          assert 'WORKER ACTIVE' in s and 'PLANNING ' in s
+          assert 'if (tz % 2 == 1) loops.pause(1)' in s
+          assert 'p221SiteSurvey' in s and 'p221Total = 250' in s
+          assert 'player.onChat("labarea221"' in s
+          assert 'player.onChat("labstop221"' in s
+          assert 'player.onChat("labfast221"' in s
+          assert 'player.onChat("labverify221"' in s
+          assert 'P221_MAX_FILL = 32768' in s and 'P221_MAX_CLONE = 262144' in s
+          assert 'FAST_COMPLETED_SAMPLED' in s and 'VERIFY_PASS_EXACT' in s
+          assert 'TEST FINISHED' in s and 'TEST STOPPED' in s
+          assert 'loops.pause(100)' not in s
+          assert 'labstop2211' not in s
+          print('P2.2.1 safe responsive-planning invariants PASS')
+          PY
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PowerShell 5.1 signed-content prepare and latch preservation
+        shell: powershell
+        run: |
+          $root=Join-Path $env:RUNNER_TEMP 'LimitLab_P221'
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P221.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'P2.2.1 prepare failed' }
+          $code=[IO.File]::ReadAllText((Join-Path $PWD 'makecode/PASTE_THIS_P221.ts'))
+          if (-not $code.StartsWith('// LIMITLAB P2.2.1 START')) { throw 'Source start not found' }
+          if (-not $code.Contains('// LIMITLAB P2.2.1 END')) { throw 'Source end not found' }
+          if (-not $code.Contains('player.onChat("labfast221"') -or -not $code.Contains('player.onChat("labstop221"')) { throw 'Chat handlers missing' }
+          if ($code.Contains('__P221_ROOT__')) { throw 'Output path not substituted' }
+          $latch=Join-Path $root 'logs/P221_ONCE.txt'
+          if ([IO.File]::ReadAllText($latch) -cne 'READY_P221') { throw 'Fresh latch missing' }
+          [IO.File]::WriteAllText($latch,'USED_P221')
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P221.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'Second helper invocation failed' }
+          if ([IO.File]::ReadAllText($latch) -cne 'USED_P221') { throw 'Used latch was reset' }
+          $tok=$null;$err=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P221.ps1),[ref]$tok,[ref]$err)
+          if ($err.Count -gt 0) { throw 'P2.2.1 PowerShell syntax errors' }
+          Write-Host 'P2.2.1 Windows prepare and durable latch PASS'
