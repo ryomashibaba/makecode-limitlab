@@ -48,7 +48,9 @@ class P23Tests(unittest.TestCase):
         self.assertEqual(self.check(t)["verdict"],"INCOMPLETE")
     def test_missing_clone_progress(self):
         t=completed().replace(row("CLONE",3,5,"PROGRESS","building_2_0_size12345"),"")
-        self.assertEqual(self.check(t)["verdict"],"INCOMPLETE")
+        # Fail-closed: a missing intermediate sequence number is malformed,
+        # not just an incomplete successful report.
+        with self.assertRaises(ValueError): self.check(t)
     def test_incorrect_order_clone_progress_rejected(self):
         t=completed().replace(row("CLONE",2,5,"PROGRESS","building_1_0_size12345"),
                               row("CLONE",4,5,"PROGRESS","building_1_0_size12345"))
