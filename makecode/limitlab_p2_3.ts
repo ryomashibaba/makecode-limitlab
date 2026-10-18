@@ -123,10 +123,9 @@ function p23RoadPlan() {
     for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
         let px = p23Plot(c), pz = p23Plot(r);
         p23Add(p23Roads, px, 0, pz, P23_PLOT, 1, P23_PLOT, STONE);
-        p23Add(p23Roads, px, 1, pz, P23_PLOT, 1, 1, GOLD_BLOCK);
-        p23Add(p23Roads, px, 1, pz + P23_PLOT - 1, P23_PLOT, 1, 1, GOLD_BLOCK);
-        p23Add(p23Roads, px, 1, pz, 1, 1, P23_PLOT, GOLD_BLOCK);
-        p23Add(p23Roads, px + P23_PLOT - 1, 1, pz, 1, 1, P23_PLOT, GOLD_BLOCK);
+        // Two solid planar operations replace four edge-by-edge trim commands.
+        p23Add(p23Roads, px, 1, pz, P23_PLOT, 1, P23_PLOT, GOLD_BLOCK);
+        p23Add(p23Roads, px + 1, 1, pz + 1, P23_PLOT - 2, 1, P23_PLOT - 2, STONE);
     }
 }
 function p23TowerPlan(c: number) {
@@ -141,13 +140,13 @@ function p23TowerPlan(c: number) {
         for (let dz = 0; dz <= 34; dz += 34)
             p23Add(p23Templates, x + dx, 3, z + dz, 2, h - 3, 2, GOLD_BLOCK);
     // Facade ribs: transparent/open window bays in between.
-    for (let a = 8; a <= 24; a += 8) {
+    for (let a = 8; a <= 24; a += 16) {
         p23Add(p23Templates, x + a, 3, z, 2, h - 3, 2, STONE);
         p23Add(p23Templates, x + a, 3, z + 34, 2, h - 3, 2, STONE);
         p23Add(p23Templates, x, 3, z + a, 2, h - 3, 2, STONE);
         p23Add(p23Templates, x + 34, 3, z + a, 2, h - 3, 2, STONE);
     }
-    for (let level = 8; level < h; level += 8) {
+    for (let level = 16; level < h; level += 16) {
         p23Add(p23Templates, x, level, z, w, 1, 1, GOLD_BLOCK);
         p23Add(p23Templates, x, level, z + 35, w, 1, 1, GOLD_BLOCK);
         p23Add(p23Templates, x, level, z, 1, 1, w, GOLD_BLOCK);
