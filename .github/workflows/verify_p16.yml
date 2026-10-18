@@ -1,0 +1,71 @@
+name: Verify LimitLab P1.6
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p1_6.ts'
+      - 'makecode/COPY_P16.*'
+      - 'makecode/README_P16_JA.md'
+      - 'tests/makecode_p16_stub.d.ts'
+      - 'tests/test_p16.js'
+      - 'tests/test_p16_tools.py'
+      - 'tools/analyze_p16.py'
+      - 'build/limitlab_p1_6.js'
+      - '.github/workflows/verify_p16.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: TypeScript compile with Minecraft API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p1_6.js tests/makecode_p16_stub.d.ts makecode/limitlab_p1_6.ts
+      - name: Verify compiled output checked into Git
+        run: git diff --exit-code -- build/limitlab_p1_6.js
+      - name: Fourteen API-mock regression scenarios
+        run: node tests/test_p16.js
+      - name: Nine CSV regression cases
+        run: python -m unittest discover -s tests -p 'test_p16_tools.py' -v
+      - name: Original P1.0 invariants unchanged
+        run: python tools/verify_source.py
+      - name: Static safety guards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('makecode/limitlab_p1_6.ts').read_text()
+          assert 'loops.pause(100)' not in s
+          assert 'blocks.clone(p16At(0, 0, 0), p16At(15, 63, 63)' not in s
+          assert 'player.onChat("labauto16"' in s
+          assert 'player.onChat("labprobe16"' in s
+          assert '65536' in s
+          print('P1.6 static guard PASS')
+          PY
+  windows-copy:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Windows PowerShell 5.1 complete source preparation
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P16.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P1.6 preparation failed' }
+          $script = Get-Content -LiteralPath .\makecode\PASTE_THIS_P16.ts -Raw
+          if (-not $script.StartsWith('// LIMITLAB P1.6 START')) { throw 'Incomplete header' }
+          if (-not $script.Contains('// LIMITLAB P1.6 END')) { throw 'Incomplete tail' }
+          if (-not $script.Contains('player.onChat("labauto16"')) { throw 'Missing run command' }
+          if ($script.Contains('__P16_ROOT__')) { throw 'Unresolved local path' }
+          Write-Host 'Windows P1.6 full source preparation PASS'
+      - name: Parse PowerShell source
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P16.ps1), [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'PowerShell syntax invalid' }
+          Write-Host 'P1.6 PowerShell syntax PASS'
