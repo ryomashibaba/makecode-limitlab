@@ -1,35 +1,33 @@
 # MakeCode LimitLab
 
-Minecraft Education MakeCodeの施工・動的更新・ファイル入出力・安定性の技術的限界を、独立した専用テストワールドで実測する研究プロジェクトです。
+Minecraft Education MakeCodeの施工・動的更新・ファイル入出力・安定性の技術的限界を、専用テストワールドで実測する独立研究プロジェクトです。
 
-**最新版：P1.6 — 65,536ブロックの分割施工・複製と、任意の単一命令限界探索。** 長時間の耐久ループは含めません。
+**最新版：P1.7 — 単一命令32,768ブロック突破の境界研究（Minecraft実機は未試験）。** Minecraftチャットへ明確な終了表示を出す設計です。長時間待機だけの耐久ループはありません。
 
-- **[P1.6 日本語セットアップ・安全ガイド](makecode/README_P16_JA.md)**
-- [P1.6 実行用ソース](makecode/limitlab_p1_6.ts) ／ [Windowsコピー補助](makecode/COPY_P16.cmd)
-- [P1.6 自動検証](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p16.yml)
-- [GitHub最新版ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)
+- **[P1.7 日本語セットアップ・実験ガイド](makecode/README_P17_JA.md)**
+- **[GitHub最新版ZIP](https://github.com/ryomashibaba/makecode-limitlab/archive/refs/heads/main.zip)** （`makecode/COPY_P17.cmd`から一度でコードをコピー）
+- [P1.7 MakeCodeソース](makecode/limitlab_p1_7.ts) / [P1.7 CI](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/verify_p17.yml)
 - [結果ダッシュボード](https://ryomashibaba.github.io/makecode-limitlab/)
-- 旧版：[P1.0](makecode/main.ts) ／ [P1.3](makecode/endurance_p1_3.ts) ／ [P1.4](makecode/limitlab_p1_4.ts) ／ [P1.5](makecode/limitlab_p1_5.ts)
+- 旧版：[P1.0](makecode/main.ts) / [P1.3](makecode/endurance_p1_3.ts) / [P1.4](makecode/limitlab_p1_4.ts) / [P1.5](makecode/limitlab_p1_5.ts) / [P1.6](makecode/limitlab_p1_6.ts)
 
-## 実機で確かめられた成果
+## Minecraft Education実機で確かめられた成果（2026-10-18）
 
 | 版 | 実機検証結果 |
-|---|---|
-| P0.6–P0.8 | 小規模のplace/fill/cloneが成功 |
-| P1.0 | 4,096・16,384ブロック施工、更新3方式、256KiB I/O成功。QUICK耐久は手動停止 |
-| P1.3 | 独立24回＋300回の耐久試験に成功 |
-| P1.4 | 512ブロックfill/clone各4回PASS。待機中心の試験は106/150で手動停止 |
-| **P1.5** | **32,768ブロックの分割SOURCE/FILL/CLONEが全PASS（計98,304ブロックを検証）** |
-| **P1.6** | **TypeScript・Minecraft模擬14ケース・Python 9ケース・Windows CI成功。実機はまだ未検証** |
+| --- | --- |
+| P0.6–P0.8 | 小規模のplace/fill/cloneがPASS |
+| P1.0 | 4,096・16,384ブロック施工、更新3方式、256KiB I/OがPASS。QUICK耐久は手動停止 |
+| P1.3 | 独立24回＋300回の耐久試験PASS |
+| P1.4 | 512ブロックfill/clone各4回PASS。待機工程は106/150で手動停止 |
+| P1.5 | 32,768ブロックの分割SOURCE/FILL/CLONEすべてPASS |
+| **P1.6** | **65,536ブロックの分割SOURCE/FILL/CLONEすべてPASS。単一fill/clone各32,768ブロックも8/8実機PASS** |
+| **P1.7** | **GitHub CI PASS、Minecraft実機は未検証** |
 
-P1.6の標準試験は16×64×64の施工元・fill先・clone先の3領域に合計最大196,608ブロックを書き換えます。施工前に**全領域が空気か**を検査し、空いていなければ施工しません。
+P1.7は **32,800（20×40×41）・33,024（24×32×43）ブロックを、各1命令のfillとcloneで実験**します。容量が拒否されても、APIから処理が戻ってくれば`TEST FINISHED`と診断結果をMinecraftチャットに表示します。安全停止時は`TEST STOPPED`です。
 
-`labauto16` は **65,536ブロックを分割施工できるか**を検証するもので、1回のfillやcloneで65,536個を操作したという意味ではありません。`labprobe16` は主試験が成功した後の**任意**の追加試験で、4,096〜32,768ブロックまで単一命令で試し、結果を全域照合します。単一命令65,536ブロックの呼び出しは実装していません。
+初期施工はコピー元・fill先・clone先の各最大41,280ブロックを**すべて空気か検査**してから開始。計最大123,840ブロックの領域に対応します。再試行や終了後の自動削除はありません。
 
-完走時間は保証できません。協調停止`labstop16`はありますが、Minecraft側の長いAPI呼び出し中に即時停止できる保証はありません。いずれも破棄可能なLimitLab専用テストワールドだけで実行してください。失敗後の無条件再実行や自動削除はしません。
+**注意：** 32,769ブロックぴったりは実施せず、コンパクトな直方体で調べるため32,800を第一段階に採用しています。失敗したサイズをもって、Minecraft APIの絶対上限を断言しません。Minecraftの実行スレッドがハングした場合、チャットの終了表示も保証できません。`labstatus17` / `labstop17` で状態を確認してください。
 
-## 開発と公開について
+## 公開・安全
 
-GitHubはPublic。実際のユーザーCSV、ワールド、ログなどはリポジトリに公開しません。ウェブ画面でのCSV読込みもブラウザー内のみです。
-
-他のMinecraftAIBuilder等のリポジトリやワールドには触れません。開発はChat主体とし、Work利用は事前に相談します。
+ユーザーの実測CSV、スクリーンショット、ワールドデータ、PCローカルログはPublic GitHubへアップロードしません。MinecraftAIBuilderや他ワールドへの変更はありません。開発はChat主体です。
