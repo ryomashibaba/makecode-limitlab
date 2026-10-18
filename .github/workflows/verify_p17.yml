@@ -1,0 +1,69 @@
+name: Verify LimitLab P1.7
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p1_7.ts'
+      - 'makecode/COPY_P17.*'
+      - 'makecode/README_P17_JA.md'
+      - 'tests/test_p17.js'
+      - 'tests/test_p17_tools.py'
+      - 'tools/analyze_p17.py'
+      - '.github/workflows/verify_p17.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  mock-and-analyzer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P1.7 MakeCode TypeScript with existing API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p1_7.js tests/makecode_p16_stub.d.ts makecode/limitlab_p1_7.ts
+      - name: Fourteen Minecraft API simulated tests
+        run: node tests/test_p17.js
+      - name: Eleven CSV analyzer test cases
+        run: python -m unittest discover -s tests -p 'test_p17_tools.py' -v
+      - name: Preserve original P1.0 source invariant
+        run: python tools/verify_source.py
+      - name: Stop conditions, explicit finish banner and no long waits
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('makecode/limitlab_p1_7.ts').read_text(encoding='utf-8')
+          assert 'loops.pause(100)' not in s
+          assert 'TEST FINISHED' in s and 'TEST STOPPED' in s
+          assert 'player.onChat("labauto17"' in s
+          assert 'player.onChat("labstop17"' in s
+          assert '32769 exact not tested' in s
+          assert 'p17Finished("LIMIT"' in s and 'p17Finished("PASS"' in s
+          assert '__P17_ROOT__' in s
+          print('P1.7 safety and finish banner PASS')
+          PY
+  windows-preflight:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: P1.7 exact-source Windows PowerShell preparation
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P17.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P1.7 source prepare failed' }
+          $script = Get-Content -LiteralPath .\makecode\PASTE_THIS_P17.ts -Raw
+          if (-not $script.StartsWith('// LIMITLAB P1.7 START')) { throw 'Missing start marker' }
+          if (-not $script.Contains('// LIMITLAB P1.7 END')) { throw 'Missing end marker' }
+          if (-not $script.Contains('TEST FINISHED')) { throw 'Missing chat finish banner' }
+          if ($script.Contains('__P17_ROOT__')) { throw 'Root not substituted' }
+          Write-Host 'P1.7 Windows source prepare PASS'
+      - name: Parse Windows PowerShell script syntax
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P17.ps1), [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'P1.7 PowerShell parse errors' }
+          Write-Host 'P1.7 PowerShell parse PASS'
