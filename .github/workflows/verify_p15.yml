@@ -1,0 +1,65 @@
+name: Verify LimitLab P1.5
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p1_5.ts'
+      - 'makecode/COPY_P15.*'
+      - 'makecode/README_P15_JA.md'
+      - 'tests/test_p15.js'
+      - 'tests/test_p15_tools.py'
+      - 'tools/analyze_p15.py'
+      - '.github/workflows/verify_p15.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: TypeScript compile with prior tested MakeCode API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p1_5.js tests/makecode_p14_stub.d.ts makecode/limitlab_p1_5.ts
+      - name: P1.5 simulated safety and fidelity tests
+        run: node tests/test_p15.js
+      - name: P1.5 read-only CSV analyzer
+        run: python -m unittest discover -s tests -p 'test_p15_tools.py' -v
+      - name: Original P1.0 source invariant
+        run: python tools/verify_source.py
+      - name: No long endurance sleeps or high-volume unsplit calls
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("makecode/limitlab_p1_5.ts").read_text()
+          assert 'loops.pause(100)' not in s
+          assert 'blocks.clone(p15At(0, 0, 0), p15At(15, 31, 63)' not in s
+          assert 'player.onChat("labauto15"' in s
+          print("Static safety guard PASS")
+          PY
+  windows-copy:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test P1.5 exact-source preparation under Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P15.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P1.5 preparation failed' }
+          $prepared = Get-Content -LiteralPath .\makecode\PASTE_THIS_P15.ts -Raw
+          if (-not $prepared.StartsWith('// LIMITLAB P1.5 START')) { throw 'Header missing' }
+          if (-not $prepared.Contains('// LIMITLAB P1.5 END')) { throw 'Tail missing' }
+          if (-not $prepared.Contains('player.onChat("labauto15"')) { throw 'Run command missing' }
+          if ($prepared.Contains('__P15_ROOT__')) { throw 'Unresolved download path' }
+          Write-Host 'P1.5 PrepareOnly PASS'
+      - name: Parse PowerShell source
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          $ast = [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P15.ps1), [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'PowerShell syntax errors' }
+          Write-Host 'P1.5 PowerShell parse PASS'
