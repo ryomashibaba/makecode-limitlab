@@ -1,0 +1,55 @@
+name: Verify LimitLab P2.1
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P2.1 and P2.0 against established API stubs
+        run: |
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p2_1.js tests/makecode_p16_stub.d.ts makecode/limitlab_p2_1.ts
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p2_0.js tests/makecode_p16_stub.d.ts makecode/limitlab_p2_0.ts
+      - name: P2.1 independent voxel oracle and fault injection
+        run: node tests/test_p21.js
+      - name: Strict P2.1 transcript validation
+        run: python -m unittest discover -s tests -p 'test_p21_tools.py' -v
+      - name: P2.0 regression and historical source preservation
+        run: |
+          node tests/test_p20.js
+          python -m unittest discover -s tests -p 'test_p20_tools.py' -v
+          python tools/verify_source.py
+          python tools/verify_p21.py
+  windows-prepare:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PowerShell 5.1 preparation and persistent one-shot latch
+        shell: powershell
+        run: |
+          $root = Join-Path $env:RUNNER_TEMP 'LimitLab_P21'
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P21.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'Preparation failed' }
+          $code = [IO.File]::ReadAllText((Join-Path $PWD 'makecode/PASTE_THIS_P21.ts'))
+          if ($code.Contains('__P21_ROOT__') -or -not $code.Contains('player.onChat("labauto21"')) { throw 'Source substitution failed' }
+          $latch = Join-Path $root 'logs/P21_ONCE.txt'
+          if ([IO.File]::ReadAllText($latch) -cne 'READY_P21') { throw 'Latch initialization failed' }
+          [IO.File]::WriteAllText($latch,'USED_P21')
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P21.ps1 -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'Second preparation failed' }
+          if ([IO.File]::ReadAllText($latch) -cne 'USED_P21') { throw 'Unsafe latch reset' }
+          $tokens=$null; $errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P21.ps1),[ref]$tokens,[ref]$errors)
+          if ($errors.Count) { throw 'PowerShell syntax error' }
+          Write-Host 'P2.1 Windows preparation and latch preservation PASS'
