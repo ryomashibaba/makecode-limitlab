@@ -1,0 +1,37 @@
+name: Verify P1.3 Clipboard Packaging
+on:
+  push:
+    paths:
+      - 'makecode/COPY_P13.ps1'
+      - 'makecode/COPY_P13.cmd'
+      - '.github/workflows/verify_p13_clipboard.yml'
+  pull_request:
+    paths:
+      - 'makecode/COPY_P13.ps1'
+      - 'makecode/COPY_P13.cmd'
+      - '.github/workflows/verify_p13_clipboard.yml'
+  workflow_dispatch:
+jobs:
+  prepare-on-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test script preparation on Windows PowerShell 5.1 STA
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P13.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw "PrepareOnly failed with exit code $LASTEXITCODE" }
+          $prepared = Get-Content -LiteralPath .\makecode\PASTE_THIS_P13.ts -Raw
+          if (!$prepared.StartsWith('// LIMITLAB P1.3 START')) { throw "Beginning of source missing" }
+          if (!$prepared.Contains('// LIMITLAB P1.3 END')) { throw "Ending of source missing" }
+          if (!$prepared.Contains('player.onChat("labrun13"')) { throw "Main command missing" }
+          if ($prepared.Contains('__P13_ROOT__')) { throw "Path substitution failed" }
+          Write-Host "Prepared-source integration test PASS."
+      - name: Check PowerShell copy script syntax
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          $ast = [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P13.ps1), [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw "PowerShell parse errors" }
+          Write-Host "PowerShell syntax PASS."
