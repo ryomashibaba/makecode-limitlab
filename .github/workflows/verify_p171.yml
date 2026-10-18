@@ -1,0 +1,69 @@
+name: Verify LimitLab P1.7.1
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p1_7_1.ts'
+      - 'makecode/COPY_P171.*'
+      - 'makecode/README_P171_JA.md'
+      - 'tests/test_p171.js'
+      - 'tests/test_p171_tools.py'
+      - 'tools/analyze_p171.py'
+      - '.github/workflows/verify_p171.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  linux-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P1.7.1 MakeCode TypeScript using existing API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p1_7_1.js tests/makecode_p16_stub.d.ts makecode/limitlab_p1_7_1.ts
+      - name: Eighteen Minecraft mock regression cases
+        run: node tests/test_p171.js
+      - name: Twelve Python results-analysis checks
+        run: python -m unittest discover -s tests -p 'test_p171_tools.py' -v
+      - name: Preserve original P1.0 source invariant
+        run: python tools/verify_source.py
+      - name: Validate preflight and termination source safeguards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('makecode/limitlab_p1_7_1.ts').read_text()
+          assert 'candidate < 6' in s
+          assert 'dx = [12, -140, 12, -140, 176, 12]' in s
+          assert 'dz = [24, 24, -140, -140, 24, 176]' in s
+          assert '"SKIP"' in s and 'p17LastCheck' in s
+          assert 'TEST FINISHED' in s and 'TEST STOPPED' in s
+          assert 'loops.pause(100)' not in s
+          assert 'player.onChat("labauto171"' in s
+          print('P1.7.1 static preflight safeguards PASS')
+          PY
+  windows-preflight:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify SHA-pinned source preparation under PowerShell 5.1
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P171.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P1.7.1 PrepareOnly failed' }
+          $code = Get-Content -LiteralPath .\makecode\PASTE_THIS_P171.ts -Raw
+          if (-not $code.StartsWith('// LIMITLAB P1.7.1 START')) { throw 'Header wrong' }
+          if (-not $code.Contains('// LIMITLAB P1.7.1 END')) { throw 'Tail missing' }
+          if (-not $code.Contains('player.onChat("labauto171"')) { throw 'Run command missing' }
+          if ($code.Contains('__P171_ROOT__')) { throw 'Output root unresolved' }
+          Write-Host 'Windows P1.7.1 clipboard preparation PASS'
+      - name: PowerShell syntax check
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P171.ps1), [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'PowerShell syntax invalid' }
+          Write-Host 'PowerShell P1.7.1 syntax PASS'
