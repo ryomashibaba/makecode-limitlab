@@ -1,0 +1,72 @@
+name: Verify LimitLab P1.8
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p1_8.ts'
+      - 'makecode/COPY_P18.*'
+      - 'makecode/README_P18_JA.md'
+      - 'tests/test_p18.js'
+      - 'tests/test_p18_tools.py'
+      - 'tools/analyze_p18.py'
+      - 'docs/P18_DIRECTION_AUDIT_JA.md'
+      - '.github/workflows/verify_p18.yml'
+  pull_request:
+  workflow_dispatch:
+jobs:
+  logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P1.8 TypeScript against previously proven MakeCode API stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p1_8.js tests/makecode_p16_stub.d.ts makecode/limitlab_p1_8.ts
+      - name: Sixteen Minecraft API mock safety and boundary scenarios
+        run: node tests/test_p18.js
+      - name: Twelve read-only CSV verdict tests
+        run: python -m unittest discover -s tests -p 'test_p18_tools.py' -v
+      - name: Original P1.0 source must remain exactly preserved
+        run: python tools/verify_source.py
+      - name: P1.8 bounds, independent stages, clear final banner
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("makecode/limitlab_p1_8.ts").read_text()
+          assert 'loops.pause(100)' not in s
+          assert 'p18ProbeFill()' in s
+          assert 'let sizes = [33024, 40960, 65536]' in s
+          assert 'let dx = [16, -152, 16, -152, 192, 16]' in s
+          assert 'candidate < 6' in s
+          assert 'TEST FINISHED' in s and 'TEST STOPPED' in s
+          assert 'player.onChat("labreport18"' in s
+          assert 'player.onChat("labauto18"' in s
+          print("P1.8 design safety guards PASS")
+          PY
+  windows-copy:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Windows PowerShell 5.1 SHA pinned source prepare
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\makecode\COPY_P18.ps1 -PrepareOnly
+          if ($LASTEXITCODE -ne 0) { throw 'P1.8 source preparation failed' }
+          $prepared=Get-Content -LiteralPath .\makecode\PASTE_THIS_P18.ts -Raw
+          if (-not $prepared.StartsWith('// LIMITLAB P1.8 START')) { throw 'Header missing' }
+          if (-not $prepared.Contains('// LIMITLAB P1.8 END')) { throw 'Tail missing' }
+          if (-not $prepared.Contains('player.onChat("labauto18"')) { throw 'Run command missing' }
+          if (-not $prepared.Contains('TEST FINISHED')) { throw 'Final chat missing' }
+          if ($prepared.Contains('__P18_ROOT__')) { throw 'Output path not substituted' }
+          Write-Host 'P1.8 Windows prepare PASS'
+      - name: PowerShell syntax check
+        shell: powershell
+        run: |
+          $tokens=$null
+          $errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path .\makecode\COPY_P18.ps1),[ref]$tokens,[ref]$errors)
+          if ($errors.Count -gt 0) { $errors | Out-String | Write-Host; throw 'P1.8 PowerShell syntax invalid' }
+          Write-Host 'P1.8 PowerShell syntax PASS'
