@@ -23,7 +23,7 @@ def fixture():
     rows.append("G4C1,CLONE,0,5,BEGIN,five_mixed_material_towers")
     for i in range(1,6):rows.append(f"G4C1,CLONE,{i},5,PROGRESS,building_0_1_size1000")
     rows.append("G4C1,CLONE,5,5,PASS,five_mixed_material_copies_sampled")
-    for st,n in (("PLAZA",24),("DETAIL",101)):
+    for st,n in (("PLAZA",24),("DETAIL",97)):
         rows.extend([f"G4C1,{st},0,{n},BEGIN,precomputed_bounded_boxes",
                      f"G4C1,{st},{n},{n},PASS,issued_all_planned_fills"])
     rows.extend(["G4C1,SAMPLE,0,28,BEGIN,towers_plaza_roads_public_space",
@@ -32,6 +32,8 @@ def fixture():
     for n in [7,14,21,28,35,42,47]:
         rows.append(f"G4C1,TILE,{n},47,PROGRESS,bounded_clones")
     rows.extend(["G4C1,TILE,47,47,PASS,bounded_47_clones",
+                 "G4C1,PERIMETER,0,4,BEGIN,precomputed_bounded_boxes",
+                 "G4C1,PERIMETER,4,4,PASS,issued_all_planned_fills",
                  "G4C1,DISTRICT_SAMPLE,0,18,BEGIN,new_districts_and_edges",
                  "G4C1,DISTRICT_SAMPLE,18,18,PASS,sampled_not_exact",
                  "G4C1,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill386_clone52_checks361_towers32"])
