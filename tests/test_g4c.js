@@ -193,7 +193,7 @@ test('civic plaza is a public destination with four planted garden courts',()=>{
    assert.equal(t.block(px+dx+2,4,pz+dz+2),M.CYAN_CONCRETE,'public sculpture');
  }
  assert.equal(t.block(px+20,1,pz+4),M.WHITE_CONCRETE,'north public path');
- assert.equal(t.block(px+43,2,pz+23),M.WHITE_CONCRETE,'east public path');
+ assert.equal(t.block(px+43,1,pz+23),M.WHITE_CONCRETE,'east public path');
  assert.equal(t.block(px+22,5,pz+22),M.CYAN_CONCRETE,'civic monument unchanged');
 });
 test('no planting or path destroys foundation/roof checks after clones',()=>{
