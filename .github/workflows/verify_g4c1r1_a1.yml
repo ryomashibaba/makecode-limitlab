@@ -34,7 +34,7 @@ jobs:
       - name: Private CSV, one-shot and source-hash tests
         run: python -B -m unittest discover -s tests -p 'test_g4c1r1_a1_tools.py' -v
       - name: Prior offline district-tiling safety proof
-        run: python -B -m unittest discover -s tests -p 'test_g4c1r1_tiling.py' -v
+        run: python -B -m unittest discover -s tests -p 'test_g4c1_tiling.py' -v
   windows:
     runs-on: windows-latest
     steps:
