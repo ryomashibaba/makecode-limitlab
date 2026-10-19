@@ -1,6 +1,6 @@
 param([switch]$PrepareOnly, [string]$OutputRoot)
 $ErrorActionPreference = 'Stop'
-$source = Join-Path $PSScriptRoot 'limitlab_p2_3.ts'
+$source = Join-Path $PSScriptRoot 'limitlab_p24_r1.ts'
 if (-not (Test-Path -LiteralPath $source)) { throw 'P2.4R source not found' }
 $code = [IO.File]::ReadAllText($source,[Text.Encoding]::UTF8)
 $cr = [string][char]13
