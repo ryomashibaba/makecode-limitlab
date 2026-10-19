@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Compile Minecraft G4C geometry and six block palette against MakeCode stubs
-        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c_c0.js tests/makecode_g4c_stub.d.ts makecode/limitlab_g4c_c0.ts
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c_c0.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c_c0.ts
       - name: G4C full voxel geometry, architecture differentiation and safety regression
         run: node tests/test_g4c.js
       - name: Strict private G4C CSV and one-click source integrity tests
