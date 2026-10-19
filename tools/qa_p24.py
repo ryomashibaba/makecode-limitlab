@@ -98,8 +98,14 @@ def inspect(repo: Path, root: Path) -> dict:
 
 def fresh_and_stable(baseline: tuple | None, previous: tuple | None,
                      current: tuple | None) -> bool:
-    return (current is not None and current != ("UNREADABLE",)
-            and current != baseline and current == previous)
+    if current is None or current == ("UNREADABLE",) or current != previous:
+        return False
+    if baseline is None:
+        return True
+    if baseline == ("UNREADABLE",):
+        return False
+    # A touched/re-written historical CSV with identical content is NOT a new run.
+    return current[2] != baseline[2]
 
 
 def emit(record: dict) -> None:
