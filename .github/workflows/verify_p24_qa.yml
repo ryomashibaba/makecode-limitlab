@@ -1,0 +1,40 @@
+name: Verify LimitLab P2.4 G1 Read-only QA
+on:
+  push:
+    paths:
+      - 'tools/qa_p24.py'
+      - 'tests/test_p24_qa.py'
+      - 'docs/P24_WINDOWS_QA_G1_JA.md'
+      - '.github/workflows/verify_p24_qa.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read-only P2.4 G1 regression
+        run: python -m unittest discover -s tests -p 'test_p24_qa.py' -v
+      - name: Existing P2.3 CSV regression
+        run: python -m unittest discover -s tests -p 'test_p23_tools.py' -v
+      - name: Read-only fresh-empty inspection
+        run: python tools/qa_p24.py inspect --output-root /tmp/limitlab_p24_empty
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Windows G1 read-only regression
+        shell: pwsh
+        run: |
+          python -m unittest discover -s tests -p 'test_p24_qa.py' -v
+          if ($LASTEXITCODE -ne 0) { throw "G1 regression failure" }
+          python tools/qa_p24.py inspect --output-root "$env:RUNNER_TEMP\p24_empty"
+          if ($LASTEXITCODE -ne 0) { throw "G1 inspect failure" }
