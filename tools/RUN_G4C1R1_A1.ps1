@@ -22,7 +22,7 @@ Write-Host 'PREPARED: pasted source is ONLY for this unique run.' -ForegroundCol
 Write-Host '1. In a disposable Minecraft Education test world, replace MakeCode JavaScript with Ctrl+A then Ctrl+V.'
 Write-Host '2. Keep File Read & Write extension and check for zero editor errors.'
 Write-Host '3. Type labareag4c1r1 to preview the complete 372 square 2x2 city.'
-Write-Host '4. Type labcityg4c1r1 ONCE in a fresh disposable test world. 47 tile clones may take time.'
+Write-Host '4. Type labcityg4c1r1 ONCE in a fresh disposable test world. 44 tile clones may take time.'
 Write-Host '5. The existing result CSV/latch of ALL previous runs are never reused.'
 Write-Host 'If you exit this window, DO NOT prepare a different run just to collect old evidence.'
 Write-Host ('Output folder to preserve: ' + $root)
