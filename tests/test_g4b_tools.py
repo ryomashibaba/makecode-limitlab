@@ -1,0 +1,131 @@
+from __future__ import annotations
+import sys
+import json
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+REPO=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(REPO/"tools"))
+from analyze_g4b import evaluate
+from g4b_capture import create_bundle, inspect, CSV_NAME
+from test_p23_tools import completed
+
+def good():
+    return (completed().replace("P2.3","G4B")
+            .replace("FAST_METRO_192x192_no_full_verify",
+                     "G4B_PUBLIC_REALM_192x192_sampled")
+            .replace("75_sparse_air_points_not_complete_area_protection",
+                     "75_sparse_air_points_at_safe_y")
+            .replace("SAMPLE,0,18", "SAMPLE,0,22")
+            .replace("SAMPLE,18,18", "SAMPLE,22,22")
+            .replace("18_points_not_full_exact", "22_points_not_full_exact")
+            .replace("_checks98_", "_checks112_"))
+
+class G4BToolTests(unittest.TestCase):
+    def setUp(self):
+        self.t=tempfile.TemporaryDirectory();self.addCleanup(self.t.cleanup)
+        self.root=Path(self.t.name)
+    def csv(self, content):
+        p=self.root/"results"/CSV_NAME
+        p.parent.mkdir(parents=True,exist_ok=True);p.write_text(content,encoding="utf-8")
+        return p
+    def latch(self, content=b"USED_G4B"):
+        p=self.root/"logs"/"G4B_ONCE.txt"
+        p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(content)
+        return p
+    def test_valid_completed_only_sampled(self):
+        p=self.csv(good())
+        a=evaluate(p)
+        self.assertEqual(a["verdict"],"FAST_COMPLETED_SAMPLED_NOT_EXACT")
+        self.assertTrue(a["sampled_only"])
+    def test_absent_csv(self):
+        self.assertEqual(inspect(self.root)["state"],"NO_CSV")
+    def test_no_latch_cannot_package(self):
+        self.csv(good())
+        self.assertEqual(create_bundle(self.root)["state"],"BLOCKED_LATCH_NOT_USED")
+    def test_ready_latch_cannot_package(self):
+        self.csv(good());self.latch(b"READY_G4B")
+        self.assertEqual(create_bundle(self.root)["state"],"BLOCKED_LATCH_NOT_USED")
+    def test_good_pack_csv_exact(self):
+        self.latch(); p=self.csv(good()); b=p.read_bytes()
+        out=create_bundle(self.root,tag="deterministic")
+        self.assertEqual(out["state"],"BUNDLED")
+        import zipfile
+        with zipfile.ZipFile(out["path"]) as z:
+            self.assertEqual(z.read(CSV_NAME),b)
+            m=json.loads(z.read("G4B_MANIFEST.json"))
+        self.assertFalse(m["whole_district_exact"])
+        self.assertEqual(p.read_bytes(),b)
+        self.assertEqual((self.root/"logs"/"G4B_ONCE.txt").read_bytes(),b"USED_G4B")
+    def test_existing_package_not_overwritten(self):
+        self.csv(good());self.latch()
+        first=create_bundle(self.root,tag="duplicate")
+        second=create_bundle(self.root,tag="duplicate")
+        # Same-second repeated tag must fail instead of overwriting the first archive.
+        self.assertEqual(first["state"],"BUNDLED")
+        self.assertEqual(second["state"],"BUNDLE_ERROR")
+    def test_invalid_csv_is_not_bundled(self):
+        self.csv("garbage");self.latch()
+        self.assertEqual(create_bundle(self.root)["state"],"CSV_INVALID_OR_IN_PROGRESS")
+    def test_source_g4b_is_independent_from_p23(self):
+        t=(REPO/"makecode"/"limitlab_g4b_a1.ts").read_text()
+        self.assertIn("G4B_ONCE.txt",t)
+        self.assertIn("USER_UPLOAD_THIS_G4B_STATUS.csv",t)
+        self.assertIn('player.onChat("labcityg4b"',t)
+        self.assertNotIn('player.onChat("labcity23"',t)
+        self.assertIn("g4bY=Math.max(96,",t)
+        self.assertIn("CYAN_STAINED_GLASS",t)
+        self.assertIn("LIGHT_BLUE_STAINED_GLASS",t)
+        self.assertIn("WHITE_CONCRETE",t)
+        self.assertIn("BLACK_CONCRETE",t)
+        self.assertIn("GREEN_CONCRETE",t)
+        self.assertIn("BROWN_CONCRETE",t)
+        self.assertIn("g4bStreetSpacePlan()",t)
+        self.assertIn("g4bCivicSpacePlan()",t)
+        self.assertIn("g4bBuildingFrontAndGreenPlan()",t)
+        self.assertIn("g4bDone+=4;",t)
+        self.assertIn("g4bDetailPlan()",t)
+        self.assertNotIn("PREVIOUS_CSV_PRESERVE", t)
+        self.assertNotIn('file.readFile(G4B_CSV)!=""', t)
+        self.assertIn('file.readFile(G4B_ONCE)!="READY_G4B"', t)
+        preflight=t.index("if(!g4bSiteSurvey())")
+        latch=t.index('file.writeFile(G4B_ONCE,"USED_G4B")')
+        self.assertLess(preflight,latch)
+    def test_chat_messages_do_not_emit_minecraft_operator_markup(self):
+        import re
+        code=(REPO/"makecode"/"limitlab_g4b_a1.ts").read_text(encoding="utf-8")
+        outputs=re.findall(r'g4bSay\("([^"]*)"\)', code)
+        self.assertGreater(len(outputs), 10)
+        self.assertTrue(any("sky deck Y96" in x for x in outputs))
+        for value in outputs:
+            self.assertNotIn("<", value)
+            self.assertNotIn(">", value)
+
+    def test_clipboard_copy_hash_matches_corrected_source(self):
+        import hashlib
+        source=(REPO/"makecode"/"limitlab_g4b_a1.ts").read_bytes()
+        source=source.replace(b"\r\n",b"\n").replace(b"\r",b"\n")
+        blob=b"blob "+str(len(source)).encode("ascii")+b"\0"+source
+        actual=hashlib.sha1(blob).hexdigest()
+        copier=(REPO/"makecode"/"COPY_G4B.ps1").read_text(encoding="utf-8")
+        self.assertIn(actual,copier)
+    def test_copy_requires_unique_output_directory(self):
+        preparer=(REPO/"makecode"/"COPY_G4B.ps1").read_text(encoding="utf-8")
+        self.assertIn("[Parameter(Mandatory=$true)][string]$OutputRoot",preparer)
+        self.assertIn("[IO.Directory]::Exists($root)",preparer)
+        self.assertIn("B1 requires a fresh run folder",preparer)
+        self.assertIn("Join-Path $root 'PASTE_THIS_G4B_B1.ts'",preparer)
+
+    def test_windows_launcher_allocates_new_root_per_click(self):
+        runner=(REPO/"tools"/"RUN_G4B_B1.ps1").read_text(encoding="utf-8")
+        self.assertIn("[Guid]::NewGuid()",runner)
+        self.assertIn("'MakeCode_LimitLab/G4B_B1/runs'",runner)
+        self.assertIn("-OutputRoot $root",runner)
+    def test_no_original_p23_deleted(self):
+        self.assertTrue((REPO/"makecode"/"limitlab_p2_3.ts").exists())
+        self.assertTrue((REPO/"makecode"/"COPY_P23.ps1").exists())
+
+if __name__=="__main__":
+    unittest.main()
