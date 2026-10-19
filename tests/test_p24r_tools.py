@@ -78,7 +78,7 @@ class P24RToolTests(unittest.TestCase):
     def test_chat_messages_do_not_emit_minecraft_operator_markup(self):
         import re
         code=(REPO/"makecode"/"limitlab_p24_r1.ts").read_text(encoding="utf-8")
-        outputs=re.findall(r'p24rSay\\("([^"]*)"\\)', code)
+        outputs=re.findall(r'p24rSay\("([^"]*)"\)', code)
         self.assertGreater(len(outputs), 10)
         self.assertTrue(any("sky deck starts at Y96" in x for x in outputs))
         for value in outputs:
@@ -88,8 +88,8 @@ class P24RToolTests(unittest.TestCase):
     def test_clipboard_copy_hash_matches_corrected_source(self):
         import hashlib
         source=(REPO/"makecode"/"limitlab_p24_r1.ts").read_bytes()
-        source=source.replace(b"\\r\\n",b"\\n").replace(b"\\r",b"\\n")
-        blob=b"blob "+str(len(source)).encode("ascii")+b"\\0"+source
+        source=source.replace(b"\r\n",b"\n").replace(b"\r",b"\n")
+        blob=b"blob "+str(len(source)).encode("ascii")+b"\0"+source
         actual=hashlib.sha1(blob).hexdigest()
         copier=(REPO/"makecode"/"COPY_P24R.ps1").read_text(encoding="utf-8")
         self.assertIn(actual,copier)
