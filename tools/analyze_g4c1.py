@@ -7,8 +7,8 @@ import sys
 from pathlib import Path
 
 FIELDS=("Version","Stage","Units","Total","Status","Detail")
-STAGES=("PLAN","PREFLIGHT","ROADS","PROTOTYPES","CLONE","PLAZA","DETAIL","SAMPLE","TILE","DISTRICT_SAMPLE")
-FILL_STAGES=("ROADS","PROTOTYPES","PLAZA","DETAIL")
+STAGES=("PLAN","PREFLIGHT","ROADS","PROTOTYPES","CLONE","PLAZA","DETAIL","SAMPLE","TILE","PERIMETER","DISTRICT_SAMPLE")
+FILL_STAGES=("ROADS","PROTOTYPES","PLAZA","DETAIL","PERIMETER")
 END_RE=re.compile(r"FAST_COMPLETED_SAMPLED_fill(\d+)_clone(\d+)_checks(\d+)_towers(\d+)\Z")
 DETAIL_RE=re.compile(r"[A-Za-z0-9_-]+\Z")
 PROGRESS=[7,14,21,28,35,42,47]
@@ -67,6 +67,7 @@ def evaluate(path: str|Path)->dict:
                   and int(passed["CLONE"][1]["Units"])==5
                   and int(passed["SAMPLE"][1]["Units"])==28
                   and int(passed["TILE"][1]["Units"])==47
+                  and int(passed["PERIMETER"][1]["Units"])==4
                   and int(passed["DISTRICT_SAMPLE"][1]["Units"])==18):
                     verdict="FAST_COMPLETED_SAMPLED_NOT_EXACT"
     return {
