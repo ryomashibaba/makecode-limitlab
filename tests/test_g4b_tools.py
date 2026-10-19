@@ -21,7 +21,7 @@ def good():
             .replace("SAMPLE,0,18", "SAMPLE,0,22")
             .replace("SAMPLE,18,18", "SAMPLE,22,22")
             .replace("18_points_not_full_exact", "22_points_not_full_exact")
-            .replace("_checks108_", "_checks112_"))
+            .replace("_checks98_", "_checks112_"))
 
 class G4BToolTests(unittest.TestCase):
     def setUp(self):
