@@ -1,0 +1,29 @@
+name: Verify LimitLab G4C C1 Multi-District A0
+on:
+  push:
+    paths:
+      - 'tools/g4c1_tiling.py'
+      - 'tests/test_g4c1_tiling.py'
+      - 'docs/G4C_C1_A0_MULTIDISTRICT_PLAN_JA.md'
+      - '.github/workflows/verify_g4c1_a0.yml'
+  pull_request:
+    paths:
+      - 'tools/g4c1_tiling.py'
+      - 'tests/test_g4c1_tiling.py'
+      - 'docs/G4C_C1_A0_MULTIDISTRICT_PLAN_JA.md'
+      - '.github/workflows/verify_g4c1_a0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check shared-road city grid and bounded clone invariants
+        run: python -B -m unittest discover -s tests -p 'test_g4c1_tiling.py' -v
+      - name: Print geometry-only city manifest; no Minecraft execution
+        run: python -B tools/g4c1_tiling.py
