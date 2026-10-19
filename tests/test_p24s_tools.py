@@ -65,11 +65,11 @@ class P24SToolTests(unittest.TestCase):
     def test_invalid_csv_is_not_bundled(self):
         self.csv("garbage");self.latch()
         self.assertEqual(create_bundle(self.root)["state"],"CSV_INVALID_OR_IN_PROGRESS")
-    def test_source_r1_is_independent_from_p23(self):
+    def test_source_r2_is_independent_from_p23(self):
         t=(REPO/"makecode"/"limitlab_p24s_r2.ts").read_text()
         self.assertIn("P24S_ONCE.txt",t)
         self.assertIn("USER_UPLOAD_THIS_P24S_STATUS.csv",t)
-        self.assertIn('player.onChat("labcity24r"',t)
+        self.assertIn('player.onChat("labcity24s"',t)
         self.assertNotIn('player.onChat("labcity23"',t)
         self.assertIn("p24sY=Math.max(96,",t)
         self.assertNotIn("PREVIOUS_CSV_PRESERVE", t)
