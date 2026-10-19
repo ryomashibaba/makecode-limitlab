@@ -435,7 +435,7 @@ player.onChat("labstatusg4a",function() {
         " fill "+g4aFillCalls+" clone "+g4aCloneCalls+
         " reason "+g4aReason+" result "+g4aResult);
 });
-player.onChat("labstog4a",function() {
+player.onChat("labstopg4a",function() {
     g4aStop=true;g4aSay("STOP REQUESTED; will stop at next safe checkpoint");
 });
 player.onChat("labreportg4a",function() {
