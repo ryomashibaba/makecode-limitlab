@@ -30,7 +30,7 @@ def evaluate(path: str|Path) -> dict:
     starts=[(i,r) for i,r in enumerate(rows) if r["Stage"]=="RUN" and r["Status"]=="BEGIN"]
     ends=[(i,r) for i,r in enumerate(rows) if r["Stage"]=="RUN" and r["Status"] in ("STOP","FINISHED")]
     if len(starts)!=1 or starts[0][0]!=0 or \
-        starts[0][1]["Detail"]!="G4C_PUBLIC_REALM_192x192_sampled":
+        starts[0][1]["Detail"]!="G4C_PEDESTRIAN_GRADE_192x192_sampled":
         raise ValueError("G4C single FAST run start missing or repeated")
     if len(ends)>1 or ends and ends[0][0]!=len(rows)-1:
         raise ValueError("G4C repeated or nonterminal end marker")
