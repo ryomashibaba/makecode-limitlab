@@ -26,7 +26,7 @@ $sha = [Security.Cryptography.SHA1]::Create()
 try {
     $actual = [BitConverter]::ToString($sha.ComputeHash($blob)).Replace('-','').ToLowerInvariant()
 } finally { $sha.Dispose() }
-if ($actual -cne 'd23ef8e3269f9198df8880e49194c10b64f15346') {
+if ($actual -cne '42431c681197e23458b810a2503da3619bbe71da') {
     throw ('P2.4R source checksum mismatch: ' + $actual + '. Clipboard unchanged.')
 }
 $root = if ($OutputRoot) { [IO.Path]::GetFullPath($OutputRoot) } else { Join-Path (Join-Path $env:USERPROFILE 'Downloads') 'MakeCode_LimitLab/P24R_R1' }
