@@ -204,4 +204,12 @@ test('existing CSV evidence refuses to overwrite and does not spend latch',()=>{
  assert.equal(t.rows(),'historical evidence');
 });
 
+test('preview chat text avoids operator tokens that Minecraft parses as invalid syntax',()=>{
+ const t=simulation();t.area();
+ assert(t.chat.some(x=>x.includes('sky deck starts at Y96')));
+ assert(!t.chat.some(x=>/[<>]/.test(x)), 'raw angle bracket in world chat');
+ assert.equal(t.files.get(LATCH),'READY_P24R');
+ assert.equal(t.rows(),'');
+});
+
 console.log('P2.4R Minecraft offline simulations '+n+'/'+n+' PASS');
