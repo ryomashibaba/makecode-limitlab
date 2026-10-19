@@ -20,7 +20,7 @@ function simulation(o={}) {
   FillOperation:{Replace:0},CloneMask:{Replace:0},CloneMode:{Normal:0},
   TestForBlocksMask:{All:0},world:(x,y,z)=>({x,y,z}),
   player:{position:()=>({getValue:()=>0}),onChat:(n,f)=>listeners[n]=f,say:t=>chat.push(t)},
-  file:{readFile:p=>o.invalidCsv&&p.endsWith('.csv')?'WRONG':files.get(p)||'',
+  file:{readFile:p=>o.invalidCsv&&p.endsWith('.csv')&&files.has(p)?'WRONG':files.get(p)||'',
    writeFile:(p,v)=>{if(o.dropLatch&&p.endsWith('P24R_ONCE.txt'))return;files.set(p,v);}},
   loops:{runInBackground:f=>f(),pause:ms=>{
     assert.equal(ms,1);pauses++;
