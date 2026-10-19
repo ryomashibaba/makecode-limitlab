@@ -62,8 +62,8 @@ class EvidenceTests(unittest.TestCase):
         t=fixture().replace("_checks361_","_checks118_")
         self.assertEqual(evaluate(self.csv(t))["verdict"],"INCOMPLETE")
     def test_reject_duplicate_progress(self):
-        t=fixture().replace("G4C1R1,TILE,7,47,PROGRESS,bounded_clones\n",
-                             "G4C1R1,TILE,7,47,PROGRESS,bounded_clones\n"*2)
+        t=fixture().replace("G4C1R1,TILE,7,44,PROGRESS,bounded_clones\n",
+                             "G4C1R1,TILE,7,44,PROGRESS,bounded_clones\n"*2)
         with self.assertRaises(ValueError):evaluate(self.csv(t))
     def test_reject_old_g4c_csv(self):
         t=fixture().replace("G4C1R1,","G4C,")
