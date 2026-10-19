@@ -72,7 +72,7 @@ def create_bundle(root: Path, *, tag: str | None = None) -> dict:
         "csv_sha256": inspected["sha256"],
         "row_count": inspected["analysis"]["record_count"],
         "stages_passed": inspected["analysis"]["stage_passes"],
-        "clone_sample_progress": inspected["analysis"]["clone_verified_by_sample"],
+        "clone_sample_progress": inspected["analysis"]["clone_building_records"],
         "sampled_only": True,
         "whole_district_exact": False,
         "automatic_minecraft_construction": False,
