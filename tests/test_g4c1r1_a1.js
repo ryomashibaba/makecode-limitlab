@@ -47,7 +47,7 @@ function simulate(o={}){
  return {run,files,msgs,get,stats:()=>({fills,clones,checks,maxFill,maxClone}),csv:()=>files.get(CSV)||'',preview:()=>handlers.labareag4c1r1()};
 }
 let count=0;function test(name,fn){fn();console.log('PASS',name);count++}
-test('real 2x2 MakeCode plan completes with 32 buildings, 4 parks and 52 clones',()=>{
+test('real 2x2 MakeCode plan completes with 32 buildings, 4 parks and 49 clones',()=>{
  const t=simulate();t.run(),s=t.stats();
  assert.equal(s.fills,386);assert.equal(s.clones,49);assert.equal(s.checks,361);
  assert(s.maxFill<=32768&&s.maxClone<=262144);
