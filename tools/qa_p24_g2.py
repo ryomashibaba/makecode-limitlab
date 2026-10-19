@@ -9,8 +9,11 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import sys
 from pathlib import Path
 
+# Read-only inspection must not create imported-module __pycache__ files.
+sys.dont_write_bytecode = True
 from qa_p24 import CSV_NAME, source_check
 
 LATCH_NAME = "P23_ONCE.txt"
