@@ -42,6 +42,7 @@ let g4c1Details: number[][] = [];
 let g4c1Towers = 0;
 let g4c1ClonePositions: number[][] = [];
 let g4c1Tiles: number[][] = [];
+let g4c1Outer: number[][] = [];
 
 function g4c1At(x: number, y: number, z: number): Position {
     return world(g4c1X + x, g4c1Y + y, g4c1Z + z);
@@ -300,12 +301,19 @@ function g4c1DetailPlan() {
         // Per-building vertical signature on a facade, not a repeated roof only.
         g4c1Add(g4c1Details,x+16,5,z+3,4,h-10,1,shade);
     }
-    for(let x=1;x<=187;x+=186)for(let z=1;z<=187;z+=186)
-        g4c1Add(g4c1Details,x,2,z,4,13,4,WHITE_CONCRETE);
+    // District copies must never reproduce corner pillars inside road seams.
+    // Build four true OUTER city corners only AFTER all tile clones complete.
+    for(let x=1;x<=367;x+=366)for(let z=1;z<=367;z+=366) {
+        if(x+4>G4C1_CITY_WORLD||z+4>G4C1_CITY_WORLD) {
+            g4c1Reason="BAD_CITY_PERIMETER";return;
+        }
+        g4c1Outer.push([x,2,z,4,13,4,WHITE_CONCRETE]);
+        g4c1PlannedWriteVolume+=4*13*4;
+    }
 }
 function g4c1Plan(): boolean {
     g4c1Stage = "PLAN"; g4c1Done = 0; g4c1Total = 9;
-    g4c1Roads = []; g4c1Templates = []; g4c1Plaza = []; g4c1Details = [];
+    g4c1Roads = []; g4c1Templates = []; g4c1Plaza = []; g4c1Details = []; g4c1Outer=[];
     g4c1ClonePositions = [];
     g4c1PlannedWriteVolume = 0; g4c1MaxFill = 0; g4c1Towers = 8;
     g4c1RoadPlan();
@@ -461,6 +469,11 @@ function g4c1ExecuteBoxes(list: number[][],stage: string): boolean {
         if (!g4c1Alive()) return false;
         let b = list[i];
         let n = b[3] * b[4] * b[5];
+        let bounds=(stage=="PERIMETER"?G4C1_CITY_WORLD:G4C1_WORLD);
+        if(b[0]<0||b[2]<0||b[1]<0||b[0]+b[3]>bounds||
+           b[2]+b[5]>bounds||b[1]+b[4]>G4C1_HEIGHT) {
+            g4c1Reason="UNSAFE_RUNTIME_BOUNDS";return false;
+        }
         if (n <= 0 || n > G4C1_MAX_FILL) { g4c1Reason = "UNSAFE_RUNTIME_FILL";return false; }
         blocks.fill(b[6],g4c1At(b[0],b[1],b[2]),
             g4c1At(b[0]+b[3]-1,b[1]+b[4]-1,b[2]+b[5]-1),FillOperation.Replace);
@@ -582,7 +595,7 @@ function g4c1Run() {
     }
     if(!g4c1Log("RUN",0,0,"BEGIN","G4C1_DISTRICTS_372x372_sampled")){g4c1Abort();return;}
     if(!g4c1Log("PLAN",g4c1Roads.length+g4c1Templates.length+g4c1Plaza.length+
-        g4c1Details.length,g4c1PlannedWriteVolume,"PASS",
+        g4c1Details.length+g4c1Outer.length,g4c1PlannedWriteVolume,"PASS",
         "four_layers_fills_before_clones")){g4c1Abort();return;}
     if(!g4c1Log("PREFLIGHT",300,300,"PASS",
         "300_sparse_air_points_before_latch")){g4c1Abort();return;}
@@ -592,7 +605,7 @@ function g4c1Run() {
         !g4c1ExecuteBoxes(g4c1Templates,"PROTOTYPES") ||
         !g4c1CloneBuildings() || !g4c1ExecuteBoxes(g4c1Plaza,"PLAZA") ||
         !g4c1ExecuteBoxes(g4c1Details,"DETAIL") || !g4c1SampleFinal() ||
-       !g4c1TileCity() || !g4c1SampleTiles()){
+       !g4c1TileCity() || !g4c1ExecuteBoxes(g4c1Outer,"PERIMETER") || !g4c1SampleTiles()){
         g4c1Abort();return;
     }
     g4c1Towers=32;
