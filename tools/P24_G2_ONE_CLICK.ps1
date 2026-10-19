@@ -18,7 +18,7 @@ if (-not (Test-Path -LiteralPath $python) -or
 
 $action = if ($Mode -eq 'Inspect') { 'inspect' } else { 'preflight' }
 # This gate does NOT create directories, latches, or clipboard contents.
-$raw = & python $python $action --repo $repo --output-root $root
+$raw = & python -B $python $action --repo $repo --output-root $root
 $gateExit = $LASTEXITCODE
 if (-not $raw) { throw 'G2 gate returned no result. No preparation attempted.' }
 try { $report = $raw | ConvertFrom-Json } catch {
