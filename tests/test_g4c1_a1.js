@@ -57,6 +57,11 @@ test('real 2x2 MakeCode plan completes with 32 buildings, 4 parks and 52 clones'
   assert.equal(t.get(xx+24,1,zz+24),M.WHITE_CONCRETE,'missing building core');
   assert.equal(t.get(xx+22,1,zz+62),M.WHITE_CONCRETE,'missing pedestrian crossing');
  }
+ // The only tall perimeter markers are the four far outside city corners.
+ for(const x of [2,368])for(const z of [2,368])
+   assert.equal(t.get(x,3,z),M.WHITE_CONCRETE,'missing outer marker');
+ for(const [x,z] of [[181,1],[1,181],[181,181]])
+   assert.equal(t.get(x,3,z),M.AIR,'pillar obstructs shared road junction');
  for(const z of [34,214,363])assert.equal(t.get(363,1,z),M.BLACK_CONCRETE);
  assert.equal(t.get(34,1,363),M.BLACK_CONCRETE);
 });
