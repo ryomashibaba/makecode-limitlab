@@ -1,0 +1,70 @@
+name: Verify LimitLab G4C1 A1 Live Build Safety
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_g4c1_a1.ts'
+      - 'makecode/COPY_G4C1.ps1'
+      - 'RUN_G4C1_A1.cmd'
+      - 'tools/RUN_G4C1_A1.ps1'
+      - 'tools/analyze_g4c1.py'
+      - 'tools/g4c1_capture.py'
+      - 'tests/test_g4c1_a1.js'
+      - 'tests/test_g4c1_a1_tools.py'
+      - 'docs/G4C_C1_A1_LIVE_QA_JA.md'
+      - '.github/workflows/verify_g4c1_a1.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile 372-square MakeCode A1 city against C0 compatible stubs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c1_a1.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c1_a1.ts
+      - name: Full 372 by 372 voxel simulator, safety and failed-clone paths
+        run: node tests/test_g4c1_a1.js
+      - name: Private CSV, one-shot and source-hash tests
+        run: python -B -m unittest discover -s tests -p 'test_g4c1_a1_tools.py' -v
+      - name: Prior offline district-tiling safety proof
+        run: python -B -m unittest discover -s tests -p 'test_g4c1_tiling.py' -v
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate separate run, Git blob, immutable latch and no overwrite
+        shell: powershell
+        run: |
+          $root=Join-Path $env:RUNNER_TEMP 'G4C1_A1_FRESH'
+          & powershell.exe -NoProfile -NoLogo -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_G4C1.ps1' -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'A1 preparation failed' }
+          $source=Join-Path $root 'PASTE_THIS_G4C1_A1.ts'
+          if (-not (Test-Path $source)) { throw 'Missing prepared source' }
+          $text=[IO.File]::ReadAllText($source)
+          if (-not $text.Contains('player.onChat("labcityg4c1"')) { throw 'Command missing' }
+          if ($text.Contains('__G4C1_ROOT__')) { throw 'Root not replaced' }
+          if ([IO.File]::ReadAllText((Join-Path $root 'logs/G4C1_ONCE.txt')) -cne 'READY_G4C1') { throw 'Latch invalid' }
+          $before=[IO.File]::ReadAllBytes($source)
+          & powershell.exe -NoProfile -NoLogo -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_G4C1.ps1' -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -eq 0) { throw 'Unsafe repeated preparation' }
+          $after=[IO.File]::ReadAllBytes($source)
+          if ([Convert]::ToBase64String($before) -cne [Convert]::ToBase64String($after)) { throw 'Existing source modified' }
+          foreach ($file in @('.\makecode\COPY_G4C1.ps1','.\tools\RUN_G4C1_A1.ps1')) {
+            $tokens=$null; $errors=$null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $file),[ref]$tokens,[ref]$errors)
+            if ($errors.Count -gt 0) { throw ($errors | Out-String) }
+          }
+          Write-Host 'G4-C1 A1 Windows preparer PASS'
+          exit 0
+      - name: Private evidence tools on Windows
+        run: python -B -m unittest discover -s tests -p 'test_g4c1_a1_tools.py' -v
