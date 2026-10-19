@@ -1,0 +1,61 @@
+name: Verify LimitLab P2.4 G2 One-click Safety
+on:
+  push:
+    paths:
+      - 'RUN_P24_G2.cmd'
+      - 'tools/qa_p24_g2.py'
+      - 'tools/P24_G2_ONE_CLICK.ps1'
+      - 'tests/test_p24_g2.py'
+      - 'docs/P24_G2_ONE_CLICK_JA.md'
+      - '.github/workflows/verify_p24_g2.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Eighteen read-only G2 safety gate tests
+        run: python -m unittest discover -s tests -p 'test_p24_g2.py' -v
+      - name: G1 regression
+        run: python -m unittest discover -s tests -p 'test_p24_qa.py' -v
+      - name: No side effects for blocked existing root
+        run: |
+          mkdir -p /tmp/g2_safety_root/logs
+          printf USED_P23 > /tmp/g2_safety_root/logs/P23_ONCE.txt
+          if python tools/qa_p24_g2.py preflight --output-root /tmp/g2_safety_root; then exit 1; fi
+          test "$(cat /tmp/g2_safety_root/logs/P23_ONCE.txt)" = "USED_P23"
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python G2 read-only gate tests on Windows
+        run: python -m unittest discover -s tests -p 'test_p24_g2.py' -v
+      - name: Check Windows PowerShell 5.1 syntax and fail-closed behavior
+        shell: powershell
+        run: |
+          $tokens=$null; $errors=$null
+          $path = (Resolve-Path '.\tools\P24_G2_ONE_CLICK.ps1')
+          [void][System.Management.Automation.Language.Parser]::ParseFile($path,[ref]$tokens,[ref]$errors)
+          if ($errors.Count -gt 0) { throw ($errors | Out-String) }
+          $root = Join-Path $env:RUNNER_TEMP 'P24_G2_Blocked_Used'
+          New-Item -ItemType Directory -Path (Join-Path $root 'logs') -Force | Out-Null
+          $latch = Join-Path $root 'logs/P23_ONCE.txt'
+          [IO.File]::WriteAllText($latch, 'USED_P23')
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File '.\tools\P24_G2_ONE_CLICK.ps1' -Mode Inspect -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'Inspect failed' }
+          & powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File '.\tools\P24_G2_ONE_CLICK.ps1' -Mode Prepare -OutputRoot $root
+          if ($LASTEXITCODE -ne 3) { throw 'Must block Used latch and not enter clipboard flow' }
+          if ([IO.File]::ReadAllText($latch) -cne 'USED_P23') { throw 'Historical latch modified' }
+          if (Test-Path '.\makecode\PASTE_THIS_P23.ts') { throw 'Unapproved fallback created' }
+          Write-Host 'PowerShell parse and used-latch fail-closed PASS'
+          # The expected blocked native command exits 3. Reset this test step to success.
+          exit 0
