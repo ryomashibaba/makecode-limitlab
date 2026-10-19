@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Compile Minecraft G4B geometry and six block palette against MakeCode stubs
-        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4b.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4b_a1.ts
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4b_a1.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4b_a1.ts
       - name: G4B full voxel geometry, architecture differentiation and safety regression
         run: node tests/test_g4b.js
       - name: Strict private G4B CSV and one-click source integrity tests
