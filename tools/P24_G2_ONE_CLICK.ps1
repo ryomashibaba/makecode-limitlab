@@ -1,7 +1,8 @@
 param(
     [ValidateSet('Inspect','Prepare')][string]$Mode = 'Prepare',
     [string]$OutputRoot,
-    [int]$WatchSeconds = 900
+    [int]$WatchSeconds = 900,
+    [switch]$BundleResult
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent $PSScriptRoot
@@ -59,7 +60,7 @@ Write-Host ''
 Write-Host 'PREPARED: source is on clipboard. NO MINECRAFT CONSTRUCTION WAS STARTED.' -ForegroundColor Green
 Write-Host '1. Only in a NEW DISPOSABLE LimitLab world, paste MakeCode JS and check 0 errors.'
 Write-Host '2. Run labarea23 to inspect the entire planned site.'
-Write-Host '3. Run labcity23 ONCE only after separately approving the construction.'
+Write-Host '3. In a disposable LimitLab test world, labcity23 ONCE is pre-authorized.'
 Write-Host '4. Stay with this window for automatic read-only CSV result diagnosis.'
 Write-Host 'Never repeat a failed run by deleting the P23 latch.'
 Write-Host ''
@@ -67,6 +68,21 @@ Write-Host 'G2 observer: waiting for a NEW stable P2.3 CSV; no GUI automation.'
 & python -B $observer watch --repo $repo --output-root $root --timeout $WatchSeconds
 $watchExit = $LASTEXITCODE
 Write-Host ''
+if ($BundleResult) {
+    $packer = Join-Path $PSScriptRoot 'g3_evidence.py'
+    if (Test-Path -LiteralPath $packer) {
+        Write-Host 'G3: packaging private CSV evidence (no automatic upload)...'
+        & python -B $packer --repo $repo --output-root $root
+        $packExit = $LASTEXITCODE
+        if ($packExit -ne 0) {
+            Write-Host 'No evidence ZIP created. Preserve the original CSV/latch; report the diagnostic above.' -ForegroundColor Yellow
+        } else {
+            Write-Host 'G3 evidence ZIP is ready for private Chat upload.' -ForegroundColor Green
+        }
+    } else {
+        Write-Host 'G3 packer missing. No automatic result package.' -ForegroundColor Yellow
+    }
+}
 if ($watchExit -eq 0) {
     Write-Host 'OBSERVATION ENDED: review sampled-only or STOP result above.' -ForegroundColor Green
 } elseif ($watchExit -eq 2) {
