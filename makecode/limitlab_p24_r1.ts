@@ -244,7 +244,7 @@ function p24rArea() {
     p24rSay("SITE x" + x + ".." + (x + P24R_WORLD - 1) +
         " y" + y + ".." + (y + P24R_HEIGHT - 1) +
         " z" + z + ".." + (z + P24R_WORLD - 1));
-    p24rSay("3x3 plots, 8 towers, center plaza; AIR-only sky deck Y >= 96");
+    p24rSay("3x3 plots, 8 towers, center plaza; sky deck starts at Y96");
 }
 function p24rTest(id: number,x: number,y: number,z: number): boolean {
     p24rChecks++;
