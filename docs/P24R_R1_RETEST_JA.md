@@ -8,6 +8,22 @@ G3のCSV 2件はいずれも同一SHA256のP2.3ログ。
 スクリーンショットのSITE y-43..40のとおり地面内部を調査した可能性が高い。
 使用済み `P23_ONCE.txt` と旧 `USER_UPLOAD_THIS_P23_STATUS.csv` は変更・削除しない。
 
+## 2026-10-19 実機チャット構文エラー修正
+
+ユーザーのスクリーンショットで `labarea24r` は座標 `y96..179` を正常に表示した一方、
+次の `player.say` 表示文 `AIR-only sky deck Y >= 96` に対してMinecraft Education側が
+`>=` を構文トークンとして扱い、赤文字の構文エラーを報告した。
+これは**建築ルーチンの実行結果ではない**。画像内で `labcity24r` は未実行。
+
+対策として問題のゲーム内表示文を `sky deck starts at Y96` に変更。
+Windowsのコピー用SHA照合値も更新し、チャット表示に `<` / `>` を含まない回帰テストを追加。
+
+**すでにこのブランチを取得しているOMENでは、新しいブランチを作り直さず、
+`git pull --ff-only` の後 `RUN_P24R_R1.cmd` からコピーし直す。**
+前のPowerShell監視窓は閉じてもよいが、古いP2.3/P2.4R結果や使用済みラッチは削除しない。
+P2.4Rの `READY_P24R` とCSV未作成が確認できた場合にのみ再準備される。
+MinecraftのCode Builderでソースを貼り替えて実行し、`labarea24r` のエラーが消えたことを先に確認する。
+
 ## 再発防止（今回実装）
 
 - **新しいコード・チャットコマンド・CSV・ラッチ**をすべて分離：`limitlab_p24_r1.ts`、`labcity24r`、`P24R_ONCE.txt`、`USER_UPLOAD_THIS_P24R_STATUS.csv`。
