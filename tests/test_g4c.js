@@ -1,6 +1,6 @@
 // G4-C C0 offline voxel model: geometry, safe execution and pedestrian grade; not hardware.
 const assert = require('assert'), fs=require('fs'), vm=require('vm'), path=require('path');
-const code=fs.readFileSync(path.join(__dirname,'../build/limitlab_g4c_a1.js'),'utf8');
+const code=fs.readFileSync(path.join(__dirname,'../build/limitlab_g4c_c0.js'),'utf8');
 const ROOT='__G4C_ROOT__/',LATCH=ROOT+'logs/G4C_ONCE.txt',CSV=ROOT+'results/USER_UPLOAD_THIS_G4C_STATUS.csv';
 const M={AIR:0,WHITE_CONCRETE:1,LIGHT_GRAY_CONCRETE:2,BLACK_CONCRETE:3,
  CYAN_STAINED_GLASS:4,LIGHT_BLUE_STAINED_GLASS:5,CYAN_CONCRETE:6,
