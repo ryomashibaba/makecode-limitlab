@@ -64,7 +64,7 @@ Write-Host '4. Stay with this window for automatic read-only CSV result diagnosi
 Write-Host 'Never repeat a failed run by deleting the P23 latch.'
 Write-Host ''
 Write-Host 'G2 observer: waiting for a NEW stable P2.3 CSV; no GUI automation.'
-& python $observer watch --repo $repo --output-root $root --timeout $WatchSeconds
+& python -B $observer watch --repo $repo --output-root $root --timeout $WatchSeconds
 $watchExit = $LASTEXITCODE
 Write-Host ''
 if ($watchExit -eq 0) {
