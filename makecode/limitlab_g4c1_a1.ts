@@ -373,7 +373,9 @@ function g4c1SiteSurvey(): boolean {
       for(let y=0;y<3;y++)for(let ix=0;ix<5;ix++){
         if(!g4c1Alive())return false;
         for(let iz=0;iz<5;iz++){
-          let xx=180*dx+pts[ix],zz=180*dz+pts[iz];
+          // Reach the final 12-wide outer road envelope as well as district cores.
+          let xx=dx==1&&ix==4?371:180*dx+pts[ix];
+          let zz=dz==1&&iz==4?371:180*dz+pts[iz];
           if(!g4c1Test(AIR,xx,ys[y],zz)){
              g4c1Reason="SITE_NOT_AIR_D"+dx+dz+"_Y"+ys[y]+"_X"+pts[ix]+"_Z"+pts[iz];
              return false;
