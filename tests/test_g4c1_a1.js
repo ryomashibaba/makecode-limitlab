@@ -15,6 +15,7 @@ function simulate(o={}){
  const get=(x,y,z)=>vox[idx(x,y,z)];
  const put=(x,y,z,v)=>vox[idx(x,y,z)]=v;
  if(o.occupied)put(180,0,0,99);
+ if(o.farOccupied)put(371,0,371,99);
  const blocks={
   testForBlock:(id,p)=>{checks++;const [x,y,z]=pos(p);return get(x,y,z)==id},
   fill:(id,a,b)=>{
@@ -70,6 +71,11 @@ test('site occupancy in distant district prevents all writes and leaves latch RE
  assert.equal(t.stats().clones,0);assert.equal(t.files.get(LATCH),'READY_G4C1');
  assert.equal(t.csv(),'');
  assert(t.msgs.some(x=>x.includes('SITE_NOT_AIR')));
+});
+test('far outer-edge road occupancy also blocks before spending latch',()=>{
+ const t=simulate({farOccupied:true});t.run();
+ assert.equal(t.stats().fills,0);assert.equal(t.stats().clones,0);
+ assert.equal(t.files.get(LATCH),'READY_G4C1');
 });
 test('one-shot USED latch refuses construction',()=>{
  const f=new Map([[LATCH,'USED_G4C1']]),t=simulate({files:f});
