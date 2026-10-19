@@ -1,0 +1,69 @@
+name: Verify LimitLab P2.4R Safe Retest
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_p24_r1.ts'
+      - 'makecode/COPY_P24R.ps1'
+      - 'tools/analyze_p24r.py'
+      - 'tools/p24r_capture.py'
+      - 'tools/RUN_P24R_R1.ps1'
+      - 'RUN_P24R_R1.cmd'
+      - 'tests/test_p24r.js'
+      - 'tests/test_p24r_tools.py'
+      - 'docs/P24R_R1_RETEST_JA.md'
+      - '.github/workflows/verify_p24r.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile P2.4R against verified MakeCode APIs
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_p24_r1.js tests/makecode_p16_stub.d.ts makecode/limitlab_p24_r1.ts
+      - name: Full voxel and fault simulation of independent sky-floor test
+        run: node tests/test_p24r.js
+      - name: Strict sampled-only CSV and evidence tests
+        run: python -B -m unittest discover -s tests -p 'test_p24r_tools.py' -v
+      - name: Original P2.3 regression intact
+        run: python -B -m unittest discover -s tests -p 'test_p23_tools.py' -v
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: P2.4R source-integrity and isolated latch checks
+        shell: powershell
+        run: |
+          $r1=Join-Path $env:RUNNER_TEMP 'P24R_R1_TEST'
+          & powershell.exe -NoLogo -NoProfile -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_P24R.ps1' -PrepareOnly -OutputRoot $r1
+          if ($LASTEXITCODE -ne 0) { throw 'R1 preparation failed' }
+          $code=[IO.File]::ReadAllText((Join-Path $PWD 'makecode/PASTE_THIS_P24R_R1.ts'))
+          if (-not $code.Contains('player.onChat("labcity24r"')) { throw 'Wrong command' }
+          if ($code.Contains('__P24R_ROOT__')) { throw 'Unresolved source root' }
+          if (-not $code.Contains('P24R_R1_TEST')) { throw 'Wrong output target' }
+          $latch=Join-Path $r1 'logs/P24R_ONCE.txt'
+          if ([IO.File]::ReadAllText($latch) -cne 'READY_P24R') { throw 'R1 latch not ready' }
+          [IO.File]::WriteAllText($latch,'USED_P24R')
+          & powershell.exe -NoLogo -NoProfile -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_P24R.ps1' -PrepareOnly -OutputRoot $r1
+          if ($LASTEXITCODE -eq 0) { throw 'Used latch must block a repeat' }
+          if ([IO.File]::ReadAllText($latch) -cne 'USED_P24R') { throw 'R1 latch changed' }
+          foreach ($p in @('.\makecode\COPY_P24R.ps1','.\tools\RUN_P24R_R1.ps1')) {
+            $tokens=$null;$errors=$null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $p),[ref]$tokens,[ref]$errors)
+            if ($errors.Count -gt 0) { throw ($errors | Out-String) }
+          }
+          Write-Host 'P2.4R Windows SHA pin, separate latch and PS 5.1 safety PASS'
+          exit 0
+      - name: P2.4R evidence on Windows
+        run: python -B -m unittest discover -s tests -p 'test_p24r_tools.py' -v
