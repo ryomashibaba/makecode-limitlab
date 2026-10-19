@@ -51,7 +51,7 @@ function simulation(o={}) {
         changes.push([{x:d.x+p.x-a.x,y:d.y+p.y-a.y,z:d.z+p.z-a.z},get(p)]);
     });
     for(const [p,id] of changes){
-      assert(p.x>=16&&p.x<208&&p.y>=16&&p.y<100&&p.z>=24&&p.z<216,'clone outside district');
+      assert(p.x>=16&&p.x<208&&p.y>=96&&p.y<180&&p.z>=24&&p.z<216,'clone outside district');
       put(p,id);
     }
     if(o.corruptClone===cloneCalls)put({x:d.x,y:d.y+4,z:d.z},99);
@@ -183,7 +183,7 @@ test('FAST result is only sampled and does not claim universal city correctness'
  assert(t.rows().includes('FAST_COMPLETED_SAMPLED'));
  assert(!t.rows().includes('VERIFY_PASS_EXACT'));
 });
-console.log('P2.4R Minecraft offline simulations '+n+'/'+n+' PASS');
+// Additional safety regressions below; final count printed last.
 
 test('P2.4R preview at player y0 floats safely at fixed floor y96',()=>{
  const t=simulation();t.area();
@@ -203,3 +203,5 @@ test('existing CSV evidence refuses to overwrite and does not spend latch',()=>{
  assert.equal(t.files.get(LATCH),'READY_P24R');
  assert.equal(t.rows(),'historical evidence');
 });
+
+console.log('P2.4R Minecraft offline simulations '+n+'/'+n+' PASS');
