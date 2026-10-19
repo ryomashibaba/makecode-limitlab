@@ -86,6 +86,11 @@ class G1ReadOnlyTests(unittest.TestCase):
             original = fingerprint(path)
             self.assertFalse(fresh_and_stable(original, original, original))
 
+    def test_timestamp_only_change_is_not_fresh(self):
+        original = (100, 10, "same-content-sha256")
+        touched = (100, 11, "same-content-sha256")
+        self.assertFalse(fresh_and_stable(original, touched, touched))
+
     def test_changed_unstable_csv_not_reported(self):
         with TemporaryDirectory() as d:
             path = Path(d) / CSV_NAME
