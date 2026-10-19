@@ -57,3 +57,5 @@ jobs:
           if ([IO.File]::ReadAllText($latch) -cne 'USED_P23') { throw 'Historical latch modified' }
           if (Test-Path '.\makecode\PASTE_THIS_P23.ts') { throw 'Unapproved fallback created' }
           Write-Host 'PowerShell parse and used-latch fail-closed PASS'
+          # The expected blocked native command exits 3. Reset this test step to success.
+          exit 0
