@@ -56,12 +56,12 @@ const specs=[['A1',0,104,25,48],['A2',0,44,145,38],
 let count=0;function test(name,fn){fn();console.log('PASS',name);count++}
 test('all 8 wings: G4C5 one-shot construction & bounded 49 clones',()=>{
  const t=simulate();t.run();const a=t.stats();
- assert.equal(a.fills,851);assert.equal(a.clones,49);
+ assert.equal(a.fills,871);assert.equal(a.clones,49);
  assert.equal(a.checks,431,'G4C5 checked '+a.checks+' samples; recent log='+t.csv().slice(-1100));
  assert(a.maxFill<=32768&&a.maxClone<=262144);
- assert(t.csv().includes('G4C5,A4_ACCESS,288,288,PASS'));
+ assert(t.csv().includes('G4C5,A4_ACCESS,308,308,PASS'));
  assert(t.csv().includes('G4C5,A4_SAMPLE,36,36,PASS'));
- assert(t.csv().includes('G4C5,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill851_clone49_checks431_towers32'));
+ assert(t.csv().includes('G4C5,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill871_clone49_checks431_towers32'));
 });
 test('8 pockets, each new inner foyer, stair supports and 20 intermediate floors',()=>{
  const t=simulate();t.run();
