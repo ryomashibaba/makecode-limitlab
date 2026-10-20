@@ -1,0 +1,134 @@
+{
+  "schema": "limitlab-access-contract-v1",
+  "phase": "G4-C1 A2-A4 A0",
+  "baseline": {
+    "branch": "dev/g4c-c1-a2-a3-building-massing",
+    "head": "db410635108fce3805ddaac5b9392f111d3b216f",
+    "source": "makecode/limitlab_g4c4_a3.ts",
+    "sourceGitBlob": "417fc20aedec61deb99e70e0b8c6b70751314453",
+    "clones": 49,
+    "fills": 563,
+    "sampledChecks": 395,
+    "realSampledQa": "PASS",
+    "realFunctionalQa": "REJECT"
+  },
+  "notHardwareVerified": true,
+  "coordinateFrame": "relative to the MakeCode planned construction origin; X east, Y up, Z south",
+  "wings": [
+    {
+      "id": "A1",
+      "district": 0,
+      "relX": 104,
+      "relZ": 25,
+      "height": 48,
+      "floors": [
+        14,
+        28,
+        40
+      ]
+    },
+    {
+      "id": "A2",
+      "district": 0,
+      "relX": 44,
+      "relZ": 145,
+      "height": 38,
+      "floors": [
+        14,
+        28
+      ]
+    },
+    {
+      "id": "B1",
+      "district": 1,
+      "relX": 44,
+      "relZ": 24,
+      "height": 46,
+      "floors": [
+        14,
+        28,
+        40
+      ]
+    },
+    {
+      "id": "B2",
+      "district": 1,
+      "relX": 164,
+      "relZ": 144,
+      "height": 38,
+      "floors": [
+        14,
+        28
+      ]
+    },
+    {
+      "id": "C1",
+      "district": 2,
+      "relX": 44,
+      "relZ": 82,
+      "height": 46,
+      "floors": [
+        14,
+        28,
+        40
+      ]
+    },
+    {
+      "id": "C2",
+      "district": 2,
+      "relX": 164,
+      "relZ": 24,
+      "height": 38,
+      "floors": [
+        14,
+        28
+      ]
+    },
+    {
+      "id": "D1",
+      "district": 3,
+      "relX": 44,
+      "relZ": 144,
+      "height": 49,
+      "floors": [
+        14,
+        28,
+        40
+      ]
+    },
+    {
+      "id": "D2",
+      "district": 3,
+      "relX": 164,
+      "relZ": 84,
+      "height": 42,
+      "floors": [
+        14,
+        28
+      ]
+    }
+  ],
+  "expectedKnownFailures": {
+    "streetAccessiblePocketCount": 8,
+    "upperFloors": 20,
+    "upperFloorsReachedFromRoad": 0,
+    "researchCivicAirGapY": [
+      11,
+      28
+    ],
+    "financeCrownEastLegAirGapY": [
+      50,
+      68
+    ]
+  },
+  "requiredNewGates": [
+    "All 8 wings: street -> true interior through at least 2-block-high clear portal, without flight/teleport",
+    "All 20 upper-floor standable regions reachable from road via constructed stairs/landings/openings in offline model",
+    "At least one real-world walking path from street to interior and upper floor per wing, verified using normal player movement not teleport",
+    "Research civic frame Y29 starts no longer disconnected from plaza / original structural support, or remove floating element",
+    "Finance oversized crown and large cultural/green canopies: integrated support or redesigned massing with roof thickness",
+    "Y+1 street/sidewalk and 12-wide road connections, 49 verified Clone plan and safe region boundaries unchanged",
+    "Independent new-run READY/USED latch, CSV, ZIP and no auto-retry; disposable-world hardware QA only after Linux and Windows CI"
+  ],
+  "status": "A0_KNOWN_FAILURE_REPRODUCTION_ONLY"
+}
