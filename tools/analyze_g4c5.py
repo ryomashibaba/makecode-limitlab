@@ -61,8 +61,8 @@ def evaluate(path: str|Path)->dict:
             if complete and m and len(clones)==5 and len(tile_progress)==7:
                 fill,clone,checks,towers=map(int,m.groups())
                 total_fills=sum(int(passed[s][1]["Units"]) for s in FILL_STAGES)
-                if (fill==total_fills==851 and clone==49 and checks==431 and towers==32
-                  and int(passed["PLAN"][1]["Units"])==851
+                if (fill==total_fills==871 and clone==49 and checks==431 and towers==32
+                  and int(passed["PLAN"][1]["Units"])==871
                   and int(passed["PREFLIGHT"][1]["Units"])==300
                   and int(passed["CLONE"][1]["Units"])==5
                   and int(passed["SAMPLE"][1]["Units"])==28
@@ -71,7 +71,7 @@ def evaluate(path: str|Path)->dict:
                   and int(passed["A2_SAMPLE"][1]["Units"])==22
                   and int(passed["A3_MASSING"][1]["Units"])==116
                   and int(passed["A3_SAMPLE"][1]["Units"])==12
-                  and int(passed["A4_ACCESS"][1]["Units"])==288
+                  and int(passed["A4_ACCESS"][1]["Units"])==308
                   and int(passed["A4_SAMPLE"][1]["Units"])==36
                   and int(passed["PERIMETER"][1]["Units"])==4
                   and int(passed["DISTRICT_SAMPLE"][1]["Units"])==18):
