@@ -695,9 +695,9 @@ function g4c5SampleAccess():boolean {
         let v=specs[i],x=v[1]+(v[0]%2)*180,z=v[2]+Math.floor(v[0]/2)*180;
         let probes=[
             [AIR,x+1,3,z+20],[AIR,x+10,3,z+13],
-            [AIR,x+6,15,z+3],[AIR,x+1,29,z+14]
+            [AIR,x+6,15,z+8],[AIR,x+8,29,z+6]
         ];
-        if(v[3]>=46)probes.push([AIR,x+10,41,z+19]);
+        if(v[3]>=46)probes.push([AIR,x+8,41,z+6]);
         for(let j=0;j<probes.length;j++){
             if(!g4c5Alive())return false;
             let q=probes[j];
