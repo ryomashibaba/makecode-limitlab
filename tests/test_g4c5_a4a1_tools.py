@@ -53,7 +53,8 @@ def fixture():
                  "G4C5,A4_ACCESS,144,308,PROGRESS,planned_fills",
                  "G4C5,A4_ACCESS,192,308,PROGRESS,planned_fills",
                  "G4C5,A4_ACCESS,240,308,PROGRESS,planned_fills",
-                 "G4C5,A4_ACCESS,288,308,PROGRESS,issued_all_planned_fills",
+                 "G4C5,A4_ACCESS,288,308,PROGRESS,planned_fills",
+                 "G4C5,A4_ACCESS,308,308,PASS,issued_all_planned_fills",
                  "G4C5,A4_SAMPLE,0,36,BEGIN,wing_portal_and_floor_contact",
                  "G4C5,A4_SAMPLE,36,36,PASS,sampled_passages_not_full_walk",
                  "G4C5,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill871_clone49_checks431_towers32"])
@@ -186,7 +187,7 @@ class EvidenceTests(unittest.TestCase):
 
 
     def test_new_stage_cannot_fake_access_count(self):
-        t=fixture().replace("G4C5,A4_ACCESS,288,308,PROGRESS,issued_all_planned_fills",
+        t=fixture().replace("G4C5,A4_ACCESS,308,308,PASS,issued_all_planned_fills",
                             "G4C5,A4_ACCESS,306,308,PASS,issued_all_planned_fills")
         self.assertEqual(evaluate(self.csv(t))["verdict"],"INCOMPLETE")
     def test_new_sample_stage_must_exist(self):
