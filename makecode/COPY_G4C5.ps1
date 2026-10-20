@@ -26,7 +26,7 @@ $sha = [Security.Cryptography.SHA1]::Create()
 try {
     $actual = [BitConverter]::ToString($sha.ComputeHash($blob)).Replace('-','').ToLowerInvariant()
 } finally { $sha.Dispose() }
-if ($actual -cne 'cf29e4900adbe5d033f94f5934ac52ef8076ab78') {
+if ($actual -cne '8262072886082960f456d2eacf1097760366ee55') {
     throw ('G4C5 source checksum mismatch: ' + $actual + '. Clipboard unchanged.')
 }
 $root = [IO.Path]::GetFullPath($OutputRoot)
