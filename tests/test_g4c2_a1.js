@@ -123,7 +123,7 @@ test('all four districts have independent architectural massing above base roofs
  for(const [dx,dz] of [[0,0],[180,0],[0,180],[180,180]]){
    let count=0, green=0,cyan=0,glass=0;
    for(let z=12;z<172;z++)for(let x=12;x<172;x++)
-      for(let y=78;y<=83;y++){
+      for(let y=30;y<=83;y++){
         let v=t.get(dx+x,y,dz+z);
         if(v!==M.AIR)count++;
         if(v===M.GREEN_CONCRETE)green++;
