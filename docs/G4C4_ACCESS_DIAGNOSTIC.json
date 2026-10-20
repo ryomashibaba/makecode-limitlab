@@ -1,0 +1,264 @@
+{
+  "kind": "OFFLINE_VOXEL_DIAGNOSTIC_NOT_HARDWARE",
+  "movementModel": "2 AIR cells above solid support; four horizontal directions; at most one block ascent/descent with head clearance; no flight, teleport, ladders or Minecraft physics validation",
+  "sourceHead": "db410635108fce3805ddaac5b9392f111d3b216f",
+  "sourceBlob": "417fc20aedec61deb99e70e0b8c6b70751314453",
+  "stats": {
+    "fills": 563,
+    "clones": 49,
+    "checks": 395,
+    "maxFill": 4608,
+    "maxClone": 194400
+  },
+  "reachableCells": 110119,
+  "wings": [
+    {
+      "id": "A1",
+      "relativeOrigin": [
+        104,
+        25
+      ],
+      "height": 48,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 258,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 258,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 40,
+          "standable": 52,
+          "streetReachable": 0
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "relativeOrigin": [
+        44,
+        145
+      ],
+      "height": 38,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 135,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 260,
+          "streetReachable": 0
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "relativeOrigin": [
+        224,
+        24
+      ],
+      "height": 46,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 130,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 253,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 40,
+          "standable": 253,
+          "streetReachable": 0
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "relativeOrigin": [
+        344,
+        144
+      ],
+      "height": 38,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 255,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 160,
+          "streetReachable": 0
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "relativeOrigin": [
+        44,
+        262
+      ],
+      "height": 46,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 130,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 256,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 40,
+          "standable": 256,
+          "streetReachable": 0
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "relativeOrigin": [
+        164,
+        204
+      ],
+      "height": 38,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 255,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 160,
+          "streetReachable": 0
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "relativeOrigin": [
+        224,
+        324
+      ],
+      "height": 49,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 130,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 259,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 40,
+          "standable": 259,
+          "streetReachable": 0
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "relativeOrigin": [
+        344,
+        264
+      ],
+      "height": 42,
+      "cutAir": true,
+      "cutStreetReachable": true,
+      "floors": [
+        {
+          "slabY": 14,
+          "standable": 255,
+          "streetReachable": 0
+        },
+        {
+          "slabY": 28,
+          "standable": 160,
+          "streetReachable": 0
+        }
+      ]
+    }
+  ],
+  "financeCrownWitness": {
+    "x": 118,
+    "z": 26,
+    "legStartsY": 69,
+    "airBelowLeg": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68
+    ]
+  },
+  "researchCivicWitness": {
+    "x": 264,
+    "z": 265,
+    "legStartsY": 29,
+    "consecutiveAirBelowLeg": [
+      28,
+      27,
+      26,
+      25,
+      24,
+      23,
+      22,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11
+    ]
+  },
+  "verdict": "MODEL_UPPER_FLOORS_UNREACHABLE"
+}
