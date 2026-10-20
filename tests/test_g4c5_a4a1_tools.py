@@ -79,7 +79,7 @@ class EvidenceTests(unittest.TestCase):
         t=fixture().replace("G4C5,TILE,44,44,PASS,skip_proven_empty_y78_83\n","")
         self.assertEqual(evaluate(self.csv(t))["verdict"],"INCOMPLETE")
     def test_reject_misreported_check_count(self):
-        t=fixture().replace("_checks395_","_checks118_")
+        t=fixture().replace("_checks431_","_checks118_")
         self.assertEqual(evaluate(self.csv(t))["verdict"],"INCOMPLETE")
     def test_reject_duplicate_progress(self):
         t=fixture().replace("G4C5,TILE,7,44,PROGRESS,bounded_clones\n",
