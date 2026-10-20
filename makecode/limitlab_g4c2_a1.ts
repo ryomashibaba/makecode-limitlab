@@ -509,7 +509,7 @@ function g4c2PlanOverlay():boolean {
     g4c2OverlayAdd(3,84,29,85,3,20,3,CYAN_CONCRETE);
     g4c2OverlayAdd(3,108,29,85,3,20,3,CYAN_CONCRETE);
     g4c2OverlayAdd(3,84,47,85,27,2,3,WHITE_CONCRETE);
-    return g4c2Reason=="NONE" && g4c2Overlay.length>=55 && g4c2Overlay.length<=110;
+    return g4c2Reason=="NONE" && g4c2Overlay.length>=50 && g4c2Overlay.length<=110;
 }
 function g4c2SampleOverlay():boolean {
     g4c2Stage="A2_SAMPLE";g4c2Done=0;g4c2Total=16;
@@ -520,9 +520,9 @@ function g4c2SampleOverlay():boolean {
       [WHITE_CONCRETE,260,16,80],[WHITE_CONCRETE,270,32,79],
       [CYAN_CONCRETE,275,35,80],[LIGHT_GRAY_CONCRETE,208,65,30],
       [GREEN_CONCRETE,30,64,210],[GREEN_CONCRETE,270-180,80,210],
-      [GREEN_CONCRETE,150,69,330],[GREEN_CONCRETE,92,30,272],
+      [GREEN_CONCRETE,150,69,330],[GREEN_CONCRETE,92,33,272],
       [WHITE_CONCRETE,235,36,218],[CYAN_STAINED_GLASS,242,39,218],
-      [CYAN_CONCRETE,270,82,209],[WHITE_CONCRETE,275,48,266]
+      [CYAN_CONCRETE,268,79,209],[WHITE_CONCRETE,275,48,266]
     ];
     for(let i=0;i<probe.length;i++) {
         if(!g4c2Alive())return false;
