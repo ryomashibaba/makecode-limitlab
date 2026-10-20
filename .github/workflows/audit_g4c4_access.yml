@@ -1,0 +1,39 @@
+name: Reproduce G4C4 known access failures (NOT city quality approval)
+on:
+  pull_request:
+  push:
+    paths:
+      - 'tools/audit_g4c4_access.js'
+      - 'docs/G4C4_ACCESS_DIAGNOSTIC.json'
+      - '.github/workflows/audit_g4c4_access.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-known-defects:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile unchanged construction baseline
+        run: npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c4_a3.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c4_a3.ts
+      - name: Reproduce original sampled tests
+        run: node tests/test_g4c4_a3.js
+      - name: Verify diagnostic reproduces the documented defects
+        run: |
+          node tools/audit_g4c4_access.js > /tmp/g4c4-access.json
+          node - <<'NODE'
+          const assert=require('assert'),fs=require('fs');
+          const actual=JSON.parse(fs.readFileSync('/tmp/g4c4-access.json','utf8'));
+          const expected=JSON.parse(fs.readFileSync('docs/G4C4_ACCESS_DIAGNOSTIC.json','utf8').replace(/^\uFEFF/,''));
+          assert.deepStrictEqual(actual,expected);
+          assert.equal(actual.verdict,'MODEL_UPPER_FLOORS_UNREACHABLE');
+          assert.equal(actual.wings.length,8);
+          const floors=actual.wings.flatMap(w=>w.floors);
+          assert.equal(floors.length,20);
+          assert(floors.every(f=>f.standable>0&&f.streetReachable===0));
+          assert.equal(actual.researchCivicWitness.consecutiveAirBelowLeg.length,18);
+          console.log('Known defects reproduced. This is NOT landscape or hardware acceptance.');
+          NODE
