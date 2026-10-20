@@ -107,10 +107,10 @@ class EvidenceTests(unittest.TestCase):
         self.assertIn("g4c3Towers=32;",s)
         self.assertIn("G4C3_DISTRICTS_372x372_sampled",s)
     def test_runner_unique_root_and_older_records_untouched(self):
-        runner=(ROOT/"tools"/"RUN_G4C3_A1.ps1").read_text()
+        runner=(ROOT/"tools"/"RUN_G4C3_A2.ps1").read_text()
         copier=(ROOT/"makecode"/"COPY_G4C3.ps1").read_text()
         self.assertIn("[Guid]::NewGuid()",runner)
-        self.assertIn("G4C3_A1/runs",runner)
+        self.assertIn("G4C3_A2/runs",runner)
         self.assertIn("A1 requires a fresh run folder",copier)
         self.assertTrue((ROOT/"makecode"/"limitlab_g4c_c0.ts").exists())
         self.assertTrue((ROOT/"makecode"/"limitlab_g4b_a1.ts").exists())
