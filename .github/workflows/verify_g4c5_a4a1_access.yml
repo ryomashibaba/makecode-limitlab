@@ -1,0 +1,70 @@
+name: G4C5 A2-A4 A1 access proof (OFFLINE ONLY)
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_g4c5_a4a1.ts'
+      - 'tests/test_g4c5_a4a1_access.js'
+      - 'tests/test_g4c5_a4a1_tools.py'
+      - 'makecode/COPY_G4C5.ps1'
+      - 'tools/RUN_G4C5_A4A1.ps1'
+      - 'tools/analyze_g4c5.py'
+      - 'tools/g4c5_capture.py'
+      - '.github/workflows/verify_g4c5_a4a1_access.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-access:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile proposed G4C5 TS without Minecraft
+        run: |
+          mkdir -p build
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c5_a4a1.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c5_a4a1.ts
+      - name: Simulated 8 foyer / 20 floor movement and stable 49 Clone
+        run: node tests/test_g4c5_a4a1_access.js
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict private CSV/ZIP source and one-shot regression tests
+        run: python -B -m unittest discover -s tests -p 'test_g4c5_a4a1_tools.py' -v
+      - name: Not hardware or exact physics proof
+        run: echo 'Simulation only - Minecraft actual walking and new private run not done'
+  windows-one-shot:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate pinned G4C5 Windows source preparation and immutable evidence
+        shell: powershell
+        run: |
+          $root=Join-Path $env:RUNNER_TEMP 'G4C5_A4A1_UNIQUE'
+          & powershell.exe -NoProfile -NoLogo -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_G4C5.ps1' -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -ne 0) { throw 'First prepare failed' }
+          $file=Join-Path $root 'PASTE_THIS_G4C5_A4A1.ts'
+          if (-not (Test-Path $file)) { throw 'Pinned source not prepared' }
+          $source=[IO.File]::ReadAllText($file)
+          if (-not $source.Contains('player.onChat("labcityg4c5"')) { throw 'G4C5 command missing' }
+          if ($source.Contains('__G4C5_ROOT__')) { throw 'Unresolved private output root' }
+          if ([IO.File]::ReadAllText((Join-Path $root 'logs/G4C5_ONCE.txt')) -cne 'READY_G4C5') { throw 'Latch is not READY' }
+          $before=[IO.File]::ReadAllBytes($file)
+          & powershell.exe -NoProfile -NoLogo -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_G4C5.ps1' -PrepareOnly -OutputRoot $root
+          if ($LASTEXITCODE -eq 0) { throw 'Unsafe repeat prepare passed' }
+          $after=[IO.File]::ReadAllBytes($file)
+          if ([Convert]::ToBase64String($before) -cne [Convert]::ToBase64String($after)) { throw 'Source modified on repeat' }
+          foreach ($file in @('.\makecode\COPY_G4C5.ps1','.\tools\RUN_G4C5_A4A1.ps1')) {
+            $tokens=$null; $errors=$null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $file),[ref]$tokens,[ref]$errors)
+            if ($errors.Count -gt 0) { throw ($errors | Out-String) }
+          }
+          Write-Host 'G4C5 A4A1 unique run / SHA PASS — no Minecraft'
+          exit 0
+      - name: Windows private ZIP/latch strict tests
+        run: python -B -m unittest discover -s tests -p 'test_g4c5_a4a1_tools.py' -v
