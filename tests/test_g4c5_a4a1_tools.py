@@ -172,7 +172,7 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(outcome["state"],"BUNDLED")
         with zipfile.ZipFile(outcome["path"]) as z:
             manifest=json.loads(z.read("G4C5_MANIFEST.json"))
-        self.assertEqual(manifest["version"],"G4C5-A3")
+        self.assertEqual(manifest["version"],"G4C5-A4A1")
     def test_explicit_attached_wings_and_side_entrances(self):
         code=(ROOT/"makecode"/"limitlab_g4c5_a4a1.ts").read_text()
         self.assertIn("g4c5PlanMassing()",code)
