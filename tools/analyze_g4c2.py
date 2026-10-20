@@ -62,7 +62,7 @@ def evaluate(path: str|Path)->dict:
                 fill,clone,checks,towers=map(int,m.groups())
                 total_fills=sum(int(passed[s][1]["Units"]) for s in FILL_STAGES)
                 if (fill==total_fills==437 and clone==49 and checks==377 and towers==32
-                  and int(passed["PLAN"][1]["Units"])==386
+                  and int(passed["PLAN"][1]["Units"])==437
                   and int(passed["PREFLIGHT"][1]["Units"])==300
                   and int(passed["CLONE"][1]["Units"])==5
                   and int(passed["SAMPLE"][1]["Units"])==28
