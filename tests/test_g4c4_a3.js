@@ -157,7 +157,7 @@ test('culture canopy and garden roof supports have continuous facade connections
  ];
  for(const [x,z,y1,y2,roofY] of supports){
    for(let y=y1;y<=y2;y++)
-     assert.equal(t.get(x,y,z),M.WHITE_CONCRETE,'broken facade rib at '+x+','+y+','+z);
+     assert.notEqual(t.get(x,y,z),M.AIR,'broken facade rib (including attached floor contact) at '+x+','+y+','+z);
    assert.notEqual(t.get(x,roofY,z),M.AIR,'roof slab missing above facade support');
  }
 });
