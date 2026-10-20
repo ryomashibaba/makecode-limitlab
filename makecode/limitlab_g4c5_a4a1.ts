@@ -657,6 +657,12 @@ function g4c5AccessWing(d:number,x:number,z:number,h:number):void {
     g4c5AccessAdd(d,x+2,2,z+4,9,top+4,15,AIR);
     g4c5AccessAdd(d,x+11,2,z+13,1,4,9,AIR);
     g4c5AccessAdd(d,x+1,2,z+19,12,4,3,AIR);
+    // Accessible landing heads: DO NOT remove the existing solid slabs
+    // at Y14, Y28 or Y40. Clear precisely the two air blocks above them.
+    // Landing remains outside the carved central stair shaft.
+    g4c5AccessAdd(d,x+5,15,z+2,3,3,2,AIR); // slab14 to stair tread12
+    g4c5AccessAdd(d,x+1,29,z+13,1,3,3,AIR); // slab28 to stair tread26
+    if(h>=46)g4c5AccessAdd(d,x+10,41,z+19,2,3,1,AIR); // slab40 to step38
     // One ascending winding route around a rectangle, with no repeated
     // (x,z) position. Each stair tread is vertically supported from Y+2;
     // no diagonal floating cubes, no damage to any Y+1 street.
@@ -683,7 +689,7 @@ function g4c5PlanAccess():boolean {
     g4c5AccessWing(2,164,24,38);
     g4c5AccessWing(3,44,144,49);
     g4c5AccessWing(3,164,84,42);
-    return g4c5Reason=="NONE"&&g4c5Access.length==288;
+    return g4c5Reason=="NONE"&&g4c5Access.length==308;
 }
 function g4c5SampleAccess():boolean {
     g4c5Stage="A4_SAMPLE";g4c5Done=0;g4c5Total=36;
