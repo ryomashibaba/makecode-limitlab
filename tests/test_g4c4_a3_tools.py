@@ -70,7 +70,7 @@ class EvidenceTests(unittest.TestCase):
         t=fixture().replace("G4C4,TILE,44,44,PASS,skip_proven_empty_y78_83\n","")
         self.assertEqual(evaluate(self.csv(t))["verdict"],"INCOMPLETE")
     def test_reject_misreported_check_count(self):
-        t=fixture().replace("_checks383_","_checks118_")
+        t=fixture().replace("_checks395_","_checks118_")
         self.assertEqual(evaluate(self.csv(t))["verdict"],"INCOMPLETE")
     def test_reject_duplicate_progress(self):
         t=fixture().replace("G4C4,TILE,7,44,PROGRESS,bounded_clones\n",
@@ -101,12 +101,12 @@ class EvidenceTests(unittest.TestCase):
         self.csv(fixture())
         self.assertEqual(create_bundle(self.root)["state"],"BLOCKED_LATCH_NOT_USED")
     def test_pin_matches_exact_source(self):
-        source=(ROOT/"makecode"/"limitlab_g4c4_a2.ts").read_bytes().replace(b"\r\n",b"\n").replace(b"\r",b"\n")
+        source=(ROOT/"makecode"/"limitlab_g4c4_a3.ts").read_bytes().replace(b"\r\n",b"\n").replace(b"\r",b"\n")
         blob=b"blob "+str(len(source)).encode()+b"\0"+source
         digest=hashlib.sha1(blob).hexdigest()
         self.assertIn(digest,(ROOT/"makecode"/"COPY_G4C4.ps1").read_text())
     def test_source_preserves_preflight_before_latch(self):
-        s=(ROOT/"makecode"/"limitlab_g4c4_a2.ts").read_text()
+        s=(ROOT/"makecode"/"limitlab_g4c4_a3.ts").read_text()
         self.assertLess(s.index("if(!g4c4SiteSurvey())"),s.index('file.writeFile(G4C4_ONCE,"USED_G4C4")'))
         self.assertIn("g4c4TilePlan()",s)
         self.assertIn("g4c4TileCity()",s)
@@ -121,7 +121,7 @@ class EvidenceTests(unittest.TestCase):
         self.assertTrue((ROOT/"makecode"/"limitlab_g4c_c0.ts").exists())
         self.assertTrue((ROOT/"makecode"/"limitlab_g4b_a1.ts").exists())
     def test_empty_top_guard_is_present_before_clone_plan(self):
-        source=(ROOT/"makecode"/"limitlab_g4c4_a2.ts").read_text()
+        source=(ROOT/"makecode"/"limitlab_g4c4_a3.ts").read_text()
         self.assertIn("const G4C4_COPY_HEIGHT = 78",source)
         self.assertIn("g4c4SourceCrownGuard()",source)
         self.assertIn("for(let y=0;y<G4C4_COPY_HEIGHT;y+=6)",source)
@@ -138,7 +138,7 @@ class EvidenceTests(unittest.TestCase):
         self.assertIn("G4C4_ONCE",(ROOT/"makecode"/"COPY_G4C4.ps1").read_text())
         self.assertIn("G4C1R1_ONCE",(ROOT/"makecode"/"COPY_G4C1R1.ps1").read_text())
     def test_grounded_gateway_and_supported_roofs_are_required(self):
-        s=(ROOT/"makecode"/"limitlab_g4c4_a2.ts").read_text()
+        s=(ROOT/"makecode"/"limitlab_g4c4_a3.ts").read_text()
         self.assertIn("g4c4OverlayAdd(0,86,2,86,3,51,3",s)
         self.assertIn("g4c4OverlayAdd(0,104,2,86,3,51,3",s)
         self.assertIn("g4c4OverlayAdd(1,24,14,25,3,47,3",s)
