@@ -1,0 +1,40 @@
+name: Reproduce G4C4 access defects (NOT quality approval)
+on:
+  push:
+    paths:
+      - 'tools/audit_g4c4_access.js'
+      - 'docs/G4C_A2_A4_ACCESS_CONTRACT.json'
+      - 'docs/G4C1_A2_A4_ACCESS_AND_STRUCTURE_PLAN_JA.md'
+      - 'tests/test_g4c_a2a4_a0_failure_contract.py'
+      - '.github/workflows/a2a4_reproduce_known_access_failures.yml'
+  pull_request:
+    paths:
+      - 'tools/audit_g4c4_access.js'
+      - 'docs/G4C_A2_A4_ACCESS_CONTRACT.json'
+      - 'docs/G4C1_A2_A4_ACCESS_AND_STRUCTURE_PLAN_JA.md'
+      - 'tests/test_g4c_a2a4_a0_failure_contract.py'
+      - '.github/workflows/a2a4_reproduce_known_access_failures.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historical-failures-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile frozen G4C4 TypeScript for OFFLINE replay
+        run: |
+          mkdir -p build
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c4_a3.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c4_a3.ts
+      - name: Reproduce baseline blocked stair access without Minecraft
+        run: node tools/audit_g4c4_access.js > build/g4c4_access_baseline.json
+      - name: Assert 8 pockets but 0 of 20 upper-floor routes, broken supports
+        run: python -B -m unittest discover -s tests -p 'test_g4c_a2a4_a0_failure_contract.py' -v
+      - name: NOT a building quality pass
+        run: echo "Historical failure reproduction PASS only. A2-A4 repairs and hardware QA NOT done."
