@@ -1,0 +1,27 @@
+name: G4C5 A2-A4 A1 access proof (OFFLINE ONLY)
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_g4c5_a4a1.ts'
+      - 'tests/test_g4c5_a4a1_access.js'
+      - '.github/workflows/verify_g4c5_a4a1_access.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-access:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile proposed G4C5 TS without Minecraft
+        run: |
+          mkdir -p build
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c5_a4a1.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c5_a4a1.ts
+      - name: Simulated 8 foyer / 20 floor movement and stable 49 Clone
+        run: node tests/test_g4c5_a4a1_access.js
+      - name: Not hardware or exact physics proof
+        run: echo 'Simulation only - Minecraft actual walking and new private run not done'
