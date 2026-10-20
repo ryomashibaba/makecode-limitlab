@@ -45,10 +45,10 @@ jobs:
       - name: Validate separate run, Git blob, immutable latch and no overwrite
         shell: powershell
         run: |
-          $root=Join-Path $env:RUNNER_TEMP 'G4C3_A1_FRESH'
+          $root=Join-Path $env:RUNNER_TEMP 'G4C3_A2_FRESH'
           & powershell.exe -NoProfile -NoLogo -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_G4C3.ps1' -PrepareOnly -OutputRoot $root
           if ($LASTEXITCODE -ne 0) { throw 'A1 preparation failed' }
-          $source=Join-Path $root 'PASTE_THIS_G4C3_A1.ts'
+          $source=Join-Path $root 'PASTE_THIS_G4C3_A2.ts'
           if (-not (Test-Path $source)) { throw 'Missing prepared source' }
           $text=[IO.File]::ReadAllText($source)
           if (-not $text.Contains('player.onChat("labcityg4c3"')) { throw 'Command missing' }
