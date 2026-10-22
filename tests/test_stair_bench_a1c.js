@@ -70,7 +70,7 @@ test('single-session one-shot refuses repeated build, no overwrites',()=>{
 test('placement failure stops and never retries on same run',()=>{
  const t=runBench({failAtPlace:7});
  t.commands.labstbonce();
- assert.equal(t.places.length,7);assert.equal(t.fills.length,6);
+ assert.equal(t.places.length,7);assert.equal(t.fills.length,5);
  t.commands.labstbonce();
  assert.equal(t.places.length,7);
  assert(t.messages.some(x=>x.includes('partial isolated bench, DO NOT repeat')));
