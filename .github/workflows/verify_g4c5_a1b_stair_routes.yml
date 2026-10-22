@@ -1,0 +1,30 @@
+name: G4C5 A1B all-stair full-route audit (OFFLINE ONLY)
+on:
+  push:
+    paths:
+      - 'tools/audit_g4c5_stair_path.js'
+      - 'tests/test_g4c5_stair_path.js'
+      - 'docs/G4C5_A1B_WALK_QA_CHECKLIST_JA.md'
+      - '.github/workflows/verify_g4c5_a1b_stair_routes.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-stair-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile unchanged G4C5 source for offline voxel replay
+        run: |
+          mkdir -p build
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c5_a4a1.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c5_a4a1.ts
+      - name: Audit 8 rooms 20 floors and every individual stair tread
+        run: node tests/test_g4c5_stair_path.js
+      - name: Store non-private, offline-only summary
+        run: |
+          node tools/audit_g4c5_stair_path.js > build/g4c5_a1b_offline_access.json
+          echo 'SIMULATED access only. Never claim hardware player movement or new construction.'
