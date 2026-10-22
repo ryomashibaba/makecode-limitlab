@@ -6,6 +6,8 @@ on:
       - 'tests/makecode_stair_bench_a1c_stub.d.ts'
       - 'tests/test_stair_bench_a1c.js'
       - 'docs/G4C_A2_A4_A1C_STAIR_BENCH_JA.md'
+      - 'tools/STB_A1C_COPY.ps1'
+      - 'RUN_STB_A1C.cmd'
       - '.github/workflows/verify_stair_bench_a1c.yml'
   pull_request:
   workflow_dispatch:
@@ -27,3 +29,24 @@ jobs:
         run: node tests/test_stair_bench_a1c.js
       - name: Explicitly not hardware validation
         run: echo 'NOT MINECRAFT HARDWARE; block ID/meta orientation and no-jump walking require disposable-world inspection'
+  windows-clipboard-preparer-source-validation:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict source pin and Windows script syntax (NO clipboard access)
+        shell: pwsh
+        run: |
+          $src='makecode/limitlab_stair_bench_a1c.ts'
+          $hash=(git hash-object $src).Trim()
+          if ($LASTEXITCODE -ne 0 -or $hash -cne '961d99eba8ccb24a649873837b2125112a20f0ca') {
+            throw "Unexpected source sha $hash"
+          }
+          foreach($f in @('tools/STB_A1C_COPY.ps1')) {
+            $tokens=$null; $errors=$null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $f),[ref]$tokens,[ref]$errors)
+            if($errors.Count -gt 0){throw ($errors | Out-String)}
+          }
+          $copy=Get-Content 'tools/STB_A1C_COPY.ps1' -Raw
+          if(-not $copy.Contains('961d99eba8ccb24a649873837b2125112a20f0ca')){throw 'Source pin missing'}
+          if(-not $copy.Contains('Get-Clipboard -Raw')){throw 'Clipboard verification missing'}
+          Write-Host 'Source SHA and Windows script parse PASS; no clipboard or Minecraft actions.'
