@@ -676,8 +676,11 @@ function g4c6AccessWing(d:number,x:number,z:number,h:number):void {
     if(path.length<steps){g4c6Reason="STAIR_PATH_TOO_SHORT";return;}
     for(let i=0;i<steps;i++){
         let p=path[i];
-        // One fill per tread. Supports are continuous, not hovering.
-        g4c6AccessAdd(d,x+p[0],2,z+p[1],1,i+1,1,WHITE_CONCRETE);
+        // Leave each top tread AIR: the user verified placing stone-brick
+        // stairs into AIR, NOT overwriting an already-solid block.
+        // Step 0 rests on protected street grade Y+1; higher steps get
+        // vertical supports only up to Y(i+1), never at stair Y(i+2).
+        if(i>0)g4c6AccessAdd(d,x+p[0],2,z+p[1],1,i,1,WHITE_CONCRETE);
     }
 }
 function g4c6PlanAccess():boolean {
@@ -690,7 +693,7 @@ function g4c6PlanAccess():boolean {
     g4c6AccessWing(2,164,24,38);
     g4c6AccessWing(3,44,144,49);
     g4c6AccessWing(3,164,84,42);
-    return g4c6Reason=="NONE"&&g4c6Access.length==308;
+    return g4c6Reason=="NONE"&&g4c6Access.length==300;
 }
 function g4c6SampleAccess():boolean {
     g4c6Stage="A4_SAMPLE";g4c6Done=0;g4c6Total=36;
@@ -757,8 +760,8 @@ function g4c6PlaceOrientedStairs():boolean {
         for(let i=0;i<steps;i++){
             if(!g4c6Alive())return false;
             let p=path[i],direction=g4c6StairDirection(i);
-            // A4 already created every ground-connected white support.
-            // Replace ONLY its top tread, never the lower support or street.
+            // A4 created a connected column strictly BELOW this AIR tread.
+            // blocks.place only targets AIR, matching the successful bench.
             let at=g4c6At(x+p[0],i+2,z+p[1]);
             if(!blocks.place(blocks.blockWithData(109,direction),at)){
                 g4c6Reason="STAIR_PLACE_FALSE_"+a+"_"+i;return false;
