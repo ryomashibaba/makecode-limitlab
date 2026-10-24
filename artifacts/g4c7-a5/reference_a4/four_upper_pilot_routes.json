@@ -1,0 +1,72 @@
+{
+  "kind": "G4C7_A4_FOUR_ROOF_LANDINGS_SIMULATED_NOT_PLAYER_TESTED",
+  "baseGround": "GROUND_ONLY_OFFLINE_PASS",
+  "groundRooms": 22,
+  "civicSquares": 4,
+  "treads": {
+    "passed": 20,
+    "total": 20
+  },
+  "roofLandings": {
+    "passed": 4,
+    "total": 4
+  },
+  "pilots": [
+    {
+      "id": "A1",
+      "stairLength": 7,
+      "passedTreads": 7,
+      "landingAccessible": true,
+      "problemTreads": [],
+      "roofLanding": [
+        30,
+        10,
+        16
+      ]
+    },
+    {
+      "id": "B1",
+      "stairLength": 5,
+      "passedTreads": 5,
+      "landingAccessible": true,
+      "problemTreads": [],
+      "roofLanding": [
+        208,
+        8,
+        17
+      ]
+    },
+    {
+      "id": "C1",
+      "stairLength": 3,
+      "passedTreads": 3,
+      "landingAccessible": true,
+      "problemTreads": [],
+      "roofLanding": [
+        26,
+        6,
+        196
+      ]
+    },
+    {
+      "id": "D1",
+      "stairLength": 5,
+      "passedTreads": 5,
+      "landingAccessible": true,
+      "problemTreads": [],
+      "roofLanding": [
+        208,
+        8,
+        196
+      ]
+    }
+  ],
+  "verdict": "FOUR_PILOT_ROOF_ACCESS_MODEL_PASS",
+  "noHardware": true,
+  "limits": [
+    "Only four selected ground-to-podium-roof routes, NOT all 22 buildings",
+    "No upper building floor corridors/20 floors validation",
+    "1-block riser model is not verified as naturally walkable without jumping",
+    "All prior Minecraft worlds and private results untouched"
+  ]
+}

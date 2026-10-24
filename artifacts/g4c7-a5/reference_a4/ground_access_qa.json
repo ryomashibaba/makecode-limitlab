@@ -1,0 +1,210 @@
+{
+  "kind": "OFFLINE_GROUND_LEVEL_ACCESS_ONLY_NO_MINECRAFT",
+  "buildingCount": 22,
+  "cityExtent": [
+    372,
+    372,
+    78
+  ],
+  "groundRooms": {
+    "passed": 22,
+    "total": 22,
+    "items": [
+      {
+        "building": "A1",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "A2",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "A3",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "A4",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "A5",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "A6",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "B1",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "B2",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "B3",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "B4",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "B5",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "C1",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "C2",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "C3",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "C4",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "C5",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "C6",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "D1",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "D2",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "D3",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "D4",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      },
+      {
+        "building": "D5",
+        "doorFree": true,
+        "outerRoadReachable": true,
+        "innerRoomReachable": true,
+        "insideFootSupported": true
+      }
+    ]
+  },
+  "publicSquares": {
+    "passed": 4,
+    "total": 4,
+    "items": [
+      {
+        "id": "A0",
+        "entrySide": "south",
+        "stepReachable": true,
+        "mainSquareReachable": true
+      },
+      {
+        "id": "B0",
+        "entrySide": "north",
+        "stepReachable": true,
+        "mainSquareReachable": true
+      },
+      {
+        "id": "C0",
+        "entrySide": "south",
+        "stepReachable": true,
+        "mainSquareReachable": true
+      },
+      {
+        "id": "D0",
+        "entrySide": "south",
+        "stepReachable": true,
+        "mainSquareReachable": true
+      }
+    ]
+  },
+  "witnesses": [],
+  "visitedWalkCells": 135413,
+  "approximateMovement": "2 AIR head, 1 block rise, four-direction; no Minecraft collision simulation",
+  "verdict": "GROUND_ONLY_OFFLINE_PASS",
+  "notApproved": [
+    "upper floors",
+    "actual player walking",
+    "city aesthetics",
+    "speed",
+    "Minecraft construction"
+  ]
+}

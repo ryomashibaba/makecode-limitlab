@@ -1,0 +1,33 @@
+name: G4C7 A5 art artifacts (NO MINECRAFT / ART HOLD)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_a5_*.py'
+      - 'docs/G4C7_A5_ART_FIRST_BLENDER_JA.md'
+      - 'artifacts/g4c7-a5/**'
+      - '.github/workflows/verify_g4c7_a5_artifact.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  artifact-and-existing-access-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify committed image resolutions, GLB format and artifact hashes
+        run: python tools/g4c7_a5_validate.py artifacts/g4c7-a5 --verify-manifest
+      - name: Preserve A4/A3 access evidence independently of A5 art
+        run: |
+          node tests/test_g4c7_a4_roof_stair_pilot.js
+          node tests/test_g4c7_a3_hollow_access.js
+          node tests/test_g4c7_render_review.js
+          node tests/test_g4c7_urban_layout_lab.js
+      - name: Explicit limits
+        run: echo 'Saved Blender roundtrip evidence is checked, not rerun here. ART HOLD. A5 walk untested. NO MINECRAFT.'

@@ -1,0 +1,28 @@
+{
+  "scene": "A5_B_ORBITAL_COMMONS",
+  "mesh_objects": 436,
+  "vertices": 13096,
+  "dimensions_units": [
+    188,
+    178,
+    70
+  ],
+  "main_clear_span": 96,
+  "main_clear_height": 49,
+  "arch_radial_depth": [
+    14,
+    15
+  ],
+  "arch_extrusion_depth": 14,
+  "sky_chamber_storeys": 2,
+  "public_loop_width": 8,
+  "public_loop_elevation_range": [
+    3,
+    23
+  ],
+  "construction_status": "PROHIBITED",
+  "walkability": "NOT_TESTED",
+  "engineering": "NOT_VERIFIED",
+  "max_elevation": 66,
+  "min_elevation": -4
+}
