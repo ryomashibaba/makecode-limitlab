@@ -1,0 +1,41 @@
+name: G4C7 A3 hollow interiors and civic pedestrian paths (OFFLINE ONLY)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_a3_hollow_access_lab.js'
+      - 'tools/g4c7_render_review.js'
+      - 'tests/test_g4c7_a3_hollow_access.js'
+      - 'docs/G4C7_A3_HOLLOW_CONNECTIVITY_JA.md'
+      - '.github/workflows/verify_g4c7_a3_hollow_access.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pedestrian-void-and-3d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 22 real voided ground rooms and four civic entrances
+        run: node tests/test_g4c7_a3_hollow_access.js
+      - name: Export offline evidence and geometry model
+        run: |
+          mkdir -p build
+          node tools/g4c7_a3_hollow_access_lab.js > build/g4c7_a3_access_diagnostic.json
+          node tools/g4c7_render_review.js --a3 --out build/g4c7_a3_fourview
+          for f in front side oblique aerial; do test -s "build/g4c7_a3_fourview/${f}.svg"; done
+          for d in A B C D; do test -s "build/g4c7_a3_fourview/district_${d}_oblique.svg"; done
+          test -s build/g4c7_a3_fourview/ground_access_qa.json
+          node -e "let q=require('./build/g4c7_a3_fourview/ground_access_qa.json');if(q.verdict!=='GROUND_ONLY_OFFLINE_PASS')throw Error(q.verdict);console.log('Ground-level MODEL PASS, never hardware PASS')"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a3-hollow-rooms-fourview-and-access-concept-only
+          path: |
+            build/g4c7_a3_access_diagnostic.json
+            build/g4c7_a3_fourview/
+          retention-days: 14
+      - name: Explicitly prevent any claim of real Minecraft walking
+        run: echo 'HOLLOW GROUND CONCEPT ONLY; not in-game walking, not upper floor approval, not construction.'
