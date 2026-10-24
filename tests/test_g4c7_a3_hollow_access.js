@@ -46,6 +46,11 @@ const audit=assess(a3);
 assert.equal(audit.verdict,'REQUIRES_HUMAN_ART_REVIEW');
 assert(svg(a3,'oblique').includes('CONCEPT ONLY'));
 assert(svg(a3,'aerial',{district:'B'}).includes('CONCEPT ONLY'));
+for(const b of ['A1','B2','C1','D1']){
+ const view=svg(a3,'oblique',{building:b,cutaway:true});
+ assert(view.includes('CUTAWAY '+b+' / ROOF HIDDEN'));
+ assert(!view.includes('bearing-roof'), 'Roof should be visually removed');
+}
 assert((toObj(a3).match(/^o /gm)||[]).length===a3.solidBoxes);
 console.log('G4C7 A3 PASS — 22/22 street-to-hollow-room routes, 4/4 accessible civic-grade transitions');
 console.log('G4C7 A3 PASS — adversarial blocked A1 entrance rejected; all previous 22 sites preserved');
