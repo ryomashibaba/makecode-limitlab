@@ -63,5 +63,5 @@ function render(){let dpr=Math.min(devicePixelRatio,2);c.width=c.clientWidth*dpr
 c.onpointerdown=e=>{drag=[e.clientX,e.clientY];c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(!drag)return;yaw-=(e.clientX-drag[0])*.008;pitch=Math.max(-.1,Math.min(1.5,pitch+(e.clientY-drag[1])*.008));drag=[e.clientX,e.clientY];render()};c.onpointerup=()=>drag=null;c.onwheel=e=>{e.preventDefault();distance=Math.max(110,Math.min(600,distance*Math.exp(e.deltaY*.001)));render()};document.querySelectorAll('button').forEach(b=>b.onclick=()=>{yaw=+b.dataset.yaw;pitch=+b.dataset.pitch;render()});window.onresize=render;render();document.getElementById('status').textContent=(raw.length/27).toLocaleString()+' triangles / 実OBJ形状 / 材質は概念色';
 }
 </script></main></html>'''
-(root/'index.html').write_text(html.replace('__GEOMETRY__',json.dumps(triangles,separators=(',',':'))),encoding='utf-8')
+(root/'index.html').write_text(html.replace('__GEOMETRY__',json.dumps(triangles,separators=(',',':'))),encoding='utf-8',newline='\n')
 print('Packaged comparison board and embedded viewer',len(triangles)//27,'triangles')

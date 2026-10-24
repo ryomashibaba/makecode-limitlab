@@ -17,5 +17,5 @@ for kind in ['glb','obj']:
     assert result['meshes']==base['meshes'],(kind,result,base)
     assert max(abs(result[key][i]-base[key][i]) for key in ['min','max'] for i in range(3))<.001,(kind,result,base)
 report['verdict']='GEOMETRY_ROUNDTRIP_PASS_NOT_ART_OR_WALK_PASS'
-(root/'roundtrip_qa.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+(root/'roundtrip_qa.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
 print(report)

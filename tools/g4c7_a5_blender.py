@@ -185,7 +185,7 @@ def proposal(m):
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--source',required=True); ap.add_argument('--out',required=True); ap.add_argument('--only',default='all'); args=ap.parse_args(sys.argv[sys.argv.index('--')+1:])
     out=Path(args.out).resolve(); out.mkdir(parents=True,exist_ok=True)
-    data=json.loads(Path(args.source).read_text(encoding='utf-8'))
+    data=json.loads(Path(args.source).read_text(encoding='utf-8',newline='\n'))
     m={n:mat(n,c,metal,rough) for n,c,metal,rough in [
         ('stone',(.74,.79,.78),.15,.38),('concrete',(.57,.62,.66),0,.7),('ground',(.075,.105,.13),0,.85),
         ('road',(.035,.048,.065),0,.8),('glass',(.075,.24,.29),.65,.23),('dark',(.035,.065,.08),.6,.4),
@@ -217,11 +217,7 @@ def main():
         bpy.ops.export_scene.gltf(filepath=str(out/'a5_orbital_commons.glb'),export_format='GLB',use_selection=True,use_active_scene=True)
         bpy.ops.wm.obj_export(filepath=str(out/'a5_orbital_commons.obj'),export_selected_objects=True)
         stats={'scene':sc.name,'mesh_objects':sum(ob.type=='MESH' for ob in sc.objects),'vertices':sum(len(ob.data.vertices) for ob in sc.objects if ob.type=='MESH'),'dimensions_units':[188,178,70],'max_elevation':66,'min_elevation':-4,'main_clear_span':96,'main_clear_height':49,'arch_radial_depth':[14,15],'arch_extrusion_depth':14,'sky_chamber_storeys':2,'public_loop_width':8,'public_loop_elevation_range':[3,23],'construction_status':'PROHIBITED','walkability':'NOT_TESTED','engineering':'NOT_VERIFIED'}
-        (out/'model_facts.json').write_text(json.dumps(stats,indent=2)+'\n',encoding='utf-8')
+        (out/'model_facts.json').write_text(json.dumps(stats,indent=2)+'\n',encoding='utf-8',newline='\n')
     print('A5 ARTIFACTS COMPLETE',out)
 
 if __name__=='__main__': main()
-
-
-
-

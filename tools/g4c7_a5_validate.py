@@ -22,8 +22,8 @@ roundtrip=json.loads((root/'roundtrip_qa.json').read_text()); assert roundtrip['
 assert facts['construction_status']=='PROHIBITED'
 checks['glb']={'bytes':len(data),'meshes':len(gltf['meshes']),'version':2}
 report={'verdict':'ARTIFACT_FORMAT_PASS_ART_HOLD','checks':checks,'art_verdict':'HOLD','walk_verdict':'UNTESTED','construction':'PROHIBITED'}
-(root/'artifact_qa.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+(root/'artifact_qa.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
 files=[p for p in sorted(root.rglob('*')) if p.is_file() and p.name!='SHA256SUMS.txt' and p.suffix!='.blend1']
 assert all(p.stat().st_size<100*1024*1024 for p in files)
-(root/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(root).as_posix()+'\n' for p in files),encoding='utf-8')
+(root/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(root).as_posix()+'\n' for p in files),encoding='utf-8',newline='\n')
 print(report['verdict'],len(files),'files',sum(p.stat().st_size for p in files),'bytes')

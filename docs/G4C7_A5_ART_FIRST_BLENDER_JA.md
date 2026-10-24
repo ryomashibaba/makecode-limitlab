@@ -94,4 +94,3 @@ python tools/g4c7_a5_validate.py build/a5_art
 `g4c7_a5_package.py`はPillowを使用。比較ページに審査全文を添えるには本文を`REPORT_JA.md`としてコピーし、A4生成物を`reference_a4/`へコピーする。Blenderは外部画像・有料生成API・アセットに依存しない。
 
 普段のコード・検査・文書編集はChat中心に戻せる。次にWork/Blenderが有効なのは、上記HOLD箇所の造形反復と実際の画面確認。次担当はまず本比較ページ・側面画像・BLENDを見て、施工ではなく側面と接合部の改善から続ける。
-
