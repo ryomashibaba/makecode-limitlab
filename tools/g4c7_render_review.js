@@ -168,9 +168,10 @@ function main(){
  if(i<0||!process.argv[i+1])throw Error('Usage: --out NEW_EMPTY_DIRECTORY');
  const folder=path.resolve(process.argv[i+1]);
  if(fs.existsSync(folder))throw Error('Output directory already exists; no overwrite '+folder);
- const useA3=process.argv.includes('--a3');
+ const useA4=process.argv.includes('--a4'),useA3=useA4||process.argv.includes('--a3');
  if(!useA3)validate();
- const plan=useA3?require('./g4c7_a3_hollow_access_lab').buildA3():create();
+ const plan=useA4?require('./g4c7_a4_roof_stair_pilot').buildA4():
+   useA3?require('./g4c7_a3_hollow_access_lab').buildA3():create();
  const report=assess(plan);
  fs.mkdirSync(folder,{recursive:false});
  for(const name of Object.keys(cameras))writeNew(folder,name+'.svg',svg(plan,name));
@@ -184,6 +185,10 @@ function main(){
  if(useA3) {
   const access=require('./g4c7_a3_hollow_access_lab').evaluateA3(plan);
   writeNew(folder,'ground_access_qa.json',JSON.stringify(access,null,2)+'\n');
+  if(useA4){
+   const upstairs=require('./g4c7_a4_roof_stair_pilot').evaluateA4(plan);
+   writeNew(folder,'four_upper_pilot_routes.json',JSON.stringify(upstairs,null,2)+'\n');
+  }
  }
  writeNew(folder,'source_geometry.json',JSON.stringify(plan,null,2)+'\n');
  const images=['front','side','oblique','aerial'].map(n=>'<figure><a href="'+n+'.svg"><img src="'+n+'.svg"></a><figcaption>'+n+'</figcaption></figure>').join('');
