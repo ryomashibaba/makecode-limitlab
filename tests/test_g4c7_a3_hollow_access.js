@@ -51,8 +51,8 @@ for(const b of ['A1','B2','C1','D1']){
  assert(view.includes('CUTAWAY '+b+' / ROOF HIDDEN'));
  const faces=primitives(a3,cameras.oblique,{building:b,cutaway:true});
  assert(faces.length>6);
- assert(faces.every(f=>!f.label.includes('bearing-roof')),
-   'Cutaway must exclude roof faces in geometry; metadata/UI text is not geometry');
+ const unwanted=faces.filter(f=>f.label.includes('bearing-roof')).map(f=>f.label);
+ assert.equal(unwanted.length,0,'Cutaway leaked: '+JSON.stringify(unwanted.slice(0,10)));
 }
 assert((toObj(a3).match(/^o /gm)||[]).length===a3.solidBoxes);
 console.log('G4C7 A3 PASS — 22/22 street-to-hollow-room routes, 4/4 accessible civic-grade transitions');
