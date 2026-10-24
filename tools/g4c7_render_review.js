@@ -159,7 +159,10 @@ function main(){
  if(i<0||!process.argv[i+1])throw Error('Usage: --out NEW_EMPTY_DIRECTORY');
  const folder=path.resolve(process.argv[i+1]);
  if(fs.existsSync(folder))throw Error('Output directory already exists; no overwrite '+folder);
- validate(); const plan=create(); const report=assess(plan);
+ const useA3=process.argv.includes('--a3');
+ if(!useA3)validate();
+ const plan=useA3?require('./g4c7_a3_hollow_access_lab').buildA3():create();
+ const report=assess(plan);
  fs.mkdirSync(folder,{recursive:false});
  for(const name of Object.keys(cameras))writeNew(folder,name+'.svg',svg(plan,name));
  for(const district of ['A','B','C','D'])writeNew(folder,
@@ -167,12 +170,16 @@ function main(){
  writeNew(folder,'g4c7_review.obj',toObj(plan));
  writeNew(folder,'g4c7_review.mtl',mtl());
  writeNew(folder,'review_quality.json',JSON.stringify(report,null,2)+'\n');
+ if(useA3) {
+  const access=require('./g4c7_a3_hollow_access_lab').evaluateA3(plan);
+  writeNew(folder,'ground_access_qa.json',JSON.stringify(access,null,2)+'\n');
+ }
  writeNew(folder,'source_geometry.json',JSON.stringify(plan,null,2)+'\n');
  const images=['front','side','oblique','aerial'].map(n=>'<figure><a href="'+n+'.svg"><img src="'+n+'.svg"></a><figcaption>'+n+'</figcaption></figure>').join('');
  const districts=['A','B','C','D'].map(n=>'<figure><a href="district_'+n+'_oblique.svg"><img src="district_'+n+'_oblique.svg"></a><figcaption>District '+n+'</figcaption></figure>').join('');
  const html='<!doctype html><html lang="ja"><meta charset="utf-8"><title>G4-C7 Four View QA</title>'+
    '<style>body{font:16px system-ui;background:#eef3f6;color:#172c3b;max-width:1400px;margin:auto;padding:24px}section{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:12px}figure{margin:0;padding:8px;background:white;border-radius:12px}img{width:100%}figcaption{padding:8px}</style>'+
-   '<h1>G4-C7 CONCEPT / Four-view art review</h1><p>Model only; NOT a Minecraft build or a visual-quality approval.</p>'+
+   '<h1>G4-C7 CONCEPT / Four-view art review</h1><p>Model only; '+(useA3?'A3 hollow ground interiors / street entrances; upper floor walk unverified. ':'')+'NOT a Minecraft build or a visual-quality approval.</p>'+
    '<h2>City</h2><section>'+images+'</section><h2>Four districts</h2><section>'+districts+'</section>'+
    '<p><a href="g4c7_review.obj">3D OBJ</a> / <a href="review_quality.json">Quality report JSON</a></p></html>';
  writeNew(folder,'review_board.html',html);
