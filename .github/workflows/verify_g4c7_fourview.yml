@@ -6,6 +6,7 @@ on:
       - 'tools/g4c7_render_review.js'
       - 'tests/test_g4c7_render_review.js'
       - 'docs/G4C7_A1_FOUR_VIEW_ART_AUDIT_JA.md'
+      - 'docs/G4C7_A1_VISUAL_ART_REVIEW_REJECT_JA.md'
       - '.github/workflows/verify_g4c7_fourview.yml'
   pull_request:
   workflow_dispatch:
