@@ -1,0 +1,97 @@
+{
+  "verdict": "ARTIFACT_FORMAT_PASS_ART_HOLD",
+  "checks": {
+    "before_city\\front.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2499452
+    },
+    "before_city\\oblique.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2670857
+    },
+    "before_city\\side.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2509093
+    },
+    "before_city\\aerial.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2781043
+    },
+    "before_district\\front.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2479659
+    },
+    "before_district\\oblique.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2526991
+    },
+    "before_district\\side.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2482711
+    },
+    "before_district\\aerial.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2611194
+    },
+    "after\\front.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2596770
+    },
+    "after\\oblique.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2698278
+    },
+    "after\\side.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2597153
+    },
+    "after\\aerial.png": {
+      "resolution": [
+        2048,
+        1536
+      ],
+      "bytes": 2810804
+    },
+    "glb": {
+      "bytes": 1492720,
+      "meshes": 436,
+      "version": 2
+    }
+  },
+  "art_verdict": "HOLD",
+  "walk_verdict": "UNTESTED",
+  "construction": "PROHIBITED"
+}

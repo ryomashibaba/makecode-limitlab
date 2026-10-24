@@ -1,0 +1,35 @@
+{
+  "kind": "OFFLINE_ART_REPETITION_METRIC_NOT_HUMAN_VISUAL_QA",
+  "measurement": "Both geometric footprints and structural ROLE topology; height, color and scale alone excluded",
+  "distribution": {
+    "A": {
+      "buildings": 6,
+      "distinctFootprintFamilies": 6,
+      "repeatingClusters": [],
+      "distinctArchitecturalTypologies": 6,
+      "repeatingArchitecturalTypologies": []
+    },
+    "B": {
+      "buildings": 5,
+      "distinctFootprintFamilies": 5,
+      "repeatingClusters": [],
+      "distinctArchitecturalTypologies": 5,
+      "repeatingArchitecturalTypologies": []
+    },
+    "C": {
+      "buildings": 6,
+      "distinctFootprintFamilies": 6,
+      "repeatingClusters": [],
+      "distinctArchitecturalTypologies": 6,
+      "repeatingArchitecturalTypologies": []
+    },
+    "D": {
+      "buildings": 5,
+      "distinctFootprintFamilies": 5,
+      "repeatingClusters": [],
+      "distinctArchitecturalTypologies": 5,
+      "repeatingArchitecturalTypologies": []
+    }
+  },
+  "verdict": "REQUIRES_HUMAN_ART_REVIEW"
+}

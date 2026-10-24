@@ -1,0 +1,4349 @@
+{
+  "label": "G4C7_A4_FOUR_ROOF_LANDING_PILOTS_CONCEPT_ONLY",
+  "dims": {
+    "region": 180,
+    "road": 12,
+    "city": 372,
+    "buildMaxY": 78
+  },
+  "profiles": {
+    "A": {
+      "name": "Finance — vertical core + deep street-level podiums",
+      "count": 6,
+      "heights": [
+        74,
+        62,
+        48,
+        56,
+        18,
+        14
+      ],
+      "meanHeight": 45.333333333333336,
+      "typology": "office",
+      "centerPlotReserved": true
+    },
+    "B": {
+      "name": "Culture — low open halls and public courts",
+      "count": 5,
+      "heights": [
+        30,
+        24,
+        18,
+        22,
+        15
+      ],
+      "meanHeight": 21.8,
+      "typology": "cultural",
+      "centerPlotReserved": true
+    },
+    "C": {
+      "name": "Green residences — courtyard blocks and terrace gardens",
+      "count": 6,
+      "heights": [
+        31,
+        28,
+        35,
+        24,
+        16,
+        29
+      ],
+      "meanHeight": 27.166666666666668,
+      "typology": "residential",
+      "centerPlotReserved": true
+    },
+    "D": {
+      "name": "Research — bridge-linked deep horizontal laboratories",
+      "count": 5,
+      "heights": [
+        42,
+        36,
+        47,
+        33,
+        41
+      ],
+      "meanHeight": 39.8,
+      "typology": "research",
+      "centerPlotReserved": true
+    }
+  },
+  "buildingCount": 22,
+  "solidBoxes": 283,
+  "buildings": [
+    {
+      "id": "A1",
+      "region": "A",
+      "kind": "office",
+      "plot": [
+        0,
+        0
+      ],
+      "height": 74
+    },
+    {
+      "id": "A2",
+      "region": "A",
+      "kind": "office",
+      "plot": [
+        2,
+        0
+      ],
+      "height": 62
+    },
+    {
+      "id": "A3",
+      "region": "A",
+      "kind": "office",
+      "plot": [
+        0,
+        2
+      ],
+      "height": 48
+    },
+    {
+      "id": "A4",
+      "region": "A",
+      "kind": "office",
+      "plot": [
+        2,
+        2
+      ],
+      "height": 56
+    },
+    {
+      "id": "A5",
+      "region": "A",
+      "kind": "office",
+      "plot": [
+        1,
+        0
+      ],
+      "height": 18
+    },
+    {
+      "id": "A6",
+      "region": "A",
+      "kind": "office",
+      "plot": [
+        1,
+        2
+      ],
+      "height": 14
+    },
+    {
+      "id": "B1",
+      "region": "B",
+      "kind": "cultural",
+      "plot": [
+        0,
+        0
+      ],
+      "height": 30
+    },
+    {
+      "id": "B2",
+      "region": "B",
+      "kind": "cultural",
+      "plot": [
+        1,
+        0
+      ],
+      "height": 24
+    },
+    {
+      "id": "B3",
+      "region": "B",
+      "kind": "cultural",
+      "plot": [
+        2,
+        0
+      ],
+      "height": 18
+    },
+    {
+      "id": "B4",
+      "region": "B",
+      "kind": "cultural",
+      "plot": [
+        0,
+        2
+      ],
+      "height": 22
+    },
+    {
+      "id": "B5",
+      "region": "B",
+      "kind": "cultural",
+      "plot": [
+        2,
+        2
+      ],
+      "height": 15
+    },
+    {
+      "id": "C1",
+      "region": "C",
+      "kind": "residential",
+      "plot": [
+        0,
+        0
+      ],
+      "height": 31
+    },
+    {
+      "id": "C2",
+      "region": "C",
+      "kind": "residential",
+      "plot": [
+        1,
+        0
+      ],
+      "height": 28
+    },
+    {
+      "id": "C3",
+      "region": "C",
+      "kind": "residential",
+      "plot": [
+        2,
+        0
+      ],
+      "height": 35
+    },
+    {
+      "id": "C4",
+      "region": "C",
+      "kind": "residential",
+      "plot": [
+        0,
+        2
+      ],
+      "height": 24
+    },
+    {
+      "id": "C5",
+      "region": "C",
+      "kind": "residential",
+      "plot": [
+        1,
+        2
+      ],
+      "height": 16
+    },
+    {
+      "id": "C6",
+      "region": "C",
+      "kind": "residential",
+      "plot": [
+        2,
+        2
+      ],
+      "height": 29
+    },
+    {
+      "id": "D1",
+      "region": "D",
+      "kind": "research",
+      "plot": [
+        0,
+        0
+      ],
+      "height": 42
+    },
+    {
+      "id": "D2",
+      "region": "D",
+      "kind": "research",
+      "plot": [
+        1,
+        0
+      ],
+      "height": 36
+    },
+    {
+      "id": "D3",
+      "region": "D",
+      "kind": "research",
+      "plot": [
+        2,
+        0
+      ],
+      "height": 47
+    },
+    {
+      "id": "D4",
+      "region": "D",
+      "kind": "research",
+      "plot": [
+        0,
+        2
+      ],
+      "height": 33
+    },
+    {
+      "id": "D5",
+      "region": "D",
+      "kind": "research",
+      "plot": [
+        2,
+        2
+      ],
+      "height": 41
+    }
+  ],
+  "boxes": [
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor",
+      "x": 15,
+      "y": 2,
+      "z": 15,
+      "w": 44,
+      "h": 1,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-bearing-roof-cut-south-bearing",
+      "x": 15,
+      "y": 9,
+      "z": 15,
+      "w": 44,
+      "h": 1,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-bearing-roof-cut-north-bearing",
+      "x": 15,
+      "y": 9,
+      "z": 19,
+      "w": 44,
+      "h": 1,
+      "d": 38,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-bearing-roof-cut-west-bearing",
+      "x": 15,
+      "y": 9,
+      "z": 16,
+      "w": 8,
+      "h": 1,
+      "d": 3,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-bearing-roof-cut-east-bearing",
+      "x": 30,
+      "y": 9,
+      "z": 16,
+      "w": 29,
+      "h": 1,
+      "d": 3,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-east-bearing-wall",
+      "x": 58,
+      "y": 3,
+      "z": 15,
+      "w": 1,
+      "h": 6,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-south-bearing-wall",
+      "x": 16,
+      "y": 3,
+      "z": 15,
+      "w": 42,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-north-bearing-wall",
+      "x": 16,
+      "y": 3,
+      "z": 56,
+      "w": 42,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-entry-west-left",
+      "x": 15,
+      "y": 3,
+      "z": 15,
+      "w": 1,
+      "h": 6,
+      "d": 20,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-entry-west-right",
+      "x": 15,
+      "y": 3,
+      "z": 38,
+      "w": 1,
+      "h": 6,
+      "d": 19,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-entry-load-bearing-header",
+      "x": 15,
+      "y": 5,
+      "z": 35,
+      "w": 1,
+      "h": 4,
+      "d": 3,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "west-vertical-core",
+      "x": 19,
+      "y": 10,
+      "z": 20,
+      "w": 15,
+      "h": 64,
+      "d": 29,
+      "material": "glass-and-frame"
+    },
+    {
+      "id": "A1",
+      "role": "east-vertical-core",
+      "x": 40,
+      "y": 10,
+      "z": 21,
+      "w": 14,
+      "h": 64,
+      "d": 25,
+      "material": "glass"
+    },
+    {
+      "id": "A1",
+      "role": "west-skyline-fin",
+      "x": 19,
+      "y": 74,
+      "z": 20,
+      "w": 13,
+      "h": 2,
+      "d": 12,
+      "material": "stone"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-floor",
+      "x": 135,
+      "y": 2,
+      "z": 17,
+      "w": 44,
+      "h": 1,
+      "d": 41,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-bearing-roof",
+      "x": 135,
+      "y": 9,
+      "z": 17,
+      "w": 44,
+      "h": 1,
+      "d": 41,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-east-bearing-wall",
+      "x": 178,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 6,
+      "d": 41,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-south-bearing-wall",
+      "x": 136,
+      "y": 3,
+      "z": 17,
+      "w": 42,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-north-bearing-wall",
+      "x": 136,
+      "y": 3,
+      "z": 57,
+      "w": 42,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-entry-west-left",
+      "x": 135,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 6,
+      "d": 19,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-entry-west-right",
+      "x": 135,
+      "y": 3,
+      "z": 39,
+      "w": 1,
+      "h": 6,
+      "d": 19,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "deep-transit-concourse-entry-load-bearing-header",
+      "x": 135,
+      "y": 5,
+      "z": 36,
+      "w": 1,
+      "h": 4,
+      "d": 3,
+      "material": "concrete"
+    },
+    {
+      "id": "A2",
+      "role": "setback-main-shaft",
+      "x": 142,
+      "y": 10,
+      "z": 22,
+      "w": 30,
+      "h": 36,
+      "d": 29,
+      "material": "glass-and-frame"
+    },
+    {
+      "id": "A2",
+      "role": "recessed-upper-office",
+      "x": 147,
+      "y": 46,
+      "z": 26,
+      "w": 21,
+      "h": 16,
+      "d": 21,
+      "material": "glass"
+    },
+    {
+      "id": "A2",
+      "role": "solid-inset-roof",
+      "x": 148,
+      "y": 62,
+      "z": 27,
+      "w": 18,
+      "h": 2,
+      "d": 18,
+      "material": "stone"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-floor",
+      "x": 16,
+      "y": 2,
+      "z": 136,
+      "w": 43,
+      "h": 1,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-bearing-roof",
+      "x": 16,
+      "y": 9,
+      "z": 136,
+      "w": 43,
+      "h": 1,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-east-bearing-wall",
+      "x": 58,
+      "y": 3,
+      "z": 136,
+      "w": 1,
+      "h": 6,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-south-bearing-wall",
+      "x": 17,
+      "y": 3,
+      "z": 136,
+      "w": 41,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-north-bearing-wall",
+      "x": 17,
+      "y": 3,
+      "z": 177,
+      "w": 41,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-entry-west-left",
+      "x": 16,
+      "y": 3,
+      "z": 136,
+      "w": 1,
+      "h": 6,
+      "d": 20,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-entry-west-right",
+      "x": 16,
+      "y": 3,
+      "z": 159,
+      "w": 1,
+      "h": 6,
+      "d": 19,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "gallery-retail-ground-entry-load-bearing-header",
+      "x": 16,
+      "y": 5,
+      "z": 156,
+      "w": 1,
+      "h": 4,
+      "d": 3,
+      "material": "concrete"
+    },
+    {
+      "id": "A3",
+      "role": "street-atrium-west",
+      "x": 17,
+      "y": 10,
+      "z": 143,
+      "w": 14,
+      "h": 38,
+      "d": 30,
+      "material": "glass"
+    },
+    {
+      "id": "A3",
+      "role": "vertical-office-east",
+      "x": 39,
+      "y": 10,
+      "z": 139,
+      "w": 14,
+      "h": 38,
+      "d": 25,
+      "material": "glass-and-frame"
+    },
+    {
+      "id": "A3",
+      "role": "atrium-sky-join",
+      "x": 27,
+      "y": 48,
+      "z": 144,
+      "w": 16,
+      "h": 2,
+      "d": 13,
+      "material": "stone"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-floor",
+      "x": 135,
+      "y": 2,
+      "z": 136,
+      "w": 44,
+      "h": 1,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-bearing-roof",
+      "x": 135,
+      "y": 9,
+      "z": 136,
+      "w": 44,
+      "h": 1,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-east-bearing-wall",
+      "x": 178,
+      "y": 3,
+      "z": 136,
+      "w": 1,
+      "h": 6,
+      "d": 42,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-south-bearing-wall",
+      "x": 136,
+      "y": 3,
+      "z": 136,
+      "w": 42,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-north-bearing-wall",
+      "x": 136,
+      "y": 3,
+      "z": 177,
+      "w": 42,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-entry-west-left",
+      "x": 135,
+      "y": 3,
+      "z": 136,
+      "w": 1,
+      "h": 6,
+      "d": 20,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-entry-west-right",
+      "x": 135,
+      "y": 3,
+      "z": 159,
+      "w": 1,
+      "h": 6,
+      "d": 19,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "ground-transport-deck-entry-load-bearing-header",
+      "x": 135,
+      "y": 5,
+      "z": 156,
+      "w": 1,
+      "h": 4,
+      "d": 3,
+      "material": "concrete"
+    },
+    {
+      "id": "A4",
+      "role": "first-offset-terrace",
+      "x": 137,
+      "y": 10,
+      "z": 138,
+      "w": 38,
+      "h": 27,
+      "d": 36,
+      "material": "glass"
+    },
+    {
+      "id": "A4",
+      "role": "upper-offset-terrace",
+      "x": 144,
+      "y": 37,
+      "z": 144,
+      "w": 24,
+      "h": 19,
+      "d": 25,
+      "material": "glass-and-frame"
+    },
+    {
+      "id": "A4",
+      "role": "enclosed-top-lantern",
+      "x": 149,
+      "y": 56,
+      "z": 147,
+      "w": 13,
+      "h": 2,
+      "d": 17,
+      "material": "stone"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-floor",
+      "x": 75,
+      "y": 2,
+      "z": 18,
+      "w": 45,
+      "h": 1,
+      "d": 35,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-bearing-roof",
+      "x": 75,
+      "y": 7,
+      "z": 18,
+      "w": 45,
+      "h": 1,
+      "d": 35,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-east-bearing-wall",
+      "x": 119,
+      "y": 3,
+      "z": 18,
+      "w": 1,
+      "h": 4,
+      "d": 35,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-south-bearing-wall",
+      "x": 76,
+      "y": 3,
+      "z": 18,
+      "w": 43,
+      "h": 4,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-north-bearing-wall",
+      "x": 76,
+      "y": 3,
+      "z": 52,
+      "w": 43,
+      "h": 4,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-entry-west-left",
+      "x": 75,
+      "y": 3,
+      "z": 18,
+      "w": 1,
+      "h": 4,
+      "d": 16,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-entry-west-right",
+      "x": 75,
+      "y": 3,
+      "z": 37,
+      "w": 1,
+      "h": 4,
+      "d": 16,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "long-bus-market-arcade-entry-load-bearing-header",
+      "x": 75,
+      "y": 5,
+      "z": 34,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "concrete"
+    },
+    {
+      "id": "A5",
+      "role": "station-glazed-spine",
+      "x": 89,
+      "y": 8,
+      "z": 22,
+      "w": 17,
+      "h": 10,
+      "d": 24,
+      "material": "glass"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-floor",
+      "x": 77,
+      "y": 2,
+      "z": 136,
+      "w": 40,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-bearing-roof",
+      "x": 77,
+      "y": 7,
+      "z": 136,
+      "w": 40,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-east-bearing-wall",
+      "x": 116,
+      "y": 3,
+      "z": 136,
+      "w": 1,
+      "h": 4,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-south-bearing-wall",
+      "x": 78,
+      "y": 3,
+      "z": 136,
+      "w": 38,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-north-bearing-wall",
+      "x": 78,
+      "y": 3,
+      "z": 177,
+      "w": 38,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-entry-west-left",
+      "x": 77,
+      "y": 3,
+      "z": 136,
+      "w": 1,
+      "h": 4,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-entry-west-right",
+      "x": 77,
+      "y": 3,
+      "z": 159,
+      "w": 1,
+      "h": 4,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "market-footprint-entry-load-bearing-header",
+      "x": 77,
+      "y": 5,
+      "z": 156,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "A6",
+      "role": "covered-north-hall",
+      "x": 79,
+      "y": 8,
+      "z": 138,
+      "w": 33,
+      "h": 6,
+      "d": 15,
+      "material": "glass"
+    },
+    {
+      "id": "A6",
+      "role": "covered-south-stalls",
+      "x": 79,
+      "y": 8,
+      "z": 161,
+      "w": 27,
+      "h": 6,
+      "d": 14,
+      "material": "concrete"
+    },
+    {
+      "id": "A0",
+      "role": "financial-public-square-floor",
+      "x": 74,
+      "y": 2,
+      "z": 74,
+      "w": 44,
+      "h": 2,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "A0",
+      "role": "transit-hall-west-front",
+      "x": 75,
+      "y": 4,
+      "z": 79,
+      "w": 9,
+      "h": 7,
+      "d": 26,
+      "material": "concrete"
+    },
+    {
+      "id": "A0",
+      "role": "transit-hall-east-front",
+      "x": 108,
+      "y": 4,
+      "z": 79,
+      "w": 9,
+      "h": 7,
+      "d": 26,
+      "material": "glass"
+    },
+    {
+      "id": "A0",
+      "role": "pedestrian-east-gallery-roof",
+      "x": 108,
+      "y": 11,
+      "z": 81,
+      "w": 8,
+      "h": 2,
+      "d": 22,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-floor",
+      "x": 195,
+      "y": 2,
+      "z": 16,
+      "w": 43,
+      "h": 1,
+      "d": 41,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-bearing-roof-cut-south-bearing",
+      "x": 195,
+      "y": 7,
+      "z": 16,
+      "w": 43,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-bearing-roof-cut-north-bearing",
+      "x": 195,
+      "y": 7,
+      "z": 20,
+      "w": 43,
+      "h": 1,
+      "d": 37,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-bearing-roof-cut-west-bearing",
+      "x": 195,
+      "y": 7,
+      "z": 17,
+      "w": 8,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-bearing-roof-cut-east-bearing",
+      "x": 208,
+      "y": 7,
+      "z": 17,
+      "w": 30,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-east-bearing-wall",
+      "x": 237,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 4,
+      "d": 41,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-south-bearing-wall",
+      "x": 196,
+      "y": 3,
+      "z": 16,
+      "w": 41,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-north-bearing-wall",
+      "x": 196,
+      "y": 3,
+      "z": 56,
+      "w": 41,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-entry-west-left",
+      "x": 195,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 4,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-entry-west-right",
+      "x": 195,
+      "y": 3,
+      "z": 38,
+      "w": 1,
+      "h": 4,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-entry-load-bearing-header",
+      "x": 195,
+      "y": 5,
+      "z": 35,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "sloped-grand-auditorium-volume",
+      "x": 201,
+      "y": 8,
+      "z": 20,
+      "w": 31,
+      "h": 19,
+      "d": 33,
+      "material": "concrete"
+    },
+    {
+      "id": "B1",
+      "role": "acoustic-thick-roof",
+      "x": 199,
+      "y": 27,
+      "z": 19,
+      "w": 35,
+      "h": 3,
+      "d": 35,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-floor",
+      "x": 256,
+      "y": 2,
+      "z": 16,
+      "w": 43,
+      "h": 1,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-bearing-roof",
+      "x": 256,
+      "y": 6,
+      "z": 16,
+      "w": 43,
+      "h": 1,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-east-bearing-wall",
+      "x": 298,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 3,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-south-bearing-wall",
+      "x": 257,
+      "y": 3,
+      "z": 16,
+      "w": 41,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-north-bearing-wall",
+      "x": 257,
+      "y": 3,
+      "z": 58,
+      "w": 41,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-entry-west-left",
+      "x": 256,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 3,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-entry-west-right",
+      "x": 256,
+      "y": 3,
+      "z": 39,
+      "w": 1,
+      "h": 3,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-entry-plaza-entry-load-bearing-header",
+      "x": 256,
+      "y": 5,
+      "z": 36,
+      "w": 1,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "B2",
+      "role": "museum-west-gallery",
+      "x": 258,
+      "y": 7,
+      "z": 19,
+      "w": 13,
+      "h": 15,
+      "d": 35,
+      "material": "glass"
+    },
+    {
+      "id": "B2",
+      "role": "museum-east-gallery",
+      "x": 283,
+      "y": 7,
+      "z": 19,
+      "w": 14,
+      "h": 15,
+      "d": 35,
+      "material": "glass"
+    },
+    {
+      "id": "B2",
+      "role": "sculpture-bridge",
+      "x": 263,
+      "y": 22,
+      "z": 23,
+      "w": 27,
+      "h": 2,
+      "d": 13,
+      "material": "concrete"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-floor",
+      "x": 315,
+      "y": 2,
+      "z": 17,
+      "w": 43,
+      "h": 1,
+      "d": 41,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-bearing-roof",
+      "x": 315,
+      "y": 6,
+      "z": 17,
+      "w": 43,
+      "h": 1,
+      "d": 41,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-east-bearing-wall",
+      "x": 357,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 3,
+      "d": 41,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-south-bearing-wall",
+      "x": 316,
+      "y": 3,
+      "z": 17,
+      "w": 41,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-north-bearing-wall",
+      "x": 316,
+      "y": 3,
+      "z": 57,
+      "w": 41,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-entry-west-left",
+      "x": 315,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 3,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-entry-west-right",
+      "x": 315,
+      "y": 3,
+      "z": 39,
+      "w": 1,
+      "h": 3,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "sculpture-terrace-entry-load-bearing-header",
+      "x": 315,
+      "y": 5,
+      "z": 36,
+      "w": 1,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "B3",
+      "role": "north-exhibition-block",
+      "x": 317,
+      "y": 7,
+      "z": 19,
+      "w": 38,
+      "h": 8,
+      "d": 16,
+      "material": "glass"
+    },
+    {
+      "id": "B3",
+      "role": "south-sculpture-room",
+      "x": 322,
+      "y": 7,
+      "z": 38,
+      "w": 29,
+      "h": 8,
+      "d": 15,
+      "material": "concrete"
+    },
+    {
+      "id": "B3",
+      "role": "clerestory-lightwell",
+      "x": 325,
+      "y": 15,
+      "z": 22,
+      "w": 16,
+      "h": 3,
+      "d": 12,
+      "material": "glass"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-floor",
+      "x": 196,
+      "y": 2,
+      "z": 137,
+      "w": 43,
+      "h": 1,
+      "d": 39,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-bearing-roof",
+      "x": 196,
+      "y": 6,
+      "z": 137,
+      "w": 43,
+      "h": 1,
+      "d": 39,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-east-bearing-wall",
+      "x": 238,
+      "y": 3,
+      "z": 137,
+      "w": 1,
+      "h": 3,
+      "d": 39,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-south-bearing-wall",
+      "x": 197,
+      "y": 3,
+      "z": 137,
+      "w": 41,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-north-bearing-wall",
+      "x": 197,
+      "y": 3,
+      "z": 175,
+      "w": 41,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-entry-west-left",
+      "x": 196,
+      "y": 3,
+      "z": 137,
+      "w": 1,
+      "h": 3,
+      "d": 18,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-entry-west-right",
+      "x": 196,
+      "y": 3,
+      "z": 158,
+      "w": 1,
+      "h": 3,
+      "d": 18,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "library-public-base-entry-load-bearing-header",
+      "x": 196,
+      "y": 5,
+      "z": 155,
+      "w": 1,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "B4",
+      "role": "low-archive-spine",
+      "x": 197,
+      "y": 7,
+      "z": 139,
+      "w": 13,
+      "h": 12,
+      "d": 34,
+      "material": "concrete"
+    },
+    {
+      "id": "B4",
+      "role": "long-reading-room",
+      "x": 212,
+      "y": 7,
+      "z": 146,
+      "w": 22,
+      "h": 12,
+      "d": 20,
+      "material": "glass"
+    },
+    {
+      "id": "B4",
+      "role": "reading-room-lantern",
+      "x": 214,
+      "y": 19,
+      "z": 148,
+      "w": 18,
+      "h": 3,
+      "d": 15,
+      "material": "glass"
+    },
+    {
+      "id": "B5",
+      "role": "outdoor-stage-plinth-floor",
+      "x": 315,
+      "y": 2,
+      "z": 138,
+      "w": 44,
+      "h": 1,
+      "d": 37,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "outdoor-stage-plinth-bearing-roof",
+      "x": 315,
+      "y": 5,
+      "z": 138,
+      "w": 44,
+      "h": 1,
+      "d": 37,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "outdoor-stage-plinth-east-bearing-wall",
+      "x": 358,
+      "y": 3,
+      "z": 138,
+      "w": 1,
+      "h": 2,
+      "d": 37,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "outdoor-stage-plinth-south-bearing-wall",
+      "x": 316,
+      "y": 3,
+      "z": 138,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "outdoor-stage-plinth-north-bearing-wall",
+      "x": 316,
+      "y": 3,
+      "z": 174,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "outdoor-stage-plinth-entry-west-left",
+      "x": 315,
+      "y": 3,
+      "z": 138,
+      "w": 1,
+      "h": 2,
+      "d": 17,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "outdoor-stage-plinth-entry-west-right",
+      "x": 315,
+      "y": 3,
+      "z": 158,
+      "w": 1,
+      "h": 2,
+      "d": 17,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "backstage-shell",
+      "x": 317,
+      "y": 6,
+      "z": 140,
+      "w": 15,
+      "h": 9,
+      "d": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "B5",
+      "role": "tiered-bleachers",
+      "x": 336,
+      "y": 6,
+      "z": 147,
+      "w": 18,
+      "h": 4,
+      "d": 24,
+      "material": "stone"
+    },
+    {
+      "id": "B5",
+      "role": "open-pavilion-column",
+      "x": 340,
+      "y": 10,
+      "z": 151,
+      "w": 8,
+      "h": 5,
+      "d": 10,
+      "material": "glass"
+    },
+    {
+      "id": "B0",
+      "role": "outdoor-cultural-court",
+      "x": 254,
+      "y": 2,
+      "z": 74,
+      "w": 44,
+      "h": 2,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "B0",
+      "role": "main-open-stage",
+      "x": 260,
+      "y": 4,
+      "z": 76,
+      "w": 32,
+      "h": 4,
+      "d": 11,
+      "material": "concrete"
+    },
+    {
+      "id": "B0",
+      "role": "rehearsal-backstage",
+      "x": 262,
+      "y": 8,
+      "z": 77,
+      "w": 28,
+      "h": 5,
+      "d": 9,
+      "material": "stone"
+    },
+    {
+      "id": "B0",
+      "role": "tiered-civic-seats-west",
+      "x": 255,
+      "y": 4,
+      "z": 94,
+      "w": 12,
+      "h": 3,
+      "d": 18,
+      "material": "stone"
+    },
+    {
+      "id": "B0",
+      "role": "tiered-civic-seats-east",
+      "x": 285,
+      "y": 4,
+      "z": 94,
+      "w": 12,
+      "h": 3,
+      "d": 18,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-floor",
+      "x": 15,
+      "y": 2,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-bearing-roof-cut-south-bearing",
+      "x": 15,
+      "y": 5,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-bearing-roof-cut-north-bearing",
+      "x": 15,
+      "y": 5,
+      "z": 199,
+      "w": 44,
+      "h": 1,
+      "d": 40,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-bearing-roof-cut-west-bearing",
+      "x": 15,
+      "y": 5,
+      "z": 196,
+      "w": 8,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-bearing-roof-cut-east-bearing",
+      "x": 26,
+      "y": 5,
+      "z": 196,
+      "w": 33,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-east-bearing-wall",
+      "x": 58,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 2,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-south-bearing-wall",
+      "x": 16,
+      "y": 3,
+      "z": 195,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-north-bearing-wall",
+      "x": 16,
+      "y": 3,
+      "z": 238,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-entry-west-left",
+      "x": 15,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 2,
+      "d": 21,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-entry-west-right",
+      "x": 15,
+      "y": 3,
+      "z": 219,
+      "w": 1,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-west-home",
+      "x": 17,
+      "y": 6,
+      "z": 200,
+      "w": 9,
+      "h": 25,
+      "d": 33,
+      "material": "glass"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-east-home",
+      "x": 47,
+      "y": 6,
+      "z": 200,
+      "w": 9,
+      "h": 25,
+      "d": 33,
+      "material": "glass"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-north-home",
+      "x": 18,
+      "y": 6,
+      "z": 225,
+      "w": 37,
+      "h": 25,
+      "d": 9,
+      "material": "glass"
+    },
+    {
+      "id": "C2",
+      "role": "L-neighborhood-base-floor",
+      "x": 75,
+      "y": 2,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C2",
+      "role": "L-neighborhood-base-bearing-roof",
+      "x": 75,
+      "y": 5,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C2",
+      "role": "L-neighborhood-base-east-bearing-wall",
+      "x": 118,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 2,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C2",
+      "role": "L-neighborhood-base-south-bearing-wall",
+      "x": 76,
+      "y": 3,
+      "z": 195,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C2",
+      "role": "L-neighborhood-base-north-bearing-wall",
+      "x": 76,
+      "y": 3,
+      "z": 238,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C2",
+      "role": "L-neighborhood-base-entry-west-left",
+      "x": 75,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 2,
+      "d": 21,
+      "material": "stone"
+    },
+    {
+      "id": "C2",
+      "role": "L-neighborhood-base-entry-west-right",
+      "x": 75,
+      "y": 3,
+      "z": 219,
+      "w": 1,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C2",
+      "role": "north-L-residence",
+      "x": 77,
+      "y": 6,
+      "z": 200,
+      "w": 39,
+      "h": 16,
+      "d": 12,
+      "material": "glass"
+    },
+    {
+      "id": "C2",
+      "role": "east-L-residence",
+      "x": 103,
+      "y": 6,
+      "z": 206,
+      "w": 13,
+      "h": 16,
+      "d": 27,
+      "material": "glass"
+    },
+    {
+      "id": "C2",
+      "role": "sloped-terrace-mass",
+      "x": 102,
+      "y": 22,
+      "z": 209,
+      "w": 13,
+      "h": 6,
+      "d": 18,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "garden-street-base-floor",
+      "x": 136,
+      "y": 2,
+      "z": 196,
+      "w": 42,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "garden-street-base-bearing-roof",
+      "x": 136,
+      "y": 5,
+      "z": 196,
+      "w": 42,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "garden-street-base-east-bearing-wall",
+      "x": 177,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 2,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "garden-street-base-south-bearing-wall",
+      "x": 137,
+      "y": 3,
+      "z": 196,
+      "w": 40,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "garden-street-base-north-bearing-wall",
+      "x": 137,
+      "y": 3,
+      "z": 237,
+      "w": 40,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "garden-street-base-entry-west-left",
+      "x": 136,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "garden-street-base-entry-west-right",
+      "x": 136,
+      "y": 3,
+      "z": 219,
+      "w": 1,
+      "h": 2,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "C3",
+      "role": "north-flat-row",
+      "x": 138,
+      "y": 6,
+      "z": 199,
+      "w": 39,
+      "h": 29,
+      "d": 10,
+      "material": "glass"
+    },
+    {
+      "id": "C3",
+      "role": "south-flat-row",
+      "x": 138,
+      "y": 6,
+      "z": 222,
+      "w": 38,
+      "h": 29,
+      "d": 10,
+      "material": "glass"
+    },
+    {
+      "id": "C4",
+      "role": "hillside-residence-ground-floor",
+      "x": 15,
+      "y": 2,
+      "z": 315,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C4",
+      "role": "hillside-residence-ground-bearing-roof",
+      "x": 15,
+      "y": 5,
+      "z": 315,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C4",
+      "role": "hillside-residence-ground-east-bearing-wall",
+      "x": 58,
+      "y": 3,
+      "z": 315,
+      "w": 1,
+      "h": 2,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C4",
+      "role": "hillside-residence-ground-south-bearing-wall",
+      "x": 16,
+      "y": 3,
+      "z": 315,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C4",
+      "role": "hillside-residence-ground-north-bearing-wall",
+      "x": 16,
+      "y": 3,
+      "z": 358,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C4",
+      "role": "hillside-residence-ground-entry-west-left",
+      "x": 15,
+      "y": 3,
+      "z": 315,
+      "w": 1,
+      "h": 2,
+      "d": 21,
+      "material": "stone"
+    },
+    {
+      "id": "C4",
+      "role": "hillside-residence-ground-entry-west-right",
+      "x": 15,
+      "y": 3,
+      "z": 339,
+      "w": 1,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C4",
+      "role": "south-deep-terrace",
+      "x": 17,
+      "y": 6,
+      "z": 318,
+      "w": 38,
+      "h": 8,
+      "d": 38,
+      "material": "concrete"
+    },
+    {
+      "id": "C4",
+      "role": "middle-terrace-home",
+      "x": 21,
+      "y": 14,
+      "z": 322,
+      "w": 31,
+      "h": 8,
+      "d": 29,
+      "material": "glass"
+    },
+    {
+      "id": "C4",
+      "role": "upper-roof-garden",
+      "x": 25,
+      "y": 22,
+      "z": 326,
+      "w": 23,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "garden-cooperative-base-floor",
+      "x": 75,
+      "y": 2,
+      "z": 317,
+      "w": 44,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "garden-cooperative-base-bearing-roof",
+      "x": 75,
+      "y": 5,
+      "z": 317,
+      "w": 44,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "garden-cooperative-base-east-bearing-wall",
+      "x": 118,
+      "y": 3,
+      "z": 317,
+      "w": 1,
+      "h": 2,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "garden-cooperative-base-south-bearing-wall",
+      "x": 76,
+      "y": 3,
+      "z": 317,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "garden-cooperative-base-north-bearing-wall",
+      "x": 76,
+      "y": 3,
+      "z": 358,
+      "w": 42,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "garden-cooperative-base-entry-west-left",
+      "x": 75,
+      "y": 3,
+      "z": 317,
+      "w": 1,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "garden-cooperative-base-entry-west-right",
+      "x": 75,
+      "y": 3,
+      "z": 340,
+      "w": 1,
+      "h": 2,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "C5",
+      "role": "glass-greenhouse-pavilion",
+      "x": 84,
+      "y": 6,
+      "z": 324,
+      "w": 25,
+      "h": 10,
+      "d": 25,
+      "material": "glass"
+    },
+    {
+      "id": "C6",
+      "role": "paired-homes-common-plaza-floor",
+      "x": 136,
+      "y": 2,
+      "z": 316,
+      "w": 43,
+      "h": 1,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "C6",
+      "role": "paired-homes-common-plaza-bearing-roof",
+      "x": 136,
+      "y": 5,
+      "z": 316,
+      "w": 43,
+      "h": 1,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "C6",
+      "role": "paired-homes-common-plaza-east-bearing-wall",
+      "x": 178,
+      "y": 3,
+      "z": 316,
+      "w": 1,
+      "h": 2,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "C6",
+      "role": "paired-homes-common-plaza-south-bearing-wall",
+      "x": 137,
+      "y": 3,
+      "z": 316,
+      "w": 41,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C6",
+      "role": "paired-homes-common-plaza-north-bearing-wall",
+      "x": 137,
+      "y": 3,
+      "z": 358,
+      "w": 41,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C6",
+      "role": "paired-homes-common-plaza-entry-west-left",
+      "x": 136,
+      "y": 3,
+      "z": 316,
+      "w": 1,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C6",
+      "role": "paired-homes-common-plaza-entry-west-right",
+      "x": 136,
+      "y": 3,
+      "z": 339,
+      "w": 1,
+      "h": 2,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "C6",
+      "role": "west-garden-apartments",
+      "x": 138,
+      "y": 6,
+      "z": 321,
+      "w": 15,
+      "h": 23,
+      "d": 33,
+      "material": "glass"
+    },
+    {
+      "id": "C6",
+      "role": "east-garden-apartments",
+      "x": 160,
+      "y": 6,
+      "z": 324,
+      "w": 13,
+      "h": 23,
+      "d": 29,
+      "material": "glass"
+    },
+    {
+      "id": "C6",
+      "role": "courtyard-community-hall",
+      "x": 153,
+      "y": 6,
+      "z": 341,
+      "w": 7,
+      "h": 5,
+      "d": 12,
+      "material": "concrete"
+    },
+    {
+      "id": "C0",
+      "role": "community-park-base",
+      "x": 74,
+      "y": 2,
+      "z": 254,
+      "w": 44,
+      "h": 2,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "C0",
+      "role": "park-greenhouse-west",
+      "x": 76,
+      "y": 4,
+      "z": 260,
+      "w": 11,
+      "h": 8,
+      "d": 27,
+      "material": "glass"
+    },
+    {
+      "id": "C0",
+      "role": "park-woodland-terrace-east",
+      "x": 105,
+      "y": 4,
+      "z": 260,
+      "w": 11,
+      "h": 4,
+      "d": 27,
+      "material": "stone"
+    },
+    {
+      "id": "C0",
+      "role": "small-garden-pavilion",
+      "x": 105,
+      "y": 8,
+      "z": 267,
+      "w": 10,
+      "h": 5,
+      "d": 14,
+      "material": "glass"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-floor",
+      "x": 195,
+      "y": 2,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-bearing-roof-cut-south-bearing",
+      "x": 195,
+      "y": 7,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-bearing-roof-cut-north-bearing",
+      "x": 195,
+      "y": 7,
+      "z": 199,
+      "w": 44,
+      "h": 1,
+      "d": 40,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-bearing-roof-cut-west-bearing",
+      "x": 195,
+      "y": 7,
+      "z": 196,
+      "w": 8,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-bearing-roof-cut-east-bearing",
+      "x": 208,
+      "y": 7,
+      "z": 196,
+      "w": 31,
+      "h": 1,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-east-bearing-wall",
+      "x": 238,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 4,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-south-bearing-wall",
+      "x": 196,
+      "y": 3,
+      "z": 195,
+      "w": 42,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-north-bearing-wall",
+      "x": 196,
+      "y": 3,
+      "z": 238,
+      "w": 42,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-entry-west-left",
+      "x": 195,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 4,
+      "d": 21,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-entry-west-right",
+      "x": 195,
+      "y": 3,
+      "z": 219,
+      "w": 1,
+      "h": 4,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-entry-load-bearing-header",
+      "x": 195,
+      "y": 5,
+      "z": 216,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "south-biotech-laboratory",
+      "x": 197,
+      "y": 8,
+      "z": 197,
+      "w": 42,
+      "h": 30,
+      "d": 12,
+      "material": "glass"
+    },
+    {
+      "id": "D1",
+      "role": "north-fabrication-laboratory",
+      "x": 197,
+      "y": 8,
+      "z": 221,
+      "w": 42,
+      "h": 30,
+      "d": 15,
+      "material": "glass"
+    },
+    {
+      "id": "D1",
+      "role": "connected-gallery-west-spine",
+      "x": 199,
+      "y": 8,
+      "z": 208,
+      "w": 9,
+      "h": 30,
+      "d": 18,
+      "material": "concrete"
+    },
+    {
+      "id": "D1",
+      "role": "supported-research-skybridge",
+      "x": 201,
+      "y": 38,
+      "z": 208,
+      "w": 31,
+      "h": 4,
+      "d": 15,
+      "material": "glass"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-floor",
+      "x": 256,
+      "y": 2,
+      "z": 196,
+      "w": 42,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-bearing-roof",
+      "x": 256,
+      "y": 7,
+      "z": 196,
+      "w": 42,
+      "h": 1,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-east-bearing-wall",
+      "x": 297,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 4,
+      "d": 42,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-south-bearing-wall",
+      "x": 257,
+      "y": 3,
+      "z": 196,
+      "w": 40,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-north-bearing-wall",
+      "x": 257,
+      "y": 3,
+      "z": 237,
+      "w": 40,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-entry-west-left",
+      "x": 256,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 4,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-entry-west-right",
+      "x": 256,
+      "y": 3,
+      "z": 219,
+      "w": 1,
+      "h": 4,
+      "d": 19,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-solid-core-foundation-entry-load-bearing-header",
+      "x": 256,
+      "y": 5,
+      "z": 216,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "D2",
+      "role": "observatory-south-lab",
+      "x": 258,
+      "y": 8,
+      "z": 200,
+      "w": 31,
+      "h": 12,
+      "d": 19,
+      "material": "glass"
+    },
+    {
+      "id": "D2",
+      "role": "grounded-observation-tower",
+      "x": 269,
+      "y": 8,
+      "z": 208,
+      "w": 15,
+      "h": 28,
+      "d": 16,
+      "material": "concrete"
+    },
+    {
+      "id": "D2",
+      "role": "inset-dome-equivalent-volume",
+      "x": 271,
+      "y": 36,
+      "z": 211,
+      "w": 11,
+      "h": 2,
+      "d": 11,
+      "material": "glass"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-floor",
+      "x": 315,
+      "y": 2,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-bearing-roof",
+      "x": 315,
+      "y": 7,
+      "z": 195,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-east-bearing-wall",
+      "x": 358,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 4,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-south-bearing-wall",
+      "x": 316,
+      "y": 3,
+      "z": 195,
+      "w": 42,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-north-bearing-wall",
+      "x": 316,
+      "y": 3,
+      "z": 238,
+      "w": 42,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-entry-west-left",
+      "x": 315,
+      "y": 3,
+      "z": 195,
+      "w": 1,
+      "h": 4,
+      "d": 21,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-entry-west-right",
+      "x": 315,
+      "y": 3,
+      "z": 219,
+      "w": 1,
+      "h": 4,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "science-research-base-entry-load-bearing-header",
+      "x": 315,
+      "y": 5,
+      "z": 216,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "D3",
+      "role": "long-waveguide-facility",
+      "x": 317,
+      "y": 8,
+      "z": 198,
+      "w": 42,
+      "h": 15,
+      "d": 28,
+      "material": "glass"
+    },
+    {
+      "id": "D3",
+      "role": "upper-instrument-floor",
+      "x": 322,
+      "y": 23,
+      "z": 201,
+      "w": 33,
+      "h": 12,
+      "d": 22,
+      "material": "concrete"
+    },
+    {
+      "id": "D3",
+      "role": "raised-observation-well",
+      "x": 329,
+      "y": 35,
+      "z": 205,
+      "w": 18,
+      "h": 12,
+      "d": 16,
+      "material": "glass"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-floor",
+      "x": 195,
+      "y": 2,
+      "z": 315,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-bearing-roof",
+      "x": 195,
+      "y": 7,
+      "z": 315,
+      "w": 44,
+      "h": 1,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-east-bearing-wall",
+      "x": 238,
+      "y": 3,
+      "z": 315,
+      "w": 1,
+      "h": 4,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-south-bearing-wall",
+      "x": 196,
+      "y": 3,
+      "z": 315,
+      "w": 42,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-north-bearing-wall",
+      "x": 196,
+      "y": 3,
+      "z": 358,
+      "w": 42,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-entry-west-left",
+      "x": 195,
+      "y": 3,
+      "z": 315,
+      "w": 1,
+      "h": 4,
+      "d": 21,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-entry-west-right",
+      "x": 195,
+      "y": 3,
+      "z": 339,
+      "w": 1,
+      "h": 4,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-foundation-entry-load-bearing-header",
+      "x": 195,
+      "y": 5,
+      "z": 336,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "D4",
+      "role": "cleanroom-deep-west-block",
+      "x": 198,
+      "y": 8,
+      "z": 319,
+      "w": 19,
+      "h": 22,
+      "d": 36,
+      "material": "concrete"
+    },
+    {
+      "id": "D4",
+      "role": "large-glazed-science-atrium",
+      "x": 218,
+      "y": 8,
+      "z": 324,
+      "w": 16,
+      "h": 22,
+      "d": 28,
+      "material": "glass"
+    },
+    {
+      "id": "D4",
+      "role": "research-sawtooth-lightwell",
+      "x": 200,
+      "y": 30,
+      "z": 323,
+      "w": 17,
+      "h": 3,
+      "d": 18,
+      "material": "glass"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-floor",
+      "x": 316,
+      "y": 2,
+      "z": 316,
+      "w": 43,
+      "h": 1,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-bearing-roof",
+      "x": 316,
+      "y": 7,
+      "z": 316,
+      "w": 43,
+      "h": 1,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-east-bearing-wall",
+      "x": 358,
+      "y": 3,
+      "z": 316,
+      "w": 1,
+      "h": 4,
+      "d": 43,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-south-bearing-wall",
+      "x": 317,
+      "y": 3,
+      "z": 316,
+      "w": 41,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-north-bearing-wall",
+      "x": 317,
+      "y": 3,
+      "z": 358,
+      "w": 41,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-entry-west-left",
+      "x": 316,
+      "y": 3,
+      "z": 316,
+      "w": 1,
+      "h": 4,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-entry-west-right",
+      "x": 316,
+      "y": 3,
+      "z": 339,
+      "w": 1,
+      "h": 4,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "instrument-campus-ground-entry-load-bearing-header",
+      "x": 316,
+      "y": 5,
+      "z": 336,
+      "w": 1,
+      "h": 2,
+      "d": 3,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "tall-analytical-research-lab",
+      "x": 318,
+      "y": 8,
+      "z": 321,
+      "w": 15,
+      "h": 33,
+      "d": 31,
+      "material": "glass"
+    },
+    {
+      "id": "D5",
+      "role": "short-hardware-workshop",
+      "x": 340,
+      "y": 8,
+      "z": 320,
+      "w": 15,
+      "h": 17,
+      "d": 30,
+      "material": "concrete"
+    },
+    {
+      "id": "D5",
+      "role": "workshop-observation-platform",
+      "x": 341,
+      "y": 25,
+      "z": 322,
+      "w": 13,
+      "h": 3,
+      "d": 23,
+      "material": "stone"
+    },
+    {
+      "id": "D5",
+      "role": "joint-low-transition-bridge",
+      "x": 331,
+      "y": 8,
+      "z": 332,
+      "w": 11,
+      "h": 7,
+      "d": 13,
+      "material": "glass"
+    },
+    {
+      "id": "D0",
+      "role": "research-community-square",
+      "x": 254,
+      "y": 2,
+      "z": 254,
+      "w": 44,
+      "h": 2,
+      "d": 44,
+      "material": "stone"
+    },
+    {
+      "id": "D0",
+      "role": "science-demo-west",
+      "x": 256,
+      "y": 4,
+      "z": 260,
+      "w": 13,
+      "h": 9,
+      "d": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "D0",
+      "role": "science-exhibit-east",
+      "x": 283,
+      "y": 4,
+      "z": 262,
+      "w": 13,
+      "h": 9,
+      "d": 25,
+      "material": "glass"
+    },
+    {
+      "id": "D0",
+      "role": "grounded-community-gallery",
+      "x": 257,
+      "y": 13,
+      "z": 265,
+      "w": 11,
+      "h": 3,
+      "d": 20,
+      "material": "stone"
+    },
+    {
+      "id": "A0",
+      "kind": "civic-grade-transition",
+      "role": "accessible-public-approach",
+      "x": 94,
+      "y": 2,
+      "z": 73,
+      "w": 5,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B0",
+      "kind": "civic-grade-transition",
+      "role": "accessible-public-approach",
+      "x": 274,
+      "y": 2,
+      "z": 118,
+      "w": 5,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C0",
+      "kind": "civic-grade-transition",
+      "role": "accessible-public-approach",
+      "x": 94,
+      "y": 2,
+      "z": 253,
+      "w": 5,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D0",
+      "kind": "civic-grade-transition",
+      "role": "accessible-public-approach",
+      "x": 274,
+      "y": 2,
+      "z": 253,
+      "w": 5,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor-A4-ascending-supported-tread-0",
+      "x": 23,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor-A4-ascending-supported-tread-1",
+      "x": 24,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor-A4-ascending-supported-tread-2",
+      "x": 25,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 3,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor-A4-ascending-supported-tread-3",
+      "x": 26,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 4,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor-A4-ascending-supported-tread-4",
+      "x": 27,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 5,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor-A4-ascending-supported-tread-5",
+      "x": 28,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 6,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "A1",
+      "role": "wide-mixed-podium-floor-A4-ascending-supported-tread-6",
+      "x": 29,
+      "y": 3,
+      "z": 16,
+      "w": 1,
+      "h": 7,
+      "d": 1,
+      "material": "concrete"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-floor-A4-ascending-supported-tread-0",
+      "x": 203,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-floor-A4-ascending-supported-tread-1",
+      "x": 204,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-floor-A4-ascending-supported-tread-2",
+      "x": 205,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-floor-A4-ascending-supported-tread-3",
+      "x": 206,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "B1",
+      "role": "theatre-foundation-floor-A4-ascending-supported-tread-4",
+      "x": 207,
+      "y": 3,
+      "z": 17,
+      "w": 1,
+      "h": 5,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-floor-A4-ascending-supported-tread-0",
+      "x": 23,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-floor-A4-ascending-supported-tread-1",
+      "x": 24,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "C1",
+      "role": "courtyard-U-ground-floor-A4-ascending-supported-tread-2",
+      "x": 25,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-floor-A4-ascending-supported-tread-0",
+      "x": 203,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 1,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-floor-A4-ascending-supported-tread-1",
+      "x": 204,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 2,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-floor-A4-ascending-supported-tread-2",
+      "x": 205,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 3,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-floor-A4-ascending-supported-tread-3",
+      "x": 206,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 4,
+      "d": 1,
+      "material": "stone"
+    },
+    {
+      "id": "D1",
+      "role": "research-ground-platform-floor-A4-ascending-supported-tread-4",
+      "x": 207,
+      "y": 3,
+      "z": 196,
+      "w": 1,
+      "h": 5,
+      "d": 1,
+      "material": "stone"
+    }
+  ],
+  "cloneAnalysis": {
+    "currentG4C6": {
+      "tileCloneCalls": 44,
+      "buildingCloneCalls": 5,
+      "tileCopiedVolume": 8319456,
+      "totalCopiedVolume": 8771760
+    },
+    "proposedG4C7": {
+      "roadSurfaceOnlyCloneCalls": 8,
+      "buildingCloneCalls": 0,
+      "estimatedCopiedVolume": 211968,
+      "assumption": "Only Y0/Y1 baseline grade can be safely shared; buildings are built separately"
+    },
+    "copiedVolumeProxyReductionPct": 97.58351801690881
+  },
+  "verdict": "CONCEPT_NOT_HARDWARE_APPROVED",
+  "entrances": [
+    {
+      "building": "A1",
+      "outer": [
+        14,
+        2,
+        36
+      ],
+      "doorway": [
+        15,
+        3,
+        36
+      ],
+      "inside": [
+        17,
+        3,
+        36
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "wide-mixed-podium"
+    },
+    {
+      "building": "A2",
+      "outer": [
+        134,
+        2,
+        37
+      ],
+      "doorway": [
+        135,
+        3,
+        37
+      ],
+      "inside": [
+        137,
+        3,
+        37
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "deep-transit-concourse"
+    },
+    {
+      "building": "A3",
+      "outer": [
+        15,
+        2,
+        157
+      ],
+      "doorway": [
+        16,
+        3,
+        157
+      ],
+      "inside": [
+        18,
+        3,
+        157
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "gallery-retail-ground"
+    },
+    {
+      "building": "A4",
+      "outer": [
+        134,
+        2,
+        157
+      ],
+      "doorway": [
+        135,
+        3,
+        157
+      ],
+      "inside": [
+        137,
+        3,
+        157
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "ground-transport-deck"
+    },
+    {
+      "building": "A5",
+      "outer": [
+        74,
+        2,
+        35
+      ],
+      "doorway": [
+        75,
+        3,
+        35
+      ],
+      "inside": [
+        77,
+        3,
+        35
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "long-bus-market-arcade"
+    },
+    {
+      "building": "A6",
+      "outer": [
+        76,
+        2,
+        157
+      ],
+      "doorway": [
+        77,
+        3,
+        157
+      ],
+      "inside": [
+        79,
+        3,
+        157
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "market-footprint"
+    },
+    {
+      "building": "B1",
+      "outer": [
+        194,
+        2,
+        36
+      ],
+      "doorway": [
+        195,
+        3,
+        36
+      ],
+      "inside": [
+        197,
+        3,
+        36
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "theatre-foundation"
+    },
+    {
+      "building": "B2",
+      "outer": [
+        255,
+        2,
+        37
+      ],
+      "doorway": [
+        256,
+        3,
+        37
+      ],
+      "inside": [
+        258,
+        3,
+        37
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "museum-entry-plaza"
+    },
+    {
+      "building": "B3",
+      "outer": [
+        314,
+        2,
+        37
+      ],
+      "doorway": [
+        315,
+        3,
+        37
+      ],
+      "inside": [
+        317,
+        3,
+        37
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "sculpture-terrace"
+    },
+    {
+      "building": "B4",
+      "outer": [
+        195,
+        2,
+        156
+      ],
+      "doorway": [
+        196,
+        3,
+        156
+      ],
+      "inside": [
+        198,
+        3,
+        156
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "library-public-base"
+    },
+    {
+      "building": "B5",
+      "outer": [
+        314,
+        2,
+        156
+      ],
+      "doorway": [
+        315,
+        3,
+        156
+      ],
+      "inside": [
+        317,
+        3,
+        156
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "outdoor-stage-plinth"
+    },
+    {
+      "building": "C1",
+      "outer": [
+        14,
+        2,
+        217
+      ],
+      "doorway": [
+        15,
+        3,
+        217
+      ],
+      "inside": [
+        17,
+        3,
+        217
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "courtyard-U-ground"
+    },
+    {
+      "building": "C2",
+      "outer": [
+        74,
+        2,
+        217
+      ],
+      "doorway": [
+        75,
+        3,
+        217
+      ],
+      "inside": [
+        77,
+        3,
+        217
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "L-neighborhood-base"
+    },
+    {
+      "building": "C3",
+      "outer": [
+        135,
+        2,
+        217
+      ],
+      "doorway": [
+        136,
+        3,
+        217
+      ],
+      "inside": [
+        138,
+        3,
+        217
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "garden-street-base"
+    },
+    {
+      "building": "C4",
+      "outer": [
+        14,
+        2,
+        337
+      ],
+      "doorway": [
+        15,
+        3,
+        337
+      ],
+      "inside": [
+        17,
+        3,
+        337
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "hillside-residence-ground"
+    },
+    {
+      "building": "C5",
+      "outer": [
+        74,
+        2,
+        338
+      ],
+      "doorway": [
+        75,
+        3,
+        338
+      ],
+      "inside": [
+        77,
+        3,
+        338
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "garden-cooperative-base"
+    },
+    {
+      "building": "C6",
+      "outer": [
+        135,
+        2,
+        337
+      ],
+      "doorway": [
+        136,
+        3,
+        337
+      ],
+      "inside": [
+        138,
+        3,
+        337
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "paired-homes-common-plaza"
+    },
+    {
+      "building": "D1",
+      "outer": [
+        194,
+        2,
+        217
+      ],
+      "doorway": [
+        195,
+        3,
+        217
+      ],
+      "inside": [
+        197,
+        3,
+        217
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "research-ground-platform"
+    },
+    {
+      "building": "D2",
+      "outer": [
+        255,
+        2,
+        217
+      ],
+      "doorway": [
+        256,
+        3,
+        217
+      ],
+      "inside": [
+        258,
+        3,
+        217
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "observatory-solid-core-foundation"
+    },
+    {
+      "building": "D3",
+      "outer": [
+        314,
+        2,
+        217
+      ],
+      "doorway": [
+        315,
+        3,
+        217
+      ],
+      "inside": [
+        317,
+        3,
+        217
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "science-research-base"
+    },
+    {
+      "building": "D4",
+      "outer": [
+        194,
+        2,
+        337
+      ],
+      "doorway": [
+        195,
+        3,
+        337
+      ],
+      "inside": [
+        197,
+        3,
+        337
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "cleanroom-foundation"
+    },
+    {
+      "building": "D5",
+      "outer": [
+        315,
+        2,
+        337
+      ],
+      "doorway": [
+        316,
+        3,
+        337
+      ],
+      "inside": [
+        318,
+        3,
+        337
+      ],
+      "footY": 3,
+      "clearanceCells": 2,
+      "doorWidth": 3,
+      "sourceRole": "instrument-campus-ground"
+    }
+  ],
+  "civicConnections": [
+    {
+      "building": "A0",
+      "outer": [
+        96,
+        2,
+        72
+      ],
+      "step": [
+        96,
+        3,
+        73
+      ],
+      "inside": [
+        96,
+        4,
+        74
+      ],
+      "entrySide": "south",
+      "clearanceCells": 2
+    },
+    {
+      "building": "B0",
+      "outer": [
+        276,
+        2,
+        119
+      ],
+      "step": [
+        276,
+        3,
+        118
+      ],
+      "inside": [
+        276,
+        4,
+        117
+      ],
+      "entrySide": "north",
+      "clearanceCells": 2
+    },
+    {
+      "building": "C0",
+      "outer": [
+        96,
+        2,
+        252
+      ],
+      "step": [
+        96,
+        3,
+        253
+      ],
+      "inside": [
+        96,
+        4,
+        254
+      ],
+      "entrySide": "south",
+      "clearanceCells": 2
+    },
+    {
+      "building": "D0",
+      "outer": [
+        276,
+        2,
+        252
+      ],
+      "step": [
+        276,
+        3,
+        253
+      ],
+      "inside": [
+        276,
+        4,
+        254
+      ],
+      "entrySide": "south",
+      "clearanceCells": 2
+    }
+  ],
+  "notes": [
+    "22 plinths converted to actual floored hollow shells with 3-wide entrances",
+    "Four civic squares gain grade transition into different public cores",
+    "Ground-only simplified access model; upper-floor and real walking unverified",
+    "No MakeCode construction, clone optimization timings or private data used",
+    "Four prototype supported rooftop access flights; entire 20-upper-floor network NOT addressed."
+  ],
+  "upperPilots": [
+    {
+      "id": "A1",
+      "steps": [
+        {
+          "index": 0,
+          "tread": [
+            23,
+            3,
+            16
+          ],
+          "feet": [
+            23,
+            4,
+            16
+          ]
+        },
+        {
+          "index": 1,
+          "tread": [
+            24,
+            4,
+            16
+          ],
+          "feet": [
+            24,
+            5,
+            16
+          ]
+        },
+        {
+          "index": 2,
+          "tread": [
+            25,
+            5,
+            16
+          ],
+          "feet": [
+            25,
+            6,
+            16
+          ]
+        },
+        {
+          "index": 3,
+          "tread": [
+            26,
+            6,
+            16
+          ],
+          "feet": [
+            26,
+            7,
+            16
+          ]
+        },
+        {
+          "index": 4,
+          "tread": [
+            27,
+            7,
+            16
+          ],
+          "feet": [
+            27,
+            8,
+            16
+          ]
+        },
+        {
+          "index": 5,
+          "tread": [
+            28,
+            8,
+            16
+          ],
+          "feet": [
+            28,
+            9,
+            16
+          ]
+        },
+        {
+          "index": 6,
+          "tread": [
+            29,
+            9,
+            16
+          ],
+          "feet": [
+            29,
+            10,
+            16
+          ]
+        }
+      ],
+      "stairLength": 7,
+      "fromRoom": [
+        22,
+        3,
+        16
+      ],
+      "roofLanding": [
+        30,
+        10,
+        16
+      ],
+      "roofHeight": 9,
+      "roofCutArea": 21,
+      "headroomMin": 2,
+      "routeGeometry": "supported one-block risers inside hollow podium; slab cut only on flight",
+      "notMinecraftStairs": "visual geometry is solid risers; angled Education stairs not yet integrated"
+    },
+    {
+      "id": "B1",
+      "steps": [
+        {
+          "index": 0,
+          "tread": [
+            203,
+            3,
+            17
+          ],
+          "feet": [
+            203,
+            4,
+            17
+          ]
+        },
+        {
+          "index": 1,
+          "tread": [
+            204,
+            4,
+            17
+          ],
+          "feet": [
+            204,
+            5,
+            17
+          ]
+        },
+        {
+          "index": 2,
+          "tread": [
+            205,
+            5,
+            17
+          ],
+          "feet": [
+            205,
+            6,
+            17
+          ]
+        },
+        {
+          "index": 3,
+          "tread": [
+            206,
+            6,
+            17
+          ],
+          "feet": [
+            206,
+            7,
+            17
+          ]
+        },
+        {
+          "index": 4,
+          "tread": [
+            207,
+            7,
+            17
+          ],
+          "feet": [
+            207,
+            8,
+            17
+          ]
+        }
+      ],
+      "stairLength": 5,
+      "fromRoom": [
+        202,
+        3,
+        17
+      ],
+      "roofLanding": [
+        208,
+        8,
+        17
+      ],
+      "roofHeight": 7,
+      "roofCutArea": 15,
+      "headroomMin": 2,
+      "routeGeometry": "supported one-block risers inside hollow podium; slab cut only on flight",
+      "notMinecraftStairs": "visual geometry is solid risers; angled Education stairs not yet integrated"
+    },
+    {
+      "id": "C1",
+      "steps": [
+        {
+          "index": 0,
+          "tread": [
+            23,
+            3,
+            196
+          ],
+          "feet": [
+            23,
+            4,
+            196
+          ]
+        },
+        {
+          "index": 1,
+          "tread": [
+            24,
+            4,
+            196
+          ],
+          "feet": [
+            24,
+            5,
+            196
+          ]
+        },
+        {
+          "index": 2,
+          "tread": [
+            25,
+            5,
+            196
+          ],
+          "feet": [
+            25,
+            6,
+            196
+          ]
+        }
+      ],
+      "stairLength": 3,
+      "fromRoom": [
+        22,
+        3,
+        196
+      ],
+      "roofLanding": [
+        26,
+        6,
+        196
+      ],
+      "roofHeight": 5,
+      "roofCutArea": 9,
+      "headroomMin": 2,
+      "routeGeometry": "supported one-block risers inside hollow podium; slab cut only on flight",
+      "notMinecraftStairs": "visual geometry is solid risers; angled Education stairs not yet integrated"
+    },
+    {
+      "id": "D1",
+      "steps": [
+        {
+          "index": 0,
+          "tread": [
+            203,
+            3,
+            196
+          ],
+          "feet": [
+            203,
+            4,
+            196
+          ]
+        },
+        {
+          "index": 1,
+          "tread": [
+            204,
+            4,
+            196
+          ],
+          "feet": [
+            204,
+            5,
+            196
+          ]
+        },
+        {
+          "index": 2,
+          "tread": [
+            205,
+            5,
+            196
+          ],
+          "feet": [
+            205,
+            6,
+            196
+          ]
+        },
+        {
+          "index": 3,
+          "tread": [
+            206,
+            6,
+            196
+          ],
+          "feet": [
+            206,
+            7,
+            196
+          ]
+        },
+        {
+          "index": 4,
+          "tread": [
+            207,
+            7,
+            196
+          ],
+          "feet": [
+            207,
+            8,
+            196
+          ]
+        }
+      ],
+      "stairLength": 5,
+      "fromRoom": [
+        202,
+        3,
+        196
+      ],
+      "roofLanding": [
+        208,
+        8,
+        196
+      ],
+      "roofHeight": 7,
+      "roofCutArea": 15,
+      "headroomMin": 2,
+      "routeGeometry": "supported one-block risers inside hollow podium; slab cut only on flight",
+      "notMinecraftStairs": "visual geometry is solid risers; angled Education stairs not yet integrated"
+    }
+  ]
+}
