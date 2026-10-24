@@ -35,12 +35,31 @@ for(const b of p.boxes){
 for(const b of p.buildings){
  assert(!(b.plot[0]===1&&b.plot[1]===1),'Must keep a district-specific open civic site');
 }
-assert(p.boxes.some(x=>x.role==='thick-joined-roof'));
-assert(p.boxes.some(x=>x.role==='south-residence'));
-assert(p.boxes.some(x=>x.role==='north-residence'));
-assert(p.boxes.some(x=>x.role==='high-sky-gallery'));
-assert(p.boxes.some(x=>x.role==='vertical-core'));
+// Region archetypes must have different purpose-built structural elements.
+for(const [region,roles] of Object.entries({
+ A:['wide-mixed-podium','recessed-upper-office','atrium-sky-join','upper-offset-terrace','long-bus-market-arcade','covered-south-stalls'],
+ B:['acoustic-thick-roof','museum-west-gallery','clerestory-lightwell','long-reading-room','tiered-bleachers'],
+ C:['courtyard-U-ground','north-L-residence','garden-street-base','middle-terrace-home','glass-greenhouse-pavilion','courtyard-community-hall'],
+ D:['supported-research-skybridge','grounded-observation-tower','raised-observation-well','research-sawtooth-lightwell','workshop-observation-platform']
+})){
+ const present=new Set(p.boxes.filter(v=>v.id[0]===region).map(v=>v.role));
+ for(const role of roles)assert(present.has(role),region+' lost structural program '+role);
+}
+const civicRoles={
+ A:['financial-public-square-floor','transit-hall-west-front'],
+ B:['outdoor-cultural-court','main-open-stage','tiered-civic-seats-west'],
+ C:['community-park-base','park-greenhouse-west','park-woodland-terrace-east'],
+ D:['research-community-square','science-demo-west','science-exhibit-east']
+};
+for(const [region,roles] of Object.entries(civicRoles)){
+ const present=p.boxes.filter(b=>b.id===region+'0').map(b=>b.role);
+ for(const role of roles)assert(present.includes(role),'Missing '+region+' civic role '+role);
+ assert(present.length>=4,'No public center in '+region);
+ const di=['A','B','C','D'].indexOf(region),cx=(di%2)*180+96,cz=Math.floor(di/2)*180+96;
+ assert(!p.boxes.some(b=>b.x<=cx&&cx<b.x+b.w&&b.z<=cz&&cz<b.z+b.d&&
+   b.y<=5&&5<b.y+b.h),region+' civic breathing space blocked at pedestrian head height');
+}
 assert(p.buildings.every(b=>byId.has(b.id)));
-console.log('PASS G4C7 urban-concept: 22 buildings, 4 unlike typologies, civic voids, ground support, no road overwrite');
+console.log('PASS G4C7 A2: 22 individually programmed buildings + 4 differentiated public civic hearts, structural supports and road buffers');
 console.log('PASS block-copy proxy: 8,771,760 historical candidate -> 211,968 proposed road-only copy; this is NOT time');
 console.log('PASS concept-only gate: no Minecraft or previous CSV/ZIP/USED-latch writes');

@@ -38,58 +38,160 @@ function building(region,index,col,row,targetH){
  const id=region+(index+1),kind=programs[region].style;
  buildings.push({id,region,kind,plot:[col,row],height:targetH});
  const add=(role,dx,y,dz,w,h,d,material)=>part(id,role,x+dx,y,z+dz,w,h,d,material);
- if(kind==='office'&&targetH>40){
-   // 4 genuinely different podium and tower footprint proportions.
-   // Taller/recolored copies of one footprint do NOT count as a new building.
-   const k=index%4;
-   const baseW=[40,43,36,39][k],baseD=[40,36,44,39][k];
-   const towerW=[26,31,24,29][k],towerD=[28,22,30,25][k];
-   add('urban-podium',4,2,4,baseW,8,baseD,'concrete');
-   add('vertical-core',9,10,9,towerW,targetH-10,towerD,'glass-and-frame');
-   const topW=[17,20,14,18][k],topD=[16,14,18,13][k];
-   add('integrated-setback-crown',13,targetH,13,topW,2,topD,'stone');
- }else if(kind==='office'){
-   const w=index===4?40:34,d=index===4?34:41;
-   add('transit-podium',4,2,5,w,8,d,'concrete');
-   add('atrium-volume',9,10,10,w-10,targetH-10,d-10,'glass');
+ // A2 architectural design: distinguish actual spatial organization, NOT
+ // color, height or scale changes to one repeated building archetype.
+ if(kind==='office'){
+  if(index===0){ // twin vertical cores on a connected downtown plinth
+   add('wide-mixed-podium',3,2,3,44,8,42,'concrete');
+   add('west-vertical-core',7,10,8,15,targetH-10,29,'glass-and-frame');
+   add('east-vertical-core',28,10,9,14,targetH-10,25,'glass');
+   add('west-skyline-fin',7,targetH,8,13,2,12,'stone');
+  }else if(index===1){ // one offset tower with an integrated broad middle ledge
+   add('deep-transit-concourse',3,2,5,44,8,41,'concrete');
+   add('setback-main-shaft',10,10,10,30,targetH-26,29,'glass-and-frame');
+   add('recessed-upper-office',15,targetH-16,14,21,16,21,'glass');
+   add('solid-inset-roof',16,targetH,15,18,2,18,'stone');
+  }else if(index===2){ // pair of asymmetric bars and ground atrium
+   add('gallery-retail-ground',4,2,4,43,8,42,'concrete');
+   add('street-atrium-west',5,10,11,14,targetH-10,30,'glass');
+   add('vertical-office-east',27,10,7,14,targetH-10,25,'glass-and-frame');
+   add('atrium-sky-join',15,targetH,12,16,2,13,'stone');
+  }else if(index===3){ // stepping terrace buildings, not a simple tower
+   add('ground-transport-deck',3,2,4,44,8,42,'concrete');
+   add('first-offset-terrace',5,10,6,38,targetH-29,36,'glass');
+   add('upper-offset-terrace',12,targetH-19,12,24,19,25,'glass-and-frame');
+   add('enclosed-top-lantern',17,targetH,15,13,2,17,'stone');
+  }else if(index===4){ // deliberately low urban interchange
+   add('long-bus-market-arcade',3,2,6,45,6,35,'concrete');
+   add('station-glazed-spine',17,8,10,17,targetH-8,24,'glass');
+  }else{ // porous municipal market
+   add('market-footprint',5,2,4,40,6,42,'stone');
+   add('covered-north-hall',7,8,6,33,targetH-8,15,'glass');
+   add('covered-south-stalls',7,8,29,27,targetH-8,14,'concrete');
+  }
  }else if(kind==='cultural'){
-   const spanX=[42,36,44,40,38][index],spanZ=[38,42,33,40,42][index];
-   add('civic-floor',3,2,5,spanX,3,spanZ,'stone');
-   for(const [dx,dz] of [[5,7],[spanX-3,7],[5,spanZ-1],[spanX-3,spanZ-1]])
-     add('exposed-hall-support',dx,5,dz,5,targetH-8,5,'concrete');
-   add('thick-joined-roof',4,targetH-3,6,spanX-2,3,spanZ-2,'stone');
-   // Low masonry front canopy defines an entrance instead of a tall tower.
-   if(index%2===1) {
-     add('grounded-entrance-slab',12,2,5,12,5,8,'concrete');
-   }
+  if(index===0){ // deep civic auditorium: strong grounded shell, no thin crown
+   add('theatre-foundation',3,2,4,43,6,41,'stone');
+   add('sloped-grand-auditorium-volume',9,8,8,31,targetH-11,33,'concrete');
+   add('acoustic-thick-roof',7,targetH-3,7,35,3,35,'stone');
+  }else if(index===1){ // enclosed gallery wings around large atrium
+   add('museum-entry-plaza',4,2,4,43,5,43,'stone');
+   add('museum-west-gallery',6,7,7,13,targetH-9,35,'glass');
+   add('museum-east-gallery',31,7,7,14,targetH-9,35,'glass');
+   add('sculpture-bridge',11,targetH-2,11,27,2,13,'concrete');
+  }else if(index===2){ // stepped solid exhibition pavilions
+   add('sculpture-terrace',3,2,5,43,5,41,'stone');
+   add('north-exhibition-block',5,7,7,38,targetH-10,16,'glass');
+   add('south-sculpture-room',10,7,26,29,targetH-10,15,'concrete');
+   add('clerestory-lightwell',13,targetH-3,10,16,3,12,'glass');
+  }else if(index===3){ // long reading-hall and smaller lateral studio
+   add('library-public-base',4,2,5,43,5,39,'stone');
+   add('low-archive-spine',5,7,7,13,targetH-10,34,'concrete');
+   add('long-reading-room',20,7,14,22,targetH-10,20,'glass');
+   add('reading-room-lantern',22,targetH-3,16,18,3,15,'glass');
+  }else{ // open-air small stepped event stage
+   add('outdoor-stage-plinth',3,2,6,44,4,37,'stone');
+   add('backstage-shell',5,6,8,15,targetH-6,32,'concrete');
+   add('tiered-bleachers',24,6,15,18,4,24,'stone');
+   add('open-pavilion-column',28,10,19,8,targetH-10,10,'glass');
+  }
  }else if(kind==='residential'){
-   const spanX=[42,38,44,40,36,42][index],spanZ=[42,44,39,43,38,40][index];
-   const wall=[8,10,7,9,8,10][index],livingH=targetH-6;
-   add('courtyard-base',3,2,3,spanX,4,spanZ,'stone');
-   add('west-residence',4,6,8,wall,livingH,spanZ-12,'glass');
-   add('east-residence',3+spanX-wall,6,8,wall,livingH,spanZ-12,'glass');
-   const barZ=index%2===0?3+spanZ-wall:4;
-   add(index%2===0?'south-residence':'north-residence',
-     4,6,barZ,spanX-2,livingH,wall,'glass');
-   // The courtyard is open on alternating sides of the block.
+  if(index===0){ // U-courtyard open toward south
+   add('courtyard-U-ground',3,2,3,44,4,44,'stone');
+   add('courtyard-west-home',5,6,8,9,targetH-6,33,'glass');
+   add('courtyard-east-home',35,6,8,9,targetH-6,33,'glass');
+   add('courtyard-north-home',6,6,33,37,targetH-6,9,'glass');
+  }else if(index===1){ // L-house terraces, not U
+   add('L-neighborhood-base',3,2,3,44,4,44,'stone');
+   add('north-L-residence',5,6,8,39,targetH-12,12,'glass');
+   add('east-L-residence',31,6,14,13,targetH-12,27,'glass');
+   add('sloped-terrace-mass',30,targetH-6,17,13,6,18,'stone');
+  }else if(index===2){ // detached linear slabs with a garden street
+   add('garden-street-base',4,2,4,42,4,42,'stone');
+   add('north-flat-row',6,6,7,39,targetH-6,10,'glass');
+   add('south-flat-row',6,6,30,38,targetH-6,10,'glass');
+  }else if(index===3){ // 3-step terraced hill-style housing
+   add('hillside-residence-ground',3,2,3,44,4,44,'stone');
+   add('south-deep-terrace',5,6,6,38,8,38,'concrete');
+   add('middle-terrace-home',9,14,10,31,8,29,'glass');
+   add('upper-roof-garden',13,22,14,23,targetH-22,20,'stone');
+  }else if(index===4){ // deliberately low greenhouse commons
+   add('garden-cooperative-base',3,2,5,44,4,42,'stone');
+   add('glass-greenhouse-pavilion',12,6,12,25,targetH-6,25,'glass');
+  }else{ // split two small residential buildings & courtyard
+   add('paired-homes-common-plaza',4,2,4,43,4,43,'stone');
+   add('west-garden-apartments',6,6,9,15,targetH-6,33,'glass');
+   add('east-garden-apartments',28,6,12,13,targetH-6,29,'glass');
+   add('courtyard-community-hall',21,6,29,7,5,12,'concrete');
+  }
  }else{
-   const spanX=[42,38,44,39,41][index],spanZ=[42,44,38,40,43][index];
-   const lower=Math.max(9,targetH-17);
-   add('ground-lab',3,2,3,spanX,6,spanZ,'stone');
-   add('north-lab-wing',4,8,5,spanX-2,lower,10,'glass');
-   add('south-lab-wing',4,8,spanZ-9,spanX-2,lower,10,'glass');
-   add('supported-bridge-west',5,8,14,7,lower,spanZ-19,'concrete');
-   add('supported-bridge-east',spanX-5,8,14,7,lower,spanZ-19,'concrete');
-   add('high-sky-gallery',5,8+lower,14,spanX-3,3,spanZ-19,'glass');
-   add('recessed-observatory',Math.floor(spanX/2)-2,11+lower,18,
-     11,targetH-(11+lower),9,'stone');
+  if(index===0){ // broad horizontal research lab and one supported sky gallery
+   add('research-ground-platform',3,2,3,44,6,44,'stone');
+   add('south-biotech-laboratory',5,8,5,42,targetH-12,12,'glass');
+   add('north-fabrication-laboratory',5,8,29,42,targetH-12,15,'glass');
+   add('connected-gallery-west-spine',7,8,16,9,targetH-12,18,'concrete');
+   add('supported-research-skybridge',9,targetH-4,16,31,4,15,'glass');
+  }else if(index===1){ // single observatory tower with attached low lab
+   add('observatory-solid-core-foundation',4,2,4,42,6,42,'stone');
+   add('observatory-south-lab',6,8,8,31,12,19,'glass');
+   add('grounded-observation-tower',17,8,16,15,targetH-8,16,'concrete');
+   add('inset-dome-equivalent-volume',19,targetH,19,11,2,11,'glass');
+  }else if(index===2){ // stacked three laboratory plates of decreasing size
+   add('science-research-base',3,2,3,44,6,44,'stone');
+   add('long-waveguide-facility',5,8,6,42,15,28,'glass');
+   add('upper-instrument-floor',10,23,9,33,12,22,'concrete');
+   add('raised-observation-well',17,35,13,18,targetH-35,16,'glass');
+  }else if(index===3){ // one low clean room and transparent atrium
+   add('cleanroom-foundation',3,2,3,44,6,44,'stone');
+   add('cleanroom-deep-west-block',6,8,7,19,targetH-11,36,'concrete');
+   add('large-glazed-science-atrium',26,8,12,16,targetH-11,28,'glass');
+   add('research-sawtooth-lightwell',8,targetH-3,11,17,3,18,'glass');
+  }else{ // asymmetrically split two labs with supported connecting gantry
+   add('instrument-campus-ground',4,2,4,43,6,43,'stone');
+   add('tall-analytical-research-lab',6,8,9,15,targetH-8,31,'glass');
+   add('short-hardware-workshop',28,8,8,15,17,30,'concrete');
+   add('workshop-observation-platform',29,25,10,13,3,23,'stone');
+   add('joint-low-transition-bridge',19,8,20,11,7,13,'glass');
+  }
  }
 }
+function civicCore(region){
+ // Civic 48x48 core of the district: perimeter venues and open air middle.
+ // Architectural placeholders, not entrances or player-walkable floors yet.
+ const d=['A','B','C','D'].indexOf(region);
+ const x=(d%2)*180+72,z=Math.floor(d/2)*180+72,id=region+'0';
+ const add=(role,dx,y,dz,w,h,dep,material)=>
+   part(id,role,x+dx,y,z+dz,w,h,dep,material);
+ if(region==='A'){
+   add('financial-public-square-floor',2,2,2,44,2,44,'stone');
+   add('transit-hall-west-front',3,4,7,9,7,26,'concrete');
+   add('transit-hall-east-front',36,4,7,9,7,26,'glass');
+   add('pedestrian-east-gallery-roof',36,11,9,8,2,22,'stone');
+ }else if(region==='B'){
+   add('outdoor-cultural-court',2,2,2,44,2,44,'stone');
+   add('main-open-stage',8,4,4,32,4,11,'concrete');
+   add('rehearsal-backstage',10,8,5,28,5,9,'stone');
+   add('tiered-civic-seats-west',3,4,22,12,3,18,'stone');
+   add('tiered-civic-seats-east',33,4,22,12,3,18,'stone');
+ }else if(region==='C'){
+   add('community-park-base',2,2,2,44,2,44,'stone');
+   add('park-greenhouse-west',4,4,8,11,8,27,'glass');
+   add('park-woodland-terrace-east',33,4,8,11,4,27,'stone');
+   add('small-garden-pavilion',33,8,15,10,5,14,'glass');
+ }else{
+   add('research-community-square',2,2,2,44,2,44,'stone');
+   add('science-demo-west',4,4,8,13,9,32,'concrete');
+   add('science-exhibit-east',31,4,10,13,9,25,'glass');
+   add('grounded-community-gallery',5,13,13,11,3,20,'stone');
+ }
+}
+
 function create(){
  boxes.length=0;buildings.length=0; // repeated evaluations must be pure and deterministic
  for(const region of ['A','B','C','D']){
   const p=programs[region];
   sites[region].forEach(([col,row],i)=>building(region,i,col,row,p.heights[i]));
+  civicCore(region);
  }
  const profiles={};
  for(const region of ['A','B','C','D']){
