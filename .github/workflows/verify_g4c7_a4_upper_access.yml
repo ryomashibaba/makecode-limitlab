@@ -1,0 +1,40 @@
+name: G4C7 A4 upper-floor circulation pilot (NO MINECRAFT)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_a3_hollow_access_lab.js'
+      - 'tools/g4c7_a4_roof_stair_pilot.js'
+      - 'tools/g4c7_render_review.js'
+      - 'tests/test_g4c7_a4_roof_stair_pilot.js'
+      - 'docs/G4C7_A4_FOUR_UPPER_ACCESS_PILOTS_JA.md'
+      - '.github/workflows/verify_g4c7_a4_upper_access.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  four-roof-landing-routes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check every individual pilot step, roof opening and landing
+        run: node tests/test_g4c7_a4_roof_stair_pilot.js
+      - name: Export conceptual eight views and pilot access diagnostics
+        run: |
+          mkdir -p build
+          node tools/g4c7_render_review.js --a4 --out build/g4c7_a4_3d
+          test -s build/g4c7_a4_3d/four_upper_pilot_routes.json
+          test -s build/g4c7_a4_3d/ground_access_qa.json
+          for name in front side oblique aerial; do test -s "build/g4c7_a4_3d/${name}.svg"; done
+          for district in A B C D; do test -s "build/g4c7_a4_3d/district_${district}_oblique.svg"; done
+          node -e "let a=require('./build/g4c7_a4_3d/four_upper_pilot_routes.json');if(a.verdict!=='FOUR_PILOT_ROOF_ACCESS_MODEL_PASS')throw Error(a.verdict);console.log('4 rooftop landings in simplified voxel model, NOT player-walking proof')"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a4-upper-floor-roof-prototype-3d-no-private-world-data
+          path: build/g4c7_a4_3d/
+          retention-days: 14
+      - name: Explicitly not actual hardware or full 20-floor approval
+        run: echo 'Four podium roofs only; 20 upper stories, collision QA and visual art quality remain HOLD'
