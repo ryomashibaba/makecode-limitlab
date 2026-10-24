@@ -136,7 +136,7 @@ class EvidenceTests(unittest.TestCase):
         copier=(ROOT/"makecode"/"COPY_G4C6.ps1").read_text()
         self.assertIn("[Guid]::NewGuid()",runner)
         self.assertIn("G4C6_A4A2/runs",runner)
-        self.assertIn("A3 requires a fresh run folder",copier)
+        self.assertIn("G4C6 requires a fresh run folder",copier)
         self.assertTrue((ROOT/"makecode"/"limitlab_g4c_c0.ts").exists())
         self.assertTrue((ROOT/"makecode"/"limitlab_g4b_a1.ts").exists())
     def test_empty_top_guard_is_present_before_clone_plan(self):
