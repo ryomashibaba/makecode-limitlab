@@ -1,0 +1,71 @@
+name: G4C6 A4A2 oriented stairs OFFLINE ONLY
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_g4c6_a4a2.ts'
+      - 'tests/test_g4c6_a4a2_oriented.js'
+      - 'tests/makecode_g4c6_oriented_stub.d.ts'
+      - 'tests/test_g4c6_a4a2_tools.py'
+      - 'makecode/COPY_G4C6.ps1'
+      - 'tools/RUN_G4C6_A4A2.ps1'
+      - 'tools/analyze_g4c6.py'
+      - 'tools/g4c6_capture.py'
+      - '.github/workflows/verify_g4c6_a4a2_oriented.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  oriented-city-voxel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile new independent G4C6 source
+        run: |
+          mkdir -p build
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c6_a4a2.js tests/makecode_g4c6_oriented_stub.d.ts makecode/limitlab_g4c6_a4a2.ts
+      - name: Verify all 264 staircase directions plus regression and failure abort
+        run: node tests/test_g4c6_a4a2_oriented.js
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict G4C6 private evidence and 264-stage integrity
+        run: python -B -m unittest discover -s tests -p 'test_g4c6_a4a2_tools.py' -v
+      - name: No Minecraft approval from CI
+        run: echo 'Offline simulated geometry ONLY. Actual 8-wing Minecraft walking and run evidence remain unverified.'
+  windows-one-shot-evidence:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pin G4C6 and refuse any repeat preparation
+        shell: powershell
+        run: |
+          $root=Join-Path $env:RUNNER_TEMP 'G4C6_A4A2_UNIQUE'
+          & powershell.exe -NoProfile -NoLogo -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_G4C6.ps1' -PrepareOnly -OutputRoot $root
+          if($LASTEXITCODE -ne 0){throw 'G4C6 prepare failed'}
+          $file=Join-Path $root 'PASTE_THIS_G4C6_A4A2.ts'
+          if(-not (Test-Path $file)){throw 'Missing G4C6 pinned copy'}
+          $src=[IO.File]::ReadAllText($file)
+          if(-not $src.Contains('labcityg4c6') -or -not $src.Contains('g4c6PlaceOrientedStairs')){throw 'Unexpected source content'}
+          if($src.Contains('__G4C6_ROOT__')){throw 'Unresolved private path'}
+          $latch=Join-Path $root 'logs/G4C6_ONCE.txt'
+          if([IO.File]::ReadAllText($latch) -cne 'READY_G4C6'){throw 'Invalid fresh latch'}
+          $initial=[IO.File]::ReadAllBytes($file)
+          & powershell.exe -NoProfile -NoLogo -STA -ExecutionPolicy Bypass -File '.\makecode\COPY_G4C6.ps1' -PrepareOnly -OutputRoot $root
+          if($LASTEXITCODE -eq 0){throw 'Existing private run was overwritten'}
+          if([Convert]::ToBase64String($initial) -cne [Convert]::ToBase64String([IO.File]::ReadAllBytes($file))){throw 'Protected source modified'}
+          foreach($path in @('.\makecode\COPY_G4C6.ps1','.\tools\RUN_G4C6_A4A2.ps1')){
+            $tok=$null;$errs=$null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $path),[ref]$tok,[ref]$errs)
+            if($errs.Count -gt 0){throw ($errs | Out-String)}
+          }
+          Write-Host 'G4C6 source SHA, isolated READY latch, duplicate-run refusal PASS. No Minecraft.'
+          exit 0
+      - name: Strict Windows private evidence parser
+        run: python -B -m unittest discover -s tests -p 'test_g4c6_a4a2_tools.py' -v
