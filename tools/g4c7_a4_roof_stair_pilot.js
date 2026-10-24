@@ -65,20 +65,36 @@ function roofOriginHeight(plan,id){
  return r.y-f.y+1;
 }
 function evaluateA4(plan=buildA4(),opts={}){
- const base=evaluateA3(plan,opts);
- const roads=plan.upperPilots.map(p=>{
-  const flight=p.steps.map(s=>{
-   const pos=s.feet;
-   // evaluator must not infer upper walkability from bounding boxes alone.
-   const ok=base.reachableAt ?base.reachableAt(pos):null;
-   return {index:s.index,feet:pos,reachable:ok};
-  });
-  return {id:p.id,roofLanding:p.roofLanding,stairLength:p.stairLength,flight};
+ const witnesses=plan.upperPilots.flatMap(p=>[
+  ...p.steps.map(s=>({label:p.id+'_step_'+s.index,feet:s.feet})),
+  {label:p.id+'_roof_landing',feet:p.roofLanding}
+ ]);
+ const base=evaluateA3(plan,{witnesses,removeTread:opts.removeTread});
+ const lookup=new Map(base.witnesses.map(w=>[w.label,w]));
+ const pilots=plan.upperPilots.map(p=>{
+  const treads=p.steps.map(s=>lookup.get(p.id+'_step_'+s.index));
+  const top=lookup.get(p.id+'_roof_landing');
+  return {id:p.id,stairLength:p.stairLength,
+   passedTreads:treads.filter(x=>x.streetReachable&&x.headClear&&x.supported).length,
+   landingAccessible:top.streetReachable&&top.headClear&&top.supported,
+   problemTreads:treads.filter(x=>!x.streetReachable||!x.headClear||!x.supported),
+   roofLanding:p.roofLanding};
  });
- return {kind:'G4C7_A4_FOUR_ROOF_LANDING_OFFLINE_PROTOTYPE',
-  base:base.verdict,pilots:roads,
-  verdict:'TO_BE_MEASURED_WITH_EXPLICIT_CELL_WITNESSES',
-  noHardware:true};
+ const treadsTotal=pilots.reduce((sum,p)=>sum+p.stairLength,0);
+ const treadsPass=pilots.reduce((sum,p)=>sum+p.passedTreads,0);
+ const landingsPass=pilots.filter(p=>p.landingAccessible).length;
+ const verdict=base.groundRooms.passed===22&&base.publicSquares.passed===4&&
+  treadsPass===treadsTotal&&landingsPass===4?'FOUR_PILOT_ROOF_ACCESS_MODEL_PASS':'ROOF_ACCESS_BLOCKED';
+ return {kind:'G4C7_A4_FOUR_ROOF_LANDINGS_SIMULATED_NOT_PLAYER_TESTED',
+  baseGround:base.verdict,groundRooms:base.groundRooms.passed,
+  civicSquares:base.publicSquares.passed,
+  treads:{passed:treadsPass,total:treadsTotal},
+  roofLandings:{passed:landingsPass,total:4},
+  pilots,verdict,noHardware:true,
+  limits:['Only four selected ground-to-podium-roof routes, NOT all 22 buildings',
+   'No upper building floor corridors/20 floors validation',
+   '1-block riser model is not verified as naturally walkable without jumping',
+   'All prior Minecraft worlds and private results untouched']};
 }
 if(require.main===module){
  const plan=buildA4();
