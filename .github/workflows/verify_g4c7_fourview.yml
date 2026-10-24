@@ -31,6 +31,8 @@ jobs:
           test -s build/g4c7_fourview/side.svg
           test -s build/g4c7_fourview/oblique.svg
           test -s build/g4c7_fourview/aerial.svg
+          for d in A B C D; do test -s "build/g4c7_fourview/district_${d}_oblique.svg"; done
+          test -s build/g4c7_fourview/review_board.html
           test -s build/g4c7_fourview/g4c7_review.obj
           test -s build/g4c7_fourview/review_quality.json
       - uses: actions/upload-artifact@v4
