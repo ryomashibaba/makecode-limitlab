@@ -4,6 +4,7 @@ on:
     paths:
       - 'makecode/limitlab_g4c6_a4a2.ts'
       - 'tests/test_g4c6_a4a2_oriented.js'
+      - 'tests/makecode_g4c6_oriented_stub.d.ts'
       - '.github/workflows/verify_g4c6_a4a2_oriented.yml'
   pull_request:
   workflow_dispatch:
@@ -20,7 +21,7 @@ jobs:
       - name: Compile new independent G4C6 source
         run: |
           mkdir -p build
-          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c6_a4a2.js tests/makecode_g4b_stub.d.ts tests/makecode_stair_bench_a1c_stub.d.ts makecode/limitlab_g4c6_a4a2.ts
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c6_a4a2.js tests/makecode_g4c6_oriented_stub.d.ts makecode/limitlab_g4c6_a4a2.ts
       - name: Verify all 264 staircase directions plus regression and failure abort
         run: node tests/test_g4c6_a4a2_oriented.js
       - name: No Minecraft approval from CI
