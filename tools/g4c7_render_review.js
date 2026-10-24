@@ -5,10 +5,10 @@
 const fs=require('fs'),path=require('path');
 const {create,validate}=require('./g4c7_urban_layout_lab');
 const cameras={
- front:{az:0,elev:16,label:'FRONT / 南側から',subset:null},
- side:{az:90,elev:16,label:'SIDE / 東側から',subset:null},
- oblique:{az:42,elev:32,label:'OBLIQUE / 斜め俯瞰',subset:null},
- aerial:{az:42,elev:78,label:'AERIAL / ほぼ真俯瞰',subset:null}
+ front:{az:0,elev:16,label:'FRONT / SOUTH',subset:null},
+ side:{az:90,elev:16,label:'SIDE / EAST',subset:null},
+ oblique:{az:42,elev:32,label:'OBLIQUE / THREE-QUARTER',subset:null},
+ aerial:{az:42,elev:78,label:'AERIAL / OVERHEAD',subset:null}
 };
 const palette={
  A:{concrete:'#b5c1d0','glass-and-frame':'#528aa7',glass:'#79b8d1',stone:'#d7dce7'},
@@ -121,26 +121,34 @@ function mtl(){
 function assess(plan){
  const groups={};
  for(const building of plan.buildings){
-  let b=plan.boxes.filter(x=>x.id===building.id);
-  const bx=Math.min(...b.map(x=>x.x)),bz=Math.min(...b.map(x=>x.z));
-  // Ignore material colors and height variation, since a recolored tower
-  // or merely taller version should NOT count as a new architectural type.
-  const signature=b.map(x=>x.role+':'+(x.x-bx)+','+(x.z-bz)+','+x.w+'x'+x.d).sort().join('|');
-  (groups[building.region]??=[]).push({id:building.id,signature});
+  const parts=plan.boxes.filter(x=>x.id===building.id);
+  const bx=Math.min(...parts.map(x=>x.x)),bz=Math.min(...parts.map(x=>x.z));
+  const footprint=parts.map(x=>x.role+':'+(x.x-bx)+','+(x.z-bz)+','+x.w+'x'+x.d).sort().join('|');
+  const archetype=parts.map(x=>x.role).sort().join('|'); // topology, NOT scaled dimensions
+  (groups[building.region]??=[]).push({id:building.id,footprint,archetype});
  }
  const distribution={};
  for(const [reg,items] of Object.entries(groups)){
-  const signatures=[...new Set(items.map(i=>i.signature))];
-  const clusters=signatures.map(sig=>items.filter(x=>x.signature===sig).map(x=>x.id));
-  distribution[reg]={buildings:items.length,distinctFootprintFamilies:signatures.length,
-    repeatingClusters:clusters.filter(x=>x.length>=3)};
+  const fingerprints=[...new Set(items.map(x=>x.footprint))];
+  const archtypes=[...new Set(items.map(x=>x.archetype))];
+  const cluster=(field,values)=>values.map(sig=>items.filter(x=>x[field]===sig).map(x=>x.id)).filter(ids=>ids.length>=3);
+  distribution[reg]={
+   buildings:items.length,
+   distinctFootprintFamilies:fingerprints.length,
+   repeatingClusters:cluster('footprint',fingerprints),
+   distinctArchitecturalTypologies:archtypes.length,
+   repeatingArchitecturalTypologies:cluster('archetype',archtypes)
+  };
  }
- const allPass=Object.values(distribution).every(x=>x.distinctFootprintFamilies>=2&&
-   x.repeatingClusters.length===0);
- return {kind:'OFFLINE_ART_REPETITION_METRIC_NOT_HUMAN_VISUAL_QA',
-  measurement:'Geometric footprint and role signature; material changes and height alone excluded',
+ const footprintOK=Object.values(distribution).every(x=>x.distinctFootprintFamilies>=3&&x.repeatingClusters.length===0);
+ const archetypeOK=Object.values(distribution).every(x=>x.distinctArchitecturalTypologies>=3&&x.repeatingArchitecturalTypologies.length===0);
+ return {
+  kind:'OFFLINE_ART_REPETITION_METRIC_NOT_HUMAN_VISUAL_QA',
+  measurement:'Both geometric footprints and structural ROLE topology; height, color and scale alone excluded',
   distribution,
-  verdict:allPass?'REQUIRES_HUMAN_ART_REVIEW':'REJECT_REPEATED_FOOTPRINT_FAMILIES'};
+  verdict:!footprintOK?'REJECT_REPEATED_FOOTPRINT_FAMILIES':
+    !archetypeOK?'REJECT_REPEATED_BUILDING_ARCHETYPES':'REQUIRES_HUMAN_ART_REVIEW'
+ };
 }
 function writeNew(out,filename,data){
  const p=path.join(out,filename);
