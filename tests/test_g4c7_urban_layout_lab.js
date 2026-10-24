@@ -36,7 +36,8 @@ for(const b of p.buildings){
  assert(!(b.plot[0]===1&&b.plot[1]===1),'Must keep a district-specific open civic site');
 }
 assert(p.boxes.some(x=>x.role==='thick-joined-roof'));
-assert(p.boxes.some(x=>x.role==='rear-residence'));
+assert(p.boxes.some(x=>x.role==='south-residence'));
+assert(p.boxes.some(x=>x.role==='north-residence'));
 assert(p.boxes.some(x=>x.role==='high-sky-gallery'));
 assert(p.boxes.some(x=>x.role==='vertical-core'));
 assert(p.buildings.every(b=>byId.has(b.id)));

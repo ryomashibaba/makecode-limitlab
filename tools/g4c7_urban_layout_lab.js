@@ -39,34 +39,50 @@ function building(region,index,col,row,targetH){
  buildings.push({id,region,kind,plot:[col,row],height:targetH});
  const add=(role,dx,y,dz,w,h,d,material)=>part(id,role,x+dx,y,z+dz,w,h,d,material);
  if(kind==='office'&&targetH>40){
-   add('urban-podium',4,2,4,40,8,40,'concrete');
-   const tower=targetH-10;
-   add('vertical-core',10,10,10,28,tower,28,'glass-and-frame');
-   add('recessed-roof-integral',16,targetH,16,16,2,16,'stone');
+   // 4 genuinely different podium and tower footprint proportions.
+   // Taller/recolored copies of one footprint do NOT count as a new building.
+   const k=index%4;
+   const baseW=[40,43,36,39][k],baseD=[40,36,44,39][k];
+   const towerW=[26,31,24,29][k],towerD=[28,22,30,25][k];
+   add('urban-podium',4,2,4,baseW,8,baseD,'concrete');
+   add('vertical-core',9,10,9,towerW,targetH-10,towerD,'glass-and-frame');
+   const topW=[17,20,14,18][k],topD=[16,14,18,13][k];
+   add('integrated-setback-crown',13,targetH,13,topW,2,topD,'stone');
  }else if(kind==='office'){
-   add('transit-podium',4,2,7,40,8,34,'concrete');
-   add('atrium-volume',10,10,12,28,targetH-8,24,'glass');
+   const w=index===4?40:34,d=index===4?34:41;
+   add('transit-podium',4,2,5,w,8,d,'concrete');
+   add('atrium-volume',9,10,10,w-10,targetH-10,d-10,'glass');
  }else if(kind==='cultural'){
-   add('civic-floor',3,2,5,42,3,38,'stone');
-   for(const [dx,dz] of [[5,7],[37,7],[5,35],[37,35]])
-     add('exposed-hall-support',dx,5,dz,6,targetH-8,6,'concrete');
-   add('thick-joined-roof',4,targetH-3,6,40,3,36,'stone');
+   const spanX=[42,36,44,40,38][index],spanZ=[38,42,33,40,42][index];
+   add('civic-floor',3,2,5,spanX,3,spanZ,'stone');
+   for(const [dx,dz] of [[5,7],[spanX-3,7],[5,spanZ-1],[spanX-3,spanZ-1]])
+     add('exposed-hall-support',dx,5,dz,5,targetH-8,5,'concrete');
+   add('thick-joined-roof',4,targetH-3,6,spanX-2,3,spanZ-2,'stone');
+   // Low masonry front canopy defines an entrance instead of a tall tower.
+   if(index%2===1) {
+     add('grounded-entrance-slab',12,2,5,12,5,8,'concrete');
+   }
  }else if(kind==='residential'){
-   add('base',3,2,3,42,4,42,'stone');
-   const wall=targetH-6;
-   add('west-residence',4,6,8,9,wall,30,'glass');
-   add('east-residence',35,6,8,9,wall,30,'glass');
-   add('rear-residence',4,6,34,40,wall,9,'glass');
-   // The open 22x26 central court remains genuinely AIR.
+   const spanX=[42,38,44,40,36,42][index],spanZ=[42,44,39,43,38,40][index];
+   const wall=[8,10,7,9,8,10][index],livingH=targetH-6;
+   add('courtyard-base',3,2,3,spanX,4,spanZ,'stone');
+   add('west-residence',4,6,8,wall,livingH,spanZ-12,'glass');
+   add('east-residence',3+spanX-wall,6,8,wall,livingH,spanZ-12,'glass');
+   const barZ=index%2===0?3+spanZ-wall:4;
+   add(index%2===0?'south-residence':'north-residence',
+     4,6,barZ,spanX-2,livingH,wall,'glass');
+   // The courtyard is open on alternating sides of the block.
  }else{
-   add('ground-lab',3,2,3,42,6,42,'stone');
+   const spanX=[42,38,44,39,41][index],spanZ=[42,44,38,40,43][index];
    const lower=Math.max(9,targetH-17);
-   add('north-lab-wing',4,8,5,40,lower,11,'glass');
-   add('south-lab-wing',4,8,32,40,lower,11,'glass');
-   add('supported-bridge-west',5,8,17,8,lower,14,'concrete');
-   add('supported-bridge-east',35,8,17,8,lower,14,'concrete');
-   add('high-sky-gallery',5,8+lower,17,38,3,14,'glass');
-   add('recessed-observatory',19,11+lower,21,12,targetH-(11+lower),9,'stone');
+   add('ground-lab',3,2,3,spanX,6,spanZ,'stone');
+   add('north-lab-wing',4,8,5,spanX-2,lower,10,'glass');
+   add('south-lab-wing',4,8,spanZ-9,spanX-2,lower,10,'glass');
+   add('supported-bridge-west',5,8,14,7,lower,spanZ-19,'concrete');
+   add('supported-bridge-east',spanX-5,8,14,7,lower,spanZ-19,'concrete');
+   add('high-sky-gallery',5,8+lower,14,spanX-3,3,spanZ-19,'glass');
+   add('recessed-observatory',Math.floor(spanX/2)-2,11+lower,18,
+     11,targetH-(11+lower),9,'stone');
  }
 }
 function create(){
