@@ -41,12 +41,16 @@ function basis(cam){
  return {view,right,up};
 }
 function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
-function primitives(plan,cam){
+function primitives(plan,cam,opts={}){
  const mat=basis(cam),projection=p=>[dot(p,mat.right),-dot(p,mat.up)];
  let items=[];
  // Ground and open civic plots. Ground only as neutral outline, NOT a rendered completed road.
- const ground={x:0,y:1,z:0,w:372,h:1,d:372};
- for(const box of [ground,...plan.boxes]){
+ const di=['A','B','C','D'].indexOf(opts.district);
+ if(opts.district && di<0)throw Error('Unknown district: '+opts.district);
+ const ground=di<0?{x:0,y:1,z:0,w:372,h:1,d:372}:
+   {x:(di%2)*180,y:1,z:Math.floor(di/2)*180,w:180,h:1,d:180};
+ const display=di<0?plan.boxes:plan.boxes.filter(b=>b.id[0]===opts.district);
+ for(const box of [ground,...display]){
   const pts=corners(box),reg=box.id?box.id[0]:'A';
   for(const f of faceDefs){
    if(dot(f.n,mat.view)<=0)continue;
@@ -66,7 +70,7 @@ function escapeXml(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&
 function svg(plan,camName,opts={}){
  const cam=cameras[camName];if(!cam)throw Error('Unknown camera '+camName);
  const W=1200,H=900,margin=76,upper=108,footer=52;
- const items=primitives(plan,cam),pts=items.flatMap(x=>x.points);
+ const items=primitives(plan,cam,opts),pts=items.flatMap(x=>x.points);
  const xs=pts.map(x=>x[0]),ys=pts.map(x=>x[1]);
  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
  const scale=Math.min((W-2*margin)/(maxX-minX),(H-upper-footer)/(maxY-minY));
@@ -150,11 +154,21 @@ function main(){
  validate(); const plan=create(); const report=assess(plan);
  fs.mkdirSync(folder,{recursive:false});
  for(const name of Object.keys(cameras))writeNew(folder,name+'.svg',svg(plan,name));
+ for(const district of ['A','B','C','D'])writeNew(folder,
+   'district_'+district+'_oblique.svg',svg(plan,'oblique',{district}));
  writeNew(folder,'g4c7_review.obj',toObj(plan));
  writeNew(folder,'g4c7_review.mtl',mtl());
  writeNew(folder,'review_quality.json',JSON.stringify(report,null,2)+'\n');
  writeNew(folder,'source_geometry.json',JSON.stringify(plan,null,2)+'\n');
- console.log(JSON.stringify({out:folder,files:Object.keys(cameras).length+4,
+ const images=['front','side','oblique','aerial'].map(n=>'<figure><a href="'+n+'.svg"><img src="'+n+'.svg"></a><figcaption>'+n+'</figcaption></figure>').join('');
+ const districts=['A','B','C','D'].map(n=>'<figure><a href="district_'+n+'_oblique.svg"><img src="district_'+n+'_oblique.svg"></a><figcaption>District '+n+'</figcaption></figure>').join('');
+ const html='<!doctype html><html lang="ja"><meta charset="utf-8"><title>G4-C7 Four View QA</title>'+
+   '<style>body{font:16px system-ui;background:#eef3f6;color:#172c3b;max-width:1400px;margin:auto;padding:24px}section{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:12px}figure{margin:0;padding:8px;background:white;border-radius:12px}img{width:100%}figcaption{padding:8px}</style>'+
+   '<h1>G4-C7 CONCEPT / Four-view art review</h1><p>Model only; NOT a Minecraft build or a visual-quality approval.</p>'+
+   '<h2>City</h2><section>'+images+'</section><h2>Four districts</h2><section>'+districts+'</section>'+
+   '<p><a href="g4c7_review.obj">3D OBJ</a> / <a href="review_quality.json">Quality report JSON</a></p></html>';
+ writeNew(folder,'review_board.html',html);
+ console.log(JSON.stringify({out:folder,files:Object.keys(cameras).length+9,
   buildings:plan.buildingCount,boxes:plan.boxes.length,quality:report.verdict,
   footprintFamilies:Object.fromEntries(Object.entries(report.distribution).map(([k,v])=>[k,v.distinctFootprintFamilies]))}));
 }
