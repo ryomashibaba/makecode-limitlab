@@ -15,7 +15,7 @@ from g4c6_capture import create_bundle, inspect, CSV_NAME
 def fixture():
     rows=["Version,Stage,Units,Total,Status,Detail",
           "G4C6,RUN,0,0,BEGIN,G4C6_DISTRICTS_372x372_sampled",
-          "G4C6,PLAN,871,123456,PASS,four_layers_fills_before_clones",
+          "G4C6,PLAN,863,123456,PASS,four_layers_fills_before_clones",
           "G4C6,PREFLIGHT,300,300,PASS,300_sparse_air_points_before_latch"]
     for st,n in (("ROADS",167),("PROTOTYPES",94)):
         rows.extend([f"G4C6,{st},0,{n},BEGIN,precomputed_bounded_boxes",
@@ -47,14 +47,14 @@ def fixture():
                  "G4C6,A3_MASSING,116,116,PASS,issued_all_planned_fills",
                  "G4C6,A3_SAMPLE,0,12,BEGIN,anchored_wings_four_regions",
                  "G4C6,A3_SAMPLE,12,12,PASS,sampled_attached_masses_not_exact",
-                 "G4C6,A4_ACCESS,0,308,BEGIN,precomputed_bounded_boxes",
-                 "G4C6,A4_ACCESS,48,308,PROGRESS,planned_fills",
-                 "G4C6,A4_ACCESS,96,308,PROGRESS,planned_fills",
-                 "G4C6,A4_ACCESS,144,308,PROGRESS,planned_fills",
-                 "G4C6,A4_ACCESS,192,308,PROGRESS,planned_fills",
-                 "G4C6,A4_ACCESS,240,308,PROGRESS,planned_fills",
-                 "G4C6,A4_ACCESS,288,308,PROGRESS,planned_fills",
-                 "G4C6,A4_ACCESS,308,308,PASS,issued_all_planned_fills",
+                 "G4C6,A4_ACCESS,0,300,BEGIN,precomputed_bounded_boxes",
+                 "G4C6,A4_ACCESS,48,300,PROGRESS,planned_fills",
+                 "G4C6,A4_ACCESS,96,300,PROGRESS,planned_fills",
+                 "G4C6,A4_ACCESS,144,300,PROGRESS,planned_fills",
+                 "G4C6,A4_ACCESS,192,300,PROGRESS,planned_fills",
+                 "G4C6,A4_ACCESS,240,300,PROGRESS,planned_fills",
+                 "G4C6,A4_ACCESS,288,300,PROGRESS,planned_fills",
+                 "G4C6,A4_ACCESS,300,300,PASS,issued_all_planned_fills",
                  "G4C6,A4_SAMPLE,0,36,BEGIN,wing_portal_and_floor_contact",
                  "G4C6,A4_SAMPLE,36,36,PASS,sampled_passages_not_full_walk",
                  "G4C6,A5_STAIRS,0,264,BEGIN,oriented_stonebrick_metadata",
@@ -66,7 +66,7 @@ def fixture():
                  "G4C6,A5_STAIRS,264,264,PASS,issued_264_oriented_stairs",
                  "G4C6,A5_SAMPLE,0,24,BEGIN,three_stair_metadata_witnesses_per_wing",
                  "G4C6,A5_SAMPLE,24,24,PASS,oriented_stair_samples_not_walk",
-                 "G4C6,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill871_clone49_checks455_towers32"])
+                 "G4C6,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill863_clone49_checks455_towers32"])
     return "\n".join(rows)+"\n"
 
 class EvidenceTests(unittest.TestCase):
@@ -196,8 +196,8 @@ class EvidenceTests(unittest.TestCase):
 
 
     def test_new_stage_cannot_fake_access_count(self):
-        t=fixture().replace("G4C6,A4_ACCESS,308,308,PASS,issued_all_planned_fills",
-                            "G4C6,A4_ACCESS,306,308,PASS,issued_all_planned_fills")
+        t=fixture().replace("G4C6,A4_ACCESS,300,300,PASS,issued_all_planned_fills",
+                            "G4C6,A4_ACCESS,298,300,PASS,issued_all_planned_fills")
         self.assertEqual(evaluate(self.csv(t))["verdict"],"INCOMPLETE")
     def test_new_sample_stage_must_exist(self):
         t=fixture().replace("G4C6,A4_SAMPLE,36,36,PASS,sampled_passages_not_full_walk\n","")
