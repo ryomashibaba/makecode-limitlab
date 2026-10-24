@@ -29,11 +29,14 @@ for(const r of Object.values(report.distribution)){
  assert(r.buildings>=5);
  assert(r.distinctFootprintFamilies>=1);
 }
-assert.equal(report.verdict,'REJECT_REPEATED_FOOTPRINT_FAMILIES',
- 'The current 22-block mass concept MUST NOT be called visually approved');
-assert(report.distribution.B.repeatingClusters.some(a=>a.length>=3),'Culture repeated slabs not detected');
-assert(report.distribution.C.repeatingClusters.some(a=>a.length>=3),'Residential repeated U blocks not detected');
-assert(report.distribution.D.repeatingClusters.some(a=>a.length>=3),'Research repeated H blocks not detected');
+assert.equal(report.verdict,'REQUIRES_HUMAN_ART_REVIEW',
+ 'Footprint family uniqueness is not a substitute for human 4-view quality review');
+for(const [region,metric] of Object.entries(report.distribution)){
+ assert(metric.distinctFootprintFamilies>=3,
+   region+' still clones near-identical architectural footprints');
+ assert.equal(metric.repeatingClusters.length,0,
+   region+' has at least three repeated identical building plans');
+}
 console.log('PASS 4 view SVGs and OBJ/MTL export for '+plan.boxes.length+' cuboids');
-console.log('PASS aesthetic regression detection: repetitive 22-building layout remains REJECT and must be redesigned before Minecraft');
+console.log('PASS quantitative repetition guard: 4 regions no triple-duplicate footprint; HUMAN aesthetics still HOLD');
 console.log(JSON.stringify(report.distribution));
