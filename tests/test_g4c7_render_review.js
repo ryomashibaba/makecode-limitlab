@@ -17,6 +17,13 @@ for(const cam of Object.keys(cameras)){
  assert(faces.length>150);
  assert(faces.every(f=>f.points.length===4&&f.points.every(p=>p.every(Number.isFinite))));
 }
+for(const district of ['A','B','C','D']){
+ const cut=svg(plan,'oblique',{district});
+ assert(cut.includes('<svg')&&cut.includes('</svg>'));
+ const whole=primitives(plan,cameras.oblique),part=primitives(plan,cameras.oblique,{district});
+ assert(part.length<whole.length,'district crop must have fewer faces');
+ assert(part.length>20,'district crop must show usable massing');
+}
 const obj=toObj(plan);
 assert.equal((obj.match(/^o /gm)||[]).length,plan.boxes.length);
 assert.equal((obj.match(/^v /gm)||[]).length,plan.boxes.length*8);
