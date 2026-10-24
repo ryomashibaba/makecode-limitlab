@@ -21,7 +21,7 @@ function simulate(o={}){
   place:(id,p)=>{
    places++;if(places===o.failPlace)return false;
    const [x,y,z]=pos(p);
-   assert.equal(get(x,y,z),M.WHITE_CONCRETE,'STAIR_OVERWRITES_NON_SUPPORT_'+x+'_'+y+'_'+z);
+   assert.equal(get(x,y,z),M.AIR,'STAIR_NOT_EMPTY_BEFORE_PLACE_'+x+'_'+y+'_'+z);
    put(x,y,z,id);return true;
   },
   testForBlock:(id,p)=>{checks++;const [x,y,z]=pos(p);return get(x,y,z)==id},
@@ -63,14 +63,14 @@ const specs=[['A1',0,104,25,48],['A2',0,44,145,38],
 let count=0;function test(name,fn){fn();console.log('PASS',name);count++}
 test('all 8 wings: G4C6 one-shot construction & bounded 49 clones',()=>{
  const t=simulate();t.run();const a=t.stats();
- assert.equal(a.fills,871);assert.equal(a.clones,49);assert.equal(a.places,264);
+ assert.equal(a.fills,863);assert.equal(a.clones,49);assert.equal(a.places,264);
  assert.equal(a.checks,455,'G4C6 checked '+a.checks+' samples; recent log='+t.csv().slice(-1100));
  assert(a.maxFill<=32768&&a.maxClone<=262144);
- assert(t.csv().includes('G4C6,A4_ACCESS,308,308,PASS'));
+ assert(t.csv().includes('G4C6,A4_ACCESS,300,300,PASS'));
  assert(t.csv().includes('G4C6,A4_SAMPLE,36,36,PASS'));
  assert(t.csv().includes('G4C6,A5_STAIRS,264,264,PASS'));
  assert(t.csv().includes('G4C6,A5_SAMPLE,24,24,PASS'));
- assert(t.csv().includes('G4C6,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill871_clone49_checks455_towers32'));
+ assert(t.csv().includes('G4C6,RUN,1,1,FINISHED,FAST_COMPLETED_SAMPLED_fill863_clone49_checks455_towers32'));
 });
 test('8 pockets, each new inner foyer, stair supports and 20 intermediate floors',()=>{
  const t=simulate();t.run();
