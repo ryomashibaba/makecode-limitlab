@@ -39,4 +39,24 @@ for(const [region,metric] of Object.entries(report.distribution)){
 }
 console.log('PASS 4 view SVGs and OBJ/MTL export for '+plan.boxes.length+' cuboids');
 console.log('PASS quantitative repetition guard: 4 regions no triple-duplicate footprint; HUMAN aesthetics still HOLD');
+// Adversarial art QA: deliberately convert six varied C buildings to the same
+// U-footprint, keeping their original heights. Must fail despite height differences.
+const synthetic=JSON.parse(JSON.stringify(plan));
+const original=synthetic.boxes.filter(b=>b.id==='C1');
+const c1base=[Math.min(...original.map(b=>b.x)),Math.min(...original.map(b=>b.z))];
+const bad=[];
+for(let n=1;n<=6;n++){
+ const id='C'+n;
+ const before=synthetic.boxes.filter(b=>b.id===id);
+ const base=[Math.min(...before.map(b=>b.x)),Math.min(...before.map(b=>b.z))];
+ for(const q of original){
+  bad.push({...q,id,x:q.x-c1base[0]+base[0],z:q.z-c1base[1]+base[1],
+    y:q.y+(n%2),material:n%2?'glass':'stone'});
+ }
+}
+synthetic.boxes=synthetic.boxes.filter(b=>b.id[0]!=='C').concat(bad);
+const syntheticResult=assess(synthetic);
+assert.equal(syntheticResult.verdict,'REJECT_REPEATED_FOOTPRINT_FAMILIES',
+ 'Painting or raising identical U-blocks must not satisfy variety gate');
+console.log('PASS adversarial cloned C courtyard blocks are rejected despite new colors/heights');
 console.log(JSON.stringify(report.distribution));
