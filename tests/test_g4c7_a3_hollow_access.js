@@ -2,7 +2,7 @@
 const assert=require('assert');
 const {create}=require('../tools/g4c7_urban_layout_lab');
 const {buildA3,evaluateA3}=require('../tools/g4c7_a3_hollow_access_lab');
-const {svg,toObj,assess}=require('../tools/g4c7_render_review');
+const {svg,toObj,assess,primitives,cameras}=require('../tools/g4c7_render_review');
 const original=create();
 const a3=buildA3();
 assert.equal(a3.buildingCount,22,'historical A2 program count retained');
@@ -49,7 +49,10 @@ assert(svg(a3,'aerial',{district:'B'}).includes('CONCEPT ONLY'));
 for(const b of ['A1','B2','C1','D1']){
  const view=svg(a3,'oblique',{building:b,cutaway:true});
  assert(view.includes('CUTAWAY '+b+' / ROOF HIDDEN'));
- assert(!view.includes('bearing-roof'), 'Roof should be visually removed');
+ const faces=primitives(a3,cameras.oblique,{building:b,cutaway:true});
+ assert(faces.length>6);
+ assert(faces.every(f=>!f.label.includes('bearing-roof')),
+   'Cutaway must exclude roof faces in geometry; metadata/UI text is not geometry');
 }
 assert((toObj(a3).match(/^o /gm)||[]).length===a3.solidBoxes);
 console.log('G4C7 A3 PASS — 22/22 street-to-hollow-room routes, 4/4 accessible civic-grade transitions');
