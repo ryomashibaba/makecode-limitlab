@@ -47,9 +47,18 @@ function primitives(plan,cam,opts={}){
  // Ground and open civic plots. Ground only as neutral outline, NOT a rendered completed road.
  const di=['A','B','C','D'].indexOf(opts.district);
  if(opts.district && di<0)throw Error('Unknown district: '+opts.district);
- const ground=di<0?{x:0,y:1,z:0,w:372,h:1,d:372}:
+ const single=opts.building?plan.boxes.filter(b=>b.id===opts.building):null;
+ if(opts.building && !single.length)throw Error('No building: '+opts.building);
+ const ground=single?{x:Math.min(...single.map(b=>b.x))-4,y:1,
+   z:Math.min(...single.map(b=>b.z))-4,
+   w:Math.max(...single.map(b=>b.x+b.w))-Math.min(...single.map(b=>b.x))+8,
+   h:1,d:Math.max(...single.map(b=>b.z+b.d))-Math.min(...single.map(b=>b.z))+8}:
+   di<0?{x:0,y:1,z:0,w:372,h:1,d:372}:
    {x:(di%2)*180,y:1,z:Math.floor(di/2)*180,w:180,h:1,d:180};
- const display=di<0?plan.boxes:plan.boxes.filter(b=>b.id[0]===opts.district);
+ const display=single?(opts.cutaway?single.filter(b=>
+   b.role.endsWith('-floor')||b.role.endsWith('-wall')||
+   /-entry-(west-left|west-right|load-bearing-header)$/.test(b.role)):single):
+   di<0?plan.boxes:plan.boxes.filter(b=>b.id[0]===opts.district);
  for(const box of [ground,...display]){
   const pts=corners(box),reg=box.id?box.id[0]:'A';
   for(const f of faceDefs){
@@ -86,7 +95,7 @@ function svg(plan,camName,opts={}){
    '<rect width="'+W+'" height="102" fill="#102633"/>'+
    '<text x="46" y="48" fill="#ffffff" font-size="26" font-family="Arial,sans-serif" font-weight="700">G4-C7 / A2-A5 • '+escapeXml(cam.label)+'</text>'+
    '<text x="46" y="77" fill="#acbdc6" font-size="16" font-family="Arial,sans-serif">'+
-   'CONCEPT ONLY • 22 masses / 4 districts • no ground-level usability approved</text>'+
+   'CONCEPT ONLY • '+(opts.building?'CUTAWAY '+opts.building+' / ROOF HIDDEN •': '22 masses / 4 districts •')+' no ground-level usability approved</text>'+
    polys+
    '<text x="46" y="864" font-size="17" font-family="Arial,sans-serif" fill="#243847">'+
    'A Finance    B Culture    C Courtyard homes    D Laboratories    |    REVIEW STATUS: '+scores.verdict+'</text>'+
@@ -159,21 +168,32 @@ function main(){
  if(i<0||!process.argv[i+1])throw Error('Usage: --out NEW_EMPTY_DIRECTORY');
  const folder=path.resolve(process.argv[i+1]);
  if(fs.existsSync(folder))throw Error('Output directory already exists; no overwrite '+folder);
- validate(); const plan=create(); const report=assess(plan);
+ const useA3=process.argv.includes('--a3');
+ if(!useA3)validate();
+ const plan=useA3?require('./g4c7_a3_hollow_access_lab').buildA3():create();
+ const report=assess(plan);
  fs.mkdirSync(folder,{recursive:false});
  for(const name of Object.keys(cameras))writeNew(folder,name+'.svg',svg(plan,name));
  for(const district of ['A','B','C','D'])writeNew(folder,
    'district_'+district+'_oblique.svg',svg(plan,'oblique',{district}));
+ if(useA3)for(const id of ['A1','B2','C1','D1'])writeNew(folder,
+   'cutaway_'+id+'.svg',svg(plan,'oblique',{building:id,cutaway:true}));
  writeNew(folder,'g4c7_review.obj',toObj(plan));
  writeNew(folder,'g4c7_review.mtl',mtl());
  writeNew(folder,'review_quality.json',JSON.stringify(report,null,2)+'\n');
+ if(useA3) {
+  const access=require('./g4c7_a3_hollow_access_lab').evaluateA3(plan);
+  writeNew(folder,'ground_access_qa.json',JSON.stringify(access,null,2)+'\n');
+ }
  writeNew(folder,'source_geometry.json',JSON.stringify(plan,null,2)+'\n');
  const images=['front','side','oblique','aerial'].map(n=>'<figure><a href="'+n+'.svg"><img src="'+n+'.svg"></a><figcaption>'+n+'</figcaption></figure>').join('');
  const districts=['A','B','C','D'].map(n=>'<figure><a href="district_'+n+'_oblique.svg"><img src="district_'+n+'_oblique.svg"></a><figcaption>District '+n+'</figcaption></figure>').join('');
+ const cutaways=useA3?['A1','B2','C1','D1'].map(n=>'<figure><a href="cutaway_'+n+'.svg"><img src="cutaway_'+n+'.svg"></a><figcaption>Cutaway '+n+' — roof/upper floors hidden</figcaption></figure>').join(''):'';
  const html='<!doctype html><html lang="ja"><meta charset="utf-8"><title>G4-C7 Four View QA</title>'+
    '<style>body{font:16px system-ui;background:#eef3f6;color:#172c3b;max-width:1400px;margin:auto;padding:24px}section{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:12px}figure{margin:0;padding:8px;background:white;border-radius:12px}img{width:100%}figcaption{padding:8px}</style>'+
-   '<h1>G4-C7 CONCEPT / Four-view art review</h1><p>Model only; NOT a Minecraft build or a visual-quality approval.</p>'+
+   '<h1>G4-C7 CONCEPT / Four-view art review</h1><p>Model only; '+(useA3?'A3 hollow ground interiors / street entrances; upper floor walk unverified. ':'')+'NOT a Minecraft build or a visual-quality approval.</p>'+
    '<h2>City</h2><section>'+images+'</section><h2>Four districts</h2><section>'+districts+'</section>'+
+   (useA3?'<h2>Architectural CUTAWAY previews — roofs hidden for inspection</h2><section>'+cutaways+'</section>':'')+
    '<p><a href="g4c7_review.obj">3D OBJ</a> / <a href="review_quality.json">Quality report JSON</a></p></html>';
  writeNew(folder,'review_board.html',html);
  console.log(JSON.stringify({out:folder,files:Object.keys(cameras).length+9,
