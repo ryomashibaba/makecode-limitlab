@@ -45,7 +45,21 @@ for(const [region,roles] of Object.entries({
  const present=new Set(p.boxes.filter(v=>v.id[0]===region).map(v=>v.role));
  for(const role of roles)assert(present.has(role),region+' lost structural program '+role);
 }
+const civicRoles={
+ A:['financial-public-square-floor','transit-hall-west-front'],
+ B:['outdoor-cultural-court','main-open-stage','tiered-civic-seats-west'],
+ C:['community-park-base','park-greenhouse-west','park-woodland-terrace-east'],
+ D:['research-community-square','science-demo-west','science-exhibit-east']
+};
+for(const [region,roles] of Object.entries(civicRoles)){
+ const present=p.boxes.filter(b=>b.id===region+'0').map(b=>b.role);
+ for(const role of roles)assert(present.includes(role),'Missing '+region+' civic role '+role);
+ assert(present.length>=4,'No public center in '+region);
+ const di=['A','B','C','D'].indexOf(region),cx=(di%2)*180+96,cz=Math.floor(di/2)*180+96;
+ assert(!p.boxes.some(b=>b.x<=cx&&cx<b.x+b.w&&b.z<=cz&&cz<b.z+b.d&&
+   b.y<=5&&5<b.y+b.h),region+' civic breathing space blocked at pedestrian head height');
+}
 assert(p.buildings.every(b=>byId.has(b.id)));
-console.log('PASS G4C7 A2: 22 individually programmed buildings, 4 regions, grounded structural masses and road buffers');
+console.log('PASS G4C7 A2: 22 individually programmed buildings + 4 differentiated public civic hearts, structural supports and road buffers');
 console.log('PASS block-copy proxy: 8,771,760 historical candidate -> 211,968 proposed road-only copy; this is NOT time');
 console.log('PASS concept-only gate: no Minecraft or previous CSV/ZIP/USED-latch writes');
