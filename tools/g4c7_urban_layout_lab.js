@@ -55,7 +55,7 @@ function building(region,index,col,row,targetH){
    add('gallery-retail-ground',4,2,4,43,8,42,'concrete');
    add('street-atrium-west',5,10,11,14,targetH-10,30,'glass');
    add('vertical-office-east',27,10,7,14,targetH-10,25,'glass-and-frame');
-   add('atrium-sky-join',15,targetH-3,12,16,3,13,'stone');
+   add('atrium-sky-join',15,targetH,12,16,2,13,'stone');
   }else if(index===3){ // stepping terrace buildings, not a simple tower
    add('ground-transport-deck',3,2,4,44,8,42,'concrete');
    add('first-offset-terrace',5,10,6,38,targetH-29,36,'glass');
@@ -114,7 +114,7 @@ function building(region,index,col,row,targetH){
    add('hillside-residence-ground',3,2,3,44,4,44,'stone');
    add('south-deep-terrace',5,6,6,38,8,38,'concrete');
    add('middle-terrace-home',9,14,10,31,8,29,'glass');
-   add('upper-roof-garden',13,22,14,23,targetH-20,20,'stone');
+   add('upper-roof-garden',13,22,14,23,targetH-22,20,'stone');
   }else if(index===4){ // deliberately low greenhouse commons
    add('garden-cooperative-base',3,2,5,44,4,42,'stone');
    add('glass-greenhouse-pavilion',12,6,12,25,targetH-6,25,'glass');
