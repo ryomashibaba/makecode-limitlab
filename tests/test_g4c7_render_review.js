@@ -36,8 +36,8 @@ for(const r of Object.values(report.distribution)){
  assert(r.buildings>=5);
  assert(r.distinctFootprintFamilies>=1);
 }
-assert.equal(report.verdict,'REQUIRES_HUMAN_ART_REVIEW',
- 'Footprint family uniqueness is not a substitute for human 4-view quality review');
+assert.equal(report.verdict,'REJECT_REPEATED_BUILDING_ARCHETYPES',
+ 'Changing dimensions while reusing U/hall/H plans must be rejected');
 for(const [region,metric] of Object.entries(report.distribution)){
  assert(metric.distinctFootprintFamilies>=3,
    region+' still clones near-identical architectural footprints');
@@ -45,7 +45,10 @@ for(const [region,metric] of Object.entries(report.distribution)){
    region+' has at least three repeated identical building plans');
 }
 console.log('PASS 4 view SVGs and OBJ/MTL export for '+plan.boxes.length+' cuboids');
-console.log('PASS quantitative repetition guard: 4 regions no triple-duplicate footprint; HUMAN aesthetics still HOLD');
+assert(report.distribution.B.distinctArchitecturalTypologies<3);
+assert(report.distribution.C.distinctArchitecturalTypologies<3);
+assert.equal(report.distribution.D.distinctArchitecturalTypologies,1);
+console.log('PASS footprint variety check but structural archetype quality REJECT; no Minecraft approval');
 // Adversarial art QA: deliberately convert six varied C buildings to the same
 // U-footprint, keeping their original heights. Must fail despite height differences.
 const synthetic=JSON.parse(JSON.stringify(plan));
