@@ -7,6 +7,7 @@ on:
       - 'tests/test_g4c7_urban_layout_lab.js'
       - 'tests/test_g4c7_render_review.js'
       - 'docs/G4C7_A2_ARCHITECTURAL_TYPES_JA.md'
+      - 'docs/G4C7_A2_VISUAL_AUDIT_STATUS_JA.md'
       - '.github/workflows/verify_g4c7_a2_architecture.yml'
   pull_request:
   workflow_dispatch:
