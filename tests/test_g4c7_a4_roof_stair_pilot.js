@@ -1,0 +1,44 @@
+'use strict';
+const assert=require('assert');
+const {buildA3}=require('../tools/g4c7_a3_hollow_access_lab');
+const {buildA4,evaluateA4,PILOTS}=require('../tools/g4c7_a4_roof_stair_pilot');
+const {toObj,svg}=require('../tools/g4c7_render_review');
+const a3=buildA3(),plan=buildA4();
+assert.equal(plan.buildingCount,22);
+assert.equal(plan.entrances.length,22);
+assert.equal(plan.civicConnections.length,4);
+assert.deepEqual(PILOTS,['A1','B1','C1','D1']);
+assert.equal(plan.upperPilots.length,4);
+assert(plan.solidBoxes>a3.solidBoxes);
+assert.equal(plan.label,'G4C7_A4_FOUR_ROOF_LANDING_PILOTS_CONCEPT_ONLY');
+const q=evaluateA4(plan);
+assert.equal(q.groundRooms,22,'Ground room regressions');
+assert.equal(q.civicSquares,4,'Public-square regressions');
+assert.equal(q.treads.passed,q.treads.total,'Unreachable per-step feet '+JSON.stringify(q.pilots));
+assert.equal(q.roofLandings.passed,4,'Disconnected rooftop landings '+JSON.stringify(q.pilots));
+assert.equal(q.verdict,'FOUR_PILOT_ROOF_ACCESS_MODEL_PASS');
+assert.equal(q.treads.total,20,'Unexpected flight sizes');
+for(const f of plan.upperPilots){
+ assert(f.stairLength>=3);
+ assert(f.roofCutArea>=9);
+ const cap=a3.boxes.find(b=>b.id===f.id&&b.role.endsWith('-bearing-roof'));
+ assert(cap);
+ assert(!plan.boxes.includes(cap),'Uncut full-height roof must be removed '+f.id);
+ assert(plan.boxes.filter(b=>b.id===f.id&&b.role.includes('cut-')&&b.role.includes('-bearing')).length===4);
+ const [x,y,z]=f.roofLanding;assert.equal(y,cap.y+1);
+ assert(x>cap.x&&x<cap.x+cap.w&&z>cap.z&&z<cap.z+cap.d);
+ const w=q.pilots.find(w=>w.id===f.id);
+ assert(w&&w.passedTreads===f.stairLength&&w.landingAccessible);
+}
+const removed=plan.upperPilots[0].steps[3].tread;
+const neg=evaluateA4(plan,{removeTread:removed});
+assert.equal(neg.verdict,'ROOF_ACCESS_BLOCKED',
+ 'Deliberately missing A1 tread must block QA');
+assert(neg.treads.passed<neg.treads.total);
+assert.equal(neg.groundRooms,22,'Negative control must not destroy unrelated ground entrances');
+const all=toObj(plan);
+assert.equal((all.match(/^o /gm)||[]).length,plan.solidBoxes);
+assert(svg(plan,'oblique',{district:'B'}).includes('CONCEPT ONLY'));
+console.log('PASS A4 22/22 ground rooms, 4/4 civic approaches');
+console.log('PASS A4 20/20 simulated supported stair risers and 4/4 roof-cap landings');
+console.log('PASS A4 missing stair negative control, no full-city hardware or upper-floor acceptance');
