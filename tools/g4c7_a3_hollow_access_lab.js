@@ -103,6 +103,7 @@ function evaluateA3(plan=buildA3(),opts={}){
  const block=(x,y,z)=>{
   if(x<0||z<0||y<0||x>=W||z>=W||y>=H)return 1;
   if(opts.blockDoor && x===opts.blockDoor[0]&&y===opts.blockDoor[1]&&z===opts.blockDoor[2])return 1;
+  if(opts.removeTread && x===opts.removeTread[0]&&y===opts.removeTread[1]&&z===opts.removeTread[2])return 0;
   return solid[idx(x,y,z)];
  };
  // Y=1 is the previously established solid grade throughout the planned
@@ -133,6 +134,10 @@ function evaluateA3(plan=buildA3(),opts={}){
   }
  }
  const reachable=pos=>pos&&!!seen[idx(pos[0],pos[1],pos[2])];
+ const witnesses=(opts.witnesses||[]).map(w=>({
+  label:w.label,feet:w.feet,headClear:!block(...w.feet)&&!block(w.feet[0],w.feet[1]+1,w.feet[2]),
+  supported:stand(...w.feet),streetReachable:!!seen[idx(...w.feet)]
+ }));
  const rooms=plan.entrances.map(e=>({
   building:e.building,doorFree:!block(...e.doorway)&&!block(e.doorway[0],e.doorway[1]+1,e.doorway[2]),
   outerRoadReachable:reachable(e.outer),
@@ -149,6 +154,7 @@ function evaluateA3(plan=buildA3(),opts={}){
   buildingCount:plan.buildingCount,cityExtent:[W,W,H],
   groundRooms:{passed:roomCount,total:22,items:rooms},
   publicSquares:{passed:commonsCount,total:4,items:commons},
+  witnesses,
   visitedWalkCells:tail,approximateMovement:'2 AIR head, 1 block rise, four-direction; no Minecraft collision simulation',
   verdict:roomCount===22&&commonsCount===4?'GROUND_ONLY_OFFLINE_PASS':'GROUND_ACCESS_BLOCKED',
   notApproved:['upper floors','actual player walking','city aesthetics','speed','Minecraft construction']};
