@@ -1,0 +1,27 @@
+name: G4C6 A4A2 oriented stairs OFFLINE ONLY
+on:
+  push:
+    paths:
+      - 'makecode/limitlab_g4c6_a4a2.ts'
+      - 'tests/test_g4c6_a4a2_oriented.js'
+      - '.github/workflows/verify_g4c6_a4a2_oriented.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  oriented-city-voxel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile new independent G4C6 source
+        run: |
+          mkdir -p build
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c6_a4a2.js tests/makecode_g4b_stub.d.ts tests/makecode_stair_bench_a1c_stub.d.ts makecode/limitlab_g4c6_a4a2.ts
+      - name: Verify all 264 staircase directions plus regression and failure abort
+        run: node tests/test_g4c6_a4a2_oriented.js
+      - name: No Minecraft approval from CI
+        run: echo 'Offline simulated geometry ONLY. Actual 8-wing Minecraft walking and run evidence remain unverified.'
