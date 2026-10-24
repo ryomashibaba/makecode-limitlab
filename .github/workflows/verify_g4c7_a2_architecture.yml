@@ -1,0 +1,43 @@
+name: G4C7 A2 distinct architecture concept 3D (NO MINECRAFT)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_urban_layout_lab.js'
+      - 'tools/g4c7_render_review.js'
+      - 'tests/test_g4c7_urban_layout_lab.js'
+      - 'tests/test_g4c7_render_review.js'
+      - 'docs/G4C7_A2_ARCHITECTURAL_TYPES_JA.md'
+      - '.github/workflows/verify_g4c7_a2_architecture.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  architectural-type-and-fourview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Enforce 22 building programs and road/support/silhouette constraints
+        run: node tests/test_g4c7_urban_layout_lab.js
+      - name: Reject repeated B/C/D building archetypes; export source-linked projections
+        run: node tests/test_g4c7_render_review.js
+      - name: Generate eight reproducible vector views and Blender-compatible 3D mesh
+        run: |
+          mkdir -p build
+          node tools/g4c7_render_review.js --out build/g4c7_a2_views
+          for f in front side oblique aerial; do test -s "build/g4c7_a2_views/${f}.svg"; done
+          for f in A B C D; do test -s "build/g4c7_a2_views/district_${f}_oblique.svg"; done
+          test -s build/g4c7_a2_views/review_board.html
+          test -s build/g4c7_a2_views/g4c7_review.obj
+          test -s build/g4c7_a2_views/review_quality.json
+          node -e "let q=require('./build/g4c7_a2_views/review_quality.json');if(q.verdict!=='REQUIRES_HUMAN_ART_REVIEW')throw Error(q.verdict);console.log('Geometry variety met; HUMAN visual art acceptance still PENDING.')"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a2-eight-view-differentiated-architecture-concept-only
+          path: build/g4c7_a2_views/
+          retention-days: 14
+      - name: Not a green light for hardware city construction
+        run: echo 'CONCEPT-ONLY; existing G4C6 world, private ZIP, used latches and historical real data unchanged.'
