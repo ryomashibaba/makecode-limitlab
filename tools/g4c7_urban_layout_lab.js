@@ -70,6 +70,7 @@ function building(region,index,col,row,targetH){
  }
 }
 function create(){
+ boxes.length=0;buildings.length=0; // repeated evaluations must be pure and deterministic
  for(const region of ['A','B','C','D']){
   const p=programs[region];
   sites[region].forEach(([col,row],i)=>building(region,i,col,row,p.heights[i]));
