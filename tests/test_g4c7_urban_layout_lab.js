@@ -35,12 +35,17 @@ for(const b of p.boxes){
 for(const b of p.buildings){
  assert(!(b.plot[0]===1&&b.plot[1]===1),'Must keep a district-specific open civic site');
 }
-assert(p.boxes.some(x=>x.role==='thick-joined-roof'));
-assert(p.boxes.some(x=>x.role==='south-residence'));
-assert(p.boxes.some(x=>x.role==='north-residence'));
-assert(p.boxes.some(x=>x.role==='high-sky-gallery'));
-assert(p.boxes.some(x=>x.role==='vertical-core'));
+// Region archetypes must have different purpose-built structural elements.
+for(const [region,roles] of Object.entries({
+ A:['wide-mixed-podium','recessed-upper-office','atrium-sky-join','upper-offset-terrace','long-bus-market-arcade','covered-south-stalls'],
+ B:['acoustic-thick-roof','museum-west-gallery','clerestory-lightwell','long-reading-room','tiered-bleachers'],
+ C:['courtyard-U-ground','north-L-residence','garden-street-base','middle-terrace-home','glass-greenhouse-pavilion','courtyard-community-hall'],
+ D:['supported-research-skybridge','grounded-observation-tower','raised-observation-well','research-sawtooth-lightwell','workshop-observation-platform']
+})){
+ const present=new Set(p.boxes.filter(v=>v.id[0]===region).map(v=>v.role));
+ for(const role of roles)assert(present.has(role),region+' lost structural program '+role);
+}
 assert(p.buildings.every(b=>byId.has(b.id)));
-console.log('PASS G4C7 urban-concept: 22 buildings, 4 unlike typologies, civic voids, ground support, no road overwrite');
+console.log('PASS G4C7 A2: 22 individually programmed buildings, 4 regions, grounded structural masses and road buffers');
 console.log('PASS block-copy proxy: 8,771,760 historical candidate -> 211,968 proposed road-only copy; this is NOT time');
 console.log('PASS concept-only gate: no Minecraft or previous CSV/ZIP/USED-latch writes');
