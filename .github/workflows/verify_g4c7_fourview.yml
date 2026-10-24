@@ -1,0 +1,42 @@
+name: G4C7 A1 four-view art review (NOT MINECRAFT)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_urban_layout_lab.js'
+      - 'tools/g4c7_render_review.js'
+      - 'tests/test_g4c7_render_review.js'
+      - 'docs/G4C7_A1_FOUR_VIEW_ART_AUDIT_JA.md'
+      - '.github/workflows/verify_g4c7_fourview.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  conceptual-3d-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify original concept invariants
+        run: node tests/test_g4c7_urban_layout_lab.js
+      - name: Verify 4 projections and mesh and detect aesthetic repetition
+        run: node tests/test_g4c7_render_review.js
+      - name: Render independent source geometry from frozen design with no game access
+        run: |
+          mkdir -p build
+          node tools/g4c7_render_review.js --out build/g4c7_fourview
+          test -s build/g4c7_fourview/front.svg
+          test -s build/g4c7_fourview/side.svg
+          test -s build/g4c7_fourview/oblique.svg
+          test -s build/g4c7_fourview/aerial.svg
+          test -s build/g4c7_fourview/g4c7_review.obj
+          test -s build/g4c7_fourview/review_quality.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a1-fourview-svg-obj-quality-concept-only
+          path: build/g4c7_fourview/
+          retention-days: 14
+      - name: Never authorize construction on this output
+        run: echo 'Render only; Minecraft hardware not used. Four district aesthetic variation remains independently unapproved.'
