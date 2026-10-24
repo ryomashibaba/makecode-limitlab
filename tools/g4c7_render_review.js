@@ -55,8 +55,9 @@ function primitives(plan,cam,opts={}){
    h:1,d:Math.max(...single.map(b=>b.z+b.d))-Math.min(...single.map(b=>b.z))+8}:
    di<0?{x:0,y:1,z:0,w:372,h:1,d:372}:
    {x:(di%2)*180,y:1,z:Math.floor(di/2)*180,w:180,h:1,d:180};
- const display=single?(opts.cutaway?single.filter(b=>b.role.includes('-floor')||
-   b.role.includes('-wall')||b.role.includes('-entry-')):single):
+ const display=single?(opts.cutaway?single.filter(b=>
+   b.role.endsWith('-floor')||b.role.endsWith('-wall')||
+   /-entry-(west-left|west-right|load-bearing-header)$/.test(b.role)):single):
    di<0?plan.boxes:plan.boxes.filter(b=>b.id[0]===opts.district);
  for(const box of [ground,...display]){
   const pts=corners(box),reg=box.id?box.id[0]:'A';
