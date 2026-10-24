@@ -155,11 +155,43 @@ function building(region,index,col,row,targetH){
   }
  }
 }
+function civicCore(region){
+ // Civic 48x48 core of the district: perimeter venues and open air middle.
+ // Architectural placeholders, not entrances or player-walkable floors yet.
+ const d=['A','B','C','D'].indexOf(region);
+ const x=(d%2)*180+72,z=Math.floor(d/2)*180+72,id=region+'0';
+ const add=(role,dx,y,dz,w,h,dep,material)=>
+   part(id,role,x+dx,y,z+dz,w,h,dep,material);
+ if(region==='A'){
+   add('financial-public-square-floor',2,2,2,44,2,44,'stone');
+   add('transit-hall-west-front',3,4,7,9,7,26,'concrete');
+   add('transit-hall-east-front',36,4,7,9,7,26,'glass');
+   add('pedestrian-east-gallery-roof',36,11,9,8,2,22,'stone');
+ }else if(region==='B'){
+   add('outdoor-cultural-court',2,2,2,44,2,44,'stone');
+   add('main-open-stage',8,4,4,32,4,11,'concrete');
+   add('rehearsal-backstage',10,8,5,28,5,9,'stone');
+   add('tiered-civic-seats-west',3,4,22,12,3,18,'stone');
+   add('tiered-civic-seats-east',33,4,22,12,3,18,'stone');
+ }else if(region==='C'){
+   add('community-park-base',2,2,2,44,2,44,'stone');
+   add('park-greenhouse-west',4,4,8,11,8,27,'glass');
+   add('park-woodland-terrace-east',33,4,8,11,4,27,'stone');
+   add('small-garden-pavilion',33,8,15,10,5,14,'glass');
+ }else{
+   add('research-community-square',2,2,2,44,2,44,'stone');
+   add('science-demo-west',4,4,8,13,9,32,'concrete');
+   add('science-exhibit-east',31,4,10,13,9,25,'glass');
+   add('grounded-community-gallery',5,13,13,11,3,20,'stone');
+ }
+}
+
 function create(){
  boxes.length=0;buildings.length=0; // repeated evaluations must be pure and deterministic
  for(const region of ['A','B','C','D']){
   const p=programs[region];
   sites[region].forEach(([col,row],i)=>building(region,i,col,row,p.heights[i]));
+  civicCore(region);
  }
  const profiles={};
  for(const region of ['A','B','C','D']){
