@@ -1,0 +1,53 @@
+name: G4C7 A6 independent GLB geometry review (NO MINECRAFT)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_a6_open_sky_study.py'
+      - 'docs/G4C7_A6_OPEN_SKY_ART_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a6_geometry.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-a6-mesh-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install only geometry libraries, no game or Blender required
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13
+      - name: Preserve A5 input and reproduce independent A6 mesh
+        run: |
+          mkdir -p build
+          python tools/g4c7_a6_open_sky_study.py --input artifacts/g4c7-a5/a5_orbital_commons.glb --out build/g4c7_a6
+      - name: Strict A6 geometric and no-hardware gate
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          import numpy as np,trimesh
+          p=Path('build/g4c7_a6')
+          q=json.loads((p/'a6_reproducible_geometry_qa.json').read_text())
+          assert q['input_meshes']==436,q
+          assert q['result_meshes']==579,q
+          assert q['removed_named_meshes']==46,q
+          assert q['new_named_meshes']==189,q
+          assert q['curved_lofts_watertight'] is True
+          assert q['art_status']=='HOLD' and q['hardware']=='NOT CONSTRUCTED'
+          sc=trimesh.load(p/'a6_orbital_commons_study.glb',force='scene')
+          assert len(sc.graph.nodes_geometry)==579
+          assert np.allclose(sc.bounds,[[-94,-4,-89],[94,66,89]],atol=.1),sc.bounds
+          assert not any(n.startswith('Sky chamber ') for n in sc.graph.nodes_geometry)
+          assert any(n.startswith('A6_CURVED_SKY_') for n in sc.graph.nodes_geometry)
+          print('OFFLINE geometry reproducible PASS; ART HOLD, no routes approved, no construction')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a6-independent-glb-obj-qa-hold-no-private-world-data
+          path: build/g4c7_a6/
+          retention-days: 14
+      - name: Never claim Blender or in-game walking
+        run: echo 'This run does not start Blender, a game, computer use or any Minecraft build.'
