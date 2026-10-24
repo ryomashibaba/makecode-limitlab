@@ -1,0 +1,41 @@
+name: G4C7 district redesign and copy-volume proxy (CONCEPT ONLY)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_urban_layout_lab.js'
+      - 'tests/test_g4c7_urban_layout_lab.js'
+      - 'tools/g4c7_observe_run_timing.py'
+      - 'tests/test_g4c7_observe_run_timing.py'
+      - 'docs/G4C7_A2A5_RETHINK_SPEED_AND_CITY_JA.md'
+      - '.github/workflows/verify_g4c7_urban_layout_lab.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  massing-and-copy-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert four distinctive supported districts and copied-voxel budget
+        run: node tests/test_g4c7_urban_layout_lab.js
+      - name: Generate inspectable non-private proposed structure boxes
+        run: |
+          mkdir -p build
+          node tools/g4c7_urban_layout_lab.js --json > build/g4c7_concept_boxes.json
+          node -e "const p=require('./build/g4c7_concept_boxes.json');if(p.verdict!=='CONCEPT_NOT_HARDWARE_APPROVED')process.exit(2);console.log(p.buildingCount,p.solidBoxes,p.cloneAnalysis.copiedVolumeProxyReductionPct)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-concept-geometry-no-private-data
+          path: build/g4c7_concept_boxes.json
+          retention-days: 14
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify read-only stage timing observer under repeated and partial CSV snapshots
+        run: python -B -m unittest discover -s tests -p 'test_g4c7_observe_run_timing.py' -v
+      - name: Never label a design lab as an actual Minecraft build
+        run: echo 'CONCEPT GEOMETRY ONLY — user world, G4C6, CSV, ZIP and READY/USED all unmodified'
