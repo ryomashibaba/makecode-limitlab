@@ -53,7 +53,7 @@ function building(region,index,col,row,targetH){
    add('transit-podium',4,2,5,w,8,d,'concrete');
    add('atrium-volume',9,10,10,w-10,targetH-10,d-10,'glass');
  }else if(kind==='cultural'){
-   const spanX=[42,36,44,40,38][index],spanZ=[38,42,33,40,44][index];
+   const spanX=[42,36,44,40,38][index],spanZ=[38,42,33,40,42][index];
    add('civic-floor',3,2,5,spanX,3,spanZ,'stone');
    for(const [dx,dz] of [[5,7],[spanX-3,7],[5,spanZ-1],[spanX-3,spanZ-1]])
      add('exposed-hall-support',dx,5,dz,5,targetH-8,5,'concrete');
