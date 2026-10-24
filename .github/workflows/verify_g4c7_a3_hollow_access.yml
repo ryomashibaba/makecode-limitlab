@@ -29,6 +29,7 @@ jobs:
           for f in front side oblique aerial; do test -s "build/g4c7_a3_fourview/${f}.svg"; done
           for d in A B C D; do test -s "build/g4c7_a3_fourview/district_${d}_oblique.svg"; done
           test -s build/g4c7_a3_fourview/ground_access_qa.json
+          for b in A1 B2 C1 D1; do test -s "build/g4c7_a3_fourview/cutaway_${b}.svg"; done
           node -e "let q=require('./build/g4c7_a3_fourview/ground_access_qa.json');if(q.verdict!=='GROUND_ONLY_OFFLINE_PASS')throw Error(q.verdict);console.log('Ground-level MODEL PASS, never hardware PASS')"
       - uses: actions/upload-artifact@v4
         with:
