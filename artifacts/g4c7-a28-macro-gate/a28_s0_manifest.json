@@ -1,0 +1,223 @@
+{
+  "phase": "A28 S0 early architecture gate",
+  "base_sha": "6d88405c34b83d1f20f403fcd52307d159118639",
+  "reference": "A27 archived real OBJ",
+  "candidate_count": 2,
+  "scale_hypothesis": "320 conceptual units-wide study; hypothetical 10-12 meters per unit only for intended design scale. NOT physically verified, no Minecraft limitations imposed in initial art.",
+  "projection": {
+    "same_camera_as_A27": true,
+    "eye": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "scale": 1.03,
+    "framing": {
+      "front": [
+        {
+          "name": "REF",
+          "bbox": [
+            90.1407533,
+            98.66269091529594,
+            423.77,
+            373.5181067452684
+          ],
+          "fit": true
+        },
+        {
+          "name": "A",
+          "bbox": [
+            607.6526215127778,
+            84.65241429531494,
+            950.1296902119923,
+            373.5181067452684
+          ],
+          "fit": true
+        },
+        {
+          "name": "B",
+          "bbox": [
+            1135.2,
+            113.54894637669142,
+            1460.68,
+            373.5181067452684
+          ],
+          "fit": true
+        }
+      ],
+      "oblique": [
+        {
+          "name": "REF",
+          "bbox": [
+            59.282506546129525,
+            117.93038620545852,
+            424.9863236608186,
+            392.20883554596446
+          ],
+          "fit": true
+        },
+        {
+          "name": "A",
+          "bbox": [
+            560.5336656384947,
+            96.85122862195635,
+            937.8528158980664,
+            392.7766415755784
+          ],
+          "fit": true
+        },
+        {
+          "name": "B",
+          "bbox": [
+            1080.5336656384948,
+            126.9259344760442,
+            1457.8528158980664,
+            389.21818217878774
+          ],
+          "fit": true
+        }
+      ],
+      "side": [
+        {
+          "name": "REF",
+          "bbox": [
+            97.25999999999999,
+            135.61664061417534,
+            424.2752974,
+            373.8962325003083
+          ],
+          "fit": true
+        },
+        {
+          "name": "A",
+          "bbox": [
+            617.26,
+            125.61077636718059,
+            930.8859272899658,
+            375.81320695629927
+          ],
+          "fit": true
+        },
+        {
+          "name": "B",
+          "bbox": [
+            1137.26,
+            130.89102832537736,
+            1450.38,
+            372.9648269016768
+          ],
+          "fit": true
+        }
+      ],
+      "aerial": [
+        {
+          "name": "REF",
+          "bbox": [
+            58.99224214339969,
+            84.32112249631425,
+            424.51188689062064,
+            441.44113414750905
+          ],
+          "fit": true
+        },
+        {
+          "name": "A",
+          "bbox": [
+            560.4058125073068,
+            68.89826265732853,
+            937.0329371362662,
+            442.3006241211548
+          ],
+          "fit": true
+        },
+        {
+          "name": "B",
+          "bbox": [
+            1080.4058125073068,
+            110.47189025949669,
+            1457.0329371362664,
+            436.1044275469095
+          ],
+          "fit": true
+        }
+      ]
+    }
+  },
+  "stats": [
+    {
+      "id": "A",
+      "title": "LIVING ESCARPMENT",
+      "vertices": 194,
+      "triangles": 316,
+      "isolated_closed_solids": 18,
+      "glb_bytes": 8760,
+      "intent": [
+        "asymmetric uneven inhabited escarpments",
+        "large public court with definite procession rather than leftover gap",
+        "inhabited facades form the two urban cliffs"
+      ]
+    },
+    {
+      "id": "B",
+      "title": "TRIANGULATED CIVIC FABRIC",
+      "vertices": 164,
+      "triangles": 276,
+      "isolated_closed_solids": 13,
+      "glb_bytes": 7876,
+      "intent": [
+        "three mutually intersecting mega-inhabited routes",
+        "off-axis inhabited crossing is the urban spatial program",
+        "not a standalone flying bridge or circular building"
+      ]
+    }
+  ],
+  "verified": [
+    "real OBJ/GLB geometric triangles",
+    "per-individual-solid closed manifold oriented edges and positive volume",
+    "framing of all 3 compared meshes in four views",
+    "original A27 OBJ reused for comparison"
+  ],
+  "not_verified": [
+    "independent GLB readback",
+    "global Boolean, self-intersections and structural connections",
+    "physical accessibility, evacuation",
+    "331-body 993-feet legacy QA and negative control",
+    "art acceptance"
+  ],
+  "status": "ART HOLD, aesthetic gate pending",
+  "minecraft": "CONSTRUCTION PROHIBITED",
+  "integration": "PROHIBITED",
+  "previous_qa": {
+    "body_samples": 331,
+    "foot_samples": 993,
+    "halfwidth": 0.65,
+    "foot_height": [
+      0.15,
+      3.25
+    ],
+    "historic_interferences": 45,
+    "unsupported_feet": 0
+  }
+}
