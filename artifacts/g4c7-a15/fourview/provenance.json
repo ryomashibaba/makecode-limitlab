@@ -1,0 +1,84 @@
+{
+  "source": "Actual persisted GLB and reimported A15 GLBs",
+  "renderer": "Inherited Pillow orthographic triangle painter, not Blender",
+  "same_camera_projection_target_scale_in_all_four_columns": true,
+  "deliberately_increased_common_frame_scale_to_show_new_crests": true,
+  "views": {
+    "front": {
+      "eye": [
+        0.0,
+        93.0,
+        300.0
+      ],
+      "target": [
+        0.0,
+        60.0,
+        0.0
+      ],
+      "fixed_scale": 380.0,
+      "triangles": [
+        57310,
+        56122,
+        51982,
+        51982
+      ]
+    },
+    "oblique": {
+      "eye": [
+        225.0,
+        226.0,
+        290.0
+      ],
+      "target": [
+        0.0,
+        60.0,
+        0.0
+      ],
+      "fixed_scale": 380.0,
+      "triangles": [
+        57310,
+        56122,
+        51982,
+        51982
+      ]
+    },
+    "side": {
+      "eye": [
+        300.0,
+        100.0,
+        0.0
+      ],
+      "target": [
+        0.0,
+        60.0,
+        0.0
+      ],
+      "fixed_scale": 380.0,
+      "triangles": [
+        57310,
+        56122,
+        51982,
+        51982
+      ]
+    },
+    "aerial": {
+      "eye": [
+        90.0,
+        426.0,
+        110.0
+      ],
+      "target": [
+        0.0,
+        60.0,
+        0.0
+      ],
+      "fixed_scale": 380.0,
+      "triangles": [
+        57310,
+        56122,
+        51982,
+        51982
+      ]
+    }
+  }
+}
