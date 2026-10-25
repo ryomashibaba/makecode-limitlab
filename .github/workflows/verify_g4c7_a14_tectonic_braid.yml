@@ -105,5 +105,9 @@ jobs:
           git add artifacts/g4c7-a14
           if ! git diff --cached --quiet; then
             git commit -m 'G4C7 A14: persist GLB OBJ fourview and geometry QA (ART HOLD)'
+            # Move only the new A14 artifact commit onto the latest remote tip.
+            # Never force-push or overwrite concurrent documentation edits.
+            git fetch origin dev/g4c7-a14-tectonic-civic-braid-art-study
+            git rebase origin/dev/g4c7-a14-tectonic-civic-braid-art-study
             git push origin HEAD:dev/g4c7-a14-tectonic-civic-braid-art-study
           fi
