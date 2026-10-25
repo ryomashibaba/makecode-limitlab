@@ -1,0 +1,61 @@
+{
+  "stage": "A30",
+  "created_jst": "2026-10-25",
+  "model_commit": "f61426704c0308857e54d417feb0247b2e265e46",
+  "overall": "ART REJECT; PROJECT ART HOLD",
+  "real_glb": {
+    "github_blob_sha": "65f3c09451e1f700085ef32ec0e34b1794d5ba17",
+    "bytes": 77956,
+    "vertices": 2124,
+    "triangles": 4152,
+    "materials": 6,
+    "independent_base64_byte_readback": "PASS",
+    "independent_third_party_model_import": "NOT DONE"
+  },
+  "technical": {
+    "nontrivial_pierced_surfaces": 6,
+    "closed_components": 7,
+    "removed_surface_cells": 70,
+    "positive_volume_and_paired_edges": "PASS per separate component",
+    "global_union": "NOT RUN"
+  },
+  "visual_review": {
+    "views": [
+      "front",
+      "oblique",
+      "side",
+      "aerial",
+      "reference court perspective"
+    ],
+    "a29_baseline": "actual archived OBJ matched 1.03 orthographic",
+    "failure": "repeating long curved bands/arches, lacks visible inhabited city and legible monumental public void",
+    "perspective_camera": [
+      0,
+      45,
+      -28
+    ],
+    "perspective_target": [
+      0,
+      87,
+      75
+    ],
+    "pedestrian_access": "NOT VERIFIED"
+  },
+  "next": "A31 spatial civic void and inhabited city cross-section first, not new ribbon variation",
+  "safety": {
+    "art_hold": true,
+    "minecraft_education_construction": "PROHIBITED",
+    "city_integration": "PROHIBITED",
+    "history_preserved": true,
+    "legacy_bodies": 331,
+    "legacy_feet": 993,
+    "half_width": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "historical_body_interference_ceiling": 45,
+    "unsupported_feet_max": 0,
+    "negative_blocker": "REQUIRED"
+  }
+}
