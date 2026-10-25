@@ -1,0 +1,119 @@
+name: G4C7 A12 open atrium canyon real geometry (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a12-exposed-atrium-canyon]
+    paths:
+      - tools/g4c7_a12_exposed_atrium_canyon.py
+      - docs/G4C7_A12_EXPOSED_ATRIUM_ART_HOLD_JA.md
+      - .github/workflows/verify_g4c7_a12_atrium.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-a12-independent-visual-research
+  cancel-in-progress: true
+jobs:
+  a12-art-and-existing-walk-safeguard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned non-Minecraft geometry dependencies
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Carve real curved megafissure atria from committed A11 B2 GLB
+        run: |
+          python tools/g4c7_a12_exposed_atrium_canyon.py \
+            --input artifacts/g4c7-a11/a11_megafissure_inhabited_cliffs.glb \
+            --out build/g4c7_a12
+      - name: Assert actual excavations, unchanged historical route and image provenance
+        run: |
+          python - <<'PY'
+          import json,trimesh
+          from pathlib import Path
+          out=Path("build/g4c7_a12")
+          j=json.loads((out/"a12_exposed_atrium_geometry_qa.json").read_text())
+          assert j["a11_input_meshes"]==613
+          assert j["a12_output_meshes"]==619
+          names=("A11_WEST_FAULT_ESCARPMENT_REAL_VOID",
+                 "A11_EAST_SKY_FOLD_REAL_VOID")
+          assert len(j["cliff_excavation"][names[0]]["real_exposed_atria"])==2
+          assert len(j["cliff_excavation"][names[1]]["real_exposed_atria"])==3
+          for name in names:
+              d=j["cliff_excavation"][name]
+              assert d["additional_ellipsoid_excavated_volume"]>300
+              assert d["base_real_volume"]>d["final_real_volume"]
+              assert j["persisted_cliff_volume"][name]["watertight"]
+              assert j["persisted_cliff_volume"][name]["real_volume"]<d["base_real_volume"]-100
+              assert all(x["real_removed_volume"]>120 for x in d["real_exposed_atria"])
+          assert len(j["inhabited_public_shelves"])==5
+          assert j["sky_crescent"]["real_solid_volume"]>500
+          old=j["a11_route"];new=j["a12_route"]
+          assert old["body_collision_samples"]==45
+          assert old["unsupported_foot_samples"]==0
+          assert new["route_samples"]==331
+          assert new["foot_support_samples"]==993
+          assert new["body_envelope"]["half_xz"]==0.65
+          assert new["body_envelope"]["from_foot_y"]==0.15
+          assert new["body_envelope"]["to_foot_y"]==3.25
+          assert new["negative_intentional_blocker_detected"]
+          assert new["body_surface_intersection_sample_count"]<=45
+          assert new["unsupported_foot_samples"]==0
+          assert j["aesthetic_approval"]=="HOLD"
+          assert j["construction"]=="PROHIBITED"
+          assert j["city_integration"]=="PROHIBITED"
+          assert j["minecraft_walk"]=="NOT TESTED"
+          assert j["private_world_legacy"]=="UNTOUCHED"
+          scene=trimesh.load(out/"a12_exposed_atrium_canyon.glb",force="scene")
+          assert len(scene.graph.nodes_geometry)==619
+          for v in ("front","oblique","side","aerial"):
+              assert (out/"fourview"/(v+"_a11_a12.png")).stat().st_size>2500
+          print("A12 physical atria + 5 thick public decks + upper civic mass: PASS")
+          print("A11/A12 corridor collisions:",old["body_collision_samples"],new["body_surface_intersection_sample_count"])
+          print("ART HOLD and all Minecraft safety locks retained.")
+          PY
+      - name: Preserve generated research outputs even on QA failure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g4c7-a12-exposed-civic-atrium-real-glb-art-hold
+          path: build/g4c7_a12/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Explicit prohibition of Minecraft operations
+        run: echo 'Standalone GLB mesh research only. No Minecraft world, construction, USED, CSV or ZIP.'
+  persist-a12-artifacts:
+    needs: [a12-art-and-existing-walk-safeguard]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a12-exposed-atrium-canyon'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a12-exposed-civic-atrium-real-glb-art-hold
+          path: build/g4c7_a12
+      - name: Commit model, QA and four genuinely rendered viewpoint images to A12 only
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-a12
+          mkdir -p "$dest/fourview"
+          for item in a12_exposed_atrium_canyon.glb a12_exposed_atrium_canyon.obj a12_exposed_atrium_geometry_qa.json; do
+            test -s "build/g4c7_a12/$item"
+            cp "build/g4c7_a12/$item" "$dest/$item"
+          done
+          for view in front oblique side aerial; do
+            test -s "build/g4c7_a12/fourview/$view"_a11_a12.png
+            cp "build/g4c7_a12/fourview/$view"_a11_a12.png "$dest/fourview/$view"_a11_a12.png
+          done
+          cp build/g4c7_a12/fourview/image_provenance.json "$dest/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a12/
+          if ! git diff --cached --quiet; then
+            git commit -m "G4C7 A12: archive real atrium canyon GLB OBJ volume QA and four-view images (ART HOLD)"
+            git push origin HEAD:dev/g4c7-a12-exposed-atrium-canyon
+          fi
