@@ -1,0 +1,121 @@
+name: G4C7 A17 one-piece sculptural rift city A/B (NO MINECRAFT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_a17_monolithic_rift_fold.py'
+      - 'docs/G4C7_A17_MONOLITHIC_RIFT_FOLD_ART_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a17_monolithic_rift.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-a17-monolithic-rift-preserved-art
+  cancel-in-progress: true
+jobs:
+  build-true-3d-and-inherited-geometric-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install reproducible 3D and fourview dependencies
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 scipy==1.15.3 scikit-image==0.25.2 manifold3d==3.2.1 networkx==3.5 pillow==11.3.0
+      - name: Build both real one-piece volumetric A17 models and four-view comparisons
+        run: |
+          python tools/g4c7_a17_monolithic_rift_fold.py \
+            --input artifacts/g4c7-a13/a13_c_unified_megafold.glb \
+            --out build/g4c7_a17
+      - name: Strictly verify reimported saved meshes, original 331/993 and negative control
+        run: |
+          python - <<'PY'
+          import trimesh,json
+          from pathlib import Path
+          p=Path('build/g4c7_a17')
+          q=json.loads((p/'a17_geometry_qa.json').read_text())
+          assert q['source_A13C_persisted_GLB_nodes']==616
+          assert q['A15B_reconstruction_nodes']==610
+          assert q['new_reimported_node_count']==609
+          assert len(q['omitted_original_cliff_envelopes_in_NEW_STUDY_COPY_ONLY'])==2
+          assert q['ART']=='HOLD_PENDING_FOURVIEW'
+          assert q['MINECRAFT_CONSTRUCTION']=='PROHIBITED'
+          assert q['CITY_INTEGRATION']=='PROHIBITED'
+          for k in ('a','b'):
+              v=q['variants'][k]
+              f=v['art_concept']
+              assert v['reimported_mesh_count']==609
+              assert f['single_connected_occupied_component']
+              assert f['actual_closed_manifold']
+              assert f['void_removed_voxels']>=300
+              assert f['volume_actual_mesh']>200000
+              assert v['collisions_delta']<=0
+              assert v['unsupported_delta']==0
+              a=v['inherited_fixed_route']
+              assert a['route_samples']==331
+              assert a['foot_support_samples']==993
+              assert a['body_envelope']['half_xz']==.65
+              assert a['body_envelope']['from_foot_y']==.15
+              assert a['body_envelope']['to_foot_y']==3.25
+              assert a['negative_intentional_blocker_detected']
+              assert a['body_surface_intersection_sample_count']<=45
+              assert a['unsupported_foot_samples']==0
+              scene=trimesh.load(p/('a17_'+k+'_monolithic_rift_fold.glb'),force='scene')
+              assert len(scene.graph.nodes_geometry)==609
+              transform,key=scene.graph['A17_MONOLITHIC_TECTONIC_CIVIC_FOLD']
+              g=scene.geometry[key]
+              assert g.is_watertight and g.is_volume and g.volume>200000
+              assert (p/('a17_'+k+'_monolithic_rift_fold.obj')).stat().st_size>10000
+          for v in ('front','oblique','side','aerial'):
+              assert (p/'fourview'/(v+'_a13c_a15b_a17a_a17b.png')).stat().st_size>2000
+          proof=json.loads((p/'fourview'/'provenance.json').read_text())
+          assert proof['same_camera_scale_projection_per_comparison']
+          assert proof['real_triangles_from_reloaded_GLB']
+          print('Geometry and evidence PASS, ART HOLD, no Minecraft or urban integration.')
+          PY
+      - name: Preserve diagnostic build results even if strict safety QA fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a17-massive-tectonic-fold-a-b-art-hold
+          path: build/g4c7_a17/
+          retention-days: 14
+          if-no-files-found: warn
+  archive-real-glb-obj-fourview-qa:
+    needs: build-true-3d-and-inherited-geometric-gates
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a17-massive-tectonic-fold-a-b-art-hold
+          path: build/g4c7_a17
+      - name: Archive exactly verified real GLB OBJ QA and 4-way fourview panels
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-a17
+          mkdir -p "$dest/fourview"
+          for f in a17_a15b_reference_rebuilt.glb a17_a_monolithic_rift_fold.glb a17_a_monolithic_rift_fold.obj a17_b_monolithic_rift_fold.glb a17_b_monolithic_rift_fold.obj a17_geometry_qa.json; do
+            test -s "build/g4c7_a17/$f"
+            cp "build/g4c7_a17/$f" "$dest/"
+          done
+          for view in front oblique side aerial; do
+            f="${view}_a13c_a15b_a17a_a17b.png"
+            test -s "build/g4c7_a17/fourview/$f"
+            cp "build/g4c7_a17/fourview/$f" "$dest/fourview/"
+          done
+          test -s build/g4c7_a17/fourview/provenance.json
+          cp build/g4c7_a17/fourview/provenance.json "$dest/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a17
+          if ! git diff --cached --quiet; then
+            git commit -m 'G4C7 A17: persist actual A/B macro-fold city GLBs OBJs 4 views and strict QA (ART HOLD)'
+            git fetch origin dev/g4c7-a17-monolithic-rift-fold-art-study
+            git rebase origin/dev/g4c7-a17-monolithic-rift-fold-art-study
+            git push origin HEAD:dev/g4c7-a17-monolithic-rift-fold-art-study
+          fi
