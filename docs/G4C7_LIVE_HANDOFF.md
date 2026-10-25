@@ -66,3 +66,12 @@ artifacts/g4c7-a13/。
 - 専用GitHub Actions run 40161602783 は2026-10-25 JSTの確認時点でqueued。旧幾何経路331/993点・negative controlの実行結果は未取得、専用CIのarchiveジョブも未成功。GitHubに完成モデルと比較画像が恒久保存されたと主張しないこと。
 - 追加の大きな双翼試作もローカルで四方向検分したが、別々の巨大塔に見えるためGitHub本案には未採用。未来都市の立体的な一体感を優先し、次は前面旧アーチ自体の主従も抜本的に再設計すること。
 - 関連の一次監査はDraft PR #50のConversationコメントを参照。禁止事項（Minecraft施工・都市統合・旧原本書換え）は継続。
+
+## A15「天裂双流殻」継続研究（2026-10-25 JST）
+
+- A14 PR #50は実制作自体と継承331/993幾何QAの専用Actionsを成功させたが、成果保存pushがLIVE HANDOFF更新と競合して失敗した。Actions #40161602783のbuild-and-qa=SUCCESS、persist-a14-research=FAILURE（non-fast-forward）。A14専用workflowのアーカイブをrebase-safeへ変更。美術は暫定REJECT。
+- A15独立ブランチ dev/g4c7-a15-split-tide-sculpted-urban-shells。基点はA14の保存処理修正後のHEAD。A15は不合格の追加蛇状帯を一切使わず、GitHub保存済みA13-CのA11/A12左右大断崖・中空・公共段丘など**23メッシュをそれぞれの実3D表面ごと変形**する2方向比較。
+- A15-Aは内側へ巻き込む巨大都市双殻（上端約141）。A15-Bは空へ外側に開花する裂け目形の巨大殻（上端約158）。両方地面近傍Y<=14は変形しない。A/Bとも約610メッシュ。数値はローカル予備検証でありGitHub Actions確定値はCI成功後に確認。
+- ソース tools/g4c7_a15_split_tide_urban_shells.py、文書 docs/G4C7_A15_SPLIT_TIDE_ART_HOLD_JA.md、専用CI .github/workflows/verify_g4c7_a15_split_tide.yml。成果予定 artifacts/g4c7-a15/（A/B実GLB+OBJ、A12/A13-C/A15-A/Bのfront/oblique/side/aerial固定4列比較、QA JSON）。
+- 元の331人体サンプル／993足元／半幅0.65／高さ+0.15〜3.25／負の対照を一切緩めない。既存45表面干渉より悪化不可、0未支持維持。成功しても通路安全・荷重・自己交差検証・美術承認は別物。
+- **ART HOLD、NO MINECRAFT CONSTRUCTION、NO CITY INTEGRATION、原本・ワールド・USED・CSV・ZIP・実機証拠保護**。旧A13-Cコピーで省略した歴史的load shellの撤去を承認するものではない。4視点の実画像と専用Actions/保存のSUCCESSが揃うまで完成を主張しない。

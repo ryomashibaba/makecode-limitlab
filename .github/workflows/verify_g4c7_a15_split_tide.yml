@@ -1,0 +1,119 @@
+name: G4C7 A15 split-tide 3D civic shells (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a15-split-tide-sculpted-urban-shells]
+    paths:
+      - 'tools/g4c7_a15_split_tide_urban_shells.py'
+      - 'docs/G4C7_A15_SPLIT_TIDE_ART_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a15_split_tide.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-a15-offline-art-latest
+  cancel-in-progress: true
+jobs:
+  build-review-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install reproducible solid-geometry dependencies
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Generate actual GLBs, four matched comparisons and QA
+        run: |
+          python tools/g4c7_a15_split_tide_urban_shells.py --input artifacts/g4c7-a13/a13_c_unified_megafold.glb --a12 artifacts/g4c7-a12/a12_exposed_atrium_canyon.glb --out build/g4c7_a15
+      - name: Independently validate reimported solids and unchanged 331/993 route criteria
+        run: |
+          python - <<'PY'
+          import json,trimesh
+          from pathlib import Path
+          d=Path('build/g4c7_a15')
+          qa=json.loads((d/'a15_geometry_qa.json').read_text())
+          assert qa['source_a13c_meshes']==616 and qa['source_a12_reference_meshes']==619
+          assert qa['art_status']=='HOLD'
+          assert qa['construction']=='PROHIBITED'
+          assert qa['city_integration']=='PROHIBITED'
+          assert qa['minecraft_walk']=='NOT TESTED'
+          assert qa['original_A5_to_A14_models_world_used_csv_zip']=='UNTOUCHED'
+          assert len(qa['omitted_in_research_copy_only'])==6
+          for v in ('a','b'):
+              q=qa['variants'][v]
+              assert q['mesh_count']==610 and q['transformed_node_count']>=18
+              assert q['collision_delta']<=0 and q['foot_support_delta']==0
+              legacy=q['original_legacy_route']
+              assert legacy['route_samples']==331 and legacy['foot_support_samples']==993
+              assert legacy['negative_intentional_blocker_detected']
+              assert legacy['body_envelope']['half_xz']==0.65
+              assert legacy['body_envelope']['from_foot_y']==0.15
+              assert legacy['body_envelope']['to_foot_y']==3.25
+              assert legacy['body_surface_intersection_sample_count']<=45
+              assert legacy['unsupported_foot_samples']==0
+              model=trimesh.load(d/('a15_'+v+'_split_tide_urban_shells.glb'),force='scene')
+              assert len(model.graph.nodes_geometry)==610
+              for name,facts in q['real_cliff_meshes'].items():
+                  t,k=model.graph[name]
+                  m=model.geometry[k]
+                  assert m.is_watertight and m.is_volume
+                  assert facts['deformed_real_positive_volume']>75000
+                  assert facts['new_self_intersection_proof']=='NOT TESTED'
+              assert q['real_bounds'][1][1]>(135 if v=='a' else 150)
+              assert (d/('a15_'+v+'_split_tide_urban_shells.obj')).stat().st_size>10000
+          for view in ('front','oblique','side','aerial'):
+              assert (d/'fourview'/(view+'_a12_a13c_a15a_a15b.png')).stat().st_size>2000
+          image_meta=json.loads((d/'fourview'/'provenance.json').read_text())
+          assert image_meta['same_camera_projection_target_scale_in_all_four_columns']
+          print('PASS: real double GLBs/OBJs, 4 camera comparisons and strict legacy QA.')
+          print('NO ART PASS / NO WALKING CERTIFICATION / NO MINECRAFT.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g4c7-a15-two-real-sky-fissure-forms-fourview-qa-art-hold
+          path: build/g4c7_a15/
+          retention-days: 14
+          if-no-files-found: warn
+  persist-a15:
+    needs: [build-review-check]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a15-split-tide-sculpted-urban-shells'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a15-two-real-sky-fissure-forms-fourview-qa-art-hold
+          path: build/g4c7_a15
+      - name: Persist A15 evidence safely if remote documentation changed
+        run: |
+          set -euo pipefail
+          out=artifacts/g4c7-a15
+          mkdir -p "$out/fourview"
+          for variant in a b; do
+            for ext in glb obj; do
+              f=a15_$variant"_split_tide_urban_shells."$ext
+              test -s "build/g4c7_a15/$f"
+              cp "build/g4c7_a15/$f" "$out/"
+            done
+          done
+          test -s build/g4c7_a15/a15_geometry_qa.json
+          cp build/g4c7_a15/a15_geometry_qa.json "$out/"
+          for view in front oblique side aerial; do
+            f=$view"_a12_a13c_a15a_a15b.png"
+            test -s "build/g4c7_a15/fourview/$f"
+            cp "build/g4c7_a15/fourview/$f" "$out/fourview/"
+          done
+          cp build/g4c7_a15/fourview/provenance.json "$out/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a15
+          if ! git diff --cached --quiet; then
+            git commit -m 'G4C7 A15: archive real alternate cliffs GLB OBJ fourview QA (ART HOLD)'
+            git fetch origin dev/g4c7-a15-split-tide-sculpted-urban-shells
+            git rebase origin/dev/g4c7-a15-split-tide-sculpted-urban-shells
+            git push origin HEAD:dev/g4c7-a15-split-tide-sculpted-urban-shells
+          fi
