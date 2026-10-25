@@ -1,0 +1,44 @@
+{
+  "stage": "A20 same-scene A19-A negative control",
+  "artist_approval": "REJECT (A19 and A20)",
+  "projection": "orthographic",
+  "identical_camera_and_scale": true,
+  "scale": 1.27,
+  "target": [
+    0,
+    71,
+    0
+  ],
+  "cameras": {
+    "front": [
+      0,
+      156,
+      -370
+    ],
+    "oblique": [
+      275,
+      218,
+      -270
+    ],
+    "side": [
+      385,
+      180,
+      0
+    ],
+    "aerial": [
+      180,
+      455,
+      -195
+    ]
+  },
+  "scene_triangles": [
+    7380,
+    3828
+  ],
+  "reference_source": "persisted A19-A OBJ",
+  "candidate_source": "persisted A20 OBJ",
+  "validation": "same model vertex/face material source; edge and engineering QA not expanded",
+  "inherited_331_993": "UNCHANGED ON HISTORICAL BASELINE ONLY; NOT RUN ON A19/A20",
+  "no_minecraft": true,
+  "no_integration": true
+}

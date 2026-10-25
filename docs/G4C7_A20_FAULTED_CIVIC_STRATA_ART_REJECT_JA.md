@@ -21,3 +21,6 @@
 A19（円筒とリング）、A20（積層矩形建築）の両方をマクロ美術不合格として区別。次の軽量3D方向は『巨大負空間そのものが都市の輪郭を決め、外殻の曲面・占有公共層・支持基部が一体で変化する』ものを重点探索。単なる蛇状帯、双断崖、孤立スラブ、太アーチ、塔・箱の反復は避けるが、形態そのものは禁止しない。成功の見込みがない候補の正式QA/PR/Actions増殖を停止。
 
 **ART HOLD / NO MINECRAFT CONSTRUCTION / NO CITY INTEGRATION.** 旧model/world/USED/CSV/ZIP/実機証拠は不変。GLBの独立第三者再読込、Boolean結合、自己交差、物理的荷重、通路の連続性は未証明。
+
+### 固定カメラの追加比較
+A19-A保存OBJとA20保存OBJの各三角形から、同一のA19撮影基準（front/oblique/side/aerial、視点・target・正投影scale完全共通）で2列の比較SVGを制作し恒久保存。場所：`artifacts/g4c7-a20-scout/matched_a19a_a20/`。再現コード：`tools/g4c7_a20_matched_review.mjs`。比較データ：`a20_matched_comparison_manifest.json`。**A20を美術合格へ変更するものではない。**
