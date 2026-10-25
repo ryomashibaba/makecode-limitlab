@@ -40,19 +40,19 @@ def gallery_path(which,n=96):
     for i in range(n+1):
         u=i/n
         if which=="W":
-            # Low, long asymmetrical inhabited fault bank, behind SOUTH footings.
+            # Dramatic, elevated thick inhabited fault bank rising toward arch crown.
             x=-28+6.7*math.sin(2*math.pi*u+0.35)
             z=-39+78*u
-            y=22+5*u+7.2*math.sin(math.pi*u)**2
-            width=15.6+2.3*math.sin(math.pi*u)**2
-            depth=9.0+1.0*math.sin(math.pi*u)**2
+            y=31+7*u+10.5*math.sin(math.pi*u)**2
+            width=18+5*math.sin(math.pi*u)**2
+            depth=13+2*math.sin(math.pi*u)**2
         else:
-            # Higher, more compressed bank with a different ascent and curvature.
+            # Opposing taller inner-city escarpment; nonrepeating curvature and ascent.
             x=25.5+7.0*math.sin(2*math.pi*u+2.0)
             z=-34+70*u
-            y=27+4*u+6.2*math.sin(math.pi*u)**2
-            width=14+3.2*math.sin(math.pi*u)**2
-            depth=9.5+1.2*math.sin(math.pi*u)**2
+            y=35+5*u+9.0*math.sin(math.pi*u)**2
+            width=16.8+5.5*math.sin(math.pi*u)**2
+            depth=13.5+2*math.sin(math.pi*u)**2
         pts.append((x,y,z,width,depth))
     return pts
 
@@ -203,8 +203,8 @@ def cross_void_decks(scene):
     # Two interlocked diagonal, broad, deep sky-bridges in one spatial system.
     # Ends lie by the banks; no claim of actually walkable attachment.
     for name,z0,y0,shift in (
-      ("A10_LOW_CANYON_DIAGONAL",-15.,20.0,-5.0),
-      ("A10_UPPER_CANYON_DIAGONAL",18.,26.0,5.0)):
+      ("A10_LOW_CANYON_DIAGONAL",-15.,28.5,-5.0),
+      ("A10_UPPER_CANYON_DIAGONAL",18.,36.0,5.0)):
         pts=[]
         for i in range(57):
             u=i/56
@@ -212,7 +212,7 @@ def cross_void_decks(scene):
             z=z0+shift*math.sin(math.pi*u)+2.5*math.sin(2*math.pi*u)
             y=y0+3.2*math.sin(math.pi*u)**2+1.4*u
             pts.append((x,y,z))
-        mesh=add_deck(scene,name,pts,width=9.5,depth=3.25,rgba=BRONZE)
+        mesh=add_deck(scene,name,pts,width=10.5,depth=4.0,rgba=BRONZE)
         if not mesh.is_volume:raise AssertionError("No real occupied bridge volume")
         summary.append({"name":name,"deck_mesh_volume":round(mesh.volume,1),
                         "physical_form":"Thick curved inhabited bridging volume",
