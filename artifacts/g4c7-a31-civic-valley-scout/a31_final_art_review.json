@@ -1,0 +1,43 @@
+{
+  "stage": "A31",
+  "date_jst": "2026-10-25",
+  "model_commit": "b5f29d55d07f8e435f1ab8c870fd4a28e070ef85",
+  "verdict": "ART REJECT; PROJECT ART HOLD",
+  "real_saved_glb": {
+    "sha": "73aadb8789200729e155f4d3796bab8511d49ec6",
+    "bytes": 22496,
+    "vertices": 638,
+    "triangles": 1016,
+    "materials": 7,
+    "buffer_bytes": 19848,
+    "header_and_binary_re_read": "PASS"
+  },
+  "model_parts": 65,
+  "visual_review": [
+    "front",
+    "oblique",
+    "side",
+    "aerial",
+    "interior court reference"
+  ],
+  "result": "visibly populated tiers but miniature stacked structures, blank lateral wall, obstructed public destination; no monumental quality advancement",
+  "legacy_gate": {
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "relative_foot_height": [
+      0.15,
+      3.25
+    ],
+    "interference_ceiling": 45,
+    "unsupported_max": 0,
+    "negative_blockers": true,
+    "executed_on_A31": false
+  },
+  "prohibitions": [
+    "no Education construction",
+    "no city integration",
+    "no historical modifications"
+  ],
+  "next": "A32 art direction and experience quality target before another blind model"
+}
