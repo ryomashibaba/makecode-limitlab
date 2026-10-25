@@ -79,20 +79,56 @@ def carve_real_cliff(mesh,node,specs):
     solid=mesh.copy()
     assert solid.is_volume and solid.is_watertight
     reports=[]
+    # The original central aperture severed the west shell into an invalid
+    # volume (Actions 40165116192). Never waive closed-manifold/real-volume
+    # criteria: search *canyon-facing* displacements of the entire large cut.
+    # This changes the actual art geometry, not any geometric safety threshold.
+    inward=1 if node==WEST else -1
+    placements=[
+        (0.,0.,1.),(18.,0.,1.),(32.,0.,1.),(42.,0.,1.),
+        (32.,12.,1.),(32.,-12.,1.),(48.,0.,1.),
+        (32.,0.,.85),(42.,0.,.85),(42.,12.,.85),
+        (42.,-12.,.85),(50.,0.,.85)]
     for fraction,offset,radii,tilt in specs:
-        pos=cutter_origin(mesh,fraction,offset)
-        cutter=ellipsoid(pos,radii,tilt)
+        requested=cutter_origin(mesh,fraction,offset)
         before=float(solid.volume)
-        carved=trimesh.boolean.difference([solid,cutter],engine="manifold")
-        assert carved is not None and not carved.is_empty,(node,"empty carve",pos)
-        carved.fix_normals()
-        assert carved.is_watertight and carved.is_volume,(node,"broken manifold",pos)
-        removed=before-float(carved.volume)
-        assert removed>600.0,(node,"insufficient physical carving, not a monumental void",pos,removed)
-        assert carved.volume>12000,(node,"destroyed inhabited cliff",pos)
+        valid=None
+        diagnostics=[]
+        for shift,depth,scale in placements:
+            pos=[requested[0]+inward*shift,requested[1],
+                 requested[2]+depth]
+            trial_radii=tuple(float(r)*scale for r in radii)
+            try:
+                cutter=ellipsoid(pos,trial_radii,tilt)
+                carved=trimesh.boolean.difference(
+                    [solid,cutter],engine="manifold")
+                if carved is None or carved.is_empty:
+                    diagnostics.append([shift,depth,scale,"EMPTY"])
+                    continue
+                carved.fix_normals()
+                removed=before-float(carved.volume)
+                if (not carved.is_watertight or not carved.is_volume
+                    or carved.volume<=12000 or removed<=600):
+                    diagnostics.append([
+                        shift,depth,scale,"REJECT",
+                        bool(carved.is_watertight),bool(carved.is_volume),
+                        round(removed,2)])
+                    continue
+                valid=(carved,pos,trial_radii,removed,shift,depth,scale)
+                break
+            except (ValueError,RuntimeError,AssertionError) as exc:
+                diagnostics.append([shift,depth,scale,type(exc).__name__])
+        assert valid is not None,(
+            node,"no valid immense Boolean excavation; geometry must be"
+            " fundamentally redesigned without relaxing the quality gates",
+            "source_center",requested,"attempts",diagnostics)
+        carved,pos,actual_radii,removed,shift,depth,scale=valid
         reports.append({
           "center":np.asarray(pos).round(3).tolist(),
-          "radii":list(radii),"x_axis_tilt":tilt,
+          "initial_center_requested":np.asarray(requested).round(3).tolist(),
+          "canyonward_shift":shift,"depth_shift":depth,
+          "actual_cutter_scale":scale,
+          "radii":list(actual_radii),"x_axis_tilt":tilt,
           "removed_real_volume":round(removed,2),
           "input_volume":round(before,2),
           "persisted_volume_candidate":round(float(carved.volume),2),
