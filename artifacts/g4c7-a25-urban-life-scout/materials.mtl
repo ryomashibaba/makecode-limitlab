@@ -1,0 +1,20 @@
+newmtl pale_ceramic
+Kd 0.827 0.882 0.902
+
+newmtl graphite_support
+Kd 0.302 0.392 0.467
+
+newmtl inhabited_glass
+Kd 0.392 0.749 0.776
+
+newmtl public_terrace
+Kd 0.906 0.733 0.518
+
+newmtl garden
+Kd 0.443 0.678 0.545
+
+newmtl warm_copper
+Kd 0.733 0.565 0.435
+
+newmtl deep_urban
+Kd 0.522 0.592 0.667

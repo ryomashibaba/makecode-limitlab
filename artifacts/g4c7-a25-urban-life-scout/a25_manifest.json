@@ -1,0 +1,244 @@
+{
+  "stage": "G4-C7 A25 visibly inhabited public-void city-first art study",
+  "created_jst": "2026-10-25",
+  "previous_head": "d271ea98f57006b82d8e58754a43124113991d94",
+  "cameras": {
+    "front": [
+      0,
+      220,
+      -450
+    ],
+    "oblique": [
+      350,
+      282,
+      -365
+    ],
+    "side": [
+      465,
+      225,
+      0
+    ],
+    "aerial": [
+      250,
+      525,
+      -270
+    ]
+  },
+  "target": [
+    0,
+    78,
+    0
+  ],
+  "scale": 1.03,
+  "do_not_compare_same_scale_to_A24": true,
+  "stats": [
+    {
+      "id": "a",
+      "name": "INHABITED CIVIC ATRIUM",
+      "design": "atrium of public life: a visibly open central void with three asymmetric dense inhabited terraces",
+      "vertices": 2910,
+      "triangles": 4372,
+      "individually_closed_solids": 362,
+      "bounds": [
+        [
+          -156,
+          -4,
+          -128
+        ],
+        [
+          161.8680782095647,
+          176,
+          130.03639536229576
+        ]
+      ],
+      "program_parts": {
+        "public_courts": 13,
+        "inhabited_rooms": 74,
+        "sky_walks": 16,
+        "green_roofs": 23,
+        "bridges": 4
+      },
+      "public_void": {
+        "public_open_area": "approx 86 x 76 conceptual units",
+        "vertical_clearance": "open sky; bounding housing levels deliberately unequal",
+        "type": "inward-open skyline without continuous circular or paired blank shells"
+      },
+      "isolated_topology": {
+        "degenerate_triangles": 0,
+        "positive_volume_violations": 0,
+        "unpaired_edges": 0,
+        "orientation_mismatches": 0
+      },
+      "whole_model_boolean": "NOT DONE",
+      "route_331_993": "NOT RUN",
+      "global_access": "UNPROVEN",
+      "aesthetic": "PENDING INDEPENDENT IMAGE REVIEW"
+    },
+    {
+      "id": "b",
+      "name": "LIVING SKY CONFLUENCE",
+      "design": "multiple staggered city-sized neighborhoods join around a three-level open civic chasm; city floors and facade are the structure",
+      "vertices": 3756,
+      "triangles": 5640,
+      "individually_closed_solids": 468,
+      "bounds": [
+        [
+          -158.0046267447847,
+          -4,
+          -151
+        ],
+        [
+          150,
+          190,
+          149.09007638085987
+        ]
+      ],
+      "program_parts": {
+        "public_courts": 18,
+        "inhabited_rooms": 98,
+        "sky_walks": 20,
+        "green_roofs": 31,
+        "bridges": 5
+      },
+      "public_void": {
+        "public_open_area": "two linked city-scale open rooms instead of a ring",
+        "vertical_clearance": "three sky-exposed clearances among inhabited terraces",
+        "type": "urban crossroads with varied heights"
+      },
+      "isolated_topology": {
+        "degenerate_triangles": 0,
+        "positive_volume_violations": 0,
+        "unpaired_edges": 0,
+        "orientation_mismatches": 0
+      },
+      "whole_model_boolean": "NOT DONE",
+      "route_331_993": "NOT RUN",
+      "global_access": "UNPROVEN",
+      "aesthetic": "PENDING INDEPENDENT IMAGE REVIEW"
+    }
+  ],
+  "files_bytes": {
+    "a": 90312,
+    "b": 115684
+  },
+  "view_frame_audit": {
+    "front": [
+      {
+        "model": "a",
+        "bounds": {
+          "left": 217.32,
+          "right": 544.7241205558516,
+          "top": 226.45696653666556,
+          "bottom": 478.21941565158426
+        },
+        "in_frame": true
+      },
+      {
+        "model": "b",
+        "bounds": {
+          "left": 971.2552344528717,
+          "right": 1288.5,
+          "top": 208.5856748462162,
+          "bottom": 485.34841215674214
+        },
+        "in_frame": true
+      }
+    ],
+    "oblique": [
+      {
+        "model": "a",
+        "bounds": {
+          "left": 182.89391954998982,
+          "right": 543.2647611851477,
+          "top": 237.40236019330266,
+          "bottom": 500.25606343105073
+        },
+        "in_frame": true
+      },
+      {
+        "model": "b",
+        "bounds": {
+          "left": 954.913434350484,
+          "right": 1282.9010336287504,
+          "top": 206.4440355914775,
+          "bottom": 500.2545384213469
+        },
+        "in_frame": true
+      }
+    ],
+    "side": [
+      {
+        "model": "a",
+        "bounds": {
+          "left": 246.16,
+          "right": 511.9374872231647,
+          "top": 265.1952322724044,
+          "bottom": 486.65435836879965
+        },
+        "in_frame": true
+      },
+      {
+        "model": "b",
+        "bounds": {
+          "left": 978.47,
+          "right": 1287.5627786722857,
+          "top": 234.61091573458657,
+          "bottom": 485.1020157044137
+        },
+        "in_frame": true
+      }
+    ],
+    "aerial": [
+      {
+        "model": "a",
+        "bounds": {
+          "left": 182.42261465755936,
+          "right": 542.76825658659,
+          "top": 222.4458798696137,
+          "bottom": 543.370072708806
+        },
+        "in_frame": true
+      },
+      {
+        "model": "b",
+        "bounds": {
+          "left": 954.433816091061,
+          "right": 1281.9076719836062,
+          "top": 192.00083291472458,
+          "bottom": 543.8524751740437
+        },
+        "in_frame": true
+      }
+    ]
+  },
+  "qa_verified": [
+    "every isolated mesh is positive-volume and directed-edge manifold",
+    "no zero-area triangles",
+    "same 4-view camera/scale and full silhouette in-frame",
+    "real OBJ/GLB geometry and projection from same mesh arrays",
+    "generated GLB header and JSON schema consistency"
+  ],
+  "qa_not_verified": [
+    "third-party GLB importer/independent binary re-read",
+    "inter-solid Boolean union and all-model self-intersections",
+    "load paths, joints, fire/egress/access, usable urban floors",
+    "candidate-specific 331 human envelopes and 993 foot samples",
+    "recovery of 45 legacy body-interference samples"
+  ],
+  "historical_protection": "NO CHANGES TO OLD GLB, world, USED, CSV, ZIP, hardware evidence",
+  "status": "ART HOLD; pending visual evaluation",
+  "minecraft_education": "CONSTRUCTION PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "unchanged_legacy_gates": {
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "feet_relative": [
+      0.15,
+      3.25
+    ],
+    "body_collision_max": 45,
+    "unsupported_feet": 0,
+    "negative_blocker": "REQUIRED"
+  }
+}
