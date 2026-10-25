@@ -13,7 +13,7 @@ import numpy as np
 import trimesh
 from g4c7_a7_portal_route import add_deck, color, STONE, DARK
 from g4c7_a8_fullbody_clearance import route_sweep, triangles_by_mesh
-from g4c7_a9_sculptural_route import route_a9
+from g4c7_a9_sculptural_route import route_a9, approach_centerline
 from g4c7_a7_fourview import render, CAMERAS, TARGET, WIDTH, HEIGHT, SCALE
 from PIL import Image, ImageDraw
 
@@ -221,11 +221,25 @@ def cross_void_decks(scene):
 
 def preserve_and_build(original):
     result=trimesh.Scene()
+    # Rebuild the inherited civic approach with a physically overlapping last
+    # landing. The original GLB truncates at the ramp endpoint (78,1,70);
+    # after float32 GLB round-trip one *edge* support ray missed it. This is
+    # real added walkable-width floor geometry, not a QA tolerance change.
     for name in original.graph.nodes_geometry:
+        if name=="A7_APPROACH_CURVED_DECK":
+            continue
         transform,key=original.graph[name]
         result.add_geometry(original.geometry[key].copy(),
                             geom_name=name,node_name=name,transform=np.asarray(transform))
-    facts={}
+    approach=approach_centerline()
+    approach.extend([(78.,1.,70.8),(78.,1.,72.2)])
+    landing=add_deck(result,"A7_APPROACH_CURVED_DECK",approach,
+                     width=10.0,depth=1.12,rgba=STONE)
+    assert landing.is_watertight and landing.is_volume
+    facts={"civic_approach_endpoint_repaired":True,
+           "new_end_z":72.2,
+           "original_end_z":70.0,
+           "qa_tolerances_unchanged":True}
     facts["west"]=add_occupied_shell(result,"W",WEST)
     facts["east"]=add_occupied_shell(result,"E",EAST)
     facts["cross_void_decks"]=cross_void_decks(result)
