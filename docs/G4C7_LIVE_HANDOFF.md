@@ -101,3 +101,9 @@ artifacts/g4c7-a13/。
 - 限定的なローカル形態試作で、A/B各単一連結の真のwatertight GLB単体が生成された。**ただし市街地608メッシュとの結合モデル・本来の331/993ルートQA・Actionsのモデル保存は未確認**。2候補とも単独形状は巨大スラブ状で都市の魅力には未達の疑いが強いため、**ART HOLD**。未検証を美術PASSとしない。
 - Actions成功後、`artifacts/g4c7-a17/`に実A/B GLB/OBJ、参照A15-B GLB、front/oblique/side/aerialの4列比較、QA JSON・provenanceが揃い、archiveジョブのSUCCESSまで確認する。旧331人体・993足元、半幅0.65、足元+0.15〜+3.25、負の対照、45表面干渉上限と未支持0を**絶対緩めない**。欠ければ失敗として原因を修正。
 - **ART HOLD / NO MINECRAFT CONSTRUCTION / NO CITY INTEGRATION**。古いworld、USED、CSV、ZIP、過去の実機・モデルは完全保護。新人工大地と旧階層都市の荷重接合、内部経路、柵・避難・歩行は全て未証明。
+
+
+### A17 Actionsのキュー状態（2026-10-25 JST）
+- A17初回専用run: https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167017511 （起動SHA `40d9220f7a79cfbbc671d5c041b0e5f03b4a5210`）。再確認時 **queued**、実GLB/OBJ・四視点のGitHub archive成功は未確認。
+- A16 run 40165116192、A15 run 40164110635 も **queued**。取得できたGitHubリポジトリの直近100 workflow runs中 **88 queued / 12 completed(action_required)**。原因は未確定。キュー待ちをPythonや品質失敗と混同せず、ジョブ開始・終了後のログを読むこと。無意味な再起動・並列ジョブ増殖は避ける。
+- A17 Draft PR #53 HEAD（この文書追記前）は `40d9220f7a79cfbbc671d5c041b0e5f03b4a5210`。新チャット時には必ず最新HEAD/CI/保存ファイルを再取得。
