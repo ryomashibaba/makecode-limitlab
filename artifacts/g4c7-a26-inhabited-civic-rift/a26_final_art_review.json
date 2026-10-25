@@ -1,0 +1,52 @@
+{
+  "stage": "G4-C7 A26",
+  "date_jst": "2026-10-25",
+  "reference_head": "fac540f4879c2dafa3355c6789f42fc4aafb2ea2",
+  "model_commit": "e3b52ea546846ca6dae545e27c453896b885c78e",
+  "verdict": "ART REJECT; PROJECT ART HOLD",
+  "visible_reviewed": [
+    "front",
+    "oblique",
+    "side",
+    "aerial"
+  ],
+  "source_files": [
+    "a26_civic_rift.obj",
+    "a26_civic_rift.glb",
+    "fourview/front_a25b_vs_a26.svg",
+    "fourview/oblique_a25b_vs_a26.svg",
+    "fourview/side_a25b_vs_a26.svg",
+    "fourview/aerial_a25b_vs_a26.svg"
+  ],
+  "comparison": "A25-B actual archived OBJ reprojection under matched camera target and scale 1.03",
+  "binary_readback": {
+    "sha": "8d2b4da1e3bcd8fa4c7adaad61351733a3975b31",
+    "glb_bytes": 35020,
+    "glb_version": 2,
+    "vertices": 1038,
+    "triangles": 1636,
+    "materials": 7,
+    "bufferview_ranges": "PASS",
+    "indices": "PASS"
+  },
+  "geometry_limited_qa": "110 isolated solid topologies PASS at generation; global shape, Boolean and intersections NOT RUN",
+  "art_failure": "dominating overhead arch/band, subordinate public city; repeats A14/A17/A18 visual issue",
+  "historical_qa": {
+    "bodies": 331,
+    "feet": 993,
+    "half_width": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "body_surface_interference_limit": 45,
+    "unsupported_feet_limit": 0,
+    "negative_blocker": "MANDATORY",
+    "executed_on_A26": false
+  },
+  "prohibitions": [
+    "MINECRAFT EDUCATION CONSTRUCTION",
+    "CITY INTEGRATION"
+  ],
+  "next": "A27: rethink civic section and visible inhabited architecture, not incremental arch edits"
+}
