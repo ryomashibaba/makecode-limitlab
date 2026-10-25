@@ -1,0 +1,17 @@
+newmtl limestone
+Kd 0.84706 0.88627 0.91373
+
+newmtl deep
+Kd 0.26275 0.37255 0.44314
+
+newmtl civic
+Kd 0.89412 0.72157 0.54510
+
+newmtl inhabited
+Kd 0.35686 0.74118 0.78039
+
+newmtl garden
+Kd 0.45490 0.69412 0.59216
+
+newmtl upper
+Kd 0.67843 0.76471 0.80000

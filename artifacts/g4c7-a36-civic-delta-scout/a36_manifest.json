@@ -1,0 +1,55 @@
+{
+  "stage": "A36 selected divergent CIVIC DELTA preliminary GLB",
+  "head_source": "6c78e02d48f952d7ce5c9366a547fce69130c476",
+  "geometry": {
+    "vertices": 7418,
+    "triangles": 14844,
+    "quads": 7422,
+    "solidCells": 12490,
+    "connectedCells": 12490,
+    "cornerRepairs": 4,
+    "nonmanifoldEdges": 0,
+    "glbBytes": 269852
+  },
+  "void_samples": {
+    "arrival": {
+      "air": false,
+      "externallyConnected": false
+    },
+    "central": {
+      "air": true,
+      "externallyConnected": true
+    },
+    "west": {
+      "air": true,
+      "externallyConnected": true
+    },
+    "east": {
+      "air": true,
+      "externallyConnected": true
+    },
+    "north": {
+      "air": true,
+      "externallyConnected": true
+    }
+  },
+  "externalAirCount": 28082,
+  "g1": "REVIEW PENDING",
+  "g2": "NOT RUN",
+  "g3": "NOT RUN",
+  "safety": {
+    "art_hold": true,
+    "minecraft_construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot": [
+      0.15,
+      3.25
+    ],
+    "oldBodyCeiling": 45,
+    "unsupportedFeet": 0,
+    "negativeControl": "REQUIRED"
+  }
+}
