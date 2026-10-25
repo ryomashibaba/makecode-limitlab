@@ -1,0 +1,152 @@
+{
+  "stage": "A27 new section-first single civic city",
+  "origin_head": "0c1b125c7a804ce98df71fa7db7e81680d8906ae",
+  "concept": "Three irregular occupied ridge districts, heavily populated public concourses and five intermediate civic bridges. No single overarching arch.",
+  "stats": {
+    "vertices": 1158,
+    "triangles": 1780,
+    "isolated_closed_solids": 134,
+    "bounds": [
+      [
+        -164.91188558219906,
+        -4,
+        -158
+      ],
+      [
+        159,
+        184,
+        159.4905769973904
+      ]
+    ],
+    "glb_bytes": 37928,
+    "program": {
+      "inhabited_halls": 20,
+      "visible_windows": 40,
+      "broad_public_walks": 17,
+      "civic_courts": 1,
+      "green": 12,
+      "mega_ridges": 3,
+      "sky_bridges": 5
+    }
+  },
+  "cameras": {
+    "front": [
+      0,
+      220,
+      -450
+    ],
+    "oblique": [
+      350,
+      282,
+      -365
+    ],
+    "side": [
+      465,
+      225,
+      0
+    ],
+    "aerial": [
+      250,
+      525,
+      -270
+    ],
+    "interior": [
+      55,
+      112,
+      -280
+    ]
+  },
+  "target": [
+    0,
+    78,
+    0
+  ],
+  "scale": 1.03,
+  "frames": {
+    "front": {
+      "min": [
+        342.1407578503349,
+        214.66269222181506
+      ],
+      "max": [
+        675.77,
+        489.5181067452684
+      ],
+      "in_frame": true
+    },
+    "oblique": {
+      "min": [
+        311.2825065461295,
+        233.9303881409929
+      ],
+      "max": [
+        676.9863276857578,
+        508.20883691882193
+      ],
+      "in_frame": true
+    },
+    "side": {
+      "min": [
+        349.26,
+        251.61663922049493
+      ],
+      "max": [
+        676.2752943073122,
+        489.8962325003083
+      ],
+      "in_frame": true
+    },
+    "aerial": {
+      "min": [
+        310.9922421433997,
+        200.32112192312366
+      ],
+      "max": [
+        676.5118908713696,
+        557.4411370165931
+      ],
+      "in_frame": true
+    },
+    "interior": {
+      "min": [
+        333.1446234695554,
+        236.75682075315024
+      ],
+      "max": [
+        670.7138427052199,
+        462.6001097689473
+      ],
+      "in_frame": true
+    }
+  },
+  "verified": [
+    "real positive-volume individually closed lofts/prisms",
+    "individual manifold triangle edges with opposite directed orientation",
+    "zero-area triangles absent in individual solids",
+    "true OBJ + GLB2 generation from same triangles",
+    "same A26 eye/target/scale for each cardinal view",
+    "all silhouettes within frame"
+  ],
+  "not_verified": [
+    "third-party GLB loader",
+    "union/self intersections of overlapping separate components",
+    "physical accessibility/support/egress",
+    "331 body and 993 foot samples negative control",
+    "visual art approval"
+  ],
+  "status": "ART HOLD",
+  "minecraft": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "preservation": "All historic files untouched",
+  "legacy": {
+    "body_count": 331,
+    "foot_samples": 993,
+    "halfwidth": 0.65,
+    "relative_feet": [
+      0.15,
+      3.25
+    ],
+    "old_body_interference_max": 45,
+    "unsupported_feet_max": 0
+  }
+}
