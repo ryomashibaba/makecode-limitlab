@@ -1,0 +1,127 @@
+{
+  "source_commit": "6b1cc778cbf3f86352e2c9b66d8d2c1735ffb9cd",
+  "camera_source": "a25_manifest.json",
+  "pixels_zoom_factor": 1.48,
+  "effective_orthographic_scale": 1.5244,
+  "original_orthographic_scale": 1.03,
+  "detail_view_same_cam_for_ab": true,
+  "purpose": "visual reading only; vertex geometry and model dimensions unchanged",
+  "source_paths": [
+    "fourview/front_a25_ab.svg",
+    "fourview/oblique_a25_ab.svg",
+    "fourview/side_a25_ab.svg",
+    "fourview/aerial_a25_ab.svg"
+  ],
+  "verified": {
+    "front": [
+      {
+        "pane": "left",
+        "min": [
+          140.1936,
+          163.32080000000002
+        ],
+        "max": [
+          624.7456,
+          535.9256
+        ],
+        "passed": true
+      },
+      {
+        "pane": "right",
+        "min": [
+          893.1448,
+          136.8732
+        ],
+        "max": [
+          1362.66,
+          546.4780000000001
+        ],
+        "passed": true
+      }
+    ],
+    "oblique": [
+      {
+        "pane": "left",
+        "min": [
+          89.23719999999997,
+          179.512
+        ],
+        "max": [
+          622.5848,
+          568.5448
+        ],
+        "passed": true
+      },
+      {
+        "pane": "right",
+        "min": [
+          868.9467999999999,
+          133.6912
+        ],
+        "max": [
+          1354.372,
+          568.53
+        ],
+        "passed": true
+      }
+    ],
+    "side": [
+      {
+        "pane": "left",
+        "min": [
+          182.8768,
+          220.65599999999998
+        ],
+        "max": [
+          576.2312,
+          548.4019999999999
+        ],
+        "passed": true
+      },
+      {
+        "pane": "right",
+        "min": [
+          903.8156,
+          175.38280000000003
+        ],
+        "max": [
+          1361.2687999999998,
+          546.1080000000001
+        ],
+        "passed": true
+      }
+    ],
+    "aerial": [
+      {
+        "pane": "left",
+        "min": [
+          88.54159999999996,
+          157.386
+        ],
+        "max": [
+          621.8596,
+          632.3476
+        ],
+        "passed": true
+      },
+      {
+        "pane": "right",
+        "min": [
+          868.2364,
+          112.32
+        ],
+        "max": [
+          1352.9068000000002,
+          633.058
+        ],
+        "passed": true
+      }
+    ]
+  },
+  "restrictions": [
+    "ART HOLD",
+    "NO CONSTRUCTION",
+    "NO CITY INTEGRATION",
+    "NOT QA WALK PASS"
+  ]
+}
