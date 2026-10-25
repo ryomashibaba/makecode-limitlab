@@ -1,7 +1,7 @@
 {
   "lineage": "A9->A10->A11 independent visual research",
   "a10_input_meshes": 602,
-  "a11_output_meshes": 612,
+  "a11_output_meshes": 613,
   "a10_bounds": [
     [
       -94.0,
@@ -29,18 +29,36 @@
   "tall_canyon_forms": {
     "west": {
       "raw_volume": 186259.1,
-      "physical_void_removed": 14562.4,
-      "void_ratio": 0.0782,
+      "physical_void_removed": 28334.3,
+      "void_ratio": 0.1521,
       "cut_through_mouths": [
         {
-          "z": -39.0,
-          "y": 41.0,
-          "removed_volume": 3559.53
+          "z": -48.0,
+          "y": 29.0,
+          "removed_volume": 3407.21,
+          "opening_height": 11.0,
+          "span_z": 11.0
+        },
+        {
+          "z": -29.0,
+          "y": 44.0,
+          "removed_volume": 3291.79,
+          "opening_height": 13.0,
+          "span_z": 14.0
         },
         {
           "z": -7.0,
-          "y": 49.0,
-          "removed_volume": 2735.27
+          "y": 52.0,
+          "removed_volume": 2405.91,
+          "opening_height": 14.0,
+          "span_z": 13.0
+        },
+        {
+          "z": 9.0,
+          "y": 64.0,
+          "removed_volume": 2162.25,
+          "opening_height": 12.0,
+          "span_z": 10.0
         }
       ],
       "contains_real_longitudinal_cavity": true,
@@ -61,35 +79,53 @@
       "inhabited_terraces": [
         {
           "name": "A11_WEST_OCCUPIED_STRATUM_0",
-          "volume": 1734.7,
+          "volume": 3776.1,
           "continuous_from_ground": "NOT VERIFIED"
         },
         {
           "name": "A11_WEST_OCCUPIED_STRATUM_1",
-          "volume": 1574.0,
+          "volume": 3616.1,
           "continuous_from_ground": "NOT VERIFIED"
         },
         {
           "name": "A11_WEST_OCCUPIED_STRATUM_2",
-          "volume": 1209.3,
+          "volume": 2676.7,
           "continuous_from_ground": "NOT VERIFIED"
         }
       ]
     },
     "east": {
       "raw_volume": 155484.0,
-      "physical_void_removed": 10359.1,
-      "void_ratio": 0.0666,
+      "physical_void_removed": 19714.3,
+      "void_ratio": 0.1268,
       "cut_through_mouths": [
         {
-          "z": -39.0,
-          "y": 41.0,
-          "removed_volume": 3555.56
+          "z": -48.0,
+          "y": 29.0,
+          "removed_volume": 3114.98,
+          "opening_height": 11.0,
+          "span_z": 11.0
+        },
+        {
+          "z": -29.0,
+          "y": 44.0,
+          "removed_volume": 3809.18,
+          "opening_height": 13.0,
+          "span_z": 14.0
         },
         {
           "z": -7.0,
-          "y": 49.0,
-          "removed_volume": 2766.92
+          "y": 52.0,
+          "removed_volume": 2078.54,
+          "opening_height": 14.0,
+          "span_z": 13.0
+        },
+        {
+          "z": 9.0,
+          "y": 64.0,
+          "removed_volume": 1728.6,
+          "opening_height": 12.0,
+          "span_z": 10.0
         }
       ],
       "contains_real_longitudinal_cavity": true,
@@ -110,17 +146,17 @@
       "inhabited_terraces": [
         {
           "name": "A11_EAST_OCCUPIED_STRATUM_0",
-          "volume": 1697.8,
+          "volume": 3529.1,
           "continuous_from_ground": "NOT VERIFIED"
         },
         {
           "name": "A11_EAST_OCCUPIED_STRATUM_1",
-          "volume": 1633.3,
+          "volume": 3526.4,
           "continuous_from_ground": "NOT VERIFIED"
         },
         {
           "name": "A11_EAST_OCCUPIED_STRATUM_2",
-          "volume": 1230.0,
+          "volume": 2806.4,
           "continuous_from_ground": "NOT VERIFIED"
         }
       ]
@@ -136,7 +172,14 @@
         "mesh_volume": 3936.0,
         "connections_to_cavities": "NOT VERIFIED"
       }
-    ]
+    ],
+    "civic_spine": {
+      "name": "A11_CENTRAL_RISING_CIVIC_SPINE",
+      "volume": 5023.8,
+      "rise": 45.0,
+      "width": 12.2,
+      "surface_slopes_and_public_access": "NOT VERIFIED"
+    }
   },
   "a10_route": {
     "surface_collision_samples": 45,

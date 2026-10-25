@@ -15,7 +15,7 @@
       ],
       "unchanged_scale": 285.0,
       "a10_triangles": 38504,
-      "a11_triangles": 48308
+      "a11_triangles": 50522
     },
     "oblique": {
       "unchanged_camera": [
@@ -25,7 +25,7 @@
       ],
       "unchanged_scale": 285.0,
       "a10_triangles": 38504,
-      "a11_triangles": 48308
+      "a11_triangles": 50522
     },
     "oblique_detail": {
       "source_view": "oblique",
@@ -44,7 +44,7 @@
       ],
       "unchanged_scale": 285.0,
       "a10_triangles": 38504,
-      "a11_triangles": 48308
+      "a11_triangles": 50522
     },
     "aerial": {
       "unchanged_camera": [
@@ -54,7 +54,7 @@
       ],
       "unchanged_scale": 285.0,
       "a10_triangles": 38485,
-      "a11_triangles": 48289
+      "a11_triangles": 50503
     }
   }
 }
