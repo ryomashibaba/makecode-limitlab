@@ -93,8 +93,8 @@ def carve(real,which,rings):
     for z,contour,state in rings:
         # Interior aligns with the leaning center of the thick artificial wall.
         innerx=state["bottom_x"]*.52+state["top_x"]*.48
-        roof=(60 if west else 66)+3.8*math.sin((z+60)/85*math.pi)**2
-        void_rows.append((innerx,roof,z,8.6,19.0))
+        roof=(62 if west else 68)+5.0*math.sin((z+60)/85*math.pi)**2
+        void_rows.append((innerx,roof,z,12.5,26.0))
     passage=swept_prism(void_rows,inset_width=0.,extend_ends=3.5)
     overlap=trimesh.boolean.intersection([real,passage],engine="manifold")
     evacuated=float(overlap.volume) if overlap is not None else 0.
@@ -104,8 +104,8 @@ def carve(real,which,rings):
     if shell is None or shell.is_empty or not shell.is_watertight or not shell.is_volume:
         raise AssertionError("Cliff failed hollow excavation: "+which)
     mouths=[]
-    for zcenter,center_y in ((-39.,41.),(-7.,49.)):
-        cutter=trimesh.creation.box(extents=(145.,13.0,11.0))
+    for zcenter,center_y,width_y,span_z in ((-48.,29.,11.0,11.0),(-29.,44.,13.0,14.0),(-7.,52.,14.0,13.0),(9.,64.,12.0,10.0)):
+        cutter=trimesh.creation.box(extents=(145.,width_y,span_z))
         cutter.apply_translation([0.,center_y,zcenter])
         intersection=trimesh.boolean.intersection([shell,cutter],engine="manifold")
         removed=float(intersection.volume) if intersection is not None else 0.
@@ -115,7 +115,7 @@ def carve(real,which,rings):
         if revised is None or revised.is_empty or not revised.is_watertight or not revised.is_volume:
             raise AssertionError("Massive aperture made non-manifold cliff")
         shell=revised
-        mouths.append({"z":zcenter,"y":center_y,"removed_volume":round(removed,2)})
+        mouths.append({"z":zcenter,"y":center_y,"removed_volume":round(removed,2),"opening_height":width_y,"span_z":span_z})
     return shell,{"raw_volume":round(real.volume,1),
                   "physical_void_removed":round(evacuated,1),
                   "void_ratio":round(evacuated/real.volume,4),
@@ -130,9 +130,9 @@ def terraces(scene,which):
     west=(which=="WEST")
     out=[]
     for tier,(z0,z1,ybase,width) in enumerate((
-      (-52.,-12.,25.0,12.8),
-      (-37.,0.,38.0,11.5),
-      (-16.,16.,58.0,9.7),
+      (-53.,-12.,27.0,18.2),
+      (-37.,2.,43.0,16.8),
+      (-17.,17.,62.0,14.2),
     )):
         points=[]
         for i in range(45):
@@ -141,12 +141,12 @@ def terraces(scene,which):
             t=(z+(61 if west else 60))/(86 if west else 76)
             t=max(0.,min(1.,t))
             _,_,state=cliff_section(which,t)
-            inward=state["bottom_x"]+(12 if west else -12)
+            inward=state["top_x"]+(13.0 if west else -13.0)
             x=inward+(4.2 if west else -4.2)*math.sin(math.pi*u)**2
             y=ybase+3.5*math.sin(math.pi*u)**2+1.0*u
             points.append((x,y,z))
         label=("A11_WEST" if west else "A11_EAST")+"_OCCUPIED_STRATUM_"+str(tier)
-        mesh=add_deck(scene,label,points,width=width,depth=3.1+0.3*tier,rgba=WARM if tier==1 else PALE)
+        mesh=add_deck(scene,label,points,width=width,depth=4.3+0.4*tier,rgba=WARM if tier==1 else PALE)
         if not mesh.is_volume or not mesh.is_watertight:
             raise AssertionError("Urban canyon thick stratum invalid")
         out.append({"name":label,"volume":round(float(mesh.volume),1),
@@ -175,6 +175,32 @@ def cross_bridges(scene):
                     "connections_to_cavities":"NOT VERIFIED"})
     return out
 
+def central_canyon_ascent(scene):
+    """A major rising civic volume folds through the canyon, exposed in elevation.
+
+    Visually and geometrically a continuous volumetric ascent rather than a
+    painted line. Slope, access from public ground, fire safety are unverified.
+    """
+    pts=[]
+    for i in range(109):
+        u=i/108.
+        x=-10.0+21*u+7.8*math.sin(2*math.pi*u)
+        z=-54.0+67.0*u
+        y=17.0+45*u+4.2*math.sin(math.pi*u)**2
+        pts.append((x,y,z))
+    name="A11_CENTRAL_RISING_CIVIC_SPINE"
+    deck=add_deck(scene,name,pts,width=12.2,depth=5.3,rgba=WARM)
+    if not deck.is_watertight or not deck.is_volume:
+        raise AssertionError("A11 civic spine is not physically inhabitable mass")
+    low=float(min(p[1] for p in pts)); high=float(max(p[1] for p in pts))
+    if high-low<40:
+        raise AssertionError("Central canyon ascent lacks monumental vertical sweep")
+    return {"name":name,
+            "volume":round(float(deck.volume),1),
+            "rise":round(high-low,2),
+            "width":12.2,
+            "surface_slopes_and_public_access":"NOT VERIFIED"}
+
 def build(source):
     result=trimesh.Scene()
     for name in source.graph.nodes_geometry:
@@ -189,6 +215,7 @@ def build(source):
         stats["inhabited_terraces"]=terraces(result,which)
         forms[which.lower()]=stats
     forms["sky_boulevards"]=cross_bridges(result)
+    forms["civic_spine"]=central_canyon_ascent(result)
     return result,forms
 
 def render_views(a10,a11,out):
@@ -201,7 +228,7 @@ def render_views(a10,a11,out):
         panel.paste(before,(0,40));panel.paste(after,(WIDTH,40))
         p=ImageDraw.Draw(panel)
         p.text((20,10),"A10 HOLLOW PODS / ART HOLD",fill=(18,29,31))
-        p.text((WIDTH+20,10),"A11 MEGAFISSURE CITY CLIFFS / ART HOLD",fill=(18,29,31))
+        p.text((WIDTH+20,10),"A11 TIERED CIVIC CANYON / ART HOLD",fill=(18,29,31))
         panel.save(out/(v+"_a10_a11.png"),optimize=True)
         summary[v]={"unchanged_camera":list(camera),"unchanged_scale":SCALE,
                     "a10_triangles":na,"a11_triangles":nb}
