@@ -1,0 +1,112 @@
+name: G4C7 A9 sculpted arch portal and measured route repair (ART HOLD)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_a9_sculptural_route.py'
+      - 'docs/G4C7_A9_ART_GEOMETRY_REPAIR_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a9_geometry.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  a9-independent-geometry-and-unchanged-clearance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned geometry/image libraries
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Build independent A9 from committed A8 GLB and audit identical body envelope
+        run: |
+          python tools/g4c7_a9_sculptural_route.py \
+            --input artifacts/g4c7-a8/a8_orbital_commons_transfer_study.glb \
+            --out build/g4c7_a9
+      - name: Strict shape quality and regression gates; do not certify walking
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import trimesh
+          d=Path("build/g4c7_a9")
+          q=json.loads((d/"a9_sculptural_route_audit.json").read_text())
+          assert q["a8_meshes"]==592,q
+          assert q["art_status"]=="HOLD"
+          assert q["construction"]=="PROHIBITED"
+          assert q["city_integration"]=="PROHIBITED"
+          assert q["minecraft_walk"]=="NOT TESTED"
+          assert q["private_world_data"]=="UNTOUCHED"
+          assert q["full_solid_containment"]=="NOT PROVEN"
+          a=q["a9_clearance"]
+          baseline=q["baseline_a8"]
+          assert a["route_samples"]==baseline["route_samples"]==331
+          assert a["foot_support_samples"]==993
+          assert a["negative_intentional_blocker_detected"]
+          assert a["body_envelope"]["half_xz"]==.65
+          assert a["body_envelope"]["from_foot_y"]==.15
+          assert a["body_envelope"]["to_foot_y"]==3.25
+          assert a["max_adjacent_sample_step"]<1.15
+          assert baseline["surface_collision_samples"]==67
+          assert baseline["unsupported_foot_samples"]==1
+          assert all(v>0.1 for v in q["physical_corridor_negative_before"].values())
+          assert all(v<.0001 for v in q["physical_corridor_positive_after"].values())
+          # Real geometrical improvement, never silently weaken the old QA.
+          assert a["body_surface_intersection_sample_count"]<baseline["surface_collision_samples"],q["differences"]
+          assert a["unsupported_foot_samples"]<=baseline["unsupported_foot_samples"],q["differences"]
+          new=trimesh.load(d/"a9_orbital_commons_sculpted_route_study.glb",force="scene")
+          assert len(new.graph.nodes_geometry)==q["a9_meshes"]
+          assert "A7_APPROACH_CURVED_DECK" in new.graph.nodes_geometry
+          assert "A8_RAMP_PROMENADE_TRANSFER_DECK" in new.graph.nodes_geometry
+          for view in ("front","oblique","side","aerial"):
+              assert (d/"fourview"/(view+"_a8_a9.png")).stat().st_size>2000
+          print("A9 genuine model edits and unchanged-envelope geometric improvement: PASS")
+          print("A8 to A9 collision samples", baseline["surface_collision_samples"],
+                a["body_surface_intersection_sample_count"])
+          print("Unresolved issues, ART HOLD: ",a["route_geometric_status"])
+          PY
+      - name: Archive reproducible A9 model, QA and actual four-view images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a9-open-shell-sculptural-route-art-hold-evidence
+          path: build/g4c7_a9/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Explicit Minecraft hard stop
+        run: echo 'No old evidence writes, Minecraft world, MakeCode, USED latch, Fill or Clone.'
+  publish-committed-research-evidence:
+    needs: [a9-independent-geometry-and-unchanged-clearance]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a9-sculpted-portal-deck-integration'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a9-open-shell-sculptural-route-art-hold-evidence
+          path: build/g4c7_a9
+      - name: Persist generated real 3D/QA/4 views without touching predecessors
+        run: |
+          set -euo pipefail
+          d=artifacts/g4c7-a9
+          mkdir -p "$d/fourview"
+          for file in a9_orbital_commons_sculpted_route_study.glb a9_orbital_commons_sculpted_route_study.obj a9_sculptural_route_audit.json; do
+            test -s "build/g4c7_a9/$file"
+            cp "build/g4c7_a9/$file" "$d/$file"
+          done
+          for view in front oblique side aerial; do
+            test -s "build/g4c7_a9/fourview/$view"_a8_a9.png
+            cp "build/g4c7_a9/fourview/$view"_a8_a9.png "$d/fourview/$view"_a8_a9.png
+          done
+          cp build/g4c7_a9/fourview/provenance.json "$d/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a9/
+          if ! git diff --cached --quiet; then
+            git commit -m "G4C7 A9: archive real GLB OBJ measured geometry QA and four views (ART HOLD)"
+            git push origin HEAD:dev/g4c7-a9-sculpted-portal-deck-integration
+          fi
