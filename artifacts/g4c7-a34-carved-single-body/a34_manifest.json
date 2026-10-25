@@ -10,7 +10,7 @@
     "vertices": 6860,
     "triangles": 13720,
     "quads": 6860,
-    "glb_bytes": 249452
+    "glb_bytes": 249448
   },
   "city_cavities": {
     "named_hall_air_reachable_from_exterior": {
@@ -38,10 +38,10 @@
     "single connected occupied mass",
     "edge-manifold oriented triangle surface",
     "selected large carved void samples air-connected to exterior",
-    "equal-camera projections"
+    "equal-camera projections",
+    "independent archived GLB binary reread, accessor extrema verified against actual decoded vertices"
   ],
   "qa_not_done": [
-    "GLB independent reread",
     "3D structural safety",
     "331-body 993-feet QA and negative control",
     "3D external rendering",
@@ -63,5 +63,18 @@
     "body_interference_max": 45,
     "unsupported_feet": 0,
     "negative_control": "REQUIRED"
+  },
+  "glb_extrema": {
+    "min": [
+      -200,
+      0,
+      -190
+    ],
+    "max": [
+      200,
+      190,
+      190
+    ],
+    "metadata_verified_exact": true
   }
 }
