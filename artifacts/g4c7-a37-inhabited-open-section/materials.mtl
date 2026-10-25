@@ -1,0 +1,17 @@
+newmtl pale_structural
+Kd 0.851 0.914 0.929
+
+newmtl deep_shadow
+Kd 0.243 0.353 0.439
+
+newmtl civic_sandstone
+Kd 0.906 0.733 0.545
+
+newmtl inhabited_glass
+Kd 0.373 0.749 0.776
+
+newmtl public_green
+Kd 0.49 0.722 0.612
+
+newmtl north_library
+Kd 0.706 0.776 0.792

@@ -1,0 +1,337 @@
+{
+  "stage": "A37 programmed inhabitable civic void before forming occupied solid",
+  "source_head": "9aaf018b6a1db574c85678fc56ec9baf64db741b",
+  "date_jst": "2026-10-26",
+  "solid_model": {
+    "cells": 12240,
+    "reachable_cells": 12240,
+    "components": 1,
+    "corner_repairs": 3,
+    "vertices": 8653,
+    "triangles": 17312,
+    "nonmanifold_oriented_edges": 0,
+    "faceQuadsByAxis": [
+      1023,
+      1023,
+      2418,
+      2418,
+      887,
+      887
+    ],
+    "glb_bytes": 314124,
+    "bounds": {
+      "min": [
+        -230,
+        0,
+        -230
+      ],
+      "max": [
+        230,
+        240,
+        230
+      ]
+    }
+  },
+  "voids": {
+    "named_open_voids": {
+      "entrance": {
+        "xyz": [
+          0,
+          45,
+          -155
+        ],
+        "voxel": [
+          23,
+          5,
+          7
+        ],
+        "empty": true,
+        "exteriorConnected": true
+      },
+      "civic_center": {
+        "xyz": [
+          0,
+          70,
+          -5
+        ],
+        "voxel": [
+          23,
+          8,
+          22
+        ],
+        "empty": true,
+        "exteriorConnected": true
+      },
+      "west_lower_gallery": {
+        "xyz": [
+          -105,
+          55,
+          -80
+        ],
+        "voxel": [
+          12,
+          6,
+          15
+        ],
+        "empty": true,
+        "exteriorConnected": true
+      },
+      "west_upper_gallery": {
+        "xyz": [
+          -100,
+          125,
+          60
+        ],
+        "voxel": [
+          13,
+          13,
+          29
+        ],
+        "empty": true,
+        "exteriorConnected": true
+      },
+      "east_culture": {
+        "xyz": [
+          112,
+          64,
+          -65
+        ],
+        "voxel": [
+          34,
+          7,
+          16
+        ],
+        "empty": true,
+        "exteriorConnected": true
+      },
+      "east_library": {
+        "xyz": [
+          105,
+          125,
+          65
+        ],
+        "voxel": [
+          33,
+          13,
+          29
+        ],
+        "empty": true,
+        "exteriorConnected": true
+      },
+      "north_destination": {
+        "xyz": [
+          0,
+          112,
+          146
+        ],
+        "voxel": [
+          23,
+          12,
+          37
+        ],
+        "empty": true,
+        "exteriorConnected": true
+      }
+    },
+    "exteriorConnectedAirCells": 44892,
+    "walkable": "NOT VERIFIED"
+  },
+  "visual": {
+    "comparison": "A36 original real OBJ",
+    "historical_cameras": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "orthographicScale": 1.03,
+    "viewQA": {
+      "front": [
+        {
+          "model": "A36",
+          "bbox": [
+            158.7,
+            324.541601011224,
+            591.3,
+            621.7068135685389
+          ],
+          "uncropped": true
+        },
+        {
+          "model": "A37",
+          "bbox": [
+            888.1,
+            265.08236500372243,
+            1361.9,
+            627.9059409643284
+          ],
+          "uncropped": true
+        }
+      ],
+      "oblique": [
+        {
+          "model": "A36",
+          "bbox": [
+            69.17289926329448,
+            320.04127741415084,
+            680.8271007367055,
+            666.2528568401082
+          ],
+          "uncropped": true
+        },
+        {
+          "model": "A37",
+          "bbox": [
+            833.4305729573134,
+            219.18683357914762,
+            1387.7485580754912,
+            652.4607067533925
+          ],
+          "uncropped": true
+        }
+      ],
+      "side": [
+        {
+          "model": "A36",
+          "bbox": [
+            158.7,
+            353.91175909681795,
+            591.3,
+            621.8017503222721
+          ],
+          "uncropped": true
+        },
+        {
+          "model": "A37",
+          "bbox": [
+            888.1,
+            255.70232522750524,
+            1361.9,
+            628.0111209798158
+          ],
+          "uncropped": true
+        }
+      ],
+      "aerial": [
+        {
+          "model": "A36",
+          "bbox": [
+            69.3316089967866,
+            231.73060189140475,
+            680.6683910032134,
+            761.6511082082147
+          ],
+          "uncropped": true
+        },
+        {
+          "model": "A37",
+          "bbox": [
+            833.3274144456516,
+            155.46311690726424,
+            1388.1211424386636,
+            732.9082983838589
+          ],
+          "uncropped": true
+        }
+      ]
+    },
+    "internalViews": {
+      "SOUTH ARRIVAL": {
+        "camera": [
+          0,
+          45,
+          -155
+        ],
+        "target": [
+          0,
+          118,
+          148
+        ],
+        "visibleFaces": 6400,
+        "nearClippedFaces": 622,
+        "certifiedPedestrianPosition": false
+      },
+      "WEST HABITAT GALLERY": {
+        "camera": [
+          -105,
+          55,
+          -80
+        ],
+        "target": [
+          -10,
+          91,
+          32
+        ],
+        "visibleFaces": 5334,
+        "nearClippedFaces": 1078,
+        "certifiedPedestrianPosition": false
+      },
+      "NORTH DESTINATION": {
+        "camera": [
+          0,
+          112,
+          146
+        ],
+        "target": [
+          12,
+          139,
+          184
+        ],
+        "visibleFaces": 562,
+        "nearClippedFaces": 5926,
+        "certifiedPedestrianPosition": false
+      }
+    }
+  },
+  "done": [
+    "occupied body single connected",
+    "7 specified functional void samples empty, external-air connected",
+    "indexed triangle mesh paired directed edges",
+    "same camera/magnification A36 four views"
+  ],
+  "not_done": [
+    "3d engine external importer",
+    "body 331, feet 993 and blocker negative",
+    "human-sized clearance paths, stairs and egress",
+    "architectural aesthetics judging",
+    "structural load",
+    "real physical km scale"
+  ],
+  "safety": {
+    "art_hold": true,
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "history": "PRESERVED",
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "feetOffset": [
+      0.15,
+      3.25
+    ],
+    "oldBodyInterferenceMax": 45,
+    "unsupportedFeetMax": 0,
+    "negativeBlocker": "REQUIRED"
+  }
+}
