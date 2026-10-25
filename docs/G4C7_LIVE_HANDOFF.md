@@ -1,3 +1,15 @@
+# 【最新確定A37／2026-10-26 JST】公共室を先行切削：7/7入口・室空洞QA PASS、G1 ART REJECT
+
+> GitHub A37正本：`artifacts/g4c7-a37-inhabited-open-section/` の実GLB/OBJ（8,653頂点／17,312三角形、GLB314,124 bytes）。A36実OBJとの独立depth-tested indexed-PNG四視点＋内部3視点を`verified-png/`に保存。モデルコミット`4ef3401cc2dba0475de2f9f38a98610d8bb071f9`、PNGコミット`84b8aafb089d77285802e2d0a08ba7f2331e9596`。GLBバイナリ独立再読込・頂点位置OBJ完全一致・索引範囲・accessor座標域PASS。7か所の南入口・居住・文化・北室の空洞は全て外気と連結（**歩行や避難が可能という意味ではない**）。
+>
+> **G1 ART REJECT／全体ART HOLD**。斜視や内部の大開口は改善したが、見た目は箱型大施設・階段壁・並列谷に戻り、住民のいる数km級の文明的都市を美しく表現できていない。詳細は[A37監査](./G4C7_A37_PROGRAM_FIRST_ART_REJECT_JA.md)。正式G2/G3/331人体/993足元と負の対照は未実施。
+>
+> **A38**：小さな箱の追加、外皮の微調整、同じ谷の再設計ではなく、都市の大・中・小スケールと実際の公共活動が見える建築語彙を先に確立する。形態の全面禁止はなし。毎回GitHubの最新HEADから始める。
+>
+> **最上位不変**：ART-FIRST／QUALITY-FIRST、ART HOLD、Minecraft Education施工禁止、都市統合禁止、旧データ全保護、331人体・993足元・半幅0.65・相対足元+0.15〜+3.25・干渉45上限・未支持0・負対照。Workは事前明示承認。
+
+---
+
 # 【最新確定 A36／2026-10-26 JST】都市形態3案比較＋CIVIC DELTA実3D試験：G1 ART REJECT
 
 > **今回の実成果：** A35の長期「左右並列谷型」から抜けるため、[A36形態比較](./G4C7_A36_URBAN_MORPHOLOGY_DIVERGENCE_JA.md)でCIVIC DELTA（分岐都市）／交差断層都市／単一公共母体を比較し、前者のみ実3Dとして検証した。GitHub `artifacts/g4c7-a36-civic-delta-scout/` に実OBJ・GLB（7,418頂点／14,844三角形、269,852 bytes）、実OBJから独立ラスタしたA35対A36の歴代4カメラ同条件indexed-PNG、生成/描画Nodeソース、技術manifest。保存GLBを独立base64再取得し、頂点範囲・索引・OBJ完全一致をバイナリQA **PASS**。選定比較のSVGは構想図で、実3Dとは区別する。

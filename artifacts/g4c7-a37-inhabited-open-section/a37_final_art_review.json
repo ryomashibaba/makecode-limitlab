@@ -1,0 +1,64 @@
+{
+  "stage": "A37",
+  "date": "2026-10-26 JST",
+  "model_commit": "4ef3401cc2dba0475de2f9f38a98610d8bb071f9",
+  "render_commit": "84b8aafb089d77285802e2d0a08ba7f2331e9596",
+  "g1": "ART REJECT",
+  "g2": "NOT RUN",
+  "g3": "NOT RUN",
+  "project": "ART HOLD",
+  "geometry": {
+    "vertices": 8653,
+    "triangles": 17312,
+    "solid_connected_components": 1,
+    "corner_repairs": 3,
+    "bad_surface_edges": 0,
+    "external_air_void_samples_passed": "7 / 7"
+  },
+  "glb_binary": {
+    "sha": "249842ad315100f728b77c7bb92d9c88969b2bae",
+    "bytes": 314124,
+    "materials": 6,
+    "position_min": [
+      -230,
+      0,
+      -230
+    ],
+    "position_max": [
+      230,
+      240,
+      230
+    ],
+    "max_obj_glb_delta": 0,
+    "invalid_indices": 0,
+    "pass": true
+  },
+  "reviewed": [
+    "front",
+    "oblique",
+    "aerial",
+    "interior_south",
+    "interior_west"
+  ],
+  "archived_not_individually_reviewed": [
+    "side",
+    "interior_north"
+  ],
+  "visual_failure": "large parallel box-like stepped facades and blank civic interior despite verified voids",
+  "restrictions": {
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "old_history": "PRESERVED",
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "feet_relative": [
+      0.15,
+      3.25
+    ],
+    "historic_body_interference": 45,
+    "unsupported_feet": 0,
+    "negative_control": "REQUIRED"
+  },
+  "next": "A38 art grammar: simultaneous monumental main mass and readable multi-scale human inhabited city"
+}
