@@ -1,0 +1,62 @@
+{
+  "front": {
+    "old_triangles_drawn": 6580,
+    "new_triangles_drawn": 7052,
+    "camera": [
+      0,
+      220,
+      -450
+    ],
+    "scale_source": 1.03,
+    "thumbnail_factor": 0.7,
+    "images_px": [
+      800,
+      460
+    ]
+  },
+  "oblique": {
+    "old_triangles_drawn": 6772,
+    "new_triangles_drawn": 7422,
+    "camera": [
+      350,
+      282,
+      -365
+    ],
+    "scale_source": 1.03,
+    "thumbnail_factor": 0.7,
+    "images_px": [
+      800,
+      460
+    ]
+  },
+  "side": {
+    "old_triangles_drawn": 6340,
+    "new_triangles_drawn": 6928,
+    "camera": [
+      465,
+      225,
+      0
+    ],
+    "scale_source": 1.03,
+    "thumbnail_factor": 0.7,
+    "images_px": [
+      800,
+      460
+    ]
+  },
+  "aerial": {
+    "old_triangles_drawn": 6848,
+    "new_triangles_drawn": 7422,
+    "camera": [
+      250,
+      525,
+      -270
+    ],
+    "scale_source": 1.03,
+    "thumbnail_factor": 0.7,
+    "images_px": [
+      800,
+      460
+    ]
+  }
+}
