@@ -1,0 +1,57 @@
+{
+  "phase": "G4C7 A28 S0",
+  "final_verdict": "ART REJECT BOTH; PROJECT ART HOLD",
+  "date_jst": "2026-10-25",
+  "model_commit": "5550e03040622e4ce204549d32e939027a2a2222",
+  "visual_sources": [
+    "fourview/front_a27_vs_a28.svg",
+    "fourview/oblique_a27_vs_a28.svg",
+    "fourview/side_a27_vs_a28.svg",
+    "fourview/aerial_a27_vs_a28.svg"
+  ],
+  "review_process": "saved actual triangle SVG re-read and independently rasterized",
+  "candidates": {
+    "A": {
+      "status": "ART REJECT",
+      "reason": "giant mass envelopes visually conceal civic life, blank large wall",
+      "glb": {
+        "sha": "8cd75a18d6c39874acac8e328b1e8b6891cedf5a",
+        "bytes": 8760,
+        "vertices": 194,
+        "triangles": 316
+      }
+    },
+    "B": {
+      "status": "ART REJECT",
+      "reason": "three roofs/crossing masses dominate and obscure urban public room",
+      "glb": {
+        "sha": "3ae0c7553d965d403502d8ba8c802f9509f13e7c",
+        "bytes": 7876,
+        "vertices": 164,
+        "triangles": 276
+      }
+    }
+  },
+  "limited_tests": "isolated manifold loft/prism, GLB structural byte readback and all-camera framing",
+  "not_tested": [
+    "external importer",
+    "global Boolean union and intersection",
+    "walkable structure and load",
+    "331 bodies/993 feet, negative blockers"
+  ],
+  "invariants": {
+    "art_hold": true,
+    "no_construction": true,
+    "no_integration": true,
+    "legacy_body_samples": 331,
+    "legacy_foot_samples": 993,
+    "body_clearance_halfwidth": 0.65,
+    "feet_relative": [
+      0.15,
+      3.25
+    ],
+    "legacy_interference_ceiling": 45,
+    "unsupported_feet_max": 0
+  },
+  "next": "A29: simultaneous readable inhabited civic section from first visual proof"
+}
