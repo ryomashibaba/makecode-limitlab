@@ -1,0 +1,82 @@
+name: G4C7 A7 portal + supported route geometry (ART HOLD; NO MINECRAFT)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_a7_*.py'
+      - 'docs/G4C7_A7_PORTAL_ART_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a7_portal.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  a7-geometry-proof-no-hardware:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install CPU-only geometric dependencies
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 pillow==11.3.0
+      - name: Generate A6 reference and independent A7 actual GLB/OBJ
+        run: |
+          python tools/g4c7_a7_portal_route.py \
+            --input artifacts/g4c7-a5/a5_orbital_commons.glb \
+            --out build/g4c7_a7
+      - name: Strict positive and negative geometry controls
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import numpy as np,trimesh
+          from sys import path
+          path.insert(0,"tools")
+          from g4c7_a7_portal_route import (verify_route,world_mesh,box_bounds,
+                                            CLEAR_BOUNDS,boolean_volume,support_gap,
+                                            triangulated_support,FLOOR_Y)
+          d=Path("build/g4c7_a7")
+          qa=json.loads((d/"a7_geometry_route_qa.json").read_text())
+          assert qa["a6_meshes"]==579,qa
+          names={part["name"] for part in qa["portal_cut"]}
+          assert any("inner load shell" in n for n in names),names
+          assert any("outer load shell" in n for n in names),names
+          assert all(x["mesh_watertight"] for x in qa["portal_cut"])
+          assert any(x["corridor_intersection_before"]>0.1 for x in qa["portal_cut"])
+          assert all(x["corridor_intersection_after"]<1e-4 for x in qa["portal_cut"])
+          assert qa["walkway_route"]["positive_supported_route"]
+          assert qa["walkway_route"]["negative_missing_bridge_fails"]
+          assert qa["walkway_route"]["unsupported_count"]==0
+          assert qa["construction"]=="PROHIBITED" and qa["art_status"]=="HOLD"
+          a6=trimesh.load(d/"source_a6/a6_orbital_commons_study.glb",force="scene")
+          a7=trimesh.load(d/"a7_orbital_commons_portal_study.glb",force="scene")
+          clear=box_bounds(CLEAR_BOUNDS)
+          # Negative control: baseline A6 arch blocks corridor by mesh volume.
+          before=[boolean_volume(world_mesh(a6,n),clear) for n in a6.graph.nodes_geometry
+                  if n.startswith("SOUTH ") and "load shell" in n]
+          assert max(before)>0.1,before
+          # Positive: physically edited A7 shells no longer intersect corridor.
+          after=[boolean_volume(world_mesh(a7,n),clear) for n in a7.graph.nodes_geometry
+                 if n.startswith("SOUTH ") and "load shell" in n]
+          assert all(x<1e-4 for x in after),after
+          assert np.allclose(a7.bounds,a6.bounds,atol=.15)
+          print("A7 actual manifold cuts, positive/negative corridor, foot-support: PASS")
+          print("ART HOLD; route geometry only, NEVER in-game verified")
+          PY
+      - name: Generate matched-camera actual GLB four-view A6/A7 comparisons
+        run: |
+          python tools/g4c7_a7_fourview.py \
+            --a6 build/g4c7_a7/source_a6/a6_orbital_commons_study.glb \
+            --a7 build/g4c7_a7/a7_orbital_commons_portal_study.glb \
+            --out build/g4c7_a7/fourview
+      - name: Upload standalone evidence, no private gameplay data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a7-art-hold-actual-glb-obj-fourview-route-qa
+          path: build/g4c7_a7/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Never construct Minecraft or approve art
+        run: echo 'No world, MakeCode, fill, clone, latch, user private CSV/ZIP or construction touched.'
