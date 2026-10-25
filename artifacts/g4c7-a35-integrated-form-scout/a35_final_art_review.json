@@ -1,0 +1,60 @@
+{
+  "stage": "A35",
+  "completed_date_jst": "2026-10-25",
+  "verdict": "G1 ART REJECT; PROJECT ART HOLD",
+  "commits": {
+    "model": "eed5239e10cc192ec906ab6e802eed75658a41f9",
+    "fourview_indexed_png": "e3174c8f8ab540fa75dae32c891bb1868ffa9e84",
+    "two_interior_previews": "3ced12348d45ccc0fe9a3d9990ca3499222e978f"
+  },
+  "model": {
+    "glb_sha": "8fa48fcd8ccc2d497a875c9984f1144cf6202e76",
+    "bytes": 332092,
+    "vertices": 6860,
+    "faces": 13720,
+    "normals": 6860,
+    "materials": 6,
+    "GLB_OBJ_byte_validation": "PASS",
+    "source_a34_geometry": "SAME TOPOLOGY",
+    "face_flips": 0,
+    "degenerate_faces": 0,
+    "mean_laplacian_reduction_percent": 33.82880612025909,
+    "volume_ratio": 0.9989621606713198
+  },
+  "views": {
+    "four_external": "independently rasterized actual A34/A35 OBJ, saved indexed PNG, visually inspected",
+    "interior_diagnostics": [
+      "a35_south_civic",
+      "a35_west_carved_hall"
+    ],
+    "g1": "REJECT",
+    "g2": "NOT FORMALLY EXECUTED",
+    "g3": "NOT RUN"
+  },
+  "failure": "Curvature improvement does not change the long parallel terrace blocks or reveal functioning monumental public city",
+  "unverified": [
+    "self intersection after deformation",
+    "human routes / exits / supports",
+    "external 3D engine",
+    "full 331 body, 993 feet, negative-control safety QA",
+    "physical km scale"
+  ],
+  "protection": {
+    "art_hold": true,
+    "construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "historical_artifacts": "PROTECTED",
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot_range": [
+      0.15,
+      3.25
+    ],
+    "historic_interference_ceiling": 45,
+    "unsupported_feet_max": 0,
+    "negative_control": "REQUIRED",
+    "work_requires_approval": true
+  },
+  "next": "A36 art direction divergence, only promising one candidate to real 3D; retain topology QA but no blind iteration"
+}
