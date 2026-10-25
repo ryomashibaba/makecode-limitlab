@@ -1,0 +1,115 @@
+name: G4C7 A10 inhabited double canyon (ART-FIRST NO MINECRAFT)
+on:
+  push:
+    branches: [dev/g4c7-a10-inhabited-double-shell-canyon]
+    paths: ['tools/g4c7_a10_inhabited_double_canyon.py', 'docs/G4C7_A10_INHABITED_DOUBLE_CANYON_ART_HOLD_JA.md', '.github/workflows/verify_g4c7_a10_canyon.yml']
+  pull_request:
+    paths: ['tools/g4c7_a10_inhabited_double_canyon.py', 'docs/G4C7_A10_INHABITED_DOUBLE_CANYON_ART_HOLD_JA.md', '.github/workflows/verify_g4c7_a10_canyon.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  a10-offline-form-and-route:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned offline 3D dependencies
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Build actually hollow asymmetrical two-bank culture canyon and four fixed views
+        run: |
+          python tools/g4c7_a10_inhabited_double_canyon.py \
+            --input artifacts/g4c7-a9/a9_orbital_commons_sculpted_route_study.glb \
+            --out build/g4c7_a10
+      - name: Verify real voids, structure and unchanged A9 pedestrian QA conditions
+        run: |
+          python - <<'PY'
+          import json,trimesh
+          from pathlib import Path
+          d=Path("build/g4c7_a10")
+          q=json.loads((d/"a10_art_function_qa.json").read_text())
+          assert q["source_a9_meshes"]==590
+          assert q["a10_result_meshes"]==602,q["a10_result_meshes"]
+          assert q["quantified_canyon_change"]["hollow_shells"]==2
+          assert q["quantified_canyon_change"]["real_side_openings"]==4
+          assert q["quantified_canyon_change"]["ground_tied_supports"]==6
+          for side in ("west","east"):
+            g=q["new_form"][side]
+            assert g["void_fraction_before_window"]>.23
+            assert len(g["cut_windows"])==2
+            assert all(x["removed_volume"]>1 for x in g["cut_windows"])
+            assert len(g["supports"])==3
+            assert g["approximate_interior_floor_area"]>500
+          assert len(q["new_form"]["cross_void_decks"])==2
+          a=q["a10_clearance"];b=q["a9_clearance"]
+          assert b["sample_count"]==a["route_samples"]==331
+          assert b["surface_collision_locations"]==45
+          # A9 in-memory QA reported 0, but its committed GLB round-trip
+          # exhibits one exact endpoint support miss; never silently conceal it.
+          assert b["unsupported_foot_samples"]==1
+          assert a["foot_support_samples"]==993
+          assert a["body_envelope"]["half_xz"]==.65
+          assert a["body_envelope"]["from_foot_y"]==.15
+          assert a["body_envelope"]["to_foot_y"]==3.25
+          assert a["negative_intentional_blocker_detected"]
+          assert a["body_surface_intersection_sample_count"]<=45
+          assert a["unsupported_foot_samples"]==0
+          sc=trimesh.load(d/"a10_inhabited_double_shell_canyon.glb",force="scene")
+          assert len(sc.graph.nodes_geometry)==602
+          assert all(x in sc.graph.nodes_geometry for x in (
+              "A10_WEST_INHABITED_FAULT_SHELL","A10_EAST_INHABITED_TIDAL_SHELL",
+              "A10_LOW_CANYON_DIAGONAL","A10_UPPER_CANYON_DIAGONAL"))
+          assert q["art_status"]=="HOLD" and q["construction"]=="PROHIBITED"
+          assert q["city_integration"]=="PROHIBITED" and q["minecraft_walk"]=="NOT TESTED"
+          assert q["private_evidence"]=="UNTOUCHED"
+          for v in ("front","oblique","side","aerial"):
+              assert (d/"fourview"/(v+"_a9_a10.png")).stat().st_size>2000
+          print("A10 3D geometric hollow form and A9 route preservation: PASS")
+          print("A9 45 collision samples -> A10",a["body_surface_intersection_sample_count"])
+          print("Interior walking and 3D structural safety NOT VERIFIED; ART HOLD")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g4c7-a10-inhabited-double-canyon-real-glb-qa-4views
+          path: build/g4c7_a10/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: No Minecraft or private world interaction
+        run: echo 'Model art study only, no MakeCode construction, used latch or city integration.'
+  persist-a10-evidence:
+    needs: [a10-offline-form-and-route]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a10-inhabited-double-shell-canyon'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a10-inhabited-double-canyon-real-glb-qa-4views
+          path: build/g4c7_a10
+      - name: Save real GLB, OBJ, QA and four matched views in GitHub A10 branch
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-a10
+          mkdir -p "$dest/fourview"
+          for file in a10_inhabited_double_shell_canyon.glb a10_inhabited_double_shell_canyon.obj a10_art_function_qa.json; do
+            test -s "build/g4c7_a10/$file"
+            cp "build/g4c7_a10/$file" "$dest/$file"
+          done
+          for view in front oblique side aerial; do
+            test -s "build/g4c7_a10/fourview/$view"_a9_a10.png
+            cp "build/g4c7_a10/fourview/$view"_a9_a10.png "$dest/fourview/$view"_a9_a10.png
+          done
+          cp build/g4c7_a10/fourview/view_provenance.json "$dest/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a10/
+          if ! git diff --cached --quiet; then
+            git commit -m "G4C7 A10: persist actual double-canyon inhabited GLB, OBJ and four-view QA (ART HOLD)"
+            git push origin HEAD:dev/g4c7-a10-inhabited-double-shell-canyon
+          fi

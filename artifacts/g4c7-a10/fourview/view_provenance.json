@@ -1,0 +1,51 @@
+{
+  "origin": "Same actual GLB meshes, not ImageGen",
+  "renderer": "Pillow polygon rasterizer, not Blender EEVEE or Minecraft",
+  "fixed_target": [
+    0.0,
+    24.0,
+    0.0
+  ],
+  "cameras": {
+    "front": {
+      "camera": [
+        0,
+        57,
+        300
+      ],
+      "scale": 285.0,
+      "a9_triangles": 32196,
+      "a10_triangles": 38504
+    },
+    "oblique": {
+      "camera": [
+        225,
+        190,
+        290
+      ],
+      "scale": 285.0,
+      "a9_triangles": 32196,
+      "a10_triangles": 38504
+    },
+    "side": {
+      "camera": [
+        300,
+        64,
+        0
+      ],
+      "scale": 285.0,
+      "a9_triangles": 32196,
+      "a10_triangles": 38504
+    },
+    "aerial": {
+      "camera": [
+        90,
+        390,
+        110
+      ],
+      "scale": 285.0,
+      "a9_triangles": 32181,
+      "a10_triangles": 38485
+    }
+  }
+}
