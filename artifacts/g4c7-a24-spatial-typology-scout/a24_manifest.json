@@ -1,0 +1,297 @@
+{
+  "stage": "G4-C7 A24 structurally different concept scout",
+  "date": "2026-10-25 JST",
+  "parent_commit": "e95d5a9af99ad84fd6d09759ceeea51d1c8e5215",
+  "projection": {
+    "cameras": {
+      "front": [
+        0,
+        178,
+        -392
+      ],
+      "oblique": [
+        290,
+        228,
+        -305
+      ],
+      "side": [
+        403,
+        196,
+        0
+      ],
+      "aerial": [
+        188,
+        456,
+        -208
+      ]
+    },
+    "target": [
+      0,
+      70,
+      0
+    ],
+    "scale": 1.1,
+    "note": "A24 comparisons use equal cameras/scale. Scale is deliberately different from A22/A23 1.27 and NOT an identical-size historic comparison."
+  },
+  "statistics": [
+    {
+      "id": "a",
+      "name": "CONFLUENCE OF THREE INHABITED WINGS",
+      "vertices": 580,
+      "triangles": 932,
+      "closed_individual_solids": 57,
+      "bounds": [
+        [
+          -133.33150957760634,
+          -4,
+          -163.84161922340806
+        ],
+        [
+          153.87376780913655,
+          149,
+          148.1823358427641
+        ]
+      ],
+      "program": {
+        "walks": 3,
+        "frontages": 12,
+        "greens": 12,
+        "crossings": 1,
+        "void_name": "asymmetric open civic confluence with three landscape-to-city corridors"
+      },
+      "geometry_audit": "all isolated solids have positive volume, paired directed edges, no zero-area triangles",
+      "union": "UNTESTED",
+      "human331_feet993": "NOT RUN",
+      "art": "ART HOLD"
+    },
+    {
+      "id": "b",
+      "name": "ASYMMETRIC TERRAIN CITY",
+      "vertices": 468,
+      "triangles": 740,
+      "closed_individual_solids": 49,
+      "bounds": [
+        [
+          -170.1058112398153,
+          -4,
+          -136.33575741549828
+        ],
+        [
+          132,
+          164,
+          156.94258284162635
+        ]
+      ],
+      "program": {
+        "walks": 4,
+        "frontages": 29,
+        "greens": 5,
+        "crossings": 0,
+        "void_name": "exposed stepped public uplands with deep off-axis canyon courts"
+      },
+      "geometry_audit": "all isolated solids have positive volume, paired directed edges, no zero-area triangles",
+      "union": "UNTESTED",
+      "human331_feet993": "NOT RUN",
+      "art": "ART HOLD"
+    },
+    {
+      "id": "c",
+      "name": "VERTICAL SKYBOROUGH",
+      "vertices": 328,
+      "triangles": 532,
+      "closed_individual_solids": 31,
+      "bounds": [
+        [
+          -120.33159812842143,
+          -4,
+          -84.3931128844668
+        ],
+        [
+          130.73071054048538,
+          190,
+          119.98639392383214
+        ]
+      ],
+      "program": {
+        "walks": 3,
+        "frontages": 9,
+        "greens": 9,
+        "crossings": 0,
+        "void_name": "three-height skyline growing from a single linked inhabited exchange, open diagonal sky courtyards"
+      },
+      "geometry_audit": "all isolated solids have positive volume, paired directed edges, no zero-area triangles",
+      "union": "UNTESTED",
+      "human331_feet993": "NOT RUN",
+      "art": "ART HOLD"
+    }
+  ],
+  "glb_file_bytes": {
+    "a": 20756,
+    "b": 16884,
+    "c": 12716
+  },
+  "view_extent_audit": {
+    "front": [
+      {
+        "id": "a",
+        "span": {
+          "left": 105.33533946463302,
+          "right": 421.2611445900502,
+          "top": 187.42916624563762,
+          "bottom": 423.34651875938675
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "b",
+        "span": {
+          "left": 568.8836076362031,
+          "right": 901.2,
+          "top": 161.1502288937301,
+          "bottom": 415.3099902194458
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "c",
+        "span": {
+          "left": 1127.6352420587364,
+          "right": 1403.803781594534,
+          "top": 149.92576012326492,
+          "bottom": 400.133641696761
+        },
+        "fully_in_frame": true
+      }
+    ],
+    "oblique": [
+      {
+        "id": "a",
+        "span": {
+          "left": 71.35554956969384,
+          "right": 453.35599726600117,
+          "top": 197.24640310659112,
+          "bottom": 401.45870327070634
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "b",
+        "span": {
+          "left": 547.5916789909875,
+          "right": 957.2878779134178,
+          "top": 166.50151433999883,
+          "bottom": 392.35542134898907
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "c",
+        "span": {
+          "left": 1120.1740804331253,
+          "right": 1387.8416767621266,
+          "top": 150.5572255648067,
+          "bottom": 410.84735293126414
+        },
+        "fully_in_frame": true
+      }
+    ],
+    "side": [
+      {
+        "id": "a",
+        "span": {
+          "left": 71.77421885425113,
+          "right": 415.00056942704055,
+          "top": 212.26443575789,
+          "bottom": 425.2004305291053
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "b",
+        "span": {
+          "left": 606.0306668429519,
+          "right": 928.636841125789,
+          "top": 199.5234993648467,
+          "bottom": 414.9034161901482
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "c",
+        "span": {
+          "left": 1167.1675758270865,
+          "right": 1391.9850333162153,
+          "top": 166.97800604738896,
+          "bottom": 406.0550051536129
+        },
+        "fully_in_frame": true
+      }
+    ],
+    "aerial": [
+      {
+        "id": "a",
+        "span": {
+          "left": 72.75479773300543,
+          "right": 453.9985473406933,
+          "top": 114.28924611054859,
+          "bottom": 413.4707526561187
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "b",
+        "span": {
+          "left": 546.4741584809391,
+          "right": 956.6948501495297,
+          "top": 156.71313807826368,
+          "bottom": 390.18003902226303
+        },
+        "fully_in_frame": true
+      },
+      {
+        "id": "c",
+        "span": {
+          "left": 1119.0813073732495,
+          "right": 1389.675836722154,
+          "top": 164.24426431821598,
+          "bottom": 431.8657818946698
+        },
+        "fully_in_frame": true
+      }
+    ]
+  },
+  "checks_performed": [
+    "closed mesh of every separate prism/loft",
+    "positive oriented signed volume",
+    "each local directed edge paired once in each direction",
+    "nondegenerate triangle area",
+    "genuine OBJ faces GLB mesh geometry",
+    "four fixed-view real triangle orthographic projections",
+    "per-view scene silhouette frame containment"
+  ],
+  "checks_missing": [
+    "independent third-party GLB re-import",
+    "Boolean union of overlapping parts",
+    "self-intersections across all solids",
+    "physical access between elements",
+    "lateral and seismic load",
+    "historic 331 bodies / 993 feet clearance with negative blocker",
+    "walk graph",
+    "human aesthetic approval"
+  ],
+  "status": "ART HOLD / INDEPENDENT ART REVIEW PENDING",
+  "world_construction": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "historic_assets": "PROTECTED",
+  "unchanged_limits": {
+    "body": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "feet_relative": [
+      0.15,
+      3.25
+    ],
+    "body_collision_upper_bound": 45,
+    "unsupported_feet": 0
+  }
+}
