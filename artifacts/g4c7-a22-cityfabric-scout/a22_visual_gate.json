@@ -1,0 +1,30 @@
+{
+  "title": "A22 visual gate adjunct to geometric manifest",
+  "visual_gate_as_of": "2026-10-25 JST",
+  "reviewed_views": [
+    "oblique",
+    "aerial"
+  ],
+  "visual_review_status": {
+    "A": "ART HOLD; no aesthetic approval",
+    "B": "ART REJECT",
+    "C": "ART REJECT"
+  },
+  "gate_outcome": "0 promoted to formal QA",
+  "construction": "PROHIBITED",
+  "integration": "PROHIBITED",
+  "legacy": "preserved",
+  "method": "A22 actual OBJ re-read from Git blobs and software rasterized with equal camera and scale",
+  "view_renderings": [
+    "front",
+    "oblique",
+    "side",
+    "aerial"
+  ],
+  "unverified_views": [
+    "front detailed human art audit",
+    "side detailed human art audit"
+  ],
+  "safety": "331/993 and 45 body surface intersection ceiling / 0 unsupported not run on A22",
+  "independent_glb_reimport": "NOT DONE"
+}

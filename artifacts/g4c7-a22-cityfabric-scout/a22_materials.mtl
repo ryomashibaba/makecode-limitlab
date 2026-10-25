@@ -1,0 +1,24 @@
+newmtl white_stone
+Kd 0.82 0.86 0.88
+Ka .10 .10 .10
+Ks .1 .1 .1
+
+newmtl shadow_support
+Kd 0.38 0.47 0.52
+Ka .10 .10 .10
+Ks .1 .1 .1
+
+newmtl urban_glazing
+Kd 0.34 0.72 0.75
+Ka .10 .10 .10
+Ks .1 .1 .1
+
+newmtl civic_deck
+Kd 0.91 0.73 0.49
+Ka .10 .10 .10
+Ks .1 .1 .1
+
+newmtl green_court
+Kd 0.49 0.66 0.57
+Ka .10 .10 .10
+Ks .1 .1 .1
