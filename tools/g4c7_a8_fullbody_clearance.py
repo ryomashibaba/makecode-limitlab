@@ -74,8 +74,6 @@ def sat_surface_box(triangles, lo, hi):
     h=(hi-lo)/2
     tri=triangles-c
     # Bounds in world axis: 3 AABB SAT axes
-    if np.any(np.min(tri,axis=1)>h+1.e-7,axis=1).all() if False else False:
-        raise AssertionError("unreachable")
     active=np.ones(len(tri),dtype=bool)
     for ax in range(3):
         active &= (tri[:,:,ax].min(axis=1)<=h[ax]+1.e-8)&(
@@ -93,17 +91,15 @@ def sat_surface_box(triangles, lo, hi):
     if not active.any():return False
     tri=tri[active]
     e0,e1,e2=e0[active],e1[active],e2[active]
+    alive=np.ones(len(tri),dtype=bool)
     for edge in (e0,e1,e2):
         for direction in np.eye(3):
             axis=np.cross(edge,direction)
             p=np.einsum("mij,mj->mi",tri,axis)
             r=np.abs(axis)@h
-            active=(p.min(axis=1)<=r+1.e-8)&(p.max(axis=1)>=-r-1.e-8)
-            if not active.any():return False
-            tri=tri[active]
-            e0,e1,e2=e0[active],e1[active],e2[active]
-            edge=edge[active]
-    return len(tri)>0
+            alive &= (p.min(axis=1)<=r+1.e-8)&(p.max(axis=1)>=-r-1.e-8)
+            if not alive.any():return False
+    return bool(alive.any())
 
 def triangles_by_mesh(scene):
     out=[]
