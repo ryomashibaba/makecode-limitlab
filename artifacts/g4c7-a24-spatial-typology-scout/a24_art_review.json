@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-25 JST",
+  "status": "ALL THREE ART REJECT, project ART HOLD",
+  "source_commit": "44859d32c54f022995ad9c85ce5e8dff2b9dae28",
+  "actual_reviewed_views": [
+    "front",
+    "oblique",
+    "side",
+    "aerial"
+  ],
+  "assessed_from": "GitHub-archived SVG, independently rasterized for actual visual inspection",
+  "scorecard": [
+    {
+      "id": "a",
+      "verdict": "REJECT",
+      "reason": "three joined large sculpture wings; civic space and dwelling volume are not readable from four views"
+    },
+    {
+      "id": "b",
+      "verdict": "REJECT",
+      "reason": "single white slope hides urban facade and multi-level public life"
+    },
+    {
+      "id": "c",
+      "verdict": "REJECT",
+      "reason": "isolated tall sculpture silhouette dominates weak lower city mass"
+    }
+  ],
+  "technical": {
+    "isolated_solid_topology": "PASS at procedural generation only",
+    "same_scale_inside_a24": true,
+    "scale": 1.1,
+    "historic_a22_a23_scale": 1.27,
+    "full_silhouette_in_frame": true,
+    "third_party_glb_import": "NOT PERFORMED",
+    "body_331_feet_993": "NOT RUN",
+    "boolean_and_structural_access": "UNPROVEN"
+  },
+  "next": "A25 civic void and urban fabric first; no artifact-free design-only phase",
+  "safety": "ART HOLD / NO CONSTRUCTION / NO INTEGRATION / HISTORIC PRESERVATION"
+}
