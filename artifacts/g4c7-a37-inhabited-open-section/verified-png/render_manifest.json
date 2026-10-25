@@ -1,0 +1,77 @@
+{
+  "renderer": "independent OBJ-based software depth-tested RGB-palette PNG; no oversized SVG parse",
+  "size": [
+    600,
+    392
+  ],
+  "views": {
+    "front": {
+      "coverage": 0.15386904761904763,
+      "triangles": 11700,
+      "bytes": 235858
+    },
+    "oblique": {
+      "coverage": 0.19293792517006803,
+      "triangles": 16078,
+      "bytes": 235858
+    },
+    "side": {
+      "coverage": 0.14684523809523808,
+      "triangles": 12362,
+      "bytes": 235858
+    },
+    "aerial": {
+      "coverage": 0.244468537414966,
+      "triangles": 16078,
+      "bytes": 235858
+    },
+    "interior_south": {
+      "coverage": 0.7759906462585034,
+      "triangles": 6400,
+      "bytes": 235858,
+      "eye": [
+        0,
+        45,
+        -155
+      ],
+      "target": [
+        0,
+        118,
+        148
+      ],
+      "physicalAccess": "NOT VALIDATED"
+    },
+    "interior_west": {
+      "coverage": 0.7881760204081633,
+      "triangles": 5334,
+      "bytes": 235858,
+      "eye": [
+        -105,
+        55,
+        -80
+      ],
+      "target": [
+        -10,
+        91,
+        32
+      ],
+      "physicalAccess": "NOT VALIDATED"
+    },
+    "interior_north": {
+      "coverage": 0.13629251700680273,
+      "triangles": 562,
+      "bytes": 235858,
+      "eye": [
+        0,
+        112,
+        146
+      ],
+      "target": [
+        12,
+        139,
+        184
+      ],
+      "physicalAccess": "NOT VALIDATED"
+    }
+  }
+}
