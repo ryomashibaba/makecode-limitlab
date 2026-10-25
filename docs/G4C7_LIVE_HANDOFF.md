@@ -36,6 +36,8 @@ A5〜A18で3Dモデル制作・検証・保存技術は大きく向上したが�
 
 ## A19軽量3案・研究進捗（2026-10-25 JST）
 
+- A19保存済みOBJを入力とする標準ライブラリ再出力ソース `tools/g4c7_a19_replay_from_obj.py` を追加。GLB・4方向SVGを再出力するコードはGitHub保存済み。ただし実行・独立再読込QAは未検証であり、設計パラメータからの完全復元コードではない。
+
 - A16修正版 [Actions #40167521083](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167521083) = **FAILURE**。東側A11_EAST_SKY_FOLD_REAL_VOIDに対する12回のBoolean代替切削候補は閉体積・規定除去量等の同時基準を満たさず、「no valid immense Boolean excavation」のassertion。persistはskipped。閾値を緩めず設計から見直す。
 - A17初回 [Actions #40167017511](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167017511) は **build-and-inherited-geometric-gates=SUCCESS**、archive=queued（今回確認時点）。美術A/Bは既往四視点監査により**ART REJECT**。キュー済みrunを無駄にrerunしない。
 - A15成功アーカイブ（branch `dev/g4c7-a15-split-tide-sculpted-urban-shells`）の実A/B GLB・OBJ、QA JSON、fourviewディレクトリを今回再確認。旧素材は一切変更しない。
