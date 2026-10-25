@@ -1,0 +1,56 @@
+{
+  "a6_meshes": 579,
+  "a7_meshes": 587,
+  "portal_cut": [
+    {
+      "name": "SOUTH inner load shell",
+      "cut_volume": 66.8024,
+      "corridor_intersection_before": 18.36102,
+      "corridor_intersection_after": 0.0,
+      "mesh_watertight": true
+    },
+    {
+      "name": "SOUTH outer load shell",
+      "cut_volume": 66.3468,
+      "corridor_intersection_before": 18.25436,
+      "corridor_intersection_after": 0.0,
+      "mesh_watertight": true
+    },
+    {
+      "name": "SOUTH pier occupied floor.004",
+      "cut_volume": 65.28,
+      "corridor_intersection_before": 17.82614,
+      "corridor_intersection_after": 0.0,
+      "mesh_watertight": true
+    }
+  ],
+  "removed_full_sky_roofs": [
+    "A6_CURVED_SKY_EAST_ROOF",
+    "A6_CURVED_SKY_WEST_ROOF"
+  ],
+  "opening_clearance_xyz": {
+    "width_z": 6.8,
+    "height_y": 4.83,
+    "corridor_width_z": 2.9,
+    "corridor_height_y": 3.12
+  },
+  "walkway_route": {
+    "sample_count": 308,
+    "unsupported_count": 0,
+    "unsupported_examples": [],
+    "worst_supported_gap": {
+      "GROUND_APPROACH": 1.1102230246251565e-16,
+      "EXISTING_RAMP": 4.7507773937027764e-07,
+      "ELLIPTICAL_LOOP": -1.7117538682498434e-05,
+      "A7_PORTAL": 0.0
+    },
+    "positive_supported_route": true,
+    "negative_missing_bridge_fails": true,
+    "two_way_geometric_samples": true
+  },
+  "main_arch_opening_confirmed": true,
+  "art_status": "HOLD",
+  "construction": "PROHIBITED",
+  "in_game_walking": "NOT TESTED",
+  "world_modified": false
+}

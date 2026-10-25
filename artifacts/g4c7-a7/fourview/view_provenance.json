@@ -1,0 +1,51 @@
+{
+  "method": "GLB triangle orthographic Pillow painter rasterization",
+  "not": "Blender EEVEE / Minecraft screenshot / depth-perfect renderer",
+  "fixed_target": [
+    0.0,
+    24.0,
+    0.0
+  ],
+  "views": {
+    "front": {
+      "a6_visible_triangles": 30192,
+      "a7_visible_triangles": 31548,
+      "camera": [
+        0,
+        57,
+        300
+      ],
+      "scale": 285.0
+    },
+    "oblique": {
+      "a6_visible_triangles": 30192,
+      "a7_visible_triangles": 31548,
+      "camera": [
+        225,
+        190,
+        290
+      ],
+      "scale": 285.0
+    },
+    "side": {
+      "a6_visible_triangles": 30192,
+      "a7_visible_triangles": 31548,
+      "camera": [
+        300,
+        64,
+        0
+      ],
+      "scale": 285.0
+    },
+    "aerial": {
+      "a6_visible_triangles": 30188,
+      "a7_visible_triangles": 31544,
+      "camera": [
+        90,
+        390,
+        110
+      ],
+      "scale": 285.0
+    }
+  }
+}
