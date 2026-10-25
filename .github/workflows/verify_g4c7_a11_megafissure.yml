@@ -41,17 +41,19 @@ jobs:
           out=Path("build/g4c7_a11")
           q=json.loads((out/"a11_art_geometry_qa.json").read_text())
           assert q["a10_input_meshes"]==602
-          assert q["a11_output_meshes"]==612
+          assert q["a11_output_meshes"]==613
           assert q["a11_bounds"][1][1]>=70, "No actual higher art mass"
           for k in ("west","east"):
             v=q["tall_canyon_forms"][k]
             assert v["contains_real_longitudinal_cavity"] is True
             assert v["physical_void_removed"]>600
             assert v["void_ratio"]>.025
-            assert len(v["cut_through_mouths"])==2
+            assert len(v["cut_through_mouths"])==4
             assert all(m["removed_volume"]>10 for m in v["cut_through_mouths"])
             assert len(v["inhabited_terraces"])==3
           assert len(q["tall_canyon_forms"]["sky_boulevards"])==2
+          assert q["tall_canyon_forms"]["civic_spine"]["rise"]>40
+          assert q["tall_canyon_forms"]["civic_spine"]["volume"]>1000
           before=q["a10_route"];after=q["a11_route"]
           assert before["surface_collision_samples"]==45
           assert before["unsupported_foot_samples"]==0
@@ -69,10 +71,11 @@ jobs:
           assert q["in_game_walking"]=="NOT TESTED"
           assert q["private_world_or_latch"]=="UNTOUCHED"
           s=trimesh.load(out/"a11_megafissure_inhabited_cliffs.glb",force="scene")
-          assert len(s.graph.nodes_geometry)==612
+          assert len(s.graph.nodes_geometry)==613
           for n in ("A11_WEST_FAULT_ESCARPMENT_REAL_VOID",
                     "A11_EAST_SKY_FOLD_REAL_VOID",
-                    "A11_LOW_FAULT_SKY_BOULEVARD","A11_HIGH_CREST_TRANSECT"):
+                    "A11_LOW_FAULT_SKY_BOULEVARD","A11_HIGH_CREST_TRANSECT",
+                    "A11_CENTRAL_RISING_CIVIC_SPINE"):
               assert n in s.graph.nodes_geometry
           for v in ("front","oblique","side","aerial"):
               assert (out/"fourview"/(v+"_a10_a11.png")).stat().st_size>3000
