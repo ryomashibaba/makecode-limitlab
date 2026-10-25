@@ -110,9 +110,9 @@ def add_deck(scene,name,points,width,depth=1.3,rgba=STONE):
         norm=np.array([-d[2],0,d[0]],float)
         norm=norm/np.linalg.norm(norm)*(width/2)
         p=np.array([x,y,z],float)
-        for h in (-depth,0):
-            for s in (-1,1):
-                vertices.append((p+norm*s+np.array([0,h,0])).tolist())
+        # Perimeter order: left-low, right-low, right-high, left-high.
+        for side,h in ((-1,-depth),(1,-depth),(1,0),(-1,0)):
+            vertices.append((p+norm*side+np.array([0,h,0])).tolist())
     faces=[]
     for i in range(len(points)-1):
         a,b=4*i,4*(i+1)
@@ -127,21 +127,6 @@ def add_deck(scene,name,points,width,depth=1.3,rgba=STONE):
     mesh.fix_normals()
     scene.add_geometry(color(mesh,rgba),geom_name=name,node_name=name)
     return mesh
-
-def sky_openings(input_scene,output_scene):
-    """Replace solid A6 sky-gallery roof surfaces with structural outer edge ribbons.
-    They stay bounded by A6 shape, creating a real open-to-sky axial void."""
-    existing=set(input_scene.graph.nodes_geometry)
-    roofnames={n for n in existing if n.startswith("A6_CURVED_SKY_") and n.endswith("_ROOF")}
-    assert len(roofnames)==2,roofnames
-    for n in roofnames:
-        output_scene.delete_geometry(n) if n in output_scene.geometry else None
-        # remove node is handled before addition in rebuild routine
-    for sign,label in ((-1,"WEST"),(1,"EAST")):
-        rows=gallery_rows(sign,"ROOF")
-        add_loft_strip(output_scene,"A7_SKY_SLOT_"+label+"_LEFT",rows,True)
-        add_loft_strip(output_scene,"A7_SKY_SLOT_"+label+"_RIGHT",rows,False)
-    return sorted(roofnames)
 
 def modified_scene(a6):
     """A7 output built from A6 unchanged except cut shells and two replaced roofs."""
@@ -243,7 +228,7 @@ def verify_route(scene):
             worst[kind]=gap
     # Specifically demand a negative control: removing the A7 bridge loses support
     # at the interior exit; do not allow shell surface to count as pedestrian deck.
-    no_bridge=tris[:] # Build a *real* mesh-derived support set excluding A7.
+    # Build a real mesh-derived support set excluding A7.
     bridge_sources=trimesh.Scene()
     for name in scene.graph.nodes_geometry:
         if name.startswith("A7_PORTAL_DECK"):continue
