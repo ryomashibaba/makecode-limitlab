@@ -107,3 +107,11 @@ artifacts/g4c7-a13/。
 - A17初回専用run: https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167017511 （起動SHA `40d9220f7a79cfbbc671d5c041b0e5f03b4a5210`）。再確認時 **queued**、実GLB/OBJ・四視点のGitHub archive成功は未確認。
 - A16 run 40165116192、A15 run 40164110635 も **queued**。取得できたGitHubリポジトリの直近100 workflow runs中 **88 queued / 12 completed(action_required)**。原因は未確定。キュー待ちをPythonや品質失敗と混同せず、ジョブ開始・終了後のログを読むこと。無意味な再起動・並列ジョブ増殖は避ける。
 - A17 Draft PR #53 HEAD（この文書追記前）は `40d9220f7a79cfbbc671d5c041b0e5f03b4a5210`。新チャット時には必ず最新HEAD/CI/保存ファイルを再取得。
+
+
+### A16 初回厳格CIの実際の失敗と修正（2026-10-25 JST）
+
+- 初回Actions [40165116192](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40165116192)は最終**FAILURE**。run内の `true-3d-art-build-and-strict-qa` にて、WEST本体の第一巨大楕円切削直後、`assert carved.is_watertight and carved.is_volume` が不成立。問題の候補中心は **(-38.73065, 111.90399, 19.62354)** 概念単位。次の独立QAはskipped。debug-artifactアップロードだけSUCCESSであり、美術3D完成、幾何PASS、GitHub恒久保存のいずれでもない。
+- 修正コミット `8f6e550f4161580fbbf0ea1e5f5ea0b49b48d3bf`：`tools/g4c7_a16_living_oculi_void_city.py` の切削で、指定中心が無効な立体を生成した場合に**谷側へ大きく移動し直す12通りの実Boolean切削候補**を順に試し、watertight・正の閉体積・実削減量 >600・残存体積 >12000 をすべて満たす形状以外は拒否。2開口合計の各外殻除去率 >=3.5%、331人体・993足元、既存45干渉上限と0未支持は一切緩めない。安定することを保証するコードではなく**新たな形状探索**。
+- 修正版Actions [40167521083](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167521083)は起動済みだが直近確認時**queued**。結果を読むまでA16は美術・構造・歩行ともHOLD。成功時もGLB/OBJ、4視点、QA JSON/provenance、persist job SUCCESS、GitHubリポジトリ実ファイルの存在まで検証する。
+- A17は引き続き独立研究。A16が最終FAILURE/ART REJECTであったと決めつけない。施工禁止と歴史的原本保護を維持。
