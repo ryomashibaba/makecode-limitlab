@@ -1,0 +1,35 @@
+{
+  "stage": "A29",
+  "date": "2026-10-25 JST",
+  "model_commit": "3bf98ac36fddfdadc2889dd38325e40602a04fd2",
+  "overall": "A29 ART REJECT, project ART HOLD",
+  "rendered_visuals": [
+    "front",
+    "oblique",
+    "side",
+    "aerial"
+  ],
+  "comparison": "archived A28-A real OBJ; same cameras, target and scale 1.03",
+  "glb_readback": {
+    "blob_sha": "0435c8f1e8c9fd40c5d917f1ab1977428b1f8aa4",
+    "bytes": 27680,
+    "vertices": 822,
+    "triangles": 1260,
+    "materials": 7,
+    "magic_and_chunks": "PASS",
+    "accessor_and_bufferView_range": "PASS"
+  },
+  "real_3d_geometry": {
+    "closed_individual_solids": 96,
+    "oriented_edges_and_positive_volume": "PASS at generation"
+  },
+  "aesthetic_failure": "visible urban tiers improved, but small boxed miniature districts, weak monumental public void and architectural singularity",
+  "missing": [
+    "whole-model structural union and collision analysis",
+    "real access and egress",
+    "independent 3D engine render",
+    "legacy 331 body / 993 feet incl negative blocker"
+  ],
+  "all_safety_constraints_in_force": true,
+  "next": "A30 new surface/void integrated architectural morphology, early visuals before detail"
+}
