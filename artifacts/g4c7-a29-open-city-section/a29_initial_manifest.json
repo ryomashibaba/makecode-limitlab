@@ -1,0 +1,231 @@
+{
+  "stage": "G4-C7 A29 simultaneous urban/public/main structure initial art candidate",
+  "parent": "cc486aa8e2dcf537831bcda402992e1d851a8433",
+  "reference": "archived A28-A genuine OBJ",
+  "concept": "Three asymmetric occupied urban districts visibly opening on inhabited city-scale public basin. Fragmentary main buttresses remain secondary.",
+  "model": {
+    "vertices": 822,
+    "triangles": 1260,
+    "closed_component_count": 96,
+    "bounds": [
+      [
+        -166,
+        -4,
+        -160
+      ],
+      [
+        162,
+        191,
+        161.72522531654275
+      ]
+    ],
+    "program": {
+      "city_quarters": 3,
+      "inhabited_large_sections": 31,
+      "civic_roofgardens": 11,
+      "substantial_public_levels": 15,
+      "district_bridges": 7
+    },
+    "glb_file_bytes": 27680
+  },
+  "scale_hypothesis": {
+    "unit": "conceptual unit",
+    "hypothetical_real_world_factor": 10,
+    "intended_bbox_in_meters": [
+      [
+        -1660,
+        -40,
+        -1600
+      ],
+      [
+        1620,
+        1910,
+        1617.2522531654274
+      ]
+    ],
+    "warning": "A scale assumption, not demonstrated physical km scale or Minecraft capacity"
+  },
+  "cameras": {
+    "front": [
+      0,
+      220,
+      -450
+    ],
+    "oblique": [
+      350,
+      282,
+      -365
+    ],
+    "side": [
+      465,
+      225,
+      0
+    ],
+    "aerial": [
+      250,
+      525,
+      -270
+    ],
+    "civic": [
+      60,
+      125,
+      -370
+    ]
+  },
+  "target": [
+    0,
+    78,
+    0
+  ],
+  "ortho_scale": 1.03,
+  "view_frame_audit": {
+    "front": [
+      {
+        "id": "A28-A",
+        "min": [
+          177.6526235,
+          104.652414773781
+        ],
+        "max": [
+          520.1296938,
+          393.5181067452684
+        ],
+        "in_frame": true
+      },
+      {
+        "id": "A29",
+        "min": [
+          879.02,
+          108.23727910618533
+        ],
+        "max": [
+          1216.8600000000001,
+          394.1380194848474
+        ],
+        "in_frame": true
+      }
+    ],
+    "oblique": [
+      {
+        "id": "A28-A",
+        "min": [
+          130.53366563849468,
+          116.85122720844268
+        ],
+        "max": [
+          507.85281589806647,
+          412.77664202019366
+        ],
+        "in_frame": true
+      },
+      {
+        "id": "A29",
+        "min": [
+          827.4988179521963,
+          118.09446299456442
+        ],
+        "max": [
+          1207.7000551084877,
+          414.985131415184
+        ],
+        "in_frame": true
+      }
+    ],
+    "side": [
+      {
+        "id": "A28-A",
+        "min": [
+          187.26,
+          145.61077608641364
+        ],
+        "max": [
+          500.88592570000003,
+          395.81320803781716
+        ],
+        "in_frame": true
+      },
+      {
+        "id": "A29",
+        "min": [
+          885.2,
+          153.81513923120704
+        ],
+        "max": [
+          1216.576982076039,
+          394.8276380989399
+        ],
+        "in_frame": true
+      }
+    ],
+    "aerial": [
+      {
+        "id": "A28-A",
+        "min": [
+          130.40581250730685,
+          88.89825970924988
+        ],
+        "max": [
+          507.03293713626624,
+          462.3006249869029
+        ],
+        "in_frame": true
+      },
+      {
+        "id": "A29",
+        "min": [
+          827.2707520867611,
+          102.08560396395785
+        ],
+        "max": [
+          1206.753021027289,
+          467.1105309992785
+        ],
+        "in_frame": true
+      }
+    ],
+    "civic": [
+      {
+        "id": "A29",
+        "min": [
+          233.30731764459006,
+          130.88081785236085
+        ],
+        "max": [
+          590.5877442479501,
+          366.84979736750125
+        ],
+        "in_frame": true
+      }
+    ]
+  },
+  "checks_done": [
+    "individual positive-volume closed solids",
+    "degenerate face count 0",
+    "undirected paired edges and opposite directed half edges",
+    "real OBJ GLB binary generated from actual same triangular mesh",
+    "same four historical A26-28 cameras and scale; A28A actual stored model reprojected",
+    "all projected silhouettes inside frames"
+  ],
+  "unverified": [
+    "external independent GLB loader",
+    "all-solid Boolean union/intersection",
+    "structural load, useable urban space and egress",
+    "candidate 331-body/993-feet including negative control",
+    "independent human acceptance"
+  ],
+  "status": "ART HOLD / NOT YET HUMAN-APPROVED",
+  "construction": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "old_assets": "UNMODIFIED",
+  "legacy": {
+    "body": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "old_collision_cap": 45,
+    "unsupported_feet_max": 0
+  }
+}
