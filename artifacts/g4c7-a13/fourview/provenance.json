@@ -1,5 +1,5 @@
 {
-  "source": "Actual A12 input and exported A13-A/B GLB geometry",
+  "source": "Actual A12 input and exported A13-A/B/C GLB geometry",
   "renderer": "GLB-derived Pillow painter; NOT EEVEE, Blender or Minecraft",
   "comparison": "Same camera, same target, same projection, same scale",
   "cameras": {
@@ -13,7 +13,8 @@
       "triangles": [
         57310,
         58738,
-        57542
+        57542,
+        56122
       ]
     },
     "oblique": {
@@ -26,7 +27,8 @@
       "triangles": [
         57310,
         58738,
-        57542
+        57542,
+        56122
       ]
     },
     "side": {
@@ -39,7 +41,8 @@
       "triangles": [
         57310,
         58738,
-        57542
+        57542,
+        56122
       ]
     },
     "aerial": {
@@ -52,7 +55,8 @@
       "triangles": [
         57291,
         58719,
-        57523
+        57523,
+        56103
       ]
     }
   }
