@@ -180,9 +180,10 @@ def triangulated_support(scene):
             continue
         mesh=world_mesh(scene,name)
         tri=mesh.triangles
-        # Only upward-facing triangles can support feet.
+        # Source GLB may carry reversed face winding; test geometric face slope.
+        # Nearest face beneath the foot is used, irrespective of vertex winding.
         norms=np.cross(tri[:,1]-tri[:,0],tri[:,2]-tri[:,0])
-        ok=norms[:,1] > 0.005
+        ok=np.abs(norms[:,1]) > 0.005
         triangles.extend(tri[ok])
     if not triangles:
         raise AssertionError("No mesh geometry for route support")
