@@ -1,0 +1,47 @@
+{
+  "stage": "A35",
+  "generator": "independent raster of committed OBJ not of stored SVG; painter-depth approximate, image is true mesh projection",
+  "views": [
+    {
+      "name": "front",
+      "bytes": 304941,
+      "view": "front",
+      "faces_drawn": 13310,
+      "source_triangle_count": 13720,
+      "scale": 1.03,
+      "reference": "A34 LEFT",
+      "candidate": "A35 RIGHT"
+    },
+    {
+      "name": "oblique",
+      "bytes": 304941,
+      "view": "oblique",
+      "faces_drawn": 13632,
+      "source_triangle_count": 13720,
+      "scale": 1.03,
+      "reference": "A34 LEFT",
+      "candidate": "A35 RIGHT"
+    },
+    {
+      "name": "side",
+      "bytes": 304941,
+      "view": "side",
+      "faces_drawn": 12662,
+      "source_triangle_count": 13720,
+      "scale": 1.03,
+      "reference": "A34 LEFT",
+      "candidate": "A35 RIGHT"
+    },
+    {
+      "name": "aerial",
+      "bytes": 304941,
+      "view": "aerial",
+      "faces_drawn": 13708,
+      "source_triangle_count": 13720,
+      "scale": 1.03,
+      "reference": "A34 LEFT",
+      "candidate": "A35 RIGHT"
+    }
+  ],
+  "label": "left A34, right A35"
+}
