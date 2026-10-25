@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="780" viewBox="0 0 1580 780"><defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#122b42"/><stop offset="1" stop-color="#0c1929"/></linearGradient><linearGradient id="body" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#a7c2cf"/><stop offset="1" stop-color="#476d85"/></linearGradient></defs><rect width="1580" height="780" fill="url(#bg)"/><text x="45" y="55" font-family="sans-serif" font-size="30" fill="#eef8ff" font-weight="bold">A36 — Architectural organization alternatives</text><text x="45" y="85" font-family="sans-serif" font-size="16" fill="#b4cbd8">A/B/C conceptual organization only — NOT an actual 3D render, route, or art approval</text><rect x="32" y="117" width="470" height="591" rx="17" fill="#1d394d" stroke="#4c748b" stroke-width="2"/><text x="54" y="159" fill="#f6fbfd" font-size="23" font-family="sans-serif" font-weight="bold">A / CIVIC DELTA</text><rect x="52" y="190" width="430" height="366" rx="8" fill="#253f54"/><rect x="555" y="117" width="470" height="591" rx="17" fill="#1d394d" stroke="#4c748b" stroke-width="2"/><text x="577" y="159" fill="#f6fbfd" font-size="23" font-family="sans-serif" font-weight="bold">B / INTERLOCKED FAULT</text><rect x="575" y="190" width="430" height="366" rx="8" fill="#253f54"/><rect x="1078" y="117" width="470" height="591" rx="17" fill="#1d394d" stroke="#4c748b" stroke-width="2"/><text x="1100" y="159" fill="#f6fbfd" font-size="23" font-family="sans-serif" font-weight="bold">C / DEEP URBAN FORUM</text><rect x="1098" y="190" width="430" height="366" rx="8" fill="#253f54"/><g transform="translate(65 207)">
+<path d="M33 308 C98 242 154 219 196 187 C231 163 296 106 367 22" fill="none" stroke="#d4e7ec" stroke-width="111" stroke-linecap="round"/>
+<path d="M48 310 C108 248 153 220 198 185 C249 151 312 94 365 24" fill="none" stroke="#6289a4" stroke-width="73" stroke-linecap="round"/>
+<path d="M197 179 Q155 106 88 80" fill="none" stroke="#adcaad" stroke-width="67" stroke-linecap="round"/>
+<path d="M261 125 Q310 158 362 216" fill="none" stroke="#e9bf89" stroke-width="73" stroke-linecap="round"/>
+<path d="M116 246 Q57 210 32 164" fill="none" stroke="#9bd6de" stroke-width="47" stroke-linecap="round"/>
+<path d="M51 301 Q193 193 367 36" fill="none" stroke="#14364c" stroke-width="20" stroke-dasharray="13 16" stroke-linecap="round"/>
+<circle cx="201" cy="186" r="23" fill="#f1d5b0" stroke="#132f45" stroke-width="6"/>
+<text x="49" y="27" font-size="17" fill="#eaf7ff" font-family="sans-serif">Green / lived-in district</text>
+<text x="254" y="282" font-size="17" fill="#f1ddba" font-family="sans-serif">Culture district</text>
+<text x="97" y="349" font-size="17" fill="#f1d3b1" font-family="sans-serif">Diagonal public city axis</text></g><g transform="translate(587 207)">
+<path d="M48 284 L328 33 L384 94 L110 352 Z" fill="#bfd2d9" stroke="#e1eef2" stroke-width="4"/>
+<path d="M29 70 L99 29 L395 269 L318 344 Z" fill="#739eaf" stroke="#d4ecf0" stroke-width="4"/>
+<path d="M86 105 L338 288" stroke="#e7c18a" stroke-width="30"/>
+<path d="M163 210 L296 90" stroke="#14364b" stroke-width="62"/>
+<circle cx="198" cy="168" r="32" fill="#183248" stroke="#f0c590" stroke-width="10"/>
+<text x="43" y="26" font-size="17" fill="#edf7ff" font-family="sans-serif">Two crossing city faults</text>
+<text x="55" y="356" font-size="17" fill="#f4d5b2" font-family="sans-serif">Shared vertical civic room</text>
+</g><g transform="translate(1108 207)">
+<path d="M42 54 L345 40 L391 283 L290 346 L34 291 Z" fill="#a9c4d1" stroke="#e0ebf2" stroke-width="5"/>
+<path d="M80 124 L330 100 L350 269 L261 302 L61 255 Z" fill="#1f4359" stroke="#76a9b6" stroke-width="12"/>
+<path d="M86 174 L309 163" stroke="#e6bf8b" stroke-width="31" stroke-linecap="round"/>
+<path d="M102 238 L297 226" stroke="#77c0bb" stroke-width="23" stroke-linecap="round"/>
+<path d="M192 129 L190 278" stroke="#f3d4a2" stroke-width="10" stroke-dasharray="8 10"/>
+<text x="60" y="25" font-size="17" fill="#e5f4fa" font-family="sans-serif">Carved lived-in civic core</text>
+<text x="80" y="352" font-size="17" fill="#f3d6ae" font-family="sans-serif">Risk: featureless monolith</text>
+</g><text x="53" y="597" fill="#dcf1f4" font-size="17" font-family="sans-serif">Three unequal used districts</text><text x="53" y="627" fill="#e7b9aa" font-size="15" font-family="sans-serif">Risk: only an aerial road network</text><text x="53" y="662" fill="#bcd3df" font-size="16" font-family="sans-serif">SELECTED FOR ONE REAL 3D G1 SCOUT</text><text x="576" y="597" fill="#dcf1f4" font-size="17" font-family="sans-serif">A multi-level interlocking city</text><text x="576" y="627" fill="#e7b9aa" font-size="15" font-family="sans-serif">Risk: X-shaped transport complex</text><text x="576" y="662" fill="#bcd3df" font-size="16" font-family="sans-serif">HOLD — no extra blind 3D trials</text><text x="1099" y="597" fill="#dcf1f4" font-size="17" font-family="sans-serif">Inhabited void carved into a mass</text><text x="1099" y="627" fill="#e7b9aa" font-size="15" font-family="sans-serif">Risk: one giant carved rock</text><text x="1099" y="662" fill="#bcd3df" font-size="16" font-family="sans-serif">HOLD — no extra blind 3D trials</text><text x="45" y="753" fill="#b4cedb" font-size="15" font-family="sans-serif">A35 is ART REJECT, all A36 diagrams are 2D hypotheses. ART HOLD / NO Minecraft construction / NO city integration.</text></svg>

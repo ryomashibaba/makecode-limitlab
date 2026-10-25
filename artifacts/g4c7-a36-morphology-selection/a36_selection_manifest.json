@@ -1,0 +1,59 @@
+{
+  "stage": "A36 / deliberate divergence G0",
+  "date_jst": "2026-10-26",
+  "head_at_start": "e681ea85303308106b15e3014c59b64dd4c69c46",
+  "candidates": [
+    {
+      "id": "A",
+      "name": "CIVIC DELTA／都市の分岐地形",
+      "geometry": "南西→北東へ走る太い非直線の主街区に、非平行の居住・文化・緑化翼が分岐。都市の公的な裂け目が曲がりながら貫通する",
+      "mechanism": "広場が3方向へ開き、一つの巨大都市母体に異なる居住層・学習層・文化層が接する",
+      "strength": "正面のU字二岸を破り、遠景で主軸と枝の高低差を作りやすい",
+      "primary_risk": "道路や滑走路の分岐として見えて都市が消える",
+      "mandatory_visible": "主軸の厚い内部居住層と3つの異なる都市用途が見えること",
+      "status": "SELECTED_FOR_ONE_G1_SCOUT_NOT_ART_APPROVED"
+    },
+    {
+      "id": "B",
+      "name": "INTERLOCKED CIVIC FAULT／交錯都市断層",
+      "geometry": "2つの異なる厚みの都市地形が非対称な角度で交差し、空洞は交点で高さ方向に連結する",
+      "mechanism": "上下の都市が公共室を囲むが、外皮を屋根として主役化しない",
+      "strength": "縦断・横断に異なる空間体験を作りやすい",
+      "primary_risk": "巨大な橋・交差道路・X字型の交通施設になる",
+      "mandatory_visible": "交点の内部ホール・居住都市の奥行・公共導線が同時に見えること",
+      "status": "HOLD_NOT_MODELLED"
+    },
+    {
+      "id": "C",
+      "name": "DEEP INHABITED FORUM／立体公堂",
+      "geometry": "単一非対称の都市母体を横長の大公共室で掘り、階ごとに異なる都市街路と室内前面を連続させる",
+      "mechanism": "巨大な空間の内部で都市生活と高所の目的地を一度に見せる",
+      "strength": "実際の空間を本体から切削しやすく、一体感は保ちやすい",
+      "primary_risk": "A21・A34の巨大な岩塊・無表情な採石場・巨大開口施設",
+      "mandatory_visible": "建物の外から複数階層の活動を読み取れる開かれた大きな都市正面",
+      "status": "HOLD_NOT_MODELLED"
+    }
+  ],
+  "selection": "A CIVIC DELTA",
+  "selection_status": "RESEARCH SCOUT ONLY - NO ART APPROVAL",
+  "image": "artifacts/g4c7-a36-morphology-selection/a36_concept_comparison.svg",
+  "g1": "NOT RUN YET",
+  "g2": "NOT RUN",
+  "g3": "NOT RUN",
+  "preserved": {
+    "art_hold": true,
+    "minecraft_construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot_height": [
+      0.15,
+      3.25
+    ],
+    "historical_body_interference_max": 45,
+    "unsupported_feet_max": 0,
+    "negative_control": "REQUIRED",
+    "work_approval": true
+  }
+}
