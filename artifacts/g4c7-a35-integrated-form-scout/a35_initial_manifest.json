@@ -1,0 +1,205 @@
+{
+  "stage": "G4C7 A35 single experimental curvature-and-civic-void form",
+  "date_jst": "2026-10-25",
+  "input": "A34 canonical OBJ actual 6860 vertices,13720 triangles",
+  "geometry": {
+    "vertices": 6860,
+    "triangles": 13720,
+    "edge_count": 20580,
+    "unmatched_edges": 0,
+    "original_signed_volume": 10454000.000000356,
+    "result_signed_volume": 10443150.427658333,
+    "volume_ratio": 0.9989621606713198,
+    "old_mean_laplacian_distance": 1.6458132209530267,
+    "new_mean_laplacian_distance": 1.089054257335236,
+    "roughness_reduction_percent": 33.82880612025909,
+    "flipped_triangle_normals": 0,
+    "degenerate_triangle_count": 0,
+    "minimum_triangle_area": 2.123834262372504,
+    "bounds": [
+      [
+        -209.1069062463433,
+        0,
+        -190
+      ],
+      [
+        210.57811147709853,
+        191.30826758618122,
+        190.06385340308148
+      ]
+    ],
+    "actual_glb_bytes": 332092,
+    "algorithm": "17 Taubin lambda=.48 mu=-.51 iterations with ground anchor, macro x-z warping + subtle topographic y bending; no added floor or box geometry"
+  },
+  "reference_camera": {
+    "front": [
+      0,
+      220,
+      -450
+    ],
+    "oblique": [
+      350,
+      282,
+      -365
+    ],
+    "side": [
+      465,
+      225,
+      0
+    ],
+    "aerial": [
+      250,
+      525,
+      -270
+    ]
+  },
+  "target": [
+    0,
+    78,
+    0
+  ],
+  "scale": 1.03,
+  "matched_projection_frames": {
+    "front": [
+      {
+        "model": "A34",
+        "bounds": [
+          169,
+          272.1951700759979,
+          581,
+          573.5076861727495
+        ],
+        "fits": true
+      },
+      {
+        "model": "A35",
+        "bounds": [
+          909.6198865662664,
+          273.7251601143164,
+          1341.8954548214115,
+          573.5076861727495
+        ],
+        "fits": true
+      }
+    ],
+    "oblique": [
+      {
+        "model": "A34",
+        "bounds": [
+          105.42812665665684,
+          230.3953454312632,
+          644.8773949225008,
+          618.6902769708804
+        ],
+        "fits": true
+      },
+      {
+        "model": "A35",
+        "bounds": [
+          855.4281266566568,
+          234.59730698401393,
+          1402.0648287015968,
+          618.6902769708804
+        ],
+        "fits": true
+      }
+    ],
+    "side": [
+      {
+        "model": "A34",
+        "bounds": [
+          179.29999999999998,
+          265.9117274909334,
+          570.7,
+          576.6970649935002
+        ],
+        "fits": true
+      },
+      {
+        "model": "A35",
+        "bounds": [
+          929.3,
+          267.948379041678,
+          1320.765769005174,
+          576.6970649935002
+        ],
+        "fits": true
+      }
+    ],
+    "aerial": [
+      {
+        "model": "A34",
+        "bounds": [
+          105.4407870548585,
+          157.4318659050308,
+          645.1190451630961,
+          707.9810951968221
+        ],
+        "fits": true
+      },
+      {
+        "model": "A35",
+        "bounds": [
+          855.4407870548584,
+          164.25285858049745,
+          1402.3082685137895,
+          707.9810951968221
+        ],
+        "fits": true
+      }
+    ]
+  },
+  "interior_diagnostics": {
+    "SOUTH_CIVIC": {
+      "camera": [
+        0,
+        35,
+        -120
+      ],
+      "target": [
+        0,
+        95,
+        130
+      ],
+      "triangles_rendered": 3766,
+      "triangles_omitted_near": 673
+    },
+    "WEST_CARVED_HALL": {
+      "camera": [
+        -102,
+        45,
+        -75
+      ],
+      "target": [
+        -23,
+        78,
+        -7
+      ],
+      "triangles_rendered": 3548,
+      "triangles_omitted_near": 465
+    }
+  },
+  "art_status": "PENDING G1 HUMAN REVIEW, NOT AN ADOPTION",
+  "technical_limitations": [
+    "topology preserved by identical faces; geometry self intersections not comprehensively tested",
+    "no new walking/structural QA",
+    "no third party GLB renderer",
+    "area/roughness proxy != beauty"
+  ],
+  "protections": {
+    "ART_HOLD": true,
+    "Minecraft_Education_construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "old_project_assets": "PROTECTED",
+    "legacy_bodies": 331,
+    "legacy_feet": 993,
+    "body_halfwidth": 0.65,
+    "foot_vertical": [
+      0.15,
+      3.25
+    ],
+    "historical_body_collisions_ceiling": 45,
+    "unsupported_feet_max": 0,
+    "negative_blocker": "REQUIRED"
+  }
+}

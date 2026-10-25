@@ -1,0 +1,17 @@
+newmtl limestone
+Kd 0.85 0.906 0.922
+
+newmtl support
+Kd 0.278 0.396 0.475
+
+newmtl plaza
+Kd 0.929 0.765 0.569
+
+newmtl facade
+Kd 0.369 0.745 0.788
+
+newmtl garden
+Kd 0.502 0.71 0.62
+
+newmtl north
+Kd 0.694 0.765 0.804
