@@ -1,0 +1,210 @@
+{
+  "stage": "A26: inhabited monumental civic section architecture; ART HOLD",
+  "parent_commit": "fac540f4879c2dafa3355c6789f42fc4aafb2ea2",
+  "reference_source": "artifacts/g4c7-a25-urban-life-scout/a25_b.obj",
+  "reference_stats": {
+    "vertices": 3756,
+    "triangles": 5640,
+    "bounds": [
+      [
+        -158.00463,
+        -4,
+        -151
+      ],
+      [
+        150,
+        190,
+        149.09008
+      ]
+    ]
+  },
+  "candidate": {
+    "vertices": 1038,
+    "triangles": 1636,
+    "bounds": [
+      [
+        -157.34981760139723,
+        -4,
+        -154
+      ],
+      [
+        159,
+        188,
+        145
+      ]
+    ]
+  },
+  "program": {
+    "primary_tectonic_spines": 3,
+    "civic_terraces": 11,
+    "inhabited_midscale_blocks": 26,
+    "green_squares": 9,
+    "public_bridges": 9,
+    "urban_portals": 3,
+    "urban_wing_ribs": 5
+  },
+  "closed_individual_solids": 110,
+  "glb_bytes": 35020,
+  "glb_material_primitives": 7,
+  "view_params": {
+    "cameras": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ],
+      "inner": [
+        72,
+        105,
+        -160
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "scale": 1.03,
+    "note": "A25-B reprojected from archived OBJ using exactly A26 camera target scale; not historic original PNG"
+  },
+  "view_fit": {
+    "front": [
+      {
+        "model": "A25-B",
+        "min": [
+          237.2552311,
+          195.58567530871997
+        ],
+        "max": [
+          554.5,
+          472.34841215674214
+        ],
+        "in_frame": true
+      },
+      {
+        "model": "A26",
+        "min": [
+          1037.9296878705609,
+          194.75210826647577
+        ],
+        "max": [
+          1363.77,
+          473.2782812661105
+        ],
+        "in_frame": true
+      }
+    ],
+    "oblique": [
+      {
+        "model": "A25-B",
+        "min": [
+          220.91343435048393,
+          193.44403609581127
+        ],
+        "max": [
+          548.9010336287504,
+          487.2545384213469
+        ],
+        "in_frame": true
+      },
+      {
+        "model": "A26",
+        "min": [
+          994.3228729111387,
+          201.85715695930654
+        ],
+        "max": [
+          1382.9463215995397,
+          491.9377431469729
+        ],
+        "in_frame": true
+      }
+    ],
+    "side": [
+      {
+        "model": "A25-B",
+        "min": [
+          244.47,
+          221.61091498993216
+        ],
+        "max": [
+          553.5627824000001,
+          472.1020157044137
+        ],
+        "in_frame": true
+      },
+      {
+        "model": "A26",
+        "min": [
+          1041.38,
+          230.39191665947067
+        ],
+        "max": [
+          1349.35,
+          474.8962325003083
+        ],
+        "in_frame": true
+      }
+    ],
+    "aerial": [
+      {
+        "model": "A25-B",
+        "min": [
+          220.43381609106098,
+          179.00083401894503
+        ],
+        "max": [
+          547.9076719836062,
+          530.8524751740437
+        ],
+        "in_frame": true
+      },
+      {
+        "model": "A26",
+        "min": [
+          994.1496934580923,
+          179.35662657881875
+        ],
+        "max": [
+          1383.303063963786,
+          539.9785028446806
+        ],
+        "in_frame": true
+      }
+    ]
+  },
+  "geometry_tests": {
+    "per_solid_positive_volume": true,
+    "per_solid_edge_pairing": true,
+    "per_solid_oriented_edge_pairing": true,
+    "zero_area_triangles": 0
+  },
+  "known_absent": [
+    "boolean union of separate solids",
+    "cross-solid self-intersections",
+    "independent GLB re-read",
+    "331 human/993 feet, inherited 45 body interferences",
+    "city structural loads",
+    "inter-level walk, safety, egress",
+    "aesthetic approval"
+  ],
+  "state": "ART HOLD",
+  "construction": "NO",
+  "city_integration": "NO",
+  "preservation": "ALL OLD MODELS AND WORLD DATA UNCHANGED"
+}

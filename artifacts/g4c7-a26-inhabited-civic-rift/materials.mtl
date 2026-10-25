@@ -1,0 +1,20 @@
+newmtl ceramic_megafold
+Kd 0.831 0.898 0.933
+
+newmtl graphite_foundation
+Kd 0.235 0.345 0.431
+
+newmtl living_light
+Kd 0.38 0.769 0.796
+
+newmtl civic_stone
+Kd 0.91 0.765 0.604
+
+newmtl sky_gardens
+Kd 0.459 0.714 0.624
+
+newmtl bronze_bracing
+Kd 0.714 0.584 0.467
+
+newmtl urban_envelope
+Kd 0.506 0.6 0.678
