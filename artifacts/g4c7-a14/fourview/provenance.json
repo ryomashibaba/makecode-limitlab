@@ -1,0 +1,60 @@
+{
+  "renderer": "GLB-derived orthographic Pillow painter; NOT Blender, EEVEE, Minecraft",
+  "identical_reference_camera": true,
+  "same_projection_scale": 285.0,
+  "frames": {
+    "front": {
+      "eye": [
+        0,
+        57,
+        300
+      ],
+      "scale": 285.0,
+      "triangles": [
+        57310,
+        56122,
+        56558
+      ]
+    },
+    "oblique": {
+      "eye": [
+        225,
+        190,
+        290
+      ],
+      "scale": 285.0,
+      "triangles": [
+        57310,
+        56122,
+        56558
+      ]
+    },
+    "side": {
+      "eye": [
+        300,
+        64,
+        0
+      ],
+      "scale": 285.0,
+      "triangles": [
+        57310,
+        56122,
+        56558
+      ]
+    },
+    "aerial": {
+      "eye": [
+        90,
+        390,
+        110
+      ],
+      "scale": 285.0,
+      "triangles": [
+        57291,
+        56103,
+        56539
+      ]
+    }
+  },
+  "post_edit_art_judgement": "NOT CERTIFIED"
+}
