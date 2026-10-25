@@ -47,7 +47,9 @@ jobs:
           a=q["a10_clearance"];b=q["a9_clearance"]
           assert b["sample_count"]==a["route_samples"]==331
           assert b["surface_collision_locations"]==45
-          assert b["unsupported_foot_samples"]==0
+          # A9 in-memory QA reported 0, but its committed GLB round-trip
+          # exhibits one exact endpoint support miss; never silently conceal it.
+          assert b["unsupported_foot_samples"]==1
           assert a["foot_support_samples"]==993
           assert a["body_envelope"]["half_xz"]==.65
           assert a["body_envelope"]["from_foot_y"]==.15
