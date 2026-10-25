@@ -1,0 +1,23 @@
+{
+  "stage": "A23 post-archive independent four-view aesthetic review",
+  "date": "2026-10-25 JST",
+  "replay_source": "tools/g4c7_a23_skyline_scout.mjs",
+  "model_commit": "a5986cb915092b18e8c1e7d066708843ec91cd18",
+  "views_checked": [
+    "front",
+    "oblique",
+    "side",
+    "aerial"
+  ],
+  "models": {
+    "a": "ART REJECT: long parallel walls and shelf-like civic floors",
+    "b": "ART REJECT: mostly same typology as A with diagonal parameters",
+    "c": "ART REJECT: one dominant blank wall, car-park-like suspended layers"
+  },
+  "camera_cropping_risk": "C peak approx Y=219.78 near edge of fixed A22 frame; cannot call all silhouettes fully framed",
+  "QA_scope": "isolated positive-volume manifold lofts only; no Boolean, walk or accessibility verification",
+  "overall": "ART HOLD",
+  "build": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "next": "A24 radically different morphology; no reskinned canyon"
+}
