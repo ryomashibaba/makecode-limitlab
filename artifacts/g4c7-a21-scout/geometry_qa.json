@@ -1,0 +1,64 @@
+{
+  "candidates": [
+    [
+      "a",
+      "TIDAL FJORD"
+    ],
+    [
+      "b",
+      "POROUS CONTINENT"
+    ],
+    [
+      "c",
+      "ASCENDING ESTUARY"
+    ]
+  ],
+  "results": [
+    {
+      "variant": "a",
+      "original_connected_pieces": 1,
+      "detached_faces_explicitly_removed": 0,
+      "removed_ratio": 0,
+      "vertices": 6922,
+      "triangles": 13844,
+      "edge_boundary_failures": 0,
+      "edge_orientation_failures": 0,
+      "signed_volume": 4955172,
+      "art": "HOLD",
+      "legacy_route_331_993": "NOT TESTED",
+      "structure": "NOT VERIFIED"
+    },
+    {
+      "variant": "b",
+      "original_connected_pieces": 2,
+      "detached_faces_explicitly_removed": 24,
+      "removed_ratio": 0.001761,
+      "vertices": 6804,
+      "triangles": 13608,
+      "edge_boundary_failures": 0,
+      "edge_orientation_failures": 0,
+      "signed_volume": 4850592,
+      "art": "HOLD",
+      "legacy_route_331_993": "NOT TESTED",
+      "structure": "NOT VERIFIED"
+    },
+    {
+      "variant": "c",
+      "original_connected_pieces": 1,
+      "detached_faces_explicitly_removed": 0,
+      "removed_ratio": 0,
+      "vertices": 7286,
+      "triangles": 14576,
+      "edge_boundary_failures": 0,
+      "edge_orientation_failures": 0,
+      "signed_volume": 5253694,
+      "art": "HOLD",
+      "legacy_route_331_993": "NOT TESTED",
+      "structure": "NOT VERIFIED"
+    }
+  ],
+  "art": "HOLD",
+  "legacy_route": "NOT TESTED",
+  "minecraft": "PROHIBITED",
+  "city_integration": "PROHIBITED"
+}
