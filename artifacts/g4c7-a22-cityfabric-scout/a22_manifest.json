@@ -1,0 +1,166 @@
+{
+  "stage": "G4-C7 A22 lightweight differentiated urban fabric forms, independent ART-FIRST",
+  "prev_ref": "62e84c6fd2aa40b8e854f885aa528903cb118254",
+  "date": "2026-10-25 JST",
+  "structures": [
+    "OPEN CIVIC CRESCENT",
+    "BRAIDED INHABITED GORGE",
+    "DELTA CITY COMMONS"
+  ],
+  "concepts": [
+    "前面を大きく開いた公共湾岸都市",
+    "縦断公共街路が編み込む峡谷都市",
+    "中央公共核から広がる三方向都市"
+  ],
+  "projection": {
+    "cameras": {
+      "front": [
+        0,
+        178,
+        -392
+      ],
+      "oblique": [
+        290,
+        228,
+        -305
+      ],
+      "side": [
+        403,
+        196,
+        0
+      ],
+      "aerial": [
+        188,
+        456,
+        -208
+      ]
+    },
+    "target": [
+      0,
+      70,
+      0
+    ],
+    "orthographic_scale": 1.27
+  },
+  "results": [
+    {
+      "vertices": 2544,
+      "triangles": 3816,
+      "isolated_convex_urban_solid_count": 318,
+      "degenerate_triangles": 0,
+      "nonpositive_primitive_volume": 0,
+      "unpaired_edges": 0,
+      "directed_edge_mismatch": 0,
+      "bounds": [
+        [
+          -121.55466799768816,
+          -4,
+          -57.48651450829498
+        ],
+        [
+          121.8621228102258,
+          119.8,
+          126.95036295398421
+        ]
+      ],
+      "signed_component_volume_sum": 1158582.9,
+      "urbanFrontages": 80,
+      "major_civic_levels": 5,
+      "public_cross_links": 4,
+      "groundSupports": 6,
+      "boolean_union": "NOT PERFORMED",
+      "overlap_self_intersections": "NOT CHECKED",
+      "human_route_331_993": "NOT RUN",
+      "art": "HOLD, PENDING VISUAL REVIEW",
+      "city_integration": "PROHIBITED",
+      "minecraft": "PROHIBITED"
+    },
+    {
+      "vertices": 3504,
+      "triangles": 5256,
+      "isolated_convex_urban_solid_count": 438,
+      "degenerate_triangles": 0,
+      "nonpositive_primitive_volume": 0,
+      "unpaired_edges": 0,
+      "directed_edge_mismatch": 0,
+      "bounds": [
+        [
+          -100.85137788447439,
+          -4,
+          -114.5
+        ],
+        [
+          99.39281686324568,
+          131.76781263071803,
+          112.5
+        ]
+      ],
+      "signed_component_volume_sum": 1556195,
+      "urbanFrontages": 120,
+      "major_civic_levels": 5,
+      "public_cross_links": 6,
+      "groundSupports": 8,
+      "boolean_union": "NOT PERFORMED",
+      "overlap_self_intersections": "NOT CHECKED",
+      "human_route_331_993": "NOT RUN",
+      "art": "HOLD, PENDING VISUAL REVIEW",
+      "city_integration": "PROHIBITED",
+      "minecraft": "PROHIBITED"
+    },
+    {
+      "vertices": 992,
+      "triangles": 1488,
+      "isolated_convex_urban_solid_count": 124,
+      "degenerate_triangles": 0,
+      "nonpositive_primitive_volume": 0,
+      "unpaired_edges": 0,
+      "directed_edge_mismatch": 0,
+      "bounds": [
+        [
+          -146.06136107458045,
+          -4,
+          -148.59950275112502
+        ],
+        [
+          134.14960222278066,
+          110,
+          111.76974829686905
+        ]
+      ],
+      "signed_component_volume_sum": 1706568.5,
+      "urbanFrontages": 24,
+      "major_civic_levels": 8,
+      "public_cross_links": 4,
+      "groundSupports": 6,
+      "boolean_union": "NOT PERFORMED",
+      "overlap_self_intersections": "NOT CHECKED",
+      "human_route_331_993": "NOT RUN",
+      "art": "HOLD, PENDING VISUAL REVIEW",
+      "city_integration": "PROHIBITED",
+      "minecraft": "PROHIBITED"
+    }
+  ],
+  "checks_done": [
+    "convex urban-prism positive signed volume",
+    "isolated prism edge pairing",
+    "nondegenerate triangles",
+    "nonzero exported GLB binary",
+    "same cameras for all contenders"
+  ],
+  "checks_not_done": [
+    "Boolean union of overlaps",
+    "independent GLB reload",
+    "complete in-city walk graph",
+    "331 human envelope 993 foot strict inherited QA",
+    "interior access and egress",
+    "structural load, physical engineering",
+    "aesthetic acceptance"
+  ],
+  "legacy_331_993": "UNTOUCHED ON HISTORICAL ASSETS; NOT RUN ON A22",
+  "historical_interference_limit": 45,
+  "historical_unsupported_foot_limit": 0,
+  "ART": "HOLD",
+  "minecraft": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "historical_assets": "UNCHANGED"
+}
