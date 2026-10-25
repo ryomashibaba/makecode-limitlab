@@ -1,0 +1,106 @@
+name: G4C7 A8 full-body clearance + transfer geometry (ART HOLD; NO MINECRAFT)
+on:
+  push:
+    paths:
+      - 'tools/g4c7_a8_fullbody_clearance.py'
+      - 'docs/G4C7_A8_SWEEP_AND_TRANSFER_ART_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a8_clearance.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  a8-offline-swept-envelope-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned geometry and image tools
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Build standalone A8 model and independent 3D clearance audit
+        run: |
+          python tools/g4c7_a8_fullbody_clearance.py \
+            --input artifacts/g4c7-a7/a7_orbital_commons_portal_study.glb \
+            --out build/g4c7_a8
+      - name: Verify QA provenance, adversarial blocker, route continuity, images and no construction
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import trimesh
+          d=Path("build/g4c7_a8")
+          q=json.loads((d/"a8_fullbody_clearance_qa.json").read_text())
+          s=q["clearance"]
+          assert q["input_a7_meshes"]==587
+          assert q["result_a8_meshes"]==592
+          assert q["art_status"]=="HOLD"
+          assert q["construction"]=="PROHIBITED"
+          assert q["city_integration"]=="PROHIBITED"
+          assert q["in_game_walk"]=="NOT_TESTED"
+          assert q["private_world_data"]=="UNTOUCHED"
+          assert q["full_solid_containment"]=="NOT_PROVEN"
+          assert q["transfer"]["bridge_mesh_watertight"]
+          assert q["transfer"]["bridge_mesh_volume"]
+          assert 3.0<q["transfer"]["centerline_gap_before"]<4.0
+          assert s["negative_intentional_blocker_detected"]
+          assert s["route_samples"]>=320
+          assert s["max_adjacent_sample_step"]<1.15
+          assert s["foot_support_samples"]==3*s["route_samples"]
+          assert isinstance(s["body_surface_intersection_sample_count"],int)
+          for view in ("front","oblique","side","aerial"):
+              assert (d/"fourview"/(view+"_a7_a8.png")).stat().st_size>2000
+          output=trimesh.load(d/"a8_orbital_commons_transfer_study.glb",force="scene")
+          assert len(output.graph.nodes_geometry)==q["result_a8_meshes"]
+          assert "A8_RAMP_PROMENADE_TRANSFER_DECK" in output.graph.nodes_geometry
+          print("A8 algorithm, real connector, robust negative control: PASS")
+          print("A8 function status:",s["route_geometric_status"])
+          print("Collision samples:",s["body_surface_intersection_sample_count"])
+          print("Unsupported samples:",s["unsupported_foot_samples"])
+          print("Engineering, in-game walking, FULL-SOLID clearance: NOT PROVEN")
+          PY
+      - name: Upload independent A8 3D model, JSON and four-view comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a8-art-hold-transfer-fullbody-audit
+          path: build/g4c7_a8/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Do not touch Minecraft Education or production worlds
+        run: echo 'A8 is offline geometry study only; no Minecraft, world, USED, ZIP or CSV operations.'
+  persist-a8-evidence:
+    needs: [a8-offline-swept-envelope-qa]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a8-fullbody-clearance-transfer-route'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a8-art-hold-transfer-fullbody-audit
+          path: build/g4c7_a8
+      - name: Commit persistent isolated A8 evidence without changing A7
+        run: |
+          set -euo pipefail
+          d=artifacts/g4c7-a8
+          mkdir -p "$d/fourview"
+          for f in a8_orbital_commons_transfer_study.glb a8_orbital_commons_transfer_study.obj a8_fullbody_clearance_qa.json; do
+            test -s "build/g4c7_a8/$f"
+            cp "build/g4c7_a8/$f" "$d/$f"
+          done
+          for view in front oblique side aerial; do
+            test -s "build/g4c7_a8/fourview/$view"_a7_a8.png
+            cp "build/g4c7_a8/fourview/$view"_a7_a8.png "$d/fourview/$view"_a7_a8.png
+          done
+          cp build/g4c7_a8/fourview/provenance.json "$d/fourview/provenance.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a8/
+          if ! git diff --cached --quiet; then
+            git commit -m "G4C7 A8: archive transfer GLB OBJ clearance QA and four views (ART HOLD)"
+            git push origin HEAD:dev/g4c7-a8-fullbody-clearance-transfer-route
+          fi
