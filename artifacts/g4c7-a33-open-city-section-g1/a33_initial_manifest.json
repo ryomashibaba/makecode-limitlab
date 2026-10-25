@@ -1,0 +1,333 @@
+{
+  "stage": "A33 G1 initial one-candidate 3D vs preserved A31 model",
+  "parent": "207222e9e6a867dd74ea19e4f5f5355f928df31f",
+  "name": "OPEN CITY SECTION -- urban program-first singular massing",
+  "scope": "ACTUAL 3D STUDY, not constructed or architecturally certified",
+  "model": {
+    "vertices": 282,
+    "triangles": 484,
+    "individual_closed_solids": 20,
+    "bounds": [
+      [
+        -210,
+        -6,
+        -196
+      ],
+      [
+        205,
+        194,
+        209.98892334944316
+      ]
+    ],
+    "file_bytes_GLB": 11848,
+    "parts": [
+      {
+        "name": "anchored_continuous_city_ground",
+        "triangles": 44,
+        "positive_volume": 1724970
+      },
+      {
+        "name": "giant_open_public_exchange_plaza",
+        "triangles": 24,
+        "positive_volume": 203462
+      },
+      {
+        "name": "deep_civic_botanical_square",
+        "triangles": 16,
+        "positive_volume": 34860
+      },
+      {
+        "name": "west_connected_stepped_urban_ground",
+        "triangles": 44,
+        "positive_volume": 1783089.4
+      },
+      {
+        "name": "west_lower_inhabited_cityfront_hall",
+        "triangles": 28,
+        "positive_volume": 205383
+      },
+      {
+        "name": "west_upper_open_inhabited_cityfront_hall",
+        "triangles": 28,
+        "positive_volume": 291303.5
+      },
+      {
+        "name": "west_public_concourse_facing_void",
+        "triangles": 28,
+        "positive_volume": 23139
+      },
+      {
+        "name": "west_civic_glazing_and_occupied_frontage",
+        "triangles": 28,
+        "positive_volume": 7408.4
+      },
+      {
+        "name": "east_connected_cultural_earthwork",
+        "triangles": 36,
+        "positive_volume": 1162173.4
+      },
+      {
+        "name": "east_deep_cultural_hall",
+        "triangles": 28,
+        "positive_volume": 331248.8
+      },
+      {
+        "name": "east_research_tier_public_boulevard",
+        "triangles": 20,
+        "positive_volume": 38513.5
+      },
+      {
+        "name": "east_public_gallery_facade",
+        "triangles": 20,
+        "positive_volume": 18443.7
+      },
+      {
+        "name": "east_culture_courtyard_embedded_green",
+        "triangles": 16,
+        "positive_volume": 13296
+      },
+      {
+        "name": "north_public_cityland_supported_boulevard",
+        "triangles": 28,
+        "positive_volume": 137604.6
+      },
+      {
+        "name": "high_north_civic_exchange_terrace",
+        "triangles": 20,
+        "positive_volume": 82543.5
+      },
+      {
+        "name": "north_glazed_urban_library_and_public_viewpoint",
+        "triangles": 16,
+        "positive_volume": 239092
+      },
+      {
+        "name": "north_urban_library_civic_facade",
+        "triangles": 16,
+        "positive_volume": 58773
+      },
+      {
+        "name": "north_public_sky_garden_destination",
+        "triangles": 12,
+        "positive_volume": 7456.5
+      },
+      {
+        "name": "west_to_north_peripheral_inhabited_walk",
+        "triangles": 16,
+        "positive_volume": 18998
+      },
+      {
+        "name": "east_to_north_peripheral_public_walk",
+        "triangles": 16,
+        "positive_volume": 20727
+      }
+    ],
+    "zones": [
+      {
+        "program": "ground civic exchange",
+        "rough_bounds": "x -86..86; z -150..61; y7..14",
+        "evidence": "large open-air floor; no bridging over south look corridor"
+      },
+      {
+        "program": "west inhabited urban cityfront",
+        "evidence": "terraces/occupied levels face south-east civic void"
+      },
+      {
+        "program": "west broad city halls",
+        "evidence": "2 distinct large continuously inhabited levels; 1 broad civic procession, not repeated room boxes"
+      },
+      {
+        "program": "east culture and research",
+        "evidence": "lower and deeper cultural hall with distinct public court; no 12 repeated residential floors"
+      },
+      {
+        "program": "northern destination",
+        "evidence": "large visible high-level library at z150, no isolated tiny tower, connected by modeled north city terrace"
+      }
+    ]
+  },
+  "compare": {
+    "baseline": "A31 archived actual OBJ",
+    "sameCamera": true,
+    "cameras": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "scale": 1.03,
+    "frameAudit": {
+      "front": [
+        {
+          "model": "A31",
+          "bbox": [
+            197.69322499999998,
+            135.1963742136817,
+            551.514602,
+            422.8103192165034
+          ],
+          "inFrame": true
+        },
+        {
+          "model": "A33",
+          "bbox": [
+            908.7,
+            128.93675599469915,
+            1336.15,
+            435.2609610001594
+          ],
+          "inFrame": true
+        }
+      ],
+      "oblique": [
+        {
+          "model": "A31",
+          "bbox": [
+            152.62102658385942,
+            134.38806380627597,
+            539.5437384816167,
+            449.29328926689556
+          ],
+          "inFrame": true
+        },
+        {
+          "model": "A33",
+          "bbox": [
+            846.4457922294248,
+            127.99512808642837,
+            1340.596394358843,
+            464.7532901202338
+          ],
+          "inFrame": true
+        }
+      ],
+      "side": [
+        {
+          "model": "A31",
+          "bbox": [
+            211.23,
+            166.36445579904313,
+            570.010312,
+            426.719878183704
+          ],
+          "inFrame": true
+        },
+        {
+          "model": "A33",
+          "bbox": [
+            923.12,
+            161.62222446910664,
+            1341.2885910499265,
+            438.14197369004495
+          ],
+          "inFrame": true
+        }
+      ],
+      "aerial": [
+        {
+          "model": "A31",
+          "bbox": [
+            152.4946849739429,
+            102.46849788607148,
+            538.8348985844146,
+            506.6994858474137
+          ],
+          "inFrame": true
+        },
+        {
+          "model": "A33",
+          "bbox": [
+            846.259538680403,
+            86.88994681019452,
+            1340.5354039125223,
+            537.3506220115042
+          ],
+          "inFrame": true
+        }
+      ]
+    }
+  },
+  "perspective": {
+    "SOUTH_ARRIVAL": {
+      "camera": [
+        0,
+        24,
+        -143
+      ],
+      "look": [
+        -15,
+        161,
+        164
+      ],
+      "visible_triangles": 178,
+      "near_triangles_skipped": 19
+    },
+    "CIVIC_COURT": {
+      "camera": [
+        0,
+        24,
+        -35
+      ],
+      "look": [
+        -15,
+        165,
+        166
+      ],
+      "visible_triangles": 113,
+      "near_triangles_skipped": 67
+    }
+  },
+  "qa_passed": [
+    "isolated closed solid positive volume",
+    "oriented paired edges each component",
+    "zero degenerate triangles",
+    "real GLB and OBJ from same face list",
+    "equal camera reference four views fully in frame"
+  ],
+  "qa_not_run": [
+    "GLB independent readback",
+    "actual geometric union and support",
+    "visual art G1 and G2 inspection",
+    "physically located safe pedestrian positions and destination route",
+    "331 bodies/993 feet with negative blocker",
+    "external reader, Minecraft build, city integration"
+  ],
+  "art": "ART HOLD PENDING INSPECTION",
+  "constraints": {
+    "art_hold": true,
+    "minecraft_construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "body_samples": 331,
+    "foot_samples": 993,
+    "halfwidth": 0.65,
+    "relative_foot_height": [
+      0.15,
+      3.25
+    ],
+    "historical_body_interference_ceiling": 45,
+    "unsupported_foot_ceiling": 0,
+    "negative_blocker": "REQUIRED",
+    "work_requires_permission": true
+  }
+}

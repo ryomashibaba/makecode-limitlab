@@ -1,0 +1,20 @@
+newmtl stone
+Kd 0.851 0.898 0.925
+
+newmtl deep
+Kd 0.247 0.349 0.431
+
+newmtl civic
+Kd 0.918 0.761 0.58
+
+newmtl inhabited_glass
+Kd 0.38 0.74 0.808
+
+newmtl green
+Kd 0.439 0.706 0.62
+
+newmtl bronze
+Kd 0.733 0.584 0.435
+
+newmtl city
+Kd 0.537 0.643 0.729
