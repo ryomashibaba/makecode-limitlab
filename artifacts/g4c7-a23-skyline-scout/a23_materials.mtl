@@ -1,0 +1,14 @@
+newmtl ivory
+Kd 0.8 0.863 0.882
+
+newmtl structure
+Kd 0.337 0.443 0.525
+
+newmtl glass
+Kd 0.345 0.71 0.75
+
+newmtl public
+Kd 0.937 0.733 0.51
+
+newmtl garden
+Kd 0.51 0.647 0.54

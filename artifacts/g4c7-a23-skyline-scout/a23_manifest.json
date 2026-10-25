@@ -1,0 +1,138 @@
+{
+  "project": "G4-C7 A23",
+  "base": "9d14d2bc2232510440d2a4741f2ea2d2c0be729e",
+  "camera": {
+    "front": [
+      0,
+      178,
+      -392
+    ],
+    "oblique": [
+      290,
+      228,
+      -305
+    ],
+    "side": [
+      403,
+      196,
+      0
+    ],
+    "aerial": [
+      188,
+      456,
+      -208
+    ]
+  },
+  "target": [
+    0,
+    70,
+    0
+  ],
+  "scale": 1.27,
+  "results": [
+    {
+      "name": "MERIDIAN ASCENT",
+      "vertices": 1424,
+      "triangles": 2252,
+      "isolated_closed_solids": 149,
+      "positive_individual_volumes": true,
+      "paired_oriented_edges": true,
+      "no_degenerate_faces": true,
+      "bounds": [
+        [
+          -140.98266832444398,
+          -4,
+          -151
+        ],
+        [
+          134.74839716470595,
+          163.33784186306363,
+          151
+        ]
+      ],
+      "inhabited_frontages": 47,
+      "whole_boolean_union": "NOT DONE",
+      "walk_331_993": "NOT RUN",
+      "art": "ART HOLD"
+    },
+    {
+      "name": "DIAGONAL FAULT CITY",
+      "vertices": 1440,
+      "triangles": 2276,
+      "isolated_closed_solids": 151,
+      "positive_individual_volumes": true,
+      "paired_oriented_edges": true,
+      "no_degenerate_faces": true,
+      "bounds": [
+        [
+          -175.45836313997978,
+          -4,
+          -151
+        ],
+        [
+          144.4904903053844,
+          150.81967352454174,
+          151
+        ]
+      ],
+      "inhabited_frontages": 48,
+      "whole_boolean_union": "NOT DONE",
+      "walk_331_993": "NOT RUN",
+      "art": "ART HOLD"
+    },
+    {
+      "name": "SINGLE CIVIC ESCARPMENT",
+      "vertices": 1360,
+      "triangles": 2156,
+      "isolated_closed_solids": 141,
+      "positive_individual_volumes": true,
+      "paired_oriented_edges": true,
+      "no_degenerate_faces": true,
+      "bounds": [
+        [
+          -123.23207778869673,
+          -4,
+          -151
+        ],
+        [
+          120.90969917820206,
+          219.77787409279392,
+          151
+        ]
+      ],
+      "inhabited_frontages": 44,
+      "whole_boolean_union": "NOT DONE",
+      "walk_331_993": "NOT RUN",
+      "art": "ART HOLD"
+    }
+  ],
+  "verified": [
+    "genuine GLB binary and OBJ geometry constructed",
+    "positive independent solid volumes",
+    "two incident correctly oriented edges per solid edge",
+    "zero degenerate triangles",
+    "same four A22 cameras"
+  ],
+  "unverified": [
+    "independent GLB importer",
+    "Boolean merging and cross-solid self-intersections",
+    "load support and egress",
+    "legacy 331/993 route QA",
+    "independent four-view human art judgment"
+  ],
+  "state": "ART HOLD",
+  "minecraft_education": "NO CONSTRUCTION",
+  "city_integration": "PROHIBITED",
+  "historical_assets": "PROTECTED",
+  "legacy_limits": {
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "old_collision_max": 45,
+    "unsupported_foot_max": 0
+  }
+}
