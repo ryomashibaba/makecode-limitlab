@@ -1,0 +1,72 @@
+{
+  "stage": "A34",
+  "date_jst": "2026-10-25",
+  "status": "ART REJECT; PROJECT ART HOLD",
+  "model_path": "artifacts/g4c7-a34-carved-single-body/a34_city.glb",
+  "real_glb": {
+    "blob_sha": "ed0c8f4229448791409a0f61258852680263b3bd",
+    "bytes": 249448,
+    "vertices": 6860,
+    "triangles": 13720,
+    "materials": 6,
+    "exact_min": [
+      -200,
+      0,
+      -190
+    ],
+    "exact_max": [
+      200,
+      190,
+      190
+    ],
+    "reread": "PASS"
+  },
+  "technical": {
+    "connected_components": 1,
+    "solid_voxels": 10454,
+    "corner_repairs": 2,
+    "oriented_surface_edge_errors": 0,
+    "carved_rooms_open_to_exterior": "7 / 7 samples",
+    "walkable": "NOT VERIFIED",
+    "complete_vertex_manifold": "NOT VERIFIED"
+  },
+  "views": {
+    "exterior": [
+      "front",
+      "oblique",
+      "side",
+      "aerial"
+    ],
+    "independently_inspected": [
+      "front",
+      "oblique",
+      "side",
+      "aerial",
+      "south_civic_entry",
+      "west_carved_hall"
+    ],
+    "north_interior": "SAVED BUT NOT INDEPENDENTLY VIEWED",
+    "g1": "ART REJECT",
+    "g2": "NOT FORMALLY RUN",
+    "g3": "NOT RUN"
+  },
+  "hist": {
+    "body": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "interference_limit": 45,
+    "unsupported_feet": 0,
+    "negative_control": true
+  },
+  "restrictions": {
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "work": "PRIOR APPROVAL",
+    "history": "PROTECTED"
+  },
+  "next": "A35 use connected void proof while addressing blocky blank urban architecture"
+}
