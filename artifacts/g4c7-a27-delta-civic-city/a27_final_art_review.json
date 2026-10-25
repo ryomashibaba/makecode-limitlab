@@ -1,0 +1,40 @@
+{
+  "stage": "A27",
+  "date": "2026-10-25 JST",
+  "model_sha": "d583b5ab3dd93cee054a9fc1c43363ea1fd6b29b",
+  "overall": "ART REJECT; PROJECT ART HOLD",
+  "real_glb_archive": {
+    "sha": "5662a4d2b53c176147d7f2648121c3a9882917c4",
+    "bytes": 37928,
+    "glb_version": 2,
+    "vertices": 1158,
+    "triangles": 1780,
+    "materials": 7,
+    "buffer_views_in_bounds": true,
+    "header_consistency": "PASS"
+  },
+  "reviewed_views": [
+    "front",
+    "oblique",
+    "side",
+    "aerial"
+  ],
+  "inner_view": "SAVED ONLY, NOT INDEPENDENTLY REVIEWED",
+  "failure": "replaced visually overwhelming arch with fragmented urban blocks and a dominant central roadway, insufficient colossal city public space",
+  "qa_limited": "isolated closed parts only; NOT whole model or walking safety",
+  "historical_qa": {
+    "body": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "interference_cap": 45,
+    "unsupported_max": 0,
+    "negative_controls": true,
+    "a27_executed": false
+  },
+  "safety": "ART HOLD / CONSTRUCTION PROHIBITED / NO CITY INTEGRATION",
+  "next": "A28 silhouette-first early beauty gate, not repeated detail-heavy failure"
+}
