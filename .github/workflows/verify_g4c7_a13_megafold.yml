@@ -1,4 +1,4 @@
-name: G4C7 A13 megafold A-B art comparison (NO MINECRAFT)
+name: G4C7 A13 megafold A-B-C art comparison (NO MINECRAFT)
 on:
   push:
     branches: [dev/g4c7-a13-unified-megafold-comparative-study]
@@ -23,7 +23,7 @@ jobs:
           python-version: '3.12'
       - name: Install exact offline geometry dependencies
         run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
-      - name: Build both actual GLB/OBJ plus four identical-camera triptychs
+      - name: Build three actual GLB/OBJ plus four identical-camera four-way comparisons
         run: |
           python tools/g4c7_a13_megafold_comparative.py \
             --input artifacts/g4c7-a12/a12_exposed_atrium_canyon.glb \
@@ -44,13 +44,17 @@ jobs:
           assert q['minecraft_walk']=='NOT TESTED'
           assert q['source_a12_unchanged']
           assert q['all_private_worlds_used_csv_zip']=='UNTOUCHED'
-          for mark,count,omissions in [('a',624,0),('b',622,2)]:
+          for mark,count,omissions in [('a',624,0),('b',622,2),('c',616,4)]:
               v=q['variants'][mark]
               assert v['meshes']==count
               assert len(v['art_form']['old_outer_shells_omitted'])==omissions
               assert v['art_form']['new_mass_volume']>1000
-              assert v['real_output_bounds'][1][1]>100
-              assert len(v['art_form']['raking_members'])==4
+              if mark=='c':
+                  assert v['real_output_bounds'][1][1]>90
+                  assert v['art_form']['new_mass_bounds'][1][1]<60
+              else:
+                  assert v['real_output_bounds'][1][1]>100
+              assert len(v['art_form']['raking_members'])==(0 if mark=='c' else 4)
               assert all(b['closed_volume']>100 for b in v['art_form']['raking_members'])
               c=v['original_legacy_path']
               assert c['route_samples']==331 and c['foot_support_samples']==993
@@ -62,14 +66,17 @@ jobs:
               assert c['body_surface_intersection_sample_count']<=45
               m=trimesh.load(d/('a13_'+mark+'_unified_megafold.glb'),force='scene')
               assert len(m.graph.nodes_geometry)==count
-              assert 'A13_UNIFIED_FOLDED_CIVIC_SKY' in m.graph.nodes_geometry
+              mass=v['art_form']['new_mass_name']
+              assert mass in m.graph.nodes_geometry
               outer=('NORTH outer load shell','SOUTH outer load shell_A7_PORTAL_A9_FLARED')
               for name in outer: assert (name in m.graph.nodes_geometry)==(mark=='a')
-              t,key=m.graph['A13_UNIFIED_FOLDED_CIVIC_SKY']
+              inners=('NORTH inner load shell','SOUTH inner load shell_A7_PORTAL')
+              for name in inners: assert (name in m.graph.nodes_geometry)==(mark!='c')
+              t,key=m.graph[mass]
               assert m.geometry[key].is_watertight and m.geometry[key].is_volume
           for view in ['front','oblique','side','aerial']:
-              assert (d/'fourview'/(view+'_a12_a13a_a13b.png')).stat().st_size>2000
-          print('PASS: two true A13 volumes, unmodified old corridor, true 4-view comparison')
+              assert (d/'fourview'/(view+'_a12_a13a_a13b_a13c.png')).stat().st_size>2000
+          print('PASS: three true A13 volumes, unmodified old corridor, true 4-view comparison')
           print('ART HOLD, no engineering, no construction, no city integration')
           PY
       - name: Upload all comparative evidence
@@ -97,12 +104,12 @@ jobs:
           set -euo pipefail
           d=artifacts/g4c7-a13
           mkdir -p "$d/fourview"
-          for f in a13_a_unified_megafold.glb a13_a_unified_megafold.obj a13_b_unified_megafold.glb a13_b_unified_megafold.obj a13_comparative_geometry_qa.json; do
+          for f in a13_a_unified_megafold.glb a13_a_unified_megafold.obj a13_b_unified_megafold.glb a13_b_unified_megafold.obj a13_c_unified_megafold.glb a13_c_unified_megafold.obj a13_comparative_geometry_qa.json; do
             test -s "build/g4c7_a13/$f"
             cp "build/g4c7_a13/$f" "$d/"
           done
           for v in front oblique side aerial; do
-            test -s "build/g4c7_a13/fourview/$v"_a12_a13a_a13b.png
+            test -s "build/g4c7_a13/fourview/$v"_a12_a13a_a13b_a13c.png
             cp "build/g4c7_a13/fourview/$v"_a12_a13a_a13b.png "$d/fourview/"
           done
           cp build/g4c7_a13/fourview/provenance.json "$d/fourview/"
@@ -110,6 +117,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add artifacts/g4c7-a13
           if ! git diff --cached --quiet; then
-            git commit -m 'G4C7 A13: archive two real megafold studies with four three-way art comparisons (ART HOLD)'
+            git commit -m 'G4C7 A13: archive two real megafold studies with four four-way art comparisons (ART HOLD)'
             git push origin HEAD:dev/g4c7-a13-unified-megafold-comparative-study
           fi
