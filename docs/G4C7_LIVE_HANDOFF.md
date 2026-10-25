@@ -36,6 +36,9 @@ A5〜A18で3Dモデル制作・検証・保存技術は大きく向上したが�
 
 ## A19軽量3案・研究進捗（2026-10-25 JST）
 
+**幾何向き追加監査（A19）**：保存後のOBJ各独立閉体積に対して外向き面方向と共有有向辺の相殺を検査し、不整合のあった面を修正した。修正OBJ/GLB/四視点SVGを[コミット f99a199](https://github.com/ryomashibaba/makecode-limitlab/commit/f99a1990388dca3f14799d7da9458da85fa4962a)で再保存。A/B/Cの独立プリミティブ607/193/796個、三角形7,380/2,732/9,784枚について、有向辺不一致・退化三角形・非正の符号付き体積は各0。**これは個別凸多角柱のQAに限る。相互重なりのBoolean合体、A13-C既存都市への接続、331/993の候補通行QAは未実施。**
+
+
 - A19保存済みOBJを入力とする標準ライブラリ再出力ソース `tools/g4c7_a19_replay_from_obj.py` を追加。GLB・4方向SVGを再出力するコードはGitHub保存済み。ただし実行・独立再読込QAは未検証であり、設計パラメータからの完全復元コードではない。
 
 - A16修正版 [Actions #40167521083](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167521083) = **FAILURE**。東側A11_EAST_SKY_FOLD_REAL_VOIDに対する12回のBoolean代替切削候補は閉体積・規定除去量等の同時基準を満たさず、「no valid immense Boolean excavation」のassertion。persistはskipped。閾値を緩めず設計から見直す。
