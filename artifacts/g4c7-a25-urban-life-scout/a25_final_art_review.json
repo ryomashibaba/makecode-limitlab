@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-25 JST",
+  "stage": "A25 independent saved binary and visual art review",
+  "model_source_commit": "6b1cc778cbf3f86352e2c9b66d8d2c1735ffb9cd",
+  "detail_projection_commit": "5e4f6be1d12e71ca10ebd96d3a15ac86c2ccea0a",
+  "rendered_views": [
+    "front",
+    "oblique",
+    "side",
+    "aerial",
+    "detail_oblique"
+  ],
+  "verdict": {
+    "A": "ART REJECT - three small isolated tower-like housing quarters and empty leftover plaza",
+    "B": "ART REJECT for monumental centerpiece - stronger urban connectedness but repeating miniature stacked residential blocks"
+  },
+  "relative_progress": "habitation visibility improved relative A24; major-scale architectural beauty still absent",
+  "binary_readback_from_git_repository": {
+    "A": {
+      "sha": "492ccd63dcd7f8f3d61c6138447560f1bdc1475b",
+      "bytes": 90312,
+      "vertex_accessor": 2910,
+      "triangles": 4372,
+      "header_check": "PASS"
+    },
+    "B": {
+      "sha": "731319397fe3094a4a612904f1854bd01547bc88",
+      "bytes": 115684,
+      "vertex_accessor": 3756,
+      "triangles": 5640,
+      "header_check": "PASS"
+    }
+  },
+  "limits": "GLB byte schema consistency only; not third-party mesh reload or global geometry proof",
+  "next": "A26 inhabited monumental civic sectional architecture",
+  "safety": "ART HOLD; CONSTRUCTION PROHIBITED; NO CITY INTEGRATION; historic gates unchanged"
+}
