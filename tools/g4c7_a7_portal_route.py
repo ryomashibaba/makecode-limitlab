@@ -44,6 +44,19 @@ def boolean_volume(a, b):
     inter=trimesh.boolean.intersection([a,b],engine="manifold")
     return float(inter.volume) if inter is not None else 0.0
 
+def prepared_solid(mesh,name):
+    """glTF split vertex streams must be welded by position before volume CSG."""
+    solid=mesh.copy()
+    solid.merge_vertices(digits_vertex=5,merge_tex=True,merge_norm=True)
+    solid.remove_unreferenced_vertices()
+    solid.fix_normals()
+    if not solid.is_watertight:
+        raise AssertionError(
+            "Original arch is not closed even after positional welding: %s "
+            "(vertices=%s faces=%s winding=%s)" %
+            (name,len(solid.vertices),len(solid.faces),solid.is_winding_consistent))
+    return solid
+
 def cut_main_portal(original, output):
     """Test solid-solid overlap before cutting, then actual manifold closed-mesh cuts."""
     cutter = box_bounds(PORTAL_BOUNDS)
@@ -56,9 +69,7 @@ def cut_main_portal(original, output):
         old=world_mesh(original,name)
         if not touching_bounds(old.bounds,cutter.bounds):
             continue
-        if not old.is_watertight:
-            raise AssertionError("Solid boolean input is not watertight: "+name)
-        old.fix_normals()
+        old=prepared_solid(old,name)
         removed=boolean_volume(old,cutter)
         if removed < 0.01:
             continue
@@ -79,7 +90,7 @@ def cut_main_portal(original, output):
     cutset=set(cut_names)
     for name in original.graph.nodes_geometry:
         if name in cutset:
-            old=world_mesh(original,name)
+            old=prepared_solid(world_mesh(original,name),name)
             remaining=trimesh.boolean.difference([old,cutter],engine="manifold")
             output.add_geometry(remaining, geom_name=name+"_A7_PORTAL",node_name=name+"_A7_PORTAL")
         else:
