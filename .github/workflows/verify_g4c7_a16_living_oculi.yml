@@ -52,7 +52,8 @@ jobs:
               v=q['variants'][k]
               assert v['scene_meshes']==610
               assert v['genuine_carved_aperture_count']==4
-              assert v['total_removed_real_volume']>480
+              assert v['total_removed_real_volume']>1200
+              assert v['sum_cliff_excavated_fraction']>=0.07
               assert v['body_surface_collision_delta']<=0
               assert v['unsupported_foot_delta']==0
               legacy=v['unchanged_legacy_route_check']
@@ -71,9 +72,10 @@ jobs:
                   m=scene.geometry[key]
                   assert m.is_volume and m.is_watertight
                   assert m.volume>12000
-                  assert record['total_excavated']>240
+                  assert record['total_excavated']>1200
+                  assert record['excavated_fraction']>=0.035
                   assert len(record['apertures'])==2
-                  assert all(a['removed_real_volume']>120 for a in record['apertures'])
+                  assert all(a['removed_real_volume']>600 for a in record['apertures'])
               assert (p/('a16_'+k+'_living_oculi_void_city.obj')).stat().st_size>10000
           for view in ('front','oblique','side','aerial'):
               assert (p/'fourview'/(view+'_a13c_a15b_a16a_a16b.png')).stat().st_size>2000
