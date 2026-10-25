@@ -1,0 +1,124 @@
+name: G4C7 A11 megafissure inhabited city-cliffs (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a11-sky-fault-vertical-city-mass]
+    paths:
+      - tools/g4c7_a11_megafissure_city.py
+      - docs/G4C7_A11_MEGAFISSURE_ARCHITECTURE_ART_HOLD_JA.md
+      - .github/workflows/verify_g4c7_a11_megafissure.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: a11-art-study-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  generate-a11-real-3d-and-compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned offline geometry renderer dependencies
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Rebuild predecessor A10 from committed A9 GLB, without altering it
+        run: |
+          python tools/g4c7_a10_inhabited_double_canyon.py \
+            --input artifacts/g4c7-a9/a9_orbital_commons_sculpted_route_study.glb \
+            --out build/g4c7_a10
+      - name: Create independent huge inhabited faults and 5 matching review images
+        run: |
+          python tools/g4c7_a11_megafissure_city.py \
+            --input build/g4c7_a10/a10_inhabited_double_shell_canyon.glb \
+            --out build/g4c7_a11
+      - name: Verify actual closed 3D models and untouched old walking QA thresholds
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,trimesh
+          out=Path("build/g4c7_a11")
+          q=json.loads((out/"a11_art_geometry_qa.json").read_text())
+          assert q["a10_input_meshes"]==602
+          assert q["a11_output_meshes"]==612
+          assert q["a11_bounds"][1][1]>=70, "No actual higher art mass"
+          for k in ("west","east"):
+            v=q["tall_canyon_forms"][k]
+            assert v["contains_real_longitudinal_cavity"] is True
+            assert v["physical_void_removed"]>600
+            assert v["void_ratio"]>.025
+            assert len(v["cut_through_mouths"])==2
+            assert all(m["removed_volume"]>10 for m in v["cut_through_mouths"])
+            assert len(v["inhabited_terraces"])==3
+          assert len(q["tall_canyon_forms"]["sky_boulevards"])==2
+          before=q["a10_route"];after=q["a11_route"]
+          assert before["surface_collision_samples"]==45
+          assert before["unsupported_foot_samples"]==0
+          assert after["body_surface_intersection_sample_count"]<=45
+          assert after["unsupported_foot_samples"]==0
+          assert after["foot_support_samples"]==993
+          assert after["route_samples"]==331
+          assert after["body_envelope"]["half_xz"]==0.65
+          assert after["body_envelope"]["from_foot_y"]==0.15
+          assert after["body_envelope"]["to_foot_y"]==3.25
+          assert after["negative_intentional_blocker_detected"]
+          assert q["art_status"]=="HOLD"
+          assert q["construction"]=="PROHIBITED"
+          assert q["city_integration"]=="PROHIBITED"
+          assert q["in_game_walking"]=="NOT TESTED"
+          assert q["private_world_or_latch"]=="UNTOUCHED"
+          s=trimesh.load(out/"a11_megafissure_inhabited_cliffs.glb",force="scene")
+          assert len(s.graph.nodes_geometry)==612
+          for n in ("A11_WEST_FAULT_ESCARPMENT_REAL_VOID",
+                    "A11_EAST_SKY_FOLD_REAL_VOID",
+                    "A11_LOW_FAULT_SKY_BOULEVARD","A11_HIGH_CREST_TRANSECT"):
+              assert n in s.graph.nodes_geometry
+          for v in ("front","oblique","side","aerial"):
+              assert (out/"fourview"/(v+"_a10_a11.png")).stat().st_size>3000
+          assert (out/"fourview"/"oblique_detail_a10_a11.png").stat().st_size>3000
+          print("PASS: true perforated loft cliff geometry and guarded old route QA")
+          print("ART HOLD; structural/inside movement unverified; Minecraft NO")
+          PY
+      - name: Upload actual A11 model, QA and five matched camera images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a11-megafissure-art-hold-real-cliffs
+          path: build/g4c7_a11/
+          if-no-files-found: warn
+          retention-days: 14
+  persist-a11-model-and-review:
+    needs: generate-a11-real-3d-and-compare
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a11-sky-fault-vertical-city-mass'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a11-megafissure-art-hold-real-cliffs
+          path: build/g4c7_a11
+      - name: Permanently archive independent GLB OBJ QA and matched five review views
+        run: |
+          set -euo pipefail
+          d=artifacts/g4c7-a11
+          mkdir -p "$d/fourview"
+          for f in a11_megafissure_inhabited_cliffs.glb a11_megafissure_inhabited_cliffs.obj a11_art_geometry_qa.json; do
+            test -s "build/g4c7_a11/$f"
+            cp "build/g4c7_a11/$f" "$d/$f"
+          done
+          for v in front oblique side aerial; do
+            test -s "build/g4c7_a11/fourview/$v"_a10_a11.png
+            cp "build/g4c7_a11/fourview/$v"_a10_a11.png "$d/fourview/$v"_a10_a11.png
+          done
+          cp build/g4c7_a11/fourview/oblique_detail_a10_a11.png "$d/fourview/"
+          cp build/g4c7_a11/fourview/provenance.json "$d/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a11/
+          if ! git diff --cached --quiet; then
+            git commit -m "G4C7 A11: preserve actual hollow sky fault urban GLB/OBJ and 5-view QA (ART HOLD)"
+            git push origin HEAD:dev/g4c7-a11-sky-fault-vertical-city-mass
+          fi
