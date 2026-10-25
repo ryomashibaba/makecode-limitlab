@@ -1,0 +1,20 @@
+newmtl shell
+Kd 0.85 0.9 0.915
+
+newmtl base
+Kd 0.25 0.353 0.439
+
+newmtl civic
+Kd 0.918 0.757 0.557
+
+newmtl window
+Kd 0.349 0.733 0.784
+
+newmtl garden
+Kd 0.5 0.714 0.612
+
+newmtl warm
+Kd 0.725 0.565 0.455
+
+newmtl inhabited
+Kd 0.541 0.627 0.702

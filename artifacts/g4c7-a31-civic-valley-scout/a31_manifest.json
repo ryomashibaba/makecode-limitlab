@@ -1,0 +1,536 @@
+{
+  "stage": "A31 sculpted inhabited civic valley early real 3D",
+  "base_head": "4e95c9c63d947c8901083b2f004a4a82e6e2573f",
+  "mesh": {
+    "vertices": 638,
+    "triangles": 1016,
+    "individual_closed_solids": 65,
+    "glb_bytes": 22496,
+    "bounds": [
+      [
+        -172.1424875812097,
+        -5,
+        -159
+      ],
+      [
+        171.3733852447869,
+        195,
+        189.33041674720204
+      ]
+    ],
+    "program": {
+      "grand_court": 1,
+      "urban_levels": 12,
+      "occupied_galleries": 12,
+      "green_courts": 8,
+      "civic_connections": 8
+    },
+    "solids": [
+      {
+        "name": "city_foundation_with_southern_public_gateway",
+        "triangles": 40,
+        "volume": 834995
+      },
+      {
+        "name": "monumental_sky_open_public_forum",
+        "triangles": 24,
+        "volume": 143787
+      },
+      {
+        "name": "public_civic_botanical_court",
+        "triangles": 16,
+        "volume": 21356
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_real_city_floor_0",
+        "triangles": 20,
+        "volume": 29183
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_wide_occupied_gallery_0",
+        "triangles": 12,
+        "volume": 44906.4
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_atrium_facing_occupied_windows_0",
+        "triangles": 12,
+        "volume": 1171.17
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_sky_garden_0",
+        "triangles": 12,
+        "volume": 748.44
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_real_city_floor_1",
+        "triangles": 20,
+        "volume": 27306
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_wide_occupied_gallery_1",
+        "triangles": 12,
+        "volume": 48951
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_atrium_facing_occupied_windows_1",
+        "triangles": 12,
+        "volume": 1125.54
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_real_city_floor_2",
+        "triangles": 20,
+        "volume": 25489
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_wide_occupied_gallery_2",
+        "triangles": 12,
+        "volume": 32589
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_atrium_facing_occupied_windows_2",
+        "triangles": 12,
+        "volume": 1079.91
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_sky_garden_2",
+        "triangles": 12,
+        "volume": 651.78
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_real_city_floor_3",
+        "triangles": 20,
+        "volume": 23732
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_wide_occupied_gallery_3",
+        "triangles": 12,
+        "volume": 36352.8
+      },
+      {
+        "name": "WEST_ASYMMETRIC_INHABITED_CLIFF_atrium_facing_occupied_windows_3",
+        "triangles": 12,
+        "volume": 1034.28
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_real_city_floor_0",
+        "triangles": 20,
+        "volume": 44520
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_wide_occupied_gallery_0",
+        "triangles": 12,
+        "volume": 68890.5
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_atrium_facing_occupied_windows_0",
+        "triangles": 12,
+        "volume": 1597.05
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_sky_garden_0",
+        "triangles": 12,
+        "volume": 1148.17
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_real_city_floor_1",
+        "triangles": 20,
+        "volume": 42228
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_wide_occupied_gallery_1",
+        "triangles": 12,
+        "volume": 76148.1
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_atrium_facing_occupied_windows_1",
+        "triangles": 12,
+        "volume": 1551.42
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_real_city_floor_2",
+        "triangles": 20,
+        "volume": 39996
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_wide_occupied_gallery_2",
+        "triangles": 12,
+        "volume": 51455.25
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_atrium_facing_occupied_windows_2",
+        "triangles": 12,
+        "volume": 1505.79
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_sky_garden_2",
+        "triangles": 12,
+        "volume": 1029.11
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_real_city_floor_3",
+        "triangles": 20,
+        "volume": 37824
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_wide_occupied_gallery_3",
+        "triangles": 12,
+        "volume": 58320
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_atrium_facing_occupied_windows_3",
+        "triangles": 12,
+        "volume": 1460.16
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_real_city_floor_4",
+        "triangles": 20,
+        "volume": 35712
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_wide_occupied_gallery_4",
+        "triangles": 12,
+        "volume": 64156.05
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_atrium_facing_occupied_windows_4",
+        "triangles": 12,
+        "volume": 1414.53
+      },
+      {
+        "name": "NORTH_METROPOLITAN_BALCONIES_sky_garden_4",
+        "triangles": 12,
+        "volume": 916.51
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_real_city_floor_0",
+        "triangles": 20,
+        "volume": 28368
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_wide_occupied_gallery_0",
+        "triangles": 12,
+        "volume": 43740
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_atrium_facing_occupied_windows_0",
+        "triangles": 12,
+        "volume": 1095.12
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_sky_garden_0",
+        "triangles": 12,
+        "volume": 729
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_real_city_floor_1",
+        "triangles": 20,
+        "volume": 26496
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_wide_occupied_gallery_1",
+        "triangles": 12,
+        "volume": 47599.65
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_atrium_facing_occupied_windows_1",
+        "triangles": 12,
+        "volume": 1049.49
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_real_city_floor_2",
+        "triangles": 20,
+        "volume": 24684
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_wide_occupied_gallery_2",
+        "triangles": 12,
+        "volume": 31630.5
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_atrium_facing_occupied_windows_2",
+        "triangles": 12,
+        "volume": 1003.86
+      },
+      {
+        "name": "EAST_OPEN_URBAN_STRATA_sky_garden_2",
+        "triangles": 12,
+        "volume": 632.61
+      },
+      {
+        "name": "west_grounded_tectonic_city",
+        "triangles": 44,
+        "volume": 467179.96
+      },
+      {
+        "name": "east_grounded_tectonic_city",
+        "triangles": 36,
+        "volume": 432203.84
+      },
+      {
+        "name": "public_climbing_civic_terrace_0",
+        "triangles": 20,
+        "volume": 7484.47
+      },
+      {
+        "name": "public_climbing_civic_terrace_1",
+        "triangles": 20,
+        "volume": 7130.27
+      },
+      {
+        "name": "public_climbing_civic_terrace_2",
+        "triangles": 20,
+        "volume": 7857.22
+      },
+      {
+        "name": "public_climbing_civic_terrace_3",
+        "triangles": 20,
+        "volume": 6486.4
+      },
+      {
+        "name": "public_climbing_civic_terrace_4",
+        "triangles": 20,
+        "volume": 5226.75
+      },
+      {
+        "name": "west_into_forum_gallery",
+        "triangles": 12,
+        "volume": 5926.63
+      },
+      {
+        "name": "east_upper_civic_exchange",
+        "triangles": 12,
+        "volume": 6943.75
+      },
+      {
+        "name": "high_city_crossing",
+        "triangles": 12,
+        "volume": 11263.4
+      },
+      {
+        "name": "north_occupied_crown_0",
+        "triangles": 12,
+        "volume": 59520
+      },
+      {
+        "name": "inhabited_skyline_glazing_0_0",
+        "triangles": 12,
+        "volume": 388.44
+      },
+      {
+        "name": "inhabited_skyline_glazing_0_1",
+        "triangles": 12,
+        "volume": 388.44
+      },
+      {
+        "name": "north_occupied_crown_1",
+        "triangles": 12,
+        "volume": 61710
+      },
+      {
+        "name": "inhabited_skyline_glazing_1_0",
+        "triangles": 12,
+        "volume": 440.23
+      },
+      {
+        "name": "inhabited_skyline_glazing_1_1",
+        "triangles": 12,
+        "volume": 440.23
+      },
+      {
+        "name": "north_occupied_crown_2",
+        "triangles": 12,
+        "volume": 50286
+      },
+      {
+        "name": "inhabited_skyline_glazing_2_0",
+        "triangles": 12,
+        "volume": 440.23
+      },
+      {
+        "name": "inhabited_skyline_glazing_2_1",
+        "triangles": 12,
+        "volume": 440.23
+      }
+    ]
+  },
+  "comparison": {
+    "baseline": "A30 archived OBJ",
+    "cameras": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "scale": 1.03,
+    "actual_same_camera": true,
+    "frame_audit": {
+      "front": [
+        {
+          "model": "A30",
+          "within_frame": true,
+          "min": [
+            184.7024438,
+            155.854858615332
+          ],
+          "max": [
+            529.4542073,
+            406.9985400369841
+          ]
+        },
+        {
+          "model": "A31",
+          "within_frame": true,
+          "min": [
+            932.693237791354,
+            127.19636280416188
+          ],
+          "max": [
+            1286.5145868021305,
+            414.8103192165034
+          ]
+        }
+      ],
+      "oblique": [
+        {
+          "model": "A30",
+          "within_frame": true,
+          "min": [
+            171.70189812042344,
+            166.0946372550928
+          ],
+          "max": [
+            534.1289240937145,
+            432.92418319164176
+          ]
+        },
+        {
+          "model": "A31",
+          "within_frame": true,
+          "min": [
+            887.6210265838595,
+            126.38805771057767
+          ],
+          "max": [
+            1274.5437384816169,
+            441.29328397961206
+          ]
+        }
+      ],
+      "side": [
+        {
+          "model": "A30",
+          "within_frame": true,
+          "min": [
+            228.12771759999998,
+            189.05363964266527
+          ],
+          "max": [
+            536.8144328,
+            409.6490583893056
+          ]
+        },
+        {
+          "model": "A31",
+          "within_frame": true,
+          "min": [
+            946.23,
+            158.36444891148528
+          ],
+          "max": [
+            1305.010329249618,
+            418.7198736026746
+          ]
+        }
+      ],
+      "aerial": [
+        {
+          "model": "A30",
+          "within_frame": true,
+          "min": [
+            170.66799267997703,
+            147.01336076968587
+          ],
+          "max": [
+            534.5726359640876,
+            486.85765823922407
+          ]
+        },
+        {
+          "model": "A31",
+          "within_frame": true,
+          "min": [
+            887.4946849739429,
+            94.46852364097217
+          ],
+          "max": [
+            1273.8348985844145,
+            498.6994750388902
+          ]
+        }
+      ]
+    }
+  },
+  "interior": {
+    "camera": [
+      -10,
+      27,
+      -36
+    ],
+    "target": [
+      3,
+      106,
+      97
+    ],
+    "visible_triangles": 310,
+    "collisions": "NOT VERIFIED"
+  },
+  "passed": [
+    "isolated solids closed manifold oriented edges",
+    "individual volumes positive",
+    "no degenerate triangles",
+    "actual OBJ GLB mesh exported from same face list",
+    "fourview fully fits"
+  ],
+  "not_proven": [
+    "whole assembly joint union or cross solid intersection",
+    "load and supports",
+    "actual urban walk, egress",
+    "third party GLB display",
+    "legacy 331 body 993 feet incl negative control",
+    "visual art approval",
+    "km scale"
+  ],
+  "safety": "ART HOLD, NO EDUCATION CONSTRUCTION, NO CITY INTEGRATION",
+  "legacy": {
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "old_collisions_max": 45,
+    "unsupported_feet": 0
+  }
+}
