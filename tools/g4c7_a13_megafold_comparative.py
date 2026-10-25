@@ -19,6 +19,10 @@ REMOVED_OUTER={
     "NORTH outer load shell",
     "SOUTH outer load shell_A7_PORTAL_A9_FLARED",
 }
+REMOVED_INNER={
+    "NORTH inner load shell",
+    "SOUTH inner load shell_A7_PORTAL"
+}
 BRACE_COLOR=(191,196,181,255)
 FOLD_COLOR=(225,224,203,255)
 
@@ -77,61 +81,85 @@ def raking_arch_link(index):
         "structural_loads":"NOT PROVEN"
     }
 
-def build(source,reframe):
+def build(source,mode):
+    assert mode in ("a","b","c")
+    if mode=="a":
+        omitted=set()
+    elif mode=="b":
+        omitted=REMOVED_OUTER
+    else:
+        # A13-C is a *new independent visual composition*: de-emphasize both
+        # inner and outer historical arch shells without altering the A12 GLB.
+        omitted=REMOVED_OUTER|REMOVED_INNER
     result=trimesh.Scene()
-    omitted=REMOVED_OUTER if reframe else set()
     if not omitted.issubset(source.graph.nodes_geometry):
-        raise AssertionError("Missing precisely named original historic shells")
+        raise AssertionError("Missing precisely named historical arch shells")
     for name in source.graph.nodes_geometry:
         if name in omitted:continue
         matrix,key=source.graph[name]
         result.add_geometry(source.geometry[key].copy(),geom_name=name,
                             node_name=name,transform=np.asarray(matrix))
-    fold=continuous_megafold()
-    result.add_geometry(fold,geom_name="A13_UNIFIED_FOLDED_CIVIC_SKY",
-                        node_name="A13_UNIFIED_FOLDED_CIVIC_SKY")
+    roof=continuous_megafold()
     braces=[]
-    for i in range(4):
-        member,detail=raking_arch_link(i)
-        name=f"A13_RAKING_HISTORIC_LINK_{i}"
-        result.add_geometry(member,geom_name=name,node_name=name)
-        braces.append({"name":name,**detail})
+    if mode=="c":
+        # Unlike A/B, *no floating upper roof*: the same continuous mass is
+        # transformed down into the mid-canyon public space. This reshapes
+        # the architectural hierarchy instead of stacking another sky slab.
+        roof.vertices[:,1]=0.55*(roof.vertices[:,1]-68)+31
+        roof=valid(roof,"A13-C middle occupied urban fold")
+        mass_name="A13_MIDDLE_INHABITED_CIVIC_FOLD"
+    else:
+        mass_name="A13_UNIFIED_FOLDED_CIVIC_SKY"
+    result.add_geometry(roof,geom_name=mass_name,node_name=mass_name)
+    if mode!="c":
+        for i in range(4):
+            member,detail=raking_arch_link(i)
+            name=f"A13_RAKING_HISTORIC_LINK_{i}"
+            result.add_geometry(member,geom_name=name,node_name=name)
+            braces.append({"name":name,**detail})
     facts={
-      "strategy":"REFRAME_OUTER_ARCH" if reframe else "PRESERVE_HISTORIC_OUTER_ARCH",
+      "strategy":{
+          "a":"PRESERVE_OUTER_ARCH_WITH_SKY_ROOF",
+          "b":"OMIT_TWO_OUTER_ARCH_SHELLS_WITH_SKY_ROOF",
+          "c":"OMIT_FOUR_HISTORIC_ARCH_SHELLS_WITH_MID_CANYON_FOLD"
+      }[mode],
       "old_outer_shells_omitted":sorted(omitted),
       "omitted_not_destroyed":"A12 original GLB preserved byte-for-byte",
-      "new_mass":"One physically closed 3D folded cross-canyon volume",
-      "new_mass_volume":round(float(fold.volume),2),
-      "new_mass_bounds":np.asarray(fold.bounds).round(3).tolist(),
-      "civic_sky_hole":"No. Top remained sculptural/folded but not opened yet.",
+      "new_mass_name":mass_name,
+      "new_mass":"One physically closed 3D folded continuous public body",
+      "new_mass_volume":round(float(roof.volume),2),
+      "new_mass_bounds":np.asarray(roof.bounds).round(3).tolist(),
       "raking_members":braces,
-      "crossing_structure_engineering":"NOT VERIFIED",
-      "new_landing_safety":"NOT VERIFIED"
+      "interior_walkability":"NOT VERIFIED",
+      "historical_shell_removal":"ART EXPERIMENT ONLY; NO ENGINEERING DEMOLITION PASS"
     }
     return result,facts
 
-def compare_three(base,A,B,out):
+def compare_all(base,A,B,C,out):
     out.mkdir(parents=True,exist_ok=True)
     camera_evidence={}
     for view,cam in CAMERAS.items():
-        original,n0=render(base,view)
-        a,n1=render(A,view)
-        b,n2=render(B,view)
-        panel=Image.new("RGB",(3*WIDTH,HEIGHT+43),(244,248,249))
-        for index,im in enumerate((original,a,b)):
+        ims=[]
+        counts=[]
+        for candidate in (base,A,B,C):
+            im,n=render(candidate,view)
+            ims.append(im);counts.append(n)
+        panel=Image.new("RGB",(4*WIDTH,HEIGHT+43),(244,248,249))
+        for index,im in enumerate(ims):
             panel.paste(im,(WIDTH*index,43))
         d=ImageDraw.Draw(panel)
-        for i,s in enumerate((
+        for i,label in enumerate((
             "A12 SOURCE / ART HOLD",
-            "A13-A FOLDED SKY + ORIGINAL ARCH / HOLD",
-            "A13-B FOLDED SKY + REFRAMED ARCH / HOLD"
+            "A13-A SKY ROOF + ORIGINAL ARCH / REJECT CANDIDATE",
+            "A13-B SKY ROOF + OUTER ARCH OMIT / REJECT CANDIDATE",
+            "A13-C OPEN CLIFFS + MID-CANYON CITY FOLD / HOLD"
         )):
-            d.text((WIDTH*i+16,13),s,fill=(25,32,35))
-        panel.save(out/(view+"_a12_a13a_a13b.png"),optimize=True)
+            d.text((WIDTH*i+16,13),label,fill=(25,32,35))
+        panel.save(out/(view+"_a12_a13a_a13b_a13c.png"),optimize=True)
         camera_evidence[view]={"fixed_eye":list(cam),"fixed_scale":SCALE,
-                               "triangles":[n0,n1,n2]}
+                               "triangles":counts}
     (out/"provenance.json").write_text(json.dumps({
-        "source":"Actual A12 input and exported A13-A/B GLB geometry",
+        "source":"Actual A12 input and exported A13-A/B/C GLB geometry",
         "renderer":"GLB-derived Pillow painter; NOT EEVEE, Blender or Minecraft",
         "comparison":"Same camera, same target, same projection, same scale",
         "cameras":camera_evidence},indent=2)+"\n")
@@ -151,8 +179,8 @@ def run(input_glb,out):
                 "unsupported_foot_samples":source_qa["unsupported_foot_samples"]}}
     variants={}
     loaded={}
-    for mark,reframe in (("a",False),("b",True)):
-        scene,facts=build(source,reframe)
+    for mark in ("a","b","c"):
+        scene,facts=build(source,mark)
         filename="a13_%s_unified_megafold.glb"%mark
         path=out/filename
         path.write_bytes(scene.export(file_type="glb"))
@@ -160,7 +188,7 @@ def run(input_glb,out):
             scene.export(file_type="obj"),encoding="utf8")
         new=trimesh.load(path,force="scene")
         assert len(new.graph.nodes_geometry)==len(scene.graph.nodes_geometry)
-        assert "A13_UNIFIED_FOLDED_CIVIC_SKY" in new.graph.nodes_geometry
+        assert facts["new_mass_name"] in new.graph.nodes_geometry
         assert np.allclose(source.bounds[:,[0,2]],new.bounds[:,[0,2]],atol=0.1)
         q=route_sweep(new,route_a9())
         assert q["body_envelope"]==source_qa["body_envelope"]
@@ -179,11 +207,11 @@ def run(input_glb,out):
             "aesthetic_approval":"HOLD"
         }
         loaded[mark]=new
-    compare_three(source,loaded["a"],loaded["b"],out/"fourview")
+    compare_all(source,loaded["a"],loaded["b"],loaded["c"],out/"fourview")
     answer={**inputs,"variants":variants,
             "art_status":"HOLD","construction":"PROHIBITED",
             "city_integration":"PROHIBITED","minecraft_walk":"NOT TESTED",
-            "old_arch_shell_omission":"A13-B art study ONLY; not structural demolition signoff",
+            "old_arch_shell_omission":"A13-B/C art studies ONLY; not structural demolition signoff",
             "interior_crossing_paths":"NOT VERIFIED",
             "source_a12_unchanged":True,
             "all_private_worlds_used_csv_zip":"UNTOUCHED"}
