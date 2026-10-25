@@ -90,3 +90,14 @@ artifacts/g4c7-a13/。
 
 - 初版の『4個の切削を実施した』だけではA12と似た小開口の量産になり得るため、A16 Python・専用CIに**各開口で600超の実体積除去、各巨大断崖の元体積比3.5%以上の除去**を追加した。数値のみで美術PASSにしない。未達の場合は正常な不合格として扱い、閾値の緩和ではなく根本的に造形を変える。
 - 最終アーカイブ先 artifacts/g4c7-a16/、CIのbuild/QAとpersistの双方のSUCCESS、完成ファイル存在、4視点での美術審査をすべて別々に確認すること。未確認ならART HOLDを維持。
+
+
+## A17一体断層都市の独立形態研究（2026-10-25 JST、ART HOLD）
+
+- A16 PR #52（ブランチ `dev/g4c7-a16-living-oculi-void-city-art-study`）のActions run **40165116192** は前回再確認時 **queued**（build/QA・persistとGitHub実成果物は未確認）。**A16の不合格は未確定**。保存済み`artifacts/g4c7-a16/`の存在を確認するまで成功扱い禁止。
+- A17はA16を不合格と決めつけた置換ではなく、空き工程で始めた独立した対抗形態研究。独立ブランチ `dev/g4c7-a17-monolithic-rift-fold-art-study`、Draft PR **#53**（https://github.com/ryomashibaba/makecode-limitlab/pull/53）。
+- A17実装 `tools/g4c7_a17_monolithic_rift_fold.py`、専用CI `.github/workflows/verify_g4c7_a17_monolithic_rift.yml`、日本語監査 `docs/G4C7_A17_MONOLITHIC_RIFT_FOLD_ART_HOLD_JA.md`。
+- A17-AはAscending Sky-Wound、BはCascading Civic Caldera。既存A13-C実GLBとA15-Bを研究コピーとして再構築し、**新研究コピーの2断崖包絡を一つの巨大な閉体積の折れた人工大地に置換**。ボクセルの空間占有格子と実iso-surfaceにより本当の3D負空間を作る。Boolean切削の実測と偽らず、占有格子除去量と実閉体積を別に報告。歴史的ソース、A5〜A16原本・Minecraft実機には書き込まない。
+- 限定的なローカル形態試作で、A/B各単一連結の真のwatertight GLB単体が生成された。**ただし市街地608メッシュとの結合モデル・本来の331/993ルートQA・Actionsのモデル保存は未確認**。2候補とも単独形状は巨大スラブ状で都市の魅力には未達の疑いが強いため、**ART HOLD**。未検証を美術PASSとしない。
+- Actions成功後、`artifacts/g4c7-a17/`に実A/B GLB/OBJ、参照A15-B GLB、front/oblique/side/aerialの4列比較、QA JSON・provenanceが揃い、archiveジョブのSUCCESSまで確認する。旧331人体・993足元、半幅0.65、足元+0.15〜+3.25、負の対照、45表面干渉上限と未支持0を**絶対緩めない**。欠ければ失敗として原因を修正。
+- **ART HOLD / NO MINECRAFT CONSTRUCTION / NO CITY INTEGRATION**。古いworld、USED、CSV、ZIP、過去の実機・モデルは完全保護。新人工大地と旧階層都市の荷重接合、内部経路、柵・避難・歩行は全て未証明。
