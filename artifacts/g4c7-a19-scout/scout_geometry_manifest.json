@@ -196,7 +196,10 @@
     "actual nonzero-volume closed prism primitives",
     "no zero-area triangles",
     "same projected camera/scale for a three-way 4-view comparison",
-    "GLB binary header/version/byte size internally checked"
+    "GLB binary header/version/byte size internally checked",
+    "directed edge pair check: every independent prism edge occurs exactly twice with opposite orientation",
+    "positive signed volume for every isolated closed-prism component",
+    "zero outward-normal mismatch after winding correction"
   ],
   "checks_not_done": [
     "independent external GLB/OBJ reload",
@@ -205,11 +208,45 @@
     "331/993 inherited human path sweep on candidates",
     "free walking",
     "real-world structure/load/egress/fire engineering",
-    "Minecraft conversion or actual building"
+    "Minecraft conversion or actual building",
+    "structural union of overlapping prisms (not verified)"
   ],
   "art_gate": "NOT ACCEPTED; pending critical human four-view visual review",
   "approval": "ART HOLD",
   "minecraft_construction": "PROHIBITED",
   "city_integration": "PROHIBITED",
-  "historical_assets": "UNCHANGED"
+  "historical_assets": "UNCHANGED",
+  "orientation_repair": "corrected per-component winding of stored convex prisms, recomputed OBJ, GLB and matched SVGs",
+  "orientation_check": {
+    "a": {
+      "component_count": 607,
+      "triangles": 7380,
+      "verts": 4904,
+      "faces_winding_repaired": 2476,
+      "unbalanced_edges": 0,
+      "degenerate_faces": 0,
+      "negative_or_zero_signed_volumes": 0,
+      "strictly_positive_component_volumes": true
+    },
+    "b": {
+      "component_count": 193,
+      "triangles": 2732,
+      "verts": 1752,
+      "faces_winding_repaired": 980,
+      "unbalanced_edges": 0,
+      "degenerate_faces": 0,
+      "negative_or_zero_signed_volumes": 0,
+      "strictly_positive_component_volumes": true
+    },
+    "c": {
+      "component_count": 796,
+      "triangles": 9784,
+      "verts": 6484,
+      "faces_winding_repaired": 3300,
+      "unbalanced_edges": 0,
+      "degenerate_faces": 0,
+      "negative_or_zero_signed_volumes": 0,
+      "strictly_positive_component_volumes": true
+    }
+  }
 }
