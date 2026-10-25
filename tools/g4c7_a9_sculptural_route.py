@@ -14,8 +14,10 @@ from g4c7_a7_portal_route import (
     boolean_volume
 )
 from g4c7_a8_fullbody_clearance import (
-    route_sweep, stitched_route, compare_views
+    route_sweep, stitched_route
 )
+from g4c7_a7_fourview import render, CAMERAS, TARGET, WIDTH, HEIGHT, SCALE
+from PIL import Image, ImageDraw
 
 ROOT_GROUND = "A7_APPROACH_CURVED_DECK"
 ROOT_TRANSFER = "A8_RAMP_PROMENADE_TRANSFER_DECK"
@@ -118,6 +120,41 @@ def route_a9():
     assert i==81
     return out
 
+def matched_views(before,after,route,out):
+    """A8/A9 physical GLB matched views, fixed A7/A8 camera; no fake EEVEE."""
+    out.mkdir(parents=True,exist_ok=True)
+    evidence={}
+    for label,eye0 in CAMERAS.items():
+        a,n0=render(before,label)
+        b,n1=render(after,label)
+        eye=np.array(eye0,float)
+        look=(TARGET-eye)
+        look/=np.linalg.norm(look)
+        right=np.cross(look,[0,1,0])
+        right/=np.linalg.norm(right)
+        up=np.cross(right,look)
+        projected=[]
+        for _,pos in route:
+            delta=pos-TARGET
+            projected.append((WIDTH/2+float(delta@right)*WIDTH/SCALE,
+                              HEIGHT/2-float(delta@up)*WIDTH/SCALE))
+        draw=ImageDraw.Draw(b)
+        draw.line(projected,fill=(242,115,42),width=3,joint="curve")
+        panel=Image.new("RGB",(2*WIDTH,HEIGHT+42),(246,248,248))
+        panel.paste(a,(0,42))
+        panel.paste(b,(WIDTH,42))
+        headline=ImageDraw.Draw(panel)
+        headline.text((20,12),"A8 SOURCE / ART HOLD",fill=(20,24,24))
+        headline.text((WIDTH+20,12),"A9 CARVED CONNECTION / ART HOLD",fill=(20,24,24))
+        panel.save(out/(label+"_a8_a9.png"),optimize=True)
+        evidence[label]={"camera":list(eye0),"scale":SCALE,
+                         "a8_triangles":n0,"a9_triangles":n1}
+    (out/"provenance.json").write_text(json.dumps({
+        "geometry":"genuine GLB meshes",
+        "renderer":"GLB-derived Pillow orthographic; not Blender EEVEE, not Minecraft",
+        "fixed_target":TARGET.tolist(),"views":evidence,
+        "orange_line":"route concept, not certified walkability"},indent=2)+"\n")
+
 def run(input_path,out):
     out.mkdir(parents=True,exist_ok=True)
     baseline=trimesh.load(input_path,force="scene")
@@ -150,7 +187,7 @@ def run(input_path,out):
     assert after["negative_intentional_blocker_detected"]
     assert after["route_samples"]==before["route_samples"]
     # All QA outcomes are reported, whether or not the new design is better.
-    compare_views(baseline,reloaded,route,out/"fourview")
+    matched_views(baseline,reloaded,route,out/"fourview")
     report={
       "a8_meshes":len(baseline.graph.nodes_geometry),
       "a9_meshes":len(reloaded.graph.nodes_geometry),
