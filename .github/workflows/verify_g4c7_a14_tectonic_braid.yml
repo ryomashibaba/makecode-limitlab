@@ -1,0 +1,113 @@
+name: G4C7 A14 tectonic civic braid (OFFLINE ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a14-tectonic-civic-braid-art-study]
+    paths:
+      - 'tools/g4c7_a14_tectonic_civic_braid.py'
+      - 'docs/G4C7_A14_TECTONIC_BRAID_ART_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a14_tectonic_braid.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-a14-art-study-latest
+  cancel-in-progress: true
+jobs:
+  build-and-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned geometry and raster libraries
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Produce physical A14 GLB/OBJ, four matched triptychs, and QA JSON
+        run: |
+          python tools/g4c7_a14_tectonic_civic_braid.py --input artifacts/g4c7-a13/a13_c_unified_megafold.glb --a12 artifacts/g4c7-a12/a12_exposed_atrium_canyon.glb --out build/g4c7_a14
+      - name: Strict persisted-binary QA, with negative blocker and unchanged route tolerances
+        run: |
+          python - <<'PY'
+          import json,trimesh
+          from pathlib import Path
+          d=Path("build/g4c7_a14")
+          q=json.loads((d/"a14_geometry_qa.json").read_text())
+          assert q["a13c_input_meshes"]==616
+          assert q["reference_a12_meshes"]==619
+          assert q["a14_output_meshes"]==615
+          assert q["art_status"]=="HOLD"
+          assert q["minecraft_construction"]=="PROHIBITED"
+          assert q["city_integration"]=="PROHIBITED"
+          assert q["real_minecraft_walk"]=="NOT TESTED"
+          assert q["all_private_worlds_used_csv_zip"]=="UNTOUCHED"
+          assert q["path_collision_delta"]<=0
+          assert q["path_support_delta"]==0
+          path=q["route_a14"]
+          assert path["route_samples"]==331
+          assert path["foot_support_samples"]==993
+          assert path["negative_intentional_blocker_detected"]
+          assert path["body_envelope"]["half_xz"]==0.65
+          assert path["body_envelope"]["from_foot_y"]==0.15
+          assert path["body_envelope"]["to_foot_y"]==3.25
+          assert path["body_surface_intersection_sample_count"]<=45
+          assert path["unsupported_foot_samples"]==0
+          m=trimesh.load(d/"a14_tectonic_civic_braid.glb",force="scene")
+          assert len(m.graph.nodes_geometry)==615
+          assert "A14_INHABITED_TECTONIC_CIVIC_BRAID" in m.graph.nodes_geometry
+          matrix,key=m.graph["A14_INHABITED_TECTONIC_CIVIC_BRAID"]
+          assert m.geometry[key].is_volume and m.geometry[key].is_watertight
+          assert q["new_primary_mass"]["real_closed_volume"]>5000
+          assert q["a14_real_bounds"][1][1]>90
+          assert (d/"a14_tectonic_civic_braid.obj").stat().st_size>10000
+          for view in ("front","oblique","side","aerial"):
+              assert (d/"fourview"/(view+"_a12_a13c_a14.png")).stat().st_size>2000
+          assert (d/"fourview"/"provenance.json").stat().st_size>300
+          print("A14 material geometry: valid. Historical corridor: no regression.")
+          print("ART HOLD; upper paths/structure/actual Minecraft walking NOT PROVEN.")
+          PY
+      - name: Upload model, QA, and four fixed-camera comparative views
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a14-true-model-and-fourview-art-hold
+          path: build/g4c7_a14/
+          if-no-files-found: warn
+          retention-days: 14
+  persist-a14-research:
+    needs: [build-and-qa]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a14-tectonic-civic-braid-art-study'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a14-true-model-and-fourview-art-hold
+          path: build/g4c7_a14
+      - name: Archive verified A14 research to new branch only
+        run: |
+          set -euo pipefail
+          d=artifacts/g4c7-a14
+          mkdir -p "$d/fourview"
+          for f in a14_tectonic_civic_braid.glb a14_tectonic_civic_braid.obj a14_geometry_qa.json; do
+            test -s "build/g4c7_a14/$f"
+            cp "build/g4c7_a14/$f" "$d/"
+          done
+          for view in front oblique side aerial; do
+            test -s "build/g4c7_a14/fourview/$view"_a12_a13c_a14.png
+            cp "build/g4c7_a14/fourview/$view"_a12_a13c_a14.png "$d/fourview/"
+          done
+          cp build/g4c7_a14/fourview/provenance.json "$d/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a14
+          if ! git diff --cached --quiet; then
+            git commit -m 'G4C7 A14: persist GLB OBJ fourview and geometry QA (ART HOLD)'
+            # Move only the new A14 artifact commit onto the latest remote tip.
+            # Never force-push or overwrite concurrent documentation edits.
+            git fetch origin dev/g4c7-a14-tectonic-civic-braid-art-study
+            git rebase origin/dev/g4c7-a14-tectonic-civic-braid-art-study
+            git push origin HEAD:dev/g4c7-a14-tectonic-civic-braid-art-study
+          fi

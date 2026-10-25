@@ -48,3 +48,21 @@ artifacts/g4c7-a13/。
 4. 一度の工程で実体制作・四視点画像・再現ソース・QA JSON・Actions・GitHubへの自動アーカイブまでまとめて作業。CIの成功後は**保存ジョブもSUCCESS、GitHubブランチに全ファイルが存在するか**確認。古いActionsの成功を最新HEADのPASSと取り違えない。
 5. **永久HOLD条件**：Minecraft Educationの施工、ワールド書換え、USED・古い実機QA証拠の上書き、都市統合は行わない。A5～A13原本を保護する。構造・内部歩行・手すり・建築防火等が未検証でも「達成」と呼ばない。
 6. 可能ならこのLIVE HANDOFFを工程完了ごとに簡潔に更新し、新チャット移動のたびに長大な文書を再作成する負担を減らす。
+
+## A14 研究中（2026-10-25 JST、ART HOLD）
+
+- 独立研究ブランチ：dev/g4c7-a14-tectonic-civic-braid-art-study。起点HEAD fd86ec4f2a62e788fb26b0e1f59efb4bbe96041b。A13 PR #49とA5～A13原本は未マージ・原形維持。
+- 造形仮説：研究コピーのA13-C（616メッシュ）から旧A12上空クレセントとA13-C中層横断フォールドだけを省略し、断崖を上下に縫う一つの大きな立体的都市フォールドに置換。旧殻4メッシュの省略はA13-C研究コピー由来であって撤去・荷重安全証明ではない。
+- 再現コード tools/g4c7_a14_tectonic_civic_braid.py。監査 docs/G4C7_A14_TECTONIC_BRAID_ART_HOLD_JA.md。専用CI .github/workflows/verify_g4c7_a14_tectonic_braid.yml。
+- CIにて実GLB/OBJ、固定四視点のA12/A13-C/A14同縮尺比較画像、QA JSON・provenanceを生成し、成功後に artifacts/g4c7-a14/ へ自動アーカイブ。CIと保存両方のSUCCESSを確認するまで成果完了とは呼ばない。
+- QAの人体331地点/足元993点/半幅0.65/高さ0.15～3.25/意図的負の対照は変更禁止。45地点の既存表面干渉を悪化させず支持不足0を保つ。緑の幾何CIは歩行証明・美術PASSではない。
+- ART HOLD、Minecraft施工禁止、都市統合禁止、未検証の荷重支持・内部歩行・避難・接合。旧Minecraft World・USED・CSV・ZIP・過去の実機証拠を触らない。画像確認後、蛇状の孤立構造に見えたらREJECTしてさらに形態修正。
+
+### A14 美術試作の追加監査（2026-10-25 JST）
+
+- A13専用Actions成功run 40159363403から実A13-C GLBと比較PNG、A12専用Actions成功run 40156977781から実A12 GLBを取得。GitHub上の実バイナリと4視点画像を直接確認した。A13-Cにも前面旧大アーチが強く残る。
+- A14の新連続帯状立体を同一の実A13-Cモデルへ適用し、独立のローカルGLB再読込・front/oblique/side/aerial比較を行った。単体メッシュは1128頂点/2252面、watertight・正体積約56,052概念体積単位。候補全体は615メッシュのGLBとして再読込できた。
+- 【美術暫定判定：REJECT / ART HOLD】新しい帯が分離した蛇状の付加物に見える。旧前面アーチが相変わらず主役。美術的な大幅改善を達成したとは言えない。単体の幾何PASSは美術採用に一切使わない。
+- 専用GitHub Actions run 40161602783 は2026-10-25 JSTの確認時点でqueued。旧幾何経路331/993点・negative controlの実行結果は未取得、専用CIのarchiveジョブも未成功。GitHubに完成モデルと比較画像が恒久保存されたと主張しないこと。
+- 追加の大きな双翼試作もローカルで四方向検分したが、別々の巨大塔に見えるためGitHub本案には未採用。未来都市の立体的な一体感を優先し、次は前面旧アーチ自体の主従も抜本的に再設計すること。
+- 関連の一次監査はDraft PR #50のConversationコメントを参照。禁止事項（Minecraft施工・都市統合・旧原本書換え）は継続。
