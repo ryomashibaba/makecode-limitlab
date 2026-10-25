@@ -1,3 +1,15 @@
+# 【最新確定 A36／2026-10-26 JST】都市形態3案比較＋CIVIC DELTA実3D試験：G1 ART REJECT
+
+> **今回の実成果：** A35の長期「左右並列谷型」から抜けるため、[A36形態比較](./G4C7_A36_URBAN_MORPHOLOGY_DIVERGENCE_JA.md)でCIVIC DELTA（分岐都市）／交差断層都市／単一公共母体を比較し、前者のみ実3Dとして検証した。GitHub `artifacts/g4c7-a36-civic-delta-scout/` に実OBJ・GLB（7,418頂点／14,844三角形、269,852 bytes）、実OBJから独立ラスタしたA35対A36の歴代4カメラ同条件indexed-PNG、生成/描画Nodeソース、技術manifest。保存GLBを独立base64再取得し、頂点範囲・索引・OBJ完全一致をバイナリQA **PASS**。選定比較のSVGは構想図で、実3Dとは区別する。
+>
+> **G1 ART REJECT／全体ART HOLD。** 分岐配置に変えたが、正面・斜視・側面・俯瞰の実画像では「大きな階段型地形・採石場ブロック」が支配し、占有された都市空間や目的地が分からない。**南入口の指定座標は空洞でなくFAIL**。中央・西・東・北の空気接続4地点だけはPASS（歩行可能性の証明ではない）。詳細 [A36審査](./G4C7_A36_CIVIC_DELTA_ART_REJECT_JA.md)。正式G2・G3・331人体/993足元と負の対照は未実施。
+>
+> **次はA37**：外形体積を完成させてから開口を切る方式を見直し、**入口から見える大きな都市居住空間と公共施設・目的地を初めから造形**し、外側の支える主構造を整合的に計画する。形状の禁則表を増やさず、曲面化・分岐化・窓追加のみの延命はしない。
+>
+> **固定：ART-FIRST/QUALITY-FIRST、ART HOLD、Minecraft Education施工禁止、都市統合禁止、歴史原本完全保護、旧331人体・993足元・半幅0.65・相対+0.15〜+3.25・身体干渉45上限・未支持0・負の対照、Work事前明示承認。**
+
+---
+
 # 【最新確定 A35／2026-10-25 JST】一体空洞を保った曲面化研究・G1 ART REJECT
 
 > **成果：** `artifacts/g4c7-a35-integrated-form-scout/` にA34の実OBJを起点として、一体メッシュ（6,860頂点・13,720三角形・連結/開口の面接続は維持）の曲面化試作・実GLB（332,092 bytes）・同カメラ4視点比較・内部2視点、**独立OBJラスタのindexed-PNG6枚**、再現可能な `tools/g4c7_a35_curvature_research.mjs` を保存。モデル本体の制作 `eed5239e10cc192ec906ab6e802eed75658a41f9`、同条件PNG `e3174c8f8ab540fa75dae32c891bb1868ffa9e84`、内部PNG `3ced12348d45ccc0fe9a3d9990ca3499222e978f`。GLBをバイナリ再取得しPOSITION/NORMAL/索引/アクセサ範囲/OBJ全頂点一致 **PASS**。

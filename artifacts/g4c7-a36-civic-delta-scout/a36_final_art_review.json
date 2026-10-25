@@ -1,0 +1,68 @@
+{
+  "stage": "A36",
+  "jst": "2026-10-26",
+  "status": "G1 ART REJECT; PROJECT ART HOLD",
+  "morphology": [
+    "A civic delta selected for one scout",
+    "B interlocked fault diagram only",
+    "C deep forum diagram only"
+  ],
+  "model_commit": "607a469accf73bfacd1167c26a536fddeb869c2d",
+  "preview_commit": "c874a0c40d634349ea562df695d50cc7bb2f8cc3",
+  "glb_binary_check": {
+    "sha": "a7d4250dbfac74f17c2927c60aa2ac14d55c5330",
+    "bytes": 269852,
+    "vertices": 7418,
+    "triangles": 14844,
+    "materials": 6,
+    "OBJ_exact_position": true,
+    "bufferview_valid": true,
+    "index_oob": 0,
+    "accessor_extrema_exact": true,
+    "verdict": "PASS"
+  },
+  "geometry": {
+    "solidCells": 12490,
+    "connectedComponents": 1,
+    "repairedContacts": 4,
+    "edgeOrientationErrors": 0
+  },
+  "air_sample": {
+    "arrival": "FAIL occupied",
+    "central": "EXTERIOR AIR PASS",
+    "west": "EXTERIOR AIR PASS",
+    "east": "EXTERIOR AIR PASS",
+    "north": "EXTERIOR AIR PASS",
+    "humansAndRoute": "NOT VERIFIED"
+  },
+  "image_review": {
+    "fourview": [
+      "front",
+      "oblique",
+      "side",
+      "aerial"
+    ],
+    "imageSource": "real archive OBJ, indexed PNG, same cameras scale 1.03 and common pixel factor 0.70",
+    "G1": "ART REJECT",
+    "cause": "branching urban mass became staircase quarry blocks, without readable inhabited civic depth",
+    "G2": "NOT RUN",
+    "G3": "NOT RUN"
+  },
+  "preserve": {
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "history": "PROTECTED",
+    "bodySamples": 331,
+    "footSamples": 993,
+    "halfwidth": 0.65,
+    "feetRelative": [
+      0.15,
+      3.25
+    ],
+    "bodyInterferenceCeiling": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControl": "REQUIRED",
+    "Work": "PRIOR APPROVAL"
+  },
+  "next": "A37 civic inhabitability and frontage first, then supporting sculptural macroform"
+}
