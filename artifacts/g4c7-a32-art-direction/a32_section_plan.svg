@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080" width="1600" height="1080" role="img" aria-label="A32 / 開都断面 — OPEN CITY SECTION"><defs><linearGradient id="night" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#15293c"/><stop offset="100%" stop-color="#091623"/></linearGradient><linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c6dfe6"/><stop offset="100%" stop-color="#718e9e"/></linearGradient><linearGradient id="void" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#264d61"/><stop offset="100%" stop-color="#132c44"/></linearGradient><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" stroke="#edc08c" fill="none" stroke-width="1.4"/></marker></defs><rect width="1600" height="1080" fill="url(#night)"/><text x="48" y="57" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="30" font-weight="700" fill="#f0f8fc">A32 / 開都断面 — OPEN CITY SECTION</text><text x="48" y="89" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" fill="#a9c7d3">G0 | 2D ART DIRECTION ONLY — これは実3D・Minecraft施工図ではありません</text><rect x="42" y="121" width="746" height="465" rx="16" fill="#172f42" stroke="#4b6e80" stroke-width="2"/><text x="66" y="153" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="20" font-weight="700" fill="#f0f6f9">01  南からの遠景  |  都市の断面が玄関になる</text><g transform="translate(64 178)"><rect x="12" y="12" width="698" height="351" rx="12" fill="url(#void)"/>
+<path d="M22 336 L68 334 L84 268 L115 248 L146 162 L187 123 L240 50 L300 88 L317 183 L308 337 Z" fill="url(#stone)" stroke="#d3e8ed" stroke-width="3"/>
+<path d="M390 335 L404 277 L440 250 L476 151 L532 162 L570 207 L619 236 L683 310 L692 340 Z" fill="#8aaabd" stroke="#d5ebef" stroke-width="3"/>
+<path d="M312 337 L306 276 L356 251 L403 285 L395 337 Z" fill="#e9bc86" opacity=".98"/>
+<path d="M308 335 Q356 305 396 336" fill="none" stroke="#f3cb9b" stroke-width="10"/>
+<path d="M135 262 L292 238 L291 250 L135 275 Z M152 207 L273 185 L276 196 L152 219 Z M188 150 L250 132 L252 143 L188 162 Z" fill="#e8bc87" stroke="#956b4c" stroke-width="1.8"/>
+<path d="M425 282 L610 297 L610 309 L425 294 Z M465 222 L564 237 L564 248 L465 234 Z" fill="#eac18b" stroke="#956c4c" stroke-width="1.8"/>
+<path d="M143 251 L283 227 M160 195 L267 173 M432 275 L595 287 M474 210 L556 224" stroke="#55c6ce" stroke-width="5"/>
+<path d="M317 140 L380 140 L388 216 L307 216 Z" fill="#19384d" stroke="#81b3c5" stroke-dasharray="5 5" stroke-width="2"/>
+<path d="M40 334 L675 334" stroke="#e1eef3" stroke-width="4"/>
+<path d="M351 333 L349 275 L350 206" stroke="#edc08c" stroke-width="4" stroke-dasharray="9 7" marker-end="url(#arrow)"/>
+<text x="38" y="45" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="700" fill="#eef7f8">西：高く複雑な居住層</text>
+<text x="440" y="45" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="700" fill="#eef7f8">東：低く深い文化・研究層</text>
+<text x="260" y="369" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="15" font-weight="700" fill="#f0c997">南の入口から北奥の目的地を見る</text>
+</g><rect x="812" y="121" width="746" height="465" rx="16" fill="#172f42" stroke="#4b6e80" stroke-width="2"/><text x="836" y="153" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="20" font-weight="700" fill="#f0f6f9">02  内部横断面  |  広場が都市の用途を結ぶ</text><g transform="translate(840 174)"><rect x="10" y="14" width="685" height="352" rx="10" fill="#203d53"/>
+<path d="M27 318 L70 290 L108 198 L177 110 L254 76 L273 346 L22 346 Z" fill="url(#stone)"/>
+<path d="M437 346 L451 226 L497 180 L566 158 L677 302 L685 346 Z" fill="#a6c0cb"/>
+<path d="M274 346 L437 346 L416 312 L290 312 Z" fill="#e6c38c"/>
+<path d="M105 246 L268 246 L268 261 L105 261 Z M139 188 L268 188 L268 203 L139 203 Z M183 127 L268 127 L268 142 L183 142 Z" fill="#ebc48e"/>
+<path d="M437 260 L600 260 L600 276 L437 276 Z M437 208 L550 208 L550 223 L437 223 Z" fill="#eabf87"/>
+<path d="M118 234 L253 234 M151 176 L252 176 M445 248 L586 248 M447 196 L541 196" stroke="#57bec7" stroke-width="6"/>
+<rect x="302" y="301" width="96" height="11" rx="5" fill="#72bba3"/><circle cx="325" cy="293" r="7" fill="#72bba3"/><circle cx="374" cy="290" r="11" fill="#72bba3"/>
+<path d="M355 335 L352 262 L354 180 L354 90" stroke="#f6cd9d" stroke-width="3.5" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
+<rect x="280" y="79" width="150" height="174" fill="none" stroke="#91cfdd" stroke-dasharray="10 9" stroke-width="2.4"/>
+<text x="304" y="65" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="15" font-weight="700" fill="#cceef3">空の公共室</text>
+<text x="291" y="286" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="14" font-weight="700" fill="#f2d1a4">交流・展示・緑化</text>
+<text x="36" y="365" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="14" font-weight="400" fill="#c3d8e1">居住層と公共階層が同じ断面に接する</text>
+</g><rect x="42" y="608" width="1516" height="412" rx="16" fill="#172f42" stroke="#4b6e80" stroke-width="2"/><text x="66" y="640" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="20" font-weight="700" fill="#f0f6f9">03  上からの計画  |  入口 → 交流 → 学習 → 展望が読めるか</text><g transform="translate(74 670)">
+<path d="M100 10 L385 14 L407 104 L363 218 L297 302 L246 306 L241 238 L198 205 L115 199 Z" fill="#8da9b9" stroke="#d6e9ef" stroke-width="3"/>
+<path d="M730 28 L916 60 L999 182 L936 291 L764 298 L720 195 L685 117 Z" fill="#9cbac8" stroke="#d7eaf1" stroke-width="3"/>
+<path d="M310 286 Q450 311 566 256 Q654 209 724 200 L718 158 Q609 155 556 186 Q438 247 338 240 Z" fill="#f0bf82" stroke="#f5d39f" stroke-width="3"/>
+<path d="M388 210 Q472 151 557 181 L626 157 L676 141" stroke="#70c1a0" stroke-width="23" fill="none" stroke-linecap="round"/>
+<path d="M462 308 L496 258 L515 198 L531 130 L556 40" stroke="#f5d4a7" fill="none" stroke-width="7" marker-end="url(#arrow)"/>
+<circle cx="461" cy="309" r="14" fill="#f1c38c" stroke="#1a2a37" stroke-width="4"/>
+<circle cx="517" cy="201" r="13" fill="#f1c38c" stroke="#1a2a37" stroke-width="4"/>
+<circle cx="556" cy="40" r="14" fill="#f1c38c" stroke="#1a2a37" stroke-width="4"/>
+<text x="102" y="34" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="18" font-weight="700" fill="#f6fbff">西の居住地形</text>
+<text x="781" y="36" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="18" font-weight="700" fill="#f6fbff">東の文化街区</text>
+<text x="490" y="339" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="15" font-weight="700" fill="#f9deb4">南入口</text>
+<text x="595" y="210" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="700" fill="#f8dab0">中央交流</text>
+<text x="580" y="35" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="700" fill="#f8dab0">北側の展望・学習</text>
+<g transform="translate(1080 20)">
+<text x="0" y="17" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="22" font-weight="700" fill="#f7fcff">凡例・確認対象</text>
+<rect x="0" y="42" width="29" height="18" rx="3" fill="#a8c2cd"/><text x="45" y="57" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="17" font-weight="400" fill="#d6e7ed">都市主構造・居住層</text>
+<rect x="0" y="87" width="29" height="18" rx="3" fill="#f0bf82"/><text x="45" y="102" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="17" font-weight="400" fill="#d6e7ed">交流・歩ける想定の広場</text>
+<rect x="0" y="132" width="29" height="18" rx="3" fill="#70c1a0"/><text x="45" y="147" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="17" font-weight="400" fill="#d6e7ed">緑化・文化活動</text>
+<path d="M0 185 L30 185" stroke="#f5d4a7" stroke-width="5" marker-end="url(#arrow)"/><text x="45" y="190" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="17" font-weight="400" fill="#d6e7ed">体験順序（歩行未証明）</text>
+<text x="0" y="242" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="700" fill="#f6cc98">これは構想用の模式図です。</text>
+<text x="0" y="272" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="15" font-weight="400" fill="#d6e7ed">実3Dの視界・接合・歩行・</text>
+<text x="0" y="293" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="15" font-weight="400" fill="#d6e7ed">Minecraft施工を証明しません。</text>
+</g></g><text x="48" y="1057" font-size="14" font-family="sans-serif" fill="#9db8c9">A32-G0 / SCHEMATIC ONLY / NOT SAME-CAMERA 3D COMPARISON / ART HOLD</text></svg>

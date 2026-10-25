@@ -1,0 +1,231 @@
+{
+  "stage": "A32 / G0 visual art-direction contract",
+  "date_jst": "2026-10-25",
+  "source_head": "e4f11d37af40c8b312bc72266905740a64f86c77",
+  "design": "開都断面 — OPEN CITY SECTION",
+  "status": "RESEARCH DIRECTION SELECTED, NOT ART APPROVED; PROJECT ART HOLD",
+  "scope": "2D conceptual spatial sections and decision gates; NO new GLB, 3D, collision or construction claims",
+  "inherited_art_evidence": [
+    {
+      "stage": "A22-A",
+      "lesson": "entry and public terrace visible; crescent amphitheatre impression => only reuse clarity, not geometry",
+      "state": "ART HOLD"
+    },
+    {
+      "stage": "A25",
+      "lesson": "inhabited city visible but miniature detached blocks",
+      "state": "ART REJECT"
+    },
+    {
+      "stage": "A26",
+      "lesson": "single gigantic arch displaced civic architecture",
+      "state": "ART REJECT"
+    },
+    {
+      "stage": "A27",
+      "lesson": "fragmented miniature city and dominating central road",
+      "state": "ART REJECT"
+    },
+    {
+      "stage": "A28",
+      "lesson": "mass-only studies too easily appear as shell or pavilion",
+      "state": "ART REJECT"
+    },
+    {
+      "stage": "A29",
+      "lesson": "inhabited repetitive small stacked boxes",
+      "state": "ART REJECT"
+    },
+    {
+      "stage": "A30",
+      "lesson": "real perforations worked technically; parallel bands hid city life",
+      "state": "ART REJECT"
+    },
+    {
+      "stage": "A31",
+      "lesson": "inhabited terraces visible but miniaturized; blank side wall; internal eye blocked by floors",
+      "state": "ART REJECT"
+    }
+  ],
+  "design_zones": [
+    {
+      "id": "arrival",
+      "name": "南入口・前庭",
+      "purpose": "public access/readable large opening",
+      "conceptual_xyz": [
+        0,
+        8,
+        -165
+      ]
+    },
+    {
+      "id": "exchange",
+      "name": "中央大交流室",
+      "purpose": "long public room framed by urban frontages",
+      "conceptual_xyz": [
+        0,
+        18,
+        -25
+      ]
+    },
+    {
+      "id": "garden",
+      "name": "吊庭・文化活動",
+      "purpose": "active visible destination inside void",
+      "conceptual_xyz": [
+        -18,
+        68,
+        54
+      ]
+    },
+    {
+      "id": "library",
+      "name": "空中図書・学習街区",
+      "purpose": "occupied upper interior frontage",
+      "conceptual_xyz": [
+        40,
+        118,
+        117
+      ]
+    },
+    {
+      "id": "lookout",
+      "name": "北側都市展望室",
+      "purpose": "clear far destination of public procession",
+      "conceptual_xyz": [
+        -35,
+        178,
+        163
+      ]
+    }
+  ],
+  "volume_envelope_hypothesis": {
+    "x": [
+      -215,
+      215
+    ],
+    "z": [
+      -195,
+      205
+    ],
+    "y": [
+      0,
+      230
+    ],
+    "units": "conceptual",
+    "physical_scale_not_validated": true,
+    "construction_limit_not_applied_to_art": true
+  },
+  "form_hypothesis": {
+    "western_urban_strata": "higher, nonuniform inhabited terraces integrated into occupied sculptural mass; not isolated thin arch",
+    "eastern_urban_strata": "lower and deeper public culture/research frontage rather than repeating western housing",
+    "sky_void": "central open-to-sky civic aperture, framed by used facades with independent far destination",
+    "arrival": "clear southern foreground, no long bridge over primary sight line",
+    "bridge_rule": "peripheral cross connectors that do not occlude the primary arrival-to-far-destination view"
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "name": "design logic and 2D views",
+      "now": "DOCUMENTED — NOT AN ART PASS",
+      "criteria": [
+        "entry, active civic room, lived-in facades and far destination identifiable in annotated plan/section",
+        "at least two different urban programs evident",
+        "old failure modes explicitly mapped"
+      ],
+      "blocking_failure": "concept incomprehensible"
+    },
+    {
+      "id": "G1",
+      "name": "lightweight real 3D geometry",
+      "now": "NOT RUN",
+      "criteria": [
+        "front, oblique and side independently inspected under same camera + scale",
+        "no single shell/ring/band dominates in place of city",
+        "nontrivial inhabited urban depth and civic void both simultaneously legible",
+        "public approach sight line unobstructed in actual mesh"
+      ],
+      "blocking_failure": "art rejection -> halt detailing"
+    },
+    {
+      "id": "G2",
+      "name": "interior experience",
+      "now": "NOT RUN",
+      "criteria": [
+        "real inner viewpoint camera location disclosed",
+        "arrival, two occupied levels and far civic destination distinguishable",
+        "not blocked by ribbons/bridges/surplus slabs",
+        "physically validated entry only when independent access QA is eventually run"
+      ],
+      "blocking_failure": "ART HOLD until convincing"
+    },
+    {
+      "id": "G3",
+      "name": "later engineering QA",
+      "now": "NOT RUN",
+      "criteria": [
+        "independent 3D loader and geometry contact checks",
+        "331 bodies/993 foot samples + negative control",
+        "no unsupported feet; historical collision ceiling unchanged",
+        "Minecraft and city integration still forbidden pending separate user permission"
+      ],
+      "blocking_failure": "no construction"
+    }
+  ],
+  "comparison_contract": {
+    "legacy_reference": "A31 archived GLB/OBJ",
+    "historical_cameras": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "ortho_scale": 1.03,
+    "note": "True same scale comparison is to be produced only after a real A33 mesh exists; the A32 SVGs are NOT same-scale 3D renders."
+  },
+  "preserved": {
+    "art_hold": true,
+    "minecraft_education_construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "old_assets_untouched": true,
+    "body_samples": 331,
+    "foot_samples": 993,
+    "halfwidth": 0.65,
+    "foot_offset": [
+      0.15,
+      3.25
+    ],
+    "historical_body_surface_interference_ceiling": 45,
+    "unsupported_feet_ceiling": 0,
+    "negative_control": "REQUIRED",
+    "work_requires_prior_approval": true
+  },
+  "next": "A33 only after G0 concept assessed: one macro 3D route, not a new series of ungated box/ribbon models",
+  "files": [
+    "a32_section_plan.svg",
+    "a32_three_view_targets.svg",
+    "a32_gate_manifest.json",
+    "README.md"
+  ]
+}

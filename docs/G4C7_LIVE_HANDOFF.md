@@ -1,3 +1,15 @@
+# 【最新確定：A32／2026-10-25 JST】G0アートディレクション契約・実視覚資料保存
+
+> **本工程：** [A32設計・監査正本](./G4C7_A32_ARCHITECTURAL_ART_DIRECTION_JA.md)に、A22〜A31の原因を明記したうえで「開都断面 — OPEN CITY SECTION」のG0設計契約を作成。`artifacts/g4c7-a32-art-direction/` に**自作の2D断面＋平面・3視点審査目標SVG・構造化JSON**を保存。これらは3Dレンダでも美術採用でもなく、A33で実3D化するための目標像。
+>
+> **最重要状態：G0 DESIGN DIRECTION SELECTED FOR STUDY、ART HOLD。** 新GLB/OBJなし、正規四視点の実3D検証なし、独立歩行・接合・331人体/993足元QA未実施。A31の実模型も不採用のまま。造形形式の恣意的禁止はなし。A22-Aの入口の読みやすさのみ参考。
+>
+> **次のA33：** まずG0図と厳格な視覚条件をレビューし、見込みがあれば**実3D初期マス1案のみ**作る。正面/斜視/側面/内部の公共空間・居住層・明確な目的地が同時に見えない場合は直ちにREJECT、詳細化/PR/CI/施工を増やさない。過去A30・A31のGLB形状を少し変えるだけの継続は行わない。
+>
+> **絶対維持：ART-FIRST/QUALITY-FIRST、ART HOLD、Minecraft Education施工禁止、都市統合禁止、過去成果物原本保護、331人体・993足元・半幅0.65・足元相対+0.15〜+3.25・身体干渉45上限・未支持0・負対照。Workは事前許可制。**
+ 
+---
+
 # 【最新確定 A31／2026-10-25 JST】実3D・四視点・内部審査：ART REJECT
 
 > **現在の基点**：A31実制作コミット `b5f29d55d07f8e435f1ab8c870fd4a28e070ef85`。最新HEADは必ずGitHubから取得する。`artifacts/g4c7-a31-civic-valley-scout/` に実OBJ・GLB（22,496 bytes）、旧A30と同カメラ同倍率の4方向比較、広場内参考透視、manifestを保存。再現ソース `tools/g4c7_a31_civic_valley_scout.mjs`。638頂点／1,016三角形／65個別閉立体。GLBの**実保存バイナリ再取得整合検証PASS**。

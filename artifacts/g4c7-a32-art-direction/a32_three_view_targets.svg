@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 770" width="1600" height="770" role="img" aria-label="A32 / 3つの視点で合格を判断する"><defs><linearGradient id="night" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#15293c"/><stop offset="100%" stop-color="#091623"/></linearGradient><linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c6dfe6"/><stop offset="100%" stop-color="#718e9e"/></linearGradient><linearGradient id="void" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#264d61"/><stop offset="100%" stop-color="#132c44"/></linearGradient><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" stroke="#edc08c" fill="none" stroke-width="1.4"/></marker></defs><rect width="1600" height="770" fill="url(#night)"/><text x="48" y="57" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="30" font-weight="700" fill="#f0f8fc">A32 / 3つの視点で合格を判断する</text><text x="48" y="89" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" fill="#a9c7d3">G0 REQUIREMENTS ONLY — 各図は概念的な視線目標で、実3D視界の測定結果ではありません</text><rect x="36" y="128" width="490" height="558" rx="18" fill="#1d3548" stroke="#56788d" stroke-width="2"/><text x="56" y="165" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="21" font-weight="700" fill="#f1f8fa">G1-A / 南側・遠景</text><text x="56" y="191" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="14" font-weight="400" fill="#a8c5d3">一つの建築に見えるか</text><rect x="555" y="128" width="490" height="558" rx="18" fill="#1d3548" stroke="#56788d" stroke-width="2"/><text x="575" y="165" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="21" font-weight="700" fill="#f1f8fa">G1-B / 斜め・立体感</text><text x="575" y="191" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="14" font-weight="400" fill="#a8c5d3">空洞と居住の奥行はあるか</text><rect x="1074" y="128" width="490" height="558" rx="18" fill="#1d3548" stroke="#56788d" stroke-width="2"/><text x="1094" y="165" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="21" font-weight="700" fill="#f1f8fa">G2 / 内側・市民目線</text><text x="1094" y="191" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="14" font-weight="400" fill="#a8c5d3">目的地と生活階層が読めるか</text><g transform="translate(54 228)">
+<path d="M20 324 L55 236 L105 122 L155 69 L206 82 L230 322" fill="#9eb9c8" stroke="#dcebf0" stroke-width="3"/>
+<path d="M306 321 L326 226 L391 170 L453 253 L470 324" fill="#789cae" stroke="#d5e7ee" stroke-width="3"/>
+<path d="M220 324 L312 324 L305 279 L231 279 Z" fill="#edc18d"/>
+<path d="M60 260 L205 243 M89 198 L186 180 M333 265 L420 280 M347 223 L397 231" stroke="#f2ce9b" stroke-width="12"/>
+<path d="M267 324 L267 154" stroke="#f1c690" stroke-width="4" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<text x="17" y="366" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="17" font-weight="400" fill="#ffbbad">巨大な外殻だけなら不合格</text>
+<text x="17" y="400" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="400" fill="#d6e7ed">入口＋異なる両岸＋遠い目的地</text>
+</g><g transform="translate(572 228)">
+<path d="M40 318 L85 189 L210 95 L279 145 L248 321 Z" fill="#9ebbc9" stroke="#d9ecf0" stroke-width="3"/>
+<path d="M236 319 L299 183 L390 148 L453 228 L451 320 Z" fill="#6d91a8" stroke="#dcebf1" stroke-width="3"/>
+<path d="M73 257 L204 175 L224 185 L94 271 Z M104 221 L198 156 L213 166 L122 232 Z" fill="#e6bc86"/>
+<path d="M288 260 L409 249 L407 265 L281 275 Z" fill="#f0c793"/>
+<path d="M118 267 L227 217 M294 240 L399 231" stroke="#5ec4ca" stroke-width="7"/>
+<path d="M254 315 Q259 247 283 209" stroke="#efc48e" stroke-width="5" stroke-dasharray="6 5" fill="none" marker-end="url(#arrow)"/>
+<text x="16" y="366" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="17" font-weight="400" fill="#ffbbad">箱の反復・薄い平行帯なら不合格</text>
+<text x="16" y="400" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="400" fill="#d6e7ed">曲面・大部屋・地形が一体化</text>
+</g><g transform="translate(1090 228)">
+<path d="M10 318 L10 90 L153 41 L189 310" fill="#8eaabd"/>
+<path d="M460 320 L460 130 L337 61 L287 311" fill="#6f97ad"/>
+<path d="M105 175 L191 171 L191 188 L105 188 Z M82 235 L200 221 L200 236 L82 250 Z M295 197 L407 215 L407 229 L291 212 Z" fill="#eac08a"/>
+<path d="M204 319 L253 281 L275 246 L281 196 L278 106" stroke="#edbf86" stroke-width="7" fill="none" marker-end="url(#arrow)"/>
+<circle cx="274" cy="95" r="19" fill="#74bea8"/>
+<path d="M212 95 L258 95 M291 95 L346 95" stroke="#b6e5eb" stroke-width="3" stroke-dasharray="6 5"/>
+<text x="18" y="366" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="15" font-weight="400" fill="#ffbbad">床・橋で奥の目的地が隠れたら不合格</text>
+<text x="18" y="400" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="16" font-weight="400" fill="#d6e7ed">広場から住民階層と北側目的地</text>
+</g><path d="M34 711 H1565" stroke="#4c7186" stroke-width="2"/>
+<text x="40" y="744" font-family="Noto Sans JP,Yu Gothic,sans-serif" font-size="17" font-weight="400" fill="#d1e5ed">G1/G2は未来の実3D試験。G0の模式図が良く見えても実際の建築美術PASSや安全PASSとはしない。</text></svg>
