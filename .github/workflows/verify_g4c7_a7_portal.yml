@@ -80,3 +80,42 @@ jobs:
           retention-days: 14
       - name: Never construct Minecraft or approve art
         run: echo 'No world, MakeCode, fill, clone, latch, user private CSV/ZIP or construction touched.'
+
+  publish-a7-persistent-artifacts:
+    name: Archive verified research GLB OBJ QA and views in GitHub
+    needs: [a7-geometry-proof-no-hardware]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a7-portal-supported-route-geometry'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Retrieve successfully verified model and four-view evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a7-art-hold-actual-glb-obj-fourview-route-qa
+          path: build/g4c7_a7
+      - name: Archive real GLB OBJ QA and matched images, preserving A5/A6
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-a7
+          mkdir -p "$dest/fourview"
+          for f in a7_orbital_commons_portal_study.glb a7_orbital_commons_portal_study.obj a7_geometry_route_qa.json; do
+            test -s "build/g4c7_a7/$f"
+            cp "build/g4c7_a7/$f" "$dest/$f"
+          done
+          for v in front oblique side aerial; do
+            test -s "build/g4c7_a7/fourview/$v"_a6_a7.png
+            cp "build/g4c7_a7/fourview/$v"_a6_a7.png "$dest/fourview/$v"_a6_a7.png
+          done
+          test -s build/g4c7_a7/fourview/view_provenance.json
+          cp build/g4c7_a7/fourview/view_provenance.json "$dest/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a7/
+          if ! git diff --cached --quiet; then
+            git commit -m "G4C7 A7: persist GLB OBJ QA and four matched views (ART HOLD)"
+            git push origin HEAD:dev/g4c7-a7-portal-supported-route-geometry
+          fi
