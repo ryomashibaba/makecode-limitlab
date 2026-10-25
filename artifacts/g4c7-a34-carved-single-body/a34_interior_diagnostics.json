@@ -1,0 +1,50 @@
+[
+  {
+    "name": "SOUTH CIVIC ENTRY",
+    "camera": [
+      0,
+      35,
+      -120
+    ],
+    "look": [
+      0,
+      95,
+      130
+    ],
+    "visible_triangles": 4028,
+    "near_skipped": 576,
+    "scope": "G1 failure diagnostic, not formal G2 / not walkable claim"
+  },
+  {
+    "name": "WEST CARVED HALL",
+    "camera": [
+      -102,
+      45,
+      -75
+    ],
+    "look": [
+      -23,
+      78,
+      -7
+    ],
+    "visible_triangles": 3806,
+    "near_skipped": 516,
+    "scope": "G1 failure diagnostic, not formal G2 / not walkable claim"
+  },
+  {
+    "name": "NORTH PUBLIC ROOM",
+    "camera": [
+      0,
+      80,
+      145
+    ],
+    "look": [
+      0,
+      95,
+      175
+    ],
+    "visible_triangles": 526,
+    "near_skipped": 3804,
+    "scope": "G1 failure diagnostic, not formal G2 / not walkable claim"
+  }
+]
