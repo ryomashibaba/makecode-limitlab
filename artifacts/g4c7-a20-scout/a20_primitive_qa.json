@@ -1,0 +1,36 @@
+{
+  "geometry": {
+    "verts": 2344,
+    "triangles": 3828,
+    "closed_primitive_count": 215,
+    "degenerate_triangles": 0,
+    "nonpositive_primitive_volumes": 0,
+    "bounds": [
+      [
+        -119,
+        -3,
+        -93
+      ],
+      [
+        124,
+        171.09999999999997,
+        92
+      ]
+    ],
+    "summed_primitive_volume_proxy": 1261836,
+    "boolean_union": "NOT PERFORMED",
+    "independent_GLb_reimport": "NOT PERFORMED",
+    "route_331_993": "NOT RUN",
+    "art_status": "HOLD"
+  },
+  "structural_counts": {
+    "banks": 52,
+    "terraces": 52,
+    "bridges": 6,
+    "ground_supports": 10
+  },
+  "route_331_993": "NOT RUN; inherited baseline unaffected",
+  "art": "HOLD",
+  "minecraft": "PROHIBITED",
+  "city_integration": "PROHIBITED"
+}

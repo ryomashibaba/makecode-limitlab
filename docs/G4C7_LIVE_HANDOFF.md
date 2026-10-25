@@ -47,6 +47,17 @@ A5〜A18で3Dモデル制作・検証・保存技術は大きく向上したが�
 - 【新実制作】`artifacts/g4c7-a19-scout/`に **都市空間起点で異なる3形態**の本物のOBJ/GLBと、同カメラ・同縮尺でのfront/oblique/side/aerialのSVG比較、数値manifestを一括コミット。詳細 `docs/G4C7_A19_LIGHTWEIGHT_COHERENT_URBAN_MASS_SCOUT_JA.md`。
 - **3案は軽量美術マス探索であり、A13-C都市の再統合でも巨大構造物の正式QAでもない。** 新候補の331/993人体・足元QAは未実施、いずれもART HOLD。まず比較画像を人の目で審査し、不合格案は棄却。候補の正式QAや独立PR量産を先走らない。
 
+## A20 段丘峡谷の実3Dマス試作・美術棄却（2026-10-25 JST）
+
+- **A19 A/B/C は保存済OBJの実三角形から独立斜視を再描画し美術REJECT**。A=同心円状の大型施設、B=中央円筒と短い枝、C=台座上の3円筒塔。どれも巨大未来都市の外殻・内部階層・公共空洞の統合に未達。A19の331/993 QAは未実施、原本は維持。
+- 次のA20は初期から**二つの非対称な居住段丘群、深い公共峡谷、横断公共床、地上接続、基礎支持**を同時構成する別系統の実3D試作。「外装を既存都市に後付け」しない美術探索に限定。
+- 再現コード `tools/g4c7_a20_faulted_civic_strata.mjs`。実OBJ・GLB・四視点SVG・MTL・数値QAを `artifacts/g4c7-a20-scout/` に保存。215独立閉プリミティブ、2,344頂点、3,828三角形、高さ最大171.1概念単位、退化三角形0・非正のプリミティブ体積0。各オブジェクトの真のBoolean unionやGLB第三者再読込は未実施。
+- **A20美術判定：ART REJECT／ART HOLD**。実三角形のfront・oblique・side・aerialプレビューでは左右の積層ブロックと塔状の並びが強く、統一された超巨大都市の主構造ではない。孤立した細い上空デッキも発生し、A15の双断崖・箱型建築の失敗を繰り返す危険が高い。CI・本格QA・別Draft PRへは進めない。
+- A17初回専用Actions [40167017511](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167017511)は今回再取得で生成QA・archive両ジョブ**SUCCESS**、`artifacts/g4c7-a17/`のGLB/OBJ/QA/四視点を実確認。**保存成功は美術REJECTを撤回しない**。A16修正版 [40167521083](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167521083)は幾何切削段階FAILURE。
+- 次はA20の「長方形層を積んで都市に見せる」アプローチを棄却し、**負空間・建築本体・階層・支持が同一造形の中で成立する別の非箱型マクロ構成**を少数軽量比較。決定的な美術改善を確認するまで331人体/993足元等の正式QAやActionsを増殖させない。
+- **ART HOLD／Minecraft Education施工禁止／都市統合禁止**。歴代モデル、ワールド、USED、CSV、ZIP、実機証拠および従来331/993、半幅0.65、足元+0.15〜+3.25、負対照、45人体表面干渉上限、未支持0を保持。ただしA20候補に経路QAを行っていないため新候補の合格を主張しない。
+
+
 ---
 
 # MakeCode LimitLab — G4-C7 継続開発・LIVE HANDOFF
