@@ -1,0 +1,67 @@
+{
+  "phase": "A34 genuine single connected carved urban negative space",
+  "date": "2026-10-25 JST",
+  "source_head": "b621608fad0984b8f658f667afaa3ca21f99f86a",
+  "model": {
+    "solid_grid_cells": 10454,
+    "solid_connected_cells": 10454,
+    "corner_cells_repaired": 2,
+    "watertight_bad_edges": 0,
+    "vertices": 6860,
+    "triangles": 13720,
+    "quads": 6860,
+    "glb_bytes": 249452
+  },
+  "city_cavities": {
+    "named_hall_air_reachable_from_exterior": {
+      "arrival": true,
+      "exchange": true,
+      "westLower": true,
+      "westUpper": true,
+      "eastLower": true,
+      "eastUpper": true,
+      "north": true
+    },
+    "exterior_connected_air_grid_cells": 29866,
+    "route_walkability": "NOT TESTED"
+  },
+  "fourview": {
+    "same_cameras": true,
+    "same_scale": 1.03,
+    "larger_common_viewport": [
+      1500,
+      880
+    ],
+    "reference": "archived A33 genuine OBJ"
+  },
+  "qa_done": [
+    "single connected occupied mass",
+    "edge-manifold oriented triangle surface",
+    "selected large carved void samples air-connected to exterior",
+    "equal-camera projections"
+  ],
+  "qa_not_done": [
+    "GLB independent reread",
+    "3D structural safety",
+    "331-body 993-feet QA and negative control",
+    "3D external rendering",
+    "human walking route",
+    "art signoff"
+  ],
+  "safety": {
+    "art_hold": true,
+    "construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "history": "PRESERVED",
+    "body_samples": 331,
+    "feet_samples": 993,
+    "halfwidth": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "body_interference_max": 45,
+    "unsupported_feet": 0,
+    "negative_control": "REQUIRED"
+  }
+}
