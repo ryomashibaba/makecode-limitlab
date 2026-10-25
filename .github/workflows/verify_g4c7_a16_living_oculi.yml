@@ -1,0 +1,131 @@
+name: G4C7 A16 living oculi real 3D art study (NO MINECRAFT)
+on:
+  push:
+    branches: [dev/g4c7-a16-living-oculi-void-city-art-study]
+    paths:
+      - 'tools/g4c7_a16_living_oculi_void_city.py'
+      - 'docs/G4C7_A16_LIVING_OCULI_ART_HOLD_JA.md'
+      - '.github/workflows/verify_g4c7_a16_living_oculi.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-a16-latest-real-void-city
+  cancel-in-progress: true
+jobs:
+  true-3d-art-build-and-strict-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned geometry and image dependencies
+        run: python -m pip install numpy==2.2.6 trimesh==4.6.13 manifold3d==3.2.1 scipy==1.15.3 networkx==3.5 pillow==11.3.0
+      - name: Real Boolean excavation, reimported GLBs and all four matched views
+        run: |
+          python tools/g4c7_a16_living_oculi_void_city.py \
+            --input artifacts/g4c7-a13/a13_c_unified_megafold.glb \
+            --out build/g4c7_a16
+      - name: Independently verify archived-model reality and exact 331/993 safety gates
+        run: |
+          python - <<'PY'
+          import json,trimesh
+          from pathlib import Path
+          p=Path('build/g4c7_a16')
+          q=json.loads((p/'a16_geometry_qa.json').read_text())
+          assert q['a13c_input_node_count']==616
+          assert q['a15b_reference_node_count']==610
+          assert q['a16_actual_mesh_count']==610
+          assert q['art_status']=='HOLD'
+          assert q['minecraft_construction']=='PROHIBITED'
+          assert q['city_integration']=='PROHIBITED'
+          assert q['real_minecraft_walk']=='NOT TESTED'
+          assert q['A5_through_A15_and_world_used_csv_zip']=='UNTOUCHED'
+          assert q['historical_body_collision_samples']==45
+          assert q['historical_unsupported_samples']==0
+          assert len(q['prior_research_scene_omissions'])==6
+          a15=trimesh.load(p/'a16_reference_a15b_reconstructed.glb',force='scene')
+          assert len(a15.graph.nodes_geometry)==610
+          for k in ('a','b'):
+              v=q['variants'][k]
+              assert v['scene_meshes']==610
+              assert v['genuine_carved_aperture_count']==4
+              assert v['total_removed_real_volume']>1200
+              assert v['sum_cliff_excavated_fraction']>=0.07
+              assert v['body_surface_collision_delta']<=0
+              assert v['unsupported_foot_delta']==0
+              legacy=v['unchanged_legacy_route_check']
+              assert legacy['route_samples']==331
+              assert legacy['foot_support_samples']==993
+              assert legacy['negative_intentional_blocker_detected']
+              assert legacy['body_envelope']['half_xz']==0.65
+              assert legacy['body_envelope']['from_foot_y']==0.15
+              assert legacy['body_envelope']['to_foot_y']==3.25
+              assert legacy['body_surface_intersection_sample_count']<=45
+              assert legacy['unsupported_foot_samples']==0
+              scene=trimesh.load(p/('a16_'+k+'_living_oculi_void_city.glb'),force='scene')
+              assert len(scene.graph.nodes_geometry)==610
+              for name,record in v['true_boolean_cliff_excavation'].items():
+                  transform,key=scene.graph[name]
+                  m=scene.geometry[key]
+                  assert m.is_volume and m.is_watertight
+                  assert m.volume>12000
+                  assert record['total_excavated']>1200
+                  assert record['excavated_fraction']>=0.035
+                  assert len(record['apertures'])==2
+                  assert all(a['removed_real_volume']>600 for a in record['apertures'])
+              assert (p/('a16_'+k+'_living_oculi_void_city.obj')).stat().st_size>10000
+          for view in ('front','oblique','side','aerial'):
+              assert (p/'fourview'/(view+'_a13c_a15b_a16a_a16b.png')).stat().st_size>2000
+          prov=json.loads((p/'fourview'/'provenance.json').read_text())
+          assert prov['identical_camera_target_projection_scale_in_all_columns']
+          print('PASS: two real A16 Boolean excavated 3D volumes and four matched four-way comparisons.')
+          print('Original 331/993 safety settings retained. ART HOLD. NO MINECRAFT.')
+          PY
+      - name: Upload all results even if a check fails for debugging
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g4c7-a16-real-living-oculi-void-city-a-b-art-hold
+          path: build/g4c7_a16/
+          if-no-files-found: warn
+          retention-days: 14
+  persist-a16-complete-artifacts:
+    needs: [true-3d-art-build-and-strict-qa]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev/g4c7-a16-living-oculi-void-city-art-study'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: g4c7-a16-real-living-oculi-void-city-a-b-art-hold
+          path: build/g4c7_a16
+      - name: Commit GLB/OBJ, strict QA and four-view comparisons without losing concurrent changes
+        run: |
+          set -euo pipefail
+          target=artifacts/g4c7-a16
+          mkdir -p "$target/fourview"
+          for f in a16_reference_a15b_reconstructed.glb a16_a_living_oculi_void_city.glb a16_a_living_oculi_void_city.obj a16_b_living_oculi_void_city.glb a16_b_living_oculi_void_city.obj a16_geometry_qa.json; do
+            test -s "build/g4c7_a16/$f"
+            cp "build/g4c7_a16/$f" "$target/"
+          done
+          for v in front oblique side aerial; do
+            f="$v"_a13c_a15b_a16a_a16b.png
+            test -s "build/g4c7_a16/fourview/$f"
+            cp "build/g4c7_a16/fourview/$f" "$target/fourview/"
+          done
+          test -s build/g4c7_a16/fourview/provenance.json
+          cp build/g4c7_a16/fourview/provenance.json "$target/fourview/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/g4c7-a16
+          if ! git diff --cached --quiet; then
+            git commit -m 'G4C7 A16: preserve two real giant negative-space city GLBs OBJ 4 views and QA (ART HOLD)'
+            git fetch origin dev/g4c7-a16-living-oculi-void-city-art-study
+            git rebase origin/dev/g4c7-a16-living-oculi-void-city-art-study
+            git push origin HEAD:dev/g4c7-a16-living-oculi-void-city-art-study
+          fi
