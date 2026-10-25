@@ -88,7 +88,7 @@ def carve_real_cliff(mesh,node,specs):
         carved.fix_normals()
         assert carved.is_watertight and carved.is_volume,(node,"broken manifold",pos)
         removed=before-float(carved.volume)
-        assert removed>120.0,(node,"cut only empty air",pos,removed)
+        assert removed>600.0,(node,"insufficient physical carving, not a monumental void",pos,removed)
         assert carved.volume>12000,(node,"destroyed inhabited cliff",pos)
         reports.append({
           "center":np.asarray(pos).round(3).tolist(),
@@ -116,6 +116,7 @@ def sculpt_variant(a15scene,mark):
                 "original_real_volume":round(before,2),
                 "after_boolean_volume":round(float(mesh.volume),2),
                 "total_excavated":round(before-float(mesh.volume),2),
+                "excavated_fraction":round((before-float(mesh.volume))/before,5),
                 "apertures":cuts,
                 "original_cavities":"Inherited from A11/A12 original hollow cliff",
                 "structural_loads":"NOT VERIFIED"}
@@ -200,8 +201,10 @@ def run(input_glb,out):
             assert final.is_watertight and final.is_volume
             assert final.volume>12000
             assert len(cuts[name]["apertures"])==2
+            assert cuts[name]["excavated_fraction"]>=0.035,(
+                "Too little of inhabited cliff re-sculpted",name,mark,cuts[name])
             for cut in cuts[name]["apertures"]:
-                assert cut["removed_real_volume"]>120
+                assert cut["removed_real_volume"]>600
         qa=route_sweep(check,route_a9())
         assert qa["route_samples"]==verified_ref["route_samples"]==331
         assert qa["foot_support_samples"]==verified_ref["foot_support_samples"]==993
@@ -214,6 +217,7 @@ def run(input_glb,out):
           "scene_meshes":len(check.graph.nodes_geometry),
           "true_boolean_cliff_excavation":cuts,
           "genuine_carved_aperture_count":sum(len(i["apertures"]) for i in cuts.values()),
+          "sum_cliff_excavated_fraction":round(sum(i["excavated_fraction"] for i in cuts.values()),5),
           "total_removed_real_volume":round(sum(i["total_excavated"] for i in cuts.values()),2),
           "full_output_bounds":np.asarray(check.bounds).round(3).tolist(),
           "unchanged_legacy_route_check":qa,
