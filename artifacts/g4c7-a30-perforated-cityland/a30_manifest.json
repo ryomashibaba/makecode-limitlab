@@ -1,0 +1,371 @@
+{
+  "stage": "A30 parametric lattice with actual through-holes and curved inhabited cityland",
+  "base_head": "dfe3998c2290af524b2475c8e36cbdae34120202",
+  "objective": "change modelling algorithm from box/loft to smooth subdivided warped surfaces with physical holes and sidewalls",
+  "mesh": {
+    "vertices": 2124,
+    "triangles": 4152,
+    "closed_components": 7,
+    "curve_components": [
+      {
+        "name": "WEST sculptural inhabited land-section",
+        "vertices": 324,
+        "triangles": 628,
+        "grid_cells_kept": 121,
+        "removed_cells": 15,
+        "nontrivial_holes": true,
+        "signed_volume": 283761.94
+      },
+      {
+        "name": "EAST descending civic metropolis",
+        "vertices": 324,
+        "triangles": 628,
+        "grid_cells_kept": 121,
+        "removed_cells": 15,
+        "nontrivial_holes": true,
+        "signed_volume": 148762.78
+      },
+      {
+        "name": "NORTH skyline landscape gallery",
+        "vertices": 324,
+        "triangles": 632,
+        "grid_cells_kept": 127,
+        "removed_cells": 9,
+        "nontrivial_holes": true,
+        "signed_volume": 82987.97
+      },
+      {
+        "name": "WEST truly perforated occupied facade",
+        "vertices": 252,
+        "triangles": 484,
+        "grid_cells_kept": 87,
+        "removed_cells": 15,
+        "nontrivial_holes": true,
+        "signed_volume": 14486.82
+      },
+      {
+        "name": "EAST truly perforated occupied facade",
+        "vertices": 252,
+        "triangles": 492,
+        "grid_cells_kept": 90,
+        "removed_cells": 12,
+        "nontrivial_holes": true,
+        "signed_volume": 12088.73
+      },
+      {
+        "name": "Grand public ascending civic hall",
+        "vertices": 324,
+        "triangles": 644,
+        "grid_cells_kept": 132,
+        "removed_cells": 4,
+        "nontrivial_holes": true,
+        "signed_volume": 63851.35
+      },
+      {
+        "name": "Central landscaped urban welcome plaza",
+        "vertices": 324,
+        "triangles": 644,
+        "grid_cells_kept": 136,
+        "removed_cells": 0,
+        "nontrivial_holes": false,
+        "signed_volume": 66349.36
+      }
+    ],
+    "bounds": [
+      [
+        -179.90053790458333,
+        -4,
+        -137.74008310194793
+      ],
+      [
+        154.8099116443619,
+        175.67653823633626,
+        161.95576476070988
+      ]
+    ],
+    "glb_bytes": 77956,
+    "through_hole_masks": [
+      {
+        "name": "WEST sculptural inhabited land-section",
+        "grid_removed_cells": 15,
+        "hole_ranges": [
+          [
+            4,
+            7,
+            2,
+            5
+          ],
+          [
+            11,
+            14,
+            2,
+            4
+          ]
+        ]
+      },
+      {
+        "name": "EAST descending civic metropolis",
+        "grid_removed_cells": 15,
+        "hole_ranges": [
+          [
+            4,
+            7,
+            2,
+            5
+          ],
+          [
+            10,
+            13,
+            4,
+            6
+          ]
+        ]
+      },
+      {
+        "name": "NORTH skyline landscape gallery",
+        "grid_removed_cells": 9,
+        "hole_ranges": [
+          [
+            6,
+            9,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "name": "WEST truly perforated occupied facade",
+        "facade_actual_void_cells": 15,
+        "hole_ranges": [
+          [
+            4,
+            7,
+            2,
+            4
+          ],
+          [
+            10,
+            13,
+            2,
+            5
+          ]
+        ]
+      },
+      {
+        "name": "EAST truly perforated occupied facade",
+        "facade_actual_void_cells": 12,
+        "hole_ranges": [
+          [
+            5,
+            8,
+            1,
+            3
+          ],
+          [
+            12,
+            15,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "name": "Grand public ascending civic hall",
+        "grid_removed_cells": 4,
+        "hole_ranges": [
+          [
+            6,
+            8,
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "name": "Central landscaped urban welcome plaza",
+        "grid_removed_cells": 0,
+        "hole_ranges": []
+      }
+    ]
+  },
+  "comparison": {
+    "reference": "archived A29 OBJ",
+    "same_CAM_target_scale": true,
+    "cameras": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "scale": 1.03,
+    "frame_audit": {
+      "front": [
+        {
+          "id": "A29",
+          "min": [
+            204.01999999999998,
+            135.23728715703945
+          ],
+          "max": [
+            541.86,
+            421.1380194848474
+          ],
+          "all_vertices_inside": true
+        },
+        {
+          "id": "A30",
+          "min": [
+            939.7024459582792,
+            162.8548594422911
+          ],
+          "max": [
+            1284.4542089936926,
+            413.99853891629874
+          ],
+          "all_vertices_inside": true
+        }
+      ],
+      "oblique": [
+        {
+          "id": "A29",
+          "min": [
+            152.49881795219636,
+            145.0944580382066
+          ],
+          "max": [
+            532.7000551084877,
+            441.98513592263544
+          ],
+          "all_vertices_inside": true
+        },
+        {
+          "id": "A30",
+          "min": [
+            926.7018991180898,
+            173.09463763077872
+          ],
+          "max": [
+            1289.1289245513985,
+            439.924182319553
+          ],
+          "all_vertices_inside": true
+        }
+      ],
+      "side": [
+        {
+          "id": "A29",
+          "min": [
+            210.2,
+            180.81512762707337
+          ],
+          "max": [
+            541.576956,
+            421.8276380989399
+          ],
+          "all_vertices_inside": true
+        },
+        {
+          "id": "A30",
+          "min": [
+            983.1277144049936,
+            196.05364418553307
+          ],
+          "max": [
+            1291.8144377035312,
+            416.6490588998282
+          ],
+          "all_vertices_inside": true
+        }
+      ],
+      "aerial": [
+        {
+          "id": "A29",
+          "min": [
+            152.2707520867611,
+            129.08560396395785
+          ],
+          "max": [
+            531.7530210272889,
+            494.11053992690336
+          ],
+          "all_vertices_inside": true
+        },
+        {
+          "id": "A30",
+          "min": [
+            925.667993713784,
+            154.01336416754359
+          ],
+          "max": [
+            1289.572636467408,
+            493.8576563779837
+          ],
+          "all_vertices_inside": true
+        }
+      ]
+    }
+  },
+  "court_perspective": {
+    "camera": [
+      0,
+      45,
+      -28
+    ],
+    "target": [
+      0,
+      87,
+      75
+    ],
+    "visible_triangles": 1025,
+    "note": "perspective reference from inside conceptual area; do not claim collision-free safe access"
+  },
+  "verified": [
+    "actual curved tessellated mesh surfaces",
+    "omitted grid cells make topologically real through-openings with generated sidewalls",
+    "every individually connected grid volume has paired oriented edges, nonzero triangles, positive oriented signed volume",
+    "no clipping in four-view comparison at unchanged A29 camera/scale",
+    "GLB 2 and OBJ generated from same model"
+  ],
+  "not_verified": [
+    "real Boolean union of intersecting sheets",
+    "independent third party 3D readback",
+    "pedestrian occupancy safety or visual aesthetics",
+    "331 bodies/993 feet incl negative blocker",
+    "actual km-scale proof"
+  ],
+  "project": "ART HOLD",
+  "construction": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "legacy": {
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "feet_elevation": [
+      0.15,
+      3.25
+    ],
+    "old_interference_limit": 45,
+    "unsupported_feet_max": 0
+  }
+}
