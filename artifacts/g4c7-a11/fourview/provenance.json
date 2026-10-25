@@ -1,0 +1,60 @@
+{
+  "source": "Actual GLB mesh triangles; not generated illustration",
+  "renderer": "Pillow orthographic polygon painter; not Blender EEVEE or game capture",
+  "fixed_target": [
+    0.0,
+    24.0,
+    0.0
+  ],
+  "views": {
+    "front": {
+      "unchanged_camera": [
+        0,
+        57,
+        300
+      ],
+      "unchanged_scale": 285.0,
+      "a10_triangles": 38504,
+      "a11_triangles": 48308
+    },
+    "oblique": {
+      "unchanged_camera": [
+        225,
+        190,
+        290
+      ],
+      "unchanged_scale": 285.0,
+      "a10_triangles": 38504,
+      "a11_triangles": 48308
+    },
+    "oblique_detail": {
+      "source_view": "oblique",
+      "same_crop_xyxy": [
+        145,
+        130,
+        815,
+        635
+      ]
+    },
+    "side": {
+      "unchanged_camera": [
+        300,
+        64,
+        0
+      ],
+      "unchanged_scale": 285.0,
+      "a10_triangles": 38504,
+      "a11_triangles": 48308
+    },
+    "aerial": {
+      "unchanged_camera": [
+        90,
+        390,
+        110
+      ],
+      "unchanged_scale": 285.0,
+      "a10_triangles": 38485,
+      "a11_triangles": 48289
+    }
+  }
+}
