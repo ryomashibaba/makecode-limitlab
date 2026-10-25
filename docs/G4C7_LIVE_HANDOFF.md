@@ -75,3 +75,13 @@ artifacts/g4c7-a13/。
 - ソース tools/g4c7_a15_split_tide_urban_shells.py、文書 docs/G4C7_A15_SPLIT_TIDE_ART_HOLD_JA.md、専用CI .github/workflows/verify_g4c7_a15_split_tide.yml。成果予定 artifacts/g4c7-a15/（A/B実GLB+OBJ、A12/A13-C/A15-A/Bのfront/oblique/side/aerial固定4列比較、QA JSON）。
 - 元の331人体サンプル／993足元／半幅0.65／高さ+0.15〜3.25／負の対照を一切緩めない。既存45表面干渉より悪化不可、0未支持維持。成功しても通路安全・荷重・自己交差検証・美術承認は別物。
 - **ART HOLD、NO MINECRAFT CONSTRUCTION、NO CITY INTEGRATION、原本・ワールド・USED・CSV・ZIP・実機証拠保護**。旧A13-Cコピーで省略した歴史的load shellの撤去を承認するものではない。4視点の実画像と専用Actions/保存のSUCCESSが揃うまで完成を主張しない。
+
+## A16「Living Oculi — 生きた空洞都市」美術研究開始（2026-10-25 JST）
+
+- A15独立Draft PR #51、起点HEAD d15f0f2cf22bb5c75c0a7d3596e0c94a02f13744。A15-A/Bローカル実GLBは再読込実測A610メッシュ最高Y約141、B610メッシュ最高Y約158だがART HOLD。A15専用Actions run 40164110635は前回の確認時queuedでGitHubへの実GLB恒久保存は未確認。正本の状態は必ず再確認。
+- A16独立研究ブランチ dev/g4c7-a16-living-oculi-void-city-art-study。既存A13-C実GLBをread-only再読込→A15-Bの本体変形（610メッシュ）→A16 A/Bの**巨大な実Boolean空洞を両岸2か所ずつ計4か所削る**。A15の二本の壁にしか見えない問題への次の実体美術仮説であり、単なる小窓追加ではない。
+- A16-Aは大きな非対称Tidal Oculi、A16-Bはさらに偏ったOpen Crown Abyss。中空の左右都市外殻から実体積を減らす設計。歴史的A5-A15は改変せず、Minecraft Construction/City Integrationは禁止。旧A13-Cで既に省略されたload shell4メッシュは新たに壊さず構造検証未実施。
+- 実装 tools/g4c7_a16_living_oculi_void_city.py、設計と安全 docs/G4C7_A16_LIVING_OCULI_ART_HOLD_JA.md、専用CI .github/workflows/verify_g4c7_a16_living_oculi.yml、完成後の成果予定 artifacts/g4c7-a16/（A/B実GLB/OBJ、A15-B参照GLB、同視点比較front/oblique/side/aerial PNG、QA JSON/provenance）。
+- A16は**実物をBoolean差分で切り抜いた体積・閉体積・GLB再読込**を必須とし、モデル用の見かけだけの穴は不可。旧331人体包絡/993足元/半幅0.65/体高さ0.15~3.25と故意障害物負対照の閾値を絶対緩めない。45人体干渉/0未支持以上に悪化したらCI失敗。ART PASSではない。
+- A14の保存時push競合を反省し、専用CI保存ジョブにはgit fetch→rebase→push（force無し）を実装。GitHub上に成果物全ての実在・CIの保存ジョブSUCCESSを確認するまで完了宣言禁止。
+- **美術判定は未審査ART HOLD**。巨大な開口でも単なる壁面の4窓に見えればREJECTし、さらに一体の立体都市へ根本設計する。人体通行・多層階接続・構造・自己交差・避難・防災はNOT VERIFIED。旧World、USED、CSV、ZIP、実機証拠の完全保護。
