@@ -1,0 +1,588 @@
+{
+  "lineage": "A9->A10->A11 independent visual research",
+  "a10_input_meshes": 602,
+  "a11_output_meshes": 613,
+  "a10_bounds": [
+    [
+      -94.0,
+      -4.0,
+      -89.0
+    ],
+    [
+      94.0,
+      66.0,
+      89.0
+    ]
+  ],
+  "a11_bounds": [
+    [
+      -94.0,
+      -4.0,
+      -89.0
+    ],
+    [
+      94.0,
+      94.063,
+      89.0
+    ]
+  ],
+  "tall_canyon_forms": {
+    "west": {
+      "raw_volume": 186259.1,
+      "physical_void_removed": 28334.3,
+      "void_ratio": 0.1521,
+      "cut_through_mouths": [
+        {
+          "z": -48.0,
+          "y": 29.0,
+          "removed_volume": 3407.21,
+          "opening_height": 11.0,
+          "span_z": 11.0
+        },
+        {
+          "z": -29.0,
+          "y": 44.0,
+          "removed_volume": 3291.79,
+          "opening_height": 13.0,
+          "span_z": 14.0
+        },
+        {
+          "z": -7.0,
+          "y": 52.0,
+          "removed_volume": 2405.91,
+          "opening_height": 14.0,
+          "span_z": 13.0
+        },
+        {
+          "z": 9.0,
+          "y": 64.0,
+          "removed_volume": 2162.25,
+          "opening_height": 12.0,
+          "span_z": 10.0
+        }
+      ],
+      "contains_real_longitudinal_cavity": true,
+      "cavity_walking": "NOT VERIFIED",
+      "structural_loads": "NOT VERIFIED",
+      "bounds": [
+        [
+          -71.3,
+          0.3,
+          -61.0
+        ],
+        [
+          -8.754,
+          90.124,
+          25.0
+        ]
+      ],
+      "inhabited_terraces": [
+        {
+          "name": "A11_WEST_OCCUPIED_STRATUM_0",
+          "volume": 3776.1,
+          "continuous_from_ground": "NOT VERIFIED"
+        },
+        {
+          "name": "A11_WEST_OCCUPIED_STRATUM_1",
+          "volume": 3616.1,
+          "continuous_from_ground": "NOT VERIFIED"
+        },
+        {
+          "name": "A11_WEST_OCCUPIED_STRATUM_2",
+          "volume": 2676.7,
+          "continuous_from_ground": "NOT VERIFIED"
+        }
+      ]
+    },
+    "east": {
+      "raw_volume": 155484.0,
+      "physical_void_removed": 19714.3,
+      "void_ratio": 0.1268,
+      "cut_through_mouths": [
+        {
+          "z": -48.0,
+          "y": 29.0,
+          "removed_volume": 3114.98,
+          "opening_height": 11.0,
+          "span_z": 11.0
+        },
+        {
+          "z": -29.0,
+          "y": 44.0,
+          "removed_volume": 3809.18,
+          "opening_height": 13.0,
+          "span_z": 14.0
+        },
+        {
+          "z": -7.0,
+          "y": 52.0,
+          "removed_volume": 2078.54,
+          "opening_height": 14.0,
+          "span_z": 13.0
+        },
+        {
+          "z": 9.0,
+          "y": 64.0,
+          "removed_volume": 1728.6,
+          "opening_height": 12.0,
+          "span_z": 10.0
+        }
+      ],
+      "contains_real_longitudinal_cavity": true,
+      "cavity_walking": "NOT VERIFIED",
+      "structural_loads": "NOT VERIFIED",
+      "bounds": [
+        [
+          8.846,
+          0.3,
+          -60.0
+        ],
+        [
+          69.155,
+          94.063,
+          16.0
+        ]
+      ],
+      "inhabited_terraces": [
+        {
+          "name": "A11_EAST_OCCUPIED_STRATUM_0",
+          "volume": 3529.1,
+          "continuous_from_ground": "NOT VERIFIED"
+        },
+        {
+          "name": "A11_EAST_OCCUPIED_STRATUM_1",
+          "volume": 3526.4,
+          "continuous_from_ground": "NOT VERIFIED"
+        },
+        {
+          "name": "A11_EAST_OCCUPIED_STRATUM_2",
+          "volume": 2806.4,
+          "continuous_from_ground": "NOT VERIFIED"
+        }
+      ]
+    },
+    "sky_boulevards": [
+      {
+        "name": "A11_LOW_FAULT_SKY_BOULEVARD",
+        "mesh_volume": 4761.69,
+        "connections_to_cavities": "NOT VERIFIED"
+      },
+      {
+        "name": "A11_HIGH_CREST_TRANSECT",
+        "mesh_volume": 3936.0,
+        "connections_to_cavities": "NOT VERIFIED"
+      }
+    ],
+    "civic_spine": {
+      "name": "A11_CENTRAL_RISING_CIVIC_SPINE",
+      "volume": 5023.8,
+      "rise": 45.0,
+      "width": 12.2,
+      "surface_slopes_and_public_access": "NOT VERIFIED"
+    }
+  },
+  "a10_route": {
+    "surface_collision_samples": 45,
+    "unsupported_foot_samples": 0
+  },
+  "a11_route": {
+    "route_samples": 331,
+    "max_adjacent_sample_step": 1.1051942329303304,
+    "foot_support_samples": 993,
+    "unsupported_foot_samples": 0,
+    "unsupported_examples": [],
+    "body_envelope": {
+      "half_xz": 0.65,
+      "from_foot_y": 0.15,
+      "to_foot_y": 3.25,
+      "orientation": "axis-aligned conservative square"
+    },
+    "body_surface_intersection_sample_count": 45,
+    "per_mesh_collision_samples": {
+      "Continuous elliptical public promenade": 32,
+      "A7_PORTAL_DECK": 10,
+      "A8_RAMP_PROMENADE_TRANSFER_DECK": 7,
+      "Street to common ramp.001": 6,
+      "SOUTH outer load shell_A7_PORTAL_A9_FLARED": 6
+    },
+    "collision_examples": [
+      {
+        "index": 74,
+        "section": "GROUND_APPROACH",
+        "position": [
+          80.811,
+          1.0,
+          64.75
+        ],
+        "meshes": [
+          "Street to common ramp.001"
+        ]
+      },
+      {
+        "index": 75,
+        "section": "GROUND_APPROACH",
+        "position": [
+          80.435,
+          1.0,
+          65.625
+        ],
+        "meshes": [
+          "Street to common ramp.001"
+        ]
+      },
+      {
+        "index": 76,
+        "section": "GROUND_APPROACH",
+        "position": [
+          80.04,
+          1.0,
+          66.5
+        ],
+        "meshes": [
+          "Street to common ramp.001"
+        ]
+      },
+      {
+        "index": 77,
+        "section": "GROUND_APPROACH",
+        "position": [
+          79.623,
+          1.0,
+          67.375
+        ],
+        "meshes": [
+          "Street to common ramp.001"
+        ]
+      },
+      {
+        "index": 78,
+        "section": "GROUND_APPROACH",
+        "position": [
+          79.175,
+          1.0,
+          68.25
+        ],
+        "meshes": [
+          "Street to common ramp.001"
+        ]
+      },
+      {
+        "index": 79,
+        "section": "GROUND_APPROACH",
+        "position": [
+          78.675,
+          1.0,
+          69.125
+        ],
+        "meshes": [
+          "Street to common ramp.001"
+        ]
+      },
+      {
+        "index": 150,
+        "section": "EXISTING_RAMP",
+        "position": [
+          55.575,
+          6.261,
+          35.5
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 151,
+        "section": "EXISTING_RAMP",
+        "position": [
+          55.25,
+          6.337,
+          35.0
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 152,
+        "section": "EXISTING_RAMP",
+        "position": [
+          54.925,
+          6.414,
+          34.5
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 153,
+        "section": "EXISTING_RAMP",
+        "position": [
+          54.6,
+          6.49,
+          34.0
+        ],
+        "meshes": [
+          "A8_RAMP_PROMENADE_TRANSFER_DECK"
+        ]
+      },
+      {
+        "index": 154,
+        "section": "EXISTING_RAMP",
+        "position": [
+          54.275,
+          6.566,
+          33.5
+        ],
+        "meshes": [
+          "A8_RAMP_PROMENADE_TRANSFER_DECK"
+        ]
+      },
+      {
+        "index": 155,
+        "section": "EXISTING_RAMP",
+        "position": [
+          53.95,
+          6.643,
+          33.0
+        ],
+        "meshes": [
+          "A8_RAMP_PROMENADE_TRANSFER_DECK"
+        ]
+      },
+      {
+        "index": 156,
+        "section": "EXISTING_RAMP",
+        "position": [
+          53.625,
+          6.719,
+          32.5
+        ],
+        "meshes": [
+          "A8_RAMP_PROMENADE_TRANSFER_DECK"
+        ]
+      },
+      {
+        "index": 157,
+        "section": "EXISTING_RAMP",
+        "position": [
+          53.3,
+          6.795,
+          32.0
+        ],
+        "meshes": [
+          "A8_RAMP_PROMENADE_TRANSFER_DECK"
+        ]
+      },
+      {
+        "index": 158,
+        "section": "EXISTING_RAMP",
+        "position": [
+          52.975,
+          6.871,
+          31.5
+        ],
+        "meshes": [
+          "A8_RAMP_PROMENADE_TRANSFER_DECK"
+        ]
+      },
+      {
+        "index": 159,
+        "section": "EXISTING_RAMP",
+        "position": [
+          52.65,
+          6.947,
+          31.0
+        ],
+        "meshes": [
+          "A8_RAMP_PROMENADE_TRANSFER_DECK"
+        ]
+      },
+      {
+        "index": 198,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          58.226,
+          7.449,
+          27.198
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 199,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          58.436,
+          7.494,
+          26.977
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 200,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          58.644,
+          7.54,
+          26.755
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 201,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          58.85,
+          7.585,
+          26.532
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 206,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          59.856,
+          7.815,
+          25.406
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 207,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          60.052,
+          7.861,
+          25.179
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 208,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          60.246,
+          7.908,
+          24.951
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 209,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          60.438,
+          7.955,
+          24.722
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 210,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          60.628,
+          8.002,
+          24.492
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 211,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          60.817,
+          8.049,
+          24.262
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 212,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          61.004,
+          8.096,
+          24.031
+        ],
+        "meshes": [
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 214,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          61.373,
+          8.191,
+          23.566
+        ],
+        "meshes": [
+          "SOUTH outer load shell_A7_PORTAL_A9_FLARED",
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 215,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          61.554,
+          8.238,
+          23.333
+        ],
+        "meshes": [
+          "SOUTH outer load shell_A7_PORTAL_A9_FLARED",
+          "Continuous elliptical public promenade"
+        ]
+      },
+      {
+        "index": 216,
+        "section": "ELLIPTICAL_LOOP",
+        "position": [
+          61.734,
+          8.286,
+          23.099
+        ],
+        "meshes": [
+          "SOUTH outer load shell_A7_PORTAL_A9_FLARED",
+          "A7_PORTAL_DECK",
+          "Continuous elliptical public promenade"
+        ]
+      }
+    ],
+    "negative_intentional_blocker_detected": true,
+    "caveat": "Triangle/cuboid surface SAT is not a proof against a fully enclosed solid with no nearby surface; no voxel or in-game walking proven.",
+    "route_geometric_status": "HOLD_SURFACE_COLLISIONS_OR_SUPPORT"
+  },
+  "collision_delta": 0,
+  "support_delta": 0,
+  "art_status": "HOLD",
+  "construction": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "in_game_walking": "NOT TESTED",
+  "upper_cavity_walking": "NOT TESTED",
+  "structural_engineering": "NOT VERIFIED",
+  "private_world_or_latch": "UNTOUCHED",
+  "height_note": "New research form can exceed former 66-unit study bound: ART-FIRST only"
+}
