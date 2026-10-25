@@ -1,0 +1,79 @@
+{
+  "phase": "G4-C7 A33 G1 genuine 3D art review",
+  "date_jst": "2026-10-25",
+  "model_archive_commit": "e7b87c795449d8c8ec2c453af2b2bcb60c02a4a3",
+  "overall": "G1 ART REJECT; PROJECT ART HOLD",
+  "previous_baseline": "A31 archived real OBJ same four camera + scale",
+  "real_glb": {
+    "sha": "c384fda246a981a81daebafb88da06908a25e423",
+    "bytes": 11848,
+    "vertices": 282,
+    "triangles": 484,
+    "materials": 7,
+    "binary_bytes": 9192,
+    "independent_byte_header_and_accessors": "PASS"
+  },
+  "geometry": {
+    "closed_independent_solids": 20,
+    "isolated_manifold_oriented_edges": "PASS at generation",
+    "global_boolean": "NOT RUN"
+  },
+  "review": {
+    "external_views": [
+      "front",
+      "oblique",
+      "side",
+      "aerial"
+    ],
+    "gate_G1": "REJECT",
+    "reason": "large uninhabited U-shape exterior shell and runway decks dominate; small destination at far end; no strong inhabited urban space",
+    "interior_diagnostics": [
+      {
+        "file": "interior/arrival_civic_axis.svg",
+        "camera": [
+          0,
+          24,
+          -143
+        ],
+        "look": [
+          -15,
+          161,
+          164
+        ]
+      },
+      {
+        "file": "interior/central_court_to_destination.svg",
+        "camera": [
+          0,
+          24,
+          -35
+        ],
+        "look": [
+          -15,
+          165,
+          166
+        ]
+      }
+    ],
+    "gate_G2": "NOT FORMALLY EXECUTED: only diagnostics after G1 failure",
+    "gate_G3": "NOT RUN"
+  },
+  "protection": {
+    "old_files_modified": false,
+    "art_hold": true,
+    "minecraft_education_construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "legacy_body_samples": 331,
+    "legacy_foot_samples": 993,
+    "halfwidth": 0.65,
+    "foot_relative": [
+      0.15,
+      3.25
+    ],
+    "historic_body_collision_ceiling": 45,
+    "unsupported_feet_max": 0,
+    "negative_control": "REQUIRED",
+    "formal_route_QA_A33": "NOT RUN"
+  },
+  "next": "A34 reform both G0 image contract and geomorphologic modeling to co-generate public void and inhabitated city"
+}
