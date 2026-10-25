@@ -35,7 +35,7 @@ jobs:
           path.insert(0,"tools")
           from g4c7_a7_portal_route import (verify_route,world_mesh,box_bounds,
                                             CLEAR_BOUNDS,boolean_volume,support_gap,
-                                            triangulated_support,FLOOR_Y)
+                                            triangulated_support,FLOOR_Y,prepared_solid)
           d=Path("build/g4c7_a7")
           qa=json.loads((d/"a7_geometry_route_qa.json").read_text())
           assert qa["a6_meshes"]==579,qa
@@ -53,11 +53,11 @@ jobs:
           a7=trimesh.load(d/"a7_orbital_commons_portal_study.glb",force="scene")
           clear=box_bounds(CLEAR_BOUNDS)
           # Negative control: baseline A6 arch blocks corridor by mesh volume.
-          before=[boolean_volume(world_mesh(a6,n),clear) for n in a6.graph.nodes_geometry
+          before=[boolean_volume(prepared_solid(world_mesh(a6,n),n),clear) for n in a6.graph.nodes_geometry
                   if n.startswith("SOUTH ") and "load shell" in n]
           assert max(before)>0.1,before
           # Positive: physically edited A7 shells no longer intersect corridor.
-          after=[boolean_volume(world_mesh(a7,n),clear) for n in a7.graph.nodes_geometry
+          after=[boolean_volume(prepared_solid(world_mesh(a7,n),n),clear) for n in a7.graph.nodes_geometry
                  if n.startswith("SOUTH ") and "load shell" in n]
           assert all(x<1e-4 for x in after),after
           assert np.allclose(a7.bounds,a6.bounds,atol=.15)
