@@ -1,0 +1,215 @@
+{
+  "stage": "A19 lightweight concept-massing scout; actual closed triangle primitives, not A13-C integrated city",
+  "datum": "2026-10-25 JST",
+  "source_branch": "dev/g4c7-a17-monolithic-rift-fold-art-study",
+  "source_head": "601aa5448693f825d2c44dc510e4fb7e9373fa9d",
+  "axes": "Y-up",
+  "unit": "arbitrary conceptual units; not Minecraft blocks",
+  "camera_projection": "orthographic; same eye/target/right/up and scale for all 3 candidates within each view",
+  "target": [
+    0,
+    71,
+    0
+  ],
+  "fixed_scale": 1.27,
+  "cameras": {
+    "front": [
+      0,
+      156,
+      -370
+    ],
+    "oblique": [
+      275,
+      218,
+      -270
+    ],
+    "side": [
+      385,
+      180,
+      0
+    ],
+    "aerial": [
+      180,
+      455,
+      -195
+    ]
+  },
+  "material_palette": [
+    {
+      "name": "porcelain",
+      "hex": "#c7d6dc",
+      "rgb": [
+        0.78,
+        0.84,
+        0.87,
+        1
+      ]
+    },
+    {
+      "name": "slate",
+      "hex": "#5c788a",
+      "rgb": [
+        0.36,
+        0.47,
+        0.54,
+        1
+      ]
+    },
+    {
+      "name": "cobaltGlass",
+      "hex": "#54b7bb",
+      "rgb": [
+        0.33,
+        0.72,
+        0.73,
+        1
+      ]
+    },
+    {
+      "name": "terrace",
+      "hex": "#e5b67e",
+      "rgb": [
+        0.9,
+        0.71,
+        0.49,
+        1
+      ]
+    },
+    {
+      "name": "planting",
+      "hex": "#739f86",
+      "rgb": [
+        0.45,
+        0.62,
+        0.52,
+        1
+      ]
+    },
+    {
+      "name": "structure",
+      "hex": "#83949d",
+      "rgb": [
+        0.51,
+        0.58,
+        0.62,
+        1
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "a",
+      "name": "CIVIC CALDERA",
+      "jp": "階層公共カルデラ",
+      "hypothesis": "複数の居住層を巨大な中央公共空間と同時に造形する、非対称の段丘都市",
+      "vertices": 4904,
+      "triangles": 7380,
+      "independent_closed_primitive_count": 607,
+      "bounds": [
+        [
+          -112.845,
+          -3,
+          -87.62
+        ],
+        [
+          112.845,
+          115,
+          93.661
+        ]
+      ],
+      "degenerate_triangles": 0,
+      "zero_volume_primitives": 0,
+      "composite_boolean_union": "NOT DONE",
+      "watertight_each_primitive": "not independently reimported",
+      "historical_human_route_331_993": "NOT RUN ON SCOUTS",
+      "historical_45_body_intersections_and_zero_unsupported": "UNCHANGED IN BASELINE; NOT CLAIMED ON SCOUTS",
+      "visual_judgement": "PROVISIONAL / HUMAN REVIEW NEEDED",
+      "minecraft": "PROHIBITED"
+    },
+    {
+      "id": "b",
+      "name": "TRIFURCATED COMMONS",
+      "jp": "三方向分岐都市",
+      "hypothesis": "中央の厚い公共核から3方向へ、居住面・支持・交通を連続して分岐させる都市",
+      "vertices": 1752,
+      "triangles": 2732,
+      "independent_closed_primitive_count": 193,
+      "bounds": [
+        [
+          -108.66,
+          -4,
+          -112.93
+        ],
+        [
+          108.66,
+          113,
+          78.407
+        ]
+      ],
+      "degenerate_triangles": 0,
+      "zero_volume_primitives": 0,
+      "composite_boolean_union": "NOT DONE",
+      "watertight_each_primitive": "not independently reimported",
+      "historical_human_route_331_993": "NOT RUN ON SCOUTS",
+      "historical_45_body_intersections_and_zero_unsupported": "UNCHANGED IN BASELINE; NOT CLAIMED ON SCOUTS",
+      "visual_judgement": "PROVISIONAL / HUMAN REVIEW NEEDED",
+      "minecraft": "PROHIBITED"
+    },
+    {
+      "id": "c",
+      "name": "POROUS AGORA",
+      "jp": "連胞多孔都市",
+      "hypothesis": "一つの接地基盤から複数の屋外アトリウムが上階へ立ち上がる多孔質立体都市",
+      "vertices": 6484,
+      "triangles": 9784,
+      "independent_closed_primitive_count": 796,
+      "bounds": [
+        [
+          -113.038,
+          -4,
+          -91.59
+        ],
+        [
+          113.038,
+          154,
+          91.59
+        ]
+      ],
+      "degenerate_triangles": 0,
+      "zero_volume_primitives": 0,
+      "composite_boolean_union": "NOT DONE",
+      "watertight_each_primitive": "not independently reimported",
+      "historical_human_route_331_993": "NOT RUN ON SCOUTS",
+      "historical_45_body_intersections_and_zero_unsupported": "UNCHANGED IN BASELINE; NOT CLAIMED ON SCOUTS",
+      "visual_judgement": "PROVISIONAL / HUMAN REVIEW NEEDED",
+      "minecraft": "PROHIBITED"
+    }
+  ],
+  "historical_legacy_QA": {
+    "samples_body": 331,
+    "samples_foot": 993,
+    "body_surface_intersections": 45,
+    "unsupported_foot": 0,
+    "applies_to": "UNCHANGED REFERENCE, NOT VALIDATED ON NEW 3D SCOUTS"
+  },
+  "checks_done": [
+    "actual nonzero-volume closed prism primitives",
+    "no zero-area triangles",
+    "same projected camera/scale for a three-way 4-view comparison",
+    "GLB binary header/version/byte size internally checked"
+  ],
+  "checks_not_done": [
+    "independent external GLB/OBJ reload",
+    "union-watertightness",
+    "self-intersection or union connectivity",
+    "331/993 inherited human path sweep on candidates",
+    "free walking",
+    "real-world structure/load/egress/fire engineering",
+    "Minecraft conversion or actual building"
+  ],
+  "art_gate": "NOT ACCEPTED; pending critical human four-view visual review",
+  "approval": "ART HOLD",
+  "minecraft_construction": "PROHIBITED",
+  "city_integration": "PROHIBITED",
+  "historical_assets": "UNCHANGED"
+}

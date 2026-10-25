@@ -1,0 +1,36 @@
+# G4-C7 A19 ART HOLD
+newmtl porcelain
+Kd 0.78 0.84 0.87
+Ka 0.10 0.10 0.10
+Ks 0.18 0.18 0.18
+Ns 36
+
+newmtl slate
+Kd 0.36 0.47 0.54
+Ka 0.10 0.10 0.10
+Ks 0.18 0.18 0.18
+Ns 36
+
+newmtl cobaltGlass
+Kd 0.33 0.72 0.73
+Ka 0.10 0.10 0.10
+Ks 0.18 0.18 0.18
+Ns 36
+
+newmtl terrace
+Kd 0.9 0.71 0.49
+Ka 0.10 0.10 0.10
+Ks 0.18 0.18 0.18
+Ns 36
+
+newmtl planting
+Kd 0.45 0.62 0.52
+Ka 0.10 0.10 0.10
+Ks 0.18 0.18 0.18
+Ns 36
+
+newmtl structure
+Kd 0.51 0.58 0.62
+Ka 0.10 0.10 0.10
+Ks 0.18 0.18 0.18
+Ns 36

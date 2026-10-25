@@ -33,6 +33,15 @@ A5〜A18で3Dモデル制作・検証・保存技術は大きく向上したが�
 - A16修正版Actions [40167521083](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167521083) とA17初回Actions [40167017511](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167017511) はこの方針の保存直前の確認時に**queued**。まず現在のrun状況を必ず再取得し、failの場合はログから修正、successならQA・保存ファイル・四視点を確認。**A17-A/B美術REJECT**は既に独立の四方向実GLB比較から判定済み。A18の試作もREJECT。次にA19等を起こす際は、A17スラブ・A18大アーチの焼き直し禁止。
 - 最初の次工程は **(i) A16/A17未完了CIの仕分け、(ii) 既存失敗の造形設計としての原因を踏まえた本質的に異なる複数の軽量実3D案の美術比較、(iii) 勝ち案のみ都市内部統合、(iv) 正式QA/保存**。ユーザーへ無用なCLI・手動操作を求めない。
 
+
+## A19軽量3案・研究進捗（2026-10-25 JST）
+
+- A16修正版 [Actions #40167521083](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167521083) = **FAILURE**。東側A11_EAST_SKY_FOLD_REAL_VOIDに対する12回のBoolean代替切削候補は閉体積・規定除去量等の同時基準を満たさず、「no valid immense Boolean excavation」のassertion。persistはskipped。閾値を緩めず設計から見直す。
+- A17初回 [Actions #40167017511](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40167017511) は **build-and-inherited-geometric-gates=SUCCESS**、archive=queued（今回確認時点）。美術A/Bは既往四視点監査により**ART REJECT**。キュー済みrunを無駄にrerunしない。
+- A15成功アーカイブ（branch `dev/g4c7-a15-split-tide-sculpted-urban-shells`）の実A/B GLB・OBJ、QA JSON、fourviewディレクトリを今回再確認。旧素材は一切変更しない。
+- 【新実制作】`artifacts/g4c7-a19-scout/`に **都市空間起点で異なる3形態**の本物のOBJ/GLBと、同カメラ・同縮尺でのfront/oblique/side/aerialのSVG比較、数値manifestを一括コミット。詳細 `docs/G4C7_A19_LIGHTWEIGHT_COHERENT_URBAN_MASS_SCOUT_JA.md`。
+- **3案は軽量美術マス探索であり、A13-C都市の再統合でも巨大構造物の正式QAでもない。** 新候補の331/993人体・足元QAは未実施、いずれもART HOLD。まず比較画像を人の目で審査し、不合格案は棄却。候補の正式QAや独立PR量産を先走らない。
+
 ---
 
 # MakeCode LimitLab — G4-C7 継続開発・LIVE HANDOFF
