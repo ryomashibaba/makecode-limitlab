@@ -1,0 +1,79 @@
+{
+  "schema": "g4c7-a58-screen-space-proxy-v1",
+  "status": "G0_SCREENSPACE_HYPOTHESIS_ONLY",
+  "basis": "artifacts/g4c7-a57-civic-weave-g0/spatial_contract.json",
+  "purpose": "Falsify far-away three-room sightline, do not imply real room geometry, city form, beauty or technical safety",
+  "policy": {
+    "image_width_px": 960,
+    "reference_human_height_m": 1.7,
+    "edge_margin_degrees": 2,
+    "minimum_near_human_px": 36,
+    "minimum_far_human_px": 20,
+    "minimum_portal_width_px": 80,
+    "minimum_room_depth_m": 20,
+    "warning": "Heuristics chosen for screen-space triage, not empirically validated recognizability thresholds"
+  },
+  "study": {
+    "id": "a58_compressed_civic_heart",
+    "floor_z": 0,
+    "camera": {
+      "position": [
+        0,
+        -8,
+        1.7
+      ],
+      "look_direction": [
+        0,
+        1,
+        0
+      ],
+      "horizontal_fov_degrees": 78
+    },
+    "thresholds": [
+      {
+        "role": "market",
+        "center": [
+          -10,
+          8,
+          2.2
+        ],
+        "opening_width_m": 4,
+        "room_depth_m": 20,
+        "annotation": "hypothetical only, real doorway not modeled"
+      },
+      {
+        "role": "maker_culture",
+        "center": [
+          0,
+          19,
+          2.2
+        ],
+        "opening_width_m": 4.2,
+        "room_depth_m": 20,
+        "annotation": "hypothetical only, real doorway not modeled"
+      },
+      {
+        "role": "research_learning",
+        "center": [
+          10,
+          8,
+          2.2
+        ],
+        "opening_width_m": 4,
+        "room_depth_m": 20,
+        "annotation": "hypothetical only, real doorway not modeled"
+      }
+    ]
+  },
+  "safety": {
+    "minecraft_construction": "FORBIDDEN",
+    "old_evidence": "IMMUTABLE",
+    "gates": {
+      "G0": "NOT_ART_APPROVED",
+      "S1": "NOT_RUN",
+      "G1": "NOT_RUN",
+      "G2": "NOT_RUN",
+      "G3": "NOT_RUN"
+    }
+  }
+}

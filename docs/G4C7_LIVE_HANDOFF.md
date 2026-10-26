@@ -1,3 +1,9 @@
+# 【最新A58 G0／2026-10-27 JST】A57の遠距離S1仮説を投影計算で反証／近接3用途の候補へ修正、R都市外形は未設計・ART HOLD
+
+> ベースHEAD `0edb879f5ee11d99e1d733a4b3fb0f411a501ac3`。A57 R案は機能関係を記述しただけで都市全体の美的形態は未立証。前工程の生成画像も古典アーチ・幻想都市色が強く、正式な超未来都市の美術採用は不可。A57の公共室カメラから工房まで52mあり、960px/78°の理想透視では入口人物約19px、室奥約14pxにしか見えないと判明。A58では元データを一切変更せず、人間目線カメラ+3用途入口を新しい独立仮説として再配置、レンズ・開口の数値的な早期警告を計算する純Pythonと6件故意破損試験、G0画像空間SVG出力の独立軽量Actionsを実装（**本物の3D・美術・採光・遮蔽・歩行の証拠ではない**）。[A58監査](./G4C7_A58_PERSPECTIVE_FALSIFICATION_G0_JA.md)／[仮カメラ](../artifacts/g4c7-a58-g0-perspective/camera_hypothesis.json)／[純Python](../tools/g4c7_a58_visibility_preflight.py)。R巨大未来都市の美術前進はNOT VERIFIED、新Blender/真正Cycles/S1/G1/G2/G3 NOT RUN。全体ART HOLD／正式採用0件／Minecraft施工・統合禁止／歴代原本保護／Work事前承認。不正CIデータ不可。
+
+---
+
 # 【最新A57 G0／2026-10-27 JST】A56 P/Qの絶対美術G0 REJECT → R《複核織都》の都市＋公共室空間契約を構築／全体ART HOLD
 
 > GitHub開始HEAD `cbfaa2298c8bcd4c69cf738b1dcadce4c3ca7d50`。A56のP（3塔/橋）・Q（巨大斜めモール）は**完成案として美術採用に値しないため、G0現形REJECT**。遠景を塔・斜め帯で決めることを止め、6種の生活街区・3つの使用される公共結節・立体的な混用経路が一体の都市外形を生む新たなR《POLYCENTRIC CITYWEAVE / 複核織都》の構想と、同じ近景に市場・工房・学習の奥行きある実室が必要という設計契約を明示した。G0新規文書 [A57絶対美術レビュー](./G4C7_A57_CIVIC_WEAVE_G0_ABSOLUTE_REVIEW_JA.md)／[カメラ・室空間仮説](../artifacts/g4c7-a57-civic-weave-g0/spatial_contract.json)。**美術向上は未実証／新Blender・Cycles・S1/G1/G2/G3はNOT RUN／Rも美術採用ではない**。GitHubに画像生成アセットを保存したとは扱わない。通常CI Run [40339566573](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40339566573) は旧`build/g4c4_access_baseline.json`欠落で428テスト中セットアップエラー1・FAIL、疑似PASSなし。正式採用0、全体ART HOLD、Minecraft施工・都市統合禁止、旧原本保護、Work事前明示承認維持。

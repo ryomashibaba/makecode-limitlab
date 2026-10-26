@@ -1,0 +1,44 @@
+name: A58 G0 image-space preflight (NOT art or construction QA)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_a58_visibility_preflight.py'
+      - 'artifacts/g4c7-a58-g0-perspective/camera_hypothesis.json'
+      - '.github/workflows/verify_g4c7_a58_perspective.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  screen-space-negative-control:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify python and six negative controls (no blender or minecraft)
+        run: |
+          python -m py_compile tools/g4c7_a58_visibility_preflight.py
+          python tools/g4c7_a58_visibility_preflight.py --self-test
+      - name: Generate non-art screenshot proxy and numeric report
+        run: |
+          python tools/g4c7_a58_visibility_preflight.py --evaluate --output-dir "$RUNNER_TEMP/a58-g0-proxy" > "$RUNNER_TEMP/a58_console.json"
+          python - <<'PY'
+          import json, os, pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'a58_console.json'
+          result=json.loads(p.read_text())
+          assert result['baseline']['perspective_heuristic']=='REJECT_SCREENSPACE'
+          assert result['revised_hypothesis']['perspective_heuristic']=='PASS'
+          assert result['all_art_status']=='ART_HOLD'
+          assert result['s1']==result['g1']==result['g2']==result['g3']=='NOT_RUN'
+          print('A58_G0_LIMITED_PIXEL_PREFLIGHT_PASS; NOT actual visibility, render, beauty or safety')
+          PY
+      - name: Upload G0 proxy only (never overwrite protected originals)
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a58-screen-space-proxy-NOT-3D
+          path: ${{ runner.temp }}/a58-g0-proxy/
+          retention-days: 14
+          if-no-files-found: error
