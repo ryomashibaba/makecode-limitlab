@@ -1,0 +1,233 @@
+{
+  "stage": "A41",
+  "dateJST": "2026-10-26",
+  "sourceHead": "db5212e05f1adadb337ced01cbcd07bc1674217d",
+  "title": "ACTIVE FRONTAGE / street-first architectural reference calibration",
+  "scope": "one human-perspective street scene, not urban masterpiece or full megacity",
+  "referencePrinciples": [
+    {
+      "project": "8 House (BIG)",
+      "source": "https://cdn.big.dk/projects/8-house-2021",
+      "borrowed": "occupied street-facing uses + a legible continuous pedestrian path, NOT copying shape"
+    },
+    {
+      "project": "Linked Hybrid (Steven Holl Architects)",
+      "source": "https://www.stevenholl.com/project/beijing-linked-hybrid/",
+      "borrowed": "public through-passage with shops, multiple scales of civic encounter, NOT copying towers"
+    },
+    {
+      "project": "Markthal (MVRDV)",
+      "source": "https://www.mvrdv.com/projects/115/markthal.",
+      "borrowed": "public market/reading use visibly embedded in larger structure, NOT copying arch"
+    }
+  ],
+  "g0": {
+    "optionA": "enclosing grand atrium – early reject: blank container repeats A33/A37",
+    "optionB": "continuous inhabited storefront with a recognizable civic destination – selected for 1 street-geometry test ONLY"
+  },
+  "art": {
+    "streetGate": "ART REJECT (directional improvement but insufficient functionality)",
+    "cityG1": "NOT RUN",
+    "overall": "ART HOLD",
+    "progress": [
+      "street camera eye around 2.2 illustrative units, no longer very high aerial camera",
+      "deep open storefronts, alternating sheltered activity bays, planted intervals and end reading hall are visible as geometry",
+      "street-arrival silhouette shows coherent route from arrival toward destination"
+    ],
+    "criticalFailures": [
+      "dual long parallel facades now resemble a generic shopping mall, not a living innovative city quarter",
+      "opaque simplified glazing and dark interiors hide actual shop/reading activity",
+      "no perpendicular streets, civic nodes, crossings or distinct urban neighborhoods",
+      "rear and side faces still largely blank and volumes remain thin; grand city scale not demonstrated",
+      "small proxy people are only geometry markers, not actual agents or tested occupancies"
+    ]
+  },
+  "mesh": {
+    "vertices": 13224,
+    "triangles": 5620,
+    "glbBytes": 231260,
+    "materialCount": 12,
+    "groups": {
+      "ground-and-public-route": 312,
+      "west-occupied-streetfront": 2172,
+      "east-culture-and-workshops": 1044,
+      "roof-and-landscape": 204,
+      "visible-public-destination": 696,
+      "street-scale-activity": 1192
+    }
+  },
+  "render": {
+    "method": "actual indexed triangle mesh, software Z-buffer PNG, 800x620",
+    "views": {
+      "street_arrival": {
+        "bytes": 497026,
+        "geometryPixels": 429367,
+        "trianglesExcludedByNearOrBehind": 0,
+        "eye": [
+          0,
+          2.2,
+          -66
+        ],
+        "target": [
+          0,
+          5.8,
+          64
+        ],
+        "perspective": true,
+        "orthographicScale": null
+      },
+      "street_inner": {
+        "bytes": 497026,
+        "geometryPixels": 194570,
+        "trianglesExcludedByNearOrBehind": 1878,
+        "eye": [
+          0,
+          2.2,
+          -8
+        ],
+        "target": [
+          0,
+          5,
+          85
+        ],
+        "perspective": true,
+        "orthographicScale": null
+      },
+      "side_shops": {
+        "bytes": 497026,
+        "geometryPixels": 160181,
+        "trianglesExcludedByNearOrBehind": 546,
+        "eye": [
+          -5,
+          2.2,
+          -44
+        ],
+        "target": [
+          -19,
+          4,
+          22
+        ],
+        "perspective": true,
+        "orthographicScale": null
+      },
+      "library_destination": {
+        "bytes": 497026,
+        "geometryPixels": 271164,
+        "trianglesExcludedByNearOrBehind": 3040,
+        "eye": [
+          0,
+          2.2,
+          24
+        ],
+        "target": [
+          0,
+          7,
+          94
+        ],
+        "perspective": true,
+        "orthographicScale": null
+      },
+      "front": {
+        "bytes": 497026,
+        "geometryPixels": 48234,
+        "trianglesExcludedByNearOrBehind": 0,
+        "eye": [
+          0,
+          54,
+          -140
+        ],
+        "target": [
+          0,
+          8,
+          20
+        ],
+        "perspective": false,
+        "orthographicScale": 3
+      },
+      "oblique": {
+        "bytes": 497026,
+        "geometryPixels": 68458,
+        "trianglesExcludedByNearOrBehind": 0,
+        "eye": [
+          95,
+          64,
+          -86
+        ],
+        "target": [
+          0,
+          8,
+          20
+        ],
+        "perspective": false,
+        "orthographicScale": 3
+      },
+      "side": {
+        "bytes": 497026,
+        "geometryPixels": 68182,
+        "trianglesExcludedByNearOrBehind": 0,
+        "eye": [
+          106,
+          48,
+          22
+        ],
+        "target": [
+          0,
+          8,
+          20
+        ],
+        "perspective": false,
+        "orthographicScale": 3
+      },
+      "aerial": {
+        "bytes": 497026,
+        "geometryPixels": 104395,
+        "trianglesExcludedByNearOrBehind": 0,
+        "eye": [
+          81,
+          126,
+          -69
+        ],
+        "target": [
+          0,
+          8,
+          20
+        ],
+        "perspective": false,
+        "orthographicScale": 3
+      }
+    },
+    "differentFromA40": "Geometry, source scale, colors, target, lighting and camera differ: do not assert rigorous numerical quality comparison."
+  },
+  "binaryVerification": {
+    "generatedGlbVersion2": true,
+    "generatedGlbBytes": 231260,
+    "githubIndependentReRead": "PENDING AFTER COMMIT",
+    "thirdPartyViewer": "NOT RUN"
+  },
+  "notRun": [
+    "A41 full-city G1",
+    "G2 person-sized walking support stairs access exits",
+    "G3 sample body331/foot993 and negative control",
+    "manifold self-intersection geometry, load-bearing structural QA",
+    "independent external 3D viewer import",
+    "Minecraft Education building/integration"
+  ],
+  "safety": {
+    "project": "ART HOLD",
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "historicalAssets": "PRESERVED",
+    "bodySamples": 331,
+    "footSamples": 993,
+    "halfwidth": 0.65,
+    "footRelative": [
+      0.15,
+      3.25
+    ],
+    "historicBodyInterferenceLimit": 45,
+    "unsupportedFeet": 0,
+    "negativeControl": "REQUIRED",
+    "workBeforeExplicitPermission": "FORBIDDEN"
+  },
+  "next": "A42: move from twin continuous shopping wings to a more compelling sequence of civic nodes, crossroads, multiple functions and occupied-depth faces; validate street-level views before any city scaling"
+}

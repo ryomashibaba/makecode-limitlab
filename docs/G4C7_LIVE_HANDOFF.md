@@ -1,3 +1,9 @@
+# 【最新確定 A41／2026-10-26 JST】実在建築参照・低い街路目線8視点：S1 ART REJECT
+
+> A40の俯瞰優先・空虚な街区断面から離れ、BIG 8 House／Steven Holl Linked Hybrid／MVRDV Markthalの設計原理を参照したA41《ACTIVE FRONTAGE》を**街路先行**で1件のみ試作。保存先 `artifacts/g4c7-a41-street-first/`。実OBJ/GLB（13,224頂点・5,620三角形・231,260 bytes）、4近景＋4外観の実メッシュZ-buffer PNG・生成コード・manifestを保持。**街路の庇・店舗・目線の連続性は部分的に改善したが、実像は左右に並ぶ長い商業モールと無表情な外壁で、用途密度・都市級建築は未達。S1 ART REJECT／都市全体G1 NOT RUN／プロジェクトART HOLD。** G2/G3・331/993・負の対照はNOT RUN。次A42は平行2棟をやめ、横道・公共結節点・異なる利用者目的地を先に画面設計。詳細 [A41監査](./G4C7_A41_STREET_FIRST_ART_REJECT_JA.md)。旧資産永久保護、Minecraft施工/統合禁止、Work明示承認。
+
+---
+
 # 【最新確定A40／2026-10-26 JST】居住街区断面の実3D早期検証：断面ART REJECT／全体ART HOLD
 
 > A39の「薄い箱型高層群」失敗を受け、A40は都市全体でなく**居住・文化・公共街路を備える一街区断面**を軽量実3Dにした。実OBJ/GLB（10,260頂点／4,508面・180,952B）と4外観＋2内部の独立depth-PNG6枚を `artifacts/g4c7-a40-inhabited-block-section/` に保存。アーチ門廊・文化棟の曲面を形状化したものの、建築は依然キャンパス的で、近景では床・柱・無表情な隔壁が目立ち**断面ART REJECT**。都市全体G1や正式G2/G3/331人体/993足元・負対照は未実施。次A41は**実在する優れた建築の空間比例と人間目線の公共生活を参照して立面語彙を再構築する**。詳細 [A40監査](./G4C7_A40_INHABITED_BLOCK_SECTION_ART_REJECT_JA.md)。Minecraft施工・統合禁止、旧資産保護、Workは事前承認。
