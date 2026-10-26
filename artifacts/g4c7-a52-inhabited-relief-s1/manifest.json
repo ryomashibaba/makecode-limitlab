@@ -130,7 +130,38 @@
   "qa": {
     "producer": "LIMITED mesh/index/GLB HEADER QA PASS",
     "standaloneNode": "NOT RUN",
-    "gitHubSavedBinaryReadback": "NOT RUN",
+    "gitHubSavedBinaryReadback": {
+      "checkedCommit": "56fd59055b5a9ade89e82ccb8cc8f0c89727c739",
+      "verdict": "LIMITED GLB/OBJ + PNG9 STRUCTURAL PASS",
+      "glb": {
+        "bytes": 124544,
+        "version": 2,
+        "declaredBytes": 124544,
+        "positionCount": 6904,
+        "objVertices": 6904,
+        "indices": 8916,
+        "triangles": 2972,
+        "objFaces": 2972,
+        "invalidIndices": 0,
+        "maxPositionDelta": 0.000003422915213491251
+      },
+      "png": {
+        "count": 9,
+        "passed": 9,
+        "eachBytes": 236102,
+        "width": 560,
+        "height": 420,
+        "crcMismatch": 0
+      },
+      "doesNotValidate": [
+        "S1 ART accept",
+        "G1 megacity art",
+        "G2 walking/support",
+        "G3 331+993 safety",
+        "third party renderer/import",
+        "topology and structure"
+      ]
+    },
     "thirdPartyRenderer": "NOT RUN",
     "selfIntersection": "NOT RUN"
   },

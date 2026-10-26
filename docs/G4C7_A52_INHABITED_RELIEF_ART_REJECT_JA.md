@@ -67,3 +67,13 @@ A53では以下を必須とする。
 5. 最初の候補がS1不合格なら同形状の家具・柱・床を増やさず停止。次の工程番号は品質の成果ではない。
 
 **A52最終：S1 ART REJECT／全体ART HOLD／G1/G2/G3 NOT RUN。**
+
+## GitHub保存後・独立バイナリ再取得QA（2026-10-26 JST）
+
+保存コミット `56fd59055b5a9ade89e82ccb8cc8f0c89727c739` からGLB/OBJ・PNG9枚を別の取得・解析手順で再読込。
+
+- GLB **124,544 bytes**＝宣言長、GLB version 2・glTF 2.0、頂点アクセサ6,904＝OBJ 6,904、GLB索引8,916＝2,972三角形、OBJ面2,972、範囲外索引0。POSITION Float32最大差0.000003422915213491251。**保存後バイナリ整合限定PASS**。
+- PNG **9/9 PASS**：arrival / public_room / market_sight / culture_sight / library_destination / front / oblique / side / aerial。すべて560×420・236,102 bytes、署名・チャンクCRC・終端一致、CRC不一致0。
+- **確認していないもの**：第三者3Dソフトウェアでの表示とライティング、美術採用、自己干渉・支持・人体移動、G1/G2/G3。Node CLIを独立プロセスで動かしたE2E PASSは未主張。
+
+この限定PASSはファイルの保存整合に限る。**S1 ART REJECT／全体ART HOLDは不変**。
