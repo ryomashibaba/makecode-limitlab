@@ -62,3 +62,13 @@ A50は大都市を建てず、人間目線の3用途を先に試す。市場・�
 5. A51で良い実装構成がG0で確認できなければ、無理に新しいGLBを追加しない。**実3D美術の品質**を唯一の採用根拠とする。
 
 **不変条件：ART-FIRST／QUALITY-FIRST・ART HOLD、Minecraft Education施工・既存都市統合禁止、world/USED/CSV/ZIP/GLB/OBJ/PNGの歴代証拠は全保護。331人体・993足元・人体半幅0.65・相対足元高さ+0.15～+3.25・歴史的身体干渉上限45・未支持0・負の対照は緩和しない。Work使用は事前明示承認必須。**
+
+## A50 GitHub保存後の独立バイナリ再読込QA（2026-10-26 JST）
+
+保存コミット `c6d3a8a5b92838da6c99c6bbe9b8f866db5db7fa` からGLB・OBJと9枚すべてのPNGを再取得し、別の読み取り・CRCルーチンで検査した。
+
+- **GLB/OBJ整合の限定PASS**：GLB実長109,296 bytes＝宣言長、GLB version 2／glTF 2.0、POSITION 6,018＝OBJ頂点6,018、index 7,764＝2,588三角形、OBJ面2,588、範囲外index 0、Float32 POSITION対OBJ最大差0.000003051757815342171。
+- **PNG保存後9/9 PASS**：arrival、forum、market、culture、library、front、oblique、side、aerial。すべて560×420・236,102 bytes、署名・CRC・チャンク終端一致、不一致0。
+- ここでのPASSは**保存されたメッシュ・画像のバイナリ構造の整合性に限る**。別エンジンの3D表示・構造の妥当性・自己交差・安全な歩行・美術的な使いやすさは確認していない。
+
+**S1 ART REJECT／都市全体G1 NOT RUN／全体 ART HOLD／G2・G3未実施・施工禁止は変更しない。**

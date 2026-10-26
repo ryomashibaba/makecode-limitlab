@@ -43,7 +43,40 @@
       "structure, full room topology, load-bearing G3",
       "third party importer",
       "visual program understanding"
-    ]
+    ],
+    "postSaveBinaryReadback": {
+      "sourceCommit": "c6d3a8a5b92838da6c99c6bbe9b8f866db5db7fa",
+      "scope": "INDEPENDENT SAVED BINARY STRUCTURAL VERIFICATION ONLY",
+      "status": "LIMITED PASS",
+      "glb": {
+        "bytes": 109296,
+        "declaredBytes": 109296,
+        "version": 2,
+        "positionCount": 6018,
+        "objVertices": 6018,
+        "indices": 7764,
+        "triangles": 2588,
+        "objFaces": 2588,
+        "outOfRangeIndexCount": 0,
+        "maxObjFloat32Delta": 0.000003051757815342171
+      },
+      "png": {
+        "count": 9,
+        "passed": 9,
+        "bytesEach": 236102,
+        "width": 560,
+        "height": 420,
+        "crcMismatch": 0
+      },
+      "excluded": [
+        "artistic approval",
+        "G1 full city",
+        "G2 human walking/accessibility",
+        "G3 331 human and 993 foot samples/negative controls",
+        "third party importer",
+        "self intersection and stability"
+      ]
+    }
   },
   "visibility": {
     "measurement": "nearest tagged triangle pixels with semantic Z buffer, no human recognizability guarantee",
