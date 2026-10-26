@@ -122,7 +122,7 @@ def build(p):
         return ob
     # All S1 geometry shares top level z=0, including actual solid room floors.
     cube("PUBLIC_HEART_ACTUAL_FLOOR",(0,12,-.65),(47,58,1.3),"road",rooms,.5)
-    cube("RECESSED_PUBLIC_STREET",(0,6,.055),(11,29,.11),"trim",rooms,.02)
+    cube("RECESSED_PUBLIC_STREET",(0,6,-.055),(11,29,.11),"trim",rooms,.02)
     for r in p["rooms"]:
         n=r["id"];x=r["x"];y=r["front_y"];w=r["width"];d=r["depth"];a=r["door_width"]
         def B(s,loc,dim,mat="bone"):
@@ -203,7 +203,7 @@ def build(p):
     eye=cams["public_heart"].location
     assert math.isclose(eye.z,1.7,abs_tol=.000001)
     hit,point,nrm,idx,obj,matx=sc.ray_cast(dg,eye,Vector((0,0,-1)),distance=4)
-    assert hit and abs(point.z)<.06 and obj.name=="PUBLIC_HEART_ACTUAL_FLOOR",repr((hit,tuple(point),obj.name if obj else None))
+    assert hit and abs(point.z)<.006 and obj.name in {"PUBLIC_HEART_ACTUAL_FLOOR","RECESSED_PUBLIC_STREET"},repr((hit,tuple(point),obj.name if obj else None))
     for r in p["rooms"]:
         target=Vector((r["x"],r["front_y"]+3,1.7)); direction=target-eye
         hit,point,nrm,idx,obj,matx=sc.ray_cast(dg,eye,direction.normalized(),distance=direction.length)
