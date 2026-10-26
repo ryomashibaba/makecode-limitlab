@@ -308,7 +308,38 @@
     "cameraNote": "Local S1 research cameras and wide lens 480 px compared to older 570 px; no strict A41 projection equivalence",
     "clippingCaveat": "renderer omits entire triangles intersecting near plane or behind camera; nearOrBehindExcluded is NOT exclusively near-plane clipping"
   },
-  "postSaveVerification": "NOT YET DONE",
+  "postSaveVerification": {
+    "status": "LIMITED GLB/PNG STRUCTURAL QA PASS",
+    "checkedCommit": "de43876e4d58ac0ddb5998fa33cdd38745a151e4",
+    "glb": {
+      "realBytes": 313992,
+      "declaredBytes": 313992,
+      "version": 2,
+      "vertices": 18060,
+      "triangles": 7628,
+      "indexOutOfRange": 0,
+      "maxObjVsFloat32PositionDelta": 0.0000037201956928356594,
+      "binaryEndsCorrect": true
+    },
+    "allNinePNG": {
+      "downloadedAndParsed": 9,
+      "expected": 9,
+      "resolution": [
+        900,
+        720
+      ],
+      "format": "indexed PNG",
+      "chunkCRCFailures": 0,
+      "complete": true
+    },
+    "notVerified": [
+      "external 3D viewer load",
+      "G2 actual walking and floor support",
+      "G3 331 humans / 993 feet / negative control",
+      "visual artistic pass",
+      "Minecraft construction or city integration"
+    ]
+  },
   "notRun": [
     "full-city G1",
     "G2 occupancy, walking, stairs, support and exit routes",
