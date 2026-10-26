@@ -27,3 +27,13 @@ If rejected, stop **this shape** rather than masking it with color, lighting or 
 ## Immutable gates
 
 Overall **ART HOLD**, Minecraft Education construction **FORBIDDEN**, existing-world integration **FORBIDDEN**. G1 full-city acceptance and G2/G3 331 body / 993 foot sampling, 0.65 half-width, +0.15–+3.25 foot interval, historical interference 45 max, unsupported foot 0, negative controls required are all **NOT RUN**. Historic original files stay untouched. Work requires explicit prior user approval.
+
+## A54 runtime recovery — official bpy 4.5.15 (2026-10-26 JST)
+
+Original A54 Actions run [40325580655](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40325580655) completed Python syntax, CLI preflight, and five deliberate negative-control steps, but was still reporting **in_progress on Ubuntu apt Blender installation** when the recovery decision was made. This is not a proven terminal failure: actual outcome must be read from Actions before claiming failure/success.
+
+Rather than rewriting A53 architecture or running another mesh generator, the A54 workflow now selects Python 3.11 with Blender Foundation official `bpy==4.5.15` from `https://download.blender.org/pypi/bpy/`. The native `bpy` Python module is a Blender core runtime, not a flat SVG/proxy renderer. Source blobs `5815cb2ed6b167e1cfcb05c2c396a59034ef06ff` (artist script) and `7ff44ad7f824b5651b27c08e971adb8eb128214c` (scene plan) must match. This independent concurrency group prevents waiting for the slow older apt attempt; historical originals are not modified.
+
+**Unverified until the new run finishes:** pip wheel installation, native .blend output, Cycles nine images, replayed scene object counts, PNG integrity and actual visual/art gate. The original run may finish concurrently: uploads must remain separate; non-fast-forward git pushes are rejected instead of force-replacing other branch work. No claim of A53 architecture success or S1/G1 PASS is made.
+
+Visual preflight warning: the named room geometry includes explicit `UNBUILT_HEIGHT_DATUM` surfaces, rather than built enclosed rooms, so even technically valid renders cannot establish that market/culture/research/housing are inhabitable. Several nominal 'S1' cameras are far above nearby route control elevations; the final gate must include walker's-eye verification, not silently relabel existing views. The first task after a successful render is assess actual images, not scale up or decorate.

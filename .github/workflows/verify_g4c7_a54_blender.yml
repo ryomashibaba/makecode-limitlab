@@ -8,12 +8,12 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: g4c7-a54-native-blender
+  group: g4c7-a54-official-bpy-4-5-15
   cancel-in-progress: false
 jobs:
   render-existing-a53-study:
     runs-on: ubuntu-24.04
-    timeout-minutes: 65
+    timeout-minutes: 55
     env:
       OUTPUT: artifacts/g4c7-a53-editable-studio/blender-output
     steps:
@@ -22,11 +22,14 @@ jobs:
           persist-credentials: true
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
       - name: Compile the exact A53 Python source and run its own preflight
         shell: bash
         run: |
           set -euo pipefail
+          # Pin the exact A53 artist source and G0 plan to prevent silent model drift.
+          test "$(git rev-parse 'HEAD:tools/g4c7_a53_blender_scene.py')" = "5815cb2ed6b167e1cfcb05c2c396a59034ef06ff"
+          test "$(git rev-parse 'HEAD:artifacts/g4c7-a53-editable-studio/scene_plan.json')" = "7ff44ad7f824b5651b27c08e971adb8eb128214c"
           python -m py_compile tools/g4c7_a53_blender_scene.py
           python tools/g4c7_a53_blender_scene.py --preflight
       - name: Independently exercise five deliberate invalid plans
@@ -53,24 +56,37 @@ jobs:
               else: raise AssertionError('NEGATIVE_CONTROL_MISSED '+label)
           print('A54_DATA_PREFLIGHT 5/5 negative controls PASS (not art/safety QA)')
           PY
-      - name: Install actual Blender application (no extra user account)
+      - name: Install Blender Foundation bpy 4.5.15 wheel (no apt, no account)
         shell: bash
         run: |
           set -euo pipefail
-          sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender
-          blender --version | head -n 2
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python - <<'PY'
+          import bpy,sys
+          assert sys.version_info[:2]==(3,11),sys.version
+          assert bpy.app.version[:2]==(4,5),bpy.app.version_string
+          print('OFFICIAL_BPY_READY',bpy.app.version_string)
+          PY
       - name: Create original editable Blender scene and nine real Cycles images
         shell: bash
         run: |
           set -euo pipefail
           test ! -e "$OUTPUT/a53_civic_strata_editable.blend"
-          blender -b --factory-startup --python-exit-code 1 --python tools/g4c7_a53_blender_scene.py -- --build --render
-      - name: Reopen the saved native scene in Blender and validate object types
+          # Blender's official bpy wheel uses the same native scene API from Python.
+          python tools/g4c7_a53_blender_scene.py --build --render
+      - name: Reopen saved native .blend via Blender bpy and validate object types
         shell: bash
         run: |
           set -euo pipefail
-          blender -b "$OUTPUT/a53_civic_strata_editable.blend" --python-exit-code 1 --python-expr "import bpy; counts={t:sum(o.type==t for o in bpy.data.objects) for t in ('MESH','CURVE','CAMERA','LIGHT')}; assert counts=={'MESH':19,'CURVE':2,'CAMERA':9,'LIGHT':3},counts; assert bpy.context.scene.render.engine=='CYCLES'; print('A54_REOPEN_NATIVE_SCENE_PASS',counts)"
+          python - <<'PY'
+          import bpy,os
+          path=os.path.abspath('artifacts/g4c7-a53-editable-studio/blender-output/a53_civic_strata_editable.blend')
+          bpy.ops.wm.open_mainfile(filepath=path)
+          counts={t:sum(o.type==t for o in bpy.data.objects) for t in ('MESH','CURVE','CAMERA','LIGHT')}
+          assert counts=={'MESH':19,'CURVE':2,'CAMERA':9,'LIGHT':3},counts
+          assert bpy.context.scene.render.engine=='CYCLES'
+          print('A54_NATIVE_BLEND_REOPEN_PASS',counts,bpy.app.version_string)
+          PY
       - name: Independently verify all nine PNGs and record evidence provenance
         shell: bash
         run: |
@@ -119,7 +135,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g4c7-a54-original-a53-blender-native-evidence
+          name: g4c7-a54-official-bpy-4-5-15-native-evidence
           path: artifacts/g4c7-a53-editable-studio/blender-output/
           retention-days: 14
           if-no-files-found: warn
@@ -132,4 +148,5 @@ jobs:
           git add -- "$OUTPUT/"
           git diff --cached --quiet && { echo 'No new evidence produced'; exit 1; }
           git commit -m "A54: preserve genuine Blender scene and nine Cycles render images (ART HOLD)"
+          # No force push; a parallel legacy apt-based run cannot erase evidence.
           git push origin "HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study"
