@@ -1,3 +1,9 @@
+# 【最新A54 実画像美術監査完了 → A55 G0／2026-10-26 JST】Blender実3D・Cycles9視点真正検証PASS／A53 CIVIC STRATA **S1 ART REJECT**／全体ART HOLD
+
+> GitHub Actions [40329620672](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40329620672) **全工程SUCCESS**。GitHub HEAD `20f3450d1f98c9618d904fe93164acc7e82a2b9b` で元A53のBlenderネイティブ.blend 719,357B・Cycles 960×720 PNG9枚を保存。5件のデータ負対照・ネイティブ再読込・PNG CRC/サイズ検査PASS、ActionアーティファクトZIPを独立取得してPNG9/9のSHA-256・Pillow再読込、.blend SHA-256を確認。実9視点を人間の画像認識で審査し、内部5視点は**市場・文化・研究・居住が見えない・屋根/壁/空隙支配**、外部4視点も**巨大な連続屋根壁・薄板・一体都市として密度不足**のため全視点ART REJECT。これは**A53造形を不採用**にする評価であり、Blender実制作基盤の成功自体は保持。G1正式全都市審査、G2/G3安全QAはNOT RUN、全体ART HOLD/Minecraft施工・都市統合禁止・過去資産保護不変。A55は同じ二岸屋根・帯面造形を再構築せず、「活動が見える実室」と「巨大都市遠景」を同時に満たすG0の2構成比較から始める。詳細：[A54実画像監査](./G4C7_A54_NATIVE_9VIEW_ART_REJECT_JA.md)／[A55 G0美術構成](./G4C7_A55_OCCUPIED_CITY_ART_DIRECTION_G0_JA.md)。
+
+---
+
 # 【A54 継続／2026-10-26 JST】GitHub apt導入待機→公式bpy 4.5.15を使う検証経路へ変更／実レンダ結果未確定・ART HOLD
 
 > A54旧実行 [#40325580655](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40325580655) はPython preflight・故意破壊5/5成功後もapt Blender導入中のまま結果未確定。造形の作り直しや美術合格を偽装せず、**A53元スクリプト・JSONのGit blob SHAを固定**して公式Blender `bpy==4.5.15`／Python3.11による`.blend`とCycles9視点生成をA54ワークフローへ追加変更。並行CIの古い実行による上書きを防ぎ、旧証拠保護・Git非force・Minecraft施工/都市統合禁止・全体ART HOLD・S1/G1/G2/G3未審査を維持。**この時点の実レンダ結果はNOT VERIFIED**。[詳細](./G4C7_A54_BLENDER_EXECUTION_GATE_JA.md)。
