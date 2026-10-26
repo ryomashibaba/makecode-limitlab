@@ -1,3 +1,9 @@
+# 【最新A44／2026-10-26 JST】CITY AS AN INHABITED SECTION — G0の設計順序を改革／全体ART HOLD
+
+> A43のS1 ART REJECT後、box/beamで実3Dを作り続ける工程を止め、**用途・室の奥行き・巨大外形を同じ断面から設計する**G0手法に変更。2案（A《CIVIC POCKET FOLD / 傾層市民核》、B《SPLIT-BANK CIVIC SPAN / 双岸公共橋》）を2D断面＋2D外観の合計4枚のSVGで比較。B案は二棟＋橋と採石場再発リスクのためこの段階で停止。A案は次S1の**条件付き研究候補**、美術合格ではない。新しいGLB/OBJ・実3D PNGは意図的に作らず、A44 G0のみ完了。A案も殻・空洞の失敗リスクが高いため、次は主造形の空間幾何→早期実3D→人間目線と外観の監査を要求。図を歩行QAや3Dの証拠と呼ばない。全体ART HOLD、施工・都市統合禁止、旧証拠保護、G2/G3/331/993/負対照未実施、Work事前承認。詳細[A44 G0監査](./G4C7_A44_SECTION_FIRST_G0_JA.md)。
+
+---
+
 # 【最新A43／2026-10-26 JST】INHABITED SEAM — S1 ART REJECT／全体ART HOLD
 
 > A42の三棟独立パビリオンから断面の生活空間へ方針転換。G0で2思想を比較し「斜め公共動線が居住・市場・工房・図書を貫く」1件を軽量実3D化。実OBJ/GLB/MTL・8視点depth PNG・再現コード・manifest保存。しかし実画像では箱型キャンパス、板状床、道路模型が再発し、**S1 ART REJECT／全都市G1 NOT RUN／全体ART HOLD**。同モデルの詳細化を即停止。次は箱の配置より先に建築的な主役断面と人間目線を美術審査。技術は限定した生成時整合のみPASS。G2/G3/331/993/負対照NOT RUN、Minecraft施工・統合禁止、旧原本保護、Work明示事前承認。詳細[A43監査](./G4C7_A43_INHABITED_SEAM_ART_REJECT_JA.md)。

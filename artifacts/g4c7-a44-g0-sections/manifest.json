@@ -1,0 +1,96 @@
+{
+  "stage": "A44",
+  "date": "2026-10-26 JST",
+  "baseHead": "a6dfabff6f28adbdc377d8b5b359abdb983d631c",
+  "name": "City as an Inhabited Section - G0 visual contract",
+  "type": "Four programmatic SVG visual studies, no real 3D",
+  "status": {
+    "g0": "A SELECTED AS CANDIDATE FOR LIMITED FUTURE S1, NOT ART PASS",
+    "s1": "NOT RUN",
+    "g1": "NOT RUN",
+    "g2": "NOT RUN",
+    "g3": "NOT RUN",
+    "overall": "ART HOLD"
+  },
+  "alternatives": [
+    {
+      "id": "A",
+      "name": "Civic Pocket Fold",
+      "decision": "CONDITIONAL S1 CANDIDATE",
+      "majorRisk": "returns to blank shell / quarry or covered void"
+    },
+    {
+      "id": "B",
+      "name": "Split-bank Civic Span",
+      "decision": "STOP BEFORE 3D",
+      "majorRisk": "separate wings, quarry valley and bridge-model recurrence"
+    }
+  ],
+  "artifacts": [
+    "artifacts/g4c7-a44-g0-sections/01_A_SECTION.svg",
+    "artifacts/g4c7-a44-g0-sections/02_A_OUTSIDE.svg",
+    "artifacts/g4c7-a44-g0-sections/03_B_SECTION.svg",
+    "artifacts/g4c7-a44-g0-sections/04_B_OUTSIDE.svg"
+  ],
+  "checks": {
+    "01_A_SECTION.svg": {
+      "bytes": 7610,
+      "svgTag": 1,
+      "closing": 1,
+      "noScript": true,
+      "noExternal": true,
+      "hasHold": true,
+      "hasDisclaimer": true
+    },
+    "02_A_OUTSIDE.svg": {
+      "bytes": 4501,
+      "svgTag": 1,
+      "closing": 1,
+      "noScript": true,
+      "noExternal": true,
+      "hasHold": true,
+      "hasDisclaimer": true
+    },
+    "03_B_SECTION.svg": {
+      "bytes": 6753,
+      "svgTag": 1,
+      "closing": 1,
+      "noScript": true,
+      "noExternal": true,
+      "hasHold": true,
+      "hasDisclaimer": true
+    },
+    "04_B_OUTSIDE.svg": {
+      "bytes": 4351,
+      "svgTag": 1,
+      "closing": 1,
+      "noScript": true,
+      "noExternal": true,
+      "hasHold": true,
+      "hasDisclaimer": true
+    }
+  },
+  "validationScope": "SVG root count / absence script and external URLs / explicit disclaimers ONLY. No visual renderer or XML schema validator.",
+  "references": [
+    "https://www.spl.org/hours-and-locations/central-library/central-library-highlights/central-library-architecture",
+    "https://www.mvrdv.com/projects/233/valley"
+  ],
+  "next": "A45 conditional S1 real-mesh early art-test, only after spatial geometry-first design; avoid box/beam repetition",
+  "safety": {
+    "artHold": true,
+    "worldBuild": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "historicalAssets": "PROTECTED",
+    "humans": 331,
+    "feet": 993,
+    "halfWidth": 0.65,
+    "relativeFoot": [
+      0.15,
+      3.25
+    ],
+    "historicInterferenceMaximum": 45,
+    "unsupportedFeetMaximum": 0,
+    "negativeControl": "REQUIRED",
+    "workPermission": "PRIOR EXPLICIT APPROVAL"
+  }
+}
