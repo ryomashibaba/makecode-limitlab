@@ -1,3 +1,9 @@
+# 【A54開始／2026-10-26 JST】A53 Blender実行の現物QAをGitHub Actionsに追加／結果未検証・全体ART HOLD
+
+> 指定HEAD `a012ffd12701eb4e34392782592f98aaf7cbe34b` をGitHub確認。A51・A52・A53監査とA53本体コードを再読込。現Chat環境に `blender` 本体がないため、A53の元スクリプト・シーンJSONを**変更せず**に、GitHub Actions経由で純Pythonの構文／preflight／故意不正5件、Blender本体による.blend保存・Cycles9枚レンダ、.blend再読込・PNG整合・保存証拠を試すワークフローを追加。**CIが実行され、証拠が実際に確認できるまでは Blender制作、実3D、S1美術をPASSと呼ばない。** 建築活動の見える近景と遠景を画像で別審査し、採石場・巨大屋根・薄床・キャンパスが再発したら延命せずART REJECT。G1/G2/G3 NOT RUN、全体ART HOLD、Minecraft施工・都市統合禁止、旧原本保護、331/993・負対照とWork明示承認不変。[A54実行監査](./G4C7_A54_BLENDER_EXECUTION_GATE_JA.md)。
+
+---
+
 # 【最新A53／2026-10-26 JST】BLENDER-NATIVE EDITABLE STUDIO — G0制作方式・構成データ検査PASS／実レンダ・新S1未実施／全体ART HOLD
 
 > A52までの連続ART REJECTにより、多角形押し出し／床板／梁の反復生成を主造形方法から外した。A53ではBlenderネイティブの**個別編集可能な建築面（12断面）、Bezier曲線、用途領域4、カメラ9、材質と3光源**をソースとして制作。G0でA《CIVIC STRATA》を制作方式実験に選び、B《INVERTED HANGING VALLEY》は過去の採石場・巨大屋根再発リスクから停止。Chat側で構成データQAと故意破壊5/5の検出を確認。**現環境にBlender/`bpy`が無いためBlender本体での実行、.blend、実レンダ、S1美術判定はNOT RUN**。これは実3D美術の改善証拠ではない。A54はまず実Blender実行／照明付き9視点の観察を行い、駄目なら即ART REJECT。全体ART HOLD／G1/G2/G3 NOT RUN、旧資産保護、Minecraft施工・都市統合禁止、331/993安全基準不変、Work事前承認。[A53詳細](./G4C7_A53_EDITABLE_ART_STUDIO_G0_JA.md)。

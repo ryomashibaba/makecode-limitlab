@@ -1,0 +1,135 @@
+name: G4C7 A54 Blender native render evidence (NO MINECRAFT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - '.github/workflows/verify_g4c7_a54_blender.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a54-native-blender
+  cancel-in-progress: false
+jobs:
+  render-existing-a53-study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    env:
+      OUTPUT: artifacts/g4c7-a53-editable-studio/blender-output
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile the exact A53 Python source and run its own preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_a53_blender_scene.py
+          python tools/g4c7_a53_blender_scene.py --preflight
+      - name: Independently exercise five deliberate invalid plans
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import copy, importlib.util, json
+          from pathlib import Path
+          script=Path('tools/g4c7_a53_blender_scene.py')
+          spec=importlib.util.spec_from_file_location('native_a53',script)
+          module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+          plan=json.loads(Path('artifacts/g4c7-a53-editable-studio/scene_plan.json').read_text())
+          assert module.validate(plan)['status'].startswith('PLAN PREFLIGHT PASS')
+          variants=[]
+          p=copy.deepcopy(plan);p['banks']['west'][1]['y']=p['banks']['west'][0]['y'];variants.append(('station_order',p))
+          p=copy.deepcopy(plan);p['programRooms'][0]['outline']=[[0,0],[1,0],[1,1]];variants.append(('degenerate_room',p))
+          p=copy.deepcopy(plan);p['cameraContract'].pop();variants.append(('missing_camera',p))
+          p=copy.deepcopy(plan);p['safety']['construction']='ALLOWED';variants.append(('forbidden_construction',p))
+          p=copy.deepcopy(plan);p['banks']['east'][0]['terrace']=p['banks']['east'][0]['crown']+1;variants.append(('inverted_section',p))
+          for label,bad in variants:
+              try: module.validate(bad)
+              except ValueError as exc: print('NEGATIVE_CONTROL_DETECTED',label,str(exc)[:140])
+              else: raise AssertionError('NEGATIVE_CONTROL_MISSED '+label)
+          print('A54_DATA_PREFLIGHT 5/5 negative controls PASS (not art/safety QA)')
+          PY
+      - name: Install actual Blender application (no extra user account)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y blender
+          blender --version | head -n 2
+      - name: Create original editable Blender scene and nine real Cycles images
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e "$OUTPUT/a53_civic_strata_editable.blend"
+          blender -b --factory-startup --python-exit-code 1 --python tools/g4c7_a53_blender_scene.py -- --build --render
+      - name: Reopen the saved native scene in Blender and validate object types
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender -b "$OUTPUT/a53_civic_strata_editable.blend" --python-exit-code 1 --python-expr "import bpy; counts={t:sum(o.type==t for o in bpy.data.objects) for t in ('MESH','CURVE','CAMERA','LIGHT')}; assert counts=={'MESH':19,'CURVE':2,'CAMERA':9,'LIGHT':3},counts; assert bpy.context.scene.render.engine=='CYCLES'; print('A54_REOPEN_NATIVE_SCENE_PASS',counts)"
+      - name: Independently verify all nine PNGs and record evidence provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,struct,zlib
+          from pathlib import Path
+          out=Path(os.environ['OUTPUT'])
+          ids=['arrival','public_heart','market','culture','research','front','oblique','side','aerial']
+          blend=out/'a53_civic_strata_editable.blend'
+          assert blend.is_file() and blend.stat().st_size>4096
+          assert blend.read_bytes()[:7]==b'BLENDER'
+          evidence={}
+          for view in ids:
+              p=out/('render_'+view+'.png')
+              b=p.read_bytes()
+              assert b[:8]==b'\x89PNG\r\n\x1a\n',(view,'PNG signature')
+              off=8; has_ihdr=False; has_idat=False; ended=False; count=0
+              while off<len(b):
+                  assert off+12<=len(b)
+                  n=struct.unpack_from('>I',b,off)[0]; kind=b[off+4:off+8]
+                  assert off+12+n<=len(b)
+                  data=b[off+8:off+8+n]
+                  crc=struct.unpack_from('>I',b,off+8+n)[0]
+                  assert zlib.crc32(kind+data)&0xffffffff==crc
+                  if kind==b'IHDR':
+                      assert struct.unpack('>II',data[:8])==(960,720)
+                      has_ihdr=True
+                  if kind==b'IDAT': has_idat=True
+                  off+=12+n;count+=1
+                  if kind==b'IEND': ended=True;break
+              assert has_ihdr and has_idat and ended and off==len(b)
+              evidence[view]={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'png_chunks':count}
+          manifest={
+            'stage':'A54','sourceStage':'A53','construction':'FORBIDDEN','integration':'FORBIDDEN',
+            'art':'HOLD_NOT_ASSESSED','s1':'NOT ASSESSED','g1':'NOT RUN','g2':'NOT RUN','g3':'NOT RUN',
+            'sourceCommit':os.environ['GITHUB_SHA'],
+            'blend':{'bytes':blend.stat().st_size,'sha256':hashlib.sha256(blend.read_bytes()).hexdigest()},
+            'png':evidence,'camerasVerified':9,'renderer':'BLENDER_CYCLES',
+            'disclaimer':'Binary QA and scene load do not prove architectural beauty, walkability or Minecraft safety.'
+          }
+          (out/'a54_native_evidence_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          print('A54 9/9 PNG signatures, dimensions, chunk CRC and native BLEND PASS; ART HOLD')
+          PY
+      - name: Upload unmodified evidence even if commit fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a54-original-a53-blender-native-evidence
+          path: artifacts/g4c7-a53-editable-studio/blender-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Store genuine native evidence on original branch without overwriting history
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$OUTPUT/"
+          git diff --cached --quiet && { echo 'No new evidence produced'; exit 1; }
+          git commit -m "A54: preserve genuine Blender scene and nine Cycles render images (ART HOLD)"
+          git push origin "HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study"
