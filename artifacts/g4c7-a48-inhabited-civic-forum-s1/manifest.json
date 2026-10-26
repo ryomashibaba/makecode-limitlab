@@ -93,7 +93,37 @@
       }
     },
     "producerCheck": "LIMITED PASS",
-    "independentSavedBinaryReadback": "NOT RUN",
+    "independentSavedBinaryReadback": {
+      "checkedCommit": "7d7309164b229932ee485f006427ca2c4c1fc132",
+      "verdict": "LIMITED GLB/OBJ and PNG8/8 INTEGRITY PASS",
+      "glb": {
+        "bytes": 130084,
+        "declaredBytes": 130084,
+        "version": 2,
+        "positionCount": 7194,
+        "objVertexCount": 7194,
+        "triangleCount": 3108,
+        "objTriangles": 3108,
+        "indexOutsideRange": 0,
+        "maxPositionDelta": 0.0000037350689865434106
+      },
+      "png": {
+        "total": 8,
+        "valid": 8,
+        "eachBytes": 236102,
+        "width": 560,
+        "height": 420,
+        "crcErrors": 0
+      },
+      "notProven": [
+        "S1 artistic accept",
+        "G1 full-city art",
+        "G2 walking/support",
+        "G3 human331 feet993 negatives",
+        "third-party importer",
+        "structural safety"
+      ]
+    },
     "renderer": "A45 near-plane clipped software triangle depth projection",
     "fixedDefect": "Vertical beams had zero horizontal direction giving 160 degenerate triangles before correction; 0 after explicit vertical box path"
   },
