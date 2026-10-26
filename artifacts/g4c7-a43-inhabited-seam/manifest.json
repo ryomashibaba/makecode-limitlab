@@ -1,0 +1,89 @@
+{
+  "stage": "A43",
+  "date": "2026-10-26 JST",
+  "baseHead": "8ab5bbc42881978ea4a300cd03d094eb004a9dca",
+  "project": "G4-C7 Orbital Commons",
+  "concept": "INHABITED SEAM",
+  "scope": "S1 study not full-city/not buildable",
+  "g0": [
+    {
+      "option": "DIAGONAL INHABITED SEAM",
+      "selectedForSingleScout": true
+    },
+    {
+      "option": "POROUS CIVIC MEGASPAN",
+      "selectedForSingleScout": false,
+      "art": "NOT RUN"
+    }
+  ],
+  "art": {
+    "s1": "ART REJECT",
+    "g1": "NOT RUN",
+    "overall": "ART HOLD",
+    "cause": "campus of stacked slabs and blocks despite sectional program"
+  },
+  "technical": {
+    "vertices": 7920,
+    "triangles": 3960,
+    "materials": 16,
+    "glbBytes": 149000,
+    "invalidIndices": 0,
+    "views": {
+      "arrival": {
+        "pixels": 141776,
+        "nearRejectedTriangles": 10,
+        "bytes": 236102
+      },
+      "inner": {
+        "pixels": 190429,
+        "nearRejectedTriangles": 959,
+        "bytes": 236102
+      },
+      "market": {
+        "pixels": 192196,
+        "nearRejectedTriangles": 794,
+        "bytes": 236102
+      },
+      "library": {
+        "pixels": 189813,
+        "nearRejectedTriangles": 1681,
+        "bytes": 236102
+      },
+      "front": {
+        "pixels": 71219,
+        "nearRejectedTriangles": 0,
+        "bytes": 236102
+      },
+      "oblique": {
+        "pixels": 74448,
+        "nearRejectedTriangles": 0,
+        "bytes": 236102
+      },
+      "side": {
+        "pixels": 67912,
+        "nearRejectedTriangles": 0,
+        "bytes": 236102
+      },
+      "aerial": {
+        "pixels": 103767,
+        "nearRejectedTriangles": 0,
+        "bytes": 236102
+      }
+    },
+    "producerQA": "LIMITED PASS",
+    "independentPersistedReadback": "NOT RUN"
+  },
+  "notRun": [
+    "Full city G1",
+    "walking G2",
+    "structure and 331/993/negative control G3",
+    "independent importer",
+    "Minecraft integration"
+  ],
+  "safety": {
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "oldAssets": "PROTECTED",
+    "workApproval": "REQUIRED"
+  }
+}

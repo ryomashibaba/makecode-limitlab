@@ -1,3 +1,9 @@
+# 【最新A43／2026-10-26 JST】INHABITED SEAM — S1 ART REJECT／全体ART HOLD
+
+> A42の三棟独立パビリオンから断面の生活空間へ方針転換。G0で2思想を比較し「斜め公共動線が居住・市場・工房・図書を貫く」1件を軽量実3D化。実OBJ/GLB/MTL・8視点depth PNG・再現コード・manifest保存。しかし実画像では箱型キャンパス、板状床、道路模型が再発し、**S1 ART REJECT／全都市G1 NOT RUN／全体ART HOLD**。同モデルの詳細化を即停止。次は箱の配置より先に建築的な主役断面と人間目線を美術審査。技術は限定した生成時整合のみPASS。G2/G3/331/993/負対照NOT RUN、Minecraft施工・統合禁止、旧原本保護、Work明示事前承認。詳細[A43監査](./G4C7_A43_INHABITED_SEAM_ART_REJECT_JA.md)。
+
+---
+
 # 【最新確定A42／2026-10-26 JST】交差広場3機能の実3D／S1 ART REJECT・全体ART HOLD
 
 > A41の平行モールから離れ、G0比較後A42《PUBLIC CONFLUENCE》を1件のみ作成。西に屋内市場・東に文化工房・北に図書研究の3入口と南／東西／北の分岐道を造形。 `artifacts/g4c7-a42-public-confluence/` へ実OBJ/GLB（18,060頂点・7,628三角形・GLB313,992 bytes）／Z-bufferの9視点PNG／manifest／生成コードを保存。保存後のGLB/OBJとPNG9/9のバイナリ整合QAを実施（限定PASS）。初期可視化では**道路の分岐だけは改善したが、3施設は孤立した展示パビリオンと広い空地に見え、用途の読みやすさと巨大建築の一体感に未達**。S1 ART REJECT、正式都市G1 NOT RUN、全体ART HOLD。次A43は施設を広場に置く方法を延命せず、**ひとつの居住・公共建築の内外にまたがる活動空間の厚み**を先に実3Dで成立させる。詳細[A42監査](./G4C7_A42_PUBLIC_CONFLUENCE_ART_REJECT_JA.md)。旧資産完全保護、Minecraft施工・統合禁止、331人体/993足元/負の対照の正式G2/G3未実施、Work事前明示承認。
