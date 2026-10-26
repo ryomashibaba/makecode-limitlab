@@ -1,0 +1,160 @@
+{
+  "stage": "A50",
+  "date": "2026-10-26 JST",
+  "baselineHEAD": "bbbb93be2dffb89ab814cee3fe2c1412c2f51a8c",
+  "project": "MakeCode LimitLab / G4-C7 Orbital Commons",
+  "g0": {
+    "study": "A49 conditional A INTERLOCKED CIVIC CHAMBERS",
+    "alternative": "B OCCUPIED BANKS & BRIDGE — NOT BUILT; stopped at G0",
+    "decision": "ONE local S1 real-mesh scout only, no full-city 3D"
+  },
+  "model": "THREE DEEP ROOMS / inhabited section attempt",
+  "scope": "Local interior/urban public-room S1 scout, not city, not Minecraft",
+  "art": {
+    "s1": "ART REJECT",
+    "g1": "NOT RUN",
+    "overall": "ART HOLD",
+    "reason": "Market, culture and library actually have bounded floor/back/side room depth and actual central openings, but in real cameras culture is largely obscured, forum is a narrow wall canyon, exterior appears three low box-shaped campus buildings. Neither monumental future-city unity nor convincing inhabitation achieved.",
+    "doNotDetail": true
+  },
+  "technical": {
+    "vertices": 6018,
+    "triangles": 2588,
+    "materials": 16,
+    "glbBytes": 109296,
+    "objVertices": 6018,
+    "objTriangles": 2588,
+    "invalidIndices": 0,
+    "degenerateFaces": 0,
+    "invalidMaterials": 0,
+    "maxPositionFloat32Difference": 0.000003051757815342171,
+    "producerPNGVerified": 9,
+    "totalPNGs": 9,
+    "resolution": [
+      560,
+      420
+    ],
+    "postSaveBinaryQA": "NOT RUN",
+    "renderMethod": "software depth-tested indexed-PNG with near-plane clipping",
+    "localFacadeProbe": "6/6 PASS; 3 true open center rays + 3 blocking pier negative controls; envelope only",
+    "facadeProbeDirections": "forward through each room's main entrance across its local front-wall plane, height=6; negative x_local=9",
+    "notProof": [
+      "door accessibility G2",
+      "structure, full room topology, load-bearing G3",
+      "third party importer",
+      "visual program understanding"
+    ]
+  },
+  "visibility": {
+    "measurement": "nearest tagged triangle pixels with semantic Z buffer, no human recognizability guarantee",
+    "views": {
+      "arrival": {
+        "modelPixels": 189973,
+        "activityPercent": 7.75,
+        "marketPixels": 3887,
+        "culturePixels": 1643,
+        "libraryPixels": 476,
+        "upperHousingPixels": 8720
+      },
+      "forum": {
+        "modelPixels": 211428,
+        "activityPercent": 3.62,
+        "marketPixels": 2472,
+        "culturePixels": 2129,
+        "libraryPixels": 2043,
+        "upperHousingPixels": 1006
+      },
+      "market": {
+        "modelPixels": 218335,
+        "activityPercent": 23.61,
+        "marketPixels": 51557,
+        "culturePixels": 0,
+        "libraryPixels": 0,
+        "upperHousingPixels": 0
+      },
+      "culture": {
+        "modelPixels": 217610,
+        "activityPercent": 0.85,
+        "marketPixels": 0,
+        "culturePixels": 1851,
+        "libraryPixels": 0,
+        "upperHousingPixels": 0
+      },
+      "library": {
+        "modelPixels": 234529,
+        "activityPercent": 17.54,
+        "marketPixels": 0,
+        "culturePixels": 14184,
+        "libraryPixels": 26947,
+        "upperHousingPixels": 0
+      },
+      "front": {
+        "modelPixels": 57517,
+        "activityPercent": 11.51,
+        "marketPixels": 389,
+        "culturePixels": 1271,
+        "libraryPixels": 240,
+        "upperHousingPixels": 4721
+      },
+      "oblique": {
+        "modelPixels": 56858,
+        "activityPercent": 11.55,
+        "marketPixels": 624,
+        "culturePixels": 259,
+        "libraryPixels": 344,
+        "upperHousingPixels": 5339
+      },
+      "side": {
+        "modelPixels": 53197,
+        "activityPercent": 13.2,
+        "marketPixels": 0,
+        "culturePixels": 1665,
+        "libraryPixels": 842,
+        "upperHousingPixels": 4513
+      },
+      "aerial": {
+        "modelPixels": 80122,
+        "activityPercent": 8.7,
+        "marketPixels": 333,
+        "culturePixels": 386,
+        "libraryPixels": 581,
+        "upperHousingPixels": 5668
+      }
+    },
+    "critical": {
+      "forumActivityPercent": 3.62,
+      "cultureActivityPercent": 0.85
+    }
+  },
+  "artifacts": [
+    "a50_three_deep_rooms.obj",
+    "a50_three_deep_rooms.glb",
+    "materials.mtl",
+    "verified-png/9 views"
+  ],
+  "notRun": [
+    "full-city G1",
+    "G2 body-size walking, step connections, supported floor",
+    "G3 331 humans and 993 feet negative controls",
+    "physical stress/structure",
+    "self-intersection/manifold"
+  ],
+  "safety": {
+    "ART_HOLD": true,
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "oldEvidence": "PROTECTED",
+    "bodySamples": 331,
+    "feetSamples": 993,
+    "halfWidth": 0.65,
+    "footRelative": [
+      0.15,
+      3.25
+    ],
+    "historicInterferenceLimit": 45,
+    "unsupportedFootMax": 0,
+    "negativeControls": "REQUIRED",
+    "Work": "PRIOR EXPLICIT USER APPROVAL"
+  },
+  "next": "A51: change art-production grammar. Need visually prevalidated distinct deep cultural spaces and large-scale unifying architecture simultaneously, not 3 rectangular chambers; stop if no compelling concept and test source-driven modelling rather than merely parametric boxes."
+}
