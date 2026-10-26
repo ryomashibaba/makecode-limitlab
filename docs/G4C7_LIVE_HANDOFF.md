@@ -1,3 +1,9 @@
+# 【最新A56 G0／2026-10-26 JST】A55 B案の絶対評価 → 外形の3D移行停止／都市形態2案を新規比較／全体ART HOLD
+
+> GitHub HEAD `278a666b01313c3ea9b4d2150a30527467f6fbe3` とA54/A55正本、A54真正9視点のART REJECT、A55手動SVGを確認。A55 Bの横並び街区＋矩形接続は未来都市の絶対美術品質に不足する可能性が高いため、**B外形をそのままBlender化しない**と決定。A56はP《CIVIC CROWNFOLD / 住街三冠結節》（非整列で上下に融合する密な都市冠）とQ《ASCENDING PUBLIC DELTA / 枝分かれ立体市街》（斜めモール/屋根再発危険大）を新たな造形文法として比較し、**シルエット検討用SVGのみを研究素材として保存**。**美術前進はNOT VERIFIED、新Blender/真正Cycles/S1/G1/G2/G3はNOT RUN**。正式採用0、全体ART HOLD、Minecraft施工・都市統合禁止。Work事前承認・既存資産保護維持。詳細 [A56絶対評価](./G4C7_A56_ABSOLUTE_ART_GATE_G0_JA.md)／[G0シルエット研究図](../artifacts/g4c7-a56-art-reset/a56_silhouette_stress_test.svg)。通常CIの従来からの`g4c4_access_baseline.json`欠落は未修正。
+
+---
+
 # 【最新A55／2026-10-26 JST】G0 A/B比較図・人間目線／断面／遠景設計図を実制作、Bを次の2視点だけの条件付き研究候補へ／全体ART HOLD
 
 > GitHub正本の最新を照合後、A54真正Cycles9画像のS1 ART REJECTを継承。A55はA《交差生活街区》／B《交差空街区》を**手動SVG美術図**で比較し、Aはキャンパス／平行モール再発として停止、Bは「占有された街区と同じ公共室が近景・遠景を支配する」構成を検証する候補に絞った。Bの**人間目線1.7m・室の開口と奥行き・採光・住宅接続の断面・都市遠景**を一枚のコンセプトボードに手で描いて契約化。**新Blender、真の立体室、2視点Cycles、S1/G1の採用は未実施／NOT RUN**。旧A53の断面帯・屋根二岸や旧SVGを3D証拠と偽ることなく停止し、次A56はBlenderの個別編集可能な室を構成して**public_heart + obliqueの2視点**だけで可否を早期判定する。全体ART HOLD／Minecraft施工・都市統合禁止／G2・G3 331/993未実施／歴代原本保護。[A55視覚監査](./G4C7_A55_G0_COMPOSITION_VISUAL_AUDIT_JA.md)／[図面](../artifacts/g4c7-a55-occupied-city-g0/README.md)。
