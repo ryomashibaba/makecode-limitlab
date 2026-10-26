@@ -1,0 +1,123 @@
+{
+  "stage": "A48",
+  "date": "2026-10-26 JST",
+  "baseHead": "bdc6c9b055ac3c49a7499e0533449e13a6af40b6",
+  "concept": "INHABITED CIVIC FORUM",
+  "scope": "G0 two candidates; exactly one real S1 architectural scout; no complete city and no build",
+  "g0": [
+    {
+      "id": "A",
+      "name": "INHABITED CIVIC FORUM / 居住円弧市民室",
+      "concept": "One continuous deep inhabited arc that makes three activities simultaneously visible from its public chamber; open to sunlight",
+      "risk": "Amphitheatre/campus appearance and thin repetitive floors",
+      "selectedForScout": true
+    },
+    {
+      "id": "B",
+      "name": "CONVERGING HIGH-STREET CHAMBER / 収束街路室",
+      "concept": "Two commercial/research urban faces meet at civic threshold along a narrowing street",
+      "risk": "A41 parallel shopping mall and A47 blank canyon",
+      "selectedForScout": false,
+      "reason": "High probability of repeating parallel mall / blank street despite new labels"
+    }
+  ],
+  "art": {
+    "s1": "ART REJECT",
+    "g1": "NOT RUN",
+    "overall": "ART HOLD",
+    "localObservations": "Daylit civic forum, recognizable shelf row and market awnings, culture zone in central axis; partially improved immediate legibility",
+    "failure": "Distant form reads amphitheatre/campus fragment, uniform curved horizontal plates, giant city scale not demonstrated; residential depth does not read",
+    "detailWork": "STOP at S1"
+  },
+  "technical": {
+    "vertices": 7194,
+    "triangles": 3108,
+    "materials": 16,
+    "glbBytes": 130084,
+    "invalidIndices": 0,
+    "degenerateTriangles": 0,
+    "invalidMaterialIndices": 0,
+    "objVertices": 7194,
+    "objTriangles": 3108,
+    "glbDeclaredBytes": 130084,
+    "glbVersion": 2,
+    "maxFloat32PositionDiff": 0.0000037350689865434106,
+    "viewStats": {
+      "atrium_arrival": {
+        "pngValid": true,
+        "covered": 163214,
+        "clipped": 42,
+        "bytes": 236102
+      },
+      "civic_forum": {
+        "pngValid": true,
+        "covered": 207366,
+        "clipped": 50,
+        "bytes": 236102
+      },
+      "market_room": {
+        "pngValid": true,
+        "covered": 193512,
+        "clipped": 164,
+        "bytes": 236102
+      },
+      "reading_room": {
+        "pngValid": true,
+        "covered": 165456,
+        "clipped": 203,
+        "bytes": 236102
+      },
+      "front": {
+        "pngValid": true,
+        "covered": 41946,
+        "clipped": 0,
+        "bytes": 236102
+      },
+      "oblique": {
+        "pngValid": true,
+        "covered": 46281,
+        "clipped": 0,
+        "bytes": 236102
+      },
+      "side": {
+        "pngValid": true,
+        "covered": 45316,
+        "clipped": 0,
+        "bytes": 236102
+      },
+      "aerial": {
+        "pngValid": true,
+        "covered": 65494,
+        "clipped": 0,
+        "bytes": 236102
+      }
+    },
+    "producerCheck": "LIMITED PASS",
+    "independentSavedBinaryReadback": "NOT RUN",
+    "renderer": "A45 near-plane clipped software triangle depth projection",
+    "fixedDefect": "Vertical beams had zero horizontal direction giving 160 degenerate triangles before correction; 0 after explicit vertical box path"
+  },
+  "notRun": [
+    "G1 complete future city art",
+    "G2 walking/doors/floor/stairs/support",
+    "G3 331 body, 993 feet and negatives",
+    "self intersection and topology",
+    "third party GLB load"
+  ],
+  "safety": {
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "oldFiles": "PROTECTED",
+    "humanSamples": 331,
+    "feetSamples": 993,
+    "halfWidth": 0.65,
+    "footHeight": [
+      0.15,
+      3.25
+    ],
+    "interferenceUpperLimit": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControl": "MANDATORY",
+    "Work": "PRIOR EXPLICIT USER APPROVAL"
+  }
+}
