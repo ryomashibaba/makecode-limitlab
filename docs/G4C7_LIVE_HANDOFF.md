@@ -1,3 +1,9 @@
+# 【最新A60 G0／2026-10-27 JST】新規構想画像2件とも大アーチ／空中橋へ回帰しREJECT／U《生活界面都市》造形原理・構造スケッチ研究へ／3D停止・全体ART HOLD
+
+> 着手HEAD `2fe0abf0b2eb2f4c4c07341910ee8e690fe0c5d6` を再照合、A59真正2視点ART REJECTの現物記録を継承。A60は会話内で2件のG0画像生成を実施したがどちらも古典的アーチ・巨橋・塔・テラスの巨大幻想都市に回帰し**G0 ART REJECT**。**これら画像のGitHub原本保存は未実施**で、実3D/Cycles/G1には計上しない。意味なく画像生成を反復せず停止。UNStudio、ZHA、MVRDVの建築における用途・内部移動と外形の結合原理を研究し、Rの6街区・3結節という用途だけ継承、箱／橋／屋根中心を廃止してU《INHABITED INTERFACE / 生活界面都市》の独立造形仮説をG0研究。構造スケッチもART PASSではない。A60のBlender/実3D/S1/G1/G2/G3はNOT RUN、正式採用0／全体ART HOLD、Minecraft施工・都市統合禁止、A54/A59等旧原本保護、Work事前承認。詳細 [A60美術監査](./G4C7_A60_VISUAL_GRAMMAR_RESET_G0_JA.md)、[G0視覚構成図](../artifacts/g4c7-a60-visual-reset/a60_inhabited_interface_study.svg)、[試行記録](../artifacts/g4c7-a60-visual-reset/concept_trial_verdicts.json)。通常CI既存欠損問題には虚偽PASSを与えない。
+
+---
+
 # 【最新A59／2026-10-27 JST】真のBlender/Cycles 2視点実画像生成PASS→S1/遠景ART REJECT／主造形9箱の延命禁止
 
 > 開始HEAD `54886506f859e61478dadfb70bfd553c3119b4dd`、レンダ真正証拠確定コミット `e594fa571a9f1ead517b2e4b4ce22f1dbb3eba43`。A59はA53造形を使い回さず3つの実床/実壁/貫通開口のある実室＋9つの立体都市外形実験をBlender bpy 4.5.15/Cyclesでモデル化、.blendと960×720実画像2枚を生成しActions [40406113895](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40406113895) SUCCESS・CRC/SHA整合PASS・故意不正6/6検出。**しかし現物画像審査で公共室は巨大暗壁/暗床と用途不視認、遠景は単なる9つの箱/アパート模型となり2視点ART REJECT**。A51/A52と同じ「改革文書が実際の押出し/矩形窓生成文法を変えなかった」根本失敗が再発。形態を装飾/窓/ライトで延命せず停止。3D制作基盤のみ維持、全体ART HOLD・正式美術採用0、全都市G1/G2/G3 NOT RUN、Minecraft施工・統合禁止、過去とA59原本保護、Work事前承認。詳細 [A59真正実3D・美術監査](./G4C7_A59_NATIVE_2VIEW_ART_REJECT_JA.md)、[遠景](../artifacts/g4c7-a59-native-two-view/native-output/render_oblique.png)、[人間目線](../artifacts/g4c7-a59-native-two-view/native-output/render_public_heart.png)。通常CIは既存のbaseline欠落エラーを維持。

@@ -1,0 +1,37 @@
+{
+  "stage": "A60",
+  "base_head": "2fe0abf0b2eb2f4c4c07341910ee8e690fe0c5d6",
+  "evidence_level": "G0_CONCEPT_ONLY",
+  "original_images_saved_to_repository": false,
+  "attempts": [
+    {
+      "id": "A60-C1",
+      "medium": "generated concept image (conversation only)",
+      "decision": "G0_ART_REJECT",
+      "why": [
+        "Huge repeated arches and thin bridges dominate skyline",
+        "Towers/terraced decks separate instead of forming one inhabited city",
+        "Market/culture/research thumbnails cannot prove 3D continuity with skyline"
+      ]
+    },
+    {
+      "id": "A60-C2",
+      "medium": "generated concept image (conversation only)",
+      "decision": "G0_ART_REJECT",
+      "why": [
+        "Even more prominent giant arches and skybridges",
+        "Close-up public terrace looks like an elevated shopping mall",
+        "No same-scene true room-depth/daylight/structure evidence"
+      ]
+    }
+  ],
+  "new_3d": "NOT_RUN",
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "official_art_adoptions": 0,
+  "overall": "ART_HOLD",
+  "no_minecraft_build_or_city_integration": true,
+  "note": "G0 schematic is not real 3D nor an accepted artistic breakthrough; generated images not represented as GitHub-backed binary assets"
+}

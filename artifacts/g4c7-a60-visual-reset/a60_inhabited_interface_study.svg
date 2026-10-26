@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 850" role="img" aria-label="A60 G0 manual architectural study, not real three-dimensional evidence">
+<defs>
+<linearGradient id="bg" x2="0" y2="1"><stop stop-color="#07152b"/><stop offset="1" stop-color="#142d40"/></linearGradient>
+<linearGradient id="a" x2="1" y2="1"><stop stop-color="#83d8db"/><stop offset="1" stop-color="#154a68"/></linearGradient>
+<linearGradient id="b" x2="0" y2="1"><stop stop-color="#3483a0"/><stop offset="1" stop-color="#112d49"/></linearGradient>
+<pattern id="grain" width="21" height="21" patternUnits="userSpaceOnUse"><path d="M0 20H21" stroke="#77b5c4" stroke-opacity=".10" stroke-width=".8"/></pattern>
+</defs>
+<rect width="1480" height="850" fill="url(#bg)"/>
+<text x="40" y="50" fill="#eef7f6" font-family="sans-serif" font-size="31" font-weight="bold">A60 / INHABITED INTERFACE CITY</text>
+<text x="42" y="77" fill="#a6c7cd" font-family="sans-serif" font-size="16">G0 authoring study of inhabited mass, thresholds and daylight — NOT Blender, render, S1, G1 or approved city art.</text>
+<rect x="35" y="110" width="930" height="660" rx="12" stroke="#3d7d91" stroke-width="2" fill="#0c263c"/>
+<rect x="985" y="110" width="458" height="660" rx="12" stroke="#3d7d91" stroke-width="2" fill="#0c263c"/>
+<text x="58" y="149" fill="#99e9d8" font-size="23" font-family="sans-serif" font-weight="bold">01 — Distant city: occupied skin, not free-standing frames</text>
+<text x="1008" y="149" fill="#99e9d8" font-size="22" font-family="sans-serif" font-weight="bold">02 — Shared civic interface</text>
+<text x="58" y="178" fill="#b4cbd6" font-size="14" font-family="sans-serif">A conceptual mass silhouette where living neighborhoods are part of the form</text>
+<text x="1008" y="174" fill="#b4cbd6" font-size="14" font-family="sans-serif">Three deep public-room destinations</text>
+<!-- no freestanding towers, bridges, rings, roof sheets; all layers join at positive volumetric overlaps -->
+<path d="M70 657L70 536L117 517L139 446L189 401L228 417L258 354L326 339L352 298L408 279L441 313L484 250L538 230L573 276L622 241L682 272L713 323L754 309L796 378L842 397L856 458L929 490L929 657Z" fill="#17445d" stroke="#75bfcb" stroke-width="4"/>
+<path d="M82 638L82 529L128 513L157 477L190 461L237 476L270 430L336 415L372 365L407 356L442 381L481 340L536 326L564 364L609 331L665 353L703 393L740 394L776 448L838 468L851 518L917 533L917 638Z" fill="url(#a)" opacity=".8" stroke="#b0ecde" stroke-width="3"/>
+<!-- authored spatial volumes at different scales: bold irregular directional interfaces -->
+<path d="M101 570L192 553L259 504L364 505L421 482L456 526L382 580L252 594L166 627L101 633Z" fill="#133e5c" stroke="#9ce9e7" stroke-width="3"/>
+<path d="M254 441L333 404L390 392L456 357L555 354L607 382L566 433L488 460L396 463L332 490L258 494Z" fill="#0d3553" stroke="#9ce9df" stroke-width="3"/>
+<path d="M451 532L501 490L587 477L642 443L743 456L796 497L755 557L666 553L591 581L508 582Z" fill="#10405d" stroke="#c9e5cf" stroke-width="3"/>
+<path d="M564 352L599 323L675 330L716 367L767 407L751 442L656 425L604 397Z" fill="#1e5e72" stroke="#97d8d0" stroke-width="3"/>
+<path d="M322 339L350 304L414 282L442 319L431 364L369 373L332 390Z" fill="#255d73" stroke="#c3eddc" stroke-width="3"/>
+<path d="M473 336L484 255L535 238L570 275L560 331L515 356Z" fill="#26667b" stroke="#daeed6" stroke-width="3"/>
+<!-- deep recessed public apertures with direct sightlines, never vast barren quarry -->
+<path d="M274 529L316 512L344 520L323 559L280 566Z" fill="#061b34" stroke="#8ceadb" stroke-width="3"/>
+<path d="M506 524L540 502L571 506L566 546L523 560L496 548Z" fill="#092037" stroke="#f4d9a7" stroke-width="3"/>
+<path d="M659 487L702 471L728 492L712 528L671 533Z" fill="#0a2438" stroke="#9cdbd3" stroke-width="3"/>
+<!-- human readable mixed-use depth slices, irregular rhythm rather than one repeated facade -->
+<g fill="#c4f4e2" opacity=".76">
+<path d="M124 548l18-5v17l-18 3zM151 541l26-6v19l-26 5zM191 521l21-7v20l-21 8zM222 509l15-3v15l-15 5z"/>
+<path d="M281 458l19-8v17l-19 5zM310 448l12-5v19l-12 5zM347 432l23-10v15l-23 8zM394 414l14-7v16l-14 6z"/>
+<path d="M475 377l18-6v17l-18 7zM499 366l21-7v17l-21 7zM534 379l14-2v17l-14 3z"/>
+<path d="M589 471l18-9v18l-18 7zM618 461l22-9v20l-22 6zM672 458l18-3v14l-18 6zM752 502l18-3v16l-18 4z"/>
+<path d="M365 535l13-3v10l-13 5zM396 523l19-5v12l-19 6zM584 524l16-3v14l-16 3z"/>
+</g>
+<path d="M98 617L254 568L350 573L477 537L587 556L728 542L908 595" stroke="#dcf3e1" stroke-width="6" fill="none" opacity=".7"/>
+<path d="M105 635L231 608L350 617L451 602L582 607L709 576L911 627" stroke="#80b9c4" stroke-width="5" fill="none"/>
+<path d="M74 671H928" stroke="#5c839a" stroke-width="8"/>
+<text x="103" y="712" fill="#f0d9b1" font-family="sans-serif" font-size="15">Not a designed city yet: check silhouette without labels, then exact room geometry.</text>
+<text x="103" y="733" fill="#b8d2d8" font-family="sans-serif" font-size="13">No claim of scale, construction, walkable paths or inhabited upper rooms.</text>
+<!-- Scene eye: explicit 3 true-room design intentions, separate labelled panel -->
+<path d="M1020 566L1020 414L1074 384L1372 383L1410 419V568Z" fill="#1b4962" stroke="#6bafc6" stroke-width="3"/>
+<path d="M1032 559V428L1099 410V523L1112 540Z" fill="#3b7183"/>
+<path d="M1113 541V413H1195V541Z" fill="#10324b" stroke="#8fddcf" stroke-width="3"/>
+<path d="M1203 540V413H1285V541Z" fill="#10324b" stroke="#8fddcf" stroke-width="3"/>
+<path d="M1293 540V413H1375V541Z" fill="#10324b" stroke="#8fddcf" stroke-width="3"/>
+<path d="M1031 563H1410L1376 631H1044Z" fill="#435b6a" stroke="#96bfcd" stroke-width="2"/>
+<!-- occupied surfaces inside each room, not actual walls -->
+<path d="M1123 503h60v11h-60zM1214 496h59v11h-59zM1303 506h57v12h-57z" fill="#d1d6c6"/>
+<path d="M1128 485h20v17h-20zM1152 483h16v19h-16z" fill="#e9ab7f"/>
+<path d="M1216 474l14-15 13 17-14 7zM1251 472l13-12 11 19z" fill="#93c9bd"/>
+<path d="M1308 451h10v50h-10zM1325 451h10v50h-10zM1341 451h10v50h-10z" fill="#c7ceb2"/>
+<g fill="#d6a077">
+<circle cx="1145" cy="544" r="5"/><circle cx="1229" cy="544" r="5"/><circle cx="1343" cy="543" r="5"/>
+</g>
+<path d="M1137 548v25m8-25v26M1222 548v25m7-25v25M1336 547v26m7-26v26" stroke="#c8d6d8" stroke-width="4"/>
+<text x="1153" y="595" fill="#e8f4e9" text-anchor="middle" font-family="sans-serif" font-size="13">MARKET</text>
+<text x="1244" y="595" fill="#e8f4e9" text-anchor="middle" font-family="sans-serif" font-size="13">MAKER</text>
+<text x="1335" y="595" fill="#e8f4e9" text-anchor="middle" font-family="sans-serif" font-size="13">LEARNING</text>
+<text x="1008" y="215" fill="#e9d5b3" font-family="sans-serif" font-size="17">Design contract, not evidence:</text>
+<text x="1008" y="247" fill="#c5d6d9" font-family="sans-serif" font-size="15">• 1.7m above a truly modeled floor</text>
+<text x="1008" y="272" fill="#c5d6d9" font-family="sans-serif" font-size="15">• Separate deep and open rooms</text>
+<text x="1008" y="297" fill="#c5d6d9" font-family="sans-serif" font-size="15">• Market, making, learning all visible</text>
+<text x="1008" y="322" fill="#c5d6d9" font-family="sans-serif" font-size="15">• Side and overhead daylight paths</text>
+<text x="1008" y="347" fill="#c5d6d9" font-family="sans-serif" font-size="15">• Same district as city oblique</text>
+<text x="1008" y="679" fill="#f2d2ae" font-family="sans-serif" font-size="14">G0 only; opening-depth, raycasts, daylight,</text>
+<text x="1008" y="701" fill="#f2d2ae" font-family="sans-serif" font-size="14">human scale and topology NOT VERIFIED.</text>
+<text x="1008" y="748" fill="#aee9d8" font-family="sans-serif" font-size="16" font-weight="bold">STATUS: ART HOLD / 0 accepted</text>
+<text x="42" y="821" fill="#b3c3cd" font-family="sans-serif" font-size="16">Architectural intention, NOT screenshot of real 3D or verified beauty. Preserve all A59 and A54 originals.</text>
+</svg>
