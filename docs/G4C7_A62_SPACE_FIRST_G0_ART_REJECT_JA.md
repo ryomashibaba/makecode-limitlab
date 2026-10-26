@@ -25,3 +25,9 @@ A51/A52/A59/A61では「生成しやすい巨視形状が都市を支配」、�
 次のデザインに必要なのは、都市全体の1本の地形/管/屋根からではなく、複数の密度ある生活街区が空間的に「食い込む」大構成の美術的デザインと、1つの公開室の構造を同一設計として説明可能にすること。採用水準のコンセプトがなければBlenderやMinecraft施工は保留。
 
 **G0 ART REJECT／全体ART HOLD／正式美術採用0**。新規Blender/Cycles・S1正式・全体G1/G2/G3はNOT RUN。331/993など既存安全契約維持、施工・都市統合禁止。A54/A59と全旧資産/USED/CSV/ZIP/OBJ/GLB/PNG/.blend上書き禁止、Work事前明示承認。通常CIの`build/g4c4_access_baseline.json`欠損に偽ファイルを置かず、テスト無効化しない。
+## 最終証拠確定（A62独立GitHub Actions）
+- [A62専用Actions #40417502015](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40417502015)：**SUCCESS**。前のRun [#40417339186](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40417339186) ではEGL/OSMesa非導入によるsegfaultを検出し、**造形を変えずCIにソフトウェアOpenGLを追加**して修復した。
+- 5件の意図的な不正データ全検出、1200×800の2視点実OpenGL画像、PNG CRC/次元/SHA256とMinecraft施工禁止マニフェスト検証PASS。
+- Actions保存コミット [`569b6d68871f1a66d8645f403ed03402e275490d`](https://github.com/ryomashibaba/makecode-limitlab/commit/569b6d68871f1a66d8645f403ed03402e275490d) に `output/public_heart.png`、`output/oblique.png`、`output/manifest.json` を原本保護で追加。
+- **GitHub Actions配布ZIPを再取得してローカル描画画像とバイト一致を検査**：`public_heart.png` SHA-256 `bbc1fb54d0e803e6644d1ededa12a25be70a70aa43c68588796a4df35afc724d`、`oblique.png` SHA-256 `1fd53accdd609c20d7c8d0f9f57dd65f3d825974a55e9d4159a44c314a0fdc6a`。**美術はいずれもART REJECT**。
+- なお通常CI [#40417501931](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40417501931) は従来の`build/g4c4_access_baseline.json`欠落により428 tests中1 setup errorでFAIL。A62の専用PASSは通常CIのPASSではない。
