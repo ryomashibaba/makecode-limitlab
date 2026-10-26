@@ -1,0 +1,256 @@
+{
+  "stage": "A49",
+  "baselineSource": "A48 original real mesh before A49 changes",
+  "head": "e001c775b4747f4a0fb37d578a441853a4181e47",
+  "method": "Independent near-plane-clipped z-buffer segment labels based on face emission order",
+  "pixels": [
+    560,
+    420
+  ],
+  "faceGroups": {
+    "urban-landscape": 132,
+    "inhabited-continuous-deep-band": 1372,
+    "market-niches-attached-to-band": 308,
+    "culture-performance-center": 132,
+    "library-reading-gallery": 504,
+    "upper-residential-visible-occupation": 324,
+    "civic-structure-and-route-legibility": 120,
+    "people-proportion-reference": 216
+  },
+  "activeGroups": [
+    "market-niches-attached-to-band",
+    "culture-performance-center",
+    "library-reading-gallery",
+    "upper-residential-visible-occupation"
+  ],
+  "negativeControl": {
+    "frontBlocksFar": true,
+    "behindCameraHidden": true,
+    "frontPixels": 3136
+  },
+  "views": {
+    "atrium_arrival": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 71986,
+      "modelPixels": 163214,
+      "activityPixels": 10667,
+      "activityOfModelPercent": 6.54,
+      "groupPixels": {
+        "urban-landscape": 15718,
+        "inhabited-continuous-deep-band": 53929,
+        "market-niches-attached-to-band": 3284,
+        "culture-performance-center": 1466,
+        "library-reading-gallery": 3304,
+        "upper-residential-visible-occupation": 2613,
+        "civic-structure-and-route-legibility": 76389,
+        "people-proportion-reference": 6511
+      },
+      "visibleActivityGroups": [
+        "market-niches-attached-to-band",
+        "culture-performance-center",
+        "library-reading-gallery",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 42,
+      "discardedTriangles": 14
+    },
+    "civic_forum": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 27834,
+      "modelPixels": 207366,
+      "activityPixels": 20358,
+      "activityOfModelPercent": 9.82,
+      "groupPixels": {
+        "urban-landscape": 2566,
+        "inhabited-continuous-deep-band": 108099,
+        "market-niches-attached-to-band": 9304,
+        "culture-performance-center": 5773,
+        "library-reading-gallery": 1373,
+        "upper-residential-visible-occupation": 3908,
+        "civic-structure-and-route-legibility": 76193,
+        "people-proportion-reference": 150
+      },
+      "visibleActivityGroups": [
+        "market-niches-attached-to-band",
+        "culture-performance-center",
+        "library-reading-gallery",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 50,
+      "discardedTriangles": 86
+    },
+    "market_room": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 41688,
+      "modelPixels": 193512,
+      "activityPixels": 20268,
+      "activityOfModelPercent": 10.47,
+      "groupPixels": {
+        "urban-landscape": 71521,
+        "inhabited-continuous-deep-band": 95280,
+        "market-niches-attached-to-band": 16404,
+        "culture-performance-center": 1939,
+        "library-reading-gallery": 0,
+        "upper-residential-visible-occupation": 1925,
+        "civic-structure-and-route-legibility": 5160,
+        "people-proportion-reference": 1283
+      },
+      "visibleActivityGroups": [
+        "market-niches-attached-to-band",
+        "culture-performance-center",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 164,
+      "discardedTriangles": 646
+    },
+    "reading_room": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 69744,
+      "modelPixels": 165456,
+      "activityPixels": 14880,
+      "activityOfModelPercent": 8.99,
+      "groupPixels": {
+        "urban-landscape": 51629,
+        "inhabited-continuous-deep-band": 87601,
+        "market-niches-attached-to-band": 0,
+        "culture-performance-center": 2812,
+        "library-reading-gallery": 8926,
+        "upper-residential-visible-occupation": 3142,
+        "civic-structure-and-route-legibility": 10820,
+        "people-proportion-reference": 526
+      },
+      "visibleActivityGroups": [
+        "culture-performance-center",
+        "library-reading-gallery",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 203,
+      "discardedTriangles": 357
+    },
+    "front": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 193254,
+      "modelPixels": 41946,
+      "activityPixels": 2901,
+      "activityOfModelPercent": 6.92,
+      "groupPixels": {
+        "urban-landscape": 19523,
+        "inhabited-continuous-deep-band": 17779,
+        "market-niches-attached-to-band": 883,
+        "culture-performance-center": 619,
+        "library-reading-gallery": 408,
+        "upper-residential-visible-occupation": 991,
+        "civic-structure-and-route-legibility": 1728,
+        "people-proportion-reference": 15
+      },
+      "visibleActivityGroups": [
+        "market-niches-attached-to-band",
+        "culture-performance-center",
+        "library-reading-gallery",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 0,
+      "discardedTriangles": 0
+    },
+    "oblique": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 188919,
+      "modelPixels": 46281,
+      "activityPixels": 1949,
+      "activityOfModelPercent": 4.21,
+      "groupPixels": {
+        "urban-landscape": 23479,
+        "inhabited-continuous-deep-band": 18620,
+        "market-niches-attached-to-band": 215,
+        "culture-performance-center": 489,
+        "library-reading-gallery": 538,
+        "upper-residential-visible-occupation": 707,
+        "civic-structure-and-route-legibility": 2221,
+        "people-proportion-reference": 12
+      },
+      "visibleActivityGroups": [
+        "market-niches-attached-to-band",
+        "culture-performance-center",
+        "library-reading-gallery",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 0,
+      "discardedTriangles": 0
+    },
+    "side": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 189884,
+      "modelPixels": 45316,
+      "activityPixels": 816,
+      "activityOfModelPercent": 1.8,
+      "groupPixels": {
+        "urban-landscape": 26247,
+        "inhabited-continuous-deep-band": 16454,
+        "market-niches-attached-to-band": 6,
+        "culture-performance-center": 2,
+        "library-reading-gallery": 199,
+        "upper-residential-visible-occupation": 609,
+        "civic-structure-and-route-legibility": 1792,
+        "people-proportion-reference": 7
+      },
+      "visibleActivityGroups": [
+        "market-niches-attached-to-band",
+        "culture-performance-center",
+        "library-reading-gallery",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 0,
+      "discardedTriangles": 0
+    },
+    "aerial": {
+      "size": [
+        560,
+        420
+      ],
+      "backgroundPixels": 169706,
+      "modelPixels": 65494,
+      "activityPixels": 1717,
+      "activityOfModelPercent": 2.62,
+      "groupPixels": {
+        "urban-landscape": 39486,
+        "inhabited-continuous-deep-band": 20790,
+        "market-niches-attached-to-band": 165,
+        "culture-performance-center": 729,
+        "library-reading-gallery": 389,
+        "upper-residential-visible-occupation": 434,
+        "civic-structure-and-route-legibility": 3485,
+        "people-proportion-reference": 16
+      },
+      "visibleActivityGroups": [
+        "market-niches-attached-to-band",
+        "culture-performance-center",
+        "library-reading-gallery",
+        "upper-residential-visible-occupation"
+      ],
+      "nearClippedTriangles": 0,
+      "discardedTriangles": 0
+    }
+  },
+  "status": "DIAGNOSTIC ONLY; NOT S1/G1/G2/G3 OR ART PASS"
+}

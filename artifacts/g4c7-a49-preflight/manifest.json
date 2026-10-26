@@ -1,0 +1,82 @@
+{
+  "stage": "A49",
+  "date": "2026-10-26 JST",
+  "baseHEAD": "e001c775b4747f4a0fb37d578a441853a4181e47",
+  "scope": "G0 methodological preflight, NOT new S1 real model",
+  "strategy": "ART-FIRST / QUALITY-FIRST",
+  "status": {
+    "g0": "2 CONCEPTS COMPARED; A IS CONDITIONAL RESEARCH CANDIDATE ONLY; NO ART PASS",
+    "newS1": "NOT RUN",
+    "g1": "NOT RUN",
+    "g2": "NOT RUN",
+    "g3": "NOT RUN",
+    "overall": "ART HOLD"
+  },
+  "g0": [
+    {
+      "name": "INTERLOCKED CIVIC CHAMBERS",
+      "decision": "CONDITIONAL A50 RESEARCH CANDIDATE",
+      "pros": [
+        "Shared public living room",
+        "Deep occupied rooms rather than pavilion labels",
+        "Asymmetric far-view hypothesis"
+      ],
+      "risk": "Unproven 3D opening and A45 giant shell relapse"
+    },
+    {
+      "name": "OCCUPIED BANKS & BRIDGE",
+      "decision": "STOP BEFORE NEW 3D",
+      "risk": "A39 separated buildings + bridge, A34 quarry"
+    }
+  ],
+  "artifacts": {
+    "svg": [
+      "01_A_OCCUPIED_SECTION.svg",
+      "02_A_OUTSIDE_CONTRACT.svg",
+      "03_B_BANKS_SECTION.svg",
+      "04_B_SPLIT_OUTSIDE.svg"
+    ],
+    "diagnostic": "a48_semantic_visibility_baseline.json",
+    "tools": [
+      "tools/g4c7_a49_g0_concepts.mjs",
+      "tools/g4c7_a49_visibility_gate.mjs"
+    ]
+  },
+  "computedBaseline": {
+    "arrival": 6.54,
+    "civicForum": 9.82,
+    "market": 10.47,
+    "reading": 8.99,
+    "front": 6.92,
+    "oblique": 4.21,
+    "side": 1.8,
+    "aerial": 2.62,
+    "unit": "percent of foreground model pixels assigned to 4 named programme-tag meshes",
+    "negativeControls": "front occludes far PASS; behind-camera hidden PASS",
+    "status": "DIAGNOSTIC ONLY; category geometry may be furniture and is NOT program readability"
+  },
+  "limitations": [
+    "SVG is 2D concept only, not full 3D render",
+    "percentage share is not visual quality score",
+    "no independent 3D semantic segmentation pipeline certification",
+    "new S1 deliberately not produced",
+    "no walking/build safety claims"
+  ],
+  "fixedConstraints": {
+    "noMinecraftBuild": true,
+    "noCityIntegration": true,
+    "protectHistoric": true,
+    "bodySamples": 331,
+    "feetSamples": 993,
+    "halfWidth": 0.65,
+    "footRelHeight": [
+      0.15,
+      3.25
+    ],
+    "historicBodyCollisionLimit": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControlsRequired": true,
+    "WorkRequiresExplicitPriorPermission": true
+  },
+  "next": "A50: validate depth/real apertures/activities from fixed human camera BEFORE detail or megacity modelling"
+}
