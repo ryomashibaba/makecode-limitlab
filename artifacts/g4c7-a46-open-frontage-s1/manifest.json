@@ -34,7 +34,7 @@
     "materialIndicesOutsideRange": 0,
     "version": 2,
     "producerQA": "LIMITED PASS",
-    "independentPersistedReadback": "NOT RUN",
+    "independentPersistedReadback": "LIMITED PASS (GLB/OBJ plus PNG8/8); no art/safety certification",
     "apertureTest": {
       "probes": [
         {
@@ -146,6 +146,38 @@
         "clipCount": 0,
         "bytes": 236102
       }
+    },
+    "persistedBinaryReadback": {
+      "checkedCommit": "245446edda5b178751bf2e085f3bc80d81ce5da4",
+      "status": "LIMITED BINARY STRUCTURAL QA PASS",
+      "glb": {
+        "bytes": 108908,
+        "declaredBytes": 108908,
+        "glbVersion": 2,
+        "positionCount": 5924,
+        "objVertices": 5924,
+        "indices": 7896,
+        "triangles": 2632,
+        "outOfRangeIndices": 0,
+        "maxPositionError": 0.0000017977029003191092
+      },
+      "png": {
+        "checked": 8,
+        "total": 8,
+        "width": 560,
+        "height": 420,
+        "eachBytes": 236102,
+        "crcFailures": 0,
+        "complete": true
+      },
+      "notValidated": [
+        "S1 artistic pass",
+        "G1 full-city art",
+        "G2 walking/support",
+        "G3 331/993/negative control",
+        "third-party importer",
+        "self-intersections/load-bearing"
+      ]
     }
   },
   "notTested": [
