@@ -196,12 +196,13 @@
         "orthographicScale": 3
       }
     },
-    "differentFromA40": "Geometry, source scale, colors, target, lighting and camera differ: do not assert rigorous numerical quality comparison."
+    "differentFromA40": "Geometry, source scale, colors, target, lighting and camera differ: do not assert rigorous numerical quality comparison.",
+    "persistedEightPngQA": "PASS: 8 / 8 independently downloaded from GitHub; PNG signature, dimensions 800x620, indexed palette and chunk CRC failures 0"
   },
   "binaryVerification": {
     "generatedGlbVersion2": true,
     "generatedGlbBytes": 231260,
-    "githubIndependentReRead": "PENDING AFTER COMMIT",
+    "githubIndependentReRead": "PASS: GitHub stored GLB 231260 bytes v2, POSITION 13224 and OBJ 13224, 5620 triangles, out-of-range indices 0, max POSITION Float32 difference 0.0000037809457609228048, all buffer end boundaries match",
     "thirdPartyViewer": "NOT RUN"
   },
   "notRun": [
