@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" role="img" aria-labelledby="title desc">
+<title id="title">G4-C7 A55: two architectural ideas compared, G0 study not 3D proof</title>
+<desc id="desc">Hand-authored conceptual elevation diagrams, not Blender renders: A has low lateral public buildings and a mall-like failure risk; B has vertically interlocked inhabited neighborhoods and a central civic room. Neither is approved as art.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#081c38"/><stop offset=".58" stop-color="#143c62"/><stop offset="1" stop-color="#305f73"/></linearGradient>
+ <linearGradient id="ivory" x2=".2" y2="1"><stop stop-color="#d5e8e2"/><stop offset="1" stop-color="#6e9bab"/></linearGradient>
+ <linearGradient id="bronze" x2=".5" y2="1"><stop stop-color="#f9b47d"/><stop offset="1" stop-color="#a45b4c"/></linearGradient>
+ <linearGradient id="glass" x2=".2" y2="1"><stop stop-color="#7de2e5" stop-opacity=".85"/><stop offset="1" stop-color="#15576c" stop-opacity=".7"/></linearGradient>
+ <pattern id="fine" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M14 0H0V14" stroke="#96e5f2" opacity=".12" fill="none"/></pattern>
+</defs>
+<rect width="1440" height="820" fill="#071429"/>
+<text x="54" y="52" font-family="Arial,sans-serif" font-weight="700" font-size="27" fill="#e8f4f7">A55 / G0   PROGRAM → SPACE → CITY</text>
+<text x="54" y="84" font-family="Arial,sans-serif" font-size="15" fill="#9cb5c6">Architectural composition comparison · schematic drawing, NOT Blender / S1 / G1 proof</text>
+<g transform="translate(44,120)">
+ <rect width="660" height="628" rx="18" fill="url(#sky)" stroke="#456179" stroke-width="2"/>
+ <rect width="660" height="628" fill="url(#fine)" rx="18"/>
+ <text x="26" y="44" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#f2f5f7">A   CROSS-SECTION COMMONS</text>
+ <text x="26" y="72" font-family="Arial,sans-serif" font-size="16" fill="#d1e0e8">Horizontally shared occupied crossroads</text>
+ <path d="M0 447L660 447V628H0Z" fill="#17303b"/>
+ <path d="M15 446L280 430L638 442L660 464H0Z" fill="#698385"/>
+ <!-- Western market building: low horizontal mass -->
+ <path d="M44 248L252 236L316 254V432L42 438Z" fill="#9ab9b9" stroke="#d5ece5" stroke-width="4"/>
+ <path d="M38 285L306 282V310L38 321Z" fill="#486d76" opacity=".9"/>
+ <path d="M72 325L124 322V415L72 417Z M136 320L188 316V413L136 413Z M202 317L268 315V415L202 413Z" fill="#1c485e" stroke="#dcebd8" stroke-width="3"/>
+ <path d="M76 335H117M140 333H184M208 328H264" stroke="#e8b879" stroke-width="6"/>
+ <path d="M90 390l17-9 16 9M150 385l16-10 18 10" fill="none" stroke="#f0a56b" stroke-width="5"/>
+ <!-- Eastern culture / research mass -->
+ <path d="M361 222L601 236L628 257V438L355 432Z" fill="#b6b8b0" stroke="#e4e4d5" stroke-width="4"/>
+ <path d="M382 277L607 281V305L379 299Z" fill="#4b6972"/>
+ <path d="M382 321H450V428H382Z M463 326H531V430H463Z M546 322H607V431H546Z" fill="#21546c" stroke="#c2dfda" stroke-width="3"/>
+ <path d="M393 353L439 349 M473 350L522 356 M551 348L600 351" stroke="#a0eff0" stroke-width="4"/>
+ <!-- Independent third body shows campus risk -->
+ <path d="M238 134L432 130L466 162L465 206L236 208Z" fill="#cdd9d2" stroke="#f2eeee" stroke-width="4"/>
+ <path d="M258 166H446V185H258Z" fill="#2f7581"/>
+ <!-- plaza -->
+ <path d="M275 434L351 434L402 580L188 580Z" fill="#adada3" opacity=".72" stroke="#dce9db" stroke-width="3"/>
+ <path d="M310 424L309 560 M283 475L343 476" stroke="#f0d9ae" stroke-width="3" opacity=".85"/>
+ <circle cx="312" cy="423" r="8" fill="#ffce84"/>
+ <path d="M312 433v25m-16-9 16-8 16 8m-16 9-12 21m12-21 12 21" stroke="#0e3345" stroke-width="5" stroke-linecap="round"/>
+ <text x="36" y="518" font-family="Arial,sans-serif" font-size="17" fill="#f5d3ae">MARKET</text>
+ <text x="515" y="518" font-family="Arial,sans-serif" font-size="17" fill="#b5f3e8">CULTURE</text>
+ <rect x="24" y="552" width="611" height="53" rx="9" fill="#0b1b2f" stroke="#e8a877" stroke-width="1.5"/>
+ <text x="43" y="575" font-family="Arial,sans-serif" font-size="15" fill="#ffca9b">G0 concern</text>
+ <text x="159" y="575" font-family="Arial,sans-serif" font-size="15" fill="#e8edf1">Low campus / horizontal mall silhouette.</text>
+ <text x="42" y="596" font-family="Arial,sans-serif" font-size="12" fill="#a9c5d4">Architectural connection appears limited to the plaza.</text>
+</g>
+<g transform="translate(736,120)">
+ <rect width="660" height="628" rx="18" fill="url(#sky)" stroke="#598ba7" stroke-width="2"/>
+ <rect width="660" height="628" fill="url(#fine)" rx="18"/>
+ <text x="26" y="44" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#f2f5f7">B   INTERLOCKED SKY NEIGHBORHOODS</text>
+ <text x="26" y="72" font-family="Arial,sans-serif" font-size="16" fill="#d1e0e8">Civic heart embedded in three inhabited districts</text>
+ <path d="M0 474H660V628H0Z" fill="#182f3c"/>
+ <path d="M0 480L276 467L430 472L660 462" stroke="#aecbd0" stroke-width="6"/>
+ <!-- Left lived-in district with deep craft pockets -->
+ <path d="M42 292L96 236L235 229L264 269L267 461L62 463Z" fill="url(#bronze)" stroke="#f4d5ba" stroke-width="5"/>
+ <path d="M59 347L235 340L237 439L60 441Z" fill="#244c5c" stroke="#e5cbb1" stroke-width="3"/>
+ <path d="M75 357L120 354V430H75Z M129 353L171 352V429H129Z M179 352L225 351V429H179Z" fill="#66989b" stroke="#cae6df" stroke-width="2"/>
+ <path d="M80 388H116M132 391H166M183 389H220" stroke="#fbb777" stroke-width="5"/>
+ <path d="M80 311H232M101 277H215" stroke="#f7e0bf" stroke-width="7"/>
+ <!-- upper staggered housing neighborhood, solid body not floating tray -->
+ <path d="M164 128L236 90L403 109L453 161L431 300L257 315L224 265L156 248Z" fill="url(#ivory)" stroke="#e7f6ee" stroke-width="5"/>
+ <path d="M188 161L224 142L399 158L421 178L413 210L183 209Z" fill="#1d4d64" stroke="#b6dad9" stroke-width="2"/>
+ <path d="M201 171l37-4v32h-37z M252 171h38v27h-38z M305 174h39v27h-39z M360 174h39v28h-39z" fill="#a8dadd" stroke="#f9ead9" stroke-width="3"/>
+ <path d="M180 226L415 234L405 266L198 256Z" fill="#427886"/>
+ <path d="M200 242L398 249" stroke="#f4d8ae" stroke-width="6"/>
+ <circle cx="232" cy="239" r="7" fill="#f5bc85"/><circle cx="364" cy="245" r="7" fill="#f5bc85"/>
+ <!-- Right research and housing mass overlapping upper body -->
+ <path d="M401 235L479 190L595 218L624 271L610 459L416 462Z" fill="#78bcc2" stroke="#d2eeec" stroke-width="5"/>
+ <path d="M433 292L589 295V403H426Z" fill="#123f58" stroke="#c2e6e6" stroke-width="4"/>
+ <path d="M446 317L571 319M446 343L571 347M447 374L570 377" stroke="#8fd3d4" stroke-width="7"/>
+ <path d="M442 231L575 245L588 272L418 266Z" fill="#4a8497"/>
+ <!-- Embedded traversable connections with thick volume / daylight -->
+ <path d="M226 298L426 273L436 310L234 339Z" fill="#c6d2c4" stroke="#f2eee0" stroke-width="5"/>
+ <path d="M249 305L413 289L414 309L245 328Z" fill="#205366"/>
+ <path d="M238 373L425 363L420 410L255 415Z" fill="#90b9b5" stroke="#f0e9da" stroke-width="5"/>
+ <path d="M254 383L409 374L410 400L253 402Z" fill="#1c5064"/>
+ <!-- Open skylit atrium and populated ground -->
+ <path d="M265 338L405 314L407 360L263 369Z" fill="#10334b" opacity=".95"/>
+ <path d="M305 312L319 356 M365 305L355 356" stroke="#ffe6a6" stroke-width="5" opacity=".85"/>
+ <path d="M271 470L318 360L399 358L437 471" stroke="#dae9db" stroke-width="5" fill="none"/>
+ <path d="M267 469L319 444L409 443L441 471" stroke="#f4bd8c" stroke-width="7" fill="none"/>
+ <circle cx="320" cy="453" r="7" fill="#fed0a6"/><path d="M320 461v21" stroke="#132e40" stroke-width="6"/>
+ <circle cx="366" cy="452" r="7" fill="#fed0a6"/><path d="M366 460v24" stroke="#132e40" stroke-width="6"/>
+ <path d="M471 255l-39 62 M275 258l28 48" stroke="#d9ffb2" stroke-width="4" stroke-dasharray="9 7"/>
+ <text x="31" y="517" font-family="Arial,sans-serif" font-size="17" fill="#ffb889">MAKERS</text>
+ <text x="272" y="517" font-family="Arial,sans-serif" font-size="17" fill="#e9f7ed">PUBLIC HEART</text>
+ <text x="521" y="517" font-family="Arial,sans-serif" font-size="17" fill="#a5e2e4">LEARNING</text>
+ <rect x="24" y="552" width="612" height="53" rx="9" fill="#0b1b2f" stroke="#77d6ca" stroke-width="1.5"/>
+ <text x="43" y="575" font-family="Arial,sans-serif" font-size="15" fill="#a4f2e5">Research lead</text>
+ <text x="156" y="575" font-family="Arial,sans-serif" font-size="15" fill="#e8edf1">Inhabited masses interlock around the civic room.</text>
+ <text x="42" y="596" font-family="Arial,sans-serif" font-size="12" fill="#a9c5d4">High relapse risk: bridge model / quarry void. NOT ART PASS.</text>
+</g>
+<text x="52" y="788" font-family="Arial,sans-serif" font-size="15" fill="#a9c2d2">G0 research choice: B for more rigorous human-eye / section / oblique storyboarding, CONDITIONAL ONLY.</text>
+</svg>

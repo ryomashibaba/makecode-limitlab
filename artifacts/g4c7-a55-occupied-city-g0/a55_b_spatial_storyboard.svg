@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1150" viewBox="0 0 1600 1150" role="img" aria-labelledby="title desc">
+<title id="title">A55 Interlocked Sky Neighborhoods architectural storyboard</title>
+<desc id="desc">Manually authored drawing of one connected future civic building shown as a human-eye view, inhabited section and distant urban-scale silhouette. Concept only, no actual Blender mesh or traversable floor proof.</desc>
+<defs>
+<linearGradient id="bg" x2="0" y2="1"><stop stop-color="#061626"/><stop offset="1" stop-color="#0d3650"/></linearGradient>
+<linearGradient id="hall" x2="0" y2="1"><stop stop-color="#24475e"/><stop offset=".55" stop-color="#447b81"/><stop offset="1" stop-color="#bb9e81"/></linearGradient>
+<linearGradient id="day" x2="0" y2="1"><stop stop-color="#dbfff3" stop-opacity=".85"/><stop offset="1" stop-color="#aff4e6" stop-opacity="0"/></linearGradient>
+<linearGradient id="glass" x2="0" y2="1"><stop stop-color="#c6faf0"/><stop offset="1" stop-color="#2c758d"/></linearGradient>
+<linearGradient id="gold" x2="0" y2="1"><stop stop-color="#ffc58c"/><stop offset="1" stop-color="#bd745e"/></linearGradient>
+<pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#9be5db" stroke-width=".6" opacity=".12"/></pattern>
+</defs>
+<rect width="1600" height="1150" fill="#071526"/>
+<text x="48" y="47" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#f4f8f7">A55  /  INTERLOCKED SKY NEIGHBORHOODS</text>
+<text x="48" y="76" font-family="Arial,sans-serif" font-size="16" fill="#b0ced1">ONE SPATIAL IDEA · TWO SCALES + SECTION · G0 CONCEPT DRAWING, NOT REAL 3D OR APPROVAL</text>
+<!-- panel 1 -->
+<g transform="translate(44 108)">
+<rect width="966" height="592" rx="15" fill="url(#bg)" stroke="#47738c" stroke-width="2"/>
+<rect width="966" height="592" fill="url(#grid)"/>
+<text x="25" y="43" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#edf5f3">01  CIVIC HEART · human eye 1.7m above defined floor</text>
+<text x="25" y="69" font-family="Arial,sans-serif" font-size="14" fill="#bbd4dd">One viewpoint must reveal three actual program thresholds; openings are *design requirements*, not proven.</text>
+<!-- room perspective -->
+<path d="M70 143L342 105L658 105L887 143L904 442L74 442Z" fill="url(#hall)" stroke="#c3dad7" stroke-width="5"/>
+<path d="M70 143L342 105L347 261L75 442Z" fill="#325265" stroke="#7c9c9b" stroke-width="3"/>
+<path d="M887 143L658 105L648 260L904 442Z" fill="#23455c" stroke="#89b4b2" stroke-width="3"/>
+<path d="M341 106H658L650 266H350Z" fill="#102e42"/>
+<path d="M425 104L455 255L538 255L580 103Z" fill="url(#day)"/>
+<path d="M456 113L468 251M545 112L526 251" stroke="#dcfff2" stroke-width="4"/>
+<!-- public floor perspective -->
+<path d="M76 443L347 267L653 267L902 442L902 556H76Z" fill="#84928d" stroke="#f0d5b0" stroke-width="4"/>
+<path d="M76 445L902 444M164 445L419 269M812 444L580 269" stroke="#ddd9bb" stroke-width="3" opacity=".8"/>
+<path d="M400 444L451 267M552 267L610 444" stroke="#f1d1a3" stroke-width="2" opacity=".75"/>
+<!-- long left market bay opening -->
+<path d="M100 215L330 199L339 376L100 425Z" fill="#102d3e" stroke="#edd0a7" stroke-width="7"/>
+<path d="M124 254L308 243L313 357L124 396Z" fill="#316473"/>
+<path d="M129 284L309 279" stroke="#fbc690" stroke-width="9"/>
+<path d="M155 322l75-9 34 14-74 16z" fill="#dcb18b" stroke="#fff0cf" stroke-width="3"/>
+<path d="M155 328v39m108-41v27m-74-11v34" stroke="#392b25" stroke-width="7"/>
+<path d="M139 299l31-5m56-3 44-3" stroke="#f8e1b2" stroke-width="6"/>
+<circle cx="214" cy="295" r="8" fill="#f6bd8a"/><path d="M214 303v35" stroke="#0a3848" stroke-width="7"/>
+<!-- right workshop opened into hall -->
+<path d="M643 200L875 223L880 422L638 370Z" fill="#102e41" stroke="#9befe6" stroke-width="7"/>
+<path d="M660 243L860 260L862 381L657 345Z" fill="#2b6a7a"/>
+<path d="M687 310l82 12 24 19-92-16z" fill="#d4c9a5" stroke="#c7fff0" stroke-width="3"/>
+<path d="M689 312v29m104 0v27M713 295L826 305" stroke="#fff0be" stroke-width="5"/>
+<path d="M785 289l40 10M760 275l49 7" stroke="#94dfde" stroke-width="6"/>
+<circle cx="745" cy="284" r="8" fill="#fbc58f"/><path d="M745 292l-3 31" stroke="#10394c" stroke-width="8"/>
+<!-- research visible upper balcony with books & people -->
+<path d="M348 209L650 209L658 258L347 258Z" fill="#83b9bd" stroke="#e6e9dc" stroke-width="6"/>
+<path d="M364 159H630V208H364Z" fill="#214b5c" stroke="#e4eddd" stroke-width="5"/>
+<path d="M380 175V199M394 174V199M408 174V199M422 174V199M451 174V199M465 174V199M479 174V199M493 174V199M523 174V199M537 174V199M551 174V199M566 174V199" stroke="#f7d096" stroke-width="8"/>
+<path d="M350 218L647 218M350 240L647 240" stroke="#b9f1e5" stroke-width="4"/>
+<circle cx="593" cy="201" r="8" fill="#eac099"/><path d="M593 210v22" stroke="#13384a" stroke-width="6"/>
+<!-- inhabited housing windows directly above same hall -->
+<path d="M311 111L318 82L687 82L690 108" fill="none" stroke="#e9f0dc" stroke-width="15"/>
+<path d="M346 83H405V107H346ZM420 83H479V107H420ZM495 83H555V107H495ZM570 83H637V107H570Z" fill="#88d4db" stroke="#f1e6cd" stroke-width="3"/>
+<!-- person at real standing position -->
+<ellipse cx="484" cy="457" rx="25" ry="8" fill="#092337" opacity=".65"/>
+<circle cx="484" cy="386" r="15" fill="#ffd0a5"/><path d="M484 402v52m0-40-30 20m30-20 28 19m-28 21-19 22m19-22 19 22" fill="none" stroke="#173b4b" stroke-width="10" stroke-linecap="round"/>
+<path d="M505 388H607" stroke="#fbdfa6" stroke-width="3" stroke-dasharray="6 5"/>
+<text x="611" y="391" font-family="Arial,sans-serif" font-size="14" fill="#fff0d2">1.7m camera</text>
+<!-- labels -->
+<rect x="79" y="456" width="215" height="42" rx="9" fill="#1c3244" stroke="#f9c28f"/>
+<text x="99" y="482" font-family="Arial,sans-serif" font-size="18" fill="#ffd2a3">A / MARKET BAY</text>
+<rect x="372" y="466" width="222" height="37" rx="9" fill="#1c3244" stroke="#dff1dd"/>
+<text x="391" y="490" font-family="Arial,sans-serif" font-size="17" fill="#dff1dd">B / READ &amp; LEARN</text>
+<rect x="681" y="456" width="211" height="42" rx="9" fill="#1c3244" stroke="#8cddd7"/>
+<text x="699" y="482" font-family="Arial,sans-serif" font-size="17" fill="#a6f5f1">C / MAKER STUDIO</text>
+<text x="28" y="549" font-family="Arial,sans-serif" font-size="15" fill="#e1edf0">LIGHT: overhead cut + lateral openings.  ROOM DEPTH: visible beyond every threshold.</text>
+<text x="28" y="575" font-family="Arial,sans-serif" font-size="13" fill="#f9c5a8">STOP if the built camera sees a roof sheet, blank wall, or signage without real room volume.</text>
+</g>
+<!-- panel 2 -->
+<g transform="translate(1030 108)">
+<rect width="525" height="592" rx="15" fill="#0d2639" stroke="#47738c" stroke-width="2"/>
+<text x="22" y="43" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#edf5f3">02  OCCUPIED SECTION</text>
+<text x="22" y="67" font-family="Arial,sans-serif" font-size="14" fill="#bed0d5">Floor, shaft, daylight and residential interface</text>
+<rect x="35" y="97" width="455" height="440" fill="url(#grid)"/>
+<!-- ground support foundation -->
+<path d="M44 487H481V506H44Z" fill="#b1b8b1" stroke="#e2e9d7" stroke-width="3"/>
+<path d="M86 506V530M204 506V530M347 506V530M455 506V530" stroke="#b4c9c4" stroke-width="11"/>
+<!-- lower market wing structurally tied to hall -->
+<path d="M54 338H228V471H54Z" fill="#a26c57" stroke="#eebd92" stroke-width="5"/>
+<path d="M75 365H206V454H75Z" fill="#173c4d" stroke="#fff0d9" stroke-width="3"/>
+<path d="M87 396H195M91 418H185" stroke="#dcb78e" stroke-width="6"/>
+<!-- central hall daylight space -->
+<path d="M227 214L320 214V470H228Z" fill="#1b5267" stroke="#bfe9db" stroke-width="5"/>
+<path d="M247 231H303V436H247Z" fill="#34798b"/>
+<path d="M255 240L300 334M296 240L258 360" stroke="#efffd2" stroke-width="3" opacity=".85"/>
+<path d="M227 349H319" stroke="#faf0d8" stroke-width="9"/>
+<!-- right research -->
+<path d="M320 296H474V470H320Z" fill="#3e8b98" stroke="#bde9dd" stroke-width="5"/>
+<path d="M339 330H454V445H339Z" fill="#173c4d" stroke="#dff7ef" stroke-width="3"/>
+<path d="M349 349H444M353 374H442M353 399H441" stroke="#eecf99" stroke-width="8"/>
+<!-- upper occupied housing mass, staggered and connected -->
+<path d="M139 129H375V285H139Z" fill="#b8d4cc" stroke="#f3eedc" stroke-width="5"/>
+<path d="M158 165H357V260H158Z" fill="#24627a" stroke="#d5eee6" stroke-width="3"/>
+<path d="M170 178H225V230H170ZM236 178H294V230H236ZM305 178H345V230H305Z" fill="#a0d7d6" stroke="#e9f4dc" stroke-width="3"/>
+<path d="M164 240H359" stroke="#efd1ad" stroke-width="9"/>
+<path d="M258 261V472" stroke="#f0e6cf" stroke-width="8"/>
+<!-- connector and stair/lift -->
+<path d="M135 280L346 292L342 310L137 298Z" fill="#d8dccc" stroke="#f0ecdf" stroke-width="4"/>
+<rect x="264" y="313" width="28" height="134" fill="#143f53" stroke="#fff1db" stroke-width="3"/>
+<path d="M269 324L287 335L269 347L287 360L269 372L287 385L269 398L287 411L269 424" fill="none" stroke="#ffd49a" stroke-width="3"/>
+<!-- daylight slots -->
+<path d="M220 124L259 80L288 128L287 203H248Z" fill="url(#day)"/>
+<path d="M224 128L253 201M288 126L283 201" stroke="#e7ffce" stroke-width="4"/>
+<text x="50" y="322" font-family="Arial,sans-serif" font-size="13" fill="#ffceaa">MARKET</text>
+<text x="330" y="284" font-family="Arial,sans-serif" font-size="13" fill="#a5f0e8">LEARNING</text>
+<text x="159" y="119" font-family="Arial,sans-serif" font-size="13" fill="#eaf8f5">HOMES / GARDENS</text>
+<text x="310" y="458" font-family="Arial,sans-serif" font-size="13" fill="#e6f9e6">CIVIC</text>
+<text x="28" y="558" font-family="Arial,sans-serif" font-size="14" fill="#e1edf0">Section is an architectural intention.</text>
+<text x="28" y="579" font-family="Arial,sans-serif" font-size="13" fill="#f9c5a8">NOT a G2/G3 support or route PASS.</text>
+</g>
+<!-- panel 3 -->
+<g transform="translate(44 722)">
+<rect width="1511" height="385" rx="15" fill="url(#bg)" stroke="#47738c" stroke-width="2"/>
+<rect width="1511" height="385" fill="url(#grid)"/>
+<text x="25" y="43" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#edf5f3">03  DISTANT CITY COMPOSITION · the same occupied civic section scaled as connected districts</text>
+<text x="25" y="68" font-family="Arial,sans-serif" font-size="14" fill="#b7d1d9">Masses must resolve into lived-in neighborhoods and civic links — not a single shell enlarged by 100×.</text>
+<!-- backdrop skyline density -->
+<path d="M29 309V190H91V247H128V147H213V223H255V112H330V250H388V175H457V250H513V133H562V230H636V116H693V226H756V134H828V235H900V123H979V245H1052V157H1116V220H1177V137H1247V249H1321V174H1402V309Z" fill="#24506a" opacity=".42"/>
+<!-- 1 Maker district -->
+<path d="M48 177L110 143L306 150L326 174L322 314H55Z" fill="url(#gold)" stroke="#f4d2ad" stroke-width="5"/>
+<path d="M78 204H288V293H78Z" fill="#25566b" stroke="#f8e5ca" stroke-width="3"/>
+<path d="M94 220H137V279H94ZM151 220H196V279H151ZM210 220H270V279H210Z" fill="#86c6c5" stroke="#e7f2dd" stroke-width="3"/>
+<!-- left mixed vertical neighborhood -->
+<path d="M263 102L327 74L510 95L545 145L519 288L319 292L301 239L262 221Z" fill="#98c2c3" stroke="#eff2e5" stroke-width="5"/>
+<path d="M300 137L496 148V184L296 181Z" fill="#2d6b7c" stroke="#d8f3ed" stroke-width="3"/>
+<path d="M315 147H352V174H315ZM365 150H402V178H365ZM414 152H452V181H414ZM466 155H488V180H466Z" fill="#bae7e1" stroke="#f8dfbb" stroke-width="3"/>
+<path d="M296 208H510M315 241L493 247" stroke="#f1d7ac" stroke-width="8"/>
+<!-- vertical civic concourse / not quarry emptiness -->
+<path d="M525 187L686 142L801 201L793 320L534 322Z" fill="#2b7083" stroke="#c9f5e6" stroke-width="5"/>
+<path d="M577 205L675 177L751 218L753 294L573 294Z" fill="#144658" stroke="#b5f1e5" stroke-width="4"/>
+<path d="M610 214L681 196L716 218L714 279H609Z" fill="#a3d5c7" opacity=".8"/>
+<path d="M580 252L750 258M589 282L747 286" stroke="#e8d5b6" stroke-width="7"/>
+<!-- right research neighborhood -->
+<path d="M776 140L837 99L1052 126L1081 163L1061 314H787Z" fill="#a5d7d6" stroke="#eaf9f0" stroke-width="5"/>
+<path d="M810 170H1045V217H810Z" fill="#1a5570" stroke="#e6f1df" stroke-width="3"/>
+<path d="M831 183H872V203H831ZM886 182H926V206H886ZM942 185H982V206H942ZM995 186H1030V209H995Z" fill="#a0e8de"/>
+<path d="M813 247L1051 250M818 282L1047 285" stroke="#d6f8e4" stroke-width="9"/>
+<!-- rear/high housing -->
+<path d="M1048 95L1097 56L1302 89L1350 128L1326 311L1065 314Z" fill="#b8c9c6" stroke="#f4e7d4" stroke-width="5"/>
+<path d="M1086 134L1317 151V205L1084 187Z" fill="#2f6b7c" stroke="#f8e5d8" stroke-width="3"/>
+<path d="M1100 150H1151V180H1100ZM1162 154H1214V182H1162ZM1225 158H1292V191H1225Z" fill="#a6d8d1" stroke="#f3e1c9" stroke-width="3"/>
+<path d="M1087 218L1310 234M1078 264L1312 279" stroke="#ffe0a9" stroke-width="8"/>
+<!-- long-range interlock: room-sized cross-connections, not thin beams -->
+<path d="M456 237L577 225L576 269L463 286Z" fill="#94bcb8" stroke="#eaf4df" stroke-width="6"/>
+<path d="M468 247L563 238V259L468 273Z" fill="#205b73"/>
+<path d="M758 241L859 222L870 263L766 281Z" fill="#98c7c9" stroke="#edf7ee" stroke-width="6"/>
+<path d="M775 252L851 236L855 255L776 270Z" fill="#246578"/>
+<path d="M1040 238L1119 222L1119 261L1045 274Z" fill="#bdc4ba" stroke="#f4ebdb" stroke-width="6"/>
+<!-- street foundation -->
+<path d="M30 316H1478" stroke="#f4d7ad" stroke-width="10"/>
+<path d="M42 330H1470" stroke="#63899b" stroke-width="3"/>
+<!-- scale labels -->
+<rect x="57" y="332" width="270" height="36" rx="7" fill="#10253d"/>
+<text x="69" y="355" font-family="Arial,sans-serif" font-size="15" fill="#ffcb9d">CRAFT / MARKET NEIGHBORHOOD</text>
+<rect x="542" y="333" width="248" height="35" rx="7" fill="#10253d"/>
+<text x="554" y="356" font-family="Arial,sans-serif" font-size="15" fill="#d2f1dd">COMMON CIVIC HEART</text>
+<rect x="918" y="333" width="440" height="35" rx="7" fill="#10253d"/>
+<text x="930" y="356" font-family="Arial,sans-serif" font-size="15" fill="#b6ebec">RESEARCH / LEARNING / RESIDENTIAL DISTRICTS</text>
+</g>
+<text x="50" y="1138" font-family="Arial,sans-serif" font-size="14" fill="#b3cbd2">G0 only. Drawn architectural hypothesis: NOT measured, NOT a walkable construction model, NOT formal city G1.</text>
+</svg>

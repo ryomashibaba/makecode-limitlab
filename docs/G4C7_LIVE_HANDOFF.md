@@ -1,3 +1,9 @@
+# 【最新A55／2026-10-26 JST】G0 A/B比較図・人間目線／断面／遠景設計図を実制作、Bを次の2視点だけの条件付き研究候補へ／全体ART HOLD
+
+> GitHub正本の最新を照合後、A54真正Cycles9画像のS1 ART REJECTを継承。A55はA《交差生活街区》／B《交差空街区》を**手動SVG美術図**で比較し、Aはキャンパス／平行モール再発として停止、Bは「占有された街区と同じ公共室が近景・遠景を支配する」構成を検証する候補に絞った。Bの**人間目線1.7m・室の開口と奥行き・採光・住宅接続の断面・都市遠景**を一枚のコンセプトボードに手で描いて契約化。**新Blender、真の立体室、2視点Cycles、S1/G1の採用は未実施／NOT RUN**。旧A53の断面帯・屋根二岸や旧SVGを3D証拠と偽ることなく停止し、次A56はBlenderの個別編集可能な室を構成して**public_heart + obliqueの2視点**だけで可否を早期判定する。全体ART HOLD／Minecraft施工・都市統合禁止／G2・G3 331/993未実施／歴代原本保護。[A55視覚監査](./G4C7_A55_G0_COMPOSITION_VISUAL_AUDIT_JA.md)／[図面](../artifacts/g4c7-a55-occupied-city-g0/README.md)。
+
+---
+
 # 【最新A54 実画像美術監査完了 → A55 G0／2026-10-26 JST】Blender実3D・Cycles9視点真正検証PASS／A53 CIVIC STRATA **S1 ART REJECT**／全体ART HOLD
 
 > GitHub Actions [40329620672](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40329620672) **全工程SUCCESS**。GitHub HEAD `20f3450d1f98c9618d904fe93164acc7e82a2b9b` で元A53のBlenderネイティブ.blend 719,357B・Cycles 960×720 PNG9枚を保存。5件のデータ負対照・ネイティブ再読込・PNG CRC/サイズ検査PASS、ActionアーティファクトZIPを独立取得してPNG9/9のSHA-256・Pillow再読込、.blend SHA-256を確認。実9視点を人間の画像認識で審査し、内部5視点は**市場・文化・研究・居住が見えない・屋根/壁/空隙支配**、外部4視点も**巨大な連続屋根壁・薄板・一体都市として密度不足**のため全視点ART REJECT。これは**A53造形を不採用**にする評価であり、Blender実制作基盤の成功自体は保持。G1正式全都市審査、G2/G3安全QAはNOT RUN、全体ART HOLD/Minecraft施工・都市統合禁止・過去資産保護不変。A55は同じ二岸屋根・帯面造形を再構築せず、「活動が見える実室」と「巨大都市遠景」を同時に満たすG0の2構成比較から始める。詳細：[A54実画像監査](./G4C7_A54_NATIVE_9VIEW_ART_REJECT_JA.md)／[A55 G0美術構成](./G4C7_A55_OCCUPIED_CITY_ART_DIRECTION_G0_JA.md)。
