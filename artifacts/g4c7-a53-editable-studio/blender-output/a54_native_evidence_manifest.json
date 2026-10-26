@@ -1,0 +1,66 @@
+{
+  "stage": "A54",
+  "sourceStage": "A53",
+  "construction": "FORBIDDEN",
+  "integration": "FORBIDDEN",
+  "art": "HOLD_NOT_ASSESSED",
+  "s1": "NOT ASSESSED",
+  "g1": "NOT RUN",
+  "g2": "NOT RUN",
+  "g3": "NOT RUN",
+  "sourceCommit": "13502c84d2c668f73c8710a0d247109d6d258d6d",
+  "blend": {
+    "bytes": 719357,
+    "sha256": "d98ca57365f55c53520f2752e73bf60224bff845d66fdfc43ef50ac8162d89b9"
+  },
+  "png": {
+    "arrival": {
+      "bytes": 760105,
+      "sha256": "6f9f5e898c03ab41819c4e60f711a801b479b7ca48a656a3b00177bd9bffd92e",
+      "png_chunks": 109
+    },
+    "public_heart": {
+      "bytes": 745686,
+      "sha256": "71af9dd49f42c8c5465b30fdad88e471f0f83cabf58aebc53ce2465b2929a071",
+      "png_chunks": 107
+    },
+    "market": {
+      "bytes": 682737,
+      "sha256": "b7b48bb8943edd650e9b847d4ad83e3c9ca335b40c1845dfb012d4f3fc2ff1df",
+      "png_chunks": 100
+    },
+    "culture": {
+      "bytes": 675051,
+      "sha256": "2fdf9948d9e8782f4acd6b842642e08ecc08b93bf4fe9748915d3019efeb85a6",
+      "png_chunks": 99
+    },
+    "research": {
+      "bytes": 706695,
+      "sha256": "aa31081a0de904bf0ed0d69321a6ba430256049862db181e956db525ced8bf1a",
+      "png_chunks": 103
+    },
+    "front": {
+      "bytes": 718779,
+      "sha256": "0a0125958608b1a72d46fc2e5bfea2041ea8caf5d7b91a3fa4e5ca2c99526b8d",
+      "png_chunks": 104
+    },
+    "oblique": {
+      "bytes": 744191,
+      "sha256": "11511060d0609226ce2b962de80431e264788f1184f8b72ba0b3aa6445d120da",
+      "png_chunks": 107
+    },
+    "side": {
+      "bytes": 718547,
+      "sha256": "562df49a573e6f6c73de675bbdefb4d6217a297eed19cc0e4a44b8583a13e9c0",
+      "png_chunks": 104
+    },
+    "aerial": {
+      "bytes": 746640,
+      "sha256": "c26c314f4c347425c38854e4401f10d525707378ead58eefe0a74a78d6b4543c",
+      "png_chunks": 107
+    }
+  },
+  "camerasVerified": 9,
+  "renderer": "BLENDER_CYCLES",
+  "disclaimer": "Binary QA and scene load do not prove architectural beauty, walkability or Minecraft safety."
+}
