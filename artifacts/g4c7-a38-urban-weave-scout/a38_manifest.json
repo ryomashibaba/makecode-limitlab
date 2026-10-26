@@ -1,7 +1,7 @@
 {
   "stage": "A38",
   "label": "URBAN WEAVE / 三街区を可視化する交織公共都市",
-  "status": "G1 PROTOTYPE ART HOLD — NOT APPROVED",
+  "status": "G1 ART REJECT / PROJECT ART HOLD",
   "base_head": "480b90dd3f7641e4be005941de9901c8d89023b7",
   "date": "2026-10-26 JST",
   "mesh": {
@@ -138,5 +138,31 @@
     "historicInterferenceMax": 45,
     "unsupportedFeetMax": 0,
     "negativeControl": "REQUIRED"
-  }
+  },
+  "g1": "ART REJECT",
+  "reviewedViews": [
+    "front",
+    "oblique",
+    "side",
+    "aerial",
+    "interior_south"
+  ],
+  "g1Limitations": [
+    "single campus rather than city at distant scale",
+    "central monumental frame and tower dominate",
+    "repeated urban facade ribbons lack depth",
+    "interior_south is not certified human eye or walkable camera",
+    "not exact A37 scale-matched comparison"
+  ],
+  "independentGitHubGlbRead": {
+    "magic": "glTF",
+    "version": 2,
+    "bytes": 252448,
+    "declaredBytes": 252448,
+    "vertices": 14524,
+    "triangles": 6232,
+    "invalidIndices": 0,
+    "materials": 8
+  },
+  "next": "A39: spatial grammar of layered urban districts and public streets; do not cosmetically iterate rejected monument-frame"
 }
