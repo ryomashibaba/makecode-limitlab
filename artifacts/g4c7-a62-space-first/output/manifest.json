@@ -1,0 +1,35 @@
+{
+  "stage": "A62",
+  "renderer": "VTK_OPENGL_NOT_BLENDER_CYCLES",
+  "new_scene": true,
+  "scope": "three real room footprints and true wall apertures, four elevated housing room sketches, one shared outdoor court",
+  "city_claim": false,
+  "minecraft_construction": "FORBIDDEN",
+  "rooms": 3,
+  "housing": 4,
+  "ground_route_intent": 3,
+  "scene_objects": 138,
+  "visual_art": "NOT_ASSESSED",
+  "G0": "RESEARCH_ONLY",
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "outputs": {
+    "public_heart.png": {
+      "sha256": "bbc1fb54d0e803e6644d1ededa12a25be70a70aa43c68588796a4df35afc724d",
+      "bytes": 180323
+    },
+    "oblique.png": {
+      "sha256": "1fd53accdd609c20d7c8d0f9f57dd65f3d825974a55e9d4159a44c314a0fdc6a",
+      "bytes": 453814
+    }
+  },
+  "caveats": [
+    "Not a city skyline",
+    "Doors/floors are real polygons but walkability not path-certified",
+    "Upper housing access not certified",
+    "Daylight physically not measured",
+    "Visual art verdict must be set from image review"
+  ]
+}
