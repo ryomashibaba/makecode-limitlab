@@ -51,3 +51,12 @@
 5. 成功の数値指標を頂点数・孔数・レンダ数で代用しない。引き継ぎの方針を守り、実美術の変化だけを進歩とする。
 
 **不変：ART-FIRST／QUALITY-FIRST、全体ART HOLD、Minecraft Education施工・都市統合禁止、既存world/USED/CSV/ZIP/OBJ/GLB/PNG・原本保護、正式331人体・993足元・人体半幅0.65・足元相対+0.15〜+3.25・歴史的身体干渉上限45・未支持0・負の対照必須。Work使用はユーザーの事前明示承認が必要。**
+## A47保存後の独立再取得・整合QA（2026-10-26 JST）
+
+GitHub保存コミット `8c33e582f970bb9fa8200cd651a4932f51bf1f35` からGLB・OBJと8枚全PNGを、生成用コードとは別の処理で実際に**再取得して検証**した。
+
+- **GLB/OBJ限定バイナリQA PASS**：保存GLB実長58,388 bytes＝宣言長58,388、GLB v2／glTF 2.0、POSITION 3,002＝OBJ頂点3,002、全索引3,942＝1,314三角形、OBJ三角形1,314、インデックス範囲外0、全POSITION Float32座標最大差0.000003387123030051953。
+- **PNG整合8/8 PASS**：arrival / public_portal / market_inhabited / reading_destination / front / oblique / side / aerial すべて560×420、各236,102 bytes、PNG署名、各チャンクCRCおよび終端を確認しCRCエラー0。
+- **未証明**：第三者3D importerでのモデル表示、真の用途・建築一体性、美術S1合格、都市級G1、G2歩行・支持床・階間アクセス、G3 331人体・993足元・負の対照、自己交差・構造、Minecraft施工可能性。
+
+したがって**A47 S1 ART REJECT／全体ART HOLD／施工・統合禁止は不変**。この限定PASSを美術品質へ昇格させない。

@@ -100,7 +100,37 @@
       }
     },
     "producerQA": "LIMITED PASS",
-    "postCommitBinaryReadback": "NOT RUN",
+    "postCommitBinaryReadback": {
+      "checkedCommit": "8c33e582f970bb9fa8200cd651a4932f51bf1f35",
+      "verdict": "LIMITED GLB/OBJ and PNG8/8 STRUCTURAL QA PASS",
+      "glb": {
+        "bytes": 58388,
+        "declaredBytes": 58388,
+        "version": 2,
+        "positionCount": 3002,
+        "objVertexCount": 3002,
+        "triangles": 1314,
+        "objTriangles": 1314,
+        "invalidIndices": 0,
+        "maxFloat32PositionError": 0.000003387123030051953
+      },
+      "png": {
+        "verified": 8,
+        "expected": 8,
+        "width": 560,
+        "height": 420,
+        "bytesPerFile": 236102,
+        "crcErrors": 0
+      },
+      "notProven": [
+        "S1 art",
+        "G1 urban art",
+        "G2 walk/support",
+        "G3 safety",
+        "external renderer/importer",
+        "structural integrity"
+      ]
+    },
     "validation": "GLB header/vertex agreement, PNG signature+chunk CRC local producer validation; no external renderer; no aperture traversability claim"
   },
   "notRun": [
