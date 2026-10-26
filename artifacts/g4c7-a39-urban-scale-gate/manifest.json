@@ -1,0 +1,120 @@
+{
+  "stage": "A39",
+  "date": "2026-10-26 JST",
+  "baseHead": "bccc9746515eb86d3fc2ca2da89c9bba0649e6dc",
+  "label": "DISTRICT CONFLUENCE — three district early art gate",
+  "g0": {
+    "ring": "EARLY REJECT / concealing shell risk",
+    "spire": "EARLY REJECT / monument dominance",
+    "confluence": "ONE REAL-3D SCOUT ONLY"
+  },
+  "g1": "ART REJECT",
+  "project": "ART HOLD",
+  "geometry": {
+    "vertices": 12152,
+    "triangles": 5288,
+    "materials": 8,
+    "GLBbytes": 212856,
+    "indexCount": 15864,
+    "outOfBoundsIndices": 0,
+    "maxPositionDifferenceFloat32": 0.000011847786140606331
+  },
+  "renders": {
+    "source": "Actual mesh software Z-buffer",
+    "dimensions": [
+      900,
+      720
+    ],
+    "historicCameras": {
+      "front": [
+        0,
+        220,
+        -450
+      ],
+      "oblique": [
+        350,
+        282,
+        -365
+      ],
+      "side": [
+        465,
+        225,
+        0
+      ],
+      "aerial": [
+        250,
+        525,
+        -270
+      ]
+    },
+    "target": [
+      0,
+      78,
+      0
+    ],
+    "orthoScale": 1.03,
+    "images": [
+      "front",
+      "oblique",
+      "side",
+      "aerial",
+      "street_eye"
+    ],
+    "comparedA38": [
+      "a38_matched_front",
+      "a38_matched_oblique"
+    ],
+    "street_eye": {
+      "eye": [
+        0,
+        32,
+        -200
+      ],
+      "target": [
+        0,
+        77,
+        131
+      ],
+      "perspective": true,
+      "nearPlaneOmitted": true,
+      "humanWalkability": "NOT VERIFIED"
+    }
+  },
+  "artFailures": [
+    "stacked thin-roof boxes dominate",
+    "campus instead of city-scale architecture",
+    "blank street interior",
+    "some roof slabs look floating"
+  ],
+  "artPositive": [
+    "three types of intended urban activity situated around civic forum",
+    "visible multiple above-ground routes"
+  ],
+  "detailsStopped": true,
+  "notRun": [
+    "true walking and access G2",
+    "formal 331 bodies/993 feet G3",
+    "negative control G3",
+    "self-intersection/full structure",
+    "third party glTF viewer",
+    "Minecraft construction and integration"
+  ],
+  "safety": {
+    "ART_HOLD": true,
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "oldArtifacts": "PRESERVED",
+    "bodySamples": 331,
+    "footSamples": 993,
+    "halfWidth": 0.65,
+    "footRelative": [
+      0.15,
+      3.25
+    ],
+    "historicInterferenceLimit": 45,
+    "unsupportedFeetLimit": 0,
+    "negativeControl": "REQUIRED",
+    "workPriorApproval": "REQUIRED"
+  },
+  "next": "A40: redesign occupied architectural block, not more slabs"
+}
