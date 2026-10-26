@@ -1,3 +1,9 @@
+# 【最新A57 G0／2026-10-27 JST】A56 P/Qの絶対美術G0 REJECT → R《複核織都》の都市＋公共室空間契約を構築／全体ART HOLD
+
+> GitHub開始HEAD `cbfaa2298c8bcd4c69cf738b1dcadce4c3ca7d50`。A56のP（3塔/橋）・Q（巨大斜めモール）は**完成案として美術採用に値しないため、G0現形REJECT**。遠景を塔・斜め帯で決めることを止め、6種の生活街区・3つの使用される公共結節・立体的な混用経路が一体の都市外形を生む新たなR《POLYCENTRIC CITYWEAVE / 複核織都》の構想と、同じ近景に市場・工房・学習の奥行きある実室が必要という設計契約を明示した。G0新規文書 [A57絶対美術レビュー](./G4C7_A57_CIVIC_WEAVE_G0_ABSOLUTE_REVIEW_JA.md)／[カメラ・室空間仮説](../artifacts/g4c7-a57-civic-weave-g0/spatial_contract.json)。**美術向上は未実証／新Blender・Cycles・S1/G1/G2/G3はNOT RUN／Rも美術採用ではない**。GitHubに画像生成アセットを保存したとは扱わない。通常CI Run [40339566573](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40339566573) は旧`build/g4c4_access_baseline.json`欠落で428テスト中セットアップエラー1・FAIL、疑似PASSなし。正式採用0、全体ART HOLD、Minecraft施工・都市統合禁止、旧原本保護、Work事前明示承認維持。
+
+---
+
 # 【最新A56 G0／2026-10-26 JST】A55 B案の絶対評価 → 外形の3D移行停止／都市形態2案を新規比較／全体ART HOLD
 
 > GitHub HEAD `278a666b01313c3ea9b4d2150a30527467f6fbe3` とA54/A55正本、A54真正9視点のART REJECT、A55手動SVGを確認。A55 Bの横並び街区＋矩形接続は未来都市の絶対美術品質に不足する可能性が高いため、**B外形をそのままBlender化しない**と決定。A56はP《CIVIC CROWNFOLD / 住街三冠結節》（非整列で上下に融合する密な都市冠）とQ《ASCENDING PUBLIC DELTA / 枝分かれ立体市街》（斜めモール/屋根再発危険大）を新たな造形文法として比較し、**シルエット検討用SVGのみを研究素材として保存**。**美術前進はNOT VERIFIED、新Blender/真正Cycles/S1/G1/G2/G3はNOT RUN**。正式採用0、全体ART HOLD、Minecraft施工・都市統合禁止。Work事前承認・既存資産保護維持。詳細 [A56絶対評価](./G4C7_A56_ABSOLUTE_ART_GATE_G0_JA.md)／[G0シルエット研究図](../artifacts/g4c7-a56-art-reset/a56_silhouette_stress_test.svg)。通常CIの従来からの`g4c4_access_baseline.json`欠落は未修正。

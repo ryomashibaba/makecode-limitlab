@@ -1,0 +1,113 @@
+{
+  "schema": "g4c7-a57-g0-spatial-hypothesis-v1",
+  "status": "G0_ONLY_NOT_3D_NOT_ART_APPROVED",
+  "name": "R POLYCENTRIC CITYWEAVE",
+  "purpose": "Human eye public room hypotheses tied to intended mixed-use city, without enforcing simplistic 3D macro-forms",
+  "coordinate_system": "right_handed; x lateral, y forward, z up; metres; hypothetical",
+  "proof_level": "not geometry; all physical, visual, structural checks NOT RUN",
+  "public_heart": {
+    "floor": {
+      "z": 0,
+      "mode": "must_model_actual_walkable_floor_before_S1"
+    },
+    "camera": {
+      "position": [
+        0,
+        -29,
+        1.7
+      ],
+      "look_direction": [
+        0,
+        1,
+        0
+      ],
+      "horizontal_fov_degrees": 78,
+      "validation": "confirm actual ray/mesh floor under camera, not spline elevation"
+    },
+    "program_thresholds": [
+      {
+        "role": "market",
+        "center": [
+          -17,
+          3,
+          2.2
+        ],
+        "desired_room_depth_m": 20,
+        "activity": "goods counters, vendor work, browsing within deep room"
+      },
+      {
+        "role": "maker_culture",
+        "center": [
+          0,
+          23,
+          2.2
+        ],
+        "desired_room_depth_m": 20,
+        "activity": "active making tables, workshop edge, crafts"
+      },
+      {
+        "role": "research_learning",
+        "center": [
+          17,
+          3,
+          2.2
+        ],
+        "desired_room_depth_m": 20,
+        "activity": "shelving, desks, real occupied reading zone"
+      }
+    ],
+    "checks": [
+      "All three thresholds visible simultaneously from one true 1.7m above floor S1 perspective, not just labels",
+      "Actual openings and deep room volumes; two opaque-wall negative rays in addition to open paths",
+      "Daylight enters from physically open overhead and lateral apertures without relying on impossible sunlight",
+      "Recognizable human scale with occupancy/activity without staged labels"
+    ]
+  },
+  "city_topology": {
+    "district_roles": [
+      "market_logistics",
+      "maker_culture",
+      "research_learning",
+      "residential_gardens",
+      "social_services",
+      "mobility_exchange"
+    ],
+    "civic_nodes": [
+      "public_heart",
+      "garden_commons",
+      "learning_junction"
+    ],
+    "design_requirements": [
+      "district boundaries are inhabited mixed-use transition spaces",
+      "more than one independent elevation of lived-in public connections",
+      "large skyline outline emerges from overlapping occupied neighborhoods not 3 towers and thin bridges",
+      "no dominating single roof, canyon, slab, diagonal ramp, empty arch or grid frame",
+      "visible outdoor daylight pockets and resident routes, with human-readable streets and rooms",
+      "same built S1 public heart traceable within distant oblique scene"
+    ],
+    "fixed_volume_boxes": null,
+    "note": "Not a generator input: spatial composition must be artist-designed"
+  },
+  "gates": {
+    "G0": "UNAPPROVED_RESEARCH",
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN",
+    "overall": "ART_HOLD",
+    "minecraft_construction_allowed": false
+  },
+  "invariants": {
+    "human_samples": 331,
+    "feet_samples": 993,
+    "human_half_width": 0.65,
+    "foot_height_range": [
+      0.15,
+      3.25
+    ],
+    "interference_max": 45,
+    "unsupported_feet_required": 0,
+    "negative_controls_required": true,
+    "all": "unchanged; validate exact historic meaning at G2/G3; values not evaluated by this file"
+  }
+}
