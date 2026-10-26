@@ -67,7 +67,7 @@ return{b64:b64Bytes(full),bytes:full.length,json:document,headerValid:dv.getUint
 function pngA38(m,eye,target,W=650,H=540,scale=.95){
 const sub=(a,b)=>a.map((x,i)=>x-b[i]),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),norm=a=>{let l=Math.hypot(...a)||1;return a.map(x=>x/l)};
 let fw=norm(sub(target,eye)),rt=norm(cross([0,1,0],fw)),up=norm(cross(fw,rt)),light=norm([-.4,.88,-.25]),P=m.V.map(p=>{let v=sub(p,target);return[W/2+scale*dot(v,rt),H/2-scale*dot(v,up),dot(sub(p,eye),fw)]});
-let palette=[[26,46,66]];for(let [name,col]of m.M)for(let s=0;s<8;s++){let c=.4+s*.105;palette.push(col.map(x=>Math.round(x*c)))}
+let palette=[[26,46,66]];for(let [name,col]of m.M)for(let s=0;s<8;s++){let c=.4+s*.105;palette.push(col.map(x=>Math.max(0,Math.min(255,Math.round(x*c)))))}
 let pix=new Uint8Array(W*H),depth=new Float64Array(W*H);depth.fill(Infinity);
 for(let a of m.F){let i=a[0],j=a[1],k=a[2],p=P[i],q=P[j],t=P[k];if(p[2]<=1||q[2]<=1||t[2]<=1)continue;
 let normal=norm(cross(sub(m.V[j],m.V[i]),sub(m.V[k],m.V[i]))),shade=Math.max(0,Math.min(7,Math.round(2+5*Math.max(0,dot(normal,light))))),idx=1+a[3]*8+shade;
@@ -81,5 +81,5 @@ let ad1=1,ad2=0;for(let x of raw){ad1=(ad1+x)%65521;ad2=(ad2+ad1)%65521}
 let zip=[120,1];for(let off=0;off<raw.length;){let n=Math.min(65535,raw.length-off),last=(off+n===raw.length)?1:0;zip.push(last,n&255,(n>>8)&255,(~n)&255,((~n)>>8)&255,...raw.slice(off,off+n));off+=n}zip.push(...u32(((ad2<<16)|ad1)>>>0));
 let png=[137,80,78,71,13,10,26,10,...chunk("IHDR",[...u32(W),...u32(H),8,3,0,0,0]),...chunk("PLTE",palette.flat()),...chunk("IDAT",zip),...chunk("IEND",[])];
 return{b64:b64Bytes(png),bytes:png.length,nonBg:pix.reduce((s,n)=>s+(n>0),0)};}
-const root="artifacts/g4c7-a38-urban-weave-scout/"; const m=modelA38(); const g=glbA38(m); const save=(p,s,enc="utf8")=>{const to=root+p;fs.mkdirSync(path.dirname(to),{recursive:true});fs.writeFileSync(to,enc==="base64"?Buffer.from(s.replace(/\\s/g,""),"base64"):s)};
+const root="artifacts/g4c7-a38-urban-weave-scout/"; const m=modelA38(); const g=glbA38(m); const save=(p,s,enc="utf8")=>{const to=root+p;fs.mkdirSync(path.dirname(to),{recursive:true});fs.writeFileSync(to,enc==="base64"?Buffer.from(s.replace(/\s/g,""),"base64"):s)};
 save("a38_urban_weave.obj",objA38(m));save("a38_urban_weave.glb",g.b64,"base64");save("materials.mtl",m.M.map(v=>"newmtl "+v[0]+"\\nKd "+v[1].map(x=>x/255).join(" ")+"\\n").join(""));const cameras={"front":[[0,220,-450],[0,78,0]],"oblique":[[350,282,-365],[0,78,0]],"side":[[465,225,0],[0,78,0]],"aerial":[[250,525,-270],[0,78,0]],"interior_south":[[0,63,-151],[0,80,135]]};for(let [k,[eye,target]] of Object.entries(cameras))save("verified-png/"+k+".png",pngA38(m,eye,target).b64,"base64");console.log("A38 research 3D generated:",m.V.length,m.F.length,g.bytes);

@@ -114,7 +114,9 @@
         "bytes": 351840,
         "coveredPixels": 46315
       }
-    }
+    },
+    "pngPaletteClamped8Bit": true,
+    "sourceRevalidatedFromSavedObj": true
   },
   "artNote": "Compared with A37, neighborhood frontage and public destinations are more visually explicit; however remains facility-scale in perception and no independent G1 acceptance or validated pedestrian circulation",
   "formalG2": "NOT RUN",
