@@ -1,0 +1,219 @@
+{
+  "stage": "A59",
+  "version": 1,
+  "objective": "Two real Blender/Cycles images to falsify one visually authored but unapproved occupied urban-quarter slice, not a finished future metropolis",
+  "minecraft": "FORBIDDEN",
+  "integration": "FORBIDDEN",
+  "safety": "G2_G3_NOT_RUN",
+  "render": {
+    "engine": "CYCLES",
+    "samples": 24,
+    "resolution": [
+      960,
+      720
+    ]
+  },
+  "cameras": {
+    "public_heart": {
+      "position": [
+        0,
+        -8,
+        1.7
+      ],
+      "target": [
+        0,
+        25,
+        1.7
+      ],
+      "horizontal_fov_degrees": 78
+    },
+    "oblique": {
+      "position": [
+        130,
+        -155,
+        128
+      ],
+      "target": [
+        0,
+        58,
+        48
+      ],
+      "horizontal_fov_degrees": 54
+    }
+  },
+  "rooms": [
+    {
+      "id": "market",
+      "x": -10,
+      "front_y": 8,
+      "width": 10,
+      "depth": 20,
+      "door_width": 4,
+      "z": 0
+    },
+    {
+      "id": "maker_culture",
+      "x": 0,
+      "front_y": 19,
+      "width": 10,
+      "depth": 20,
+      "door_width": 4.2,
+      "z": 0
+    },
+    {
+      "id": "research_learning",
+      "x": 10,
+      "front_y": 8,
+      "width": 10,
+      "depth": 20,
+      "door_width": 4,
+      "z": 0
+    }
+  ],
+  "upper_mass_studies": [
+    {
+      "id": "DOCK_MARKET_WEST",
+      "x0": -92,
+      "x1": -60,
+      "front_y": 34,
+      "depth": 42,
+      "bottom": 6,
+      "top": 48,
+      "mat": "dark",
+      "levels": [
+        18,
+        30,
+        42
+      ]
+    },
+    {
+      "id": "WORKSHOP_EDGE_WEST",
+      "x0": -71,
+      "x1": -35,
+      "front_y": 51,
+      "depth": 56,
+      "bottom": 12,
+      "top": 78,
+      "mat": "bone",
+      "levels": [
+        27,
+        42,
+        57,
+        71
+      ]
+    },
+    {
+      "id": "HOUSING_WEST_REAR",
+      "x0": -43,
+      "x1": -12,
+      "front_y": 67,
+      "depth": 61,
+      "bottom": 21,
+      "top": 104,
+      "mat": "dark",
+      "levels": [
+        38,
+        55,
+        71,
+        88
+      ]
+    },
+    {
+      "id": "CIVIC_RESIDENCE_CENTER",
+      "x0": -8,
+      "x1": 23,
+      "front_y": 73,
+      "depth": 59,
+      "bottom": 13,
+      "top": 114,
+      "mat": "bone",
+      "levels": [
+        31,
+        48,
+        66,
+        87,
+        105
+      ]
+    },
+    {
+      "id": "RESEARCH_RESIDENCE_EAST",
+      "x0": 18,
+      "x1": 51,
+      "front_y": 59,
+      "depth": 58,
+      "bottom": 10,
+      "top": 94,
+      "mat": "dark",
+      "levels": [
+        27,
+        44,
+        62,
+        80
+      ]
+    },
+    {
+      "id": "GARDEN_NEIGHBORHOOD_EAST",
+      "x0": 49,
+      "x1": 83,
+      "front_y": 38,
+      "depth": 47,
+      "bottom": 6,
+      "top": 67,
+      "mat": "bone",
+      "levels": [
+        21,
+        38,
+        54
+      ]
+    },
+    {
+      "id": "CULTURAL_EDGE_NEAR",
+      "x0": -52,
+      "x1": -20,
+      "front_y": 26,
+      "depth": 38,
+      "bottom": 8,
+      "top": 39,
+      "mat": "bone",
+      "levels": [
+        22,
+        34
+      ]
+    },
+    {
+      "id": "PUBLIC_RESIDENCE_NEAR",
+      "x0": 22,
+      "x1": 51,
+      "front_y": 25,
+      "depth": 42,
+      "bottom": 8,
+      "top": 47,
+      "mat": "dark",
+      "levels": [
+        22,
+        36
+      ]
+    },
+    {
+      "id": "URBAN_INTERLOCK_BACK",
+      "x0": -17,
+      "x1": 26,
+      "front_y": 40,
+      "depth": 32,
+      "bottom": 27,
+      "top": 65,
+      "mat": "dark",
+      "levels": [
+        43,
+        56
+      ]
+    }
+  ],
+  "caveats": [
+    "Only 3 public rooms are actual bounded geometry; the nine upper positive masses are NOT real verified flats or walkable city",
+    "Nine authored volumes can be artistically REJECT; tests cannot confer beauty",
+    "Two pictures are genuine renders after successful CI, NOT concept sketch or full G1",
+    "World/USED/CSV/OBJ/GLB/BLEND and A53/A54 prior source must remain immutable",
+    "Construction, city integration G2/G3 prohibited; Work requires explicit consent"
+  ]
+}

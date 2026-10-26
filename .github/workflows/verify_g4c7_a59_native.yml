@@ -1,0 +1,90 @@
+name: A59 native 2-view visual falsification (NO MINECRAFT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_a59_native_scene.py'
+      - 'artifacts/g4c7-a59-native-two-view/scene_plan.json'
+      - '.github/workflows/verify_g4c7_a59_native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a59-real-blender-art-gate
+  cancel-in-progress: false
+jobs:
+  real-render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Static and six deliberate invalid plan checks
+        run: |
+          python -m py_compile tools/g4c7_a59_native_scene.py
+          python tools/g4c7_a59_native_scene.py --preflight --negatives
+      - name: Install official Blender Foundation bpy 4.5.15
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5); print('NATIVE_BPY',bpy.app.version_string)"
+      - name: Build real editable Blender scene and 2 real Cycles images
+        run: |
+          python tools/g4c7_a59_native_scene.py --build-render
+      - name: Reopen native blend and independently verify PNG signatures CRC dimensions
+        run: |
+          python - <<'PY'
+          import bpy,hashlib,json,struct,zlib
+          from pathlib import Path
+          d=Path('artifacts/g4c7-a59-native-two-view/native-output')
+          f=d/'a59_occupied_city_slice.blend'
+          assert f.read_bytes()[:7]==b'BLENDER'
+          bpy.ops.wm.open_mainfile(filepath=str(f.resolve()))
+          assert bpy.context.scene.render.engine=='CYCLES'
+          cams=[o for o in bpy.data.objects if o.type=='CAMERA']
+          assert len(cams)==2,[o.name for o in cams]
+          report={'stage':'A59','kind':'NATIVE_BLENDER_2_CAMERA_INTEGRITY_ONLY','art':'UNASSESSED_HOLD',
+             's1':'NOT_ASSESSED','g1':'NOT_RUN','g2':'NOT_RUN','g3':'NOT_RUN',
+             'minecraft':'FORBIDDEN','blender_version':bpy.app.version_string,
+             'blend_sha256':hashlib.sha256(f.read_bytes()).hexdigest(),'views':{}}
+          for k in ('public_heart','oblique'):
+              p=d/('render_'+k+'.png'); data=p.read_bytes()
+              assert data[:8]==b'\x89PNG\r\n\x1a\n'
+              off=8; chunks=[]
+              while off<len(data):
+                  n=int.from_bytes(data[off:off+4],'big'); kind=data[off+4:off+8]
+                  body=data[off+8:off+8+n]; crc=int.from_bytes(data[off+8+n:off+12+n],'big')
+                  assert zlib.crc32(kind+body)&0xffffffff==crc
+                  if kind==b'IHDR': assert struct.unpack('>II',body[:8])==(960,720)
+                  chunks.append(kind.decode('ascii'))
+                  off+=12+n
+                  if kind==b'IEND':break
+              assert off==len(data) and 'IDAT' in chunks and 'IEND' in chunks
+              report['views'][k]={'sha256':hashlib.sha256(data).hexdigest(),'size_bytes':len(data)}
+          (d/'a59_evidence_integrity.json').write_text(json.dumps(report,indent=2)+'\n')
+          print('A59_NATIVE_2_VIEWS_BINARY_PASS; ART NOT ASSESSED; S1/G1/G2/G3 NOT RUN')
+          PY
+      - name: Upload evidence even if native build or push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a59-genuine-two-view-art-gate-not-accepted
+          path: artifacts/g4c7-a59-native-two-view/native-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Preserve original real Cycles evidence in this branch (non-force)
+        run: |
+          set -euo pipefail
+          OUTPUT=artifacts/g4c7-a59-native-two-view/native-output
+          test -f "$OUTPUT/a59_occupied_city_slice.blend"
+          test -f "$OUTPUT/render_public_heart.png"
+          test -f "$OUTPUT/render_oblique.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$OUTPUT"
+          git diff --cached --quiet && { echo 'No new evidence'; exit 1; }
+          git commit -m 'A59: preserve 2 genuine Cycles images and editable urban slice (ART HOLD)'
+          git push origin "HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study"
