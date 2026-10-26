@@ -1,0 +1,76 @@
+{
+  "stage": "A51",
+  "date": "2026-10-26 JST",
+  "baseHead": "0e0fea653cd8dab94e9f52bbe06dac0fde340661",
+  "scope": "Art-method G0 redesign; no new geometry S1",
+  "status": {
+    "g0": "ART-DIRECTED PROGRAM-MASS as conditional production strategy only, NOT ART PASS",
+    "newS1": "NOT RUN",
+    "g1": "NOT RUN",
+    "g2": "NOT RUN",
+    "g3": "NOT RUN",
+    "overall": "ART HOLD"
+  },
+  "evidence": {
+    "scene": "A50, existing immutable model",
+    "programGate": "tools/g4c7_a51_program_gate.mjs",
+    "contract": "tools/g4c7_a51_program_contract.json",
+    "report": "artifacts/g4c7-a51-evidence-first/a50_preflight.json",
+    "portalProbeCount": 18,
+    "portalProbePass": 18,
+    "rendererNegatives": 2,
+    "rendererNegativePass": 2,
+    "deliberateCorruptionsChecked": 3,
+    "deliberateCorruptionsRejected": 3,
+    "forum": {
+      "marketPercent": 1.169,
+      "culturePercent": 1.007,
+      "libraryPercent": 0.966
+    },
+    "thresholdPercent": 2,
+    "thresholdMeaning": "REVIEW TRIGGER ONLY; NOT ART PASS/FAIL",
+    "functionsTestedIn": "JS tool execution",
+    "nodeCLIStandalone": "NOT RUN"
+  },
+  "g0": [
+    {
+      "name": "ART-DIRECTED PROGRAM-MASS",
+      "decision": "CONDITIONAL A52 RESEARCH STRATEGY",
+      "risk": "visual contract fails in real mesh or reverts to a large blank shell"
+    },
+    {
+      "name": "PARAMETRIC FACET ACCRETION",
+      "decision": "DO NOT REUSE AS PRIMARY MASSING METHOD IN A52",
+      "risk": "A34-A50 box/slab/beam/curve repetition caused repeated ART REJECT"
+    }
+  ],
+  "reused": [
+    "A49 semantic Z-buffer and negative controls",
+    "A50 historic OBJ/GLB source (unchanged)",
+    "existing GitHub artifacts and docs"
+  ],
+  "new3dFiles": 0,
+  "links": [
+    "https://ala.fi/work/helsinki-central-library/",
+    "https://oodihelsinki.fi/en/what-is-oodi/architecture/",
+    "https://www.oma.com/projects/seattle-central-library",
+    "https://www.mvrdv.com/projects/233/valley"
+  ],
+  "safety": {
+    "minecraft": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "historicAssets": "PROTECTED",
+    "humanSamples": 331,
+    "footSamples": 993,
+    "halfWidth": 0.65,
+    "relativeFeet": [
+      0.15,
+      3.25
+    ],
+    "historicInterferenceMax": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControlsRequired": true,
+    "work": "PRIOR EXPLICIT USER APPROVAL"
+  },
+  "next": "A52 art-directed generation trial only after composed dual-scale inhabited space and distant skyline, verify S1 and separate G1; stop if insufficient"
+}

@@ -1,0 +1,255 @@
+{
+  "version": 1,
+  "source": "A50 only; reusable method, no future candidate auto-pass",
+  "minMeaningfulVisiblePercent": 2,
+  "requiredSimultaneousPrograms": [
+    "market",
+    "culture",
+    "library"
+  ],
+  "programGroups": {
+    "market": "room-activity-market",
+    "culture": "room-activity-culture",
+    "library": "room-activity-library",
+    "housing": "upper-inhabited-rooms"
+  },
+  "cameras": {
+    "arrival": {
+      "pose": [
+        [
+          0,
+          2.4,
+          -42
+        ],
+        [
+          0,
+          10,
+          22
+        ],
+        "perspective",
+        0
+      ]
+    },
+    "forum": {
+      "pose": [
+        [
+          0,
+          2.4,
+          -8
+        ],
+        [
+          0,
+          12,
+          31
+        ],
+        "perspective",
+        0
+      ]
+    },
+    "market": {
+      "pose": [
+        [
+          -7,
+          2.4,
+          0
+        ],
+        [
+          -33,
+          9,
+          8
+        ],
+        "perspective",
+        0
+      ]
+    },
+    "culture": {
+      "pose": [
+        [
+          5,
+          2.4,
+          5
+        ],
+        [
+          31,
+          10,
+          13
+        ],
+        "perspective",
+        0
+      ]
+    },
+    "library": {
+      "pose": [
+        [
+          0,
+          2.4,
+          22
+        ],
+        [
+          0,
+          12,
+          54
+        ],
+        "perspective",
+        0
+      ]
+    },
+    "oblique": {
+      "pose": [
+        [
+          144,
+          113,
+          -132
+        ],
+        [
+          0,
+          19,
+          8
+        ],
+        "ortho",
+        2.52
+      ]
+    }
+  },
+  "rooms": [
+    {
+      "name": "market",
+      "cx": -28,
+      "cz": 4,
+      "theta": -1.5707963267948966,
+      "depth": 38,
+      "probes": [
+        {
+          "label": "center-low",
+          "x": 0,
+          "y": 3,
+          "expected": "open"
+        },
+        {
+          "label": "center-mid",
+          "x": 0,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "center-high",
+          "x": 0,
+          "y": 10,
+          "expected": "open"
+        },
+        {
+          "label": "left-inside",
+          "x": -3,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "right-inside",
+          "x": 3,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "right-pier",
+          "x": 9,
+          "y": 6,
+          "expected": "blocked"
+        }
+      ]
+    },
+    {
+      "name": "culture",
+      "cx": 27,
+      "cz": 12,
+      "theta": 1.5707963267948966,
+      "depth": 40,
+      "probes": [
+        {
+          "label": "center-low",
+          "x": 0,
+          "y": 3,
+          "expected": "open"
+        },
+        {
+          "label": "center-mid",
+          "x": 0,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "center-high",
+          "x": 0,
+          "y": 10,
+          "expected": "open"
+        },
+        {
+          "label": "left-inside",
+          "x": -3,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "right-inside",
+          "x": 3,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "right-pier",
+          "x": 9,
+          "y": 6,
+          "expected": "blocked"
+        }
+      ]
+    },
+    {
+      "name": "library",
+      "cx": 1,
+      "cz": 50,
+      "theta": 0,
+      "depth": 35,
+      "probes": [
+        {
+          "label": "center-low",
+          "x": 0,
+          "y": 3,
+          "expected": "open"
+        },
+        {
+          "label": "center-mid",
+          "x": 0,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "center-high",
+          "x": 0,
+          "y": 10,
+          "expected": "open"
+        },
+        {
+          "label": "left-inside",
+          "x": -3,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "right-inside",
+          "x": 3,
+          "y": 6,
+          "expected": "open"
+        },
+        {
+          "label": "right-pier",
+          "x": 9,
+          "y": 6,
+          "expected": "blocked"
+        }
+      ]
+    }
+  ],
+  "expectedGitBlobs": {
+    "scene": "34303129b2222ad6885071caabb4cb8ddcf7b895",
+    "visibilityEngine": "d5a4258de13b50f2589f564699fd83b16d965df1"
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "stage": "A51",
+  "sourceScene": "A50 real mesh from existing source",
+  "contractVersion": 1,
+  "purpose": "Pre-model urban architecture review: align apparent public activity with true room entrances; stop blind detailing",
+  "pixelVisibility": {
+    "reviewTriggerThresholdPercent": 2,
+    "denominator": "nearest foreground model pixels",
+    "meaning": "geometry tag visibility, NOT user comprehension or quality",
+    "cameras": {
+      "arrival": {
+        "modelPixels": 189973,
+        "program": {
+          "market": {
+            "pixels": 3887,
+            "ofModelPercent": 2.046,
+            "inspectionTrigger": "PRESENT_FOR_HUMAN_REVIEW"
+          },
+          "culture": {
+            "pixels": 1643,
+            "ofModelPercent": 0.865,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "library": {
+            "pixels": 476,
+            "ofModelPercent": 0.251,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "housing": {
+            "pixels": 8720,
+            "ofModelPercent": 4.59,
+            "inspectionTrigger": "PRESENT_FOR_HUMAN_REVIEW"
+          }
+        },
+        "simultaneousProgramInspection": {
+          "reviewRequired": true,
+          "belowThresholdPrograms": [
+            "culture",
+            "library"
+          ],
+          "interpretation": "This is a *review trigger*, never automatic art acceptance or rejection."
+        }
+      },
+      "forum": {
+        "modelPixels": 211428,
+        "program": {
+          "market": {
+            "pixels": 2472,
+            "ofModelPercent": 1.169,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "culture": {
+            "pixels": 2129,
+            "ofModelPercent": 1.007,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "library": {
+            "pixels": 2043,
+            "ofModelPercent": 0.966,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "housing": {
+            "pixels": 1006,
+            "ofModelPercent": 0.476,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          }
+        },
+        "simultaneousProgramInspection": {
+          "reviewRequired": true,
+          "belowThresholdPrograms": [
+            "market",
+            "culture",
+            "library"
+          ],
+          "interpretation": "This is a *review trigger*, never automatic art acceptance or rejection."
+        }
+      },
+      "market": {
+        "modelPixels": 218335,
+        "program": {
+          "market": {
+            "pixels": 51557,
+            "ofModelPercent": 23.614,
+            "inspectionTrigger": "PRESENT_FOR_HUMAN_REVIEW"
+          },
+          "culture": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "library": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "housing": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          }
+        },
+        "simultaneousProgramInspection": {
+          "reviewRequired": true,
+          "belowThresholdPrograms": [
+            "culture",
+            "library"
+          ],
+          "interpretation": "This is a *review trigger*, never automatic art acceptance or rejection."
+        }
+      },
+      "culture": {
+        "modelPixels": 217610,
+        "program": {
+          "market": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "culture": {
+            "pixels": 1851,
+            "ofModelPercent": 0.851,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "library": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "housing": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          }
+        },
+        "simultaneousProgramInspection": {
+          "reviewRequired": true,
+          "belowThresholdPrograms": [
+            "market",
+            "culture",
+            "library"
+          ],
+          "interpretation": "This is a *review trigger*, never automatic art acceptance or rejection."
+        }
+      },
+      "library": {
+        "modelPixels": 234529,
+        "program": {
+          "market": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "culture": {
+            "pixels": 14184,
+            "ofModelPercent": 6.048,
+            "inspectionTrigger": "PRESENT_FOR_HUMAN_REVIEW"
+          },
+          "library": {
+            "pixels": 26947,
+            "ofModelPercent": 11.49,
+            "inspectionTrigger": "PRESENT_FOR_HUMAN_REVIEW"
+          },
+          "housing": {
+            "pixels": 0,
+            "ofModelPercent": 0,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          }
+        },
+        "simultaneousProgramInspection": {
+          "reviewRequired": true,
+          "belowThresholdPrograms": [
+            "market"
+          ],
+          "interpretation": "This is a *review trigger*, never automatic art acceptance or rejection."
+        }
+      },
+      "oblique": {
+        "modelPixels": 56858,
+        "program": {
+          "market": {
+            "pixels": 624,
+            "ofModelPercent": 1.097,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "culture": {
+            "pixels": 259,
+            "ofModelPercent": 0.456,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "library": {
+            "pixels": 344,
+            "ofModelPercent": 0.605,
+            "inspectionTrigger": "BELOW_VISIBILITY_INSPECTION_THRESHOLD"
+          },
+          "housing": {
+            "pixels": 5339,
+            "ofModelPercent": 9.39,
+            "inspectionTrigger": "PRESENT_FOR_HUMAN_REVIEW"
+          }
+        },
+        "simultaneousProgramInspection": {
+          "reviewRequired": true,
+          "belowThresholdPrograms": [
+            "market",
+            "culture",
+            "library"
+          ],
+          "interpretation": "This is a *review trigger*, never automatic art acceptance or rejection."
+        }
+      }
+    }
+  },
+  "selectedPortalRays": {
+    "sampledRayPass": true,
+    "samples": [
+      {
+        "room": "market",
+        "probe": "center-low",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "market",
+        "probe": "center-mid",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "market",
+        "probe": "center-high",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "market",
+        "probe": "left-inside",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "market",
+        "probe": "right-inside",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "market",
+        "probe": "right-pier",
+        "expected": "blocked",
+        "rayHits": 2,
+        "pass": true
+      },
+      {
+        "room": "culture",
+        "probe": "center-low",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "culture",
+        "probe": "center-mid",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "culture",
+        "probe": "center-high",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "culture",
+        "probe": "left-inside",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "culture",
+        "probe": "right-inside",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "culture",
+        "probe": "right-pier",
+        "expected": "blocked",
+        "rayHits": 2,
+        "pass": true
+      },
+      {
+        "room": "library",
+        "probe": "center-low",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "library",
+        "probe": "center-mid",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "library",
+        "probe": "center-high",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "library",
+        "probe": "left-inside",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "library",
+        "probe": "right-inside",
+        "expected": "open",
+        "rayHits": 0,
+        "pass": true
+      },
+      {
+        "room": "library",
+        "probe": "right-pier",
+        "expected": "blocked",
+        "rayHits": 2,
+        "pass": true
+      }
+    ],
+    "scope": "Front envelope triangle ray intersections only; no full navigable volume or door/structural QA"
+  },
+  "rendererNegativeControls": {
+    "frontBlocksFar": true,
+    "behindCameraHidden": true,
+    "frontPixels": 3136
+  },
+  "gate": {
+    "result": "REDESIGN_REQUIRED_BEFORE_ANY_NEW_MODEL",
+    "reason": "A50 S1 rejected and central public room fails 3-program visibility inspection; external megacity aesthetic is not achieved",
+    "noNewModelCommitted": true,
+    "artStatus": "ART HOLD",
+    "newS1": "NOT RUN",
+    "g1": "NOT RUN",
+    "g2": "NOT RUN",
+    "g3": "NOT RUN"
+  },
+  "exclusions": [
+    "Not a visual art score",
+    "Not a minimum legal accessible doorway check",
+    "Not a structural load or G2 walking check",
+    "Not G3 331 human / 993 feet safety check",
+    "Not approval to integrate or build in Minecraft"
+  ],
+  "selfTests": {
+    "passed": true,
+    "goodRayCount": 18,
+    "invertedExpectedRejected": true,
+    "missingSemanticGroupRejected": true,
+    "damagedFaceTaxonomyRejected": true
+  }
+}
