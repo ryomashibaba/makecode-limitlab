@@ -1,0 +1,131 @@
+{
+  "stage": "A47",
+  "date": "2026-10-26 JST",
+  "baseHead": "0c6d5629f49a0aacfde8bcaf60442db51d9a4a4f",
+  "project": "MakeCode LimitLab / G4-C7 Orbital Commons",
+  "study": "BRAIDED CIVIC THRESHOLD / S1 urban activity and occupied section",
+  "g0": [
+    {
+      "option": "A",
+      "name": "BRAIDED CIVIC THRESHOLD",
+      "principle": "Public street physically crosses nonparallel inhabited bands, market and cultural/reading terraces in a kinked mass",
+      "risk": "Huge V-shaped opaque wall and structural ribbon may dominate",
+      "decision": "ONE LIGHTWEIGHT 3D S1 TEST"
+    },
+    {
+      "option": "B",
+      "name": "STEPPED INTERIOR FORUM",
+      "principle": "Concentric inward-inhabited terraces around urban public forum",
+      "risk": "Quarry, stadium/campus void, stacked plates recurrence",
+      "decision": "STOP AT G0 WITHOUT 3D; not forbidden permanently"
+    }
+  ],
+  "art": {
+    "S1": "ART REJECT",
+    "G1": "NOT RUN",
+    "overall": "ART HOLD",
+    "perView": {
+      "arrival": "REJECT — V wall, opaque facade, tiny shop markers",
+      "public_portal": "REJECT — black passage/giant buttress, purposes obscure",
+      "market_inhabited": "REJECT — vending tables in front of blank wall, not embedded street life",
+      "reading_destination": "REJECT — book rows on edge platform, no legible public room",
+      "front": "REJECT — V-shaped solid mass and diagonal braces",
+      "oblique": "REJECT — triangular industrial shed/folding roof silhouette",
+      "side": "REJECT — no urban thickness recognizably occupied",
+      "aerial": "REJECT — single industrial fragment not monumental inhabited city"
+    },
+    "fatalIssues": [
+      "Wall and folded braces dominate visibility",
+      "Public route has a conceptual through-gate but no convincing spatial occupation",
+      "Program nodes remain objects on platforms rather than deep legible rooms",
+      "No measured support/structural or actual walkable connectivity"
+    ]
+  },
+  "technical": {
+    "vertices": 3002,
+    "triangles": 1314,
+    "materials": 16,
+    "glbBytes": 58388,
+    "zeroDegenerateTriangles": true,
+    "zeroOutOfRangeIndices": true,
+    "positionFloat32MaxDifference": 0.000003387123030051953,
+    "evidenceViews": {
+      "arrival": {
+        "bytes": 236102,
+        "nearClippedTriangles": 8,
+        "fullyBehindDiscarded": 2,
+        "coveredPixels": 175450
+      },
+      "public_portal": {
+        "bytes": 236102,
+        "nearClippedTriangles": 85,
+        "fullyBehindDiscarded": 92,
+        "coveredPixels": 233537
+      },
+      "market_inhabited": {
+        "bytes": 236102,
+        "nearClippedTriangles": 123,
+        "fullyBehindDiscarded": 256,
+        "coveredPixels": 212939
+      },
+      "reading_destination": {
+        "bytes": 236102,
+        "nearClippedTriangles": 83,
+        "fullyBehindDiscarded": 374,
+        "coveredPixels": 183090
+      },
+      "front": {
+        "bytes": 236102,
+        "nearClippedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "coveredPixels": 67031
+      },
+      "oblique": {
+        "bytes": 236102,
+        "nearClippedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "coveredPixels": 61006
+      },
+      "side": {
+        "bytes": 236102,
+        "nearClippedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "coveredPixels": 55240
+      },
+      "aerial": {
+        "bytes": 236102,
+        "nearClippedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "coveredPixels": 83753
+      }
+    },
+    "producerQA": "LIMITED PASS",
+    "postCommitBinaryReadback": "NOT RUN",
+    "validation": "GLB header/vertex agreement, PNG signature+chunk CRC local producer validation; no external renderer; no aperture traversability claim"
+  },
+  "notRun": [
+    "G1 entire city aesthetics",
+    "G2 human-size walking, floor/door/stairs support",
+    "G3 human 331 foot 993 full negative controls",
+    "self-intersections/watertightness/structural integrity",
+    "independent import",
+    "actual Minecraft construction"
+  ],
+  "safety": {
+    "overall": "ART HOLD",
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "previousEvidence": "PROTECTED",
+    "humanSamples": 331,
+    "feetSamples": 993,
+    "bodyHalfWidth": 0.65,
+    "relativeFootRange": [
+      0.15,
+      3.25
+    ],
+    "historicInterferenceMax": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControl": "REQUIRED",
+    "Work": "PRIOR EXPLICIT USER APPROVAL"
+  }
+}
