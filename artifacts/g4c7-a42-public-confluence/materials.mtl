@@ -1,0 +1,41 @@
+newmtl ivory_structural
+Kd 0.866667 0.890196 0.850980
+
+newmtl deep_shadow
+Kd 0.164706 0.250980 0.294118
+
+newmtl warm_market_wood
+Kd 0.729412 0.517647 0.352941
+
+newmtl civic_stone
+Kd 0.690196 0.729412 0.701961
+
+newmtl library_glass
+Kd 0.403922 0.690196 0.729412
+
+newmtl urban_plants
+Kd 0.372549 0.611765 0.435294
+
+newmtl brass_signage
+Kd 0.921569 0.752941 0.427451
+
+newmtl public_terracotta
+Kd 0.749020 0.490196 0.384314
+
+newmtl steel_grid
+Kd 0.250980 0.380392 0.450980
+
+newmtl warm_interior
+Kd 0.964706 0.819608 0.603922
+
+newmtl roof_ceramic
+Kd 0.776471 0.823529 0.776471
+
+newmtl theatre_blue
+Kd 0.333333 0.529412 0.580392
+
+newmtl library_paper
+Kd 0.941176 0.858824 0.717647
+
+newmtl stage_light
+Kd 0.964706 0.701961 0.427451

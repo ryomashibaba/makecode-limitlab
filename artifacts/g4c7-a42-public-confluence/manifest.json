@@ -1,0 +1,338 @@
+{
+  "stage": "A42",
+  "date": "2026-10-26 JST",
+  "baseHead": "a33353937a596f8cfc8be663712bd4a44aeb8727",
+  "label": "PUBLIC CONFLUENCE / 三方向の公共交差街区",
+  "scope": "S1 early human-scale public junction visualization. NOT whole city nor Minecraft construction.",
+  "g0": [
+    {
+      "name": "one giant enclosed civic shell",
+      "decision": "EARLY REJECT",
+      "reason": "A33/A37 blank megastructure recurrence risk; forms not permanently banned"
+    },
+    {
+      "name": "additional buildings around A41 straight commercial mall",
+      "decision": "EARLY REJECT",
+      "reason": "A41 elongated parallel commercial strip unchanged"
+    },
+    {
+      "name": "three-directional civic crossroads with distinct programs",
+      "decision": "SELECTED FOR ONE S1 LIGHTWEIGHT MESH SCOUT",
+      "reason": "directly tests branching, three outward-visible entrances and multi-use public space"
+    }
+  ],
+  "urbanPrograms": [
+    {
+      "name": "market",
+      "anchor": [
+        -37,
+        0,
+        -4
+      ],
+      "position": "west",
+      "visual": "roofed actual stalls, mezzanine, repeated display tables"
+    },
+    {
+      "name": "maker-theatre",
+      "anchor": [
+        34,
+        0,
+        -6
+      ],
+      "position": "east",
+      "visual": "angled open workshop, central maker tables and stepped culture seating"
+    },
+    {
+      "name": "library-research",
+      "anchor": [
+        0,
+        0,
+        51
+      ],
+      "position": "north",
+      "visual": "deep reading hall, open entry columns, bookcases and high roof"
+    }
+  ],
+  "art": {
+    "s1": "ART REJECT",
+    "fullCityG1": "NOT RUN",
+    "overall": "ART HOLD",
+    "partialProgress": [
+      "A41's two parallel commercial strips replaced by distinguishable west/east/north destinations around actual crossing paths",
+      "lowered street camera shows pavilion variation across the junction",
+      "north library portal remains visible from southern arrival"
+    ],
+    "criticalFailures": [
+      "far/side views still read isolated exhibition pavilions arranged on a common slab, not one inhabited architectural megacity",
+      "two lateral entrances do not clearly communicate differing uses simultaneously from one street-eye view",
+      "north bookcases and east workshop culture barely legible from plaza; labels and geometric program tags do not equal visual quality",
+      "public square lacks architectural enclosure/vertical civic density; minimal city sense",
+      "material and shadow style remain rudimentary; a few broad opaque masses and shallow facades"
+    ],
+    "viewReview": {
+      "junction_arrival": "partial branching visible but program-specific activities NOT immediately read; REJECT",
+      "junction_center": "central library dominates and two side entrances mostly offscreen; REJECT",
+      "market_portal": "market stalls discernible, roof and piers dominate; REJECT",
+      "culture_portal": "maker-workshop details obscure; frame dominant; REJECT",
+      "library_portal": "open library front with shelf rows; recognizable only as simplified pavilion; REJECT",
+      "front": "three separated pavilions, no monumental integrated city; REJECT",
+      "oblique": "three individual campus facilities; REJECT",
+      "side": "poor connective depth, disconnected roofs; REJECT",
+      "aerial": "branches and program layout legible, but empty paved campus; REJECT"
+    }
+  },
+  "technical": {
+    "vertices": 18060,
+    "triangles": 7628,
+    "glbBytes": 313992,
+    "materials": 14,
+    "indices": 22884,
+    "invalidIndices": 0,
+    "maxGlbObjPositionFloat32Diff": 0.0000037201956928356594,
+    "materialGroups": {
+      "public-ground": 404,
+      "west-covered-market": 2080,
+      "east-culture-workshop": 1500,
+      "north-library-and-research": 1940,
+      "crossroads-and-human-scale": 1704
+    },
+    "anchors": {
+      "arrival": [
+        0,
+        2.2,
+        -61
+      ],
+      "junction": [
+        0,
+        2.2,
+        -22
+      ],
+      "entrances": {
+        "market": [
+          -37,
+          0,
+          -4
+        ],
+        "culture": [
+          34,
+          0,
+          -6
+        ],
+        "library": [
+          0,
+          0,
+          51
+        ]
+      },
+      "streetBranches": {
+        "south": [
+          0,
+          -70
+        ],
+        "west": [
+          -95,
+          7
+        ],
+        "east": [
+          84,
+          -10
+        ],
+        "north": [
+          3,
+          67
+        ]
+      }
+    }
+  },
+  "render": {
+    "type": "real indexed triangle mesh, actual geometry Z-buffer PNG",
+    "dimension": [
+      900,
+      720
+    ],
+    "views": {
+      "junction_arrival": {
+        "bytes": 649184,
+        "pixels": 146908,
+        "nearOrBehindExcluded": 24,
+        "eye": [
+          0,
+          2.2,
+          -61
+        ],
+        "target": [
+          0,
+          6,
+          25
+        ],
+        "perspective": true,
+        "orthoScale": null
+      },
+      "junction_center": {
+        "bytes": 649184,
+        "pixels": 126444,
+        "nearOrBehindExcluded": 1675,
+        "eye": [
+          0,
+          2.2,
+          -23
+        ],
+        "target": [
+          0,
+          5,
+          21
+        ],
+        "perspective": true,
+        "orthoScale": null
+      },
+      "market_portal": {
+        "bytes": 649184,
+        "pixels": 164272,
+        "nearOrBehindExcluded": 3632,
+        "eye": [
+          -9,
+          2.2,
+          -17
+        ],
+        "target": [
+          -74,
+          6,
+          -5
+        ],
+        "perspective": true,
+        "orthoScale": null
+      },
+      "culture_portal": {
+        "bytes": 649184,
+        "pixels": 146871,
+        "nearOrBehindExcluded": 4622,
+        "eye": [
+          10,
+          2.2,
+          -18
+        ],
+        "target": [
+          66,
+          7,
+          -9
+        ],
+        "perspective": true,
+        "orthoScale": null
+      },
+      "library_portal": {
+        "bytes": 649184,
+        "pixels": 165449,
+        "nearOrBehindExcluded": 2321,
+        "eye": [
+          0,
+          2.2,
+          -14
+        ],
+        "target": [
+          0,
+          8,
+          78
+        ],
+        "perspective": true,
+        "orthoScale": null
+      },
+      "front": {
+        "bytes": 649184,
+        "pixels": 71983,
+        "nearOrBehindExcluded": 0,
+        "eye": [
+          0,
+          89,
+          -172
+        ],
+        "target": [
+          0,
+          14,
+          10
+        ],
+        "perspective": false,
+        "orthoScale": 2.2
+      },
+      "oblique": {
+        "bytes": 649184,
+        "pixels": 84805,
+        "nearOrBehindExcluded": 0,
+        "eye": [
+          136,
+          112,
+          -130
+        ],
+        "target": [
+          0,
+          14,
+          10
+        ],
+        "perspective": false,
+        "orthoScale": 2.2
+      },
+      "side": {
+        "bytes": 649184,
+        "pixels": 75242,
+        "nearOrBehindExcluded": 0,
+        "eye": [
+          168,
+          90,
+          5
+        ],
+        "target": [
+          0,
+          14,
+          10
+        ],
+        "perspective": false,
+        "orthoScale": 2.2
+      },
+      "aerial": {
+        "bytes": 649184,
+        "pixels": 127149,
+        "nearOrBehindExcluded": 0,
+        "eye": [
+          122,
+          193,
+          -104
+        ],
+        "target": [
+          0,
+          14,
+          10
+        ],
+        "perspective": false,
+        "orthoScale": 2.2
+      }
+    },
+    "cameraNote": "Local S1 research cameras and wide lens 480 px compared to older 570 px; no strict A41 projection equivalence",
+    "clippingCaveat": "renderer omits entire triangles intersecting near plane or behind camera; nearOrBehindExcluded is NOT exclusively near-plane clipping"
+  },
+  "postSaveVerification": "NOT YET DONE",
+  "notRun": [
+    "full-city G1",
+    "G2 occupancy, walking, stairs, support and exit routes",
+    "G3 331 body samples and 993 foot samples, negative control",
+    "independent third-party GLB importer",
+    "component connectivity, self-intersections, load-bearing and boolean geometry",
+    "Minecraft Education build and integration"
+  ],
+  "safety": {
+    "ART_HOLD": true,
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "priorAssets": "PROTECTED",
+    "humanSamples": 331,
+    "footSamples": 993,
+    "humanHalfWidth": 0.65,
+    "relativeFootRange": [
+      0.15,
+      3.25
+    ],
+    "historicSurfaceInterferenceMax": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControl": "MANDATORY",
+    "workBeforeApproval": "FORBIDDEN"
+  },
+  "next": "A43 must replace isolated pavilion imagery with convincingly inhabited layered program-to-facade relationships; test human-eye public interior scene first, avoid simply extending roof/bigger site"
+}
