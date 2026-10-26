@@ -1,3 +1,9 @@
+# 【最新A38 2026-10-26 JST】URBAN WEAVE 実3D初期美術スカウト・ART HOLD
+
+> **最新はA38の軽量実モデル研究**。現行ブランチに `artifacts/g4c7-a38-urban-weave-scout/` のOBJ/GLB・独立depth PNG5視点・manifest・Node再現ソースを追加。技術検証はGLBヘッダー/範囲に限定。A37までの一体性・入口7/7・331/993などのPASSをA38へ転記しない。**G1未合格、正式G2/G3未実施、全体ART HOLD**。北の目的地や多層の都市用途はA37より見分けやすい可能性があるが、施設サイズに見える問題を残す。A38詳細 [監査](./G4C7_A38_URBAN_WEAVE_G1_JA.md)。旧成果原本保護。Minecraft Education施工と都市統合は禁止。Work事前明示承認制。
+
+---
+
 # 【最新確定A37／2026-10-26 JST】公共室を先行切削：7/7入口・室空洞QA PASS、G1 ART REJECT
 
 > GitHub A37正本：`artifacts/g4c7-a37-inhabited-open-section/` の実GLB/OBJ（8,653頂点／17,312三角形、GLB314,124 bytes）。A36実OBJとの独立depth-tested indexed-PNG四視点＋内部3視点を`verified-png/`に保存。モデルコミット`4ef3401cc2dba0475de2f9f38a98610d8bb071f9`、PNGコミット`84b8aafb089d77285802e2d0a08ba7f2331e9596`。GLBバイナリ独立再読込・頂点位置OBJ完全一致・索引範囲・accessor座標域PASS。7か所の南入口・居住・文化・北室の空洞は全て外気と連結（**歩行や避難が可能という意味ではない**）。

@@ -1,0 +1,140 @@
+{
+  "stage": "A38",
+  "label": "URBAN WEAVE / 三街区を可視化する交織公共都市",
+  "status": "G1 PROTOTYPE ART HOLD — NOT APPROVED",
+  "base_head": "480b90dd3f7641e4be005941de9901c8d89023b7",
+  "date": "2026-10-26 JST",
+  "mesh": {
+    "vertices": 14524,
+    "triangles": 6232,
+    "materials": 8,
+    "bounds": {
+      "min": [
+        -197.28165033442008,
+        0,
+        -219
+      ],
+      "max": [
+        208.78741203027215,
+        260.51063829787233,
+        203
+      ]
+    },
+    "glbBytes": 252448,
+    "indexRangeValid": true,
+    "glbHeaderValid": true
+  },
+  "render": {
+    "type": "independent real mesh software indexed PNG (Z-buffer)",
+    "cameraLocations": {
+      "front": [
+        [
+          0,
+          220,
+          -450
+        ],
+        [
+          0,
+          78,
+          0
+        ]
+      ],
+      "oblique": [
+        [
+          350,
+          282,
+          -365
+        ],
+        [
+          0,
+          78,
+          0
+        ]
+      ],
+      "side": [
+        [
+          465,
+          225,
+          0
+        ],
+        [
+          0,
+          78,
+          0
+        ]
+      ],
+      "aerial": [
+        [
+          250,
+          525,
+          -270
+        ],
+        [
+          0,
+          78,
+          0
+        ]
+      ],
+      "interior_south": [
+        [
+          0,
+          63,
+          -151
+        ],
+        [
+          0,
+          80,
+          135
+        ]
+      ]
+    },
+    "orthographicScale": 0.95,
+    "dimensions": [
+      650,
+      540
+    ],
+    "views": {
+      "front": {
+        "bytes": 351840,
+        "coveredPixels": 78440
+      },
+      "oblique": {
+        "bytes": 351840,
+        "coveredPixels": 90392
+      },
+      "side": {
+        "bytes": 351840,
+        "coveredPixels": 73318
+      },
+      "aerial": {
+        "bytes": 351840,
+        "coveredPixels": 116729
+      },
+      "interior_south": {
+        "bytes": 351840,
+        "coveredPixels": 46315
+      }
+    }
+  },
+  "artNote": "Compared with A37, neighborhood frontage and public destinations are more visually explicit; however remains facility-scale in perception and no independent G1 acceptance or validated pedestrian circulation",
+  "formalG2": "NOT RUN",
+  "formalG3": "NOT RUN",
+  "voidQA": "NOT RUN",
+  "thirdPartyImport": "NOT RUN",
+  "structure": "NOT RUN",
+  "minecraftConstruction": "FORBIDDEN",
+  "cityIntegration": "FORBIDDEN",
+  "safety": {
+    "hold": true,
+    "bodies": 331,
+    "feet": 993,
+    "halfwidth": 0.65,
+    "feetRelative": [
+      0.15,
+      3.25
+    ],
+    "historicInterferenceMax": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControl": "REQUIRED"
+  }
+}
