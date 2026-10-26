@@ -1,3 +1,9 @@
+# 【最新A59／2026-10-27 JST】真のBlender/Cycles 2視点実画像生成PASS→S1/遠景ART REJECT／主造形9箱の延命禁止
+
+> 開始HEAD `54886506f859e61478dadfb70bfd553c3119b4dd`、レンダ真正証拠確定コミット `e594fa571a9f1ead517b2e4b4ce22f1dbb3eba43`。A59はA53造形を使い回さず3つの実床/実壁/貫通開口のある実室＋9つの立体都市外形実験をBlender bpy 4.5.15/Cyclesでモデル化、.blendと960×720実画像2枚を生成しActions [40406113895](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40406113895) SUCCESS・CRC/SHA整合PASS・故意不正6/6検出。**しかし現物画像審査で公共室は巨大暗壁/暗床と用途不視認、遠景は単なる9つの箱/アパート模型となり2視点ART REJECT**。A51/A52と同じ「改革文書が実際の押出し/矩形窓生成文法を変えなかった」根本失敗が再発。形態を装飾/窓/ライトで延命せず停止。3D制作基盤のみ維持、全体ART HOLD・正式美術採用0、全都市G1/G2/G3 NOT RUN、Minecraft施工・統合禁止、過去とA59原本保護、Work事前承認。詳細 [A59真正実3D・美術監査](./G4C7_A59_NATIVE_2VIEW_ART_REJECT_JA.md)、[遠景](../artifacts/g4c7-a59-native-two-view/native-output/render_oblique.png)、[人間目線](../artifacts/g4c7-a59-native-two-view/native-output/render_public_heart.png)。通常CIは既存のbaseline欠落エラーを維持。
+
+---
+
 # 【最新A58 G0／2026-10-27 JST】A57の遠距離S1仮説を投影計算で反証／近接3用途の候補へ修正、R都市外形は未設計・ART HOLD
 
 > ベースHEAD `0edb879f5ee11d99e1d733a4b3fb0f411a501ac3`。A57 R案は機能関係を記述しただけで都市全体の美的形態は未立証。前工程の生成画像も古典アーチ・幻想都市色が強く、正式な超未来都市の美術採用は不可。A57の公共室カメラから工房まで52mあり、960px/78°の理想透視では入口人物約19px、室奥約14pxにしか見えないと判明。A58では元データを一切変更せず、人間目線カメラ+3用途入口を新しい独立仮説として再配置、レンズ・開口の数値的な早期警告を計算する純Pythonと6件故意破損試験、G0画像空間SVG出力の独立軽量Actionsを実装（**本物の3D・美術・採光・遮蔽・歩行の証拠ではない**）。[A58監査](./G4C7_A58_PERSPECTIVE_FALSIFICATION_G0_JA.md)／[仮カメラ](../artifacts/g4c7-a58-g0-perspective/camera_hypothesis.json)／[純Python](../tools/g4c7_a58_visibility_preflight.py)。R巨大未来都市の美術前進はNOT VERIFIED、新Blender/真正Cycles/S1/G1/G2/G3 NOT RUN。全体ART HOLD／正式採用0件／Minecraft施工・統合禁止／歴代原本保護／Work事前承認。不正CIデータ不可。
