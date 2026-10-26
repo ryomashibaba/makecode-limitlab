@@ -1,0 +1,176 @@
+{
+  "stage": "A46",
+  "date": "2026-10-26 JST",
+  "baseHead": "4dadb297231b10266a9a5194f7be97843986b67f",
+  "title": "ACTIVE OPEN FRONTAGE — actual apertures before shell",
+  "scope": "Human-eye S1 sectional art scout only (non-build)",
+  "g0": [
+    {
+      "concept": "Perforated inhabited urban frontage",
+      "decision": "SELECT SINGLE EARLY MESH STUDY"
+    },
+    {
+      "concept": "Add true window holes to rejected A45 wave roof",
+      "decision": "STOP — prolongs the rejected shell composition"
+    }
+  ],
+  "outcome": {
+    "openingProof": "LOCAL 8/8 PASS",
+    "s1": "ART REJECT",
+    "g1": "NOT RUN",
+    "g2": "NOT RUN",
+    "g3": "NOT RUN",
+    "overall": "ART HOLD",
+    "artReason": "Actual openings now exist, but public view reads a box facade / parking-garage-like building, with weak activity density and one-building scale"
+  },
+  "technical": {
+    "vertices": 5924,
+    "triangles": 2632,
+    "materials": 16,
+    "glbBytes": 108908,
+    "maxFloatPositionDifference": 0.0000017977029003191092,
+    "invalidIndices": 0,
+    "degenerateTriangles": 0,
+    "materialIndicesOutsideRange": 0,
+    "version": 2,
+    "producerQA": "LIMITED PASS",
+    "independentPersistedReadback": "NOT RUN",
+    "apertureTest": {
+      "probes": [
+        {
+          "name": "market",
+          "x": -41,
+          "y": 8,
+          "expect": "open",
+          "hits": 0,
+          "pass": true
+        },
+        {
+          "name": "culture",
+          "x": 0,
+          "y": 8,
+          "expect": "open",
+          "hits": 0,
+          "pass": true
+        },
+        {
+          "name": "library",
+          "x": 38,
+          "y": 8,
+          "expect": "open",
+          "hits": 0,
+          "pass": true
+        },
+        {
+          "name": "residential",
+          "x": -42,
+          "y": 27,
+          "expect": "open",
+          "hits": 0,
+          "pass": true
+        },
+        {
+          "name": "research",
+          "x": 0,
+          "y": 27,
+          "expect": "open",
+          "hits": 0,
+          "pass": true
+        },
+        {
+          "name": "commons",
+          "x": 36,
+          "y": 27,
+          "expect": "open",
+          "hits": 0,
+          "pass": true
+        },
+        {
+          "name": "solid_wall_negative",
+          "x": -20,
+          "y": 8,
+          "expect": "blocked",
+          "hits": 2,
+          "pass": true
+        },
+        {
+          "name": "solid_pier_negative",
+          "x": 18,
+          "y": 27,
+          "expect": "blocked",
+          "hits": 2,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    "renderer": "near-plane clipping depth-triangle rasterizer",
+    "viewStats": {
+      "main_arrival": {
+        "coveredPixels": 235200,
+        "clipCount": 8,
+        "bytes": 236102
+      },
+      "market_entry": {
+        "coveredPixels": 233364,
+        "clipCount": 22,
+        "bytes": 236102
+      },
+      "culture_entry": {
+        "coveredPixels": 235200,
+        "clipCount": 22,
+        "bytes": 236102
+      },
+      "library_entry": {
+        "coveredPixels": 228644,
+        "clipCount": 22,
+        "bytes": 236102
+      },
+      "front": {
+        "coveredPixels": 46988,
+        "clipCount": 0,
+        "bytes": 236102
+      },
+      "oblique": {
+        "coveredPixels": 49546,
+        "clipCount": 0,
+        "bytes": 236102
+      },
+      "side": {
+        "coveredPixels": 41474,
+        "clipCount": 0,
+        "bytes": 236102
+      },
+      "aerial": {
+        "coveredPixels": 63901,
+        "clipCount": 0,
+        "bytes": 236102
+      }
+    }
+  },
+  "notTested": [
+    "independent importer",
+    "all openings connectivity",
+    "G2 walkability / support",
+    "G3 331 humans and 993 foot samples / negative controls",
+    "full-city art"
+  ],
+  "next": "A47 human-eye sectional urban intrusion, not facade with holes, before any elaborate model",
+  "safety": {
+    "artHold": true,
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "priorAssets": "PROTECTED",
+    "humanSamples": 331,
+    "footSamples": 993,
+    "halfWidth": 0.65,
+    "footHeight": [
+      0.15,
+      3.25
+    ],
+    "maxHistoricalBodyInterferences": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControl": "REQUIRED",
+    "workApproval": "BEFORE USE"
+  }
+}
