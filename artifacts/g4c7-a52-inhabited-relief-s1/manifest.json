@@ -1,0 +1,161 @@
+{
+  "stage": "A52",
+  "date": "2026-10-26 JST",
+  "baseHead": "7345a67e20b02b627e35d3567f386494c4ee08f6",
+  "architecture": "INHABITED RELIEF / sculpted sectional city",
+  "goal": "Huge inhabited futuristic urban architecture, integrated program and distant silhouette",
+  "g0": [
+    {
+      "option": "A",
+      "name": "Program-defined spatial relief",
+      "decision": "ONE conditional lightweight actual 3D study",
+      "risk": "Primitive extrusion and layered floors may remain dominant"
+    },
+    {
+      "option": "B",
+      "name": "External ornamental megashell around independent pavilions",
+      "decision": "STOP at G0",
+      "risk": "A34-37 quarry / A42 pavilions / A45 giant blank roof relapse"
+    }
+  ],
+  "art": {
+    "s1": "ART REJECT",
+    "g1": "NOT RUN",
+    "overall": "ART HOLD",
+    "specificFailures": [
+      "S1 arrival: slabs and diagonal structure over public life",
+      "Market view: blank brown wedge hides trade activity",
+      "Culture view: dark wall and wide blank circulation",
+      "Library view: visible book racks but overhead planes dominate",
+      "Front/oblique/side/aerial: floor/roof collage, not monumental integrated futuristic city"
+    ],
+    "partialProgress": "Some differentiated multilevel inhabited silhouette and visible bookshelves, but not successful architecture",
+    "suspendFurtherDetail": true
+  },
+  "geometry": {
+    "vertexCount": 6904,
+    "triangleCount": 2972,
+    "materialCount": 16,
+    "glbBytes": 124544,
+    "objFaces": 2972,
+    "invalidIndices": 0,
+    "degenerateFaces": 0,
+    "invalidMaterialReferences": 0,
+    "float32PositionError": 0.000003422915213491251
+  },
+  "images": {
+    "rendered": 9,
+    "size": [
+      560,
+      420
+    ],
+    "renderer": "A45-derived software near-plane polygon clipped Z-buffer; no independent beauty guarantee",
+    "files": [
+      "arrival",
+      "public_room",
+      "market_sight",
+      "culture_sight",
+      "library_destination",
+      "front",
+      "oblique",
+      "side",
+      "aerial"
+    ]
+  },
+  "visibility": {
+    "measurement": "nearest program-tag mesh triangles as share of foreground model pixels; not actual human recognition",
+    "programPercentOfVisibleMesh": {
+      "arrival": {
+        "market": 0.11,
+        "culture": 0.12,
+        "reading": 1.18,
+        "housing": 1.56
+      },
+      "public_room": {
+        "market": 0,
+        "culture": 1.9,
+        "reading": 2.32,
+        "housing": 0.88
+      },
+      "market_sight": {
+        "market": 0.89,
+        "culture": 0,
+        "reading": 0.63,
+        "housing": 0.95
+      },
+      "culture_sight": {
+        "market": 0,
+        "culture": 1.96,
+        "reading": 0,
+        "housing": 0.1
+      },
+      "library_destination": {
+        "market": 0,
+        "culture": 0,
+        "reading": 21.96,
+        "housing": 0.64
+      },
+      "front": {
+        "market": 0.01,
+        "culture": 0.16,
+        "reading": 2.78,
+        "housing": 2.64
+      },
+      "oblique": {
+        "market": 0.15,
+        "culture": 0.08,
+        "reading": 2,
+        "housing": 2.75
+      },
+      "side": {
+        "market": 0.2,
+        "culture": 0,
+        "reading": 0.36,
+        "housing": 1.43
+      },
+      "aerial": {
+        "market": 0.14,
+        "culture": 0.05,
+        "reading": 1.27,
+        "housing": 1.84
+      }
+    },
+    "critical": "market 0% from public_room, culture 1.90%, reading 2.32%"
+  },
+  "production": {
+    "generator": "tools/g4c7_a52_inhabited_relief.mjs",
+    "method": "section profiles with irregular hand-specified polygons and continuous ribbons; still additive parametric polygon extrusions",
+    "finding": "A51's ART-DIRECTED grammar was not sufficiently realized; do not count model as pipeline success"
+  },
+  "qa": {
+    "producer": "LIMITED mesh/index/GLB HEADER QA PASS",
+    "standaloneNode": "NOT RUN",
+    "gitHubSavedBinaryReadback": "NOT RUN",
+    "thirdPartyRenderer": "NOT RUN",
+    "selfIntersection": "NOT RUN"
+  },
+  "notRun": [
+    "G1 full city art",
+    "G2 human-size walking and supported floors",
+    "G3 full-body 331 / foot 993 / complete negative controls",
+    "topological and structural analysis"
+  ],
+  "safety": {
+    "artHold": true,
+    "minecraftBuild": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "historicAssets": "PROTECTED",
+    "sampleHumans": 331,
+    "sampleFeet": 993,
+    "halfWidth": 0.65,
+    "relativeFeetHeight": [
+      0.15,
+      3.25
+    ],
+    "historicInterferenceLimit": 45,
+    "unsupportedFeetMax": 0,
+    "negativeControls": "REQUIRED",
+    "workApproval": "PRIOR EXPLICIT"
+  },
+  "next": "A53 abandon this additive script as primary form tool; move to genuinely editable art-directed 3D scene/massing and material/light human view review before exporting, keep geometry and QA reuse only."
+}
