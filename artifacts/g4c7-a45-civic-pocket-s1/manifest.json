@@ -1,0 +1,123 @@
+{
+  "stage": "A45",
+  "date": "2026-10-26 JST",
+  "baseHead": "d4e9f5ba28774e5e7dd41d8254a50e57c4810d2d",
+  "concept": "Civic Pocket Fold real massing S1",
+  "origin": "A44 G0 Option A / conditional study, not accepted architecture",
+  "outcome": {
+    "g0": "A44 Option A selected for study",
+    "s1": "ART REJECT",
+    "g1": "NOT RUN",
+    "g2": "NOT RUN",
+    "g3": "NOT RUN",
+    "overall": "ART HOLD",
+    "mainFailure": "solid blank overroof + empty civic cavern + imitation openings (no boolean cut in main mass)"
+  },
+  "technical": {
+    "vertices": 4838,
+    "triangles": 2104,
+    "materials": 16,
+    "glbBytes": 89532,
+    "invalidIndices": 0,
+    "degenerateTriangles": 0,
+    "maxPositionFloat32Diff": 0.0000018678702033980699,
+    "glbVersion": 2,
+    "pngCount": 8,
+    "pngResolution": [
+      560,
+      420
+    ],
+    "pngGenerationCRCFailures": 0,
+    "renderer": "Independent software rasterizer with near-plane polygon clipping + perspective-correct inverse-depth Z-buffer",
+    "renderViews": {
+      "south_arrival": {
+        "coveredPixels": 207540,
+        "nearClipModifiedTriangles": 14,
+        "fullyBehindDiscarded": 2,
+        "bytes": 236102
+      },
+      "civic_room": {
+        "coveredPixels": 183937,
+        "nearClipModifiedTriangles": 75,
+        "fullyBehindDiscarded": 158,
+        "bytes": 236102
+      },
+      "market_portal": {
+        "coveredPixels": 161798,
+        "nearClipModifiedTriangles": 127,
+        "fullyBehindDiscarded": 219,
+        "bytes": 236102
+      },
+      "residential_edge": {
+        "coveredPixels": 201646,
+        "nearClipModifiedTriangles": 50,
+        "fullyBehindDiscarded": 13,
+        "bytes": 236102
+      },
+      "front": {
+        "coveredPixels": 72884,
+        "nearClipModifiedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "bytes": 236102
+      },
+      "oblique": {
+        "coveredPixels": 67951,
+        "nearClipModifiedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "bytes": 236102
+      },
+      "side": {
+        "coveredPixels": 66524,
+        "nearClipModifiedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "bytes": 236102
+      },
+      "aerial": {
+        "coveredPixels": 95383,
+        "nearClipModifiedTriangles": 0,
+        "fullyBehindDiscarded": 0,
+        "bytes": 236102
+      }
+    },
+    "qa": "LIMITED PRODUCER QA PASS",
+    "gitHubBinaryReadback": "NOT RUN",
+    "thirdPartyImporter": "NOT RUN",
+    "booleanOpenings": "NOT IMPLEMENTED",
+    "activeUseVisibility": "ART REJECT",
+    "nearsideClip": "polygon clipping instead of whole triangle dropping"
+  },
+  "cameras": [
+    "south_arrival",
+    "civic_room",
+    "market_portal",
+    "residential_edge",
+    "front",
+    "oblique",
+    "side",
+    "aerial"
+  ],
+  "artifacts": [
+    "a45_civic_pocket_fold.obj",
+    "a45_civic_pocket_fold.glb",
+    "materials.mtl",
+    "verified-png/"
+  ],
+  "next": "A46: G0 active inhabited facade and real 3D apertures before hero roof mass, stop false windows and empty civic caves",
+  "safety": {
+    "artHold": true,
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "oldEvidence": "PROTECTED",
+    "humanSamples": 331,
+    "footSamples": 993,
+    "humanHalfWidth": 0.65,
+    "relativeFootHeights": [
+      0.15,
+      3.25
+    ],
+    "historicSurfaceInterferenceMaximum": 45,
+    "unsupportedFeetMaximum": 0,
+    "negativeControl": "REQUIRED",
+    "workPermission": "PRIOR EXPLICIT"
+  }
+}
