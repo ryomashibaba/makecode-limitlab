@@ -1,0 +1,22 @@
+{
+  "stage": "A59",
+  "kind": "NATIVE_BLENDER_2_CAMERA_INTEGRITY_ONLY",
+  "art": "UNASSESSED_HOLD",
+  "s1": "NOT_ASSESSED",
+  "g1": "NOT_RUN",
+  "g2": "NOT_RUN",
+  "g3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "blender_version": "4.5.15 LTS",
+  "blend_sha256": "b78b40d07877ab50a5789ae6118a76ec75dbbe060be1635e06689f53b20a94ec",
+  "views": {
+    "public_heart": {
+      "sha256": "927244b94f4e419f97db7fec28075da3ea3977ba629ea7ad4e61903221519863",
+      "size_bytes": 543921
+    },
+    "oblique": {
+      "sha256": "3e8814c146f664df4762da6252f66e38290ba1b5551bb481f16913f2fe155a5b",
+      "size_bytes": 782676
+    }
+  }
+}
