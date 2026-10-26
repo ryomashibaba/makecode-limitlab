@@ -1,3 +1,9 @@
+# 【最新A62 G0／2026-10-27 JST】3用途実室＋4住戸＋公共広場を本物のVTK/OpenGL 3Dで試作→遠景キャンパス／S1用途不視認でART REJECT
+
+> ベースHEAD `b62057e376783fc6ea7c1c1ae6a465f6c28ad2ea`。A61巨管を延命せず、A62では実室を先に作る方式で公共広場、実開口付き市場/工房/研究、4住居の室体積、庭、家具を制作し、1200×800の2視点を実3Dレンダ。ローカルで5/5不正検出、しかし遠景は低層キャンパス、近景は用途中身が読み取れず**ART REJECT**。部屋先行でも「後から並べてキャンパス」になる問題が明らかになった。**大・中・小の構造は同時に美術設計することが次の焦点**。真正Blender/Cycles・正式S1/G1/G2/G3はNOT RUN、正式採用0、ART HOLD、Minecraft施工・統合禁止。原本保護、Work事前承認。記録 [A62 G0監査](./G4C7_A62_SPACE_FIRST_G0_ART_REJECT_JA.md)、[scene](../artifacts/g4c7-a62-space-first/scene_plan.json)、[再現スクリプト](../artifacts/g4c7-a62-space-first/a62_space_first.py)、[現物斜視](../artifacts/g4c7-a62-space-first/output/oblique.png)／[人間目線](../artifacts/g4c7-a62-space-first/output/public_heart.png)。2視点を真正OpenGL画像として記録し、CIにより独立実行・原本保存を確認する。通常CI欠損の偽修復禁止。
+
+---
+
 # 【最新A61 G0／2026-10-27 JST】真正VTK/OpenGL 3D遠景試作を実視覚審査→5本の太い管/帯に見えART REJECT／Blender詳細化停止
 
 > ベースHEAD `985df129a1157c29b21a9b5f57757ffa311c7aff` を照合。A59の9箱/規則窓、A60の巨アーチ/巨橋構想の失敗を踏まえ、**異なる生成原理の5本の可変断面ロフト**を手動パラメータで組み合わせてG0の低コスト本物3D試作（1400×950、VTK/OpenGL）を実施。しかし視覚的には青い巨大チューブ/工業物体で都市に見えず、内部市場・文化・研究・居住は実室として未制作、**A61 G0 ART REJECT**。ロフトの形式を変えたことを美術進歩とみなさず、これ以上この形態に装飾や窓を足さない。G0スクリプト原本・SHA-256と監査 [A61監査](./G4C7_A61_NATIVE_G0_MORPHOLOGY_ART_REJECT_JA.md)、[再現用G0コード](../artifacts/g4c7-a61-early-silhouette/a61_g0_urban_art_study.py)。原本PNGは会話の成果物として提供され、今回のGitHubコミットにバイナリPNGを保存したとは扱わない。次A62は**室・住居・占有された街路→都市の造形**を実3Dとして同時設計するまでマクロのbox/loft/大屋根を作らない。A61真正Blender/Cycles、S1/G1/G2/G3はNOT RUN。全体ART HOLD、採用0、Minecraft施工・統合禁止、旧原本保護、Work事前承認。通常CI既知の欠損問題を偽修理しない。

@@ -1,0 +1,159 @@
+{
+  "stage": "A62",
+  "status": "G0_SPATIAL_PROTO_ART_HOLD",
+  "units": "metres",
+  "city_claim": false,
+  "construction": "FORBIDDEN",
+  "ground_floor_z": 0,
+  "public_heart": {
+    "center": [
+      0,
+      5
+    ],
+    "floor_bounds": [
+      -14,
+      14,
+      -17,
+      24
+    ],
+    "eye": [
+      0,
+      -11,
+      1.7
+    ]
+  },
+  "rooms": [
+    {
+      "id": "market",
+      "xmin": -29,
+      "xmax": -13,
+      "ymin": -5,
+      "ymax": 23,
+      "entrance_side": "east",
+      "door_center": 6,
+      "door_width": 6,
+      "room_depth_m": 16,
+      "program": "market_stalls"
+    },
+    {
+      "id": "culture",
+      "xmin": -8,
+      "xmax": 8,
+      "ymin": 21,
+      "ymax": 47,
+      "entrance_side": "south",
+      "door_center": 0,
+      "door_width": 7,
+      "room_depth_m": 26,
+      "program": "workshop_tables"
+    },
+    {
+      "id": "research",
+      "xmin": 14,
+      "xmax": 30,
+      "ymin": -5,
+      "ymax": 23,
+      "entrance_side": "west",
+      "door_center": 6,
+      "door_width": 6,
+      "room_depth_m": 16,
+      "program": "reading_shelves"
+    }
+  ],
+  "housing": [
+    {
+      "id": "res_market_a",
+      "bounds": [
+        -28,
+        -20,
+        0,
+        11,
+        9.5,
+        15.8
+      ],
+      "access": "shared roof garden on market"
+    },
+    {
+      "id": "res_market_b",
+      "bounds": [
+        -27,
+        -18,
+        12,
+        22,
+        9.5,
+        15.8
+      ],
+      "access": "shared roof garden on market"
+    },
+    {
+      "id": "res_culture",
+      "bounds": [
+        -7,
+        6,
+        31,
+        45,
+        9.5,
+        17
+      ],
+      "access": "learning civic neighborhood"
+    },
+    {
+      "id": "res_research",
+      "bounds": [
+        18,
+        29,
+        7,
+        20,
+        9.5,
+        16.2
+      ],
+      "access": "research neighborhood"
+    }
+  ],
+  "public_routes": [
+    {
+      "id": "to_market",
+      "start": [
+        0,
+        5
+      ],
+      "end": [
+        -13,
+        6
+      ],
+      "kind": "ground_open_urban_street"
+    },
+    {
+      "id": "to_culture",
+      "start": [
+        0,
+        5
+      ],
+      "end": [
+        0,
+        21
+      ],
+      "kind": "ground_open_urban_street"
+    },
+    {
+      "id": "to_research",
+      "start": [
+        0,
+        5
+      ],
+      "end": [
+        14,
+        6
+      ],
+      "kind": "ground_open_urban_street"
+    }
+  ],
+  "policy": {
+    "no_generative_city_macromassing": true,
+    "no_lofts_or_tubes": true,
+    "no_regular_window_wallpaper": true,
+    "no_g2_g3_implication": true,
+    "s1_art_status": "UNASSESSED",
+    "oblique_art_status": "UNASSESSED"
+  }
+}
