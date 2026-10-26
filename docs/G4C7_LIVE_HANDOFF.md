@@ -1,3 +1,9 @@
+# 【最新A61 G0／2026-10-27 JST】真正VTK/OpenGL 3D遠景試作を実視覚審査→5本の太い管/帯に見えART REJECT／Blender詳細化停止
+
+> ベースHEAD `985df129a1157c29b21a9b5f57757ffa311c7aff` を照合。A59の9箱/規則窓、A60の巨アーチ/巨橋構想の失敗を踏まえ、**異なる生成原理の5本の可変断面ロフト**を手動パラメータで組み合わせてG0の低コスト本物3D試作（1400×950、VTK/OpenGL）を実施。しかし視覚的には青い巨大チューブ/工業物体で都市に見えず、内部市場・文化・研究・居住は実室として未制作、**A61 G0 ART REJECT**。ロフトの形式を変えたことを美術進歩とみなさず、これ以上この形態に装飾や窓を足さない。G0スクリプト原本・SHA-256と監査 [A61監査](./G4C7_A61_NATIVE_G0_MORPHOLOGY_ART_REJECT_JA.md)、[再現用G0コード](../artifacts/g4c7-a61-early-silhouette/a61_g0_urban_art_study.py)。原本PNGは会話の成果物として提供され、今回のGitHubコミットにバイナリPNGを保存したとは扱わない。次A62は**室・住居・占有された街路→都市の造形**を実3Dとして同時設計するまでマクロのbox/loft/大屋根を作らない。A61真正Blender/Cycles、S1/G1/G2/G3はNOT RUN。全体ART HOLD、採用0、Minecraft施工・統合禁止、旧原本保護、Work事前承認。通常CI既知の欠損問題を偽修理しない。
+
+---
+
 # 【最新A60 G0／2026-10-27 JST】新規構想画像2件とも大アーチ／空中橋へ回帰しREJECT／U《生活界面都市》造形原理・構造スケッチ研究へ／3D停止・全体ART HOLD
 
 > 着手HEAD `2fe0abf0b2eb2f4c4c07341910ee8e690fe0c5d6` を再照合、A59真正2視点ART REJECTの現物記録を継承。A60は会話内で2件のG0画像生成を実施したがどちらも古典的アーチ・巨橋・塔・テラスの巨大幻想都市に回帰し**G0 ART REJECT**。**これら画像のGitHub原本保存は未実施**で、実3D/Cycles/G1には計上しない。意味なく画像生成を反復せず停止。UNStudio、ZHA、MVRDVの建築における用途・内部移動と外形の結合原理を研究し、Rの6街区・3結節という用途だけ継承、箱／橋／屋根中心を廃止してU《INHABITED INTERFACE / 生活界面都市》の独立造形仮説をG0研究。構造スケッチもART PASSではない。A60のBlender/実3D/S1/G1/G2/G3はNOT RUN、正式採用0／全体ART HOLD、Minecraft施工・都市統合禁止、A54/A59等旧原本保護、Work事前承認。詳細 [A60美術監査](./G4C7_A60_VISUAL_GRAMMAR_RESET_G0_JA.md)、[G0視覚構成図](../artifacts/g4c7-a60-visual-reset/a60_inhabited_interface_study.svg)、[試行記録](../artifacts/g4c7-a60-visual-reset/concept_trial_verdicts.json)。通常CI既存欠損問題には虚偽PASSを与えない。
