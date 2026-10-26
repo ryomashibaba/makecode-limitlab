@@ -1,3 +1,9 @@
+# 【最新A53／2026-10-26 JST】BLENDER-NATIVE EDITABLE STUDIO — G0制作方式・構成データ検査PASS／実レンダ・新S1未実施／全体ART HOLD
+
+> A52までの連続ART REJECTにより、多角形押し出し／床板／梁の反復生成を主造形方法から外した。A53ではBlenderネイティブの**個別編集可能な建築面（12断面）、Bezier曲線、用途領域4、カメラ9、材質と3光源**をソースとして制作。G0でA《CIVIC STRATA》を制作方式実験に選び、B《INVERTED HANGING VALLEY》は過去の採石場・巨大屋根再発リスクから停止。Chat側で構成データQAと故意破壊5/5の検出を確認。**現環境にBlender/`bpy`が無いためBlender本体での実行、.blend、実レンダ、S1美術判定はNOT RUN**。これは実3D美術の改善証拠ではない。A54はまず実Blender実行／照明付き9視点の観察を行い、駄目なら即ART REJECT。全体ART HOLD／G1/G2/G3 NOT RUN、旧資産保護、Minecraft施工・都市統合禁止、331/993安全基準不変、Work事前承認。[A53詳細](./G4C7_A53_EDITABLE_ART_STUDIO_G0_JA.md)。
+
+---
+
 # 【最新A52／2026-10-26 JST】INHABITED RELIEF 実3D S1 ART REJECT／全体ART HOLD
 
 > A51のART-DIRECTED PROGRAM-MASSに基づき、市場・文化・閲覧・居住が立体的に交差する断面都市を実OBJ/GLB（6,904頂点・2,972三角形・124,544B）と9視点実メッシュ深度PNGで一案試験。 保存後のGLB/OBJ/PNG9枚の独立再取得バイナリQAは限定PASS。**全視点S1 ART REJECT**。市場や文化活動は依然ほぼ見えず、床板・梁・屋根状面が支配。中央公共室からの用途タグ可視面は市場0%、文化1.90%、閲覧2.32%。**A51の「造形文法を根本的に変える」は多角形プリズムの加算では達成できなかった**ため、今回の試作を詳細化せず停止。A53は可編集3Dの美術直接モデリング・材料／光を含む実レンダによって初期の構成審査を行い、同じスクリプトの形変えを繰り返さない。G1/G2/G3 NOT RUN、全体ART HOLD、Minecraft施工／都市統合禁止、旧証拠保護、331/993・負対照維持、Work事前明示承認。[A52監査](./G4C7_A52_INHABITED_RELIEF_ART_REJECT_JA.md)。

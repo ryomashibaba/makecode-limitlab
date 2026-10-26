@@ -1,0 +1,494 @@
+{
+  "stage": "A53",
+  "name": "CIVIC STRATA / editable art-directed scene",
+  "version": 1,
+  "scope": "G0 Blender-native scene production research; NOT render or S1 approval",
+  "units": "meters",
+  "axes": "Blender X east / Y north / Z up",
+  "intent": "Single connected inhabitation hypothesis with legible programs from shared public chamber; user-editable curves, mesh stations, materials and light.",
+  "concepts": [
+    {
+      "id": "A",
+      "title": "Civic Strata",
+      "method": "Asymmetric continuous inhabited sections with an illuminated public heart and controlled openings",
+      "decision": "Prototype Blender-native scene, render gate NOT YET RUN"
+    },
+    {
+      "id": "B",
+      "title": "Inverted Hanging Valley",
+      "method": "Large roof/shell suspended above programs and public canyon",
+      "decision": "G0 STOP due A34-37 quarry and A45 roof relapse"
+    }
+  ],
+  "banks": {
+    "west": [
+      {
+        "y": -90,
+        "outer": -106,
+        "inner": -29,
+        "floor": 0,
+        "crown": 50,
+        "terrace": 21
+      },
+      {
+        "y": -50,
+        "outer": -116,
+        "inner": -28,
+        "floor": 0,
+        "crown": 57,
+        "terrace": 26
+      },
+      {
+        "y": -10,
+        "outer": -124,
+        "inner": -23,
+        "floor": 2,
+        "crown": 77,
+        "terrace": 35
+      },
+      {
+        "y": 30,
+        "outer": -118,
+        "inner": -26,
+        "floor": 7,
+        "crown": 99,
+        "terrace": 48
+      },
+      {
+        "y": 75,
+        "outer": -97,
+        "inner": -36,
+        "floor": 20,
+        "crown": 116,
+        "terrace": 61
+      },
+      {
+        "y": 111,
+        "outer": -66,
+        "inner": -32,
+        "floor": 37,
+        "crown": 100,
+        "terrace": 67
+      }
+    ],
+    "east": [
+      {
+        "y": -90,
+        "outer": 99,
+        "inner": 34,
+        "floor": 0,
+        "crown": 42,
+        "terrace": 18
+      },
+      {
+        "y": -50,
+        "outer": 118,
+        "inner": 36,
+        "floor": 0,
+        "crown": 54,
+        "terrace": 24
+      },
+      {
+        "y": -10,
+        "outer": 126,
+        "inner": 30,
+        "floor": 2,
+        "crown": 74,
+        "terrace": 32
+      },
+      {
+        "y": 30,
+        "outer": 121,
+        "inner": 24,
+        "floor": 7,
+        "crown": 102,
+        "terrace": 48
+      },
+      {
+        "y": 75,
+        "outer": 104,
+        "inner": 33,
+        "floor": 18,
+        "crown": 123,
+        "terrace": 64
+      },
+      {
+        "y": 111,
+        "outer": 74,
+        "inner": 32,
+        "floor": 35,
+        "crown": 108,
+        "terrace": 68
+      }
+    ]
+  },
+  "programRooms": [
+    {
+      "id": "market",
+      "name": "Market Commons",
+      "side": "west",
+      "color": "timber",
+      "origin": [
+        -70,
+        -35,
+        4
+      ],
+      "outline": [
+        [
+          -86,
+          -66
+        ],
+        [
+          -43,
+          -60
+        ],
+        [
+          -29,
+          -19
+        ],
+        [
+          -84,
+          1
+        ]
+      ],
+      "z": 3,
+      "thickness": 2.2,
+      "volumeHeight": 18
+    },
+    {
+      "id": "culture",
+      "name": "Culture Workshop",
+      "side": "east",
+      "color": "bronze",
+      "origin": [
+        72,
+        -17,
+        4
+      ],
+      "outline": [
+        [
+          39,
+          -50
+        ],
+        [
+          88,
+          -53
+        ],
+        [
+          96,
+          -1
+        ],
+        [
+          42,
+          20
+        ]
+      ],
+      "z": 4.2,
+      "thickness": 2.4,
+      "volumeHeight": 21
+    },
+    {
+      "id": "research",
+      "name": "Research Library",
+      "side": "north",
+      "color": "teal",
+      "origin": [
+        0,
+        73,
+        32
+      ],
+      "outline": [
+        [
+          -45,
+          51
+        ],
+        [
+          38,
+          48
+        ],
+        [
+          45,
+          97
+        ],
+        [
+          -40,
+          105
+        ]
+      ],
+      "z": 34,
+      "thickness": 3,
+      "volumeHeight": 24
+    },
+    {
+      "id": "housing",
+      "name": "Inhabited Sky Gallery",
+      "side": "upper",
+      "color": "stone",
+      "origin": [
+        4,
+        35,
+        73
+      ],
+      "outline": [
+        [
+          -25,
+          28
+        ],
+        [
+          30,
+          25
+        ],
+        [
+          34,
+          63
+        ],
+        [
+          -21,
+          67
+        ]
+      ],
+      "z": 72,
+      "thickness": 3.4,
+      "volumeHeight": 24
+    }
+  ],
+  "paths": {
+    "publicArrival": [
+      [
+        0,
+        -106,
+        1
+      ],
+      [
+        0,
+        -72,
+        1
+      ],
+      [
+        3,
+        -36,
+        2
+      ],
+      [
+        1,
+        0,
+        3
+      ],
+      [
+        0,
+        39,
+        8
+      ],
+      [
+        0,
+        65,
+        34
+      ]
+    ],
+    "civicSkywalk": [
+      [
+        -75,
+        -33,
+        26
+      ],
+      [
+        -64,
+        -4,
+        33
+      ],
+      [
+        -40,
+        32,
+        53
+      ],
+      [
+        -12,
+        62,
+        65
+      ],
+      [
+        23,
+        72,
+        65
+      ],
+      [
+        54,
+        36,
+        58
+      ]
+    ]
+  },
+  "cameraContract": [
+    {
+      "id": "arrival",
+      "location": [
+        0,
+        -130,
+        6
+      ],
+      "target": [
+        0,
+        15,
+        25
+      ],
+      "lens": 26,
+      "kind": "S1"
+    },
+    {
+      "id": "public_heart",
+      "location": [
+        1,
+        -30,
+        9
+      ],
+      "target": [
+        0,
+        56,
+        39
+      ],
+      "lens": 24,
+      "kind": "S1"
+    },
+    {
+      "id": "market",
+      "location": [
+        5,
+        -40,
+        7
+      ],
+      "target": [
+        -67,
+        -22,
+        17
+      ],
+      "lens": 29,
+      "kind": "S1"
+    },
+    {
+      "id": "culture",
+      "location": [
+        0,
+        -30,
+        8
+      ],
+      "target": [
+        70,
+        0,
+        18
+      ],
+      "lens": 30,
+      "kind": "S1"
+    },
+    {
+      "id": "research",
+      "location": [
+        0,
+        27,
+        34
+      ],
+      "target": [
+        0,
+        80,
+        51
+      ],
+      "lens": 26,
+      "kind": "S1"
+    },
+    {
+      "id": "front",
+      "location": [
+        0,
+        -360,
+        175
+      ],
+      "target": [
+        0,
+        12,
+        51
+      ],
+      "lens": 39,
+      "kind": "G1_CONCEPT_ONLY"
+    },
+    {
+      "id": "oblique",
+      "location": [
+        300,
+        -320,
+        230
+      ],
+      "target": [
+        0,
+        15,
+        54
+      ],
+      "lens": 42,
+      "kind": "G1_CONCEPT_ONLY"
+    },
+    {
+      "id": "side",
+      "location": [
+        390,
+        10,
+        225
+      ],
+      "target": [
+        0,
+        15,
+        55
+      ],
+      "lens": 42,
+      "kind": "G1_CONCEPT_ONLY"
+    },
+    {
+      "id": "aerial",
+      "location": [
+        250,
+        -185,
+        350
+      ],
+      "target": [
+        0,
+        20,
+        55
+      ],
+      "lens": 42,
+      "kind": "G1_CONCEPT_ONLY"
+    }
+  ],
+  "render": {
+    "engine": "CYCLES",
+    "samples": 24,
+    "resolution": [
+      960,
+      720
+    ],
+    "format": "PNG",
+    "worldStrength": 0.65,
+    "lightEnergy": [
+      30000,
+      20000,
+      10000
+    ]
+  },
+  "safety": {
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN",
+    "art": "HOLD",
+    "s1": "NOT RUN",
+    "g1": "NOT RUN",
+    "g2": "NOT RUN",
+    "g3": "NOT RUN",
+    "protectHistoric": true,
+    "humanSamples": 331,
+    "feetSamples": 993,
+    "halfWidth": 0.65,
+    "footRange": [
+      0.15,
+      3.25
+    ],
+    "maxInterference": 45,
+    "unsupportedFeet": 0,
+    "negativeControlsRequired": true,
+    "workNeedsExplicitApproval": true
+  }
+}
