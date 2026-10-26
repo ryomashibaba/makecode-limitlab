@@ -1,0 +1,200 @@
+{
+  "stage": "A40",
+  "date": "2026-10-26 JST",
+  "baseHead": "afab7c6f75e4d7b9b9eef48f7593dedcbd08f790",
+  "label": "POROUS INHABITED BLOCK / 門廊と文化公共街区断面",
+  "scope": "single block-scale grammar study, NOT full megacity or Minecraft-ready building",
+  "g0Alternatives": [
+    {
+      "name": "Carved habitable cliff / 切削住居崖",
+      "decision": "G0 EARLY REJECT",
+      "why": "A34-A37 quarry/parallel facades recurrence unless real occupied frontage is proven"
+    },
+    {
+      "name": "Open occupied arcade + cultural crescent / 開放街区立面",
+      "decision": "ONE EARLY SECTIONAL REAL-3D STUDY ONLY",
+      "why": "facade openings, distinct uses and visible street can be tested before enlarging to city"
+    }
+  ],
+  "assessment": {
+    "sectionVisual": "ART REJECT",
+    "fullCityG1": "NOT RUN (single block study)",
+    "project": "ART HOLD",
+    "observations": [
+      {
+        "view": "front",
+        "verdict": "REJECT",
+        "reason": "real arcade openings visible, but upper horizontal floor lines and a thin roof remain dominant"
+      },
+      {
+        "view": "oblique",
+        "verdict": "REJECT",
+        "reason": "cultural crescent and housing arcade distinguishable, but isolated institutional campus rather than convincing lived-in megablock"
+      },
+      {
+        "view": "side",
+        "verdict": "REJECT",
+        "reason": "curving wings mask interior and emphasize duplicated strata, depth of occupied streets unclear"
+      },
+      {
+        "view": "aerial",
+        "verdict": "REJECT",
+        "reason": "site appears plaza and a few buildings rather than dense city-block interior"
+      },
+      {
+        "view": "street_eye",
+        "verdict": "REJECT",
+        "reason": "small-scale stalls rendered, but broad featureless slabs/columns dominate human view; functional destinations not obvious"
+      },
+      {
+        "view": "gallery_eye",
+        "verdict": "REJECT",
+        "reason": "perspective clipping omits many near-plane triangles, broad undersides and colored partitions, activity unclear"
+      }
+    ]
+  },
+  "mesh": {
+    "vertices": 10260,
+    "triangles": 4508,
+    "materials": 9,
+    "bytes": 180952,
+    "groupTriangles": {
+      "ground": 104,
+      "west-public-arcade": 1080,
+      "roof-crest": 216,
+      "east-civic-institute": 1416,
+      "public-activity": 300,
+      "upper-civic-street": 132,
+      "north-civic-library": 528,
+      "human-scale-program": 732
+    }
+  },
+  "render": {
+    "technique": "software indexed PNG Z-buffer directly from actual triangles",
+    "dimensions": [
+      900,
+      720
+    ],
+    "scale": 1.03,
+    "views": {
+      "front": {
+        "camera": [
+          0,
+          195,
+          -395
+        ],
+        "target": [
+          0,
+          83,
+          0
+        ],
+        "perspective": false
+      },
+      "oblique": {
+        "camera": [
+          305,
+          230,
+          -340
+        ],
+        "target": [
+          0,
+          83,
+          0
+        ],
+        "perspective": false
+      },
+      "side": {
+        "camera": [
+          380,
+          187,
+          0
+        ],
+        "target": [
+          0,
+          83,
+          0
+        ],
+        "perspective": false
+      },
+      "aerial": {
+        "camera": [
+          240,
+          490,
+          -240
+        ],
+        "target": [
+          0,
+          83,
+          0
+        ],
+        "perspective": false
+      },
+      "street_eye": {
+        "camera": [
+          15,
+          28,
+          -146
+        ],
+        "target": [
+          22,
+          63,
+          123
+        ],
+        "perspective": true,
+        "nearTrianglesOmitted": 36
+      },
+      "gallery_eye": {
+        "camera": [
+          -112,
+          74,
+          4
+        ],
+        "target": [
+          88,
+          76,
+          80
+        ],
+        "perspective": true,
+        "nearTrianglesOmitted": 1034
+      }
+    },
+    "fullCityComparison": "NOT VALID: sectional study, different camera/target/footprint than A39 city study"
+  },
+  "validation": {
+    "generatedGlbBinaryReparsed": true,
+    "glbFormatVersion": 2,
+    "bytes": 180952,
+    "indexCount": 13524,
+    "invalidIndices": 0,
+    "maxObjToBinaryFloat32Delta": 0.0000076277775633570855,
+    "independentGitHubReRead": "PENDING",
+    "external3dApp": "NOT RUN"
+  },
+  "notDone": [
+    "whole city G1",
+    "G2 interior/support/walk/egress",
+    "G3 human331/feet993/negative control",
+    "true connected-body/manifold/Boolean QA",
+    "structural engineering/loads",
+    "third party GLB loader",
+    "Minecraft build/integration"
+  ],
+  "safety": {
+    "artHold": true,
+    "minecraftConstruction": "FORBIDDEN",
+    "cityIntegration": "FORBIDDEN",
+    "preserveHistoricalArtifacts": true,
+    "humanSamples": 331,
+    "footSamples": 993,
+    "halfWidth": 0.65,
+    "footRelative": [
+      0.15,
+      3.25
+    ],
+    "bodyInterferenceHistoricUpperLimit": 45,
+    "unsupportedFeetLimit": 0,
+    "negativeControl": "REQUIRED",
+    "workExplicitPriorApproval": true
+  },
+  "next": "A41: first test a credible city-street visual scene and human-scale occupancy via reference-calibrated architecturally specific facade grammar; prohibit scaling to full city before both street and far facade quality are independently accepted"
+}

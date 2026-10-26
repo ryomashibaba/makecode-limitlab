@@ -1,0 +1,26 @@
+newmtl porcelain
+Kd 0.862745 0.898039 0.866667
+
+newmtl recess
+Kd 0.168627 0.282353 0.349020
+
+newmtl stone
+Kd 0.709804 0.658824 0.568627
+
+newmtl civic_clay
+Kd 0.843137 0.623529 0.447059
+
+newmtl glazing
+Kd 0.325490 0.627451 0.670588
+
+newmtl plants
+Kd 0.368627 0.592157 0.415686
+
+newmtl reading_light
+Kd 0.945098 0.807843 0.517647
+
+newmtl deep_glass
+Kd 0.282353 0.431373 0.501961
+
+newmtl pale_bridge
+Kd 0.796078 0.850980 0.815686
