@@ -1,0 +1,122 @@
+name: G4-C7 A82 true shared urban section G0 (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a82-shared-urban-section/a82_source.py.gz.b64'
+      - 'artifacts/g4c7-a82-shared-urban-section/a82_independent_audit.py.gz.b64'
+      - '.github/workflows/verify_g4c7_a82_shared_section.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a82-rejected-shared-section-evidence
+  cancel-in-progress: false
+jobs:
+  authentic-native-geometry-with-negative-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore exact A82 authored scripts; refuse edited source
+        run: |
+          python - <<'PY'
+          import base64,gzip,hashlib
+          from pathlib import Path
+          d=Path('artifacts/g4c7-a82-shared-urban-section')
+          exact={
+            'a82_source.py.gz.b64':('a82_shared_section.py','dcabda52ae2d603778ba98f1c74e0c1857edddf14a40913568fc2f519ef9b9dd'),
+            'a82_independent_audit.py.gz.b64':('a82_independent_mesh_audit.py','4a89c4f049034004d0efdb4734901e953678a3278a9a5a1154dc6a98d9a0202d'),
+          }
+          for gz,(name,sha) in exact.items():
+            source=gzip.decompress(base64.b64decode((d/gz).read_text().strip(),validate=True))
+            assert hashlib.sha256(source).hexdigest()==sha,'A82_ORIGINAL_SOURCE_TAMPERED_'+name
+            p=d/name
+            assert not p.exists(),'NO_OVERWRITE_HISTORICAL_SOURCE'
+            p.write_bytes(source)
+            print('A82_EXACT_AUTHORSHIP',name,sha)
+          PY
+      - name: Install software renderer and genuine triangle processing
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'vtk==9.6.2' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Verify intended topology and seven invalid state refusals
+        run: |
+          python -m py_compile artifacts/g4c7-a82-shared-urban-section/a82_shared_section.py
+          python -m py_compile artifacts/g4c7-a82-shared-urban-section/a82_independent_mesh_audit.py
+          python artifacts/g4c7-a82-shared-urban-section/a82_shared_section.py --verify
+      - name: Rebuild OBJ and four real VTK/EGL images from one source
+        run: |
+          python artifacts/g4c7-a82-shared-urban-section/a82_shared_section.py --build
+          python artifacts/g4c7-a82-shared-urban-section/a82_independent_mesh_audit.py
+      - name: Narrow structural geometry checks and explicit NO ART acceptance
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          d=Path('artifacts/g4c7-a82-shared-urban-section')
+          p=d/'a82-output'
+          m=json.loads((p/'a82_manifest.json').read_text())
+          audit=json.loads((p/'a82_independent_audit.json').read_text())
+          assert m['stage']=='A82_G0_SPATIAL_SPECIMEN_ONLY'
+          assert m['source_sha256']==hashlib.sha256((d/'a82_shared_section.py').read_bytes()).hexdigest()
+          assert m['mesh']=={'parts':205,'vertices':968,'triangles':780}
+          assert m['art']=='NOT_APPROVED' and m['overall_art']=='HOLD'
+          assert all(m['formal'][k]=='NOT_RUN' for k in ('S1','G1','G2','G3'))
+          assert m['minecraft_construction']==m['city_integration']=='FORBIDDEN'
+          assert m['shared_real_mid_slab_count']==1
+          assert m['shared_partition_portals']==2 and m['gallery_portal_openings']==4
+          assert m['stair_treads']==120
+          assert all(m['caught_negative_controls'].values()) and len(m['caught_negative_controls'])==7
+          assert audit['stage']=='A82_G0_INDEPENDENT_TRIANGLE_CHECK_NOT_S1_G2'
+          assert audit['shared_mid_slab_mesh_once'] and audit['portal_count_checked']==4
+          assert audit['shared_partition_portal_levels']==2
+          assert audit['upper_roof_to_facade_matching_vertices']>=28
+          assert audit['ramp_triangles_samples']==147 and audit['sample_position_wrong_height']==0
+          assert all(audit['broken_geometry_caught'].values()) and len(audit['broken_geometry_caught'])==6
+          assert audit['full_human_swept_volume']=='NOT_TESTED'
+          assert audit['real_structural_support_or_load']=='NOT_TESTED'
+          assert (p/'a82_single_shared_city_section.obj').stat().st_size>10000
+          for name in ('oblique','public_eye','interior_eye','cross_civic'):
+            with Image.open(p/(name+'.png')) as im:
+              assert im.format=='PNG' and im.size==(1280,820)
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>10, name
+          print('A82_REAL_G0_GEOMETRY_AND_NEGATIVE_CONTROLS_PASS__ART_REJECT__NO_S1_G2')
+          PY
+      - name: Keep original evidence even if branch archive conflicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a82-true-shared-spatial-section-G0-ART-REJECT
+          path: |
+            artifacts/g4c7-a82-shared-urban-section/a82_shared_section.py
+            artifacts/g4c7-a82-shared-urban-section/a82_independent_mesh_audit.py
+            artifacts/g4c7-a82-shared-urban-section/a82-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append only to existing Draft PR research branch
+        run: |
+          set -euo pipefail
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          D=artifacts/g4c7-a82-shared-urban-section
+          test -s "$D/a82-output/oblique.png"
+          test -s "$D/a82-output/interior_eye.png"
+          test -s "$D/a82-output/a82_independent_audit.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a82_shared_section.py" "$D/a82_independent_mesh_audit.py" "$D/a82-output/"
+          if git diff --cached --quiet; then echo 'Previously archived'; exit 0; fi
+          git commit -m 'A82: archive genuine shared-floor G0 evidence (ART REJECT)'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
