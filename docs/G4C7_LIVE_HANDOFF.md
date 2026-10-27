@@ -1,3 +1,9 @@
+# 【A69／2026-10-27 JST】本物の4室＋40踏面＋VTK実床raycast、真正G0二視点はART REJECT
+
+> ベース `3afbf5cff86cebec5ffaafa8c37140ee94bef587`。A68の厚い`INHABITED_*`板を本当の居住室と混同した失敗を是正し、**市場・工房・研究閲覧・住宅の四つの実室**を床・分割壁・開口・室内家具として同一VTK/OpenGLシーンに制作。40の実踏面・2階段・上下街路に加え、広場から市場/工房へ面した7mの実開口、カメラ真下の実床へVTK OBBTree raycast（z=0）、4件故意不正検出を実施。**しかし斜視は低層キャンパス、近景は白い通路と無表情な壁で両ART REJECT**。技術的な局所改善と巨大都市美術不成立は分離。新[監査](./G4C7_A69_AUTHENTIC_ROOM_SECTION_G0_ART_REJECT_JA.md)とSHA固定原本・専用Actionsを追加（実行結果確定前はGitHub画像保存PASSとしない）。正式S1/G1/G2/G3 NOT RUN、ART HOLD、正式採用0、Minecraft施工・都市統合禁止、原本保護、Work事前承認、旧331/993契約を維持。次はA69の箱型施設を延命せず都市全体の美術方向を再構築。
+
+---
+
 # 【A68独立再現確定／2026-10-27 JST】両視点ART REJECT、厚板を居住室と取り違える文法再発
 
 > [専用Actions #40450515817](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40450515817) SUCCESS。bot保存コミット `815bddf0028a3dd8a3def34e0d9eb837a4c80d59` で真正VTK/OpenGL二視点PNGと元のPython・SHA manifestをappend-only保護し、Git blob SHAもローカルと3/3一致。美術は近景・遠景ともREJECT。**A68の12の`INHABITED_*`は実居住室ではなく厚板構造**。傾斜路2区間の勾配25.69%/25.85%、研究床との0.3m段差を幾何から検出し、正式G2は未実施。通常CI #40450515706は既存baseline欠落FAIL。**次工程では同型の板群を増殖禁止。単一の本当の部屋＋上下階経路と内部外部が合う作者編集可能な3D断面を先に確立**。正式美術採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、施工・都市統合禁止、原本保護、Work事前承認維持。詳報[A68監査](./G4C7_A68_INHABITED_SEAM_G0_ART_REJECT_JA.md)。

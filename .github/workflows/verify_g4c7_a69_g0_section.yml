@@ -1,0 +1,96 @@
+name: A69 authentic room-section G0 visual falsification (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a69-inhabitable-section/a69_section.py.gz'
+      - '.github/workflows/verify_g4c7_a69_g0_section.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: a69-native-G0-provenance
+  cancel-in-progress: false
+jobs:
+  authentic-g0:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install VTK and software OpenGL
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libosmesa6 libgl1-mesa-dri libegl1
+      - name: Restore exact approved-for-falsification source bytes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,hashlib
+          p=Path('artifacts/g4c7-a69-inhabitable-section')
+          raw=gzip.decompress((p/'a69_section.py.gz').read_bytes())
+          assert hashlib.sha256(raw).hexdigest()=='6f2383a2bedb8b9627e940a4c7232a31fe1eb1027353af0b1d6bd33dd970df70'
+          (p/'a69_section.py').write_bytes(raw)
+          print('A69_SOURCE_SHA256_PASS')
+          PY
+      - name: Execute authored-section contract and four negative controls
+        run: |
+          python -m py_compile artifacts/g4c7-a69-inhabitable-section/a69_section.py
+          python artifacts/g4c7-a69-inhabitable-section/a69_section.py --verify
+      - name: Real native two-view G0 rendering
+        run: python artifacts/g4c7-a69-inhabitable-section/a69_section.py --render
+      - name: PNG integrity and correct evidence boundary
+        run: |
+          python - <<'PY'
+          import pathlib,json,struct,zlib,hashlib
+          d=pathlib.Path('artifacts/g4c7-a69-inhabitable-section/output');m=json.loads((d/'manifest.json').read_text())
+          assert m['stage']=='A69' and m['renderer']=='VTK_OPENGL'
+          assert m['Art']=='UNASSESSED' and m['evidence']=='G0_DIAGNOSTIC_NOT_AN_ARCHITECTURAL_APPROVAL'
+          assert m['minecraft']==m['city_integration']=='FORBIDDEN'
+          assert all(m[x]=='NOT_RUN' for x in ('S1','G1','G2','G3'))
+          assert m['precinct_count']==1 and m['stair_treads']==40 and m['negative_cases']==4
+          assert m['object_count']==194 and len(m['actual_rooms'])==4
+          assert abs(m['public_eye'][2]-m['public_floor_at_eye']-1.7)<1e-6
+          assert len(m['actual_floor_raycast_points'])>=1
+          for f in ('public_heart.png','oblique.png'):
+            raw=(d/f).read_bytes();assert raw[:8]==bytes.fromhex('89504e470d0a1a0a')
+            pos=8;tags=[]
+            while pos<len(raw):
+              n=struct.unpack_from('>I',raw,pos)[0];name=raw[pos+4:pos+8];chunk=raw[pos+8:pos+8+n]
+              assert (zlib.crc32(name+chunk)&0xffffffff)==struct.unpack_from('>I',raw,pos+n+8)[0]
+              if name==b'IHDR':assert struct.unpack('>II',chunk[:8])==(1280,820)
+              tags.append(name);pos+=12+n
+              if name==b'IEND':break
+            assert pos==len(raw) and b'IDAT' in tags and tags[-1]==b'IEND'
+            assert hashlib.sha256(raw).hexdigest()==m['images_sha256'][f]
+          print('A69_TRUE_NATIVE_EVIDENCE_PASS_NO_ART_APPROVAL')
+          PY
+      - name: Upload immutable evidence for independent inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a69-true-G0-art-reject
+          path: artifacts/g4c7-a69-inhabitable-section/output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only preserve authored source and true PNG artifacts
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a69-inhabitable-section
+          test -s "$D/output/public_heart.png"
+          test -s "$D/output/oblique.png"
+          test -s "$D/output/manifest.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a69_section.py" "$D/output"
+          git diff --cached --quiet && { echo 'Expected evidence not new'; exit 1; }
+          git commit -m 'A69: archive authentic room-section G0 evidence (ART REJECT)'
+          git push origin 'HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study'
