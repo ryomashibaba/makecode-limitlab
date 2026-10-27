@@ -1,3 +1,9 @@
+# 【A68独立再現確定／2026-10-27 JST】両視点ART REJECT、厚板を居住室と取り違える文法再発
+
+> [専用Actions #40450515817](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40450515817) SUCCESS。bot保存コミット `815bddf0028a3dd8a3def34e0d9eb837a4c80d59` で真正VTK/OpenGL二視点PNGと元のPython・SHA manifestをappend-only保護し、Git blob SHAもローカルと3/3一致。美術は近景・遠景ともREJECT。**A68の12の`INHABITED_*`は実居住室ではなく厚板構造**。傾斜路2区間の勾配25.69%/25.85%、研究床との0.3m段差を幾何から検出し、正式G2は未実施。通常CI #40450515706は既存baseline欠落FAIL。**次工程では同型の板群を増殖禁止。単一の本当の部屋＋上下階経路と内部外部が合う作者編集可能な3D断面を先に確立**。正式美術採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、施工・都市統合禁止、原本保護、Work事前承認維持。詳報[A68監査](./G4C7_A68_INHABITED_SEAM_G0_ART_REJECT_JA.md)。
+
+---
+
 # 【A68／2026-10-27 JST】最初の一体生活街区を真正VTK/OpenGLで反証→積層床群、二視点ART REJECT
 
 > 基点HEAD `a14a3eac2726d071a7128445260821d19411e6b8`。A66密閉多角柱→A67開放小室258個という両極端を破棄し、市場・工房・研究/閲覧＋住宅12街区帯＋折返し公共ルート2区間を同一3Dモデルの161オブジェクトとして作者指定し、1280×820真正VTK/OpenGL二視点で直接観察。**遠景は分離した厚床の集合、近景は巨大な床裏と薄い用途空間**。過去の失敗に回帰したため **G0 ART REJECT／正式採用0／全体ART HOLD**。新[監査](./G4C7_A68_INHABITED_SEAM_G0_ART_REJECT_JA.md)、圧縮原本と専用Actionsを保存。Actionsの画像保存・技術PASSは実行結果確定まで未主張。次はA68への家具/窓/街区追加を停止し、**作者が編集する完全な一体3D建築断面と上下動線**へ制作方式を切り替える。正式S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、全歴史原本/旧331/993契約/Work事前承認を維持。

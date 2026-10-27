@@ -39,3 +39,12 @@ A66では密閉された多角柱の群、A67では258個の開放小室の群�
 - Work利用には事前の明示承認が必要。既存通常CIのbaseline欠落を偽データやskipで解消しない。
 
 **A68は美術的な突破ではない。進めるべきはA69という番号でなく「作り方の根本改革」である。**
+
+## 6. Actions確定・GitHub原本照合・傾斜路の具体的設計欠陥（独立追記）
+- [A68専用 Actions #40450515817](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40450515817)：**SUCCESS**。圧縮原本SHA復元→Python構文・G0契約→真正VTK/OpenGL2視点→PNG CRC/解像度/SHA照合→原本保存まで完了。
+- 保存bot commit [`815bddf0028a3dd8a3def34e0d9eb837a4c80d59`](https://github.com/ryomashibaba/makecode-limitlab/commit/815bddf0028a3dd8a3def34e0d9eb837a4c80d59)。[近景PNG](../artifacts/g4c7-a68-inhabited-seam/output/public_heart.png) blob `77ef028d1150f358423207e91566576da8fa5e7c`、[遠景PNG](../artifacts/g4c7-a68-inhabited-seam/output/oblique.png) blob `0790f88128c42a9322264d3f965e98b1bb83416a`、[manifest](../artifacts/g4c7-a68-inhabited-seam/output/manifest.json) blob `6732088b19d16b11a0b15d54e93f1891acf7b13e`。ローカル原本のGit blob SHAと独立照合して**3/3一致**。
+- ただし**モデル内で`INHABITED_*`と名付けた12の厚板は内部居室が作られたことを意味しない**。本体は`Scene.hull()`が生成する厚い閉板と簡易手すり/境界部材であり、実在の住宅の連続した居住室・戸口・壁・階段・支持を示す実証はない。作者ラベルが実建築空間の代わりになったことが形態失敗の核心。
+- ソース中の2傾斜路を水平距離で独立計算：`ramp_1` (5,17,0)→(27,31,6.7) = 水平26.0768m / 高低差6.7m / **勾配25.69%**。 `ramp_2` (27,31,6.7)→(9,48,13.1) = 水平24.7588m / 高低差6.4m / **勾配25.85%**。階上`reading_living_floor`の上面は13.4mでルート終点13.1mとの**0.3m差**があり、段差・納まりの検証をしていない。これらは建築的な実用性の不明・不足を示す警告でありG2/G3の正式歩行/支持QAではない。
+- [通常CI #40450515706](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40450515706)：**FAIL**。428 tests、1 error、従来からの `build/g4c4_access_baseline.json` 欠落。A68専用PASSと独立の通常CIは混同しない。偽baseline・skipなし。
+- **A68全体ART REJECT / 全体ART HOLD / 正式採用0 / S1 G1 G2 G3 NOT RUN / Minecraft施工・都市統合禁止。**
+
