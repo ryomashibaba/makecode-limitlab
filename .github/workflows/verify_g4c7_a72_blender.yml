@@ -1,0 +1,86 @@
+name: A72 genuine editable Blender occupied-space G0 (NOT ART PASS)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_a72_native_authoring.py'
+      - '.github/workflows/verify_g4c7_a72_blender.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: a72-genuine-blender-authoring
+  cancel-in-progress: false
+jobs:
+  authored-native-study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Authoring preflight and seven deliberate negative controls
+        run: |
+          python -m py_compile tools/g4c7_a72_native_authoring.py
+          python tools/g4c7_a72_native_authoring.py --preflight --negatives
+      - name: Install official native Blender 4.5.15 bpy wheel, no new account
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5); print(bpy.app.version_string)"
+      - name: Build genuine editable Blender authored district and two real Cycles images
+        run: python tools/g4c7_a72_native_authoring.py --render
+      - name: Independently reopen .blend, inspect intended geometry and image integrity
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import bpy,json,hashlib,struct,zlib
+          D=Path('artifacts/g4c7-a72-authored-native/native-output')
+          f=D/'a72_authored_true_section.blend'
+          assert f.read_bytes()[:7]==b'BLENDER'
+          m=json.loads((D/'a72_native_manifest.json').read_text())
+          assert m['stage']=='A72' and m['renderer']=='BLENDER_CYCLES'
+          assert m['art']=='NOT_ASSESSED' and m['construction']==m['integration']=='FORBIDDEN'
+          assert all(m['gates'][x]=='NOT_RUN' for x in ['S1','G1','G2','G3'])
+          assert m['true_rooms']==4 and m['treads']==40
+          assert not m['complete_walk_test'] and not m['body_collision_test']
+          assert hashlib.sha256(f.read_bytes()).hexdigest()==m['blend_sha256']
+          bpy.ops.wm.open_mainfile(filepath=str(f.resolve()))
+          assert bpy.context.scene.render.engine=='CYCLES'
+          assert sum(x.type=='CAMERA' for x in bpy.data.objects)==2
+          for tag in ['MARKET','MAKER','READING','HOUSING']:
+            assert bpy.data.objects.get(tag+'_TRUE_INTERIOR_FLOOR')
+            assert bpy.data.objects.get(tag+'_ENTRANCE_WALL_LEFT')
+            assert bpy.data.objects.get(tag+'_ENTRANCE_WALL_RIGHT')
+            assert bpy.data.objects.get(tag+'_LINTEL_ABOVE_REAL_OPENING')
+          for name in ['STAIR1','STAIR2']:
+            assert sum(x.name.startswith(name+'_TRUE_TREAD_') for x in bpy.data.objects)==20
+          for name in ['public_heart','oblique']:
+            data=(D/('render_'+name+'.png')).read_bytes()
+            assert data[:8]==b'\x89PNG\r\n\x1a\n'
+            assert hashlib.sha256(data).hexdigest()==m['views'][name]['sha256']
+          print('A72_EDITABLE_NATIVE_BLEND_TWO_CAMERAS_REAL_PNG_PASS_BUT_NOT_ART_GATES')
+          PY
+      - name: Upload real study evidence even if preserving branch fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a72-genuine-blender-dual-view-G0-ART-NOT-APPROVED
+          path: artifacts/g4c7-a72-authored-native/native-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only archive generated genuine 3D files
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a72-authored-native/native-output
+          test -s "$D/a72_authored_true_section.blend"
+          test -s "$D/render_public_heart.png"
+          test -s "$D/render_oblique.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D"
+          git diff --cached --quiet && { echo "Expected newly generated files were missing"; exit 1; }
+          git commit -m 'A72: preserve genuine editable Blender 2-camera Cycles visual evidence G0'
+          git push origin HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study

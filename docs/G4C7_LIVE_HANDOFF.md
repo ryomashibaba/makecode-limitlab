@@ -1,3 +1,9 @@
+# 【A72／2026-10-27 JST】真正Blender作者編集モデルの制作基盤を投入・美術は未採用
+
+> A71鋸歯巨大塊の3D化禁止を維持しつつ、**新規実室4つの厚み・分割壁・真正開口・個別踏面40段・2真カメラ**の作者編集可能なPython Blender制作源と独立Actionsを導入。出力.blend/2 Cycles PNGを検証する。**実行/結果確認前は技術PASSや美術PASSを主張しない**。正式採用0・全体ART HOLD・S1/G1/G2/G3 NOT RUN・Minecraft施工/都市統合禁止。成果監査 [A72](./G4C7_A72_NATIVE_AUTHOR_SECTION_G0_JA.md)。
+
+---
+
 # 【A71最終実画像判定／2026-10-27 JST】G0新美術案もART REJECT、正式採用0、全体ART HOLD
 
 > [独立2DラスタActions #40471711372](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40471711372) SUCCESS、botコミット `925622edc45988e1f840c79196ba4f16795d1af2` に[1600×1040 PNG](../artifacts/g4c7-a71-occupied-frontage-study/a71_authorial_pixel_review.png) をappend-only保存し実画像直接目視。**遠景は鋸歯山状の閉じた巨大塊と小さな光片、人間目線は巨大暗壁と舞台的な市場・工房**となり、両視点G0 ART REJECT。元SVGの暫定HOLDを最終REJECTに修正（原本不変）。A71を装飾/3D押出しで延命禁止。A71監査末尾を参照。依然正式採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、Work事前承認、全歴史原本保護、331/993契約維持。通常CIは既知baseline欠損FAIL。
