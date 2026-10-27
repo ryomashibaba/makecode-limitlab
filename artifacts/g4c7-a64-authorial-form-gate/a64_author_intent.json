@@ -1,0 +1,57 @@
+{
+  "stage": "A64",
+  "date": "2026-10-27 JST",
+  "baseline_head": "f7774c0a24dec0399f30ca0e438e60316d4fcbcf",
+  "medium": "G0_AUTHORIAL_DIAGRAM_NOT_3D",
+  "candidates": [
+    {
+      "id": "A",
+      "name": "斜交共層 / TRANSVERSE COMMONS",
+      "verdict": "G0_REJECT",
+      "reason": "inhabited bands become giant ribbons or malls; too similar to A53/A61"
+    },
+    {
+      "id": "B",
+      "name": "群孔生活都 / INHABITED POROSITY",
+      "verdict": "G0_ART_HOLD",
+      "reason": "not yet proven as compelling skyline and lived-in space; quarry/honeycomb/mall risks"
+    }
+  ],
+  "b_civic_point": {
+    "ground_eye_target_m": 1.7,
+    "programs": [
+      "market",
+      "culture",
+      "research",
+      "housing",
+      "commons"
+    ],
+    "author_intents": [
+      "real market encounter 7–12 m from eye",
+      "visible active workshop across the civic pocket",
+      "reading room at a higher visible level with a physical route to be designed",
+      "upper dwellings face an outdoor light pocket instead of lining a podium"
+    ],
+    "physical_3d_paths_verified": false,
+    "daylight_verified": false,
+    "support_verified": false
+  },
+  "evidence": {
+    "original_A63": [
+      "artifacts/g4c7-a63-inhabited-section/output/public_heart.png",
+      "artifacts/g4c7-a63-inhabited-section/output/oblique.png"
+    ],
+    "new_rendered_images": 0,
+    "svg_is": "conceptual_diagram_only"
+  },
+  "status": {
+    "ART": "HOLD",
+    "formal_adoptions": 0,
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN",
+    "Minecraft": "FORBIDDEN",
+    "city_integration": "FORBIDDEN"
+  }
+}

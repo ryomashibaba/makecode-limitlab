@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 950" role="img" aria-label="A64 authorship exploratory diagram, not a 3D render">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07192d"/><stop offset="1" stop-color="#12304c"/></linearGradient>
+ <linearGradient id="city" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#344b71"/><stop offset="1" stop-color="#162b4a"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#31465a" stroke-opacity=".35"/></pattern>
+</defs>
+<rect width="1500" height="950" fill="url(#bg)"/><rect width="1500" height="950" fill="url(#grid)"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#e9f5f3">
+<text x="58" y="58" font-size="34" font-weight="bold">A64  /  INHABITED POROSITY</text>
+<text x="58" y="88" font-size="16" fill="#93ced4">G0 ART-DIRECTION STUDY  •  NOT A 3D RENDER  •  ART HOLD</text>
+<text x="58" y="138" font-size="19" font-weight="bold">DISTANT MORPHOLOGY  /  neighborhoods shape the light, not a giant shell</text>
+<text x="955" y="138" font-size="19" font-weight="bold">PUBLIC CROSS-SECTION  /  spatial intent</text>
+</g>
+<rect x="55" y="156" width="846" height="616" rx="10" fill="#0c243e" stroke="#446782"/>
+<rect x="935" y="156" width="509" height="616" rx="10" fill="#102f40" stroke="#446782"/>
+<!-- Hand-chosen discontinuous inhabited district silhouette; an analytic sketch, not a geometry export -->
+<path d="M75 676 L75 564 L111 564 L111 490 L151 477 L173 408 L201 418 L233 362 L284 374 L299 436 L333 438 L349 527 L373 528 L373 676Z" fill="url(#city)" stroke="#7fa5be" stroke-width="3"/>
+<path d="M270 676 L270 570 L310 555 L322 475 L366 478 L396 395 L427 407 L463 306 L497 324 L531 259 L567 294 L585 366 L622 379 L624 465 L658 478 L677 571 L704 580 L704 676Z" fill="#415a80" stroke="#8ebcd2" stroke-width="3"/>
+<path d="M602 676 L607 593 L637 577 L661 506 L696 504 L716 439 L751 450 L775 385 L811 427 L833 503 L852 513 L872 570 L872 676Z" fill="#294a70" stroke="#8ebcd2" stroke-width="3"/>
+<!-- Open-air light pockets are interruptions between inhabited neighborhoods; warm layers are occupied edges -->
+<path d="M290 460 L328 442 L349 472 L347 527 L314 555 L285 542Z" fill="#112f47" stroke="#79d8cb" stroke-width="3"/>
+<path d="M575 380 L620 383 L626 465 L598 507 L565 479Z" fill="#0c2d44" stroke="#79d8cb" stroke-width="3"/>
+<path d="M701 505 L731 484 L757 527 L741 568 L711 553Z" fill="#0c2d44" stroke="#79d8cb" stroke-width="3"/>
+<g fill="#edaf69" opacity=".9">
+ <path d="M110 580L148 567L148 585L110 598Z"/><path d="M160 523L206 515L211 532L164 541Z"/><path d="M192 459L235 450L238 464L195 473Z"/>
+ <path d="M378 551L433 532L441 551L382 569Z"/><path d="M410 465L459 449L462 465L415 482Z"/><path d="M464 389L528 372L534 389L471 407Z"/>
+ <path d="M523 325L565 330L569 347L518 344Z"/><path d="M644 543L685 526L688 542L648 560Z"/><path d="M770 495L817 479L823 498L777 515Z"/>
+</g>
+<g fill="none" stroke="#9fdcdb" stroke-width="4">
+ <path d="M104 624L152 604L176 607L208 591"/><path d="M383 600L439 580L463 585L502 569"/>
+ <path d="M495 458L525 436L549 435"/><path d="M735 605L775 592L820 601"/>
+</g>
+<g fill="#d8e9f1" font-family="Arial, Helvetica, sans-serif" font-size="15">
+ <text x="77" y="708">urban street level</text><text x="357" y="707">inhabited shared edges</text>
+ <text x="581" y="224" fill="#a5ebe0">not uniform residential stacks</text>
+ <text x="110" y="278" fill="#a5ebe0">irregular skyline,</text><text x="110" y="297" fill="#a5ebe0">not one roof</text>
+</g>
+<g stroke="#80d3d0" stroke-width="2" stroke-dasharray="6 5" fill="none">
+ <path d="M317 514L278 643"/><path d="M600 442L556 627"/><path d="M731 527L817 639"/>
+</g>
+<!-- Civic section diagram: three DIFFERENT depth/uses visible from one public position, not a 3D camera image -->
+<path d="M961 694L1420 694" stroke="#d5e1d5" stroke-width="13"/>
+<path d="M961 692L961 525L1006 525L1006 671L1120 671L1120 561" stroke="#9bbcc7" stroke-width="18" fill="none"/>
+<path d="M1232 572 L1232 428 L1405 428 L1405 442" stroke="#b5d0d4" stroke-width="18" fill="none"/>
+<path d="M1152 690L1190 653L1225 653L1275 592L1320 592L1365 552" stroke="#9fe1d5" stroke-width="9" stroke-dasharray="13 7" fill="none"/>
+<rect x="975" y="581" width="130" height="90" fill="#886747" stroke="#e7b36f" stroke-width="3"/>
+<rect x="1238" y="467" width="165" height="92" fill="#32576b" stroke="#6ccfdd" stroke-width="3"/>
+<rect x="1130" y="586" width="99" height="85" fill="#665772" stroke="#c9a6dc" stroke-width="3"/>
+<g stroke="#e8d2a2" stroke-width="7"><path d="M989 610h105M989 632h85M1142 619h73M1247 492h140M1247 520h120"/></g>
+<g font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#fff">
+ <text x="985" y="575">MARKET</text><text x="1137" y="580">MAKING</text><text x="1247" y="459">LEARNING / READING</text>
+ <text x="1034" y="728">active civic pocket, not a 20m blank corridor</text>
+</g>
+<g fill="#f8d6a5"><circle cx="1112" cy="667" r="8"/><circle cx="1253" cy="656" r="8"/><circle cx="1314" cy="564" r="8"/></g>
+<g stroke="#9eeadf" stroke-width="3" fill="none" stroke-linecap="round">
+<path d="M1112 663L1133 610"/><path d="M1253 651L1209 624"/><path d="M1253 647L1307 523"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#acdce4" font-size="15">
+<text x="953" y="198">author-intended coexistence of 3 visible activities</text>
+<text x="953" y="222">No true eye-height raycast, access or daylight test</text>
+<text x="954" y="753">Illustrative section ≠ optical camera perspective</text>
+</g>
+<line x1="55" y1="802" x2="1445" y2="802" stroke="#527189" stroke-width="2"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#e2f3f0">
+<text x="58" y="839" font-size="19" font-weight="bold">WHY THIS IS NOT APPROVED</text>
+<text x="58" y="870" font-size="18">Risk: quarry / honeycomb megastructure / elevated mall. No unique inhabitable city image proved.</text>
+<text x="58" y="905" font-size="16" fill="#98c4cc">A: TRANSVERSE COMMONS → REJECTED (giant ribbon).   B: INHABITED POROSITY → STUDY HOLD.</text>
+</g>
+</svg>
