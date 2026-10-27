@@ -1,0 +1,107 @@
+{
+  "stage": "A66",
+  "renderer": "VTK_OpenGL",
+  "status": "G0_VISUAL_STUDY_UNAPPROVED",
+  "art": "NOT_APPROVED",
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "public_eye": [
+    0,
+    -17,
+    1.7
+  ],
+  "public_floor_at_eye": 0,
+  "public_3_programs": {
+    "market": {
+      "entry": [
+        -13,
+        0,
+        0
+      ],
+      "room": [
+        -22,
+        4,
+        0
+      ],
+      "depth": [
+        -29,
+        16,
+        0
+      ]
+    },
+    "making": {
+      "entry": [
+        14,
+        1,
+        0
+      ],
+      "room": [
+        20,
+        5,
+        0
+      ],
+      "depth": [
+        30,
+        13,
+        0
+      ]
+    },
+    "learning": {
+      "entry": [
+        1,
+        17,
+        6.8
+      ],
+      "room": [
+        0,
+        24,
+        6.8
+      ],
+      "depth": [
+        1,
+        33,
+        6.8
+      ]
+    },
+    "commons": {
+      "entry": [
+        0,
+        1,
+        0
+      ],
+      "room": [
+        0,
+        8,
+        0
+      ],
+      "depth": [
+        0,
+        18,
+        0
+      ]
+    }
+  },
+  "districts_authored": [
+    "N_WEST_NEST",
+    "N_WEST_GARDEN",
+    "WEST_TERRACE_EDGE",
+    "INNER_NORTH_COMMON",
+    "UPPER_AZIMUTH",
+    "EAST_RESEARCH",
+    "EAST_INHABITED",
+    "EAST_LOW_SHOPS",
+    "NORTH_TURN",
+    "EAST_WARD",
+    "WEST_BACK_WARD"
+  ],
+  "object_count": 200,
+  "technical_truth": "concept image of actual 3D, not evidence of support, walkable routes or aesthetic success",
+  "image_sha256": {
+    "public_heart.png": "1adc9b2b755eedb681dcc4aa2c500044167b4725fb891fbb9b4b9dbf2101a91e",
+    "oblique.png": "aa0dca5742b82798d9cc4eef3d3caa34037e58e059ac7eb4744ab76480d17573"
+  }
+}
