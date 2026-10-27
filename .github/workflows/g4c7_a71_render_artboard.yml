@@ -1,0 +1,66 @@
+name: G4-C7 A71 G0 artboard pixel inspection (NOT ART PASS)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'artifacts/g4c7-a71-occupied-frontage-study/a71_interlocked_frontages.svg'
+      - '.github/workflows/g4c7_a71_render_artboard.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a71-g0-author-drawing
+  cancel-in-progress: false
+jobs:
+  archive-authorial-raster:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install basic SVG rasterizer
+        run: python -m pip install --disable-pip-version-check cairosvg Pillow
+      - name: Independently convert exact SVG source into PNG for real visual critique
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,xml.etree.ElementTree as ET
+          import cairosvg
+          from PIL import Image
+          d=Path('artifacts/g4c7-a71-occupied-frontage-study')
+          source=(d/'a71_interlocked_frontages.svg').read_bytes()
+          blob=hashlib.sha1(('blob '+str(len(source))+'\0').encode()+source).hexdigest()
+          assert blob=='3c8cff86c85e9a611c87e03477da9440e6d27247',blob
+          root=ET.fromstring(source)
+          assert root.tag=='{http://www.w3.org/2000/svg}svg'
+          target=d/'a71_authorial_pixel_review.png'
+          if target.exists(): raise RuntimeError('Append-only target already exists')
+          cairosvg.svg2png(bytestring=source,write_to=str(target),output_width=1600,output_height=1040)
+          with Image.open(target) as im:
+            assert im.size==(1600,1040) and im.format=='PNG'
+            assert len(im.convert('RGB').getcolors(16777216) or [])>10
+          print('A71 2D SOURCE_TO_PNG_INTEGRITY_ONLY; NO TRUE 3D AND NO ART PASS')
+          print('PNG_SHA256='+hashlib.sha256(target.read_bytes()).hexdigest())
+          PY
+      - name: Upload G0 artboard only
+        uses: actions/upload-artifact@v4
+        with:
+          name: a71-authorial-two-dimensional-image-for-human-art-review
+          path: artifacts/g4c7-a71-occupied-frontage-study/a71_authorial_pixel_review.png
+          retention-days: 14
+      - name: Append-only archive generated 2D image
+        run: |
+          set -euo pipefail
+          F=artifacts/g4c7-a71-occupied-frontage-study/a71_authorial_pixel_review.png
+          test -s "$F"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$F"
+          git diff --cached --quiet && { echo 'No new image to archive'; exit 1; }
+          git commit -m 'A71: archive 2D raster for visual critique; not a real 3D image'
+          git push origin 'HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study'
