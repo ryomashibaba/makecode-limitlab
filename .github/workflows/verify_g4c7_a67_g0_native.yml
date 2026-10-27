@@ -1,0 +1,99 @@
+name: A67 G0 exposed habitation native visual falsification (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a67-exposed-inhabitation/a67_native.py.gz'
+      - '.github/workflows/verify_g4c7_a67_g0_native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: a67-native-art-reject
+  cancel-in-progress: false
+jobs:
+  native-rejected-repro:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install native VTK software OpenGL
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2' 'numpy>=1.26,<3'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libosmesa6 libgl1-mesa-dri libegl1
+      - name: Restore exact A67 author source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,hashlib
+          d=Path('artifacts/g4c7-a67-exposed-inhabitation')
+          raw=gzip.decompress((d/'a67_native.py.gz').read_bytes())
+          sha=hashlib.sha256(raw).hexdigest()
+          assert sha=='401977cd1ea450dd924dee2d9fe84cd5c01fd4da213c97f21e79d1dbec807499',sha
+          (d/'a67_native.py').write_bytes(raw)
+          print('A67_ORIGINAL_AUTHOR_SOURCE_PASS')
+          PY
+      - name: Compile and check G0 intent contract
+        run: |
+          python -m py_compile artifacts/g4c7-a67-exposed-inhabitation/a67_native.py
+          python artifacts/g4c7-a67-exposed-inhabitation/a67_native.py --verify
+      - name: Render true VTK/OpenGL two-view prototype
+        env:
+          VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: python artifacts/g4c7-a67-exposed-inhabitation/a67_native.py --render
+      - name: Verify two native PNG images and evidence boundaries
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,struct,zlib
+          d=Path('artifacts/g4c7-a67-exposed-inhabitation/output')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['stage']=='A67' and m['renderer']=='VTK_OpenGL' and m['art']=='NOT_ASSESSED'
+          assert m['status']=='G0_NOT_ART_ACCEPTED'
+          assert m['room_count']==258 and m['actor_count']==2299
+          assert len(m['wards'])==8
+          assert m['public_eye'][2]-m['public_floor_at_eye']==1.7
+          assert all(m[x]=='NOT_RUN' for x in ('S1','G1','G2','G3'))
+          assert m['minecraft_construction']==m['city_integration']=='FORBIDDEN'
+          for file in ('oblique.png','public_heart.png'):
+            b=(d/file).read_bytes()
+            assert b[:8]==bytes.fromhex('89504e470d0a1a0a')
+            pos=8;seen=[]
+            while pos<len(b):
+              n=struct.unpack_from('>I',b,pos)[0];name=b[pos+4:pos+8];body=b[pos+8:pos+8+n]
+              assert (zlib.crc32(name+body)&0xffffffff)==struct.unpack_from('>I',b,pos+n+8)[0]
+              if name==b'IHDR': assert struct.unpack('>II',body[:8])==(1280,820)
+              pos+=12+n;seen.append(name)
+              if name==b'IEND':break
+            assert pos==len(b) and b'IDAT' in seen and seen[-1]==b'IEND'
+            assert hashlib.sha256(b).hexdigest()==m['image_sha256'][file]
+          print('A67_G0_TRUE_IMAGE_INTEGRITY_PASS_ART_NOT_ACCEPTED')
+          PY
+      - name: Upload all rejected G0 images for independent review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a67-native-G0-rejected-art
+          path: artifacts/g4c7-a67-exposed-inhabitation/output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Preserve exact source and rejected images append-only
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a67-exposed-inhabitation
+          test -s "$D/output/oblique.png"
+          test -s "$D/output/public_heart.png"
+          test -s "$D/output/manifest.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a67_native.py" "$D/output"
+          git diff --cached --quiet && { echo 'Expected new evidence not found'; exit 1; }
+          git commit -m 'A67: preserve genuine two-view habitation study as ART REJECT'
+          git push origin 'HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study'

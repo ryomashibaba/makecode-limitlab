@@ -1,3 +1,9 @@
+# 【最新A67／2026-10-27 JST】開放型実室258・8街区を真正OpenGL2視点で反証→双方ART REJECT
+
+> A66の密閉多角柱を廃止し、開いた室を直接都市外形とするG0新方式を実3D制作（同一モデル8街区・258室・2,299アクター／1280×820 PNG2視点）。**斜視は無数の浮いた床・小部屋・リング状の棚、近景は床裏と不連続階段**が目立ち、都市美術と実際の生活空間は成立せず2視点 ART REJECT。A67の部品を橋や窓で救済せず、この造形停止。新[監査](./G4C7_A67_EXPOSED_INHABITATION_G0_ART_REJECT_JA.md)と圧縮再現原本、独立専用Actionsで証拠保護を行う。正式美術採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、施工・都市統合FORBIDDEN。全原本・旧331/993契約・Work事前承認を継承。
+
+---
+
 # 【A66独立再現確定／2026-10-27 JST】専用Actions SUCCESS、真正VTK/OpenGL2視点GitHub原本保護、ART REJECT
 
 > [A66専用Actions #40441535210](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40441535210) **SUCCESS**。bot保存コミット [`7eb1f8403c2b1c0bb47cdcdb23fa51e74ec34231`](https://github.com/ryomashibaba/makecode-limitlab/commit/7eb1f8403c2b1c0bb47cdcdb23fa51e74ec34231) で展開Python原本、同一3Dの近景・遠景真正OpenGL PNG2枚とSHA manifestをappend-only保存。GitHub保存PNGも独立取得・目視確認しローカルSHAと一致。**真正の技術再現はPASS、2視点美術ART REJECT、全体ART HOLD、正式採用0**。通常CI [#40441535182](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40441535182) は別途FAIL。正式S1/G1/G2/G3 NOT RUN、施工・都市統合禁止、Work事前承認、歴代原本・331/993安全契約保持。次はA66多角柱の装飾延命でなく、都市の外に見える占有された生活界面そのものを基本造形から設計する。
