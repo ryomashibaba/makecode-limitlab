@@ -1,0 +1,117 @@
+name: G4-C7 A81 actual enclosed rooms / portal rays / stair treads G0 (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a81-inhabited-fold/a81_inhabited_fold.py'
+      - 'artifacts/g4c7-a81-inhabited-fold/a81_independent_mesh_audit.py'
+      - '.github/workflows/verify_g4c7_a81_inhabited_fold.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a81-local-inhabited-tech-g0
+  cancel-in-progress: false
+jobs:
+  independently-falsify-real-chamber-mesh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check exact unmodified authored source against independent hashes
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path('artifacts/g4c7-a81-inhabited-fold')
+          expected={
+            'a81_inhabited_fold.py':'094032a01a1a453713f8704960684f11c375a2532cf26b11a77534cb726f0a6a',
+            'a81_independent_mesh_audit.py':'2f0c157430ab191eefbd556e086638d2a1c7ba214867c4d87e460704efbd825f',
+          }
+          for n,h in expected.items():
+            found=hashlib.sha256((p/n).read_bytes()).hexdigest()
+            assert found==h, 'SOURCE_NOT_BYTE_IDENTICAL_'+n+':'+found
+          print('A81_ACTUAL_SOURCE_SHA256_VERIFIED')
+          PY
+      - name: Install native true 3D renderer
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2' 'numpy>=1.26,<3' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Reproduce original genuine 3D and all four views
+        run: |
+          python -m py_compile artifacts/g4c7-a81-inhabited-fold/a81_inhabited_fold.py
+          python -m py_compile artifacts/g4c7-a81-inhabited-fold/a81_independent_mesh_audit.py
+          python artifacts/g4c7-a81-inhabited-fold/a81_inhabited_fold.py --verify
+          python artifacts/g4c7-a81-inhabited-fold/a81_inhabited_fold.py --build
+          python artifacts/g4c7-a81-inhabited-fold/a81_independent_mesh_audit.py
+      - name: Enforce limited G0 evidence and permanent no-approval restrictions
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          d=Path('artifacts/g4c7-a81-inhabited-fold')
+          p=d/'a81-output'
+          m=json.loads((p/'a81_manifest.json').read_text())
+          a=json.loads((p/'a81_independent_mesh_audit.json').read_text())
+          assert m['source_sha256']==hashlib.sha256((d/'a81_inhabited_fold.py').read_bytes()).hexdigest()
+          assert m['stage']=='A81_G0_UNAPPROVED_TECH_RESEARCH'
+          assert m['overall_art']=='HOLD' and m['art']=='NOT_APPROVED'
+          assert m['minecraft_construction']==m['city_integration']=='FORBIDDEN'
+          assert all(m['formal'][g]=='NOT_RUN' for g in ('S1','G1','G2','G3'))
+          assert m['model_scope']=='LOCAL_CIVIC_KNOT_NOT_CITY'
+          assert len(m['chambers'])==4 and set(c['name'] for c in m['chambers'])=={'MARKET','WORKSHOP','READING','RESIDENCE'}
+          assert m['mesh_parts']==261 and m['obj_vertices']==1368 and m['obj_triangles']==1332
+          assert m['topology']['nodes']==9 and m['topology']['ramps']==4
+          assert m['proof']['centerline_continuity_samples']==64
+          assert m['proof']['fabricated_tread_meshes']==140
+          assert all(m['proof']['tested_negative_controls'].values())
+          assert len(a['rooms'])==4
+          for room in a['rooms'].values():
+            assert room['door_mid_at_body_z']=='RAY_UNBLOCKED'
+            assert room['real_floor']==room['real_roof']=='RAY_HIT'
+            assert room['far_facade']=='RAY_HIT'
+            assert room['certified_walkable']=='NOT_TESTED'
+          assert a['stair_treads_detected']==140 and a['centerline_ray_hits']==40
+          assert all(a['negative_real_mesh_mutations'].values())
+          assert a['formal']==m['formal'] and a['art']=='NOT_APPROVED'
+          assert (p/'a81_real_inhabited_fold.obj').stat().st_size>50000
+          for name in ('oblique','street_eye','roof_eye','room_eye'):
+            with Image.open(p/(name+'.png')) as im:
+              assert im.size==(1280,820) and im.format=='PNG'
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>10
+          print('A81_NARROW_REAL_SURFACE_TEST_PASS__ARCHITECTURAL_ART_REJECT__NOT_SAFETY_PASS')
+          PY
+      - name: Upload original negative 3D and audit even if archive commit fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a81-real-enclosed-rooms-and-portal-rays-G0-ART-REJECT
+          path: artifacts/g4c7-a81-inhabited-fold/a81-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only store actual images OBJ and reproducible mesh evidence
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a81-inhabited-fold
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/a81-output/a81_manifest.json"
+          test -s "$D/a81-output/a81_independent_mesh_audit.json"
+          test -s "$D/a81-output/room_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a81-output/"
+          if git diff --cached --quiet; then echo 'A81 already archived'; exit 0; fi
+          git commit -m 'A81: archive genuine four-view chamber G0 geometry (ART REJECT)'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
