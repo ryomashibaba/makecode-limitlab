@@ -32,3 +32,10 @@ A72では[新しい作者別編集Blenderソース](../tools/g4c7_a72_native_aut
 - **重要な技術反証**：開口形状ができていても公共床へ到達できるとは限らない。Pythonの部屋前面・プラザの原本ポリゴン・閲覧アプローチ床の2D同一高さ投影を独立のShapelyで測定。市場6m開口の床交差2.251339m、工房6m開口の床交差**0.069874m（約7cm）**、閲覧室6.4m開口の床交差**0m**でアプローチと最短**1.302364m離隔**。住宅床は12.6mでそこへ向かう独立階段が未定義。数値は**G0局所床接続の不備**であり正式G2/G3ではない。
 - [独立幾何反証コード](../tools/g4c7_a72_access_postmortem.py)と[専用Actions](../.github/workflows/verify_g4c7_a72_access_defects.yml)でこの既知欠陥を**PASS=再検出**として自動再現し、設計が可用と誤報することを防止。**この再現テストの成功を到達性PASSとして扱わない。**
 - **A72 ART REJECT、全体ART HOLD、正式美術採用0**。新3Dを延命・複製・窓や照明で誤魔化さない。将来は**都市の外形と人が実際に使う面を同一の設計判断で確定する工程**へ転換。正式S1/G1/G2/G3 NOT RUN・施工/都市統合FORBIDDEN・過去全原本不変更。
+
+## A72 access regression Actions：独立実行確定
+
+- [A72既知欠陥再現 Actions #40481921861](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481921861) **SUCCESS**。原本`tools/g4c7_a72_native_authoring.py`のGit blob SHA `a76d14d88f12d36009448cc241a8d653a39b719a`を固定したうえで、Shapelyによる公共床と各実開口の局所的な接触長を再計算。**成功は「接続欠陥を再現した」の意味であり、アクセス/歩行/美術をPASSしたのではない**。
+- 独立Blender/Cycles真正制作SUCCESS [#40481208513](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481208513) は、同一モデルの2視点と可編集.blendがGitHubで作れる技術の証拠に限定。画像を目視して近景・遠景ともART REJECTで確定。
+- 通常CI [#40481208357](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481208357) **FAIL**：428件中1件のsetup error、従来からの`build/g4c4_access_baseline.json`の欠落を実ログで再確認。偽baselineやskipなし。
+- **A72の最終結論は「本物の3Dを作るツールができても、建築美術と実到達性を保証しない」**。A73はこの原型に窓・橋・屋根を足すのではなく、都市形態の作者的な独創性とその空間配置を独立に再構成する。ART HOLD、採用0、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。

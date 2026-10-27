@@ -1,3 +1,9 @@
+# 【A72全証拠確定／2026-10-27 JST】Blender二視点TECH SUCCESS、入口接合FAIL再現、ART REJECT
+
+> [真正Blender #40481208513](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481208513) SUCCESS、[床・開口の欠陥再現 #40481921861](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481921861) SUCCESS（**設計不良の検出成功≠歩行PASS**）。G0真正画像は一般低層施設/巨大壁で両ART REJECT。市場公共床接続約2.25m、工房約0.07m、閲覧入口接続0m・1.30m離隔、住宅への未定義上下経路。通常CIは既知baseline欠損FAIL。A72原型を美術採用せず凍結し、ソース・Blender/.pngと監査原本だけ保護。**全体ART HOLD、正式美術採用0、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止**。旧331/993安全契約・Work事前承認継続。[A72技術美術監査](./G4C7_A72_NATIVE_AUTHOR_SECTION_G0_JA.md)。
+
+---
+
 # 【A72最終アート審査／2026-10-27 JST】本物の.blend/2 Cycles 技術PASS、低層施設再発でART REJECT
 
 > [A72真正Blender Actions #40481208513](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481208513) SUCCESS、bot commit `d5b9a8d7af37634f775f0559c2431e12a95547b7` に編集可能.blend/真正Cycles近景・遠景/manifest保存。画像を独立目視して**低層キャンパス・折れ屋根・白い床・巨大壁**へ戻ったため両 ART REJECT。Shapelyによる原本床・入口接合の独立照合で、市場2.25m、工房0.07mしか接合せず、上層閲覧は0m接合+1.30m空隙、住宅への最終上下動線なし。**実室と40階段を名乗っても可用性は未証明**。A72原型の改修停止。新[アクセス反証コード](../tools/g4c7_a72_access_postmortem.py)・[A72監査](./G4C7_A72_NATIVE_AUTHOR_SECTION_G0_JA.md)を参照。全体ART HOLD、正式採用0、S1/G1/G2/G3 NOT RUN、施工/統合禁止、Work事前承認、331/993契約継承。画像品質の突破なし。
