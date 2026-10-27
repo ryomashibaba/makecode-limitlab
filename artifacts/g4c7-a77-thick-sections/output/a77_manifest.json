@@ -1,0 +1,75 @@
+{
+  "stage": "A77",
+  "title": "THREE_INHABITED_THICK_SECTIONS_G0",
+  "medium": "GENUINE_VTK_OPENGL_3D_NOT_EDITABLE_BLENDER",
+  "bbox_min": [
+    -320.0,
+    -219.0,
+    -12.0
+  ],
+  "bbox_max": [
+    320.0,
+    291.0,
+    300.0
+  ],
+  "mesh_parts": 281,
+  "triangle_faces": 2036,
+  "gross_count_tri_vertices": 1680,
+  "artifact_is_prototype_not_city": true,
+  "art": "NOT_APPROVED",
+  "overall_art": "HOLD",
+  "formal_gates": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "authored_wings": 3,
+  "inhabited_decks_as_actual_polygon_floors": 15,
+  "programs": [
+    "works",
+    "research",
+    "homes",
+    "market",
+    "making",
+    "reading"
+  ],
+  "rooms_are_reachable": "NOT_TESTED",
+  "upper_floor_support": "NOT_TESTED",
+  "eye_floor_raycast": "NOT_TESTED",
+  "stairs_for_full_city": "NOT_BUILT",
+  "area_m2_by_section": [
+    [
+      "WEST_WORKS",
+      [
+        15830.5,
+        15626.5,
+        12035.0,
+        7772.0,
+        3437.5
+      ]
+    ],
+    [
+      "NORTH_RESEARCH",
+      [
+        14868.0,
+        18757.0,
+        18899.0,
+        15349.0,
+        8329.5
+      ]
+    ],
+    [
+      "EAST_HOMES",
+      [
+        24359.5,
+        24740.5,
+        18453.0,
+        13819.5,
+        6928.5
+      ]
+    ]
+  ]
+}

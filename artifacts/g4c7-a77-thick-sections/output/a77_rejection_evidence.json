@@ -1,0 +1,82 @@
+{
+  "stage": "A77",
+  "evidence_kind": "TRUE_VTK_G0_KNOWN_FAILURE_NOT_FORMAL_WALK_TEST",
+  "verdict": "ART_REJECT",
+  "overall_art": "HOLD",
+  "approved": false,
+  "observed_image_issues": [
+    "Three giant shelf-shaped structures",
+    "Dark mostly uninhabited canyon at human eye",
+    "Tiny workstations do not create a lived-in dense district"
+  ],
+  "model_stats": {
+    "parts": 281,
+    "triangles": 2036,
+    "authored_large_decks": 15,
+    "max_vertex_z_m": 300
+  },
+  "known_access_gap_m": {
+    "stair1_to_stair2_landing": 8.6,
+    "stair2_to_reading_floor_south_edge": 32
+  },
+  "formal_gates": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "eyes": {
+    "oblique": {
+      "position": [
+        810,
+        -810,
+        670
+      ],
+      "target": [
+        4,
+        70,
+        174
+      ],
+      "view_angle": 35
+    },
+    "public_eye": {
+      "position": [
+        0,
+        -112,
+        1.7
+      ],
+      "target": [
+        -2,
+        50,
+        11
+      ],
+      "view_angle": 58
+    },
+    "inside": {
+      "position": [
+        -52,
+        -45,
+        1.7
+      ],
+      "target": [
+        -91,
+        46,
+        15
+      ],
+      "view_angle": 65
+    }
+  },
+  "image_sha256": {
+    "oblique": "bd367a0b8326df39fb5e0f959a7ee638429d54468ab25575c894030be9c880bd",
+    "public_eye": "9ef8c4f9630a818ddb83c491072a7959bc6f1bf5052dd13db8d7b1d02877d169",
+    "inside": "d242c76030898cd6da9445b61baddc4735d754c0394e737ae164e2eb32cc1b9f"
+  },
+  "warnings": [
+    "A73 shared-access prototype is NOT imported into A77",
+    "No complete 300m ascent",
+    "Large vertical walls dominate despite real floor polygons",
+    "No verified structural support or G2/G3 clearance"
+  ]
+}
