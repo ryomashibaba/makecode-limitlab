@@ -1,3 +1,9 @@
+# 【A72最終アート審査／2026-10-27 JST】本物の.blend/2 Cycles 技術PASS、低層施設再発でART REJECT
+
+> [A72真正Blender Actions #40481208513](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481208513) SUCCESS、bot commit `d5b9a8d7af37634f775f0559c2431e12a95547b7` に編集可能.blend/真正Cycles近景・遠景/manifest保存。画像を独立目視して**低層キャンパス・折れ屋根・白い床・巨大壁**へ戻ったため両 ART REJECT。Shapelyによる原本床・入口接合の独立照合で、市場2.25m、工房0.07mしか接合せず、上層閲覧は0m接合+1.30m空隙、住宅への最終上下動線なし。**実室と40階段を名乗っても可用性は未証明**。A72原型の改修停止。新[アクセス反証コード](../tools/g4c7_a72_access_postmortem.py)・[A72監査](./G4C7_A72_NATIVE_AUTHOR_SECTION_G0_JA.md)を参照。全体ART HOLD、正式採用0、S1/G1/G2/G3 NOT RUN、施工/統合禁止、Work事前承認、331/993契約継承。画像品質の突破なし。
+
+---
+
 # 【A72／2026-10-27 JST】真正Blender作者編集モデルの制作基盤を投入・美術は未採用
 
 > A71鋸歯巨大塊の3D化禁止を維持しつつ、**新規実室4つの厚み・分割壁・真正開口・個別踏面40段・2真カメラ**の作者編集可能なPython Blender制作源と独立Actionsを導入。出力.blend/2 Cycles PNGを検証する。**実行/結果確認前は技術PASSや美術PASSを主張しない**。正式採用0・全体ART HOLD・S1/G1/G2/G3 NOT RUN・Minecraft施工/都市統合禁止。成果監査 [A72](./G4C7_A72_NATIVE_AUTHOR_SECTION_G0_JA.md)。

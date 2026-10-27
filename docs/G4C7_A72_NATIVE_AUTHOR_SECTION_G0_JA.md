@@ -24,3 +24,11 @@ A72では[新しい作者別編集Blenderソース](../tools/g4c7_a72_native_aut
 **S1/G1/G2/G3正式ゲート全てNOT RUN、G2歴史契約331人体・993足元・半幅0.65・足高さ+0.15〜+3.25・干渉45以下・未支持0・故意負対照を維持**。Minecraft Educationへの施工・都市統合は禁止。歴代world/USED/CSV/ZIP/OBJ/GLB/PNG/.blendは変更しない。Work未使用（明示承認制）。通常CI既存の`build/g4c4_access_baseline.json`欠落も偽修復しない。
 
 **A72事前段階の判定**：本物の作者編集可能な3D制作方法を新規実装。真正実行と画像審査は未確定、ART HOLD。
+
+## A72真正画像の独立審査 — 技術再現SUCCESS・美術ART REJECT
+- [A72専用Blender/Cycles Actions #40481208513](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481208513) **SUCCESS**。A72 Python設計、故意不正7件、Blender Foundation bpy 4.5.15、真正Cycles 960×720の2視点、Blender .blend再オープン、PNG SHA/CRCなどを独立確認。
+- bot append-only [d5b9a8d7af37634f775f0559c2431e12a95547b7](https://github.com/ryomashibaba/makecode-limitlab/commit/d5b9a8d7af37634f775f0559c2431e12a95547b7) が[編集可能Blender原本](../artifacts/g4c7-a72-authored-native/native-output/a72_authored_true_section.blend)および[真正近景](../artifacts/g4c7-a72-authored-native/native-output/render_public_heart.png)、[真正斜視](../artifacts/g4c7-a72-authored-native/native-output/render_oblique.png)、[manifest](../artifacts/g4c7-a72-authored-native/native-output/a72_native_manifest.json)を保護。
+- 保存PNG2枚をGitHubからbase64再取得し、独立目視。**OBLIQUE ART REJECT**：三〜四棟の単純な折れ屋根の低層施設の集合。圧倒的な未来文明の固有な巨大造形は皆無。**PUBLIC HEART ART REJECT**：暗く無地の左右壁、大きな無人の公共床、不自然に浮いた階段が主役。市場・工房・閲覧の実活動が全く読み取りづらい。A69低層キャンパスへの回帰。
+- **重要な技術反証**：開口形状ができていても公共床へ到達できるとは限らない。Pythonの部屋前面・プラザの原本ポリゴン・閲覧アプローチ床の2D同一高さ投影を独立のShapelyで測定。市場6m開口の床交差2.251339m、工房6m開口の床交差**0.069874m（約7cm）**、閲覧室6.4m開口の床交差**0m**でアプローチと最短**1.302364m離隔**。住宅床は12.6mでそこへ向かう独立階段が未定義。数値は**G0局所床接続の不備**であり正式G2/G3ではない。
+- [独立幾何反証コード](../tools/g4c7_a72_access_postmortem.py)と[専用Actions](../.github/workflows/verify_g4c7_a72_access_defects.yml)でこの既知欠陥を**PASS=再検出**として自動再現し、設計が可用と誤報することを防止。**この再現テストの成功を到達性PASSとして扱わない。**
+- **A72 ART REJECT、全体ART HOLD、正式美術採用0**。新3Dを延命・複製・窓や照明で誤魔化さない。将来は**都市の外形と人が実際に使う面を同一の設計判断で確定する工程**へ転換。正式S1/G1/G2/G3 NOT RUN・施工/都市統合FORBIDDEN・過去全原本不変更。

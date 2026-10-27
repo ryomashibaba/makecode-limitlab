@@ -1,0 +1,31 @@
+name: A72 independent G0 access defect reproduction (DESIGN REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_a72_access_postmortem.py'
+      - '.github/workflows/verify_g4c7_a72_access_defects.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-access-defects:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Pin original authored Blender source
+        run: |
+          test "$(git rev-parse 'HEAD:tools/g4c7_a72_native_authoring.py')" = "a76d14d88f12d36009448cc241a8d653a39b719a"
+      - name: Install plane-geometry test dependency
+        run: python -m pip install --disable-pip-version-check shapely==2.1.2
+      - name: Reproduce concrete broken floor-to-door contacts
+        run: |
+          python -m py_compile tools/g4c7_a72_access_postmortem.py
+          python tools/g4c7_a72_access_postmortem.py
+      - name: Deny interpretation as usability or S1/G2/G3 certification
+        run: |
+          echo "A72 DESIGN REJECT. This is a known-defect regression, NOT usable access."
+          echo "True 3D visual art was rejected; formal S1/G1/G2/G3 NOT RUN; Minecraft construction FORBIDDEN."
