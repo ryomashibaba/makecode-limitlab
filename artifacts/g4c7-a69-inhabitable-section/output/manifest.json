@@ -1,0 +1,115 @@
+{
+  "stage": "A69",
+  "renderer": "VTK_OPENGL",
+  "evidence": "G0_DIAGNOSTIC_NOT_AN_ARCHITECTURAL_APPROVAL",
+  "Art": "UNASSESSED",
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "precinct_count": 1,
+  "actual_rooms": [
+    "market",
+    "workshop",
+    "learning",
+    "housing"
+  ],
+  "stairs": [
+    {
+      "name": "ground_to_learning",
+      "start": [
+        26.0,
+        0.0,
+        0.0
+      ],
+      "end": [
+        26.0,
+        6.4,
+        3.6
+      ],
+      "steps": 20,
+      "rise": 0.18,
+      "going": 0.32,
+      "width": 2.4
+    },
+    {
+      "name": "learning_to_housing",
+      "start": [
+        13.6,
+        19.0,
+        3.6
+      ],
+      "end": [
+        13.6,
+        25.4,
+        7.2
+      ],
+      "steps": 20,
+      "rise": 0.18,
+      "going": 0.32,
+      "width": 2.4
+    }
+  ],
+  "stair_treads": 40,
+  "negative_cases": 4,
+  "object_count": 194,
+  "public_eye": [
+    0,
+    -10,
+    1.7
+  ],
+  "public_floor_at_eye": 0.0,
+  "actual_floor_raycast_points": [
+    [
+      0.0,
+      -10.0,
+      0.0
+    ],
+    [
+      0.0,
+      -10.0,
+      -0.25
+    ]
+  ],
+  "room_parts": {
+    "market": 17,
+    "workshop": 17,
+    "learning": 12,
+    "housing": 13
+  },
+  "route_limit": "tread dimensions/endpoint continuity only, no raycast or continuous navigation certified",
+  "camera": {
+    "public_heart.png": {
+      "position": [
+        0,
+        -10,
+        1.7
+      ],
+      "target": [
+        0,
+        9,
+        3.25
+      ],
+      "view_angle_deg": 67
+    },
+    "oblique.png": {
+      "position": [
+        87,
+        -91,
+        71
+      ],
+      "target": [
+        0,
+        24,
+        6
+      ],
+      "view_angle_deg": 42
+    }
+  },
+  "images_sha256": {
+    "public_heart.png": "8e198b5b408568330a19dae11c0b635a96c541928d85e0c0da004f809ed77208",
+    "oblique.png": "9b56776a4d4ac4d95bef9c31a7cb02f7649a4818650b4a2dc7dd9baaf353c838"
+  }
+}
