@@ -1,3 +1,9 @@
+# 【A70原本整合の独立確認／2026-10-27 JST】Actions SUCCESS、構想自体はART HOLD
+
+> [専用Actions #40469235426](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40469235426) 成功。新しい2D構想と共通JSON原本について、経路の段差・用途の接続・遠景と公共室の模式的なID対応、故意改変7種類をNodeで検出した。**3D・美術・実歩行のPASSではない**。A70の《交点重層都》は、遠景の段状山・棚型断面という旧形態の危険が残り**ART HOLD/正式採用0**。Minecraft施工・都市統合禁止、正式S1/G1/G2/G3 NOT RUN。次に必要なのは契約の追加でなく独創性のある美術的姿そのものを成立させること。
+
+---
+
 # 【A70／2026-10-27 JST】作者主導の二尺度造形構想・経路原本を制作、ART HOLD／新規真正3D停止
 
 > A66〜A69連続ART REJECTの根本原因が形状生成器の主形態決定権にあったため、A70では**新たな低品質VTK試作を量産しない**方針を実践。新しい[二尺度G0 SVG](../artifacts/g4c7-a70-registered-urban-form/a70_authorial_dual_scale.svg)と[用途・動線・遠近IDを結ぶ設計原本](../artifacts/g4c7-a70-registered-urban-form/design_contract.json)、[検証コード](../tools/g4c7_a70_authorial_contract.mjs)を新規追加。A《都市孔線》を旧A16/A34の空洞回帰としてREJECT、B《交点重層都》を作者構想として調査。ただしBの姿も段状の山・棚の集合に見える危険が残り、**Bも未採用ART HOLD**。2D静止図・契約検証は真正3D・S1/G1・美術PASSではない。次は美術そのものの方向を突破しなければ3Dへ進めない。正式採用0、ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、歴代原本保護、Work事前承認、旧331/993安全契約継承。[A70監査](./G4C7_A70_REGISTERED_AUTHORIAL_CITY_G0_HOLD_JA.md)。

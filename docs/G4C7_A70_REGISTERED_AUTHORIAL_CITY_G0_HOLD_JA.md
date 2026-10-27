@@ -37,3 +37,7 @@ SVGの遠景はなお「階段状の山脈的な建物」、断面は「用途�
 - Minecraft Education施工/都市統合禁止、全world/USED/CSV/ZIP/OBJ/GLB/PNG/.blend原本保護、Work事前明示承認が必要。GitHubのみ正本。
 
 **A70結果：作り方の一部（視点間登録・用途経路の単一ソース）は改善した。しかし都市美術が強くなったとはまだ言えず、ART HOLD。** 
+
+## A70専用GitHub Actionsの独立実行確定
+- [A70 G0原本整合確認 #40469235426](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40469235426) **SUCCESS**。新規JSONの抽象的な経路/高さ/用途/遠近IDの整合性をNodeで確認し、7つの故意変造（偽ART、偽G2、階段高さ不一致、用途の断線、遠近参照消失、偽真正レンダ表示、施工禁止解除）をすべて拒否。
+- **この成功は美術審査・レイトレース・本物の建築/歩行・同一真正3D二視点の証拠ではない。** 作成したSVGは技術的な設計図の形式であって、圧倒的な都市景観としては不十分のまま。A70 B案ART HOLD維持。
