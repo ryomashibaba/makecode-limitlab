@@ -35,3 +35,18 @@ A70《交点重層都》は共通の用途・階段・都市と街路の対応ID
 - 旧331人体/993足元、半幅0.65、足元+0.15〜+3.25、干渉45以下、未支持0と故意負対照は保持。未実施の正式S1/G1/G2/G3 PASSを名乗らない。GitHub原本保護。Workへの移行はユーザー明示承認が必要。
 
 **判定：A71美術資料制作完了。美術採用0・全体ART HOLD。次に取るべき行動は『この絵をコードで押し出す』ことではなく、作者が生活する建築の内側から外形を再構成する作画/造形方法の獲得。**
+
+## 6. GitHub PNG独立実画像審査 — 暫定HOLDを**G0 ART REJECT**に改判定
+
+- [2D原本をPNG化した専用Actions #40471711372](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40471711372)：**SUCCESS**。Git blob `3c8cff86c85e9a611c87e03477da9440e6d27247` のSVGをCairoSVGにより1600×1040 PNGへ変換。bot append-only保存コミット [`925622edc45988e1f840c79196ba4f16795d1af2`](https://github.com/ryomashibaba/makecode-limitlab/commit/925622edc45988e1f840c79196ba4f16795d1af2)。保存原本 [A71実ピクセル確認PNG](../artifacts/g4c7-a71-occupied-frontage-study/a71_authorial_pixel_review.png) は Git blob `1d922393fcd7aa58ef7e9bfbcb1655c12ff79e7b`。**これはSVGのラスタ化であり真正3Dではない。**
+- PNGをGitHubから実際に再取得して直接目視：**MACRO G0 ART REJECT**。都市遠景の第一印象は**鋸歯状の3つの巨大な閉塊**、外縁の光る破片がファサードに貼られたように見える。A66の多角柱とA70の段状の山の両方に視覚的に回帰。各塊が生活空間で満たされているという証拠もなく、都市固有の圧倒的な未来感と階層は成立しない。
+- **PUBLIC EYE G0 ART REJECT**。大きく暗い壁に挟まれた一点透視の通路、中央上部に浮く装飾的な閲覧室、左のMARKET・右のMAKINGという文字ラベルが目立つ。室内が実生活として視認できる街路でなく、巨大商業アトリウム／舞台セットの形式へ回帰。二つの図は同じ実3Dでない。
+- **A71新構想《交錯生活前面》は制作終了・ART REJECT**。SVGに記載の「G0 ART HOLD」は画像生成直後の暫定表示であり、**この追加監査による最終不採用が優先**。原本を歴史記録として上書きせず、使用を停止する。
+- 同じ鋸歯山・壁・窓片・アトリウムに対して追加の照明、室数、曲線、ブリッジを足さない。A71のSVG押出し・Blender化を禁止。
+- [通常CI #40471498958](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40471498958) は依然 **FAIL**。428 tests、1 setup error、`build/g4c4_access_baseline.json` 欠落をログで確認。2DラスタActions SUCCESSと通常CI FAILは独立。
+- A71は**技術的な2D制作・独立表示確認は完了／美術作品としてはREJECT**。正式採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。既存技術・原本・Work事前承認をすべて継承する。
+
+## A72への実質的な判断
+「独創的な外形」と「実在する市民生活」を別々の二次元スケッチにしても、片方が建築模型、他方がセット画になる。**都市全体の形を1枚の大きな外形シルエットで定義する制作方法も停止対象。**
+
+次は単なる新しい名前やSVGを追加するより、独立した美術審査に耐える**具体的な生活する外形の一部を、編集可能な真の三次元空間として作者設計する方法**を検討する。A53のBlender編集基盤を使うなら、既存の生成器や箱の改造ではなく造形の作者判断が介入できることを前提とする。作品の美術的魅力を確認できなければ、また3D化しない。

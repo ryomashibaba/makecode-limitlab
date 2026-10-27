@@ -1,3 +1,9 @@
+# 【A71最終実画像判定／2026-10-27 JST】G0新美術案もART REJECT、正式採用0、全体ART HOLD
+
+> [独立2DラスタActions #40471711372](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40471711372) SUCCESS、botコミット `925622edc45988e1f840c79196ba4f16795d1af2` に[1600×1040 PNG](../artifacts/g4c7-a71-occupied-frontage-study/a71_authorial_pixel_review.png) をappend-only保存し実画像直接目視。**遠景は鋸歯山状の閉じた巨大塊と小さな光片、人間目線は巨大暗壁と舞台的な市場・工房**となり、両視点G0 ART REJECT。元SVGの暫定HOLDを最終REJECTに修正（原本不変）。A71を装飾/3D押出しで延命禁止。A71監査末尾を参照。依然正式採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、Work事前承認、全歴史原本保護、331/993契約維持。通常CIは既知baseline欠損FAIL。
+
+---
+
 # 【A71／2026-10-27 JST】《交錯生活前面》G0作者描画を保存、正式美術採用0／ART HOLD
 
 > 最新の美術試験は[独立SVG原本](../artifacts/g4c7-a71-occupied-frontage-study/a71_interlocked_frontages.svg)と[監査](./G4C7_A71_INTERLOCKED_OCCUPIED_FRONTAGES_G0_HOLD_JA.md)。A70の段状山/棚型の形状を単純押出しせず、**異なる都市地区の活動を含む前面が交錯する遠景**と、**市場・工房・閲覧が近接する人間目線**を同一の公共交点の構想として2D制作。ただし2枚は同一実3Dカメラではない。都市遠景は岩塊/工場、近景は商業アトリウムへの回帰リスクが残り、**G0 ART HOLD／正式美術採用0**。Blender/Cycles/VTK新実3D・正式S1/G1/G2/G3 NOT RUN。施工・都市統合禁止、既存原本不変更、Work事前承認、331/993など旧技術契約保持。自動3D化禁止。次の美術審査でこの候補が弱ければ停止。
