@@ -1,0 +1,98 @@
+name: A78 implicit-space G0 replication (ART REJECT, not approved city)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a78-implicit-g0/a78_source.py.gz.b64'
+      - '.github/workflows/verify_g4c7_a78_implicit_g0.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a78-implicit-rejected-evidence
+  cancel-in-progress: false
+jobs:
+  genuine-negative-art-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Independently restore exact local A78 negative prototype source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64,gzip,hashlib
+          d=Path('artifacts/g4c7-a78-implicit-g0')
+          source=gzip.decompress(base64.b64decode((d/'a78_source.py.gz.b64').read_text().strip(),validate=True))
+          assert hashlib.sha256(source).hexdigest()=='9aba9a2af9e76f32fe4360798b9beac3c4229e6f699ff12440f6fd926ac929cf'
+          p=d/'a78_shared_boundary_native.py'
+          assert not p.exists(), 'Never overwrite generated historical source'
+          p.write_bytes(source)
+          print('A78_SOURCE_RESTORED_BYTE_IDENTICAL__ART_NOT_APPROVED')
+          PY
+      - name: Install authentic VTK/EGL and implicit-volume model requirements
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'scikit-image>=0.24,<0.27' 'vtk==9.6.2' 'shapely==2.1.2' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Render identical model / oblique, public eye, north cross
+        run: |
+          cd artifacts/g4c7-a78-implicit-g0
+          python -m py_compile a78_shared_boundary_native.py
+          python a78_shared_boundary_native.py --build
+      - name: Check identity and narrow G0 geometric evidence only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          from PIL import Image
+          d=Path('artifacts/g4c7-a78-implicit-g0')
+          p=d/'a78-output'
+          m=json.loads((p/'a78_manifest.json').read_text())
+          assert m['source']==hashlib.sha256((d/'a78_shared_boundary_native.py').read_bytes()).hexdigest()
+          assert m['stage']=='A78_G0_TEST_ONLY' and m['art']=='NOT_APPROVED' and m['overall_art']=='HOLD'
+          assert all(m['formal'][k]=='NOT_RUN' for k in ('S1','G1','G2','G3'))
+          assert m['minecraft_construction']==m['city_integration']=='FORBIDDEN'
+          assert m['mesh_vertices']>50000 and m['mesh_triangles']>100000
+          assert m['ground_route_shared_contours']['MAKER']['overlap_with_public_spine_m2']>0
+          assert m['ground_route_shared_contours']['MARKET']['overlap_with_public_spine_m2']>0
+          assert m['ground_route_shared_contours']['RESEARCH']['upper_stair_mesh']=='NOT_BUILT'
+          assert m['proper_walking']==m['structure']=='NOT_TESTED'
+          assert (p/'a78_shared_void_massing.obj').stat().st_size>1000000
+          for n in ('oblique','public_eye','north_cross'):
+            with Image.open(p/(n+'.png')) as im:
+              assert im.format=='PNG' and im.size==(1280,820)
+          print('A78_NATIVE_SOURCE_AND_IMAGES_REPRODUCED__G0_ART_REJECT__NO_SAFETY_PASS')
+          PY
+      - name: Retain original rejected geometry even if archive commit fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a78-genuine-native-implicit-G0-ART-REJECT
+          path: |
+            artifacts/g4c7-a78-implicit-g0/a78_shared_boundary_native.py
+            artifacts/g4c7-a78-implicit-g0/a78-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only archive of rejected A78 real mesh and PNGs
+        run: |
+          set -euo pipefail
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          D=artifacts/g4c7-a78-implicit-g0
+          test -s "$D/a78-output/a78_shared_void_massing.obj"
+          test -s "$D/a78-output/oblique.png"
+          test -s "$D/a78-output/public_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a78_shared_boundary_native.py" "$D/a78-output"
+          if git diff --cached --quiet; then echo 'A78 output already archived'; exit 0; fi
+          git commit -m 'A78: archive authentic implicit G0 art REJECT evidence; no approval'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
