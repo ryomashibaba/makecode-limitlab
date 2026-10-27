@@ -1,0 +1,68 @@
+{
+  "stage": "A75",
+  "renderer": "BLENDER_4_5_CYCLES",
+  "art": "NOT_ASSESSED",
+  "overall_art": "HOLD",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "model_kind": "SINGLE_A73_G0_REGISTERED_EDITORIAL_NEIGHBOURHOOD_NOT_KM_CITY",
+  "A73_geometry_verified": true,
+  "local_floor_only": true,
+  "real_walkability": false,
+  "human_collision": false,
+  "structure_support": false,
+  "exact_public_eye": [
+    0,
+    -16,
+    1.7
+  ],
+  "true_cameras": 2,
+  "technical_metrics": {
+    "public_floor_faces": 52,
+    "rooms": {
+      "MARKET": {
+        "z": 0.0,
+        "open_width": 4.0,
+        "contact": 4.0,
+        "geometry": "actual_floor_and_open_front"
+      },
+      "MAKER": {
+        "z": 0.0,
+        "open_width": 4.2,
+        "contact": 4.2,
+        "geometry": "actual_floor_and_open_front"
+      },
+      "READING": {
+        "z": 7.2,
+        "open_width": 4.6,
+        "contact": 4.6,
+        "geometry": "actual_floor_and_open_front"
+      },
+      "HOUSING": {
+        "z": 12.6,
+        "open_width": 4.0,
+        "contact": 4.0,
+        "geometry": "actual_floor_and_open_front"
+      }
+    },
+    "stairs": 70,
+    "real_views": 2
+  },
+  "views": {
+    "public_eye": {
+      "sha256": "9ea824564321fc030e02da9e618b92d19f83d72d3cf82830cc308beca630cbc4",
+      "bytes": 706400
+    },
+    "oblique": {
+      "sha256": "bc51ad86e50a860dccf442b032da90c41cbcf06e3e4d75db8046f0548aadfd51",
+      "bytes": 716144
+    }
+  },
+  "blend_sha256": "75c7b0848bee3375d3c107712cd6b6a99133f709fcae88c20788d52ccb869221"
+}
