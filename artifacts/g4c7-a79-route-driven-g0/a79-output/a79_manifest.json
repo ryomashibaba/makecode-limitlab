@@ -1,0 +1,103 @@
+{
+  "stage": "A79_G0_TECH_RESEARCH_ONLY",
+  "overall_art": "HOLD",
+  "art": "NOT_APPROVED",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "city_scale": "LOCAL_SECTION_NOT_FULL_KM_CITY",
+  "native_renderer": "VTK/OpenGL/EGL",
+  "source_sha256": "dbd34c757c4f4e8b43b553fc7a9ea969038f34899744f7c9a86ca26ff7d042a8",
+  "topology": {
+    "connected_planar_footprint": true,
+    "connected_spatial_3d_walking": "NOT_TESTED",
+    "occupied_union_area_m2": 9654.301,
+    "public_floor_area_m2": 2121.217,
+    "room_areas_m2": {
+      "MARKET": 1530.0,
+      "MAKER": 2257.0,
+      "READING": 1850.0,
+      "HOMES": 2007.5
+    }
+  },
+  "morphology_sensitivity": {
+    "room_depth_edit_changes_exterior_area_m2": 518.021,
+    "room_depth_edit_preserves_shared_door": true,
+    "route_edit_moves_actual_room_boundary_m": 12.282,
+    "rerouted_planar_contact_preserved": true,
+    "actual_facade_mesh_changes_in_both_edits": true,
+    "distinct_facade_sha256": [
+      "5ec581b9ff2d07951572c717e39615db059fc78146bf80bc12af197144151a94",
+      "59cf9762f920030526ba7e44ecd2c1bcf58160ce4cc841e552f5ef7e4cfff910",
+      "51bdb80934dc625f561fbd6d4decea72044d8b2c10698b8d89fe023a3fc33a65"
+    ],
+    "tested_negative_controls": [
+      "fake_art_approval",
+      "fake_formal_G2",
+      "construction_unlocked",
+      "off_route_station"
+    ]
+  },
+  "connections": {
+    "MARKET": {
+      "door_width_m": 5.2,
+      "same_z_public_overlap_m2": 20.071,
+      "door_to_room_boundary_m": 0.0,
+      "door_to_public_floor_distance_m": 0.0
+    },
+    "MAKER": {
+      "door_width_m": 5.0,
+      "same_z_public_overlap_m2": 30.115,
+      "door_to_room_boundary_m": 0.0,
+      "door_to_public_floor_distance_m": 0.0
+    },
+    "READING": {
+      "door_width_m": 6.2,
+      "same_z_public_overlap_m2": 35.04,
+      "door_to_room_boundary_m": 0.0,
+      "door_to_public_floor_distance_m": 0.0
+    },
+    "HOMES": {
+      "door_width_m": 4.2,
+      "same_z_public_overlap_m2": 26.19,
+      "door_to_room_boundary_m": 0.0,
+      "door_to_public_floor_distance_m": 0.0
+    }
+  },
+  "mesh": {
+    "mesh_part_count": 70,
+    "obj_vertices": 374,
+    "obj_triangles": 402
+  },
+  "limitations": [
+    "no structural analysis",
+    "no real walking or collision sweep",
+    "no complete higher floor access",
+    "no convincing km-scale future-city aesthetic established",
+    "human-eye floor raycast NOT RUN"
+  ],
+  "art_decision": "ART_REVIEW_REQUIRED_NOT_AUTOMATIC_PASS",
+  "evidence": {
+    "a79_route_derived_occupied_membrane.obj": {
+      "bytes": 17968,
+      "sha256": "56d025f48231da779b1ea4b5a4bbafa7d148f1863d8a043b14af226e024b575f"
+    },
+    "oblique.png": {
+      "bytes": 424755,
+      "sha256": "3bb389175c180e14d59dbc08e3dca631a73ab488fda1cdf769a90fce340aea7f"
+    },
+    "public_eye.png": {
+      "bytes": 162395,
+      "sha256": "32323663db782a443d62dd9b5e533acd414780b1808f68b58c074eb66123fa33"
+    },
+    "civic_side.png": {
+      "bytes": 182584,
+      "sha256": "dab731769790a83855a5f75e6b621d2a21e7ce763084a598ff38ed7bf6ca9f61"
+    }
+  }
+}
