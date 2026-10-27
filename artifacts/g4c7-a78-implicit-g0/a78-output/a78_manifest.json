@@ -1,0 +1,72 @@
+{
+  "stage": "A78_G0_TEST_ONLY",
+  "overall_art": "HOLD",
+  "art": "NOT_APPROVED",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "native_render": "VTK/EGL OpenGL",
+  "different_camera_same_mesh": true,
+  "source": "9aba9a2af9e76f32fe4360798b9beac3c4229e6f699ff12440f6fd926ac929cf",
+  "mesh_vertices": 76179,
+  "mesh_triangles": 151920,
+  "mesh_bounds_m": [
+    [
+      -249.8260040283203,
+      -99.95500183105469,
+      -15.0
+    ],
+    [
+      238.7480010986328,
+      236.95199584960938,
+      275.9939880371094
+    ]
+  ],
+  "ground_route_shared_contours": {
+    "MAKER": {
+      "same_elevation_m": 0,
+      "overlap_with_public_spine_m2": 405.0,
+      "portal_width_m": 15,
+      "shared_geometry": "same chamber and opening datum"
+    },
+    "MARKET": {
+      "same_elevation_m": 0,
+      "overlap_with_public_spine_m2": 396.0,
+      "portal_width_m": 18,
+      "shared_geometry": "same chamber and opening datum"
+    },
+    "RESEARCH": {
+      "level_m": 103,
+      "ground_reachable": "NOT_TESTED",
+      "upper_stair_mesh": "NOT_BUILT"
+    }
+  },
+  "upper_route": "NOT_BUILT",
+  "structure": "NOT_TESTED",
+  "proper_walking": "NOT_TESTED",
+  "city_scale": "LOCAL_ARCHITECTURAL_FRAGMENT_NOT_COMPLETED_CITY",
+  "formal_sample_counts": "331/993 historical contract preserved but NOT RUN",
+  "files": {
+    "a78_shared_void_massing.obj": {
+      "bytes": 5352932,
+      "sha256": "e5702048d5570221f41059161e4490a6ec39cdca4387997b92a44a4f2f6f4d74"
+    },
+    "oblique.png": {
+      "bytes": 547196,
+      "sha256": "29f5b2b1b7a3367c7df8f6e36f13af1dd3ae7a1ab710ebfe8bec276a924fa1f6"
+    },
+    "public_eye.png": {
+      "bytes": 250277,
+      "sha256": "8a00f7d08d863244199d934007312e3f8dfd7509a2cfd017f15dd79e6261d036"
+    },
+    "north_cross.png": {
+      "bytes": 390954,
+      "sha256": "a883c68e1b501257a416f7765c1952813be3d4aa7e55254b62bd4a5df9868772"
+    }
+  }
+}
