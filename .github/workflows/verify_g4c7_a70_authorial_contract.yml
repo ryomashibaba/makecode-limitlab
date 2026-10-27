@@ -1,0 +1,28 @@
+name: A70 G0 dual-scale authorial contract (NOT ART PASS)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'artifacts/g4c7-a70-registered-urban-form/design_contract.json'
+      - 'tools/g4c7_a70_authorial_contract.mjs'
+      - '.github/workflows/verify_g4c7_a70_authorial_contract.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-registration-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Node tool availability
+        run: node --version
+      - name: Verify registered abstract city contract and intentional corruptions
+        run: |
+          node tools/g4c7_a70_authorial_contract.mjs --negative
+      - name: State interpretation boundary
+        run: |
+          echo "G0 authorial 2D and abstract route contract only."
+          echo "NO rendered 3D. NO architectural safety/walkability, no artistic approval."
+          echo "ART HOLD, S1/G1/G2/G3 NOT RUN, Minecraft construction FORBIDDEN."
