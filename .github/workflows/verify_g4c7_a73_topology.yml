@@ -1,0 +1,93 @@
+name: A73 single-topology design compiler G0 (ART HOLD, not walk PASS)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a73-route-derived-architecture/a73_topology_fabric.py.gz'
+      - '.github/workflows/verify_g4c7_a73_topology.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: a73-route-derived-architecture
+  cancel-in-progress: false
+jobs:
+  path-first-not-city-art:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Restore exactly frozen A73 compiler source
+        run: |
+          python - <<'PY'
+          import gzip,hashlib,pathlib
+          p=pathlib.Path('artifacts/g4c7-a73-route-derived-architecture/a73_topology_fabric.py.gz')
+          c=gzip.decompress(p.read_bytes())
+          assert hashlib.sha256(c).hexdigest()=='d3ee82add5f1aafc97284a564043df2503b7350ea7bb5ee19201c1c2689da553'
+          out=pathlib.Path('tools/g4c7_a73_topology_fabric.py')
+          assert not out.exists(), 'Append-only original source preservation'
+          out.write_bytes(c)
+          print('A73_FROZEN_AUTHOR_COMPILER_SHA256_PASS')
+          PY
+      - name: Install only G0 2D geometry and SVG rasterizer
+        run: python -m pip install --disable-pip-version-check 'shapely==2.1.2' 'CairoSVG==2.7.1' 'Pillow>=10,<12'
+      - name: Generate actual topology-derived 3D mesh with nine negative controls
+        run: |
+          python -m py_compile 'tools/g4c7_a73_topology_fabric.py'
+          python 'tools/g4c7_a73_topology_fabric.py' --verify --negatives --build
+      - name: Independently verify floor contacts and real triangular mesh output
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib
+          from PIL import Image
+          import cairosvg
+          d=pathlib.Path('artifacts/g4c7-a73-route-derived-architecture/g0-output')
+          m=json.loads((d/'a73_manifest.json').read_text())
+          assert m['stage']=='A73' and m['art']=='NOT_APPROVED'
+          assert m['overall_art']=='HOLD'
+          assert all(m['formal'][g]=='NOT_RUN' for g in ('S1','G1','G2','G3'))
+          assert m['construction']==m['city_integration']=='FORBIDDEN'
+          assert not m['artifact_kind'].startswith('G1')
+          for id in ('MARKET','MAKER','READING','HOUSING'):
+            x=m['local_floor_contact'][id]
+            assert abs(x['door_width_m']-x['same_height_floor_contact_m'])<0.00001,id
+          flights=m['stair_flights']
+          assert [x['steps'] for x in flights]==[20,20,30]
+          assert [x['rise_m'] for x in flights]==[3.6,3.6,5.4]
+          assert m['mesh']=={'mesh_vertices':744,'mesh_triangles':248}
+          obj=(d/'a73_continuous_route_and_rooms.obj').read_text()
+          assert obj.count('\nv ')==744 and obj.count('\nf ')==248
+          assert 'No structural/walking' not in obj
+          target=d/'a73_route_floor_door_plan.png'
+          assert not target.exists()
+          cairosvg.svg2png(url=str(d/'a73_route_floor_door_plan.svg'),write_to=str(target))
+          with Image.open(target) as im:
+            assert im.size==(1400,1000) and im.format=='PNG'
+          print('A73_4_OF_4_DESIGN_DATUM_CONTACTS_AND_3_STAIR_FLIGHTS_PASS_G0_ONLY')
+          print('A73_OBJ_SHA256',hashlib.sha256((d/'a73_continuous_route_and_rooms.obj').read_bytes()).hexdigest())
+          print('A73_2D_DEBUG_PNG_SHA256',hashlib.sha256(target.read_bytes()).hexdigest())
+          PY
+      - name: Upload diagnostic artifacts even if commit fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a73-single-datum-architecture-g0-not-art-or-walking-pass
+          path: |
+            artifacts/g4c7-a73-route-derived-architecture/g0-output/
+            tools/g4c7_a73_topology_fabric.py
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only preserve source and generated diagnostic meshes
+        run: |
+          set -euo pipefail
+          test -s 'artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_continuous_route_and_rooms.obj'
+          test -s 'artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_route_floor_door_plan.png'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- 'tools/g4c7_a73_topology_fabric.py' 'artifacts/g4c7-a73-route-derived-architecture/g0-output'
+          git diff --cached --quiet && { echo 'Expected appended evidence missing'; exit 1; }
+          git commit -m 'A73: preserve route-derived true OBJ geometry, four exact entries, and negative cases'
+          git push origin 'HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study'

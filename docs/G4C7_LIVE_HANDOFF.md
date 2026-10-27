@@ -1,3 +1,9 @@
+# 【A73／2026-10-27 JST】A72の入口・床断絶に対し単一幾何原本コンパイラを制作（ART HOLD）
+
+> A72は本物のBlenderと二視点PNGを制作しても、美術ART REJECT・4用途の入口接続に致命的不備。A73では**公共路を先に定義し、同じ床ポリゴンから市場4.0m/工房4.2m/研究閲覧4.6m/住宅4.0mの入口を派生**させる新Pythonコンパイラを実作成。ローカル実行で4/4同一高さ床接合、階段3系統合計70段（最高床12.6m）、到達グラフと9故意変造検出を確認。3D三角形OBJ・模式図SVG/PNG・JSONをGitHub Actionsで独立生成して原本保存する。ただし**美術的造形ではなく基盤技術G0**で、同一実3D二視点や実歩行・支持・S1/G1/G2/G3の合格ではない。全体ART HOLD、正式採用0、施工・都市統合禁止、原本保護、Work事前承認継続。[A73詳細監査](./G4C7_A73_TOPOLOGY_FIRST_G0_ART_HOLD_JA.md)。
+
+---
+
 # 【A72全証拠確定／2026-10-27 JST】Blender二視点TECH SUCCESS、入口接合FAIL再現、ART REJECT
 
 > [真正Blender #40481208513](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481208513) SUCCESS、[床・開口の欠陥再現 #40481921861](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40481921861) SUCCESS（**設計不良の検出成功≠歩行PASS**）。G0真正画像は一般低層施設/巨大壁で両ART REJECT。市場公共床接続約2.25m、工房約0.07m、閲覧入口接続0m・1.30m離隔、住宅への未定義上下経路。通常CIは既知baseline欠損FAIL。A72原型を美術採用せず凍結し、ソース・Blender/.pngと監査原本だけ保護。**全体ART HOLD、正式美術採用0、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止**。旧331/993安全契約・Work事前承認継続。[A72技術美術監査](./G4C7_A72_NATIVE_AUTHOR_SECTION_G0_JA.md)。
