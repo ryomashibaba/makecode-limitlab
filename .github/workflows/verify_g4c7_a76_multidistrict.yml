@@ -1,0 +1,99 @@
+name: A76 genuine multi-district G0 VTK art falsification (REJECT, not usable city)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a76-native-multidistrict-g0/a76_facet_city.py.gz'
+      - '.github/workflows/verify_g4c7_a76_multidistrict.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a76-rejected-multidistrict-evidence
+  cancel-in-progress: false
+jobs:
+  real-native-g0-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Restore exact authored A76 source (no edit of historical results)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,hashlib
+          d=Path('artifacts/g4c7-a76-native-multidistrict-g0')
+          script=gzip.decompress((d/'a76_facet_city.py.gz').read_bytes())
+          assert hashlib.sha256(script).hexdigest()=='842ad33637d23a9c13d5acf57f151a5616aa29f5402928c9ecec6a0c5ceaeabb'
+          p=d/'a76_facet_city.py'
+          assert not p.exists(), 'Do not overwrite evidence'
+          p.write_bytes(script)
+          print('A76_GENUINE_SOURCE_SHA256_CONFIRMED')
+          PY
+      - name: Install VTK EGL renderer
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2' 'numpy>=1.26,<3' 'Pillow>=10,<12'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Render original model and independent two views + an extra context view
+        run: |
+          python -m py_compile 'artifacts/g4c7-a76-native-multidistrict-g0/a76_facet_city.py'
+          python 'artifacts/g4c7-a76-native-multidistrict-g0/a76_facet_city.py' --render
+      - name: Verify real OBJ/MTL and all genuine images, never aesthetic/safety PASS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          from PIL import Image,ImageStat
+          d=Path('artifacts/g4c7-a76-native-multidistrict-g0/output')
+          m=json.loads((d/'a76_manifest.json').read_text())
+          assert m['stage']=='A76'
+          assert m['scale']=='G0_SECTOR_RESEARCH_MODEL_NOT_KM_CITY'
+          assert m['triangle_mesh_parts']==2802 and m['faces']==33836
+          assert m['footprint_range_m']==[1600,1140]
+          assert [m[g] for g in ('S1','G1','G2','G3')]==['NOT_RUN']*4
+          assert m['art']=='UNASSESSED'
+          assert m['construction']==m['city_integration']=='FORBIDDEN'
+          assert m['rooms_are_truly_reachable']==m['support']=='NOT_TESTED'
+          obj=(d/'a76_true_native.obj').read_text()
+          assert sum(x.startswith('v ') for x in obj.splitlines())==22896
+          assert sum(x.startswith('f ') for x in obj.splitlines())==33836
+          assert (d/'a76_true_native.mtl').stat().st_size>100
+          for name in ('oblique','public_eye','cross_civic'):
+            p=d/(name+'.png')
+            with Image.open(p) as im:
+              assert im.size==(1440,900) and im.format=='PNG'
+              stat=ImageStat.Stat(im.convert('RGB'))
+              assert max(stat.stddev)>15,(name,stat.stddev)
+            print('A76_G0_REAL_PNG',name,hashlib.sha256(p.read_bytes()).hexdigest())
+          print('A76_OBJ_AND_TRUE_IMAGE_REPRODUCTION_PASS__ART_REJECT_NOT_APPROVED')
+          PY
+      - name: Upload historical rejected study evidence even if GitHub push fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a76-authentic-vtk-G0-art-rejected-sector
+          path: |
+            artifacts/g4c7-a76-native-multidistrict-g0/a76_facet_city.py
+            artifacts/g4c7-a76-native-multidistrict-g0/output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Preserve new A76 source and real model append-only
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a76-native-multidistrict-g0
+          test -s "$D/output/a76_true_native.obj"
+          test -s "$D/output/oblique.png"
+          test -s "$D/output/public_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a76_facet_city.py" "$D/output"
+          git diff --cached --quiet && { echo 'Expected evidence was not newly created'; exit 1; }
+          git commit -m 'A76: archive native 4-district G0 evidence, ART REJECT'
+          git push origin HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study
