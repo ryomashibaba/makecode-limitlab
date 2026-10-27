@@ -1,3 +1,9 @@
+# 【A78真正3D再現確定／2026-10-27 JST】楕円体SDFも都市でなく巨大彫刻へ回帰、G0 ART REJECT
+
+> [A78専用Actions #40514440898](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40514440898) SUCCESS。**これは不採用原型の真正再現・GitHub証拠保存だけのTECH結果であり、美術PASSではない。** SDFで非反復の3つの大外形と内部空洞・出入口を一つのモデルとして制作したが、実3D斜視は巨大な卵型彫刻群、公共眼高は暗い巨大側壁となり、**3視点ともG0 ART REJECT**。76,179頂点・151,920三角形、局所標本の実サイズ約489×337×291m。市場・工房の2D通路重なりは確認したが、実通行・支持・上層動線は未証明。根本原因は`LOBES`楕円体が生活空間より先に外形を決め、`SPACES`が後から穴を開けるだけの**外殻先行への回帰**。同一SDFでも相互設計とは言えない。楕円体・巨大彫刻の造形延命禁止。[A78本評価](./G4C7_A78_NATIVE_IMPLICIT_G0_ART_REJECT_JA.md)、[ソース文法比較](./G4C7_A78_SOURCE_GRAMMAR_AUDIT_G0_JA.md)、[真正3D/PNG/manifest](../artifacts/g4c7-a78-implicit-g0/a78-output/)参照。**全体ART HOLD／採用0、正式S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止**。Chat中心、Work事前承認、旧331人体/993足元契約・歴史原本保持。A79等の番号を進める前に、外形・内部・交通・都市文化の本当の双方向拘束を設計する。
+
+---
+
 # 【A77全証拠確定／2026-10-27 JST】本物の厚層3断面も巨大な棚建築へ回帰、ART REJECT
 
 > [A77真正VTK Actions #40506547138](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40506547138) SUCCESS。[GitHub原本保存 `cba9802decd91bd8b914ed5ed49bfacb170db4fc`](https://github.com/ryomashibaba/makecode-limitlab/commit/cba9802decd91bd8b914ed5ed49bfacb170db4fc) とローカルGit blob 7/7一致。640×510m、z上端300m、3棟の厚層各5実床／計15床、281部材・2036面の真正3D。しかし**斜視は三本の大きな棚、地上・内観は巨大な壁と未活用空間**、両G0 ART REJECT。階段8.6m/閲覧床32mの局所アクセス切断も再現。小室増殖だけでなく**大きな水平床と連続壁の積層文法**も失敗の原因。A77を延命しない。通常CIは今回分queued（PASS未確定）、以前からのbaseline欠落問題は維持。[A77監査](./G4C7_A77_AUTHORED_THICK_SECTION_G0_REJECT_JA.md)。**正式採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工/統合禁止**。Work事前承認、331/993契約、原本保護を継続。
