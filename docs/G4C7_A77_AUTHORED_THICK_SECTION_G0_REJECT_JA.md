@@ -25,3 +25,10 @@ A76では4棟の形式を数千の浮いた小室に拡大したため、遠景�
 - 旧331人体／993足元、半幅0.65、足元+0.15〜+3.25、身体干渉45以下、未支持0、故意負対照の正式G2/G3契約を変更せず、**S1/G1/G2/G3はすべてNOT RUN**。Minecraft Education施工/都市統合禁止。歴史原本はappend-only保護。Work利用はユーザーの事前許可が必要。通常CI既知の`build/g4c4_access_baseline.json`欠落を偽データで修復しない。
 
 **実制作の結論：美術的突破なし。A77の唯一の有用な成果は、「小部屋反復でなくても大きな階床反復が同じ棚状形態を生む」ことを、真正3Dで確かめたこと。**
+
+## A77 GitHub独立再現・真正ファイルの保存確認（2026-10-27 JST）
+- [専用VTK Actions #40506547138](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40506547138) **SUCCESS**。完全固定gzipをPythonへ戻し、原本SHA-256 `f20da46403b51c107196f1215c270629bf8d3fdc85b2f447d9e11e7c95578740`を独立照合。1280×800の同一VTK3視点、OBJ 1680頂点/2036面、15床を再生成。故意に保持した階段8.6m・閲覧床まで32mの設計欠陥も自動確認。
+- botのappend-only原本保存コミット [`cba9802decd91bd8b914ed5ed49bfacb170db4fc`](https://github.com/ryomashibaba/makecode-limitlab/commit/cba9802decd91bd8b914ed5ed49bfacb170db4fc)。[再現Python](../artifacts/g4c7-a77-thick-sections/a77_spatial_section.py)、[実3D OBJ](../artifacts/g4c7-a77-thick-sections/output/a77_authored_real_section.obj)、[MTL](../artifacts/g4c7-a77-thick-sections/output/a77_authored_real_section.mtl)、[遠景](../artifacts/g4c7-a77-thick-sections/output/oblique.png)、[眼高](../artifacts/g4c7-a77-thick-sections/output/public_eye.png)、[内観](../artifacts/g4c7-a77-thick-sections/output/inside.png)、[manifest](../artifacts/g4c7-a77-thick-sections/output/a77_manifest.json)、[事故/美術判定JSON](../artifacts/g4c7-a77-thick-sections/output/a77_rejection_evidence.json)を保持。
+- **ローカル原本とのGit blob SHAは7/7完全一致**（Python、OBJ、MTL、PNG3枚、manifest）。設計不良JSONはGitHub上で独立再計算されており、ローカルJSONと文字列が若干異なるが判定値は同一。出力先だけの付け替え、PNGの合成図を「真正3D」と偽る操作はなし。
+- [A77通常CI #40506546937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40506546937) は最後に確認した時点で**queued**。合格とは主張しない。直前A76の[通常CI #40504025279](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40504025279) はFAILで、既知の`build/g4c4_access_baseline.json`欠落が継続。偽baseline追加・skipは禁止。
+- **結論**：技術の真正再現PASSは美術PASSではない。三つの巨大な「居住厚層」は見た目が棚建築でREJECT、生活経路も断絶。正式美術採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止は不変。

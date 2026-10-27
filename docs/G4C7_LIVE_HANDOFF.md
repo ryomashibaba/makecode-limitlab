@@ -1,3 +1,9 @@
+# 【A77全証拠確定／2026-10-27 JST】本物の厚層3断面も巨大な棚建築へ回帰、ART REJECT
+
+> [A77真正VTK Actions #40506547138](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40506547138) SUCCESS。[GitHub原本保存 `cba9802decd91bd8b914ed5ed49bfacb170db4fc`](https://github.com/ryomashibaba/makecode-limitlab/commit/cba9802decd91bd8b914ed5ed49bfacb170db4fc) とローカルGit blob 7/7一致。640×510m、z上端300m、3棟の厚層各5実床／計15床、281部材・2036面の真正3D。しかし**斜視は三本の大きな棚、地上・内観は巨大な壁と未活用空間**、両G0 ART REJECT。階段8.6m/閲覧床32mの局所アクセス切断も再現。小室増殖だけでなく**大きな水平床と連続壁の積層文法**も失敗の原因。A77を延命しない。通常CIは今回分queued（PASS未確定）、以前からのbaseline欠落問題は維持。[A77監査](./G4C7_A77_AUTHORED_THICK_SECTION_G0_REJECT_JA.md)。**正式採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工/統合禁止**。Work事前承認、331/993契約、原本保護を継続。
+
+---
+
 # 【A77／2026-10-27 JST】3つの大きい居住建築断面・真正VTK三視点のG0美術はART REJECT
 
 > A76の小室数千個の量産を止め、**3つの非同一大断面×各5実床＝15床**を手指定し、その断面の壁・開いたファサード・地上市場/工房/閲覧を同一VTK 3Dで制作（水平640×510m／上端300m／281メッシュ／2036三角形）。遠景は3本の巨大本棚、近景は暗い大壁と棚空間へ戻り**G0 ART REJECT**。また地上の2階段間8.6m、階段終点と閲覧床の間32mのG0局所断裂を明示。上層住戸への正式アクセス・支持・安全は未証明、A73共有原本も未接続。新規[凍結ソース](../artifacts/g4c7-a77-thick-sections/a77_spatial_section.py.gz)／[監査](./G4C7_A77_AUTHORED_THICK_SECTION_G0_REJECT_JA.md)と専用Actionsで真正原本を保存予定（保存実行結果は後から確認）。**全体ART HOLD、採用0、S1/G1/G2/G3 NOT RUN、施工・都市統合禁止**。A77の大型棚を装飾/量産しない。既存331/993契約、Work事前承認、歴史原本保護。
