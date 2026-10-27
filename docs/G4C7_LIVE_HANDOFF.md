@@ -1,3 +1,9 @@
+# 【A73独立再現確定／2026-10-27 JST】共有動線から入口・床・3Dメッシュ生成、TECH限定PASS・ART HOLD
+
+> [A73専用Actions #40487809349](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40487809349) SUCCESS。botコミット`218fd0644c8f59fa9d3e39434b20bcfe598f5329`で[復元ソース](../tools/g4c7_a73_topology_fabric.py)、[真正三角形メッシュOBJ](../artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_continuous_route_and_rooms.obj)、[模式図PNG](../artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_route_floor_door_plan.png)、[JSON](../artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_manifest.json)を保護。設計入口4つの幅と床接合が4.0/4.2/4.6/4.0m全一致、階段20+20+30、9件故意不正検出。**これは作者の美術作品でも同一3D二視点でもなく、G0の局所接続技術標本**。正式採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。通常CI #40487809254は既知baseline欠損FAIL。次は都市の美術形態を独立に選定してからこの原本の接続方式を採用。既存原本・331/993契約保護、Work事前承認継続。
+
+---
+
 # 【A73／2026-10-27 JST】A72の入口・床断絶に対し単一幾何原本コンパイラを制作（ART HOLD）
 
 > A72は本物のBlenderと二視点PNGを制作しても、美術ART REJECT・4用途の入口接続に致命的不備。A73では**公共路を先に定義し、同じ床ポリゴンから市場4.0m/工房4.2m/研究閲覧4.6m/住宅4.0mの入口を派生**させる新Pythonコンパイラを実作成。ローカル実行で4/4同一高さ床接合、階段3系統合計70段（最高床12.6m）、到達グラフと9故意変造検出を確認。3D三角形OBJ・模式図SVG/PNG・JSONをGitHub Actionsで独立生成して原本保存する。ただし**美術的造形ではなく基盤技術G0**で、同一実3D二視点や実歩行・支持・S1/G1/G2/G3の合格ではない。全体ART HOLD、正式採用0、施工・都市統合禁止、原本保護、Work事前承認継続。[A73詳細監査](./G4C7_A73_TOPOLOGY_FIRST_G0_ART_HOLD_JA.md)。

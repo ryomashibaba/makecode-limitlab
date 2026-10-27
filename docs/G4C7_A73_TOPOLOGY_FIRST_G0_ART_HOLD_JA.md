@@ -28,3 +28,11 @@ A72では「真正Blenderの床・実室・壁・開口・40踏面」を作っ�
 既存通常CI`build/g4c4_access_baseline.json`欠落FAILは未修正。偽baseline/テストskip禁止。旧331人体、993足元、半幅0.65、足元高さ+0.15〜+3.25、衝突45以下、未支持0、負対照の正式G2/G3契約は不変。全world/USED/CSV/ZIP/OBJ/GLB/PNG/.blendの原本を保護。Work使用はユーザーの事前承認なしには行わない。
 
 **A73判定：公共路から開口/実床/段差を共有生成する基礎技術を制作。美術的突破は未実証で正式採用0、全体ART HOLD、S1/G1/G2/G3すべてNOT RUN、Minecraft施工・都市統合禁止。**
+
+## A73独立GitHub Actionsと原本一致：確定版
+
+- [専用Actions #40487809349](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40487809349) **SUCCESS**。圧縮原本の SHA-256、Pythonの実行、9個の故意不正、4用途の同じ高さでの入口全幅・床接触、3つの階段、OBJ頂点数/三角形数、SVG→PNG寸法をそれぞれ独立検査した。これは**局所設計データの技術PASS**であり、美術PASS／正式歩行PASSではない。
+- bot保存コミット [`218fd0644c8f59fa9d3e39434b20bcfe598f5329`](https://github.com/ryomashibaba/makecode-limitlab/commit/218fd0644c8f59fa9d3e39434b20bcfe598f5329) に復元Python、生成OBJ(744頂点/248三角形)、SVG、実PNG、検証JSONを**append-only**保存。Python Git blob `3d66148a672bb37482ae0139276a57edcbcc35ef`、OBJ `b0ce4cd3041f43acfd7f34e753d9d3b48fbeec47`、manifest `923325af6f1b0ce876e4ac6a5f80154428dd04bc`、SVG `1b72958788cd39283807142b4f8bff54b448dcb5` はローカル原本と**4/4一致**。PNGはActionsでラスタ化した技術的な2Dレイアウト図（真正3Dレンダではない）。
+- [通常CI #40487809254](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40487809254) **FAIL**。428件中1件のエラー、従来の`build/g4c4_access_baseline.json`が欠落。偽baseline/skipなし。
+- 図の美術判定：**都市のアート対象外**。これは人が住む未来都市ではなく、共有床・4室と階段の検証用標本であり、生成OBJの美術採用をしない。過去のA72の美術失敗を造形上克服したとは主張しない。
+- 次A74の原則：**新たな美術方向を作者が視覚評価してから**、この設計原本と接続検査を内部構造として再利用。G0接続検査を通過しても都市外観が弱ければART HOLD/REJECTにする。S1/G1/G2/G3全てNOT RUN、施工・都市統合禁止。
