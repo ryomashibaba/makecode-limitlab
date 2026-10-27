@@ -1,3 +1,9 @@
+# 【A79独立再現確定／2026-10-27 JST】実床・道路と外形は連動したが、4棟キャンパスへ回帰。G0 ART REJECT
+
+> [A79専用真正VTK/EGL Actions #40518612516](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40518612516) **SUCCESS**。GitHubで[原本Python・真OBJ・同一実3Dの3画像・manifest](../artifacts/g4c7-a79-route-driven-g0/a79-output/)の実在を確認。70メッシュ部品、374 OBJ頂点、402三角形。共有道路と市場・制作・閲覧・住宅の平面接合、部屋奥行き変更に伴う建築外周面積差+518.021m²、道路編集に伴う実外壁メッシュの変化（3通りの座標SHAが異なる）、4件故意不正拒否を再現。**TECH G0のみ**：実歩行・上層経路・支持・安全は未証明。遠景は4棟の低層キャンパス、人間目線は大きな無地壁と公共床、第三視点も同様に**3/3 G0 ART REJECT**。A77の棚、A78の巨大彫刻に続き、**A79では内側→外面の実座標連動だけでも「4用途→4棟」の美術文法が残れば同じ低層施設になる**ことを実画像で反証。A79の屋根・小施設を増殖/拡大して延命禁止。[詳細監査](./G4C7_A79_ROUTE_DERIVED_NATIVE_G0_ART_REJECT_JA.md)。全体ART HOLD／正式採用0、正式S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。原本append-only、旧331/993契約、Work事前承認、main保護は継続。次は「用途1個=1建築/1外周」を廃し、複数用途が一つの多層都市建築厚みを共有し、実ルート・空間関係と外形を互いに拘束する作者編集可能な造形法を先に成立させる。
+
+---
+
 # 【A78真正3D再現確定／2026-10-27 JST】楕円体SDFも都市でなく巨大彫刻へ回帰、G0 ART REJECT
 
 > [A78専用Actions #40514440898](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40514440898) SUCCESS。**これは不採用原型の真正再現・GitHub証拠保存だけのTECH結果であり、美術PASSではない。** SDFで非反復の3つの大外形と内部空洞・出入口を一つのモデルとして制作したが、実3D斜視は巨大な卵型彫刻群、公共眼高は暗い巨大側壁となり、**3視点ともG0 ART REJECT**。76,179頂点・151,920三角形、局所標本の実サイズ約489×337×291m。市場・工房の2D通路重なりは確認したが、実通行・支持・上層動線は未証明。根本原因は`LOBES`楕円体が生活空間より先に外形を決め、`SPACES`が後から穴を開けるだけの**外殻先行への回帰**。同一SDFでも相互設計とは言えない。楕円体・巨大彫刻の造形延命禁止。[A78本評価](./G4C7_A78_NATIVE_IMPLICIT_G0_ART_REJECT_JA.md)、[ソース文法比較](./G4C7_A78_SOURCE_GRAMMAR_AUDIT_G0_JA.md)、[真正3D/PNG/manifest](../artifacts/g4c7-a78-implicit-g0/a78-output/)参照。**全体ART HOLD／採用0、正式S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止**。Chat中心、Work事前承認、旧331人体/993足元契約・歴史原本保持。A79等の番号を進める前に、外形・内部・交通・都市文化の本当の双方向拘束を設計する。
