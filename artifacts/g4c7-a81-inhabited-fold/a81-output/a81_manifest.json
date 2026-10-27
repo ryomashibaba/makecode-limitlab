@@ -1,0 +1,85 @@
+{
+  "stage": "A81_G0_UNAPPROVED_TECH_RESEARCH",
+  "art": "NOT_APPROVED",
+  "overall_art": "HOLD",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "model_scope": "LOCAL_CIVIC_KNOT_NOT_CITY",
+  "mesh_parts": 261,
+  "obj_vertices": 1368,
+  "obj_triangles": 1332,
+  "topology": {
+    "nodes": 9,
+    "ramps": 4,
+    "level_interfaces": 4,
+    "max_grade": 0.10435
+  },
+  "chambers": [
+    {
+      "name": "MARKET",
+      "height_m": 9.5,
+      "door_width_m": 6.0,
+      "door_clear_height_m": 4.6,
+      "floor_z_m": 7.0,
+      "room_floor_area_m2": 1802.498,
+      "outside_facade_derived_from_room": true,
+      "inner_boundary_shared_with_public_lane": true
+    },
+    {
+      "name": "WORKSHOP",
+      "height_m": 11,
+      "door_width_m": 6.0,
+      "door_clear_height_m": 4.6,
+      "floor_z_m": 14.0,
+      "room_floor_area_m2": 2586.709,
+      "outside_facade_derived_from_room": true,
+      "inner_boundary_shared_with_public_lane": true
+    },
+    {
+      "name": "READING",
+      "height_m": 10,
+      "door_width_m": 6.0,
+      "door_clear_height_m": 4.6,
+      "floor_z_m": 21.0,
+      "room_floor_area_m2": 2670.158,
+      "outside_facade_derived_from_room": true,
+      "inner_boundary_shared_with_public_lane": true
+    },
+    {
+      "name": "RESIDENCE",
+      "height_m": 9,
+      "door_width_m": 6.0,
+      "door_clear_height_m": 4.6,
+      "floor_z_m": 28.0,
+      "room_floor_area_m2": 1521.192,
+      "outside_facade_derived_from_room": true,
+      "inner_boundary_shared_with_public_lane": true
+    }
+  ],
+  "proof": {
+    "centerline_continuity_samples": 64,
+    "centerline_mismatches": 0,
+    "geometric_enclosed_rooms_with_real_portals": 4,
+    "fabricated_tread_meshes": 140,
+    "tested_negative_controls": {
+      "blocked_door": true,
+      "broken_vertical_link": true,
+      "excessive_ramp_grade": true,
+      "fake_art_approval": true,
+      "unlock_construction": true,
+      "fake_formal_G2": true
+    },
+    "full_body_nav_collision": "NOT_TESTED",
+    "continuous_stair_foot_intersections": "NOT_TESTED",
+    "roof_weather_tightness": "NOT_TESTED",
+    "load_bearing_support": "NOT_TESTED",
+    "formal_human_safety": "NOT_RUN"
+  },
+  "source_sha256": "094032a01a1a453713f8704960684f11c375a2532cf26b11a77534cb726f0a6a"
+}

@@ -1,0 +1,61 @@
+{
+  "rooms": {
+    "MARKET": {
+      "door_mid_at_body_z": "RAY_UNBLOCKED",
+      "door_left_wall": "RAY_BLOCKED",
+      "door_right_wall": "RAY_BLOCKED",
+      "head_height_lintel": "RAY_BLOCKED",
+      "real_floor": "RAY_HIT",
+      "real_roof": "RAY_HIT",
+      "far_facade": "RAY_HIT",
+      "certified_walkable": "NOT_TESTED"
+    },
+    "WORKSHOP": {
+      "door_mid_at_body_z": "RAY_UNBLOCKED",
+      "door_left_wall": "RAY_BLOCKED",
+      "door_right_wall": "RAY_BLOCKED",
+      "head_height_lintel": "RAY_BLOCKED",
+      "real_floor": "RAY_HIT",
+      "real_roof": "RAY_HIT",
+      "far_facade": "RAY_HIT",
+      "certified_walkable": "NOT_TESTED"
+    },
+    "READING": {
+      "door_mid_at_body_z": "RAY_UNBLOCKED",
+      "door_left_wall": "RAY_BLOCKED",
+      "door_right_wall": "RAY_BLOCKED",
+      "head_height_lintel": "RAY_BLOCKED",
+      "real_floor": "RAY_HIT",
+      "real_roof": "RAY_HIT",
+      "far_facade": "RAY_HIT",
+      "certified_walkable": "NOT_TESTED"
+    },
+    "RESIDENCE": {
+      "door_mid_at_body_z": "RAY_UNBLOCKED",
+      "door_left_wall": "RAY_BLOCKED",
+      "door_right_wall": "RAY_BLOCKED",
+      "head_height_lintel": "RAY_BLOCKED",
+      "real_floor": "RAY_HIT",
+      "real_roof": "RAY_HIT",
+      "far_facade": "RAY_HIT",
+      "certified_walkable": "NOT_TESTED"
+    }
+  },
+  "stair_treads_detected": 140,
+  "centerline_continuous_at_world_mesh": true,
+  "centerline_ray_hits": 40,
+  "negative_real_mesh_mutations": {
+    "inserted_door_blocker_detected": true,
+    "roof_removed": true,
+    "floor_removed": true,
+    "stair_step_removed": true
+  },
+  "note": "NARROW_EXPLICIT_RAY_TRIANGLE_PROOF_ONLY_NOT_G2_OR_HABITABILITY_CERTIFICATION",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "art": "NOT_APPROVED"
+}
