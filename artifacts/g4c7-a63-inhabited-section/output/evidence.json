@@ -1,0 +1,27 @@
+{
+  "stage": "A63",
+  "meaning": "G0_OPENGL_PROTOTYPE_NOT_A_CITY",
+  "renderer": "VTK_OPENGL",
+  "programs": [
+    "market",
+    "culture",
+    "research"
+  ],
+  "upper_communities": [
+    "west_housing",
+    "east_housing",
+    "garden_commons",
+    "learning_rooms"
+  ],
+  "object_count": 268,
+  "evidence_sha256": {
+    "public_heart.png": "767f53f5b018c0814bae7685d72dd2d6805dfbb818f08e2fd4f8fc511d398562",
+    "oblique.png": "95e59a1aad7aa04dffe8a3672332aa39c6b6dbd042952f31d1b5270eb4737bca"
+  },
+  "Art": "UNASSESSED",
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN"
+}
