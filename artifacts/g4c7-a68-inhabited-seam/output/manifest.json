@@ -1,0 +1,32 @@
+{
+  "stage": "A68",
+  "renderer": "VTK_OpenGL",
+  "status": "G0_CONCEPT_ONLY",
+  "art": "UNASSESSED",
+  "object_count": 161,
+  "authored_inhabited_bands": 12,
+  "actual_same_3d_scene": true,
+  "public_eye": [
+    0,
+    -25,
+    1.7
+  ],
+  "public_floor_at_eye": 0,
+  "programs": [
+    "market",
+    "making",
+    "learning",
+    "housing",
+    "commons"
+  ],
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "images_sha256": {
+    "public_heart.png": "f767b01e971e520f02b0b7ed9ccdefe70f6c1a2b5708dfea848aa85dbc9e4ef6",
+    "oblique.png": "d8915bb71baee8f0b3b3b24be0e9733faa093519d12ba974581915ffa2df4bf1"
+  }
+}
