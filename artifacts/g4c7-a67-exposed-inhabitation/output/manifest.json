@@ -1,0 +1,96 @@
+{
+  "stage": "A67",
+  "renderer": "VTK_OpenGL",
+  "status": "G0_NOT_ART_ACCEPTED",
+  "art": "NOT_ASSESSED",
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "public_eye": [
+    0,
+    -13,
+    1.7
+  ],
+  "public_floor_at_eye": 0,
+  "wards": [
+    "western-market",
+    "eastern-making",
+    "west-upper",
+    "east-upper",
+    "far-north",
+    "central-learning",
+    "near-residential",
+    "north-mixed"
+  ],
+  "room_count": 258,
+  "actor_count": 2299,
+  "spatial_program": {
+    "market": {
+      "opening_center": [
+        -16,
+        3,
+        2.5
+      ],
+      "occupied_depth": [
+        -23,
+        14,
+        2.5
+      ]
+    },
+    "making": {
+      "opening_center": [
+        15,
+        4,
+        2.5
+      ],
+      "occupied_depth": [
+        22,
+        12,
+        2.5
+      ]
+    },
+    "learning": {
+      "opening_center": [
+        1,
+        22,
+        13.8
+      ],
+      "occupied_depth": [
+        2,
+        33,
+        13.8
+      ]
+    },
+    "housing": {
+      "opening_center": [
+        -30,
+        29,
+        29
+      ],
+      "occupied_depth": [
+        -39,
+        45,
+        29
+      ]
+    },
+    "commons": {
+      "eye": [
+        0,
+        -13,
+        1.7
+      ],
+      "ground": [
+        0,
+        -13,
+        0
+      ]
+    }
+  },
+  "image_sha256": {
+    "public_heart.png": "217ebdb687d1ec0a1d197675926301b033c7114043724cf8028d292ca63e58a8",
+    "oblique.png": "bfc1762ec766de56752a053fefe5c521a97f4d2f506de20c500914b309f5bdcf"
+  }
+}
