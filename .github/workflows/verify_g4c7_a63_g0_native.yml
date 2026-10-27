@@ -1,0 +1,94 @@
+name: A63 native G0 inhabited-section falsification (NOT ART PASS)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a63-inhabited-section/a63_integrated.py.gz'
+      - '.github/workflows/verify_g4c7_a63_g0_native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: a63-native-g0-repro-evidence
+  cancel-in-progress: false
+jobs:
+  real-open-gl:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install VTK 9.6.2 and headless software graphics
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libosmesa6 libgl1-mesa-dri libegl1
+      - name: Expand exact A63 authored source and verify original sha256
+        run: |
+          python - <<'PY'
+          import gzip,hashlib,pathlib
+          d=pathlib.Path('artifacts/g4c7-a63-inhabited-section')
+          raw=gzip.decompress((d/'a63_integrated.py.gz').read_bytes())
+          assert hashlib.sha256(raw).hexdigest()=='e812a37e200fa52f3b6ab4245aded85ad3ce6b8bee25c2f4b30809525954354d'
+          (d/'a63_integrated.py').write_bytes(raw)
+          print('A63_EXACT_AUTHOR_SOURCE_SHA_PASS')
+          PY
+      - name: Check 5 intentional invalid program-contract cases
+        run: |
+          python -m py_compile artifacts/g4c7-a63-inhabited-section/a63_integrated.py
+          python artifacts/g4c7-a63-inhabited-section/a63_integrated.py --verify
+      - name: Render true 3D G0 two views without Blender
+        env:
+          VTK_DEFAULT_OPENGL_WINDOW: vtkOSOpenGLRenderWindow
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: python artifacts/g4c7-a63-inhabited-section/a63_integrated.py --render
+      - name: Verify PNG bytes, CRC, dimensions, safety nonclaims
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib,struct,zlib
+          d=pathlib.Path('artifacts/g4c7-a63-inhabited-section/output')
+          m=json.loads((d/'evidence.json').read_text())
+          assert m['stage']=='A63' and m['Art']=='UNASSESSED' and m['renderer']=='VTK_OPENGL'
+          assert all(m[k]=='NOT_RUN' for k in ('S1','G1','G2','G3'))
+          assert m['minecraft']=='FORBIDDEN'
+          for filename in ('public_heart.png','oblique.png'):
+              raw=(d/filename).read_bytes()
+              assert raw[:8]==b'\x89PNG\r\n\x1a\n'
+              o=8;ids=[]
+              while o<len(raw):
+                  n=struct.unpack_from('>I',raw,o)[0]
+                  name=raw[o+4:o+8];chunk=raw[o+8:o+8+n]
+                  checksum=struct.unpack_from('>I',raw,o+n+8)[0]
+                  assert (zlib.crc32(name+chunk)&0xffffffff)==checksum
+                  if name==b'IHDR':assert struct.unpack('>II',chunk[:8])==(1280,820)
+                  ids.append(name);o+=12+n
+                  if name==b'IEND':break
+              assert o==len(raw) and b'IDAT' in ids and b'IEND' in ids
+              assert hashlib.sha256(raw).hexdigest()==m['evidence_sha256'][filename]
+          print('A63_REAL_OPENGL_BINARY_INTEGRITY_PASS__ART_NOT_ACCEPTED')
+          PY
+      - name: Preserve G0 images as downloadable Actions evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a63-rejected-native-g0-evidence
+          path: artifacts/g4c7-a63-inhabited-section/output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Preserve exact source and images once without force push
+        run: |
+          set -euo pipefail
+          O=artifacts/g4c7-a63-inhabited-section
+          test -f "$O/output/oblique.png"
+          test -f "$O/output/public_heart.png"
+          test -f "$O/output/evidence.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$O/a63_integrated.py" "$O/output"
+          git diff --cached --quiet && { echo 'Nothing to save'; exit 1; }
+          git commit -m 'A63: preserve native two-view G0 evidence (ART REJECT/HOLD)'
+          git push origin "HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study"
