@@ -1,0 +1,21 @@
+{
+  "stage": "A76",
+  "scale": "G0_SECTOR_RESEARCH_MODEL_NOT_KM_CITY",
+  "footprint_range_m": [
+    1600,
+    1140
+  ],
+  "max_design_height_m": 810,
+  "sections": 4,
+  "triangle_mesh_parts": 2802,
+  "faces": 33836,
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "art": "UNASSESSED",
+  "construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "rooms_are_truly_reachable": "NOT_TESTED",
+  "support": "NOT_TESTED"
+}
