@@ -32,3 +32,12 @@ A66「外壁主体」→ A67「外に開いた実室主体」という**制作�
 A67 G0の真正OpenGL2視点を作成したが、**正式S1/G1/G2/G3はNOT RUN**。全体ART HOLD、正式美術採用0、Minecraft施工・都市統合禁止。既存の人体331、足元993、半幅0.65、足元高さ+0.15〜+3.25、干渉45以下、未支持0、故意負対照契約を維持。元データ・world/USED/CSV/ZIP/OBJ/GLB/PNG/.blendを一切上書きしない。Workは明示的事前承認まで未使用。
 
 専用Actionsは保存gzipのSHAからVTK/OpenGLを実行してPNG・manifestをappend-only記録する。**ActionsがSUCCESSし、GitHubの真正PNGが存在するまで「GitHub画像保存済み」とは言わない**。通常CI既存の `build/g4c4_access_baseline.json` 欠落も偽修復しない。
+
+## A67 専用GitHub Actions 再現完了（後追い確定）
+
+- [A67専用Actions #40447411594](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40447411594) は **SUCCESS**。圧縮済み原本のSHA-256照合、Python構文とG0契約、VTK/OpenGLの2視点実描画、PNG署名・CRC・1280×820・マニフェストSHA、正式ゲート未実施・施工禁止を確認。
+- botコミット [`9f083acd1790e63a26df2eb6eddf1ada0a563c04`](https://github.com/ryomashibaba/makecode-limitlab/commit/9f083acd1790e63a26df2eb6eddf1ada0a563c04) で [真正近景PNG](../artifacts/g4c7-a67-exposed-inhabitation/output/public_heart.png)、[真正遠景PNG](../artifacts/g4c7-a67-exposed-inhabitation/output/oblique.png)、[実再現元Python](../artifacts/g4c7-a67-exposed-inhabitation/a67_native.py)、[manifest](../artifacts/g4c7-a67-exposed-inhabitation/output/manifest.json) を新規追加。
+- GitHub保管のPNG blob SHAは近景 `416be944d7f05e7ec996a934d00e572031211cb8`、遠景 `94ba37d581d4caaafc39abe60707f625dc4f570b`、manifest `b00a3c305429b174b638b41cc5ff0463cfda066a`。**ローカル保存の同じ3ファイルのGit blob SHAと完全一致**。実画像SHAはmanifestに個別記録済み。
+- 通常CI [#40447411475](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40447411475) の結果は**FAILURE**。独立の通常CI成功とは主張しない。
+- **独立生成技術はPASS、両視点美術ART REJECT、S1/G1/G2/G3 NOT RUN**。正式美術採用0・全体ART HOLD、Minecraft施工・都市統合禁止。
+
