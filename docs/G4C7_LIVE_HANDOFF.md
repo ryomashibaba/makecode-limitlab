@@ -1,3 +1,9 @@
+# 【A76全証拠確定／2026-10-27 JST】1.6km試験地区・真正3D再現SUCCESS、近遠ともART REJECT
+
+> [専用VTK Actions #40503414433](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40503414433) SUCCESS。GitHub bot commit `b1c19811530014aba07cfd7f2f784503cdf84790` に生成源/OBJ 22,896頂点・33,836三角形/同一モデル3視点PNG/manifestをappend-only保存。Git blob 6/6がローカル原本一致。地盤修正後の人間目線・遠景を実画像審査し、**浮いた小室・棚塔・暗く薄い支持**というA67/A68反復でG0 ART REJECT。A73の入口床共有技術は今回のモデルへ未接続のため、接続・居住可用・支持の技術PASSは主張禁止。通常CI #40503414341は以前からのbaseline欠損FAIL。全体ART HOLD、正式採用0、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、旧原本/331・993契約/Work事前承認保持。[A76詳細監査](./G4C7_A76_MULTIDISTRICT_NATIVE_G0_REJECT_JA.md)。
+
+---
+
 # 【A76／2026-10-27 JST】都市規模4地区の真正VTK/OpenGL G0実制作、近遠ともART REJECT
 
 > A75の4室→4棟という低層模型から、約1600×1140mの4つの都市地区（最大実頂点z≈767.36m）、部材2802・三角面33836・OBJ頂点22896のG0真正3Dを制作。斜視・床高さ修正済み人間目線・追加斜視を直接比較。**遠景は棚状塔群、人間目線は空中小室と薄支持/無地床**でA67/A68を巨大化しただけと判定し、**G0 ART REJECT**。なおA73の床/入口共有契約は本造形には未接続、入口4/4も歩行・支持も偽PASSにしない。再現源・保存手順・厳格な不採用評価を[A76監査](./G4C7_A76_MULTIDISTRICT_NATIVE_G0_REJECT_JA.md)へ保存。全体ART HOLD、正式採用0、S1/G1/G2/G3 NOT RUN、Minecraft施工/都市統合禁止、旧331/993、原本不変更、Work事前承認継承。新しい大量のセル・塔・棚を増やす方式は停止。

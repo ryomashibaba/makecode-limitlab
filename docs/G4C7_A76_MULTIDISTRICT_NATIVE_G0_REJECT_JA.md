@@ -27,3 +27,11 @@ A75までの本物のBlender制作技術は4用途を4棟にする生成文法�
 **A76によって、4棟建築から都市全域へ設計規模を上げても、「反復のセルに高さを付ける」生成原理では都市美術が前進しない**ことが真正3Dで再確認された。次のA77では部屋と小室を数量的に増殖させる方法を停止し、特定の実生活空間を内包する建築の厚さ・入口・支持・地区の形を作者がそれぞれ直接決定する美術原型を優先。外形を決めた後に生活をラベル付けする方式に戻さない。A73の接続技術は正式候補に限って内部適用する。
 
 **判定：G0研究実制作と厳密な不採用。美術採用0、全体ART HOLD。A76モデルのMinecraft施工も都市統合も永久禁止（再設計が必要）。**
+
+## 最終GitHub Actions・SHA追認（2026-10-27 JST）
+
+- [A76専用再現Actions #40503414433](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40503414433) **SUCCESS**。凍結PythonのSHA-256を検証して展開、EGL上の真正VTK/OpenGLで同一G0シーンの斜視・人間目線・追加視点を再描画、OBJ 22,896頂点/33,836三角形を独立再構成して保存。
+- 自動保存コミット [`b1c19811530014aba07cfd7f2f784503cdf84790`](https://github.com/ryomashibaba/makecode-limitlab/commit/b1c19811530014aba07cfd7f2f784503cdf84790) に新しい[再現Python](../artifacts/g4c7-a76-native-multidistrict-g0/a76_facet_city.py)、[真正3D OBJ](../artifacts/g4c7-a76-native-multidistrict-g0/output/a76_true_native.obj)、[斜視](../artifacts/g4c7-a76-native-multidistrict-g0/output/oblique.png)、[人間目線](../artifacts/g4c7-a76-native-multidistrict-g0/output/public_eye.png)、[文脈視点](../artifacts/g4c7-a76-native-multidistrict-g0/output/cross_civic.png)、[JSON](../artifacts/g4c7-a76-native-multidistrict-g0/output/a76_manifest.json)をappend-only保存。Pythonはローカル凍結原本と同一SHA-256。
+- Github Git blob SHA独立照合が**6/6一致**：遠景 `e49d48d74f870a2c22015e2944a872098a1f17b2`、人間目線 `e748481f21da925631e8df5cadf16c99ed0dffd7`、文脈 `e85b11c3445bcd138dd3c7ba86992846ac85ce3c`、OBJ `f2d194745c60a6d82fdaf3d355611cd28e1ee04c`、MTL `48e38f87edd24f38b749c581178bce3e0b9bac0f`、manifest `e41c888490325eac4c5ed6e8e79254c2565e48f3`。
+- [通常CI #40503414341](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40503414341) **FAIL**（428テスト中1件のsetup error）。欠落ファイル`build/g4c4_access_baseline.json`は実ログで再確認。今回の専用SUCCESSと混同せず、偽baseline・テスト無効化なし。
+- **この工程の最終美術評価は、技術再現成功とは独立して近景・遠景ともG0 ART REJECT**。今後の正式採用なし、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工/都市統合禁止。A76のセル積み上げモデルの拡大・微修正停止。
