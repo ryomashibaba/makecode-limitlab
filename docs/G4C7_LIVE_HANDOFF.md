@@ -1,3 +1,9 @@
+# 【A74／2026-10-27 JST】画像生成による美術早期反証3案・全案G0 ART REJECT
+
+> A73の入口床4/4・三階段のG0技術成果は保護し、A74では新規3Dを作る前に画像で巨大未来都市の造形方向を3案試作。しかし3件とも水庭/巨大リング/橋/アーチ/中心尖塔/リゾート都市の構図へ回帰して**全案ART REJECT**。特に画像内のGitHub HEAD/Actions/「PASS」等は**生成による架空表示**であり、実開発の証拠ではない。画像は会話内に保存（GitHubへPNG原本は未アップロード）。[最終美術監査](./G4C7_A74_GENERATED_CONCEPTS_ART_REJECT_JA.md)と[SHA付き判断原本](../artifacts/g4c7-a74-concept-art-falsification/decision_record.json)を追加。A74真正3D/Blender/Cycles/正式S1/G1/G2/G3 NOT RUN。全体ART HOLD、正式採用0、Minecraft施工・都市統合禁止、原本保護、Work事前承認。次工程は画像生成による形状主導を断念し、同じ実3Dで公共用途と都市外形を同時に作者設計する。
+
+---
+
 # 【A73独立再現確定／2026-10-27 JST】共有動線から入口・床・3Dメッシュ生成、TECH限定PASS・ART HOLD
 
 > [A73専用Actions #40487809349](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40487809349) SUCCESS。botコミット`218fd0644c8f59fa9d3e39434b20bcfe598f5329`で[復元ソース](../tools/g4c7_a73_topology_fabric.py)、[真正三角形メッシュOBJ](../artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_continuous_route_and_rooms.obj)、[模式図PNG](../artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_route_floor_door_plan.png)、[JSON](../artifacts/g4c7-a73-route-derived-architecture/g0-output/a73_manifest.json)を保護。設計入口4つの幅と床接合が4.0/4.2/4.6/4.0m全一致、階段20+20+30、9件故意不正検出。**これは作者の美術作品でも同一3D二視点でもなく、G0の局所接続技術標本**。正式採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。通常CI #40487809254は既知baseline欠損FAIL。次は都市の美術形態を独立に選定してからこの原本の接続方式を採用。既存原本・331/993契約保護、Work事前承認継続。

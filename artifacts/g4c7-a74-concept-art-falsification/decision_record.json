@@ -1,0 +1,74 @@
+{
+  "project": "MakeCode LimitLab/G4-C7 Orbital Commons",
+  "stage": "A74",
+  "report_date_jst": "2026-10-27",
+  "source_commit": "c9c671330f05ccac44b9474906b39bce1719d033",
+  "evidence_medium": "THREE_INDEPENDENT_AI_GENERATED_2D_CONCEPT_IMAGES_NOT_REAL_3D",
+  "render_engine": "IMAGE_GENERATOR_ONLY",
+  "actual_blender_run": false,
+  "actual_cycles_views": false,
+  "actual_github_ci_for_a74": false,
+  "original_2d_images_embedded_in_github": false,
+  "image_archive": "Conversation-local A74_G0_3_visual_experiments_REJECT.zip (not uploaded to GitHub)",
+  "generated_concept_sources": [
+    {
+      "id": "A74-C1",
+      "sha256": "4817f6c348fd44da0024c92dcb2502817c9842426635917f9c3002d6b9b79876",
+      "resolution": [
+        1559,
+        1009
+      ],
+      "subject": "water ring masterplan and tourist-like public plaza",
+      "art": "G0_REJECT",
+      "risks": [
+        "RING_RECURRENCE",
+        "WATERFALL_AS_MAIN_EVENT",
+        "FABRICATED_CI_GITHUB_LABELS"
+      ]
+    },
+    {
+      "id": "A74-C2",
+      "sha256": "7ae385f07e6c931430574dfaad922e4079c423128c90eb1b15b063f392769939",
+      "resolution": [
+        1536,
+        1024
+      ],
+      "subject": "resort archipelago with sky bridges and central spire",
+      "art": "G0_REJECT",
+      "risks": [
+        "SCENIC_RESORT",
+        "UNRELATED_HUMAN_VIEW",
+        "SPIRE_CENTRALIZATION"
+      ]
+    },
+    {
+      "id": "A74-C3",
+      "sha256": "2476e6df0e25b785c1ec03f930dd245429f27fb90f57ccb442aad7d4f9cd58a8",
+      "resolution": [
+        1536,
+        1024
+      ],
+      "subject": "oversized planted bridges and circular living terraces",
+      "art": "G0_REJECT",
+      "risks": [
+        "BRIDGE_OVERDEPENDENCE",
+        "RING_RECURRENCE",
+        "A73_NUMBERS_REUSED_WITHOUT_VALIDATION"
+      ]
+    }
+  ],
+  "final_art": "G0_REJECT_ALL_THREE",
+  "overall_art": "HOLD",
+  "formal_art_adoptions": 0,
+  "formal_gates": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "tech_lineage": "A73 remains G0 source-of-truth for design-level 4/4 floor contacts and three stair flights; not related to conceptual image geometry",
+  "decision": "Do not reuse any of the three concept images as geometric source, do not trace rings/bridges/waterfalls and claim progress, do not model them as Blender or Minecraft.",
+  "next_required_evidence": "A75 must produce a grounded relationship between one distinctive inhabited macro-form and actual activities/supporting space; use actual editable 3D and identical-geometry near/far camera if original art direction first merits the cost."
+}
