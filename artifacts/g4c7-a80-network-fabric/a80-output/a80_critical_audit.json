@@ -1,0 +1,24 @@
+{
+  "g0_probe_name": "NARROW_TRIANGLE_SURFACE_FLOOR_SAMPLE_NOT_G2",
+  "nominal_plan_graph_connected": true,
+  "street_floor_samples": 252,
+  "samples_without_public_surface": 0,
+  "samples_with_wrong_floor_elevation": 0,
+  "hole_examples": [],
+  "wrong_elevation_examples": [],
+  "shared_junction_count": 11,
+  "fully_enclosed_and_serviced_real_rooms": 0,
+  "real_staircases_to_programmed_upper_spaces": 0,
+  "verified_load_bearing_supports": "NOT_RUN",
+  "qualifies_as_inhabited_future_city": false,
+  "visual_grade": "G0_ART_REJECT_REQUIRES_HUMAN_REVIEW",
+  "formal_gates": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "reason": "3D ribbons are physically present, but real habitable rooms, layered floor access, and structural supports remain absent; macroform is a spread-out flat deck/road network and eye view shows giant blank fins."
+}

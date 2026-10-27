@@ -1,0 +1,151 @@
+{
+  "stage": "A80_G0_RESEARCH",
+  "art": "NOT_APPROVED",
+  "overall_art": "HOLD",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "source_sha256": "e482dc13f841cf624ee89520ee1f00430c4b53794b99a7826079638dcc76b121",
+  "geometry": {
+    "parts": 120,
+    "vertices": 720,
+    "triangles": 840
+  },
+  "nominal_path_graph": {
+    "edges": [
+      {
+        "route": "central",
+        "a": "S",
+        "b": "A",
+        "length": 87.316,
+        "grade": 0.08017,
+        "use": "market"
+      },
+      {
+        "route": "central",
+        "a": "A",
+        "b": "B",
+        "length": 96.897,
+        "grade": 0.09288,
+        "use": "library"
+      },
+      {
+        "route": "central",
+        "a": "B",
+        "b": "C",
+        "length": 93.536,
+        "grade": 0.09622,
+        "use": "home"
+      },
+      {
+        "route": "central",
+        "a": "C",
+        "b": "D",
+        "length": 91.395,
+        "grade": 0.09847,
+        "use": "school"
+      },
+      {
+        "route": "central",
+        "a": "D",
+        "b": "E",
+        "length": 77.389,
+        "grade": 0.10337,
+        "use": "market"
+      },
+      {
+        "route": "west_civic",
+        "a": "A",
+        "b": "W",
+        "length": 110.345,
+        "grade": 0.10875,
+        "use": "workshop"
+      },
+      {
+        "route": "west_civic",
+        "a": "W",
+        "b": "X",
+        "length": 96.768,
+        "grade": 0.11367,
+        "use": "home"
+      },
+      {
+        "route": "west_civic",
+        "a": "X",
+        "b": "Y",
+        "length": 82.152,
+        "grade": 0.01217,
+        "use": "library"
+      },
+      {
+        "route": "west_civic",
+        "a": "Y",
+        "b": "C",
+        "length": 87.321,
+        "grade": 0.06871,
+        "use": "market"
+      },
+      {
+        "route": "east_civic",
+        "a": "B",
+        "b": "R",
+        "length": 96.566,
+        "grade": 0.0932,
+        "use": "home"
+      },
+      {
+        "route": "east_civic",
+        "a": "R",
+        "b": "Q",
+        "length": 102.961,
+        "grade": 0.10684,
+        "use": "workshop"
+      },
+      {
+        "route": "east_civic",
+        "a": "Q",
+        "b": "D",
+        "length": 154.402,
+        "grade": 0.01295,
+        "use": "research"
+      }
+    ],
+    "nodes": 11,
+    "undirected_edges": 12,
+    "reachable_nodes": 11,
+    "max_nominal_grade": 0.11367
+  },
+  "route_program_seams": 12,
+  "shared_3d_junctions": 11,
+  "sensitivity": {
+    "facade_and_real_room_surface_respond_to_program_and_route_edits": true,
+    "real_mesh_hash_variants": [
+      "8c6ffbe0275cfeb0424280d8a885744ca778c61c2cf8c770b1a0e7c6358e9061",
+      "c33d88e9284c2db337f0e55a751084c232b9fbfb171487e1fbc0518ab098a395",
+      "2a47f4885528d93cf11757204d4610904e5b49c3e641bb60ba92983f04644980"
+    ],
+    "caught_negatives": [
+      "fake_art",
+      "fake_G2",
+      "unlock_construction",
+      "disconnected_node",
+      "excessive_nominal_grade"
+    ],
+    "limitations": [
+      "no 3D swept person test",
+      "no upper habitation certification",
+      "no supports load test",
+      "no formal G2/G3"
+    ]
+  },
+  "walkable_ramp_surface_at_all_joint_turns": "NOT_TESTED",
+  "whole_body_collision": "NOT_TESTED",
+  "supports_and_egress": "NOT_TESTED",
+  "full_city_km_scale": false,
+  "artistic_grade": "UNASSESSED_IN_CODE"
+}
