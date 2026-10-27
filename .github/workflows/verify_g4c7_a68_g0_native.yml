@@ -1,0 +1,92 @@
+name: A68 native G0 inhabited seam falsification (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a68-inhabited-seam/a68_native.py.gz'
+      - '.github/workflows/verify_g4c7_a68_g0_native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: a68-native-g0-preserve
+  cancel-in-progress: false
+jobs:
+  native-art-reject:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install VTK and software graphics
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2' 'numpy>=1.26,<3'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libosmesa6 libgl1-mesa-dri libegl1
+      - name: Restore SHA-frozen author source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,hashlib
+          d=Path('artifacts/g4c7-a68-inhabited-seam')
+          src=gzip.decompress((d/'a68_native.py.gz').read_bytes())
+          assert hashlib.sha256(src).hexdigest()=='242efaeb8fd6e3da39c02bf9962d7584d9e78d557c7a0c37c2a91c6fce0823da'
+          (d/'a68_native.py').write_bytes(src)
+          print('A68_SOURCE_ORIGINAL_SHA256_PASS')
+          PY
+      - name: Verify G0 contract and render true 3D two views
+        run: |
+          python -m py_compile artifacts/g4c7-a68-inhabited-seam/a68_native.py
+          python artifacts/g4c7-a68-inhabited-seam/a68_native.py --verify
+          python artifacts/g4c7-a68-inhabited-seam/a68_native.py --render
+      - name: Verify PNG bytes, dimensions and explicit non-claims
+        run: |
+          python - <<'PY'
+          import pathlib,struct,zlib,hashlib,json
+          d=pathlib.Path('artifacts/g4c7-a68-inhabited-seam/output');m=json.loads((d/'manifest.json').read_text())
+          assert m['stage']=='A68' and m['renderer']=='VTK_OpenGL' and m['status']=='G0_CONCEPT_ONLY'
+          assert m['art']=='UNASSESSED' and m['object_count']==161 and m['authored_inhabited_bands']==12
+          assert m['public_eye'][2]-m['public_floor_at_eye']==1.7
+          assert all(m[g]=='NOT_RUN' for g in ['S1','G1','G2','G3'])
+          assert m['minecraft']==m['city_integration']=='FORBIDDEN'
+          for f in ('public_heart.png','oblique.png'):
+            data=(d/f).read_bytes();assert data[:8]==bytes.fromhex('89504e470d0a1a0a')
+            i=8;tags=[]
+            while i<len(data):
+              n=struct.unpack_from('>I',data,i)[0];tag=data[i+4:i+8];b=data[i+8:i+8+n]
+              assert zlib.crc32(tag+b)&0xffffffff==struct.unpack_from('>I',data,i+n+8)[0]
+              if tag==b'IHDR':assert struct.unpack('>II',b[:8])==(1280,820)
+              tags.append(tag);i+=12+n
+              if tag==b'IEND':break
+            assert i==len(data) and b'IDAT' in tags and tags[-1]==b'IEND'
+            assert hashlib.sha256(data).hexdigest()==m['images_sha256'][f]
+          print('A68_NATIVE_VISUAL_EVIDENCE_INTEGRITY_PASS__ART_NOT_ADOPTED')
+          PY
+      - name: Upload rejected evidence for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a68-g0-rejected-native-evidence
+          path: artifacts/g4c7-a68-inhabited-seam/output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only preserve original source and image evidence
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a68-inhabited-seam
+          test -s "$D/output/public_heart.png"
+          test -s "$D/output/oblique.png"
+          test -s "$D/output/manifest.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a68_native.py" "$D/output"
+          git diff --cached --quiet && { echo 'Expected new evidence not found'; exit 1; }
+          git commit -m 'A68: preserve actual rejected native G0 dual-view evidence'
+          git push origin 'HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study'

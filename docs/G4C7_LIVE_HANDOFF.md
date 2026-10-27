@@ -1,3 +1,9 @@
+# 【A68／2026-10-27 JST】最初の一体生活街区を真正VTK/OpenGLで反証→積層床群、二視点ART REJECT
+
+> 基点HEAD `a14a3eac2726d071a7128445260821d19411e6b8`。A66密閉多角柱→A67開放小室258個という両極端を破棄し、市場・工房・研究/閲覧＋住宅12街区帯＋折返し公共ルート2区間を同一3Dモデルの161オブジェクトとして作者指定し、1280×820真正VTK/OpenGL二視点で直接観察。**遠景は分離した厚床の集合、近景は巨大な床裏と薄い用途空間**。過去の失敗に回帰したため **G0 ART REJECT／正式採用0／全体ART HOLD**。新[監査](./G4C7_A68_INHABITED_SEAM_G0_ART_REJECT_JA.md)、圧縮原本と専用Actionsを保存。Actionsの画像保存・技術PASSは実行結果確定まで未主張。次はA68への家具/窓/街区追加を停止し、**作者が編集する完全な一体3D建築断面と上下動線**へ制作方式を切り替える。正式S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、全歴史原本/旧331/993契約/Work事前承認を維持。
+
+---
+
 # 【A67真正2視点のGitHub原本確定／2026-10-27 JST】技術再現SUCCESS、近景・遠景はART REJECT
 
 > [専用Actions #40447411594](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40447411594) SUCCESS。真正VTK/OpenGL 2視点のPNGと生成元のPython、manifestがbotコミット `9f083acd1790e63a26df2eb6eddf1ada0a563c04` にappend-only保存済み。GitHub PNG Git blobはローカル原本のblobと完全一致。**258の開放型生活室を多数積むと、空中で分離する棚と床板の集合となり、巨大未来都市の美術・実生活空間は成立しなかった**。両ART REJECT、全体ART HOLD、正式採用0。S1/G1/G2/G3 NOT RUN。施工/都市統合FORBIDDEN。A67モデルへ橋・窓・棚の装飾追加禁止。作者が一体の断面と連続経路を定義するまで次のモデルの大量生成をしない。詳報[A67監査](./G4C7_A67_EXPOSED_INHABITATION_G0_ART_REJECT_JA.md)。
