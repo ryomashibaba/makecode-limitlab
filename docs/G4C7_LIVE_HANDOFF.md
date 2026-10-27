@@ -1,3 +1,9 @@
+# 【A75／2026-10-27 JST】A73の床・入口・70階段を同じ原本から真正Blender造形へ連結する実制作
+
+> A74の3つのリング・橋・水景案はいずれもART REJECTでBlender化禁止。A75は新しい[作者編集可能Blender生成ソース](../tools/g4c7_a75_registered_native.py)が既存の[正本A73](../tools/g4c7_a73_topology_fabric.py)を直接取り込み、同じ入口線分と公共床から4実室、階段70段、2台の真正Cyclesカメラを作る方法へ転換。個別室の位置を独立指定してA72の接続失敗を繰り返す方法を停止。専用Actionsが.blendを再読込して実PNGと幾何同一性を照合。実レンダの目視ART判定まで行い、建築美術が弱ければ即REJECT。**技術PASS≠都市美術PASS、正式採用0・全体ART HOLD・S1/G1/G2/G3 NOT RUN・施工/都市統合禁止**。旧原本/331人体993足元/Work事前承認を維持。[A75監査](./G4C7_A75_REGISTERED_NATIVE_G0_JA.md)。
+
+---
+
 # 【A74／2026-10-27 JST】画像生成による美術早期反証3案・全案G0 ART REJECT
 
 > A73の入口床4/4・三階段のG0技術成果は保護し、A74では新規3Dを作る前に画像で巨大未来都市の造形方向を3案試作。しかし3件とも水庭/巨大リング/橋/アーチ/中心尖塔/リゾート都市の構図へ回帰して**全案ART REJECT**。特に画像内のGitHub HEAD/Actions/「PASS」等は**生成による架空表示**であり、実開発の証拠ではない。画像は会話内に保存（GitHubへPNG原本は未アップロード）。[最終美術監査](./G4C7_A74_GENERATED_CONCEPTS_ART_REJECT_JA.md)と[SHA付き判断原本](../artifacts/g4c7-a74-concept-art-falsification/decision_record.json)を追加。A74真正3D/Blender/Cycles/正式S1/G1/G2/G3 NOT RUN。全体ART HOLD、正式採用0、Minecraft施工・都市統合禁止、原本保護、Work事前承認。次工程は画像生成による形状主導を断念し、同じ実3Dで公共用途と都市外形を同時に作者設計する。
