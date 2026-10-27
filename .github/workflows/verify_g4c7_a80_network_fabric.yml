@@ -1,0 +1,121 @@
+name: G4-C7 A80 connected fabric genuine G0 falsification (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a80-network-fabric/a80_source.py.gz.b64'
+      - 'artifacts/g4c7-a80-network-fabric/a80_audit.py.gz.b64'
+      - '.github/workflows/verify_g4c7_a80_network_fabric.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a80-rejected-network-fabric
+  cancel-in-progress: false
+jobs:
+  source-true-mesh-and-rejection-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconstruct immutable A80 sources from original gzip bytes
+        run: |
+          python - <<'PY'
+          import gzip,base64,hashlib
+          from pathlib import Path
+          d=Path('artifacts/g4c7-a80-network-fabric')
+          expected={
+            'a80_source.py.gz.b64':('a80_network_fabric.py','e482dc13f841cf624ee89520ee1f00430c4b53794b99a7826079638dcc76b121'),
+            'a80_audit.py.gz.b64':('a80_critical_audit.py','3cbf0cb4f027cde431d2eefbb7d2ab75695d312df2aea9aa8a6ec3cc495ea087'),
+          }
+          for compressed,(name,expected_sha) in expected.items():
+            raw=base64.b64decode((d/compressed).read_text().strip(),validate=True)
+            source=gzip.decompress(raw)
+            assert hashlib.sha256(source).hexdigest()==expected_sha, 'SOURCE_TAMPERED_'+name
+            p=d/name
+            assert not p.exists(),'NEVER_REWRITE_HISTORICAL_SOURCE'
+            p.write_bytes(source)
+            print('SOURCE_EXACT',name,expected_sha)
+          PY
+      - name: Install native VTK and geometry dependencies
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'vtk==9.6.2' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Reproduce G0 graph and negative control tests
+        run: |
+          python -m py_compile artifacts/g4c7-a80-network-fabric/a80_network_fabric.py
+          python -m py_compile artifacts/g4c7-a80-network-fabric/a80_critical_audit.py
+          python artifacts/g4c7-a80-network-fabric/a80_network_fabric.py --verify
+      - name: Rebuild true OBJ and three VTK/EGL images
+        run: |
+          python artifacts/g4c7-a80-network-fabric/a80_network_fabric.py --build
+          python artifacts/g4c7-a80-network-fabric/a80_critical_audit.py
+      - name: Independently check limited evidence and mandatory art/usage HOLD
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          d=Path('artifacts/g4c7-a80-network-fabric')
+          p=d/'a80-output'
+          m=json.loads((p/'a80_manifest.json').read_text())
+          a=json.loads((p/'a80_critical_audit.json').read_text())
+          assert m['stage']=='A80_G0_RESEARCH'
+          assert m['art']=='NOT_APPROVED' and m['overall_art']=='HOLD'
+          assert all(m['formal'][k]=='NOT_RUN' for k in ('S1','G1','G2','G3'))
+          assert m['minecraft_construction']==m['city_integration']=='FORBIDDEN'
+          assert m['source_sha256']==hashlib.sha256((d/'a80_network_fabric.py').read_bytes()).hexdigest()
+          assert m['geometry']=={'parts':120,'vertices':720,'triangles':840}
+          assert m['nominal_path_graph']['nodes']==11 and m['nominal_path_graph']['undirected_edges']==12
+          assert m['route_program_seams']==12
+          assert len(set(m['sensitivity']['real_mesh_hash_variants']))==3
+          assert len(m['sensitivity']['caught_negatives'])==5
+          assert a['street_floor_samples']==252
+          assert a['samples_without_public_surface']==0 and a['samples_with_wrong_floor_elevation']==0
+          assert a['fully_enclosed_and_serviced_real_rooms']==0
+          assert a['real_staircases_to_programmed_upper_spaces']==0
+          assert a['qualifies_as_inhabited_future_city'] is False
+          assert a['verified_load_bearing_supports']=='NOT_RUN'
+          assert (p/'a80_multibranch_inhabited_fabric.obj').stat().st_size>15000
+          for name in ('oblique','street_eye','upper_civic'):
+            with Image.open(p/(name+'.png')) as im:
+              assert im.format=='PNG' and im.size==(1280,820)
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>12
+          print('A80_AUTHENTIC_REPRODUCTION_PASS__ART_REJECT__FORMAL_GATES_NOT_RUN')
+          PY
+      - name: Retain rejected evidence even if archive push conflicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a80-g0-native-braided-street-ribbons-ART-REJECT
+          path: |
+            artifacts/g4c7-a80-network-fabric/a80_network_fabric.py
+            artifacts/g4c7-a80-network-fabric/a80_critical_audit.py
+            artifacts/g4c7-a80-network-fabric/a80-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only archive in the existing Draft PR branch
+        run: |
+          set -euo pipefail
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          D=artifacts/g4c7-a80-network-fabric
+          test -s "$D/a80-output/oblique.png"
+          test -s "$D/a80-output/street_eye.png"
+          test -s "$D/a80-output/a80_critical_audit.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a80_network_fabric.py" "$D/a80_critical_audit.py" "$D/a80-output/"
+          if git diff --cached --quiet; then echo 'Already archived'; exit 0; fi
+          git commit -m 'A80: archive genuine connected ribbon G0 art REJECT with critical audit'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
