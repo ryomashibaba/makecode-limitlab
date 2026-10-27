@@ -1,0 +1,347 @@
+{
+  "stage": "A70",
+  "date_jst": "2026-10-27",
+  "parent_head": "e3245e3c8dba96ba7b96159fa6d67ae66acc5c29",
+  "design_name": "CIVIC CONFLUENCE / 交点重層都",
+  "design_version": "G0-A",
+  "medium": "AUTHOR_DRAWN_2D_COMPOSITION_AND_SPATIAL_CONTRACT_NOT_TRUE_3D",
+  "visual_status": "ART_HOLD_UNPROVEN",
+  "art_adoptions": 0,
+  "formal_gates": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "renderer": "NONE",
+  "prior_lineage": [
+    "A16_VOID",
+    "A34_CARVED",
+    "A53_RIBBON",
+    "A60_INTERFACE",
+    "A63_CAMPUS",
+    "A66_EXTRUSIONS",
+    "A67_OPEN_SHELVES",
+    "A68_THICK_PLATES",
+    "A69_LOW_CAMPUS"
+  ],
+  "alternatives": [
+    {
+      "id": "A",
+      "name": "URBAN LUMEN / 都市孔線",
+      "verdict": "G0_REJECT",
+      "why": "A16/A34/A64 void silhouette recurrence and A53 linear roof dependence"
+    },
+    {
+      "id": "B",
+      "name": "CIVIC CONFLUENCE / 交点重層都",
+      "verdict": "G0_ART_HOLD",
+      "why": "Individual inhabited district envelopes and continuous public circulation might construct a distinct massing; skyline beauty and G1-scale remain unproven"
+    }
+  ],
+  "zones": [
+    {
+      "id": "WEST_PRODUCTION",
+      "purpose": "mixed workshops and residence",
+      "macro_bbox": [
+        105,
+        195,
+        376,
+        635
+      ],
+      "art_intent": "offset thick civic frontages; not a single giant wall"
+    },
+    {
+      "id": "CIVIC_ANCHOR",
+      "purpose": "public market/making/learning convergence",
+      "macro_bbox": [
+        365,
+        224,
+        604,
+        640
+      ],
+      "art_intent": "register a specific inhabited human-scale public point to the skyline",
+      "micro_node": "PUBLIC_EYE"
+    },
+    {
+      "id": "NORTH_RESEARCH",
+      "purpose": "research and housing",
+      "macro_bbox": [
+        535,
+        171,
+        767,
+        640
+      ],
+      "art_intent": "distinctively deeper spatial section rather than one loft"
+    },
+    {
+      "id": "EAST_GARDEN",
+      "purpose": "residence and gardens",
+      "macro_bbox": [
+        750,
+        310,
+        993,
+        640
+      ],
+      "art_intent": "smaller grain and lower density contrasts central district"
+    }
+  ],
+  "civic_anchor": {
+    "zone": "CIVIC_ANCHOR",
+    "eye_node": "PUBLIC_EYE",
+    "eye_height_above_floor_m": 1.7,
+    "macro_locator_svg": [
+      476,
+      570
+    ],
+    "registration_truth": "SCHEMATIC_ID_ONLY_NOT_SAME_3D_CAMERA"
+  },
+  "programs": [
+    {
+      "id": "MARKET",
+      "node": "MARKET_ENTRY",
+      "activity": "counter exchange in a real enclosed depth (not merely labeled)",
+      "min_interior_depth_intent_m": 8,
+      "depth_verified_3d": false
+    },
+    {
+      "id": "MAKING",
+      "node": "MAKING_ENTRY",
+      "activity": "visible craft production bench within shop",
+      "min_interior_depth_intent_m": 8,
+      "depth_verified_3d": false
+    },
+    {
+      "id": "LEARNING",
+      "node": "READING_ENTRY",
+      "activity": "visible upper reading room",
+      "min_interior_depth_intent_m": 8,
+      "depth_verified_3d": false
+    },
+    {
+      "id": "HOUSING",
+      "node": "HOME_ENTRY",
+      "activity": "residential threshold accessed through civic route",
+      "min_interior_depth_intent_m": 6,
+      "depth_verified_3d": false
+    },
+    {
+      "id": "COMMONS",
+      "node": "PUBLIC_EYE",
+      "activity": "activity-rich shared junction; no giant blank aisle",
+      "min_interior_depth_intent_m": 8,
+      "depth_verified_3d": false
+    }
+  ],
+  "nodes": [
+    {
+      "id": "PUBLIC_EYE",
+      "xyz": [
+        0,
+        0,
+        0
+      ],
+      "use": "commons",
+      "is_eye": true
+    },
+    {
+      "id": "MARKET_ENTRY",
+      "xyz": [
+        -11,
+        5,
+        0
+      ],
+      "use": "market"
+    },
+    {
+      "id": "MAKING_ENTRY",
+      "xyz": [
+        11,
+        5,
+        0
+      ],
+      "use": "making"
+    },
+    {
+      "id": "STAIR_1_START",
+      "xyz": [
+        5,
+        9,
+        0
+      ],
+      "use": "public stair"
+    },
+    {
+      "id": "STAIR_1_END",
+      "xyz": [
+        5,
+        15.4,
+        3.6
+      ],
+      "use": "public landing"
+    },
+    {
+      "id": "MID_CIVIC",
+      "xyz": [
+        8,
+        18,
+        3.6
+      ],
+      "use": "communal overlook"
+    },
+    {
+      "id": "STAIR_2_START",
+      "xyz": [
+        9,
+        19.5,
+        3.6
+      ],
+      "use": "public stair"
+    },
+    {
+      "id": "STAIR_2_END",
+      "xyz": [
+        9,
+        25.9,
+        7.2
+      ],
+      "use": "public landing"
+    },
+    {
+      "id": "READING_ENTRY",
+      "xyz": [
+        0,
+        30,
+        7.2
+      ],
+      "use": "learning"
+    },
+    {
+      "id": "STAIR_3_START",
+      "xyz": [
+        13,
+        29,
+        7.2
+      ],
+      "use": "shared residential stair"
+    },
+    {
+      "id": "STAIR_3_END",
+      "xyz": [
+        13,
+        35.4,
+        10.8
+      ],
+      "use": "residential landing"
+    },
+    {
+      "id": "HOME_ENTRY",
+      "xyz": [
+        20,
+        39,
+        10.8
+      ],
+      "use": "housing"
+    },
+    {
+      "id": "GARDEN",
+      "xyz": [
+        25,
+        43,
+        10.8
+      ],
+      "use": "garden"
+    }
+  ],
+  "edges": [
+    {
+      "from": "PUBLIC_EYE",
+      "to": "MARKET_ENTRY",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "PUBLIC_EYE",
+      "to": "MAKING_ENTRY",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "PUBLIC_EYE",
+      "to": "STAIR_1_START",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "STAIR_1_START",
+      "to": "STAIR_1_END",
+      "kind": "stair",
+      "steps": 20,
+      "rise_m": 0.18,
+      "going_m": 0.32,
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "STAIR_1_END",
+      "to": "MID_CIVIC",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "MID_CIVIC",
+      "to": "STAIR_2_START",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "STAIR_2_START",
+      "to": "STAIR_2_END",
+      "kind": "stair",
+      "steps": 20,
+      "rise_m": 0.18,
+      "going_m": 0.32,
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "STAIR_2_END",
+      "to": "READING_ENTRY",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "STAIR_2_END",
+      "to": "STAIR_3_START",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "STAIR_3_START",
+      "to": "STAIR_3_END",
+      "kind": "stair",
+      "steps": 20,
+      "rise_m": 0.18,
+      "going_m": 0.32,
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "STAIR_3_END",
+      "to": "HOME_ENTRY",
+      "kind": "level",
+      "intent_width_m": 3.2
+    },
+    {
+      "from": "HOME_ENTRY",
+      "to": "GARDEN",
+      "kind": "level",
+      "intent_width_m": 3.2
+    }
+  ],
+  "exit_conditions": [
+    "Artist-judged strong original oblique city aesthetic without boxes/voids/slabs domination",
+    "Human eye meaningful depth and three use programs actually visible in one coherent space",
+    "Same occupied place demonstrably maps from oblique view to human view in ONE REAL 3D model",
+    "At G0 no safety, access or daylight claims from this diagram; real collision/support/walk tests require future G2/G3"
+  ]
+}

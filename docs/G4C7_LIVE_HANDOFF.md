@@ -1,3 +1,9 @@
+# 【A70／2026-10-27 JST】作者主導の二尺度造形構想・経路原本を制作、ART HOLD／新規真正3D停止
+
+> A66〜A69連続ART REJECTの根本原因が形状生成器の主形態決定権にあったため、A70では**新たな低品質VTK試作を量産しない**方針を実践。新しい[二尺度G0 SVG](../artifacts/g4c7-a70-registered-urban-form/a70_authorial_dual_scale.svg)と[用途・動線・遠近IDを結ぶ設計原本](../artifacts/g4c7-a70-registered-urban-form/design_contract.json)、[検証コード](../tools/g4c7_a70_authorial_contract.mjs)を新規追加。A《都市孔線》を旧A16/A34の空洞回帰としてREJECT、B《交点重層都》を作者構想として調査。ただしBの姿も段状の山・棚の集合に見える危険が残り、**Bも未採用ART HOLD**。2D静止図・契約検証は真正3D・S1/G1・美術PASSではない。次は美術そのものの方向を突破しなければ3Dへ進めない。正式採用0、ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、歴代原本保護、Work事前承認、旧331/993安全契約継承。[A70監査](./G4C7_A70_REGISTERED_AUTHORIAL_CITY_G0_HOLD_JA.md)。
+
+---
+
 # 【A69独立再現確定／2026-10-27 JST】4室+40踏面+真正同一3D2視点、技術PASS・美術REJECT
 
 > [A69専用Actions #40455142669](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40455142669) SUCCESS。gzip原本から展開したPython、2視点PNG、manifestをbotコミット `2efff26f6525b2c79b5be451b1de35bc64758c12` に不変追加保存。Git blob SHA 5/5一致。**4用途の実床・壁・入口・40踏面と眼高Raycastは技術的限定前進**。ただし視覚としては斜視が**低層キャンパス**、人間目線が**白い通路と大きい壁**で両方ART REJECT。通常CI #40455142454は既知baseline欠損FAIL。正式S1/G1/G2/G3 NOT RUN、全体ART HOLD、採用0、Minecraft施工・都市統合禁止。A69の箱型施設を装飾/複製しない。A70は小さな部屋の実装数から離れ、最終目標である**巨大未来都市として魅力的な都市形態**を、遠景・近景の統一された美術で実際に突破する方法を優先。Work事前承認、歴史原本、旧331/993安全契約は維持。詳報[A69監査](./G4C7_A69_AUTHENTIC_ROOM_SECTION_G0_ART_REJECT_JA.md)。
