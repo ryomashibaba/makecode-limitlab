@@ -1,3 +1,9 @@
+# 【A77／2026-10-27 JST】3つの大きい居住建築断面・真正VTK三視点のG0美術はART REJECT
+
+> A76の小室数千個の量産を止め、**3つの非同一大断面×各5実床＝15床**を手指定し、その断面の壁・開いたファサード・地上市場/工房/閲覧を同一VTK 3Dで制作（水平640×510m／上端300m／281メッシュ／2036三角形）。遠景は3本の巨大本棚、近景は暗い大壁と棚空間へ戻り**G0 ART REJECT**。また地上の2階段間8.6m、階段終点と閲覧床の間32mのG0局所断裂を明示。上層住戸への正式アクセス・支持・安全は未証明、A73共有原本も未接続。新規[凍結ソース](../artifacts/g4c7-a77-thick-sections/a77_spatial_section.py.gz)／[監査](./G4C7_A77_AUTHORED_THICK_SECTION_G0_REJECT_JA.md)と専用Actionsで真正原本を保存予定（保存実行結果は後から確認）。**全体ART HOLD、採用0、S1/G1/G2/G3 NOT RUN、施工・都市統合禁止**。A77の大型棚を装飾/量産しない。既存331/993契約、Work事前承認、歴史原本保護。
+
+---
+
 # 【A76全証拠確定／2026-10-27 JST】1.6km試験地区・真正3D再現SUCCESS、近遠ともART REJECT
 
 > [専用VTK Actions #40503414433](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40503414433) SUCCESS。GitHub bot commit `b1c19811530014aba07cfd7f2f784503cdf84790` に生成源/OBJ 22,896頂点・33,836三角形/同一モデル3視点PNG/manifestをappend-only保存。Git blob 6/6がローカル原本一致。地盤修正後の人間目線・遠景を実画像審査し、**浮いた小室・棚塔・暗く薄い支持**というA67/A68反復でG0 ART REJECT。A73の入口床共有技術は今回のモデルへ未接続のため、接続・居住可用・支持の技術PASSは主張禁止。通常CI #40503414341は以前からのbaseline欠損FAIL。全体ART HOLD、正式採用0、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、旧原本/331・993契約/Work事前承認保持。[A76詳細監査](./G4C7_A76_MULTIDISTRICT_NATIVE_G0_REJECT_JA.md)。

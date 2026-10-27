@@ -1,0 +1,97 @@
+name: A77 native thick-section G0 visual falsification (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a77-thick-sections/a77_spatial_section.py.gz'
+      - 'artifacts/g4c7-a77-thick-sections/a77_postmortem.py'
+      - '.github/workflows/verify_g4c7_a77_thick_section.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a77-rejected-thick-section
+  cancel-in-progress: false
+jobs:
+  authentic-thick-section:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Restore exact A77 authored model source from immutable gzip
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,hashlib
+          d=Path('artifacts/g4c7-a77-thick-sections')
+          source=gzip.decompress((d/'a77_spatial_section.py.gz').read_bytes())
+          assert hashlib.sha256(source).hexdigest()=='f20da46403b51c107196f1215c270629bf8d3fdc85b2f447d9e11e7c95578740'
+          p=d/'a77_spatial_section.py'
+          assert not p.exists()
+          p.write_bytes(source)
+          print('A77_EXACT_SOURCE_PASS')
+          PY
+      - name: Install VTK and true headless renderer
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2' 'numpy>=1.26,<3' 'shapely==2.1.2' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Create genuine VTK 3D and oblique / human eye / inside PNGs
+        run: |
+          python -m py_compile 'artifacts/g4c7-a77-thick-sections/a77_spatial_section.py'
+          python 'artifacts/g4c7-a77-thick-sections/a77_spatial_section.py' --render
+      - name: Independently check real mesh/images and reproduce design failure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          import json
+          p=Path('artifacts/g4c7-a77-thick-sections/output')
+          m=json.loads((p/'a77_manifest.json').read_text())
+          assert m['stage']=='A77' and m['triangle_faces']==2036 and m['mesh_parts']==281
+          assert m['gross_count_tri_vertices']==1680 and m['inhabited_decks_as_actual_polygon_floors']==15
+          assert m['bbox_min']==[-320,-219,-12] and m['bbox_max']==[320,291,300]
+          assert m['art']=='NOT_APPROVED' and m['overall_art']=='HOLD'
+          assert all(m['formal_gates'][k]=='NOT_RUN' for k in ('S1','G1','G2','G3'))
+          assert m['minecraft_construction']==m['city_integration']=='FORBIDDEN'
+          assert m['rooms_are_reachable']==m['upper_floor_support']==m['eye_floor_raycast']=='NOT_TESTED'
+          obj=(p/'a77_authored_real_section.obj').read_text()
+          assert sum(x.startswith('v ') for x in obj.splitlines())==1680
+          assert sum(x.startswith('f ') for x in obj.splitlines())==2036
+          for name in ('oblique','public_eye','inside'):
+            with Image.open(p/(name+'.png')) as im:
+              assert im.size==(1280,800) and im.format=='PNG'
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>15
+          print('A77_TRUE_VTK_GEOMETRY_AND_IMAGES_REPRODUCED_BUT_ART_REJECT')
+          PY
+          python 'artifacts/g4c7-a77-thick-sections/a77_postmortem.py'
+      - name: Upload all historic model evidence independently
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a77-genuine-vtk-G0-three-shelves-art-rejected
+          path: |
+            artifacts/g4c7-a77-thick-sections/a77_spatial_section.py
+            artifacts/g4c7-a77-thick-sections/output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only archive true 3D and full G0 visual evidence
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a77-thick-sections
+          test -s "$D/output/a77_authored_real_section.obj"
+          test -s "$D/output/oblique.png"
+          test -s "$D/output/public_eye.png"
+          test -s "$D/output/a77_rejection_evidence.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a77_spatial_section.py" "$D/output"
+          git diff --cached --quiet && { echo 'A77 evidence was not newly generated'; exit 1; }
+          git commit -m 'A77: archive real thick-section G0 art REJECT and measured route gaps'
+          git push origin HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study
