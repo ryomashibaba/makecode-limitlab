@@ -1,0 +1,78 @@
+{
+  "stage": "A73",
+  "evidence": "G0_GENERATIVE_GEOMETRIC_CONTACT_ONLY_NOT_NAVMESH",
+  "architectural_intent": "door_opening_and_floor_derived_from_same_walk_graph",
+  "art": "NOT_APPROVED",
+  "overall_art": "HOLD",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "local_floor_contact": {
+    "MARKET": {
+      "height_m": 0.0,
+      "door_width_m": 4.0,
+      "same_height_floor_contact_m": 4.0,
+      "room_floor_area_m2": 258.78
+    },
+    "MAKER": {
+      "height_m": 0.0,
+      "door_width_m": 4.2,
+      "same_height_floor_contact_m": 4.2,
+      "room_floor_area_m2": 333.69
+    },
+    "READING": {
+      "height_m": 7.2,
+      "door_width_m": 4.6,
+      "same_height_floor_contact_m": 4.6,
+      "room_floor_area_m2": 443.79
+    },
+    "HOUSING": {
+      "height_m": 12.6,
+      "door_width_m": 4.0,
+      "same_height_floor_contact_m": 4.0,
+      "room_floor_area_m2": 265.59
+    }
+  },
+  "stair_flights": [
+    {
+      "from": "STAIR1_START",
+      "to": "STAIR1_END",
+      "steps": 20,
+      "rise_m": 3.6,
+      "horizontal_run_m": 6.4
+    },
+    {
+      "from": "STAIR2_START",
+      "to": "STAIR2_END",
+      "steps": 20,
+      "rise_m": 3.6,
+      "horizontal_run_m": 6.4
+    },
+    {
+      "from": "STAIR3_START",
+      "to": "STAIR3_END",
+      "steps": 30,
+      "rise_m": 5.4,
+      "horizontal_run_m": 9.6
+    }
+  ],
+  "limits": [
+    "No global collision/clearance",
+    "No actual walking",
+    "No support loads or evacuation",
+    "Room furnishing and heights not built",
+    "No proper daylight",
+    "Not an attractive full future city",
+    "G2/G3 not executed"
+  ],
+  "mesh": {
+    "mesh_vertices": 744,
+    "mesh_triangles": 248
+  },
+  "artifact_kind": "G0_EDITABLE_OBJ_TRUE_MESH_AND_SCHEMATIC_SVG_NOT_RENDERED_CYCLES"
+}

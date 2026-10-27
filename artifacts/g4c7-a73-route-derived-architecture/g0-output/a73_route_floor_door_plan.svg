@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<rect width="1400" height="1000" fill="#0d1a2b"/>
+<text x="35" y="49" fill="#e6f5f0" font-size="28" font-family="Arial" font-weight="bold">A73 — SINGLE GEOMETRY DATUM / G0 TOPOLOGY PROOF ONLY</text>
+<text x="35" y="80" fill="#8fbdc6" font-size="16" font-family="Arial">Real connected room entrances and public floor are generated from one shared graph. NOT FUTURE CITY ART.</text>
+<polygon points="478.0,938.0 478.0,1040.0 478.0,1068.0 422.0,1068.0 422.0,938.0 422.0,930.2 321.1,896.6 294.6,887.7 312.3,834.6 422.0,871.2 422.0,820.0 422.0,792.0 478.0,792.0 478.0,871.2 561.1,843.4 587.7,834.6 605.4,887.7 478.0,930.2 478.0,938.0" fill="#7fc9b3" opacity="0.32" stroke="#7fc9b3" stroke-width="2"/>
+<polygon points="422.0,687.0 445.9,687.0 492.0,673.2 518.8,665.1 534.9,718.8 478.0,735.8 478.0,756.0 478.0,784.0 422.0,784.0 422.0,719.1 415.1,696.2 422.0,694.2 422.0,687.0" fill="#bfaddb" opacity="0.32" stroke="#bfaddb" stroke-width="2"/>
+<polygon points="599.7,581.8 648.2,609.7 592.8,706.1 594.8,724.8 581.2,726.3 574.3,738.2 557.9,728.8 539.2,730.8 537.7,717.2 525.8,710.3 535.2,693.9 522.2,573.0 519.2,545.2 574.8,539.2 582.6,611.4 585.7,606.0 599.7,581.8" fill="#f2c17b" opacity="0.32" stroke="#f2c17b" stroke-width="2"/>
+<polygon points="694.5,429.7 716.1,431.6 790.2,403.8 816.4,394.0 836.0,446.4 746.4,480.0 733.9,622.4 731.5,650.3 675.7,645.5 691.6,463.9 684.0,443.6 693.6,440.0 694.5,429.7" fill="#cf9da8" opacity="0.32" stroke="#cf9da8" stroke-width="2"/>
+<polygon points="349.0,813.1 311.0,926.9 117.6,906.3 165.8,761.7 349.0,813.1" fill="#7fc9b3" opacity="0.30" stroke="#e9ecf0" stroke-width="3"/>
+<line x1="336.32455532033674" y1="851.0263340389897" x2="323.67544467966326" y2="888.9736659610103" stroke="#fff5b3" stroke-width="7"/>
+<text x="233.3" y="859.7" fill="white" font-family="Arial" font-size="18">MARKET</text>
+<polygon points="592.1,936.4 547.9,803.6 747.0,737.0 803.2,905.7 592.1,936.4" fill="#7fc9b3" opacity="0.30" stroke="#e9ecf0" stroke-width="3"/>
+<line x1="576.6407830863536" y1="889.9223492590608" x2="563.3592169136464" y2="850.0776507409392" stroke="#fff5b3" stroke-width="7"/>
+<text x="675.6" y="854.6" fill="white" font-family="Arial" font-size="18">MAKER</text>
+<polygon points="634.5,560.9 465.5,579.1 380.6,356.9 595.3,333.8 634.5,560.9" fill="#f2c17b" opacity="0.30" stroke="#e9ecf0" stroke-width="3"/>
+<line x1="572.8677762259039" y1="567.537316406441" x2="527.1322237740961" y2="572.462683593559" stroke="#fff5b3" stroke-width="7"/>
+<text x="518.2" y="458.9" fill="white" font-family="Arial" font-size="18">READING</text>
+<polygon points="784.8,465.7 655.2,454.3 667.6,274.7 832.0,289.1 784.8,465.7" fill="#cf9da8" opacity="0.30" stroke="#e9ecf0" stroke-width="3"/>
+<line x1="739.9238743499222" y1="461.74333900561817" x2="700.0761256500778" y2="458.25666099438183" stroke="#fff5b3" stroke-width="7"/>
+<text x="735.4" y="371.7" fill="white" font-family="Arial" font-size="18">HOUSING</text>
+<line x1="450.0" y1="820.0" x2="450.0" y2="756.0" stroke="#ffda87" stroke-width="7" stroke-dasharray="10 8"/>
+<line x1="500.0" y1="700.0" x2="564.0" y2="700.0" stroke="#ffda87" stroke-width="7" stroke-dasharray="10 8"/>
+<line x1="610.0" y1="620.0" x2="706.0" y2="620.0" stroke="#ffda87" stroke-width="7" stroke-dasharray="10 8"/>
+<rect x="980" y="120" width="385" height="825" rx="12" fill="#192b3d" stroke="#51677e"/>
+<text x="1010" y="166" fill="white" font-size="21" font-family="Arial">Floor datum levels</text>
+<rect x="1010" y="199" width="38" height="26" fill="#7fc9b3"/>
+<text x="1063" y="220" fill="white" font-size="20" font-family="Arial">z = 0.0 m</text>
+<rect x="1010" y="289" width="38" height="26" fill="#bfaddb"/>
+<text x="1063" y="310" fill="white" font-size="20" font-family="Arial">z = 3.6 m</text>
+<rect x="1010" y="379" width="38" height="26" fill="#f2c17b"/>
+<text x="1063" y="400" fill="white" font-size="20" font-family="Arial">z = 7.2 m</text>
+<rect x="1010" y="469" width="38" height="26" fill="#cf9da8"/>
+<text x="1063" y="490" fill="white" font-size="20" font-family="Arial">z = 12.6 m</text>
+<text x="1010" y="665" fill="#fff5b3" font-size="18" font-family="Arial">Yellow = shared doorway</text>
+<text x="1010" y="700" fill="#fff5b3" font-size="18" font-family="Arial">Dashed = stairs</text>
+<text x="1010" y="750" fill="#ffcece" font-size="17" font-family="Arial">No real walkability claim.</text>
+<text x="1010" y="788" fill="#ffcece" font-size="17" font-family="Arial">No support or G2/G3 QA.</text>
+<text x="1010" y="826" fill="#ffcece" font-size="17" font-family="Arial">No aesthetic approval.</text>
+</svg>
