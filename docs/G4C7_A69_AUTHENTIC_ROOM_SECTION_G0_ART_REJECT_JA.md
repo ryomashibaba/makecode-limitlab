@@ -32,3 +32,9 @@ A68でINHABITEDと名付けた12枚の厚板を廃棄し、新規の**一つの�
 4. 再現をActionsで確認した場合のみ技術整合PASSとする。通常CIの既知 `build/g4c4_access_baseline.json` 欠落FAILを偽データで修復しない。
 
 **状態：全体ART HOLD、正式採用0、S1/G1/G2/G3 NOT RUN、Minecraft Education施工・都市統合禁止、旧331人体/993足元/半幅0.65/足元+0.15〜+3.25/干渉45以下/未支持0/負対照の歴史的契約をそのまま維持。Work未使用（事前承認必要）。過去world/USED/CSV/ZIP/OBJ/GLB/PNG/.blendを保護。**
+
+## 5. 独立再現・原本保護の最終確定
+- [A69専用Actions #40455142669](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40455142669) **SUCCESS**：SHA固定gzipから本物のPythonを復元、4件故意不正検出、実床Raycast、同一VTK/OpenGL 2視点描画、PNG署名/CRC/1280×820/SHAとG0禁止契約を独立環境で再検証。
+- 自動保存コミット[`2efff26f6525b2c79b5be451b1de35bc64758c12`](https://github.com/ryomashibaba/makecode-limitlab/commit/2efff26f6525b2c79b5be451b1de35bc64758c12)で、[Python原本](../artifacts/g4c7-a69-inhabitable-section/a69_section.py)、[近景PNG](../artifacts/g4c7-a69-inhabitable-section/output/public_heart.png)、[遠景PNG](../artifacts/g4c7-a69-inhabitable-section/output/oblique.png)、[manifest](../artifacts/g4c7-a69-inhabitable-section/output/manifest.json)をappend-onlyで保存。GitHub Git blob SHAはローカル原本と5/5完全一致。PNG近景 blob `272722d33f304f8e4a9c5de30095e0821b9cf553`、遠景 blob `bc1a822ed13ca6a4aa0b04778b85ecd26caf83ca`。
+- [通常CI #40455142454](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40455142454) **FAIL**。428 tests、1 setup error、以前からの `build/g4c4_access_baseline.json` 欠落を実ログで確認。A69専用成功と通常CI成功を混同しない。
+- **独立G0技術再現PASS ≠ 美術採用 ≠ S1/G1/G2/G3 PASS**。実画像目視で2視点ともART REJECT。全体ART HOLD・正式採用0・Minecraft施工/都市統合禁止を維持。

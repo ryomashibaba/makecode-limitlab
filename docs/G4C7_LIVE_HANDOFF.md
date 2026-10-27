@@ -1,3 +1,9 @@
+# 【A69独立再現確定／2026-10-27 JST】4室+40踏面+真正同一3D2視点、技術PASS・美術REJECT
+
+> [A69専用Actions #40455142669](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40455142669) SUCCESS。gzip原本から展開したPython、2視点PNG、manifestをbotコミット `2efff26f6525b2c79b5be451b1de35bc64758c12` に不変追加保存。Git blob SHA 5/5一致。**4用途の実床・壁・入口・40踏面と眼高Raycastは技術的限定前進**。ただし視覚としては斜視が**低層キャンパス**、人間目線が**白い通路と大きい壁**で両方ART REJECT。通常CI #40455142454は既知baseline欠損FAIL。正式S1/G1/G2/G3 NOT RUN、全体ART HOLD、採用0、Minecraft施工・都市統合禁止。A69の箱型施設を装飾/複製しない。A70は小さな部屋の実装数から離れ、最終目標である**巨大未来都市として魅力的な都市形態**を、遠景・近景の統一された美術で実際に突破する方法を優先。Work事前承認、歴史原本、旧331/993安全契約は維持。詳報[A69監査](./G4C7_A69_AUTHENTIC_ROOM_SECTION_G0_ART_REJECT_JA.md)。
+
+---
+
 # 【A69／2026-10-27 JST】本物の4室＋40踏面＋VTK実床raycast、真正G0二視点はART REJECT
 
 > ベース `3afbf5cff86cebec5ffaafa8c37140ee94bef587`。A68の厚い`INHABITED_*`板を本当の居住室と混同した失敗を是正し、**市場・工房・研究閲覧・住宅の四つの実室**を床・分割壁・開口・室内家具として同一VTK/OpenGLシーンに制作。40の実踏面・2階段・上下街路に加え、広場から市場/工房へ面した7mの実開口、カメラ真下の実床へVTK OBBTree raycast（z=0）、4件故意不正検出を実施。**しかし斜視は低層キャンパス、近景は白い通路と無表情な壁で両ART REJECT**。技術的な局所改善と巨大都市美術不成立は分離。新[監査](./G4C7_A69_AUTHENTIC_ROOM_SECTION_G0_ART_REJECT_JA.md)とSHA固定原本・専用Actionsを追加（実行結果確定前はGitHub画像保存PASSとしない）。正式S1/G1/G2/G3 NOT RUN、ART HOLD、正式採用0、Minecraft施工・都市統合禁止、原本保護、Work事前承認、旧331/993契約を維持。次はA69の箱型施設を延命せず都市全体の美術方向を再構築。
