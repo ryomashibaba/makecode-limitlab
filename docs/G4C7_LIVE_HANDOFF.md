@@ -1,3 +1,9 @@
+# 【A75二視点美術最終判定／2026-10-27 JST】A73幾何の真正Blender接続TECH PASS、4棟模型でART REJECT
+
+> [A75独立Actions #40498888014](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40498888014) SUCCESS、botコミット`81e5f6e9ec817a3388393a96cc2d97f89f13dea3`へ真正.blend/同一Cyclesシーン近景・斜視PNGとmanifestを保存。**4入口がA73の公共床に同一高さで4/4接合・階段70段**という必要条件は技術PASS。しかし**近景は無地の公共通路と高い側壁、斜視は低層の4棟と折れ屋根**で両G0 ART REJECT。A75モデルを屋根・窓・住戸増加で延命禁止。通常CI #40498887896は既知baseline欠落でFAIL。**正式美術採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止**。A76では小室自動配置から大規模都市美術の作者主導設計へ本格移行。旧原本、331/993契約、Work事前承認を保持。[A75詳報](./G4C7_A75_REGISTERED_NATIVE_G0_JA.md)。
+
+---
+
 # 【A75／2026-10-27 JST】A73の床・入口・70階段を同じ原本から真正Blender造形へ連結する実制作
 
 > A74の3つのリング・橋・水景案はいずれもART REJECTでBlender化禁止。A75は新しい[作者編集可能Blender生成ソース](../tools/g4c7_a75_registered_native.py)が既存の[正本A73](../tools/g4c7_a73_topology_fabric.py)を直接取り込み、同じ入口線分と公共床から4実室、階段70段、2台の真正Cyclesカメラを作る方法へ転換。個別室の位置を独立指定してA72の接続失敗を繰り返す方法を停止。専用Actionsが.blendを再読込して実PNGと幾何同一性を照合。実レンダの目視ART判定まで行い、建築美術が弱ければ即REJECT。**技術PASS≠都市美術PASS、正式採用0・全体ART HOLD・S1/G1/G2/G3 NOT RUN・施工/都市統合禁止**。旧原本/331人体993足元/Work事前承認を維持。[A75監査](./G4C7_A75_REGISTERED_NATIVE_G0_JA.md)。

@@ -1,0 +1,58 @@
+{
+  "stage": "A75",
+  "date_jst": "2026-10-27",
+  "run_id": 40498888014,
+  "run_status": "SUCCESS",
+  "validated_commit": "81e5f6e9ec817a3388393a96cc2d97f89f13dea3",
+  "medium": "EDITABLE_REAL_BLENDER_4_5_CYCLES_TRUE_TWO_CAMERA_SCENE",
+  "images": {
+    "public_eye": {
+      "filename": "public_eye.png",
+      "sha256": "9ea824564321fc030e02da9e618b92d19f83d72d3cf82830cc308beca630cbc4",
+      "observed": "broad blank walkway, large side walls, hovering upper elements, poor visibility of occupied rooms",
+      "art": "G0_REJECT"
+    },
+    "oblique": {
+      "filename": "oblique.png",
+      "sha256": "bc51ad86e50a860dccf442b032da90c41cbcf06e3e4d75db8046f0548aadfd51",
+      "observed": "four independent low-rise box-like buildings with angular roofs and a raised connector; not a distinctive futuristic city",
+      "art": "G0_REJECT"
+    }
+  },
+  "original_blend_sha256": "75c7b0848bee3375d3c107712cd6b6a99133f709fcae88c20788d52ccb869221",
+  "technology": {
+    "A73_shared_4_entries_design_contact": "PASS_4_OF_4",
+    "native_blend_with_2_true_camera_views": "PASS",
+    "actual_stair_treads": 70,
+    "public_floor_triangles": 52,
+    "full_collision_coverage": "NOT_TESTED",
+    "all_walking_paths": "NOT_TESTED",
+    "engineering_support": "NOT_TESTED",
+    "real_km_scale": "NOT_BUILT",
+    "inhabited_full_rooms": "NOT_PROVEN"
+  },
+  "visual_gate": {
+    "oblique": "REJECT",
+    "human_eye": "REJECT",
+    "overall": "ART_REJECT",
+    "formal_art_adoptions": 0,
+    "global_art": "HOLD"
+  },
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "normal_ci": {
+    "run_id": 40498887896,
+    "conclusion": "FAIL",
+    "tests": 428,
+    "errors": 1,
+    "known_missing": "build/g4c4_access_baseline.json"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "retain": "A73 graph-derived shared 2D floor and entrance datum; discard A75 artistic massing and roof forms",
+  "next": "Do not re-produce a fourth variant of 4-room courtyard/campus. A76 must first author and approve large-scale spatial hierarchy where major forms demonstrably enclose usable districts, then one linked human viewpoint; no untethered landmarks, ring/waterfall spectacle, uninhabited masses."
+}
