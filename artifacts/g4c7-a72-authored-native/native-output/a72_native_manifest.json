@@ -1,0 +1,28 @@
+{
+  "stage": "A72",
+  "renderer": "BLENDER_CYCLES",
+  "art": "NOT_ASSESSED",
+  "gates": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "construction": "FORBIDDEN",
+  "integration": "FORBIDDEN",
+  "true_rooms": 4,
+  "treads": 40,
+  "complete_walk_test": false,
+  "body_collision_test": false,
+  "blend_sha256": "df969b8ecaf640f376db6375bbea2cf28988f42df9f512791a1f0d0fc3d41a5d",
+  "views": {
+    "public_heart": {
+      "sha256": "916c8b824df615f9a944dbf2140b184477dbecbfd4b74cc1dfe25b70769c2e6e",
+      "bytes": 730414
+    },
+    "oblique": {
+      "sha256": "344261a039adab1411f4c6b3fb2cb76fe5dca86393d03333690f1824688df109",
+      "bytes": 742865
+    }
+  }
+}
