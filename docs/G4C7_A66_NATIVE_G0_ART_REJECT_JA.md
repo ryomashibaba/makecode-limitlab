@@ -27,3 +27,10 @@ A65ではA64-Bの多孔の巨大崖・採石場への回帰を停止した。A66
 A66真正OpenGL2視点（G0）は実行したが、**S1/G1/G2/G3の正式検証は全てNOT RUN**。レンダ画像のPNG CRCやSHAは美術PASS/歩行安全の意味を持たない。Minecraft Education施工・都市統合FORBIDDEN。旧331人体、993足元、半幅0.65、足元+0.15〜+3.25、身体干渉上限45、未支持0、故意負対照の安全契約継続（新案へ未実行）。過去のワールド、USED/CSV/ZIP/GLB/OBJ/PNG/.blend原本は変更しない。Work使用は明示事前承認まで禁止。
 
 新しい専用Actionsは証拠をappend-onlyで生成し、正常に完了すれば `artifacts/g4c7-a66-occupied-ward/output/` のPNG2枚とmanifest、および展開後Python原本を自動保存する。ただし**Actions終了とコミットを確認するまでGitHub画像保存済みとは扱わない**。既存通常CIの `build/g4c4_access_baseline.json` 欠落FAILを偽修復しない。
+
+## 最終独立Actions実証確定
+- [専用Actions run #40441535210](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40441535210) **SUCCESS**：保存gzipから展開したPython原本のSHA-256照合、`--verify`、VTK/OpenGL二視点実描画、PNGヘッダ・CRC・1280×820寸法・出力SHA・施工禁止マニフェストをすべて検査した。これは**技術PASSのみ**。
+- 自動保存コミット [`7eb1f8403c2b1c0bb47cdcdb23fa51e74ec34231`](https://github.com/ryomashibaba/makecode-limitlab/commit/7eb1f8403c2b1c0bb47cdcdb23fa51e74ec34231) に、原本 [a66_native.py](../artifacts/g4c7-a66-occupied-ward/a66_native.py)、[近景PNG](../artifacts/g4c7-a66-occupied-ward/output/public_heart.png)、[遠景PNG](../artifacts/g4c7-a66-occupied-ward/output/oblique.png)、[manifest](../artifacts/g4c7-a66-occupied-ward/output/manifest.json) を**新規追加**。過去原本は未変更。
+- GitHub保存画像をbase64で独立再取得して両方目視確認。マニフェストの画像SHAはローカルと一致：近景 `1adc9b2b755eedb681dcc4aa2c500044167b4725fb891fbb9b4b9dbf2101a91e`、遠景 `aa0dca5742b82798d9cc4eef3d3caa34037e58e059ac7eb4744ab76480d17573`。**美術判定は両方ART REJECTのまま**。
+- 通常CI run [#40441535182](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40441535182) は引き続き**FAIL**。専用成功を通常CI合格や美術合格と混同しない。
+- **正式採用0、全体ART HOLD、正式S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止**。

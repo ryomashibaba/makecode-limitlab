@@ -1,3 +1,9 @@
+# 【A66独立再現確定／2026-10-27 JST】専用Actions SUCCESS、真正VTK/OpenGL2視点GitHub原本保護、ART REJECT
+
+> [A66専用Actions #40441535210](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40441535210) **SUCCESS**。bot保存コミット [`7eb1f8403c2b1c0bb47cdcdb23fa51e74ec34231`](https://github.com/ryomashibaba/makecode-limitlab/commit/7eb1f8403c2b1c0bb47cdcdb23fa51e74ec34231) で展開Python原本、同一3Dの近景・遠景真正OpenGL PNG2枚とSHA manifestをappend-only保存。GitHub保存PNGも独立取得・目視確認しローカルSHAと一致。**真正の技術再現はPASS、2視点美術ART REJECT、全体ART HOLD、正式採用0**。通常CI [#40441535182](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40441535182) は別途FAIL。正式S1/G1/G2/G3 NOT RUN、施工・都市統合禁止、Work事前承認、歴代原本・331/993安全契約保持。次はA66多角柱の装飾延命でなく、都市の外に見える占有された生活界面そのものを基本造形から設計する。
+
+---
+
 # 【最新A66／2026-10-27 JST】手動多角街区と実市場・工房・閲覧の同一3D2視点を生成→両方ART REJECT
 
 > 開始HEAD `4b8fa2309d147ace471f143e9876a9887faf20b1`。A65の空洞の巨大殻に戻らない方向として、11の作者指定敷地輪郭と3用途実床をVTK/OpenGLで一体制作（200オブジェクト、真正1280×820二視点）。**遠景は不透明な多角柱高層建築群、近景は大きな白通路・壁・薄庇**となり **2視点ともART REJECT**。都市主形態を押出しに委ねた問題の再発と判断し、このモデルへの装飾・増築は禁止。原本監査 [A66](./G4C7_A66_NATIVE_G0_ART_REJECT_JA.md)、専用Actionsで圧縮原本から再現・画像を保護。**美術採用0／全体ART HOLD／正式S1/G1/G2/G3 NOT RUN／Minecraft施工・都市統合FORBIDDEN**。旧331/993・半幅0.65・相対+0.15〜+3.25・干渉45以下・未支持0・負対照と全原本保護、Work事前承認継続。次は閉じた多角柱を窓で改良せず、外部に見える実生活空間から都市外形を再構成する。
