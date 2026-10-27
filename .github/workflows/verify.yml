@@ -14,6 +14,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Restore pinned G4C4 historical offline diagnostic (KNOWN FAILURE, not QA)
+        run: |
+          # The separate a2a4 reproduction workflow owns this exact generator.
+          # Never invent, silently skip, or check in a fabricated baseline.
+          mkdir -p build
+          npx --yes -p typescript@5.8.3 tsc --target es5 --module none --lib es5 --skipLibCheck --outFile build/limitlab_g4c4_a3.js tests/makecode_g4b_stub.d.ts makecode/limitlab_g4c4_a3.ts
+          node tools/audit_g4c4_access.js > build/g4c4_access_baseline.json
       - name: Validate Python CSV reader
         run: python -m unittest discover -s tests -v
       - name: Validate static dashboard and CSV reader
