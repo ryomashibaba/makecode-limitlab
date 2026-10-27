@@ -1,3 +1,9 @@
+# 【最新A65／2026-10-27 JST】A64-Bの巨孔型形態を過去A16/A34/A35と照合→直接3D化停止、全体ART HOLD
+
+> HEAD基準 `8ca3e6fa88a1b2da393435686d49117ddaae8ef7`。A16の巨大楕円切削、A34の一体公共空洞、A35の曲面化不採用の監査とコードを照合し、**A34/A35の実保存比較斜視＋A35南側内部画像を直接目視**。A64-B《群孔生活都》の『生活のための孔』は設計動機の変更だが、遠景が過去の採石場・谷・多孔の巨大崖と本質的に異なる**新美術実証なし**。**A64-B G0 BLOCK_DIRECT_3D、正式採用0、全体ART HOLD**。A65新真正3D・Blender/Cycles・S1/G1/G2/G3は NOT RUN。新規[系譜監査](./G4C7_A65_LINEAGE_G0_BLOCK_JA.md)と[機械可読の原本照合](../artifacts/g4c7-a65-lineage-gate/lineage.json)を追加。美術の自動PASSは行わず、施工・都市統合禁止、歴史原本保護、Work事前承認、旧331/993安全契約維持。新作を無理に量産せず、まず魅力ある都市の同一近景・遠景の具体的美術方向を見つける。
+
+---
+
 # 【最新A63証拠確定／2026-10-27 JST】実OpenGL2視点・原本PythonをGitHub完全再現→技術PASS、両美術ART REJECT
 
 > 専用Actions [40428615641](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40428615641) **SUCCESS**、`4d4fbfb8252c12fb96499f1f254c628cf71a01cb`で展開した真正ソース、PNG2枚、CRC/SHAマニフェストをGitHubへ不変保存。画像SHAはローカル真正G0と完全一致。**人間目線の巨大白通路・暗壁、斜視の箱型屋上住宅/低層キャンパスでART REJECT**。正式美術採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。通常CIは旧baseline欠落FAIL、修復偽装なし。詳細 [A63監査](./G4C7_A63_INHABITED_SECTION_G0_ART_REJECT_JA.md)。

@@ -1,0 +1,84 @@
+{
+  "stage": "A65",
+  "date_jst": "2026-10-27",
+  "baseline_git_head": "8ca3e6fa88a1b2da393435686d49117ddaae8ef7",
+  "evidence_type": "HISTORICAL_SOURCE_AND_IMAGE_COMPARISON_NOT_NEW_RENDER",
+  "verdict": "G0_LINEAGE_REVIEW_ONLY",
+  "overall_art": "HOLD",
+  "formal_art_adoptions": 0,
+  "construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "S1": "NOT_RUN",
+  "G1": "NOT_RUN",
+  "G2": "NOT_RUN",
+  "G3": "NOT_RUN",
+  "precedents": [
+    {
+      "id": "A16",
+      "kind": "carved_cliff_voids",
+      "source": "tools/g4c7_a16_living_oculi_void_city.py",
+      "source_git_blob": "89082172aafc1c357797233251ef5b2e0386431a",
+      "audit": "docs/G4C7_A16_LIVING_OCULI_ART_HOLD_JA.md",
+      "finding": "Boolean-cut large oculi in old twin-cliff city; actual new void aesthetic still unaccepted"
+    },
+    {
+      "id": "A34",
+      "kind": "single_body_carved_public_voids",
+      "source": "tools/g4c7_a34_carved_single_body.mjs",
+      "source_git_blob": "53f844e2f276ea0c27f3b341b836ba82604f2d58",
+      "audit": "docs/G4C7_A34_INTEGRAL_CARVED_CITY_ART_REJECT_JA.md",
+      "finding": "single contiguous body with 7 external-air-connected void samples; urban-scale image reads quarry/stepped mass"
+    },
+    {
+      "id": "A35",
+      "kind": "smoothed_carved_body",
+      "source": "artifacts/g4c7-a35-integrated-form-scout/qa_previews/oblique_a34_vs_a35_indexed.png",
+      "source_git_blob": "f6a588a2f915988ce32663dd2099fd0fc99dbb47",
+      "audit": "docs/G4C7_A35_CURVATURE_ART_REJECT_JA.md",
+      "finding": "same urban geometry still reads parallel terraces/canyon after curvature"
+    },
+    {
+      "id": "A63",
+      "kind": "rectangular_program_and_rooftop_housing",
+      "source": "artifacts/g4c7-a63-inhabited-section/a63_integrated.py",
+      "source_git_blob": "5f88fa859bfca938325a5dea443844c9f81e904a",
+      "audit": "docs/G4C7_A63_INHABITED_SECTION_G0_ART_REJECT_JA.md",
+      "finding": "main masses assembled from vtkCubeSource B() and repeated homes; campus and white corridor"
+    },
+    {
+      "id": "A64",
+      "kind": "authorial_porosity_diagram",
+      "source": "artifacts/g4c7-a64-authorial-form-gate/a64_porosity_authorial_board.svg",
+      "source_git_blob": "26e127d9d7ad66f822fa57df4a2f7abb9e783a35",
+      "audit": "docs/G4C7_A64_AUTHORIAL_FORM_GATE_G0_JA.md",
+      "finding": "conceptual holes around life spaces; not a 3D model or proof of aesthetic differentiation from A16/A34"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "A64-B",
+      "name": "群孔生活都 / Inhabited Porosity",
+      "g0_status": "BLOCK_DIRECT_3D",
+      "art_acceptance": "NOT_APPROVED",
+      "go_ahead_3d": false,
+      "precedent_refs": [
+        "A16",
+        "A34",
+        "A35"
+      ],
+      "similarity": "Differently motivated holes could still silhouette as a cliff, quarry or honeycomb. A64 board lacks depth-registered real-eye and distance views.",
+      "evidence": {
+        "human_eye_render": null,
+        "distant_render": null,
+        "same_scene_geometry": null
+      },
+      "release_conditions": [
+        "Prove visually different inhabited city-scale hierarchy from A16/A34/A35 before 3D",
+        "Ground a lived-in civic junction and its far-view exact locus in one authored spatial contract",
+        "Reject if mega-shells/void edges dominate rather than visible different neighborhoods"
+      ]
+    }
+  ],
+  "future_form_rule": "NO AUTOMATIC FORM ACCEPTANCE. No candidate is promoted from labels, box counts, procedural morphology or conceptual SVG.",
+  "negative_controls": "Five mutated contract fixtures exercised in pure JS; this is only manifest-integrity evidence, not a city/visual/art test."
+}
