@@ -1,0 +1,49 @@
+{
+  "stage": "A82_G0_SPATIAL_SPECIMEN_ONLY",
+  "source_sha256": "dcabda52ae2d603778ba98f1c74e0c1857edddf14a40913568fc2f519ef9b9dd",
+  "art": "NOT_APPROVED",
+  "overall_art": "HOLD",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "mesh": {
+    "parts": 205,
+    "vertices": 968,
+    "triangles": 780
+  },
+  "nominal": {
+    "portal_width_m": 8.0,
+    "portal_clear_height_m": 5.2,
+    "shared_slab_level_m": 24.0,
+    "ramp_slope": 0.05853658536585366
+  },
+  "shared_real_mid_slab_count": 1,
+  "programmed_rooms_with_geometric_partition": 4,
+  "shared_partition_portals": 2,
+  "gallery_portal_openings": 4,
+  "stair_treads": 120,
+  "true_walkability": "NOT_TESTED",
+  "load_bearing_safety": "NOT_TESTED",
+  "fully_furnished_habitable_rooms": "NOT_CERTIFIED",
+  "urban_scale": "LOCAL_G0_SPECIMEN_NOT_KM_CITY",
+  "caught_negative_controls": {
+    "fake_art": true,
+    "fake_G2": true,
+    "construction_unlock": true,
+    "blocked_portal": true,
+    "broken_wall": true,
+    "broken_vertical_route": true,
+    "invalid_shell": true
+  },
+  "views": [
+    "oblique",
+    "public_eye",
+    "interior_eye",
+    "cross_civic"
+  ]
+}

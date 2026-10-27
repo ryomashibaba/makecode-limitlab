@@ -1,0 +1,72 @@
+{
+  "stage": "A82_G0_INDEPENDENT_TRIANGLE_CHECK_NOT_S1_G2",
+  "shared_mid_slab_mesh_once": true,
+  "rays_into_real_wall_mesh": [
+    {
+      "room": "MARKET",
+      "actual_center_open": true,
+      "left_wall": true,
+      "right_wall": true,
+      "real_lintel": true
+    },
+    {
+      "room": "WORKSHOP",
+      "actual_center_open": true,
+      "left_wall": true,
+      "right_wall": true,
+      "real_lintel": true
+    },
+    {
+      "room": "READING",
+      "actual_center_open": true,
+      "left_wall": true,
+      "right_wall": true,
+      "real_lintel": true
+    },
+    {
+      "room": "RESIDENCE",
+      "actual_center_open": true,
+      "left_wall": true,
+      "right_wall": true,
+      "real_lintel": true
+    },
+    {
+      "room": "SHARED_LOW",
+      "actual_center_open": true,
+      "solid_next_to_opening": true,
+      "real_lintel": true
+    },
+    {
+      "room": "SHARED_UP",
+      "actual_center_open": true,
+      "solid_next_to_opening": true,
+      "real_lintel": true
+    }
+  ],
+  "portal_count_checked": 4,
+  "shared_partition_portal_levels": 2,
+  "upper_roof_to_facade_matching_vertices": 32,
+  "ramp_triangles_samples": 147,
+  "sample_position_wrong_height": 0,
+  "max_height_error_m": 7.105427357601002e-15,
+  "broken_geometry_caught": {
+    "triangles_block_actual_market_door": true,
+    "remove_physically_shared_slab": true,
+    "remove_real_ramp_mesh": true,
+    "remove_partition_door_lintel": true,
+    "remove_roof_real_mesh": true,
+    "mutate_roof_facade_joint_real_vertex": true
+  },
+  "full_human_swept_volume": "NOT_TESTED",
+  "bridge_junction_continuous_collision": "NOT_TESTED",
+  "real_structural_support_or_load": "NOT_TESTED",
+  "whole_shell_watertight": "NOT_TESTED",
+  "art": "NOT_APPROVED",
+  "formal": {
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN"
+  },
+  "construction": "FORBIDDEN"
+}
