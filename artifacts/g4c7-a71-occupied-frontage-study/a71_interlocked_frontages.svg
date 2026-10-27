@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-label="A71 concept art: irregular inhabited frontages intersecting, distant city and human street concept, no 3D">
+<defs>
+ <linearGradient id="night" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#05152e"/><stop offset=".62" stop-color="#134059"/><stop offset="1" stop-color="#203f55"/></linearGradient>
+ <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6e8690"/><stop offset=".48" stop-color="#34495f"/><stop offset="1" stop-color="#152941"/></linearGradient>
+ <linearGradient id="stone2" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#667b83"/><stop offset="1" stop-color="#19354c"/></linearGradient>
+ <linearGradient id="floor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#63747b"/><stop offset="1" stop-color="#1a3145"/></linearGradient>
+ <linearGradient id="warm" x1="0" y1="0" x2="1" y2=".3"><stop stop-color="#f8c78c"/><stop offset="1" stop-color="#ec876b"/></linearGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="13"/></filter>
+ <clipPath id="macroclip"><rect x="42" y="132" width="921" height="686" rx="14"/></clipPath>
+ <clipPath id="eyeclip"><rect x="982" y="132" width="576" height="686" rx="14"/></clipPath>
+</defs>
+<rect width="1600" height="1040" fill="#081523"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#e5efef">
+<text x="43" y="51" font-size="31" font-weight="bold" letter-spacing="1">A71  /  INTERLOCKED CIVIC FRONTAGES</text>
+<text x="43" y="80" font-size="16" fill="#a8c6cd">AUTHORIAL VISUAL STUDY   —   ONE URBAN PLACE, TWO INTENDED EXPERIENCES   —   G0 ART HOLD</text>
+<text x="47" y="114" font-size="18" font-weight="bold">01  DISTANT CITY — inhabited boundaries instead of a singular object</text>
+<text x="991" y="114" font-size="18" font-weight="bold">02  HUMAN EYE — inhabited public seam</text>
+</g>
+<rect x="42" y="132" width="921" height="686" rx="14" fill="url(#night)" stroke="#446777" stroke-width="2"/>
+<rect x="982" y="132" width="576" height="686" rx="14" fill="url(#night)" stroke="#446777" stroke-width="2"/>
+<g clip-path="url(#macroclip)">
+ <circle cx="721" cy="299" r="116" fill="#39748d" opacity=".14" filter="url(#soft)"/>
+ <path d="M42 750L964 710V830H42Z" fill="#092339"/>
+ <path d="M45 721L191 684 376 693 523 681 732 690 966 659V822H45Z" fill="#142c41" stroke="#77949e" stroke-width="2"/>
+ <!-- Three individually authored urban masses, deliberately asymmetrical and not three towers -->
+ <path d="M73 711L80 572 126 552 142 483 187 488 210 424 251 441 273 362 318 383 348 337 375 354 396 424 425 411 446 493 470 552 459 712Z" fill="url(#stone)" stroke="#9dbbc0" stroke-width="3"/>
+ <path d="M89 711L92 603 138 579 196 596 241 561 289 573 322 516 374 525 427 565 454 592V713Z" fill="#203e56" stroke="#699ca5" stroke-width="2"/>
+ <path d="M354 714L364 592 403 564 421 458 455 456 478 338 527 361 551 282 606 295 627 200 678 223 698 301 736 321 749 420 780 450 801 569 785 716Z" fill="#304b5f" stroke="#9babae" stroke-width="3"/>
+ <path d="M389 714L407 600 469 572 511 589 550 549 606 566 669 535 720 573 779 608V716Z" fill="#23435a" stroke="#8eb6b6" stroke-width="2"/>
+ <path d="M711 717L713 610 756 561 757 500 795 477 818 403 856 419 871 358 903 403 937 430 967 497V825H714Z" fill="url(#stone2)" stroke="#9ebcbf" stroke-width="3"/>
+ <path d="M724 715L741 635 793 604 837 619 895 577 963 621V810H724Z" fill="#25445a" stroke="#769daa" stroke-width="2"/>
+ <!-- Overlapping deep occupied frontages: not a regular checkerboard -->
+ <path d="M140 587L229 561 273 571 326 539 382 558 410 578 377 596 320 589 270 616 204 609 146 630Z" fill="#366a73" stroke="#9ce3ce" stroke-width="3"/>
+ <path d="M229 502L279 468 332 480 377 459 419 490 409 507 348 500 298 526 251 524Z" fill="#547b7b" stroke="#8acdc4" stroke-width="2"/>
+ <path d="M419 612L485 588 528 608 576 578 645 594 689 579 750 605 726 626 672 619 629 638 579 617 531 634 484 623 442 642Z" fill="#337076" stroke="#b4ebd0" stroke-width="3"/>
+ <path d="M443 504L497 476 547 491 597 465 643 481 693 448 754 467 765 492 716 490 657 514 604 497 557 525 506 513 458 536Z" fill="#416878" stroke="#a3d9cb" stroke-width="3"/>
+ <path d="M526 409L556 384 608 392 642 367 684 392 736 372 752 391 708 416 667 415 621 436 579 415 540 439Z" fill="#7b7d80" stroke="#e7bd87" stroke-width="2"/>
+ <path d="M754 613L808 580 848 598 888 578 946 601 960 629 907 610 869 628 823 620 788 645Z" fill="#4b7779" stroke="#a0d7c9" stroke-width="2"/>
+ <path d="M788 503L826 477 858 488 887 474 934 502 951 525 906 515 866 528 831 508 805 532Z" fill="#586e7d" stroke="#b2d4cd" stroke-width="2"/>
+ <!-- inhabited interior glimpses, uneven sizes -->
+ <g fill="#f5b77e" stroke="#ffe2b5" stroke-width="1">
+ <path d="M158 600L204 586L215 591L212 602L166 616Z"/><path d="M256 588L298 574L306 580L302 591L258 603Z"/>
+ <path d="M247 493L271 481L295 489L289 500L252 511Z"/><path d="M335 484L363 472L386 487L377 495L338 498Z"/>
+ <path d="M449 615L492 598L507 605L496 620L455 630Z"/><path d="M564 600L596 582L619 590L614 607L571 615Z"/>
+ <path d="M659 600L687 582L715 600L699 613L656 613Z"/>
+ <path d="M478 494L510 481L527 495L520 509L477 518Z"/><path d="M587 483L608 466L646 482L627 496L593 495Z"/>
+ <path d="M705 467L730 451L750 471L743 483L710 482Z"/>
+ <path d="M550 398L582 387L606 400L596 415L557 422Z"/>
+ <path d="M783 608L811 593L838 604L825 620L790 628Z"/><path d="M878 598L903 586L938 608L924 621L882 614Z"/>
+ </g>
+ <!-- crossed overlap where occupied public street, not an empty canyon -->
+ <path d="M271 672C336 639 380 663 425 642S499 630 539 651 645 678 696 654 762 656 818 678" stroke="#b1e2ce" stroke-width="14" fill="none" opacity=".24"/>
+ <path d="M271 672C336 639 380 663 425 642S499 630 539 651 645 678 696 654 762 656 818 678" stroke="#e9bc87" stroke-width="4" fill="none" stroke-dasharray="14 9"/>
+ <path d="M333 663Q385 627 435 641L479 642Q522 619 555 640L617 654" fill="none" stroke="#f4dbae" stroke-width="2"/>
+ <circle cx="515" cy="648" r="23" fill="#f8ca89" opacity=".18" stroke="#f3d18d" stroke-width="3"/>
+ <circle cx="515" cy="648" r="6" fill="#fbd4a0"/>
+ <text x="527" y="703" font-family="Arial,sans-serif" font-size="17" fill="#ffe9c2">PUBLIC NODE P-01</text>
+ <text x="75" y="764" font-family="Arial,sans-serif" font-size="14" fill="#a6bdc6">STUDY ONLY / individual frontages not solved as built rooms</text>
+</g>
+<!-- Human scale sketch: connected rooms face into a compact, active public junction -->
+<g clip-path="url(#eyeclip)">
+ <path d="M982 760L1208 544 1558 715V825H982Z" fill="#1d4053"/>
+ <path d="M982 822L1219 554 1558 820Z" fill="url(#floor)" stroke="#91b0ad" stroke-width="2"/>
+ <!-- left actual depth aspiration with room ceiling and return wall -->
+ <path d="M983 237L1160 322 1222 443 1106 627 983 728Z" fill="#24465a" stroke="#a4c5c3" stroke-width="3"/>
+ <path d="M984 395L1120 421 1180 468 1110 605 984 678Z" fill="#8c796d" stroke="#e3b889" stroke-width="4"/>
+ <path d="M1006 427L1113 450 1140 475 1089 560 1007 604Z" fill="#273749" stroke="#f6cd98" stroke-width="5"/>
+ <path d="M1006 466L1097 483 1109 495 1075 547 1006 570Z" fill="#a86e60"/>
+ <path d="M1006 557L1088 540 1123 556 1066 594 1006 617Z" fill="#bd947d"/>
+ <path d="M1015 573L1085 559" stroke="#ffe1ad" stroke-width="7"/>
+ <!-- right craft room depth -->
+ <path d="M1558 240L1348 321 1258 454 1412 620 1558 736Z" fill="#1b4055" stroke="#afc5bf" stroke-width="3"/>
+ <path d="M1558 388L1411 424 1330 471 1414 613 1558 680Z" fill="#647d7c" stroke="#b2e5ca" stroke-width="4"/>
+ <path d="M1540 430L1435 451 1375 483 1432 559 1544 607Z" fill="#263849" stroke="#fbd3a3" stroke-width="4"/>
+ <path d="M1540 484L1446 500 1414 510 1447 545 1540 562Z" fill="#2e5260"/>
+ <path d="M1445 564L1481 548 1539 561 1539 587 1483 579Z" fill="#c59f7f" stroke="#f4cd9d" stroke-width="2"/>
+ <!-- upper reading not a monolithic overhead slab -->
+ <path d="M1158 327L1255 280 1364 343 1332 388 1205 395Z" fill="#375566" stroke="#c8dad0" stroke-width="3"/>
+ <path d="M1197 340L1255 310 1322 344 1311 375 1221 380Z" fill="#ceaa81" stroke="#fae1ab" stroke-width="3"/>
+ <path d="M1225 368L1303 364" stroke="#f5d1a0" stroke-width="6"/>
+ <path d="M1205 410L1330 404" stroke="#83c7bd" stroke-width="7"/>
+ <path d="M1212 418L1199 482 1231 506 1255 452 1269 482 1306 469 1325 408" fill="none" stroke="#b8d8cb" stroke-width="7"/>
+ <g fill="#ffe0b8">
+ <circle cx="1046" cy="551" r="8"/><path d="M1046 558L1041 583 1053 586 1052 558Z"/>
+ <circle cx="1489" cy="541" r="8"/><path d="M1489 549L1481 581 1499 583 1498 551Z"/>
+ <circle cx="1251" cy="371" r="5"/><path d="M1251 375L1246 387 1257 388 1256 376Z"/>
+ <circle cx="1233" cy="616" r="8"/><path d="M1233 625L1229 657 1239 657 1238 626Z"/>
+ </g>
+ <g stroke="#d9b992" stroke-width="3" fill="none">
+  <path d="M1144 645L1221 552 1284 548 1362 652"/>
+  <path d="M1162 639L1224 569 1279 569 1342 640"/>
+ </g>
+ <path d="M1200 552L1223 530L1242 547L1285 530L1300 549" fill="none" stroke="#7cdfc8" stroke-width="5"/>
+ <g font-family="Arial,sans-serif" font-size="19" font-weight="bold">
+  <text x="1007" y="399" fill="#f3d3a9">MARKET</text>
+  <text x="1420" y="400" fill="#a3e8d9">MAKING</text>
+  <text x="1198" y="272" fill="#ffe2b7">READING</text>
+ </g>
+ <text x="1010" y="787" fill="#d1dde0" font-size="15" font-family="Arial,sans-serif">EXPERIENCE INTENT, NOT A REAL 1.7m PERSPECTIVE</text>
+</g>
+<g font-family="Arial,sans-serif" fill="#d7e2e5">
+<path d="M42 841H1558" stroke="#517085" stroke-width="2"/>
+<text x="47" y="879" font-size="23" font-weight="bold">A71  VISUAL SELF-CRITIQUE  /  NOT APPROVED</text>
+<text x="47" y="911" font-size="17">Changed: no dominant ring, arch, full-width roof, continuous cliff or open-room array; active frontages become the intended visual identity.</text>
+<text x="47" y="940" font-size="17">Still unproven: the skyline could read as jagged megablocks; the street could read as a commercial atrium; geometry may be impossible.</text>
+<text x="47" y="986" font-size="15" fill="#9ac5c8">AUTHORIAL SVG CONCEPT ONLY  •  NO SAME-SCENE 3D  •  NO VERIFIED LIVING SPACE  •  ART HOLD / ADOPTIONS 0 / S1-G3 NOT RUN</text>
+</g>
+</svg>

@@ -1,3 +1,9 @@
+# 【A71／2026-10-27 JST】《交錯生活前面》G0作者描画を保存、正式美術採用0／ART HOLD
+
+> 最新の美術試験は[独立SVG原本](../artifacts/g4c7-a71-occupied-frontage-study/a71_interlocked_frontages.svg)と[監査](./G4C7_A71_INTERLOCKED_OCCUPIED_FRONTAGES_G0_HOLD_JA.md)。A70の段状山/棚型の形状を単純押出しせず、**異なる都市地区の活動を含む前面が交錯する遠景**と、**市場・工房・閲覧が近接する人間目線**を同一の公共交点の構想として2D制作。ただし2枚は同一実3Dカメラではない。都市遠景は岩塊/工場、近景は商業アトリウムへの回帰リスクが残り、**G0 ART HOLD／正式美術採用0**。Blender/Cycles/VTK新実3D・正式S1/G1/G2/G3 NOT RUN。施工・都市統合禁止、既存原本不変更、Work事前承認、331/993など旧技術契約保持。自動3D化禁止。次の美術審査でこの候補が弱ければ停止。
+
+---
+
 # 【A70原本整合の独立確認／2026-10-27 JST】Actions SUCCESS、構想自体はART HOLD
 
 > [専用Actions #40469235426](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40469235426) 成功。新しい2D構想と共通JSON原本について、経路の段差・用途の接続・遠景と公共室の模式的なID対応、故意改変7種類をNodeで検出した。**3D・美術・実歩行のPASSではない**。A70の《交点重層都》は、遠景の段状山・棚型断面という旧形態の危険が残り**ART HOLD/正式採用0**。Minecraft施工・都市統合禁止、正式S1/G1/G2/G3 NOT RUN。次に必要なのは契約の追加でなく独創性のある美術的姿そのものを成立させること。
