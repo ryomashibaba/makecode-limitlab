@@ -1,0 +1,109 @@
+name: G4-C7 A79 native route-driven morphology G0 (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a79-route-driven-g0/a79_source.py.gz.b64'
+      - '.github/workflows/verify_g4c7_a79_route_morphology.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a79-route-derived-technical-evidence
+  cancel-in-progress: false
+jobs:
+  independent-g0-reproduction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore immutable authored source with a real SHA-256 match
+        run: |
+          python - <<'PY'
+          import base64,gzip,hashlib
+          from pathlib import Path
+          d=Path('artifacts/g4c7-a79-route-driven-g0')
+          raw=base64.b64decode((d/'a79_source.py.gz.b64').read_text().strip(),validate=True)
+          source=gzip.decompress(raw)
+          assert hashlib.sha256(source).hexdigest()=='dbd34c757c4f4e8b43b553fc7a9ea969038f34899744f7c9a86ca26ff7d042a8'
+          out=d/'a79_space_derived_native.py'
+          assert not out.exists(), 'No overwriting historical source'
+          out.write_bytes(source)
+          print('A79_AUTHORED_CODE_BYTE_EXACT__NOT_ART_APPROVAL')
+          PY
+      - name: Install reproducible genuine VTK/EGL renderer
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'vtk==9.6.2' 'shapely==2.1.2' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Run real source verification including four deliberately invalid cases
+        run: |
+          python -m py_compile artifacts/g4c7-a79-route-driven-g0/a79_space_derived_native.py
+          python artifacts/g4c7-a79-route-driven-g0/a79_space_derived_native.py --verify
+      - name: Rebuild native OBJ and same-scene VTK three-view images
+        run: |
+          python artifacts/g4c7-a79-route-driven-g0/a79_space_derived_native.py --build
+      - name: Strict limited G0 evidence verification, never art/safety PASS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          from PIL import Image,ImageStat
+          d=Path('artifacts/g4c7-a79-route-driven-g0')
+          p=d/'a79-output'
+          m=json.loads((p/'a79_manifest.json').read_text())
+          assert m['stage']=='A79_G0_TECH_RESEARCH_ONLY'
+          assert m['overall_art']=='HOLD' and m['art']=='NOT_APPROVED'
+          assert all(m['formal'][k]=='NOT_RUN' for k in ('S1','G1','G2','G3'))
+          assert m['minecraft_construction']==m['city_integration']=='FORBIDDEN'
+          assert m['source_sha256']==hashlib.sha256((d/'a79_space_derived_native.py').read_bytes()).hexdigest()
+          assert m['mesh']['mesh_part_count']==70
+          assert m['mesh']['obj_triangles']==402
+          assert m['topology']['connected_planar_footprint']
+          assert m['topology']['connected_spatial_3d_walking']=='NOT_TESTED'
+          assert m['morphology_sensitivity']['actual_facade_mesh_changes_in_both_edits']
+          assert len(set(m['morphology_sensitivity']['distinct_facade_sha256']))==3
+          assert set(m['morphology_sensitivity']['tested_negative_controls'])=={
+            'fake_art_approval','fake_formal_G2','construction_unlocked','off_route_station'}
+          for name in ('oblique','public_eye','civic_side'):
+            f=p/(name+'.png')
+            with Image.open(f) as im:
+              assert im.format=='PNG' and im.size==(1200,780)
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>10
+          assert (p/'a79_route_derived_occupied_membrane.obj').stat().st_size>10000
+          print('A79_G0_AUTHENTIC_MESH_AND_TESTS_PASS__G0_ART_REJECT')
+          PY
+      - name: Keep rejected technical evidence independent of archive commit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a79-g0-real-three-view-campus-return-ART-REJECT
+          path: |
+            artifacts/g4c7-a79-route-driven-g0/a79_space_derived_native.py
+            artifacts/g4c7-a79-route-driven-g0/a79-output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only archival on the existing protected research branch
+        run: |
+          set -euo pipefail
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          D=artifacts/g4c7-a79-route-driven-g0
+          test -s "$D/a79-output/a79_manifest.json"
+          test -s "$D/a79-output/oblique.png"
+          test -s "$D/a79-output/public_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a79_space_derived_native.py" "$D/a79-output"
+          if git diff --cached --quiet; then echo 'A79 negative evidence already retained'; exit 0; fi
+          git commit -m 'A79: archive G0 real morphology sensitivity study (ART REJECT)'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
