@@ -1,0 +1,97 @@
+name: A66 G0 authored city dual native render (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a66-occupied-ward/a66_native.py.gz'
+      - '.github/workflows/verify_g4c7_a66_g0_native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: a66-authored-ward-native-g0
+  cancel-in-progress: false
+jobs:
+  rejected-city-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install native VTK, triangulation and software rendering
+        run: |
+          python -m pip install --disable-pip-version-check 'vtk==9.6.2' 'shapely==2.1.2'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libosmesa6 libgl1-mesa-dri libegl1
+      - name: Restore exact saved A66 script by author SHA
+        run: |
+          python - <<'PY'
+          import gzip,hashlib,pathlib
+          d=pathlib.Path('artifacts/g4c7-a66-occupied-ward')
+          raw=gzip.decompress((d/'a66_native.py.gz').read_bytes())
+          sha=hashlib.sha256(raw).hexdigest()
+          assert sha=='15ef83be0e15cba23dcda914c4361162f05480012023752f4c46ff2721e5b528',(sha,'SOURCE_SHA_MISMATCH')
+          (d/'a66_native.py').write_bytes(raw)
+          print('A66_ORIGINAL_SOURCE_SHA256_PASS')
+          PY
+      - name: Verify Python and authored program contract
+        run: |
+          python -m py_compile artifacts/g4c7-a66-occupied-ward/a66_native.py
+          python artifacts/g4c7-a66-occupied-ward/a66_native.py --verify
+      - name: Generate true VTK/OpenGL G0 rejected city views
+        env:
+          VTK_DEFAULT_OPENGL_WINDOW: vtkOSOpenGLRenderWindow
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: python artifacts/g4c7-a66-occupied-ward/a66_native.py --render
+      - name: Verify native pixels and explicit safety nonclaims
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,struct,zlib
+          d=pathlib.Path('artifacts/g4c7-a66-occupied-ward/output')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['stage']=='A66' and m['renderer']=='VTK_OpenGL'
+          assert m['art']=='NOT_APPROVED'
+          assert m['minecraft_construction']=='FORBIDDEN' and m['city_integration']=='FORBIDDEN'
+          assert [m[g] for g in ['S1','G1','G2','G3']]==['NOT_RUN']*4
+          assert m['object_count']==200 and len(m['districts_authored'])==11
+          assert m['public_eye'][2]-m['public_floor_at_eye']==1.7
+          for f in ['public_heart.png','oblique.png']:
+            b=(d/f).read_bytes()
+            assert b[:8]==bytes.fromhex('89504e470d0a1a0a')
+            k=8;types=[]
+            while k<len(b):
+              n=struct.unpack_from('>I',b,k)[0];tag=b[k+4:k+8];raw=b[k+8:k+8+n]
+              crc=struct.unpack_from('>I',b,k+8+n)[0]
+              assert (zlib.crc32(tag+raw)&0xffffffff)==crc
+              if tag==b'IHDR':assert struct.unpack('>II',raw[:8])==(1280,820)
+              k+=12+n;types.append(tag)
+              if tag==b'IEND':break
+            assert k==len(b) and b'IDAT' in types and types[-1]==b'IEND'
+            assert hashlib.sha256(b).hexdigest()==m['image_sha256'][f]
+          print('A66_NATIVE_G0_IMAGE_INTEGRITY_PASS__ART_REJECT')
+          PY
+      - name: Upload images as diagnostic evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-a66-native-G0-ART-REJECT-evidence
+          path: artifacts/g4c7-a66-occupied-ward/output/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Commit append-only source and real images
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a66-occupied-ward
+          test -s "$D/output/public_heart.png"
+          test -s "$D/output/oblique.png"
+          test -s "$D/output/manifest.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a66_native.py" "$D/output"
+          git diff --cached --quiet && { echo 'No new evidence, stopping'; exit 1; }
+          git commit -m 'A66: archive actual G0 dual-view native evidence (ART REJECT)'
+          git push origin 'HEAD:refs/heads/dev/g4c7-a17-monolithic-rift-fold-art-study'
