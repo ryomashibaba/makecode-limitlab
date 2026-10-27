@@ -1,3 +1,9 @@
+# 【最新A63証拠確定／2026-10-27 JST】実OpenGL2視点・原本PythonをGitHub完全再現→技術PASS、両美術ART REJECT
+
+> 専用Actions [40428615641](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40428615641) **SUCCESS**、`4d4fbfb8252c12fb96499f1f254c628cf71a01cb`で展開した真正ソース、PNG2枚、CRC/SHAマニフェストをGitHubへ不変保存。画像SHAはローカル真正G0と完全一致。**人間目線の巨大白通路・暗壁、斜視の箱型屋上住宅/低層キャンパスでART REJECT**。正式美術採用0、全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。通常CIは旧baseline欠落FAIL、修復偽装なし。詳細 [A63監査](./G4C7_A63_INHABITED_SECTION_G0_ART_REJECT_JA.md)。
+
+---
+
 # 【最新A63 G0／2026-10-27 JST】実室＋上層居住の同一3D断面を2視点で制作→キャンパス／巨大白通路の再発でART REJECT
 
 > 前HEAD `8f672e87453d25f1aaf3bf14ce3a8ec62e494089`、A62技術PASS/美術REJECTを照合。A63は3つの地上の本物の実室と上層住居7件、中層個室6件、採光庭、カメラ2視点を同じVTK/OpenGLシーンに作り、オフスクリーン1280×820の2実画像と5件故意不正入力の検出をローカル実施。**斜視は低層キャンパス／住戸の小屋列、近景は広い白い通路／大きな暗い壁**で、2視点ともG0 ART REJECT。**Blender/Cyclesではない**。実床Raycast、支持・実歩行・自然採光は未検証、接続の名称だけでPASSとしない。ソース `artifacts/g4c7-a63-inhabited-section/a63_integrated.py.gz` をGitHubに原本Git blob一致で保存し、CIで解凍・実描画して画像を不変保護予定。詳報 [A63美術監査](./G4C7_A63_INHABITED_SECTION_G0_ART_REJECT_JA.md)。**都市美術改善未達、正式採用0、全体ART HOLD、Minecraft施工・都市統合禁止。S1/G1/G2/G3 NOT RUN。Work利用には事前承認が必要。** A64では最初の近景・遠景が両方強い意匠案に至らなければ同じ街区を装飾/増殖しない。

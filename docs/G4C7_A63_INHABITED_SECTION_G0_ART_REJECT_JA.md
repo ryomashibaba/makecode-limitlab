@@ -34,3 +34,11 @@ A62の3つの独立した低層棟をそのまま増築せず、1つの開いた
 
 ## 5. 保護条件
 全体**ART HOLD／正式美術採用0件**。A63はG0技術のみ、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止。人体331／足元993／半幅0.65／+0.15〜3.25／干渉45以下／未支持0／負の対照は旧契約を維持し将来検査まで未実行。旧世界、USED、CSV、ZIP、OBJ、GLB、PNG、.blend、とくにA54/A59/A62の真正証拠を不変にする。Work利用は事前明示承認まで禁止。通常CIの旧`build/g4c4_access_baseline.json`欠落によるFAILを偽入力で消さない。
+
+## 6. A63独立CIで実画像を再現し保存：限定技術PASS
+- 専用Actions [40428615641](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40428615641) は **SUCCESS**。公式でない別のアートPASSではなく、VTK 9.6.2＋OSMesaによる実3D G0再現が成功したという意味。
+- 圧縮原本から展開したPythonのSHA-256 `e812a37e200fa52f3b6ab4245aded85ad3ce6b8bee25c2f4b30809525954354d` が実ローカル原本と一致。5種類の不正入力を全て拒絶。
+- 真正OpenGL画像2枚のPNG CRC、1280×820解像度と各出力SHAを実行環境で検査し全PASS。CIで生成した`public_heart.png`と`oblique.png`は**ローカルで人が審査した画像と同一SHA**（上記）と正本JSONから確認。
+- 保存コミット [`4d4fbfb8252c12fb96499f1f254c628cf71a01cb`](https://github.com/ryomashibaba/makecode-limitlab/commit/4d4fbfb8252c12fb96499f1f254c628cf71a01cb) はA63スクリプト原文、2枚のPNGとSHAマニフェストを過去の証拠に上書きせず追加した。
+- 一方、通常CI [40428615637](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40428615637) は428 tests中1エラー、**従来からの`build/g4c4_access_baseline.json`欠落によるFAIL**。A63の美術ゲートとも独立。
+- **最終：実3D/原本保護は技術PASS、G0遠景・人間目線はART REJECT。全体ART HOLD、正式採用0。正式S1/G1/G2/G3 NOT RUN。**
