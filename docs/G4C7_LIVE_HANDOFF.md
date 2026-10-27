@@ -1,3 +1,9 @@
+# 【A81真正3D実室・正規CI修復確定／2026-10-28 JST】室は4・入口/屋根レイ成立。しかし街路沿い小施設へ回帰、G0 ART REJECT
+
+> [A81独立Actions #40585535059](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40585535059) **SUCCESS**。[GitHubの生成Python・独立監査Python・実OBJ・4枚真正VTK PNG・2検査JSON](../artifacts/g4c7-a81-inhabited-fold/)を原本SHA照合・真正再生成・append-only保存。モデルは261部材/1368頂点/1332三角形。市場/工房/閲覧/住宅の4箇所で共通街路床と同座標の床・側壁・幅6m×頭上4.6mの実開口・屋根・外壁・模型家具を制作し、実三角形へ独立レイを撃って確認。4登り区間140段板、街路中心線40レイ/64座標点の限定接続検査、実メッシュ4改竄検出成立。**ただし全3D美術画像は低層キャンパス・空虚な室内でG0 ART REJECT。実人体連続歩行・完全床支持・構造/避難/居住適性はNOT TESTED**。A81は「実室が0だったA80より狭い技術前進」であり、「巨大未来都市の大形態向上」ではない。A77棚→A78巨彫刻→A79低層キャンパス→A80街路床板→A81小施設列という造形文法失敗を抜本転換せよ。単一路線1平坦区間=1室、4用途4室の設計枠を続投しない。詳細：[A81実メッシュ監査](./G4C7_A81_INHABITED_FOLD_TRUE_MESH_G0_REJECT_JA.md)。さらに通常[Verify LimitLab #40585840169](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40585840169) **SUCCESS**：もともと別の`a2a4_reproduce_known_access_failures.yml`にあった正規G4C4アクセス不良再現処理を通常`verify.yml`のテスト前に追加し、baseline欠落のCI失敗を真の生成で解消。歴史的な8翼/20上階のアクセス不良が解決されたわけではない。**正式美術採用0・全体ART HOLD・正式S1/G1/G2/G3 NOT RUN・Minecraft施工/都市統合禁止、331人体/993足元契約/歴代証拠/main保護、Work事前承認、Draft PR #53を継続。**
+
+---
+
 # 【A80再現・独立反証確定／2026-10-27 JST】立体都市網が床板・壁片モデルへ戻り、全視点G0 ART REJECT
 
 > [A80真正VTK/EGL独立Actions #40521250155](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40521250155) SUCCESS。[保存済みPython/OBJ/3PNG/manifest/独立監査](../artifacts/g4c7-a80-network-fabric/)の実在確認。経路ノード11・区間12・道路/活動床共有境界12、120部材/720 OBJ頂点/840面の本物の3D。街路床252点の限定標高サンプルは床欠落0・高さ不一致0、用途・道形変更で実床メッシュが変化し、5件の故意不正も拒否。**ただし本当の閉じた居住室0、用途上階への実階段0、人体連続歩行・支持・避難未検証**。遠景は道路／床板模型、地上と高所は無地壁が支配し**3/3 G0 ART REJECT**。A79の4用途→4棟をやめても、A80の`経路→板帯→壁片`造形文法が新しい失敗原因と確定。失敗モデルを装飾/増築/大量反復して延命しない。[A80根本反省](./G4C7_A80_SHARED_NETWORK_NATIVE_G0_ART_REJECT_JA.md)を次工程の必須参照とする。**正式美術採用0・全体ART HOLD・S1/G1/G2/G3 NOT RUN、Minecraft Education施工/都市統合禁止、旧331/993契約、main不変更、Work事前承認**。次は巨大外形だけ/室のない道路だけではなく、一つの設計原本から室内・開口・複数用途・地区間移動・遠景外観の双方向対応を実メッシュとして実証する。
