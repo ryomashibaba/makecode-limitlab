@@ -1,0 +1,57 @@
+name: G4-C7 B11-R5 D26 authored spatial pre-3D rejection (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d26/**'
+      - '.github/workflows/g4c7-b11-r5-d26-author-pre3d.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d26-authorial-pre3d
+  cancel-in-progress: true
+jobs:
+  spatial-original-and-independent-rejection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install only 2D visual and geometric dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'matplotlib>=3.9,<4' 'shapely>=2.0,<3'
+      - name: Rebuild two authored original 2D visual studies
+        run: python research/g4c7-b11-r5-d26/d26_author.py
+      - name: Independently audit author JSON, real 2D geometry and four mutation controls
+        run: python research/g4c7-b11-r5-d26/d26_independent_audit.py
+      - name: Assert no false promotion from conceptual images or 2D plan
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/g4c7-b11-r5-d26')
+          d=json.loads((p/'d26_independent_results.json').read_text())
+          assert d['art']=='BOTH_PRE_3D_ART_REJECT' and d['adopted']==0
+          assert d['overall']=='ART HOLD' and d['true_3d']=='NOT_RUN'
+          assert d['official_QA']=='NOT_RUN' and d['construction']=='FORBIDDEN'
+          assert len(d['concepts'])==2
+          assert all(x['formal_body_sweep_331_993']=='NOT_RUN' for x in d['concepts'])
+          assert len(list(p.glob('d26_*_author_plate.svg')))==2
+          assert len(list(p.glob('d26_*_author_plate.png')))==2
+          print('CI PASS means reproducible 2D early rejection, NO art approval or true 3D')
+          PY
+      - name: Archive authored original and negative evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D26-2D-AUTHOR-PRE3D-REJECT-NO-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: |
+            research/g4c7-b11-r5-d26/d26_author_original.json
+            research/g4c7-b11-r5-d26/d26_independent_results.json
+            research/g4c7-b11-r5-d26/d26_*_author_plate.png
+            research/g4c7-b11-r5-d26/d26_*_author_plate.svg

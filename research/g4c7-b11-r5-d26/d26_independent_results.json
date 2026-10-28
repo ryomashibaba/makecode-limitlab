@@ -1,0 +1,83 @@
+{
+  "stage": "D26",
+  "scope": "INDEPENDENT_PLAN_DIAGNOSTIC_NOT_A_3D_AUDIT",
+  "concepts": [
+    {
+      "id": "A",
+      "2d_program_footprint_components": 4,
+      "public_route_buffer_0p65_intersections": {},
+      "maker_research_horizontal_angular_separation_deg": [
+        73.94,
+        69.53,
+        69.97
+      ],
+      "other_role_opaque_footprint_ray_blockers": {
+        "0_-65": {
+          "maker": [],
+          "research": []
+        },
+        "-4_-69": {
+          "maker": [],
+          "research": []
+        },
+        "4_-69": {
+          "maker": [],
+          "research": []
+        }
+      },
+      "human_eye_drawn": "yes, conceptual only",
+      "shared_perspective_3d_visibility": "NOT_RUN",
+      "upper_level_route": "NOT_MODELED",
+      "interior_rooms": "NOT_MODELED",
+      "daylight_3d_and_weather": "NOT_RUN",
+      "formal_body_sweep_331_993": "NOT_RUN",
+      "art": "PRE-3D ART REJECT",
+      "reason": "A repeats four separated pavilion-like masses; B repeats oversized amphitheatre and separates activities. Neither a credible integrated megacity composition."
+    },
+    {
+      "id": "B",
+      "2d_program_footprint_components": 4,
+      "public_route_buffer_0p65_intersections": {
+        "culture": {
+          "centerline_inside_polygon_m": 27.727,
+          "halfwidth_0p65_buffer_touches": true
+        }
+      },
+      "maker_research_horizontal_angular_separation_deg": [
+        175.82,
+        175.6,
+        169.05
+      ],
+      "other_role_opaque_footprint_ray_blockers": {
+        "0_-11": {
+          "maker": [],
+          "research": []
+        },
+        "-3_-14": {
+          "maker": [],
+          "research": []
+        },
+        "3_-14": {
+          "maker": [],
+          "research": []
+        }
+      },
+      "human_eye_drawn": "yes, conceptual only",
+      "shared_perspective_3d_visibility": "NOT_RUN",
+      "upper_level_route": "NOT_MODELED",
+      "interior_rooms": "NOT_MODELED",
+      "daylight_3d_and_weather": "NOT_RUN",
+      "formal_body_sweep_331_993": "NOT_RUN",
+      "art": "PRE-3D ART REJECT",
+      "reason": "A repeats four separated pavilion-like masses; B repeats oversized amphitheatre and separates activities. Neither a credible integrated megacity composition."
+    }
+  ],
+  "not_aesthetic_score": true,
+  "author_original_in_repo": true,
+  "true_3d": "NOT_RUN",
+  "art": "BOTH_PRE_3D_ART_REJECT",
+  "adopted": 0,
+  "overall": "ART HOLD",
+  "official_QA": "NOT_RUN",
+  "construction": "FORBIDDEN"
+}

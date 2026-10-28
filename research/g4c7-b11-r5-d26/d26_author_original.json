@@ -1,0 +1,460 @@
+{
+  "stage": "B11-R5 D26",
+  "scope": "AUTHORED_PLAN_AND_SILHOUETTE_ONLY_NOT_TRUE_3D",
+  "comparison_semantics": "two different spatial principles, not height/curvature variants",
+  "protection": {
+    "art": "ART HOLD",
+    "adopted": 0,
+    "G0": "NOT_RUN",
+    "S1": "NOT_RUN",
+    "G1": "NOT_RUN",
+    "G2": "NOT_RUN",
+    "G3": "NOT_RUN",
+    "construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "pr53": "OPEN_DRAFT",
+    "main": "UNTOUCHED"
+  },
+  "formal_body_half_width_m": 0.65,
+  "formal_body_height_above_floor_m": [
+    0.15,
+    3.25
+  ],
+  "note": "formal 331/993 samples NOT executed here; plan sightlines are not 3D vision",
+  "variants": [
+    {
+      "id": "A",
+      "name": "継ぎ目の生活庭 / Inhabited Confluence",
+      "principle": "Irregular thick mixed-use territories share one open concourse; public movement shapes every active frontier rather than a standalone roof.",
+      "activity": "public arrival -> view maker and research within one human eye cone -> outdoor demonstration -> exchange -> upper residence threshold (hypothesis only)",
+      "author_intent": "sunlight, activity and occupied city edges coexist; no hovering deck or independent mega-shell",
+      "author_critical_risk": "still may read as four massed pavilions / urban canyon, with weak originality from macro distance",
+      "eye": [
+        0,
+        -65
+      ],
+      "eyes": [
+        [
+          0,
+          -65
+        ],
+        [
+          -4,
+          -69
+        ],
+        [
+          4,
+          -69
+        ]
+      ],
+      "targets": {
+        "maker": [
+          -38,
+          -15
+        ],
+        "research": [
+          41,
+          -10
+        ]
+      },
+      "public_route": [
+        [
+          0,
+          -110
+        ],
+        [
+          -3,
+          -91
+        ],
+        [
+          -4,
+          -67
+        ],
+        [
+          -1,
+          -50
+        ],
+        [
+          0,
+          -27
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          7,
+          28
+        ],
+        [
+          20,
+          51
+        ]
+      ],
+      "open_sky_footprint": [
+        [
+          -22,
+          -89
+        ],
+        [
+          22,
+          -86
+        ],
+        [
+          26,
+          16
+        ],
+        [
+          12,
+          48
+        ],
+        [
+          -7,
+          30
+        ],
+        [
+          -21,
+          6
+        ]
+      ],
+      "polygons": {
+        "maker": [
+          [
+            -93,
+            -36
+          ],
+          [
+            -54,
+            -50
+          ],
+          [
+            -24,
+            -37
+          ],
+          [
+            -26,
+            12
+          ],
+          [
+            -41,
+            25
+          ],
+          [
+            -69,
+            32
+          ],
+          [
+            -89,
+            12
+          ]
+        ],
+        "research": [
+          [
+            24,
+            -32
+          ],
+          [
+            52,
+            -40
+          ],
+          [
+            87,
+            -22
+          ],
+          [
+            91,
+            17
+          ],
+          [
+            67,
+            43
+          ],
+          [
+            30,
+            35
+          ]
+        ],
+        "culture": [
+          [
+            -49,
+            45
+          ],
+          [
+            -23,
+            28
+          ],
+          [
+            1,
+            35
+          ],
+          [
+            22,
+            66
+          ],
+          [
+            1,
+            93
+          ],
+          [
+            -29,
+            90
+          ],
+          [
+            -57,
+            67
+          ]
+        ],
+        "housing": [
+          [
+            29,
+            57
+          ],
+          [
+            58,
+            47
+          ],
+          [
+            92,
+            60
+          ],
+          [
+            105,
+            91
+          ],
+          [
+            72,
+            111
+          ],
+          [
+            39,
+            96
+          ]
+        ]
+      },
+      "thresholds": {
+        "maker": [
+          -25,
+          -16
+        ],
+        "research": [
+          25,
+          -12
+        ],
+        "culture": [
+          15,
+          47
+        ],
+        "housing": [
+          31,
+          58
+        ]
+      },
+      "vertical_circulation": {
+        "proposal": "E1 and E2 have landing volumes to be designed; no lifts, stairs or continuous swept routes",
+        "evidence": "NOT_MODELED"
+      },
+      "structural_concept": "Each occupied district should be grounded; 2D plan cannot validate vertical load paths",
+      "weather_concept": "External court remains open; maker/research thresholds require independent covered rooms not drawn here",
+      "author_preliminary": "HOLD_FOR_SILHOUETTE_CRITIQUE_NOT_APPROVED"
+    },
+    {
+      "id": "B",
+      "name": "沈む舞台 / Excavated Theatre",
+      "principle": "A civic amphitheatre is carved from an inclined terrain bowl; maker and research face different sectors and housing overlooks a ring.",
+      "activity": "public descends into amphitheatre and encounters workshops and a research exhibition on opposite rim sectors",
+      "author_intent": "make public activity visibly shape an open stepped interior rather than an exterior shell",
+      "author_critical_risk": "large single amphitheatre becomes static land-art object; separate activities are not visible from one eye and ring complicates access",
+      "eye": [
+        0,
+        -11
+      ],
+      "eyes": [
+        [
+          0,
+          -11
+        ],
+        [
+          -3,
+          -14
+        ],
+        [
+          3,
+          -14
+        ]
+      ],
+      "targets": {
+        "maker": [
+          -50,
+          -55
+        ],
+        "research": [
+          54,
+          44
+        ]
+      },
+      "public_route": [
+        [
+          0,
+          -100
+        ],
+        [
+          0,
+          -65
+        ],
+        [
+          0,
+          -40
+        ],
+        [
+          0,
+          -11
+        ],
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "open_sky_footprint": [
+        [
+          -43,
+          -65
+        ],
+        [
+          36,
+          -65
+        ],
+        [
+          72,
+          -16
+        ],
+        [
+          57,
+          51
+        ],
+        [
+          -6,
+          79
+        ],
+        [
+          -70,
+          33
+        ]
+      ],
+      "polygons": {
+        "maker": [
+          [
+            -83,
+            -55
+          ],
+          [
+            -38,
+            -85
+          ],
+          [
+            -8,
+            -65
+          ],
+          [
+            -28,
+            -33
+          ],
+          [
+            -69,
+            -23
+          ]
+        ],
+        "research": [
+          [
+            23,
+            64
+          ],
+          [
+            53,
+            70
+          ],
+          [
+            84,
+            44
+          ],
+          [
+            71,
+            16
+          ],
+          [
+            30,
+            27
+          ]
+        ],
+        "culture": [
+          [
+            -30,
+            15
+          ],
+          [
+            3,
+            12
+          ],
+          [
+            25,
+            29
+          ],
+          [
+            16,
+            56
+          ],
+          [
+            -22,
+            62
+          ]
+        ],
+        "housing": [
+          [
+            -77,
+            72
+          ],
+          [
+            -44,
+            82
+          ],
+          [
+            -23,
+            114
+          ],
+          [
+            -68,
+            110
+          ]
+        ]
+      },
+      "thresholds": {
+        "maker": [
+          -16,
+          -63
+        ],
+        "research": [
+          29,
+          42
+        ],
+        "culture": [
+          1,
+          15
+        ],
+        "housing": [
+          -47,
+          84
+        ]
+      },
+      "vertical_circulation": {
+        "proposal": "Rings and ramps are implied but have no measured 3D slope or landing",
+        "evidence": "NOT_MODELED"
+      },
+      "structural_concept": "Grounded excavated terrain is a hypothesis only; no geotechnical analysis",
+      "weather_concept": "Open amphitheatre has no coherent rain shelter for audience",
+      "author_preliminary": "LIKELY_PRE3D_REJECT"
+    }
+  ]
+}
