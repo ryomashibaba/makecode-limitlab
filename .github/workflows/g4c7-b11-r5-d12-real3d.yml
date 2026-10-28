@@ -1,0 +1,55 @@
+name: G4-C7 B11-R5 D12 true 3D reproducibility (ART REJECT)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d12/build.py"
+      - "research/g4c7-b11-r5-d12/render.py"
+      - "research/g4c7-b11-r5-d12/audit.py"
+      - "research/g4c7-b11-r5-d12/preart_gate.py"
+      - ".github/workflows/g4c7-b11-r5-d12-real3d.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d12-repro
+  cancel-in-progress: true
+jobs:
+  genuine-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install actual geometry and rendering libraries
+        run: |
+          python -m pip install numpy trimesh vtk Pillow networkx
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1 libgl1-mesa-dri libxrender1 libxext6
+      - name: Rebuild three persisted models
+        working-directory: research/g4c7-b11-r5-d12
+        run: python build.py
+      - name: Rerender 24 actual PLY images
+        working-directory: research/g4c7-b11-r5-d12
+        run: xvfb-run -a python render.py
+      - name: Independently audit persisted geometry and fault injection
+        working-directory: research/g4c7-b11-r5-d12
+        run: python audit.py
+      - name: Preserve technical-only acceptance and formal holds
+        working-directory: research/g4c7-b11-r5-d12
+        run: python preart_gate.py
+      - name: Upload exact evidence even on CI failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d12-real3d-replay-art-reject
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            research/g4c7-b11-r5-d12/height_70/
+            research/g4c7-b11-r5-d12/height_90/
+            research/g4c7-b11-r5-d12/height_70_no_housing/
+            research/g4c7-b11-r5-d12/audit.json
