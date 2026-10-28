@@ -1,0 +1,46 @@
+name: G4-C7 B11-R5 D27 scene-first authored pre-3D study (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d27/**'
+      - '.github/workflows/g4c7-b11-r5-d27-scene-first.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d27-authored-spatial-scenes
+  cancel-in-progress: true
+jobs:
+  audited-2d-stories-not-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce both author SVGs and all counterfactual source
+        run: python research/g4c7-b11-r5-d27/d27_scene_author.py --out d27_build
+      - name: Independent geometry and falsification
+        run: python research/g4c7-b11-r5-d27/d27_independent_audit.py --out d27_build
+      - name: Assert strict research boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('d27_build/d27_independent_2d_result.json').read_text())
+          assert r['negative_controls']==4
+          assert r['formal_3D_and_safety']=='NOT_RUN' and r['adopted']==0
+          assert r['automatic_beauty_judgment']=='FORBIDDEN'
+          assert r['minecraft']=='FORBIDDEN'
+          print('PASS means source consistency and negative tests, never ART PASS')
+          PY
+      - name: Archive complete independently reproducible 2D evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D27-SCENE-FIRST-2D-AUTHOR-NO-ADOPTION
+          retention-days: 21
+          path: d27_build/
