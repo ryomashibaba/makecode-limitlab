@@ -1,0 +1,121 @@
+name: G4-C7 B11-R4 real room-boundary witnesses and genuine VTK G0 REJECT
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-b11-r4-inhabited-void-fan/source.tar.gz.b64.part*'
+      - '.github/workflows/g4c7_b11_r4_real_room_geometry.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-b11-r4-immutable-rejected-native
+  cancel-in-progress: false
+jobs:
+  source-triangle-and-native-image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact-source restoration from protected split archive
+        run: |
+          python - <<'PY'
+          import base64,hashlib,gzip,tarfile,io
+          from pathlib import Path
+          base=Path('artifacts/g4c7-b11-r4-inhabited-void-fan')
+          parts=[(base/('source.tar.gz.b64.part'+str(i))).read_text(encoding='ascii').strip() for i in range(7)]
+          assert list(map(len,parts))==[1200,1200,1200,1200,1200,1200,664], 'SOURCE_PARTS_CORRUPT'
+          raw=base64.b64decode(''.join(parts),validate=True)
+          assert hashlib.sha256(raw).hexdigest()=='0c80e20e0fb1443c9cb45627c6a1909add5203b24ccfec81f9252ad131c7109b','SOURCE_GZIP_SHA_FAIL'
+          expected={
+           'generate.py':'a013e2ddd27e297c5e366ebb7bf97f22e2bfb942e7942f09cdceae6f65b8d7e3',
+           'render.py':'2ef2a522baf44713959c13864e188ea24546af1d5a607e0dedbcffd0f4205186',
+           'audit.py':'730116ece0fae9aa0d94bbb107865987908330cb5888deb148c65c38dd1fda80',
+           'test_r4.py':'1c8a4ab276b56185ced8c6eaf9492c8b0fd7a386d7d7e3cbf4849352994685cf'}
+          target=base/'project'
+          assert not target.exists(),'APPEND_ONLY_NO_OVERWRITE'
+          target.mkdir()
+          with tarfile.open(fileobj=io.BytesIO(gzip.decompress(raw))) as archive:
+            assert set(archive.getnames())==set(expected),'SOURCE_FILENAMES_CORRUPT'
+            for item in archive:
+              assert item.isfile() and item.name in expected
+              content=archive.extractfile(item).read()
+              assert hashlib.sha256(content).hexdigest()==expected[item.name], 'SOURCE_SHA_BAD_'+item.name
+              (target/item.name).write_bytes(content)
+          print('B11_R4_AUTHOR_SOURCE_SHA256_VERIFIED')
+          PY
+      - name: Install pinned real geometry and VTK/EGL
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'scipy==1.17.0' 'networkx==3.6.1' 'vtk==9.6.2' 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Generate 32 actual local room shells and reimport real PLY
+        run: |
+          cd 'artifacts/g4c7-b11-r4-inhabited-void-fan/project'
+          python generate.py
+          python -m unittest -v test_r4
+          python audit.py
+          python render.py
+      - name: Strict technical and non-certification gate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          import json,hashlib
+          p=Path('artifacts/g4c7-b11-r4-inhabited-void-fan/project/output')
+          m=json.loads((p/'manifest.json').read_text())
+          a=json.loads((p/'independent_audit.json').read_text())
+          assert m['faces']==a['triangles_independently_reimported']==1044
+          assert m['vertices']==1816 and len(m['rooms'])==32
+          assert m['obj_sha256']==hashlib.sha256((p/'model.obj').read_bytes()).hexdigest()
+          assert a['room_sample_count']==32
+          assert a['samples_with_6_direction_witness']==32
+          assert a['door_centre_rays_clear']==32
+          assert a['adjacent_public_floor_witnesses']==32
+          assert a['true_rooms']=='NOT_CERTIFIED'
+          assert a['continuous_human_walk_and_stairs']=='NOT_TESTED'
+          assert a['structural_load']=='NOT_TESTED'
+          assert a['formal_S1_G1_G2_G3']=='NOT_RUN'
+          assert a['formal_art_adoptions']==0 and a['minecraft_construction']=='FORBIDDEN'
+          for name in ('macro','opposite','public_eye','high_eye'):
+            with Image.open(p/(name+'.png')) as img:
+              assert img.format=='PNG' and img.size==(1350,880)
+              assert max(ImageStat.Stat(img.convert('RGB')).stddev)>8
+          result={'local_obj_sha256':'557bfc84250c605d825b4c3f7ca3e7c859e9de19210a7b02dfee91b095923a06',
+                 'ci_obj_sha256':m['obj_sha256'],
+                 'byte_identical_to_local':m['obj_sha256']=='557bfc84250c605d825b4c3f7ca3e7c859e9de19210a7b02dfee91b095923a06',
+                 'art':'G0_REJECT','safety':'NOT_RUN','minecraft':'FORBIDDEN'}
+          (p/'cross_environment_sha.json').write_text(json.dumps(result,indent=2)+'\n')
+          print('B11_R4_TECH_LOCAL_RAYS_ONLY__G0_ART_REJECT__NO_BUILD')
+          PY
+      - name: Always preserve actual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b11-r4-real-room-witnesses-ART-REJECT
+          path: 'artifacts/g4c7-b11-r4-inhabited-void-fan/project/'
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only evidence to existing Draft branch
+        run: |
+          set -euo pipefail
+          D='artifacts/g4c7-b11-r4-inhabited-void-fan/project'
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/output/independent_audit.json"
+          test -s "$D/output/public_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/"
+          if git diff --cached --quiet;then echo 'Already archived';exit 0;fi
+          git commit -m 'B11-R4: preserve rejected actual 32-room PLY geometry, VTK, ray audit'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
