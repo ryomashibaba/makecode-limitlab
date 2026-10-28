@@ -1,0 +1,118 @@
+name: G4-C7 A83-B7 three-o​culi rejected true 3D research
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a83-b7-three-oculi-g0/source.b64.part*'
+      - '.github/workflows/g4c7_a83_b7_three_oculi_reject.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a83-b7-rejected-study
+  cancel-in-progress: false
+jobs:
+  source-authenticity-and-true-mesh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore exactly the archived research source (fail closed)
+        run: |
+          python - <<'PY'
+          import base64, gzip,hashlib,io,tarfile
+          from pathlib import Path
+          d=Path('artifacts/g4c7-a83-b7-three-oculi-g0')
+          chunks=[(d/('source.b64.part'+str(i))).read_text(encoding='ascii').strip() for i in range(4)]
+          assert list(map(len,chunks))==[2400,2400,2400,2160], 'SOURCE_PART_LENGTH_MISMATCH'
+          raw=base64.b64decode(''.join(chunks),validate=True)
+          assert hashlib.sha256(raw).hexdigest()=='37ada95d39bbbf26dae3e32f548414a1cd93bc47ee85b6995055fec091951d86','GZIP_SHA_FAIL'
+          checks={'generate.py':'3f2873b148e8492dd741c86c64275e5acafc7b11c5cc01ace16f43dc4df1419e',
+                  'render.py':'8308d22fd0d416af7870858c6c3ac4b4c4629ead8efaaf55004a5483657519e5',
+                  'audit.py':'f4f77fa7abc558d97f79d03bffe8b2b2a632f22ccbed9bccf37872a34b1a0f71',
+                  'test_b7.py':'97098c6524b7073b23107b9f088e47b748ba01611b9f98c29a3fc3c2836bc80c'}
+          out=d/'project';out.mkdir(exist_ok=False)
+          with tarfile.open(fileobj=io.BytesIO(gzip.decompress(raw)),mode='r:') as t:
+            assert set(t.getnames())==set(checks)
+            for item in t:
+              assert item.isfile() and item.name in checks
+              b=t.extractfile(item).read()
+              assert hashlib.sha256(b).hexdigest()==checks[item.name], 'SOURCE_FILE_SHA_FAIL_'+item.name
+              assert not (out/item.name).exists()
+              (out/item.name).write_bytes(b)
+          print('A83_B7_REJECTED_SOURCE_SHA256_AUTHENTIC')
+          PY
+      - name: Install pinned native geometry and EGL
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'scipy==1.17.0' 'networkx==3.6.1' 'vtk==9.6.2' 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Generate actual OBJ and independently audit openings, upper floor and negative controls
+        run: |
+          cd artifacts/g4c7-a83-b7-three-oculi-g0/project
+          python generate.py
+          python -m unittest -v test_b7
+          python audit.py
+      - name: Four genuine VTK images from the single saved PLY
+        run: |
+          cd artifacts/g4c7-a83-b7-three-oculi-g0/project
+          python render.py
+      - name: Fail closed on missing evidence, false art or false formal QA
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          d=Path('artifacts/g4c7-a83-b7-three-oculi-g0/project/output')
+          m=json.loads((d/'manifest.json').read_text())
+          a=json.loads((d/'independent_audit.json').read_text())
+          obj=d/'b7_civic_oculi_source.obj'
+          assert a['source_obj_sha256']==m['sha256_obj']==hashlib.sha256(obj.read_bytes()).hexdigest()
+          assert m['vertices']==4412 and m['triangles']==3294
+          assert a['door_triangle_pass']==13 and all(a['upper_gallery_floor_rays'].values())
+          assert 'OCCUPIED_MASSES_FORM_THREE_SEPARATE_ISLANDS' in a['rejection_reasons']
+          assert a['w_c_occupied_mass_clear_gap_m']>30 and a['c_e_occupied_mass_clear_gap_m']>40
+          assert a['true_habitable_rooms']=='NOT_TESTED' and a['supported_upper_routes']=='NOT_TESTED'
+          assert a['formal_s1_g1_g2_g3']=='NOT_RUN' and a['minecraft_construction']=='FORBIDDEN'
+          assert a['native_3d_visual_review']=='ART_REJECT' and a['formal_art_adoptions']==0
+          for name in ('macro','district','public_eye','court_eye'):
+            fn=d/(name+'.png')
+            with Image.open(fn) as im:
+              assert im.format=='PNG' and im.size==(1300,850)
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>5
+          report={'run':'A83_B7_REJECTED_G0_LOCAL_GEOMETRY','art':'REJECT','formal_qa':'NOT_RUN',
+                  'construction':'FORBIDDEN','ci_obj_sha256':m['sha256_obj'],
+                  'local_obj_sha256':'89ab169d862882d2b45200bd8e828b745f8bdd365a51878fe2a160a4559a875a',
+                  'cross_environment_byte_identical':m['sha256_obj']=='89ab169d862882d2b45200bd8e828b745f8bdd365a51878fe2a160a4559a875a'}
+          (d/'reproduction.json').write_text(json.dumps(report,indent=2)+'\n')
+          print('B7_REPRODUCED__ART_REJECT__NO_SAFETY_CLAIMS')
+          PY
+      - name: Upload persistent CI artifact irrespective of branch archival
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a83-b7-actual-3d-G0-ART-REJECT
+          path: artifacts/g4c7-a83-b7-three-oculi-g0/project/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Archive all rejected evidence to existing Draft PR branch
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a83-b7-three-oculi-g0/project
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/output/independent_audit.json"
+          test -s "$D/output/public_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/"
+          if git diff --cached --quiet; then echo 'Evidence already present'; exit 0; fi
+          git commit -m 'A83-B7: append actual rejected OBJ/PLY, four VTK views and independent QA'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
