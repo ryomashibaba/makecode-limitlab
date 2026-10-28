@@ -1,0 +1,78 @@
+[
+  {
+    "variant": "inhabited",
+    "mesh_sha256": "b01c3dcceecff41d8ca276ffa2407283101486c41b7969f218b865b7653ffd78",
+    "glb_sha256": "f8dc23da23c407b5491c5972cb9a59a72225d82a3437d6e6d9de50c9bff669ef",
+    "faces": 6208,
+    "vertices": 3644,
+    "occupied_plots": 69,
+    "study_domain_bounds_m": [
+      [
+        -1400.0,
+        -960.0,
+        -20.0
+      ],
+      [
+        1430.0,
+        1190.0,
+        295.657
+      ]
+    ],
+    "obj_topological_components": 486,
+    "route_schematic_length_m": 1415.31,
+    "route_max_segment_grade_percent": 1.127,
+    "route_81_centerline_floor_witnesses": 81,
+    "route_81_missing_floor_sample_indices": [],
+    "route_partial_edge_occupied_ray_hits": [],
+    "route_occupied_hits_total": 0,
+    "fault_injection_blocker_detected": true,
+    "formal_QA": "NOT_RUN",
+    "G0_art": "NOT_ADOPTED",
+    "limitations": [
+      "S1/G1/G2/G3 and 331/993 NOT RUN",
+      "not continuous edge-swept human collision",
+      "mesh topological components do not prove structural support",
+      "no fully functional vertical routes",
+      "plots have no true living room interiors",
+      "full study-domain is not 10km city"
+    ]
+  },
+  {
+    "variant": "depopulated",
+    "mesh_sha256": "04ce64da964eb6b75849eafa146fedb04244f244e3493e88a0ad980a5fb63b4a",
+    "glb_sha256": "b24c0b3b2f0317ac25f221d886fd19d8e13798ee1e28e19ed32865012b43641f",
+    "faces": 2728,
+    "vertices": 1556,
+    "occupied_plots": 17,
+    "study_domain_bounds_m": [
+      [
+        -1400.0,
+        -960.0,
+        -20.0
+      ],
+      [
+        1430.0,
+        1190.0,
+        276.073
+      ]
+    ],
+    "obj_topological_components": 312,
+    "route_schematic_length_m": 1415.31,
+    "route_max_segment_grade_percent": 1.127,
+    "route_81_centerline_floor_witnesses": 81,
+    "route_81_missing_floor_sample_indices": [],
+    "route_partial_edge_occupied_ray_hits": [],
+    "route_occupied_hits_total": 0,
+    "fault_injection_blocker_detected": true,
+    "formal_QA": "NOT_RUN",
+    "G0_art": "NOT_ADOPTED",
+    "limitations": [
+      "S1/G1/G2/G3 and 331/993 NOT RUN",
+      "not continuous edge-swept human collision",
+      "mesh topological components do not prove structural support",
+      "no fully functional vertical routes",
+      "plots have no true living room interiors",
+      "full study-domain is not 10km city"
+    ]
+  }
+]

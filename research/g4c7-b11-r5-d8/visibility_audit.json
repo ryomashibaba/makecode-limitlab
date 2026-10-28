@@ -1,0 +1,95 @@
+{
+  "inhabited": {
+    "maker_eye_to_machinery": {
+      "start": [
+        -360,
+        -130,
+        30
+      ],
+      "target": [
+        -255,
+        -245,
+        29
+      ],
+      "opaque_hits_by_role": {
+        "maker": 1
+      }
+    },
+    "research_eye_to_exchange": {
+      "start": [
+        220,
+        80,
+        34
+      ],
+      "target": [
+        260,
+        155,
+        35
+      ],
+      "opaque_hits_by_role": {
+        "urban_body": 1,
+        "research": 2
+      }
+    },
+    "upper_eye_to_civic_node": {
+      "start": [
+        -620,
+        700,
+        118
+      ],
+      "target": [
+        -170,
+        240,
+        72
+      ],
+      "opaque_hits_by_role": {
+        "urban_warm": 2
+      }
+    }
+  },
+  "depopulated": {
+    "maker_eye_to_machinery": {
+      "start": [
+        -360,
+        -130,
+        30
+      ],
+      "target": [
+        -255,
+        -245,
+        29
+      ],
+      "opaque_hits_by_role": {}
+    },
+    "research_eye_to_exchange": {
+      "start": [
+        220,
+        80,
+        34
+      ],
+      "target": [
+        260,
+        155,
+        35
+      ],
+      "opaque_hits_by_role": {
+        "research": 2
+      }
+    },
+    "upper_eye_to_civic_node": {
+      "start": [
+        -620,
+        700,
+        118
+      ],
+      "target": [
+        -170,
+        240,
+        72
+      ],
+      "opaque_hits_by_role": {
+        "urban_warm": 2
+      }
+    }
+  }
+}
