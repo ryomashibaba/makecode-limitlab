@@ -1,0 +1,8 @@
+{
+  "local_obj_sha256": "557bfc84250c605d825b4c3f7ca3e7c859e9de19210a7b02dfee91b095923a06",
+  "ci_obj_sha256": "557bfc84250c605d825b4c3f7ca3e7c859e9de19210a7b02dfee91b095923a06",
+  "byte_identical_to_local": true,
+  "art": "G0_REJECT",
+  "safety": "NOT_RUN",
+  "minecraft": "FORBIDDEN"
+}
