@@ -23,8 +23,12 @@ jobs:
           python-version: '3.11'
       - name: Install 3D generation and real rendering
         run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Install software OpenGL and Xvfb for reproducible headless VTK
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
       - name: Generate three true-3D GLB conditions and images from reloaded GLB
-        run: python research/g4c7-b11-r5-d18/d18_activity_first.py --out d18_build
+        run: xvfb-run -a python research/g4c7-b11-r5-d18/d18_activity_first.py --out d18_build
       - name: Independent inspection of saved GLB, negative controls and exact rejection
         run: python research/g4c7-b11-r5-d18/d18_independent_audit.py --out d18_build
       - name: Protect scope explicitly
