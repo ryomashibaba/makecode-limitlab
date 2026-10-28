@@ -1,0 +1,52 @@
+name: G4-C7 B11-R5 D28 independent spatial preflight (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d28/**'
+      - '.github/workflows/g4c7-b11-r5-d28-independent-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d28-independent-preflight
+  cancel-in-progress: true
+jobs:
+  saved-plan-independent-pre3d-reject:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install independent 2D polygon audit dependency
+        run: python -m pip install 'shapely>=2.0,<3'
+      - name: Rebuild D27 saved author and role data
+        run: python research/g4c7-b11-r5-d27/d27_scene_author.py --out d27_build
+      - name: Verify D27 original without importing its generator
+        run: python research/g4c7-b11-r5-d27/d27_independent_audit.py --out d27_build
+      - name: D28 independent union, overlap, route gaps and four mutations
+        run: python research/g4c7-b11-r5-d28/d28_independent_spatial_failure_gate.py --from-d27 d27_build --out d28_build
+      - name: Explicitly reject promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('d28_build/d28_spatial_failure_report.json').read_text())
+          assert a['technical_preflight']=='STOP_BOTH_CURRENT_2D_MORPHOLOGIES'
+          assert a['adopted']==0 and a['overall']=='ART HOLD'
+          assert a['formal_QA']=='NOT_RUN' and a['negative_controls_passed']==4
+          assert a['new_3d_created'] is False and a['minecraft_construction']=='FORBIDDEN'
+          print('PASS = reproducible PRE-3D STOP, not ART PASS')
+          PY
+      - name: Preserve audit and full author evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D27-D28-REJECT-EVIDENCE-NO-ADOPTION
+          retention-days: 21
+          path: |
+            d27_build/
+            d28_build/
