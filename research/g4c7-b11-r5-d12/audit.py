@@ -7,18 +7,18 @@ import numpy as np,trimesh,vtk
 ROOT=Path(__file__).resolve().parent
 SOLID=['maker','machine','research','culture','habitat','structure','porous_skin','garden']
 ALL=['land','public','maker','machine','research','culture','habitat','structure','porous_skin','glass','core','garden']
-def load_meshes(folder,m):
+# Use vtkStaticCellLocator for reproducible ray/triangle intersections across VTK versions.\n# vtkOBBTree gave false-negative floor/roof witnesses in Ubuntu Actions (2026-10-28);\n# keep the synthetic cube negative control to separately test fault detection.\ndef load_meshes(folder,m):
     r={}
     for role in m['category_files']:
         rr=vtk.vtkPLYReader();rr.SetFileName(str(folder/(role+'.ply')));rr.Update()
         poly=rr.GetOutput();assert poly.GetNumberOfPolys()>0
-        tree=vtk.vtkOBBTree();tree.SetDataSet(poly);tree.BuildLocator()
+        tree=vtk.vtkStaticCellLocator();tree.SetDataSet(poly);tree.BuildLocator()
         r[role]=(poly,tree)
     return r
 def intersections(meshes,role,a,b):
     if role not in meshes:return []
     points=vtk.vtkPoints();ids=vtk.vtkIdList()
-    meshes[role][1].IntersectWithLine(list(map(float,a)),list(map(float,b)),points,ids)
+    meshes[role][1].IntersectWithLine(list(map(float,a)),list(map(float,b)),1e-6,points,ids)
     return [tuple(float(x) for x in points.GetPoint(i)) for i in range(points.GetNumberOfPoints())]
 def route_samples(nodes,n):
     pts=np.asarray(nodes,float);lengths=np.linalg.norm(np.diff(pts[:,:2],axis=0),axis=1)
