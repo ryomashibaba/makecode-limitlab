@@ -1,0 +1,67 @@
+name: G4-C7 B11-R5 D29-D30 recover source and reproduce true GLB (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d30/**'
+      - '.github/workflows/g4c7-b11-r5-d29-d30-repro.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d29-d30-source-repro
+  cancel-in-progress: true
+jobs:
+  rebuild-local-saved-glb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover complete archived source and verify custody
+        run: |
+          tar -xJf research/g4c7-b11-r5-d30/d29_d30_source_recovery.tar.xz -C .
+          sha256sum -c research/g4c7-b11-r5-d30/SOURCE_SHA256SUMS.txt
+      - name: Install actual 3D author and render dependencies
+        run: |
+          python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'shapely>=2.0,<3' 'vtk>=9.3,<10'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Regenerate D29 three GLBs and six frames from saved GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d29-sources/d29_lightwell_loom.py --out d29_build
+      - name: Independently audit D29 saved GLBs
+        run: python research/g4c7-b11-r5-d29-sources/d29_independent_mesh_audit.py --out d29_build
+      - name: Regenerate D30 three GLBs and six frames from saved GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d30/d30_apparatus_architecture.py --out d30_build
+      - name: Independently audit D30 saved GLBs and four mutations
+        run: python research/g4c7-b11-r5-d30/d30_independent_audit.py --out d30_build
+      - name: Assert negative research, no adoption or construction
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('d29_build/d29_independent_result.json').read_text())
+          b=json.loads(Path('d30_build/d30_independent_result.json').read_text())
+          assert a['adopted']==b['adopted']==0
+          assert a['negative_controls_detected']==b['negative_controls_detected']==4
+          assert a['formal_G0_S1_G1_G2_G3']==b['formal_QA']=='NOT_RUN'
+          assert b['activity_removal_changes_macro_envelope'] is False
+          assert b['retained_common_fins_after_activity_removal'] is True
+          assert b['construction']=='FORBIDDEN'
+          assert len(list(Path('d29_build').glob('d29_*.glb')))==3
+          assert len(list(Path('d30_build').glob('d30_*.glb')))==3
+          print('SUCCESS means recorded ART HOLD / reproduction and negative contradiction, not approval')
+          PY
+      - name: Archive true GLB, saved frames and independent JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D29-D30-TRUE-GLB-SOURCE-REBUILT-ART-HOLD
+          retention-days: 21
+          if-no-files-found: warn
+          path: |
+            d29_build/
+            d30_build/

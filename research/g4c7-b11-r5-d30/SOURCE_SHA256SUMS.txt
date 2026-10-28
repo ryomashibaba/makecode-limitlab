@@ -1,0 +1,4 @@
+4a4b732e195ec3d9efb102d443b1d0534211d8f30a9774a41733e401ed841b80  research/g4c7-b11-r5-d29-sources/d29_lightwell_loom.py
+8f4acae84ff0657885e08d037d18cd38033ff762255db6bc576de30cb3e89504  research/g4c7-b11-r5-d29-sources/d29_independent_mesh_audit.py
+4c5e7defff4a4a8ac7ba4e513b41855a6f6dcbf8528aa5813a2d5d02612b3574  research/g4c7-b11-r5-d30/d30_apparatus_architecture.py
+f4ff2cd0f4661cb812e15bec7ab6f931af19ae4e77d4e56bcc30dc858f1fd40c  research/g4c7-b11-r5-d30/d30_independent_audit.py
