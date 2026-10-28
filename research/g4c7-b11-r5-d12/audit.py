@@ -7,7 +7,10 @@ import numpy as np,trimesh,vtk
 ROOT=Path(__file__).resolve().parent
 SOLID=['maker','machine','research','culture','habitat','structure','porous_skin','garden']
 ALL=['land','public','maker','machine','research','culture','habitat','structure','porous_skin','glass','core','garden']
-# Use vtkStaticCellLocator for reproducible ray/triangle intersections across VTK versions.\n# vtkOBBTree gave false-negative floor/roof witnesses in Ubuntu Actions (2026-10-28);\n# keep the synthetic cube negative control to separately test fault detection.\ndef load_meshes(folder,m):
+# Use vtkStaticCellLocator for reproducible ray/triangle intersections across VTK versions.
+# vtkOBBTree gave false-negative floor/roof witnesses in Ubuntu Actions (2026-10-28);
+# keep the synthetic cube negative control to separately test fault detection.
+def load_meshes(folder,m):
     r={}
     for role in m['category_files']:
         rr=vtk.vtkPLYReader();rr.SetFileName(str(folder/(role+'.ply')));rr.Update()
