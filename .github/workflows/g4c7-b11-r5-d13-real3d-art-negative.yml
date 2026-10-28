@@ -1,0 +1,56 @@
+name: G4-C7 B11-R5 D13 genuine 3D pre-art negative gate (NO ADOPTION)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d13/**"
+      - ".github/workflows/g4c7-b11-r5-d13-real3d-art-negative.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d13-negative-art
+  cancel-in-progress: true
+jobs:
+  render-and-reject:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install real massing and independent persisted-PLY rendering tools
+        run: |
+          python -m pip install numpy scipy scikit-image trimesh vtk Pillow networkx
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1 libgl1-mesa-dri libxrender1 libxext6
+      - name: Produce three authored actual OBJ GLB categorized PLY models
+        working-directory: research/g4c7-b11-r5-d13
+        run: python author_massing.py
+      - name: Render 12 views from exported real PLY models
+        working-directory: research/g4c7-b11-r5-d13
+        run: xvfb-run -a python render_massing.py
+      - name: Independently count role pixels and verify saved binary hashes
+        working-directory: research/g4c7-b11-r5-d13
+        run: xvfb-run -a python audit_massing.py
+      - name: Actually remove research activity and inspect unchanged architectural envelope
+        working-directory: research/g4c7-b11-r5-d13
+        run: python ablation.py
+      - name: Reject all three concepts without promoting art or construction
+        working-directory: research/g4c7-b11-r5-d13
+        run: python preart_gate.py
+      - name: Upload real model evidence including failed gates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d13-real3d-PREART-REJECT
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            research/g4c7-b11-r5-d13/canyon/
+            research/g4c7-b11-r5-d13/braided/
+            research/g4c7-b11-r5-d13/courts/
+            research/g4c7-b11-r5-d13/audit.json
+            research/g4c7-b11-r5-d13/ablation.json
