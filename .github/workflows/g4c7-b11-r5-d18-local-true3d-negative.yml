@@ -1,0 +1,51 @@
+name: G4-C7 B11-R5 D18 saved-3D negative experiment (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d18/**'
+      - '.github/workflows/g4c7-b11-r5-d18-local-true3d-negative.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d18-true3d-negative
+  cancel-in-progress: true
+jobs:
+  independent-saved-glb-negative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install 3D generation and real rendering
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Generate three true-3D GLB conditions and images from reloaded GLB
+        run: python research/g4c7-b11-r5-d18/d18_activity_first.py --out d18_build
+      - name: Independent inspection of saved GLB, negative controls and exact rejection
+        run: python research/g4c7-b11-r5-d18/d18_independent_audit.py --out d18_build
+      - name: Protect scope explicitly
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d18_build')
+          d=json.loads((p/'independent_result.json').read_text())
+          assert d['art']=='PRE-G0 ART REJECT' and d['adopted']==0
+          assert d['formal_QA']=='NOT_RUN' and d['construction']=='FORBIDDEN'
+          assert d['interior_status']=='FAIL_FILLED_SOLID_MASSES'
+          assert len(list(p.glob('d18_*.glb')))==3
+          assert len(list(p.glob('*.png')))==3
+          print('PASS = PRE-G0 ART REJECT VERIFIED; NOTHING APPROVED')
+          PY
+      - name: Archive source-derived GLB, views and independent review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D18-TRUE3D-NEGATIVE-ART-REJECT-NO-ADOPTION
+          if-no-files-found: warn
+          retention-days: 14
+          path: d18_build/
