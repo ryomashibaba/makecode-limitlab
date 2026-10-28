@@ -61,7 +61,8 @@ def run(variant):
     # Negative control: insert a virtual opaque screen 15m wide at sample midpoint.
     q=samples[len(samples)//2];plane=vtk.vtkCubeSource();plane.SetBounds(q[0]-7.5,q[0]+7.5,q[1]-7.5,q[1]+7.5,q[2],q[2]+4);plane.Update()
     block=vtk.vtkOBBTree();block.SetDataSet(plane.GetOutput());block.BuildLocator()
-    assert intersections(block,(q[0],q[1],q[2]+3.25),(q[0],q[1],q[2]-.15))
+    # Cast from OUTSIDE both cube faces; VTK OBBTree inside-start can return -1.
+    assert intersections(block,(q[0],q[1],q[2]+8.0),(q[0],q[1],q[2]-3.0))
     comp_count=len(m.split(only_watertight=False))
     return {'variant':variant,'mesh_sha256':manifest['sha256_obj'],'glb_sha256':manifest['sha256_glb'],
       'faces':len(m.faces),'vertices':len(m.vertices),'occupied_plots':manifest['occupied_plot_count'],
