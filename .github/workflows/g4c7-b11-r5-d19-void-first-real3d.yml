@@ -1,0 +1,81 @@
+name: G4-C7 B11-R5 D19 saved GLB void-first negative study (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d19/**'
+      - '.github/workflows/g4c7-b11-r5-d19-void-first-real3d.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d19-void-first
+  cancel-in-progress: true
+jobs:
+  actual-glb-and-independent-negative-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover and authenticate compressed original Python source
+        run: |
+          python - <<'PY'
+          import base64, gzip, hashlib
+          from pathlib import Path
+          root=Path('research/g4c7-b11-r5-d19')
+          pairs={
+            'd19_spatial_void_first.py':'7ccbd4d22e23719ca9851da7c38b9de4e9eacd15fa59b0232638cae058828226',
+            'd19_independent_mesh_audit.py':'88da7f936ee6546fb4e7554914d0c9560079ddcd69f2489e7784f1a71d3f1518'
+          }
+          for name,expected in pairs.items():
+            data=gzip.decompress(base64.b64decode((root/(name+'.gz.b64')).read_text().strip()))
+            assert hashlib.sha256(data).hexdigest()==expected, name+' byte mismatch'
+            (root/name).write_bytes(data)
+          print('Source SHA256 verified; both author and independent auditor available in artifact.')
+          PY
+      - name: Install actual 3D and rendering tools
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Headless OpenGL support
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate three saved true-3D GLBs and six saved-GLB render views
+        run: xvfb-run -a python research/g4c7-b11-r5-d19/d19_spatial_void_first.py --out d19_build
+      - name: Independent partial mesh witness and four negative controls
+        run: python research/g4c7-b11-r5-d19/d19_independent_mesh_audit.py --out d19_build
+      - name: Confirm measurable improvement AND explicit art rejection boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d19_build')
+          m=json.loads((p/'d19_manifest.json').read_text())
+          d=json.loads((p/'d19_independent_result.json').read_text())
+          assert len(list(p.glob('d19_*.glb')))==3
+          assert len(list(p.glob('0*.png')))==6
+          assert all(v==9 for v in d['room_vertical_clear_1p3_to_12m'].values())
+          assert all(v==9 for v in d['floor_intersection_witness_9pts_per_role'].values())
+          assert len(d['public_eye_to_work_activity'])==6
+          assert all(ray['clear'] for ray in d['public_eye_to_work_activity'])
+          assert not d['center_sky_ray_blockers']
+          assert all(d['negative_mutation_controls'].values())
+          assert d['art']=='NOT_ADOPTED' and d['overall']=='ART HOLD'
+          assert m['adopted']==0 and m['minecraft']=='FORBIDDEN'
+          assert all(v=='NOT_RUN' for v in m['formal_QA'].values())
+          print('PASS = REAL-3D LIMITED IMPROVEMENT BUT PRE-G0 ART REJECT; NO OFFICIAL QA, NO Minecraft')
+          PY
+      - name: Archive full reproducible Python, three GLBs, six views, audit data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D19-SAVED-3D-LOCAL-IMPROVEMENT-ART-REJECT
+          if-no-files-found: warn
+          retention-days: 21
+          path: |
+            d19_build/
+            research/g4c7-b11-r5-d19/d19_spatial_void_first.py
+            research/g4c7-b11-r5-d19/d19_independent_mesh_audit.py
