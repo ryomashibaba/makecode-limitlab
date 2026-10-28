@@ -1,0 +1,12 @@
+{
+  "source": "G0_LIMITED",
+  "local_obj_digest": "0d1902f1249b5da8a2f04acc117dc992561e3dec1293fed25087998a12df9933",
+  "ci_obj_digest": "0d1902f1249b5da8a2f04acc117dc992561e3dec1293fed25087998a12df9933",
+  "local_canonical_digest": "ccbd76e9d4afeac60436aa5e0a5d9bd3d4bd9dd0d8a3a9e426ec44ea75eba056",
+  "ci_canonical_digest": "ccbd76e9d4afeac60436aa5e0a5d9bd3d4bd9dd0d8a3a9e426ec44ea75eba056",
+  "same_canonical_geometry_as_local": true,
+  "same_obj_bytes_as_local": true,
+  "art": "REJECT",
+  "formal_qa": "NOT_RUN",
+  "minecraft": "FORBIDDEN"
+}

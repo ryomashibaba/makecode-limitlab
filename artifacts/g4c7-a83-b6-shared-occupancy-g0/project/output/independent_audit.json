@@ -1,0 +1,94 @@
+{
+  "source": "independent_OBJ_triangle_intersections",
+  "obj_sha256": "0d1902f1249b5da8a2f04acc117dc992561e3dec1293fed25087998a12df9933",
+  "canonical_face_digest": "ccbd76e9d4afeac60436aa5e0a5d9bd3d4bd9dd0d8a3a9e426ec44ea75eba056",
+  "geometry": {
+    "vertices": 4640,
+    "triangles": 3288,
+    "bbox": [
+      [
+        -78.0,
+        -55.0,
+        -0.5
+      ],
+      [
+        78.0,
+        58.0,
+        16.7
+      ]
+    ]
+  },
+  "door_rays": {
+    "-48:L0": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    },
+    "-48:L8": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    },
+    "-16:L0": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    },
+    "-16:L8": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    },
+    "16:L0": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    },
+    "16:L8": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    },
+    "48:L0": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    },
+    "48:L8": {
+      "clear_center": true,
+      "left_wall": true,
+      "right_wall": true,
+      "solid_lintel": true
+    }
+  },
+  "shared_upper_floor_rays": {
+    "-48:upper": 8.0,
+    "-16:upper": 8.0,
+    "16:upper": 8.0,
+    "48:upper": 8.0
+  },
+  "stair_terminal_rays": {
+    "-48:penultimate": 7.833333,
+    "48:penultimate": 7.833333,
+    "-48:final": 8.0,
+    "48:final": 8.0,
+    "-48:landing": 8.0,
+    "48:landing": 8.0
+  },
+  "limited_triangle_gate": true,
+  "occupied_rooms_certified": "NOT_TESTED",
+  "human_331_foot_993": "NOT_RUN",
+  "human_half_width": 0.65,
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "structural_load": "NOT_TESTED",
+  "continuous_walk": "NOT_TESTED",
+  "architectural_art": "HOLD_AWAITING_HUMAN_REVIEW",
+  "minecraft_construction": "FORBIDDEN"
+}

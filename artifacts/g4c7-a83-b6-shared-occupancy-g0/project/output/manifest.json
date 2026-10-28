@@ -1,0 +1,28 @@
+{
+  "stage": "A83_B6_LOCAL_TRUE_3D_RESEARCH",
+  "scene": "SHARED_PUBLIC_FRONTAGE_SIX_DISTRICTS_NOT_CLAIMED",
+  "program_seeds": 8,
+  "actual_door_intentions": 8,
+  "actual_stair_treads": 96,
+  "two_access_systems": 2,
+  "one_shared_upper_floor": true,
+  "source_parts": 1039,
+  "mesh": {
+    "triangles": 3288,
+    "vertices": 4640
+  },
+  "doors": [
+    -48,
+    -16,
+    16,
+    48
+  ],
+  "model_sha256": "0d1902f1249b5da8a2f04acc117dc992561e3dec1293fed25087998a12df9933",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "full_human_sweep": "NOT_TESTED",
+  "structural_load": "NOT_TESTED",
+  "geometry_room_enclosure": "NOT_YET_VERIFIED",
+  "city_scale_form": "NOT_TESTED",
+  "art": "HOLD_REQUIRES_REAL_IMAGE_REVIEW",
+  "minecraft_construction": "FORBIDDEN"
+}
