@@ -1,0 +1,61 @@
+name: G4-C7 B11-R5 D22-D23 true-3D art rejection and preflight
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d22-d23/**'
+      - '.github/workflows/g4c7-b11-r5-d22-d23-real3d-negative.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d22-d23
+  cancel-in-progress: true
+jobs:
+  reproduce-rejected-3d-and-design-stop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install local 3D and independent geometry dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10' 'shapely>=2,<3'
+      - name: Provide headless OpenGL software renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate three local GLB studies and render SIX views from saved GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d22-d23/d22_spatial_cells.py --out d22_build
+      - name: Independently inspect three saved GLBs and negative controls
+        run: python research/g4c7-b11-r5-d22-d23/d22_independent_audit.py --out d22_build
+      - name: Check D23 pre-3D stop and forged evidence mutations
+        run: python research/g4c7-b11-r5-d22-d23/d23_pre3d_spatial_grammar_gate.py --out d22_build
+      - name: Enforce no adoption or formal 3D/structural safety claims
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('d22_build')
+          a=json.loads((root/'d22_independent_result.json').read_text())
+          b=json.loads((root/'d23_preflight_stop.json').read_text())
+          assert a['author_visual_review'].startswith('PRE-G0 ART REJECT')
+          assert a['adopted']==0 and a['overall']=='ART HOLD'
+          assert a['formal_G0_S1_G1_G2_G3']=='NOT_RUN'
+          assert a['construction']=='FORBIDDEN'
+          assert b['new_3d_promotion'] is False and b['adopted']==0
+          assert b['outcome']=='PRE-3D STOP D22 GRAMMAR'
+          assert len(list(root.glob('d22_*.glb')))==3
+          assert len(list(root.glob('0*.png')))==6
+          print('REJECTION GATE SUCCESS: NO ADOPTION, NO MINECRAFT, NO FORMAL QA')
+          PY
+      - name: Keep genuine 3D evidence and independent records even if test fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D22-D23-TRUE3D-REJECTION-EVIDENCE-NO-ADOPTION
+          retention-days: 14
+          if-no-files-found: warn
+          path: d22_build/
