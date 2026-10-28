@@ -1,0 +1,107 @@
+name: G4-C7 B11 two genuine city-scale VTK candidates, both G0 ART REJECT
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a83-b11-dual-city-g0/source.py.gz.b64.part*'
+      - 'artifacts/g4c7-a83-b11-dual-city-g0/test_b11.py'
+      - '.github/workflows/g4c7_a83_b11_true_city_g0.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-b11-dual-native-rejected-evidence
+  cancel-in-progress: false
+jobs:
+  independent-B11-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore exact B11 dual-scene source, fail closed on any corruption
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64,hashlib,gzip
+          d=Path('artifacts/g4c7-a83-b11-dual-city-g0')
+          parts=[(d/('source.py.gz.b64.part'+str(i))).read_text(encoding='ascii').strip() for i in range(5)]
+          assert list(map(len,parts))==[1800,1800,1800,1800,216]
+          gz=base64.b64decode(''.join(parts),validate=True)
+          assert hashlib.sha256(gz).hexdigest()=='202a43266c4d8d47acb909427bed1d44469b8591f32c567bc8b296056c66467a'
+          raw=gzip.decompress(gz)
+          assert hashlib.sha256(raw).hexdigest()=='243ad1d5370086a340ad8e0df95802947b1b3facfe193e4694997e7781b4d6bd'
+          out=d/'project';assert not out.exists()
+          out.mkdir();(out/'b11_dual_city.py').write_bytes(raw)
+          print('B11_ORIGINAL_AUTHOR_SOURCE_SHA256_CONFIRMED')
+          PY
+      - name: Pin actual trimesh / native VTK dependencies
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'scipy==1.17.0' 'networkx==3.6.1' 'vtk==9.6.2' 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -qq -y libegl1 libgl1-mesa-dri libosmesa6
+      - name: Generate A and B true OBJ and eight actual VTK camera views
+        run: |
+          python 'artifacts/g4c7-a83-b11-dual-city-g0/project/b11_dual_city.py'
+          cp 'artifacts/g4c7-a83-b11-dual-city-g0/test_b11.py' 'artifacts/g4c7-a83-b11-dual-city-g0/project/test_b11.py'
+      - name: Independently inspect actual OBJ reimport and pixel evidence
+        run: |
+          cd 'artifacts/g4c7-a83-b11-dual-city-g0/project'
+          python -m unittest -v test_b11
+      - name: Verify fixed geometry, explicitly preserve ART and formal locks
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path('artifacts/g4c7-a83-b11-dual-city-g0/project')
+          local={
+            'A':(2228,3480,'2479077d484ec02aa05d065af68066828bc4ceeee7dea9704923d777f9b99c4a'),
+            'B':(3624,5848,'715079aab7788a24815e3e7f0a462e58f0d9280b303290362573b2f894211832')
+          }
+          checks={}
+          for name,(v,f,expected_sha) in local.items():
+            m=json.loads((p/name/'manifest.json').read_text())
+            obj=p/name/'city_coarse.obj'
+            digest=hashlib.sha256(obj.read_bytes()).hexdigest()
+            assert (m['vertices'],m['triangles'])==(v,f)
+            assert digest==m['obj_sha256']
+            assert m['art_approval']=='NOT_GRANTED'
+            assert m['minecraft_construction']=='FORBIDDEN'
+            assert m['formal_s1_g1_g2_g3']=='NOT_RUN'
+            checks[name]={'obj_sha256':digest,'local_obj_sha256':expected_sha,
+                'byte_identical_to_local':digest==expected_sha,'art':'G0_ART_REJECT',
+                'official_S1_G1_G2_G3':'NOT_RUN'}
+          (p/'ci_cross_environment.json').write_text(json.dumps(checks,indent=2)+'\n')
+          print('B11_8_REAL_VTK_VIEWS_AND_TWO_OBJS_TECH_REPRODUCED__ART_REJECT')
+          PY
+      - name: Keep evidence even if concurrent branch moves
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b11-two-real-city-hypotheses-ART-REJECT
+          path: 'artifacts/g4c7-a83-b11-dual-city-g0/project/'
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append only to continued Draft PR branch
+        run: |
+          set -euo pipefail
+          D='artifacts/g4c7-a83-b11-dual-city-g0/project'
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/A/macro.png"
+          test -s "$D/B/public_eye.png"
+          test -s "$D/ci_cross_environment.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/"
+          if git diff --cached --quiet;then echo 'Already preserved';exit 0;fi
+          git commit -m 'A83-B11: append two rejected authentic city OBJ meshes, eight VTK views and audit'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
