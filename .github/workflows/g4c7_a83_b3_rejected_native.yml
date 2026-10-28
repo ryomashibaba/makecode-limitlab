@@ -1,0 +1,120 @@
+name: G4-C7 A83-B3 rejected native 3D evidence (G0 only)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a83-b3-shared-street-g0/source_bundle.tar.gz.b64.part*'
+      - '.github/workflows/g4c7_a83_b3_rejected_native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a83-b3-rejected-3d-source-archive
+  cancel-in-progress: false
+jobs:
+  authentic-rejected-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconstruct exact sources with fail-closed SHA-256
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64,gzip,io,tarfile,hashlib
+          root=Path('artifacts/g4c7-a83-b3-shared-street-g0')
+          source=''.join((root/('source_bundle.tar.gz.b64.part'+str(i))).read_text().strip() for i in range(5))
+          assert len(source)==10432,'SOURCE_PART_LENGTH_MISMATCH'
+          raw=base64.b64decode(source,validate=True)
+          assert hashlib.sha256(raw).hexdigest()=='bf19cd10e045a5b10825575b464bdad7d06a44ef1a52bcb4f0f65a3ed1e03ee2','SOURCE_ARCHIVE_SHA_FAIL'
+          expected={
+           'generate.py':'4a94c8dc5cac1870d4aeb61b94cf025585e01eac43383444c27f5880fa2bdd43',
+           'render.py':'9514621195303ffe9427be52a5ce628efe2d8bc623aebae19b40026e0e6b8bfe',
+           'audit.py':'73ea583403502b5f3d7960c1ffe1947b979ab5084af2fccd15340502f5e886eb',
+           'negative_controls.py':'e3ed52ed9de90052d6181e527b5c297f16353f2ae124e23d55d4ad9ad54e0126'}
+          dest=root/'project'
+          dest.mkdir()
+          with tarfile.open(fileobj=io.BytesIO(gzip.decompress(raw))) as archive:
+            assert sorted(archive.getnames())==sorted(expected)
+            for member in archive:
+              assert member.isfile() and member.name in expected
+              data=archive.extractfile(member).read()
+              assert hashlib.sha256(data).hexdigest()==expected[member.name],'SOURCE_PY_SHA_FAIL_'+member.name
+              assert not (dest/member.name).exists()
+              (dest/member.name).write_bytes(data)
+          print('A83_B3_EXACT_AUTHORED_REJECTED_SOURCE_PASS')
+          PY
+      - name: Install authentic VTK, geometry and software EGL
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'shapely==2.1.2' 'vtk==9.6.2' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Build saved OBJ; reopen independently and reject five corruptions
+        run: |
+          cd 'artifacts/g4c7-a83-b3-shared-street-g0/project'
+          python generate.py
+          python audit.py
+          python negative_controls.py
+      - name: Four genuine VTK renders from the one saved OBJ
+        run: |
+          cd 'artifacts/g4c7-a83-b3-shared-street-g0/project'
+          python render.py
+      - name: Strict narrow TECH G0 only, never ART approval
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          from PIL import Image,ImageStat
+          p=Path('artifacts/g4c7-a83-b3-shared-street-g0/project/output')
+          m=json.loads((p/'manifest.json').read_text())
+          a=json.loads((p/'independent_audit.json').read_text())
+          n=json.loads((p/'negative_controls.json').read_text())
+          assert m['mesh']['triangles']==3972 and m['mesh']['vertices']==11916
+          assert m['mesh']['obj_sha256']==hashlib.sha256((p/'a83_b3_integrated_civic_study.obj').read_bytes()).hexdigest()
+          assert len(m['regions'])==3 and len(a['observed_doors'])==6
+          assert all(d['center_clear'] and d['side_solid'] and d['lintel_solid'] for d in a['observed_doors'])
+          assert a['observed_shared_slabs']==3 and a['observed_full_stairs']==3 and a['narrow_g0_triangle_gate']
+          assert n['all_invalid_states_rejected'] and len(n['negative_controls'])==5
+          assert m['art_acceptance']=='NOT_APPROVED' and m['minecraft_construction']=='FORBIDDEN'
+          assert m['formal_safety']=='NOT_RUN'
+          assert a['full_human_sweep']=='NOT_TESTED' and a['true_supported_load']=='NOT_TESTED'
+          for name in ('oblique','district','public_eye','interior_eye'):
+            fn=p/(name+'.png')
+            assert hashlib.sha256(fn.read_bytes()).hexdigest()==m['true_images'][name]
+            with Image.open(fn) as im:
+              assert im.format=='PNG' and im.size==(1300,850)
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>5
+          print('A83_B3_SOURCE_AND_NARROW_TRIANGLES_PASS__ART_REJECT__NO_FORMAL_QA')
+          PY
+      - name: Preserve evidence on success or archive conflict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a83-b3-genuine-3d-G0-ART-REJECT
+          path: |
+            artifacts/g4c7-a83-b3-shared-street-g0/project/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Append-only archive to existing Draft PR branch
+        run: |
+          set -euo pipefail
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          D=artifacts/g4c7-a83-b3-shared-street-g0/project
+          test -s "$D/output/oblique.png"
+          test -s "$D/output/independent_audit.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D"
+          if git diff --cached --quiet; then echo 'Already archived'; exit 0; fi
+          git commit -m 'A83-B3: append-only archive authentic rejected 3D source, OBJ, and four PNGs'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
