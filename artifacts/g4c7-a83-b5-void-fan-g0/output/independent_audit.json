@@ -1,0 +1,35 @@
+{
+  "file": "a83_b5_urban_void_probe.obj",
+  "sha256": "96cc03493a69f702caaa233194dbb79bf2606f6b04890f480f80a28ee2d7b150",
+  "vertices": 8736,
+  "triangles": 4368,
+  "watertight_unwelded": false,
+  "degenerate_faces": 0,
+  "bounds": [
+    [
+      -605.0,
+      -528.93706,
+      0.0
+    ],
+    [
+      535.71306,
+      667.28987,
+      630.0
+    ]
+  ],
+  "edge_welded_components": 275,
+  "watertight_after_weld": false,
+  "room_enclosure_verified": "NOT_TESTED",
+  "door_movement_verified": "NOT_TESTED",
+  "full_human_sweep": "NOT_RUN",
+  "load_path": "NOT_TESTED",
+  "art": "G0_ART_REJECT_FROM_ACTUAL_3D_IMAGE_REVIEW",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "minecraft_construction": "FORBIDDEN",
+  "preflight_eligible": false,
+  "rejection_reasons": [
+    "NO_INDEPENDENT_OCCUPIED_ROOMS_OR_TRUE_ACCESS_EVIDENCE",
+    "PARTIAL_NON_WATERTIGHT_SHELL_AND_DISCONNECTED_EDGE_GRAPH",
+    "REPEATS_MEGA_WALL_AND_DARK_EMPTY_PUBLIC_COURT_AT_TRUE_3D_EYE_VIEW"
+  ]
+}

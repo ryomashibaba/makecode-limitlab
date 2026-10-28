@@ -1,0 +1,36 @@
+{
+  "stage": "A83_B5_EARLY_NATIVE_3D_ART_FALSIFICATION",
+  "model": "INHABITED_VOID_FAN_SOURCE_ONLY",
+  "stats": {
+    "parts": 2184,
+    "vertices": 8736,
+    "triangles": 4368,
+    "bounds": [
+      [
+        -605.0,
+        -528.9370649213754,
+        0.0
+      ],
+      [
+        535.7130639503738,
+        667.2898729503255,
+        630.0
+      ]
+    ]
+  },
+  "obj_sha256": "96cc03493a69f702caaa233194dbb79bf2606f6b04890f480f80a28ee2d7b150",
+  "real_rooms": "NOT_TESTED",
+  "true_openings_as_usable_doors": "NOT_TESTED",
+  "human_sweep": "NOT_RUN",
+  "structural_load": "NOT_TESTED",
+  "true_interdistrict_access": "NOT_TESTED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "art": "NOT_APPROVED",
+  "minecraft_construction": "FORBIDDEN",
+  "render_images": {
+    "oblique": "c7ff2705afe53dd64533335a4563b74b7e461dd333bea2e9a5d64c37f57ba395",
+    "other_side": "3d8a36b663a1ba5cf9a78417fda3dcfe23b61408e81010c61c53879f468a89d3",
+    "public_eye": "b235026a0bccfeb2cecefb5faf63d4a7e2eb6f33ee1a91fb1ca8b508683148b4",
+    "interior_eye": "aee0d2d7089ad7884bddeacddb18967081eec520fb89c52169c809f2dcb5acf9"
+  }
+}
