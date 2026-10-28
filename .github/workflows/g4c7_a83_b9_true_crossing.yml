@@ -1,0 +1,130 @@
+name: G4-C7 A83-B9 true shared civic crossing G0 / ART REJECT
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a83-b9-civic-seam/source.tar.gz.b64.part*'
+      - '.github/workflows/g4c7_a83_b9_true_crossing.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a83-b9-immutable-native
+  cancel-in-progress: false
+jobs:
+  strict-source-and-geometry-reproduction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore source only when exactly SHA256 authentic
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import io,base64,gzip,tarfile,hashlib
+          root=Path('artifacts/g4c7-a83-b9-civic-seam')
+          fragments=[(root/('source.tar.gz.b64.part'+str(i))).read_text().strip() for i in range(4)]
+          assert list(map(len,fragments))==[1800,1800,1800,1268],'SOURCE_PART_LENGTH_MISMATCH'
+          compressed=base64.b64decode(''.join(fragments),validate=True)
+          assert hashlib.sha256(compressed).hexdigest()=='d6341fec4d72cddb48b60e513000017254b6585e5b791b32b68076a9f019e8c3','SOURCE_ARCHIVE_INTEGRITY_FAILURE'
+          expected={
+            'generate.py':'95d0878c6883d6a63e9bf593b5943f64c721ad328afa707a2505e6c5381f18d1',
+            'audit.py':'a8a2002779dd98ca3646b8a61934492da871de575b06331d93615378ea2f14b4',
+            'test_b9.py':'d2caa47d3355e25d5c7fd7d37ce1988bd890b5e217a8e0a02e8b5359d6e95da4',
+            'render.py':'5f437d0c2be873091bfa4b3dd0f711b2e905e6e577c3b05e1bbffe9012596849'}
+          work=root/'project'
+          assert not work.exists(),'NO_OVERWRITE_EXISTING_B9'
+          work.mkdir()
+          with tarfile.open(fileobj=io.BytesIO(gzip.decompress(compressed))) as t:
+            assert set(t.getnames())==set(expected)
+            for member in t:
+              assert member.isfile() and member.name in expected
+              data=t.extractfile(member).read()
+              assert hashlib.sha256(data).hexdigest()==expected[member.name],member.name
+              (work/member.name).write_bytes(data)
+          print('A83_B9_SOURCE_AUTHENTIC')
+          PY
+      - name: Install deterministic geometry and native VTK
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'vtk==9.6.2' 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Produce real mesh and run actual destructive counterexamples
+        run: |
+          cd 'artifacts/g4c7-a83-b9-civic-seam/project'
+          python generate.py
+          python audit.py
+          python -m unittest test_b9 -v
+      - name: Render four VTK views from one saved PLY
+        run: |
+          cd 'artifacts/g4c7-a83-b9-civic-seam/project'
+          python render.py
+      - name: Verify actual rays, floor heights, images, and no false art status
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          from PIL import Image,ImageStat
+          p=Path('artifacts/g4c7-a83-b9-civic-seam/project/output')
+          m=json.loads((p/'manifest.json').read_text())
+          a=json.loads((p/'independent_audit.json').read_text())
+          render=json.loads((p/'render_manifest.json').read_text())
+          assert m['vertices']==a['vertices']==1208 and m['triangles']==a['triangles']==1812
+          assert m['sha256_obj']==a['obj_sha256']==hashlib.sha256((p/'b9_shared_civic_seam.obj').read_bytes()).hexdigest()
+          assert a['limited_source_true_triangle_gate']
+          assert len(a['portal_witnesses'])==4
+          assert len(a['narrow_air_lanes'])==6
+          assert len(a['ground_and_upper_slab_witnesses'])==6
+          assert all(v['clear_three_lanes'] and v['two_wall_sides'] and v['solid_lintel'] for v in a['portal_witnesses'])
+          assert all(v['no_triangle_on_crossing'] for v in a['narrow_air_lanes'])
+          assert all(v['triangle_at_level'] for v in a['ground_and_upper_slab_witnesses'])
+          assert a['continuous_body_sweep']=='NOT_TESTED'
+          assert a['structural_load']=='NOT_TESTED' and a['formal_s1_g1_g2_g3']=='NOT_RUN'
+          assert m['claimed_main_city_art']=='NOT_APPROVED' and m['formal_art_adoptions']==0
+          assert m['minecraft_construction']=='FORBIDDEN'
+          for name in ('macro','district','public_eye','upper_eye'):
+            f=p/(name+'.png')
+            assert hashlib.sha256(f.read_bytes()).hexdigest()==render['images'][name]
+            with Image.open(f) as im:
+              assert im.format=='PNG' and im.size==(1200,780)
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>5
+          local='88d42e568b01162cda68ede91da8000222a482054c5a9552b64d00635c758ed4'
+          cross={'local_obj_sha256':local,'ci_obj_sha256':m['sha256_obj'],
+                 'cross_env_byte_identical':local==m['sha256_obj'],
+                 'status':'G0_TECH_ONLY','art':'G0_ART_REJECT_HUMAN_IMAGE_REVIEW',
+                 'formal_safety':'NOT_RUN','minecraft':'FORBIDDEN'}
+          (p/'cross_env_hash_comparison.json').write_text(json.dumps(cross,indent=2)+'\n')
+          print('A83_B9_TRUE_TRIANGLE_SOURCE_ONLY_PASS__ART_REJECT__NO_FORMAL_QA')
+          PY
+      - name: Preserve archive even if concurrent branch update prevents push
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a83-b9-local-geometry-G0-art-reject
+          path: |
+            artifacts/g4c7-a83-b9-civic-seam/project/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only evidence to Draft branch; never touch main
+        run: |
+          set -euo pipefail
+          D='artifacts/g4c7-a83-b9-civic-seam/project'
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/output/independent_audit.json"
+          test -s "$D/output/upper_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/"
+          if git diff --cached --quiet;then echo 'Already present';exit 0;fi
+          git commit -m 'A83-B9: archive rejected true crossing OBJ/PLY, VTK four views and independent rays'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
