@@ -1,0 +1,24 @@
+{
+  "stage": "B11-R5 D29",
+  "status": "LOCAL_TRUE3D_AND_INDEPENDENT_AUDIT_DONE_GITHUB_SOURCE_NOT_UPLOADED",
+  "glbs": 3,
+  "images": 6,
+  "node_counts": {
+    "baseline": 97,
+    "no_maker": 70,
+    "no_research": 73
+  },
+  "visibility_rays_clear": 4,
+  "centerline_paths_without_detected_triangles": 3,
+  "negative_controls": 4,
+  "art": "PRE-G0 ART REJECT",
+  "adopted": 0,
+  "official_QA": "NOT_RUN",
+  "construction": "FORBIDDEN",
+  "local_artifact_name": "D29_complete_research_and_glb.zip",
+  "source_sha256": {
+    "generator": "4a4b732e195ec3d9efb102d443b1d0534211d8f30a9774a41733e401ed841b80",
+    "independent_audit": "8f4acae84ff0657885e08d037d18cd38033ff762255db6bc576de30cb3e89504",
+    "baseline_glb": "63e7931956406247d9331713d1484345f5075d1b15b81960912fbc008ca85958"
+  }
+}
