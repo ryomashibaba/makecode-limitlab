@@ -1,0 +1,16 @@
+{
+  "art": "HOLD",
+  "construction": "FORBIDDEN",
+  "images": {
+    "macro_authorial_section": {
+      "png_sha256": "674215e1cfe03ca8d99839beb5fc6ba7a51ffac86782fd402d041cda2a423689",
+      "svg_sha256": "325b80357100255375f04eae416be67ac4a5b8ad121da81c527dcb2d598f9582"
+    },
+    "public_eye_authorial_section": {
+      "png_sha256": "494038ff1424dd60b2a0780afa564f3cb7e48459e3a164c10c926a0524c6605d",
+      "svg_sha256": "e6c5211766a21a189c1aa38a131781ce776a94088b1a26a6c517322703075f28"
+    }
+  },
+  "real_3d": "NOT_RUN",
+  "stage": "A83_B4_2D_SOURCE_IMAGES_NOT_3D"
+}
