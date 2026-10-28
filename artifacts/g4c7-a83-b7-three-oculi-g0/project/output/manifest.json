@@ -1,0 +1,205 @@
+{
+  "stage": "A83_B7_TRUE_GEOMETRY_ANTI_SCULPTURE_TEST",
+  "hypothesis": "THREE_INTERLOCKED_PUBLIC_OCULI",
+  "parts": 808,
+  "vertices": 4412,
+  "triangles": 3294,
+  "domains": [
+    "W",
+    "C",
+    "E"
+  ],
+  "room_candidates": 13,
+  "portals": [
+    {
+      "id": "W0",
+      "center": [
+        -148,
+        -35
+      ],
+      "radius": 25,
+      "theta": -2.3600000000000003,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "W",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "W1",
+      "center": [
+        -148,
+        -35
+      ],
+      "radius": 25,
+      "theta": -1.8800000000000001,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "W",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "W2",
+      "center": [
+        -148,
+        -35
+      ],
+      "radius": 25,
+      "theta": -1.4000000000000001,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "W",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "W3",
+      "center": [
+        -148,
+        -35
+      ],
+      "radius": 25,
+      "theta": -0.9200000000000002,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "W",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "C0",
+      "center": [
+        0,
+        38
+      ],
+      "radius": 29,
+      "theta": -2.4800000000000004,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 13,
+      "district": "C",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "C1",
+      "center": [
+        0,
+        38
+      ],
+      "radius": 29,
+      "theta": -2.04,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 13,
+      "district": "C",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "C2",
+      "center": [
+        0,
+        38
+      ],
+      "radius": 29,
+      "theta": -1.6000000000000003,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 13,
+      "district": "C",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "C3",
+      "center": [
+        0,
+        38
+      ],
+      "radius": 29,
+      "theta": -1.1600000000000001,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 13,
+      "district": "C",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "C4",
+      "center": [
+        0,
+        38
+      ],
+      "radius": 29,
+      "theta": -0.7200000000000002,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 13,
+      "district": "C",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "E0",
+      "center": [
+        164,
+        -22
+      ],
+      "radius": 25,
+      "theta": -2.205,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "E",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "E1",
+      "center": [
+        164,
+        -22
+      ],
+      "radius": 25,
+      "theta": -1.7150000000000003,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "E",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "E2",
+      "center": [
+        164,
+        -22
+      ],
+      "radius": 25,
+      "theta": -1.225,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "E",
+      "type": "real_missing_inner_facade_mesh_patch"
+    },
+    {
+      "id": "E3",
+      "center": [
+        164,
+        -22
+      ],
+      "radius": 25,
+      "theta": -0.7350000000000002,
+      "width_angle": 0.078,
+      "height": 4.8,
+      "height_top": 11.5,
+      "district": "E",
+      "type": "real_missing_inner_facade_mesh_patch"
+    }
+  ],
+  "completed_rooms": "NOT_TESTED",
+  "real_continuous_routes": "NOT_TESTED",
+  "stair_tread_safety": "NOT_TESTED",
+  "structural_load": "NOT_TESTED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "art": "HOLD_REQUIRES_IMAGE_REVIEW",
+  "minecraft_construction": "FORBIDDEN",
+  "sha256_obj": "89ab169d862882d2b45200bd8e828b745f8bdd365a51878fe2a160a4559a875a"
+}

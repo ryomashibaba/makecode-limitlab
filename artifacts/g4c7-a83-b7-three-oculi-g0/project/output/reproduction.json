@@ -1,0 +1,9 @@
+{
+  "run": "A83_B7_REJECTED_G0_LOCAL_GEOMETRY",
+  "art": "REJECT",
+  "formal_qa": "NOT_RUN",
+  "construction": "FORBIDDEN",
+  "ci_obj_sha256": "89ab169d862882d2b45200bd8e828b745f8bdd365a51878fe2a160a4559a875a",
+  "local_obj_sha256": "89ab169d862882d2b45200bd8e828b745f8bdd365a51878fe2a160a4559a875a",
+  "cross_environment_byte_identical": true
+}

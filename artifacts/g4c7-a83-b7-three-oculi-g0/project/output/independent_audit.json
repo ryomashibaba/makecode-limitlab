@@ -1,0 +1,120 @@
+{
+  "audit": "A83_B7_INDEPENDENT_G0",
+  "source_obj_sha256": "89ab169d862882d2b45200bd8e828b745f8bdd365a51878fe2a160a4559a875a",
+  "faces": 3294,
+  "vertices": 4412,
+  "doors": {
+    "W0": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "W1": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "W2": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "W3": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "C0": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "C1": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "C2": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "C3": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "C4": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "E0": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "E1": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "E2": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    },
+    "E3": {
+      "center_clear": true,
+      "left_solid": true,
+      "right_solid": true,
+      "lintel_solid": true
+    }
+  },
+  "door_triangle_pass": 13,
+  "upper_gallery_floor_rays": {
+    "W0": true,
+    "W1": true,
+    "W2": true,
+    "W3": true,
+    "C0": true,
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "E0": true,
+    "E1": true,
+    "E2": true,
+    "E3": true
+  },
+  "w_c_occupied_mass_clear_gap_m": 33.0242,
+  "c_e_occupied_mass_clear_gap_m": 42.631,
+  "rejection_reasons": [
+    "OCCUPIED_MASSES_FORM_THREE_SEPARATE_ISLANDS",
+    "INSUFFICIENT_ACTUAL_INTERDISTRICT_INHABITED_CONNECTION",
+    "UPPER_STAIRS_NO_CERTIFIED_RISERS_OR_SUPPORT",
+    "MAJOR_VISUAL_FORM_FALLS_BACK_TO_CAMPUS_PLUS_TALL_FINS"
+  ],
+  "true_habitable_rooms": "NOT_TESTED",
+  "full_human_331_foot_993": "NOT_RUN",
+  "structural_load": "NOT_TESTED",
+  "supported_upper_routes": "NOT_TESTED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "native_3d_visual_review": "ART_REJECT",
+  "overall_art": "HOLD",
+  "formal_art_adoptions": 0,
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN"
+}
