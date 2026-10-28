@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 780" width="1050" height="780">
+<rect width="1050" height="780" fill="#081927"/>
+<text x="58" y="74" font-size="32" fill="#e8f0f1" font-family="Arial">A83-B8 / SHARED SOURCE VOLUME</text>
+<text x="58" y="110" font-size="17" fill="#e5b77e" font-family="Arial">PRE-3D DESIGN REJECT — Three overlapped polygon masses, not a city</text>
+<polygon points="165,425 235,531 359,519 425,419 339,285 231,311" fill="#4fa8b7" fill-opacity=".55" stroke="#d4eff2" stroke-width="3"/>
+<polygon points="331,545 527,575 641,455 573,255 365,265 305,419" fill="#cea56b" fill-opacity=".55" stroke="#d4eff2" stroke-width="3"/>
+<polygon points="539,475 679,565 795,485 815,311 655,235 523,311" fill="#7a9acb" fill-opacity=".55" stroke="#d4eff2" stroke-width="3"/>
+<text x="270" y="396" fill="white" font-size="26" font-family="Arial">W 19m</text>
+<text x="485" y="380" fill="white" font-size="26" font-family="Arial">C 28m</text>
+<text x="748" y="385" fill="white" font-size="26" font-family="Arial">E 22m</text>
+<text x="52" y="710" fill="#f1ca88" font-family="Arial" font-size="18">Area overlap ≠ accessible shared room; intersection can be a solid collision.</text>
+<text x="52" y="744" fill="#a7c4cb" font-family="Arial" font-size="17">No real 3D, no verified rooms or routes, no ART adoption, no Minecraft.</text>
+</svg>
