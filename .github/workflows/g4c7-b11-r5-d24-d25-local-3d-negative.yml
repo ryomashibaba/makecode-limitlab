@@ -1,0 +1,60 @@
+name: G4-C7 B11-R5 D24-D25 saved-GLB artistic rejection (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d24-d25/**'
+      - '.github/workflows/g4c7-b11-r5-d24-d25-local-3d-negative.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d24-d25-hold
+  cancel-in-progress: true
+jobs:
+  source-derived-three-glb-negative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies for saved GLB and real rendering
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'shapely>=2,<3' 'vtk>=9.3,<10'
+      - name: Configure software OpenGL and headless display
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate three local true-3D GLBs and six images from reloaded GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d24-d25/d24_civic_street.py --out d24_build
+      - name: Independently re-load saved GLB and test counterfactuals
+        run: python research/g4c7-b11-r5-d24-d25/d24_independent_audit.py --out d24_build
+      - name: D25 independent early-reject anti-regression and intentional mutations
+        run: python research/g4c7-b11-r5-d24-d25/d25_anti_regression.py --out d24_build
+      - name: Strict hold, no formal certification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('d24_build')
+          a=json.loads((p/'d24_independent_result.json').read_text())
+          b=json.loads((p/'d25_preflight_result.json').read_text())
+          assert len(list(p.glob('d24_*.glb')))==3
+          assert len(list(p.glob('0*.png')))==6
+          assert a['adopted']==b['adopted']==0
+          assert a['construction']==b['construction']=='FORBIDDEN'
+          assert a['official_G0_S1_G1_G2_G3']==b['formal_G0_S1_G1_G2_G3']=='NOT_RUN'
+          assert b['decision']=='STOP_D24_MORPHOLOGY_BEFORE_CITY_INTEGRATION'
+          assert b['promote_to_more_3d'] is False
+          print('D24-D25: evidence verified; ART REJECT; formal QA NOT RUN; no Minecraft')
+          PY
+      - name: Archive evidence even if failed (no adoption)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D24-D25-THREE-GLB-NEGATIVE-ART-REJECT
+          if-no-files-found: warn
+          retention-days: 14
+          path: d24_build/
