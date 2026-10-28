@@ -1,0 +1,311 @@
+{
+  "stage": "A83-B4",
+  "type": "AUTHORIAL_TWO_SCALE_SCHOLARLY_G0_NOT_3D",
+  "version": 1,
+  "design_name": "Porous Confluence / 透過交域",
+  "units": "metres",
+  "bounds": {
+    "x": [
+      0,
+      2250
+    ],
+    "y": [
+      -260,
+      280
+    ],
+    "z": [
+      0,
+      350
+    ]
+  },
+  "districts": [
+    {
+      "id": "W",
+      "x": [
+        0,
+        730
+      ],
+      "role": "making, markets and exchange"
+    },
+    {
+      "id": "C",
+      "x": [
+        730,
+        1530
+      ],
+      "role": "shared culture, research and civic routes"
+    },
+    {
+      "id": "E",
+      "x": [
+        1530,
+        2250
+      ],
+      "role": "homes, learning and public services"
+    }
+  ],
+  "public_nodes": [
+    {
+      "id": "WG",
+      "x": 240,
+      "z": 0,
+      "district": "W",
+      "type": "public_ground"
+    },
+    {
+      "id": "CG",
+      "x": 1080,
+      "z": 0,
+      "district": "C",
+      "type": "public_ground"
+    },
+    {
+      "id": "EG",
+      "x": 1880,
+      "z": 0,
+      "district": "E",
+      "type": "public_ground"
+    },
+    {
+      "id": "WU",
+      "x": 525,
+      "z": 175,
+      "district": "W",
+      "type": "upper_landing_intent"
+    },
+    {
+      "id": "CU",
+      "x": 1210,
+      "z": 225,
+      "district": "C",
+      "type": "upper_landing_intent"
+    },
+    {
+      "id": "EU",
+      "x": 1980,
+      "z": 195,
+      "district": "E",
+      "type": "upper_landing_intent"
+    }
+  ],
+  "frontages": [
+    {
+      "id": "F-WL",
+      "district": "W",
+      "x": 315,
+      "z": 35,
+      "span": 255,
+      "depth": 50,
+      "levels": [
+        0,
+        35
+      ],
+      "uses": [
+        "market",
+        "making",
+        "learning"
+      ],
+      "access": [
+        "WG",
+        "WU"
+      ],
+      "facing": "public_gallery"
+    },
+    {
+      "id": "F-WH",
+      "district": "W",
+      "x": 560,
+      "z": 175,
+      "span": 235,
+      "depth": 46,
+      "levels": [
+        155,
+        175
+      ],
+      "uses": [
+        "learning",
+        "residential",
+        "making"
+      ],
+      "access": [
+        "WG",
+        "WU"
+      ],
+      "facing": "west_shared_court"
+    },
+    {
+      "id": "F-CL",
+      "district": "C",
+      "x": 950,
+      "z": 42,
+      "span": 295,
+      "depth": 64,
+      "levels": [
+        0,
+        42
+      ],
+      "uses": [
+        "exchange",
+        "civic",
+        "reading"
+      ],
+      "access": [
+        "CG",
+        "CU"
+      ],
+      "facing": "main_civic_void"
+    },
+    {
+      "id": "F-CH",
+      "district": "C",
+      "x": 1300,
+      "z": 225,
+      "span": 280,
+      "depth": 55,
+      "levels": [
+        202,
+        225
+      ],
+      "uses": [
+        "research",
+        "residential",
+        "public_library"
+      ],
+      "access": [
+        "CG",
+        "CU"
+      ],
+      "facing": "main_civic_void"
+    },
+    {
+      "id": "F-EL",
+      "district": "E",
+      "x": 1705,
+      "z": 60,
+      "span": 285,
+      "depth": 60,
+      "levels": [
+        0,
+        60
+      ],
+      "uses": [
+        "public_service",
+        "making",
+        "sports"
+      ],
+      "access": [
+        "EG",
+        "EU"
+      ],
+      "facing": "east_neighborhood"
+    },
+    {
+      "id": "F-EH",
+      "district": "E",
+      "x": 2010,
+      "z": 195,
+      "span": 210,
+      "depth": 50,
+      "levels": [
+        165,
+        195
+      ],
+      "uses": [
+        "residential",
+        "education",
+        "culture"
+      ],
+      "access": [
+        "EG",
+        "EU"
+      ],
+      "facing": "east_neighborhood"
+    }
+  ],
+  "links": [
+    {
+      "a": "WG",
+      "b": "CG",
+      "mode": "GROUND_ROUTE_INTENTION_ONLY",
+      "not_verified": true
+    },
+    {
+      "a": "CG",
+      "b": "EG",
+      "mode": "GROUND_ROUTE_INTENTION_ONLY",
+      "not_verified": true
+    },
+    {
+      "a": "WG",
+      "b": "WU",
+      "mode": "LIFT_CORE_PLACEHOLDER_NOT_ENGINEERED",
+      "not_verified": true
+    },
+    {
+      "a": "CG",
+      "b": "CU",
+      "mode": "LIFT_CORE_PLACEHOLDER_NOT_ENGINEERED",
+      "not_verified": true
+    },
+    {
+      "a": "EG",
+      "b": "EU",
+      "mode": "LIFT_CORE_PLACEHOLDER_NOT_ENGINEERED",
+      "not_verified": true
+    }
+  ],
+  "voids": [
+    {
+      "id": "COURT_W",
+      "x": [
+        390,
+        780
+      ],
+      "z": [
+        0,
+        240
+      ],
+      "intent": "multi-level daylit interchange",
+      "real_void_not_proven": true
+    },
+    {
+      "id": "COURT_C",
+      "x": [
+        825,
+        1165
+      ],
+      "z": [
+        0,
+        340
+      ],
+      "intent": "public vista linking multiple activities",
+      "real_void_not_proven": true
+    },
+    {
+      "id": "COURT_E",
+      "x": [
+        1570,
+        1915
+      ],
+      "z": [
+        0,
+        230
+      ],
+      "intent": "neighborhood public exterior",
+      "real_void_not_proven": true
+    }
+  ],
+  "evidence_status": {
+    "real_3d_mesh": "NOT_RUN",
+    "real_rooms": "NOT_TESTED",
+    "true_openings": "NOT_TESTED",
+    "true_supported_lifts": "NOT_TESTED",
+    "true_interdistrict_walk": "NOT_TESTED",
+    "structural_load": "NOT_TESTED",
+    "accessibility": "NOT_TESTED",
+    "s1_g1_g2_g3": "NOT_RUN",
+    "art": "HOLD",
+    "construction": "FORBIDDEN",
+    "formal_art_adoptions": 0
+  }
+}
