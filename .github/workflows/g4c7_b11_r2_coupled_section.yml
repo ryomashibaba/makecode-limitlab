@@ -1,0 +1,103 @@
+name: G4-C7 B11-R2 reproducible real-triangle coupling counterexample
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-b11-r2-causal-section/source.tar.gz.b64.part*'
+      - '.github/workflows/g4c7_b11_r2_coupled_section.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-b11-r2-causal-geometry
+  cancel-in-progress: false
+jobs:
+  true-geometry-source-only-no-art-cert:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore original exact Python, fail closed on SHA mismatch
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64,hashlib,gzip,tarfile,io
+          base=Path('artifacts/g4c7-b11-r2-causal-section')
+          chunks=[(base/('source.tar.gz.b64.part'+str(i))).read_text(encoding='ascii').strip() for i in range(5)]
+          assert list(map(len,chunks))==[1400,1400,1400,1400,1100],'SOURCE_PART_LENGTH_MISMATCH'
+          archived=base64.b64decode(''.join(chunks),validate=True)
+          assert hashlib.sha256(archived).hexdigest()=='6ea91c755bac83c842f0b526a4fa3fad6ba55651b7185fa46c7310ad4b93216e','SOURCE_ARCHIVE_SHA_MISMATCH'
+          expected={
+            'coupled_section.py':'b6b4d05b17bfb753aa0b014422d23dc9579051f3e4a41558788c744ef0465e32',
+            'test_coupled_section.py':'7a238511f0e9794f2ab21d4693403db42f56a960aa294b3ee84315c32c352671'}
+          project=base/'project';assert not project.exists()
+          project.mkdir()
+          with tarfile.open(fileobj=io.BytesIO(gzip.decompress(archived))) as tar:
+            assert set(tar.getnames())==set(expected),'WRONG_SOURCE_LIST'
+            for member in tar:
+              assert member.isfile() and member.name in expected
+              content=tar.extractfile(member).read()
+              assert hashlib.sha256(content).hexdigest()==expected[member.name],'WRONG_FILE_SHA_'+member.name
+              (project/member.name).write_bytes(content)
+          print('G4C7_B11_R2_AUTHOR_SOURCE_INTEGRITY_CONFIRMED')
+          PY
+      - name: Install real geometry and VTK (not Minecraft)
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'scipy==1.17.0' 'vtk==9.6.2' 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Generate four actual triangle variants and four VTK views
+        run: |
+          cd 'artifacts/g4c7-b11-r2-causal-section/project'
+          python coupled_section.py --output output --render
+          python -m unittest -v test_coupled_section
+      - name: Fail closed on false certification or absence of true evidence
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path('artifacts/g4c7-b11-r2-causal-section/project/output')
+          for name in ('baseline','public_change','housing_change','cut'):
+            m=json.loads((p/name/'manifest.json').read_text())
+            assert sum(x['faces'] for x in m['parts'].values())==3072
+            assert m['real_enclosed_rooms']=='NOT_TESTED'
+            assert m['actual_safe_walk']=='NOT_TESTED'
+            assert m['formal_s1_g1_g2_g3']=='NOT_RUN'
+            assert m['formal_adoptions']==0
+            assert m['minecraft_construction']=='FORBIDDEN'
+            for category,item in m['parts'].items():
+              assert hashlib.sha256((p/name/(category+'.ply')).read_bytes()).hexdigest()==item['file_sha256']
+          assert json.loads((p/'cut'/'manifest.json').read_text())['source_void_width_gate']=='REJECT_NARROW_SOURCE_VOID'
+          print('R2_REAL_IMPORTED_TRIANGLES_CAUSAL_G0_ONLY__ART_REJECT_NO_SAFETY')
+          PY
+      - name: Preserve original source and results even if Draft push conflicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-b11-r2-true-triangles-ART-REJECT
+          path: 'artifacts/g4c7-b11-r2-causal-section/project/'
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Append-only archive on existing Draft PR branch
+        run: |
+          set -euo pipefail
+          D='artifacts/g4c7-b11-r2-causal-section/project'
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/output/baseline/macro.png"
+          test -s "$D/output/public_change/public_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/"
+          if git diff --cached --quiet;then echo 'Already saved';exit 0;fi
+          git commit -m 'B11-R2: preserve actual PLY causal geometry, true VTK views, counterfactual QA'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
