@@ -1,0 +1,35 @@
+{
+  "stage": "A83-B10",
+  "source_scale": {
+    "metres_per_grid_cell": 3.0,
+    "width_m": 1800,
+    "depth_m": 900
+  },
+  "source_2d_air_connected_at_5m_centre_clearance": true,
+  "labelled_clearance_components": 1,
+  "public_node_labels": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "public_branch_count": 4,
+  "public_air_source_area_m2": 298476,
+  "inhabited_envelope_source_area_m2": 523089,
+  "altered_civic_void_causes_envelope_change_cells": 2396,
+  "failures": [],
+  "source_preflight_pass": true,
+  "actual_floor": "NOT_TESTED",
+  "actual_room_enclosure": "NOT_TESTED",
+  "real_3d": "NOT_RUN",
+  "full_human_sweep_331_foot_993": "NOT_RUN",
+  "structural_load_and_vertical_routes": "NOT_TESTED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "art_status": "HOLD_NO_VISUAL_ADOPTION",
+  "formal_art_adoptions": 0,
+  "minecraft_construction": "FORBIDDEN",
+  "caveat": "2D sample negative-space topology; a connected slice is not a traversable building or compelling macro silhouette"
+}

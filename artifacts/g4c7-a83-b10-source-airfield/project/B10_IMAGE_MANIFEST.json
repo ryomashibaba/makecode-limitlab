@@ -1,0 +1,10 @@
+{
+  "images_sha256": {
+    "B10_SOURCE_PLAN.png": "8d2b6b44b4ef5bc37449694c116a07c56aea3e4a564b1e946aa14d9d981f9ae8",
+    "B10_SOURCE_CENTRE.png": "0ce0b1849c8cfcb3dcc38ae0152e6cd540725383ed647187e66b82dfc8ec3acf"
+  },
+  "g0": "SOURCE_2D_ONLY",
+  "art": "PRE_3D_DESIGN_REJECT",
+  "formal_safety": "NOT_RUN",
+  "minecraft": "FORBIDDEN"
+}
