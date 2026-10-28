@@ -1,0 +1,113 @@
+name: G4-C7 A83-B5 rejected native void-fan source evidence
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a83-b5-void-fan-g0/a83_b5_study.py.gz.b64.part*'
+      - 'artifacts/g4c7-a83-b5-void-fan-g0/independent_audit.py'
+      - 'artifacts/g4c7-a83-b5-void-fan-g0/test_b5.py'
+      - '.github/workflows/g4c7_a83_b5_rejected_native.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a83-b5-rejected-native
+  cancel-in-progress: false
+jobs:
+  research-reproducible-rejection:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact source restoration with SHA256
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,base64,hashlib
+          d=Path('artifacts/g4c7-a83-b5-void-fan-g0')
+          x=''.join((d/('a83_b5_study.py.gz.b64.part'+str(i))).read_text(encoding='ascii').strip() for i in range(3))
+          assert len(x)==5832
+          z=base64.b64decode(x,validate=True)
+          assert hashlib.sha256(z).hexdigest()=='3125de00d97d1c9a68932efa020b704ef687dfe9e0979c6c5bf5311dd28e02ab','SOURCE_GZIP_HASH_MISMATCH'
+          raw=gzip.decompress(z)
+          assert hashlib.sha256(raw).hexdigest()=='100cbe2cb97f54587a9216c5ea105444c81a1fc9656182c51b117a3d552e50be','SOURCE_HASH_MISMATCH'
+          target=d/'a83_b5_study.py'
+          assert not target.exists(),'NO_OVERWRITE'
+          target.write_bytes(raw)
+          print('B5_SOURCE_INTEGRITY_CONFIRMED')
+          PY
+      - name: Install native Python geometry and software EGL
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'trimesh>=4.5,<5' 'vtk==9.6.2' 'Pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
+      - name: Generate true OBJ and four true VTK views (never art pass)
+        run: |
+          python 'artifacts/g4c7-a83-b5-void-fan-g0/a83_b5_study.py'
+      - name: Independent OBJ reimport + negative and false-safety-claim refusal
+        run: |
+          python 'artifacts/g4c7-a83-b5-void-fan-g0/independent_audit.py'
+          python -m unittest discover -s 'artifacts/g4c7-a83-b5-void-fan-g0' -p 'test_b5.py' -v
+      - name: Fail closed on absence of actual supported rooms, human/safety or art adoption
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          from PIL import Image, ImageStat
+          d=Path('artifacts/g4c7-a83-b5-void-fan-g0')/'output'
+          m=json.loads((d/'manifest.json').read_text())
+          a=json.loads((d/'independent_audit.json').read_text())
+          obj=(d/'a83_b5_urban_void_probe.obj')
+          assert a['sha256']==m['obj_sha256']==hashlib.sha256(obj.read_bytes()).hexdigest()
+          assert m['stats']['triangles']==a['triangles']==4368
+          assert a['degenerate_faces']==0 and not a['watertight_after_weld']
+          assert a['edge_welded_components']>1
+          assert a['room_enclosure_verified']=='NOT_TESTED'
+          assert a['door_movement_verified']=='NOT_TESTED'
+          assert a['load_path']=='NOT_TESTED'
+          assert m['art']=='NOT_APPROVED' and not a['preflight_eligible']
+          assert m['minecraft_construction']==a['minecraft_construction']=='FORBIDDEN'
+          assert m['formal_s1_g1_g2_g3']=='NOT_RUN'
+          for n in ('oblique','other_side','public_eye','interior_eye'):
+            p=d/(n+'.png')
+            assert hashlib.sha256(p.read_bytes()).hexdigest()==m['render_images'][n]
+            with Image.open(p) as im:
+              assert im.format=='PNG' and im.size==(1440,900)
+              assert max(ImageStat.Stat(im.convert('RGB')).stddev)>5
+          print('G0_TRUE_MESH_AND_RENDER_REPRODUCED; ART_REJECT; FORMAL_QA_NOT_RUN')
+          PY
+      - name: Preserve true files even on branch archive conflict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a83-b5-native-G0-ART-REJECT
+          path: |
+            artifacts/g4c7-a83-b5-void-fan-g0/a83_b5_study.py
+            artifacts/g4c7-a83-b5-void-fan-g0/output/
+            artifacts/g4c7-a83-b5-void-fan-g0/independent_audit.py
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append only to Draft branch if all integrity gates succeeded
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a83-b5-void-fan-g0
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/output/a83_b5_urban_void_probe.obj"
+          test -s "$D/output/independent_audit.json"
+          test -s "$D/output/interior_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/a83_b5_study.py" "$D/output/"
+          if git diff --cached --quiet; then echo 'Evidence already archived'; exit 0; fi
+          git commit -m 'A83-B5: archive authentic rejected OBJ, four native VTK images, audit'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
