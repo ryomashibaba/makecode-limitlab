@@ -1,0 +1,319 @@
+{
+  "study": "B11_R3_REAL_TRIANGLE_ROOM_CLOSURE_DIAGNOSTIC",
+  "original": "B11-R2 baseline PLY unchanged",
+  "faces": 3072,
+  "original_sha256": {
+    "public": {
+      "sha256": "cae7b26ed2da9d1adffb422ef59d1f59dd5b9715c1757c5fbfe0f8cb78f0c1d5",
+      "faces": 320
+    },
+    "occupied": {
+      "sha256": "e8f794dcd56bdde6733638c9421dff2569524a624e01ef92ea26b2cf70c60228",
+      "faces": 960
+    },
+    "envelope": {
+      "sha256": "113d2f9111b984f1fa2844f8ed88c9ef20c09a14c59d18e4bf1ef8b162321ad4",
+      "faces": 1600
+    },
+    "supports": {
+      "sha256": "13f832944528f2ab691c2faec7dad555218f24bef8caec2f2596baf714adcf7d",
+      "faces": 176
+    },
+    "activity": {
+      "sha256": "6dae3fe2c95bc1bf54d3722f7a13f218dc309bc5fafff3aeb814eec0330e1a59",
+      "faces": 16
+    }
+  },
+  "probes": [
+    {
+      "site": "-132_south",
+      "point_m": [
+        -132.0,
+        -40.62356884883798,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 10.302
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 10.294
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    },
+    {
+      "site": "-132_north",
+      "point_m": [
+        -132.0,
+        20.271061289944065,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 10.282
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 10.314
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    },
+    {
+      "site": "-36_south",
+      "point_m": [
+        -36.0,
+        -36.7220756668851,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 9.907
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 9.901
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    },
+    {
+      "site": "-36_north",
+      "point_m": [
+        -36.0,
+        19.02513846249621,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 9.917
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 9.892
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    },
+    {
+      "site": "64_south",
+      "point_m": [
+        64.0,
+        -19.10634572371864,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 10.434
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 10.446
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    },
+    {
+      "site": "64_north",
+      "point_m": [
+        64.0,
+        43.61930155059311,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 10.433
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 10.448
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    },
+    {
+      "site": "143_south",
+      "point_m": [
+        143.0,
+        -20.102005139079623,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 10.25
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 10.238
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    },
+    {
+      "site": "143_north",
+      "point_m": [
+        143.0,
+        40.08145932560021,
+        8.0
+      ],
+      "rays": {
+        "east": {
+          "hit": false,
+          "distance_m": null
+        },
+        "west": {
+          "hit": false,
+          "distance_m": null
+        },
+        "north": {
+          "hit": true,
+          "distance_m": 10.242
+        },
+        "south": {
+          "hit": true,
+          "distance_m": 10.246
+        },
+        "up": {
+          "hit": true,
+          "distance_m": 5.0
+        },
+        "down": {
+          "hit": true,
+          "distance_m": 8.0
+        }
+      },
+      "six_direction_local_witness": false
+    }
+  ],
+  "probed_sites": 8,
+  "six_direction_local_witnesses": 0,
+  "interpretation": "Six directional walls are necessary, never sufficient, for a usable room; conclusions only concern these eight samples",
+  "real_room_certification": "NOT_CERTIFIED",
+  "art": "G0_ART_REJECT",
+  "s1_g1_g2_g3": "NOT_RUN",
+  "human_331_foot_993": "NOT_RUN",
+  "load_and_egress": "NOT_TESTED",
+  "formal_art_adoptions": 0,
+  "minecraft": "FORBIDDEN"
+}
