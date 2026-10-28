@@ -1,0 +1,354 @@
+{
+  "stage": "A83_B1_PRE3D_ONLY",
+  "schemes": [
+    {
+      "id": "A",
+      "title": "LONG CIVIC ARCH",
+      "decision": "PRE_3D_REJECT",
+      "reason": "A60/61 bridge/tube grammar",
+      "points": [
+        [
+          36,
+          0
+        ],
+        [
+          36,
+          230
+        ],
+        [
+          138,
+          412
+        ],
+        [
+          325,
+          560
+        ],
+        [
+          675,
+          560
+        ],
+        [
+          862,
+          412
+        ],
+        [
+          964,
+          230
+        ],
+        [
+          964,
+          0
+        ],
+        [
+          760,
+          0
+        ],
+        [
+          760,
+          235
+        ],
+        [
+          650,
+          323
+        ],
+        [
+          350,
+          323
+        ],
+        [
+          240,
+          235
+        ],
+        [
+          240,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "B",
+      "title": "PROGRAM STRATA",
+      "decision": "PRE_3D_REJECT",
+      "reason": "A67/77 horizontal shelving grammar",
+      "points": [
+        [
+          44,
+          0
+        ],
+        [
+          44,
+          140
+        ],
+        [
+          125,
+          140
+        ],
+        [
+          125,
+          245
+        ],
+        [
+          245,
+          245
+        ],
+        [
+          245,
+          340
+        ],
+        [
+          375,
+          340
+        ],
+        [
+          375,
+          440
+        ],
+        [
+          485,
+          440
+        ],
+        [
+          485,
+          530
+        ],
+        [
+          610,
+          530
+        ],
+        [
+          610,
+          435
+        ],
+        [
+          765,
+          435
+        ],
+        [
+          765,
+          290
+        ],
+        [
+          920,
+          290
+        ],
+        [
+          920,
+          185
+        ],
+        [
+          962,
+          185
+        ],
+        [
+          962,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "C",
+      "title": "ROOTED CIVIC DELTA",
+      "decision": "PRE_3D_REJECT",
+      "reason": "A34/35 mountain/quarry silhouette; straight supports as decoration, no lived facade",
+      "points": [
+        [
+          38,
+          0
+        ],
+        [
+          45,
+          170
+        ],
+        [
+          115,
+          280
+        ],
+        [
+          150,
+          352
+        ],
+        [
+          210,
+          445
+        ],
+        [
+          255,
+          485
+        ],
+        [
+          312,
+          470
+        ],
+        [
+          350,
+          380
+        ],
+        [
+          385,
+          305
+        ],
+        [
+          410,
+          460
+        ],
+        [
+          475,
+          590
+        ],
+        [
+          540,
+          642
+        ],
+        [
+          602,
+          618
+        ],
+        [
+          625,
+          490
+        ],
+        [
+          645,
+          375
+        ],
+        [
+          690,
+          435
+        ],
+        [
+          735,
+          555
+        ],
+        [
+          795,
+          579
+        ],
+        [
+          835,
+          515
+        ],
+        [
+          858,
+          420
+        ],
+        [
+          926,
+          310
+        ],
+        [
+          958,
+          148
+        ],
+        [
+          964,
+          0
+        ]
+      ]
+    }
+  ],
+  "programs": [
+    {
+      "id": "W-market",
+      "district": "W",
+      "use": "market",
+      "x": 185,
+      "z": 178
+    },
+    {
+      "id": "W-assembly",
+      "district": "W",
+      "use": "assembly",
+      "x": 230,
+      "z": 270
+    },
+    {
+      "id": "C-fabrication",
+      "district": "C",
+      "use": "fabrication",
+      "x": 485,
+      "z": 220
+    },
+    {
+      "id": "C-library",
+      "district": "C",
+      "use": "library",
+      "x": 545,
+      "z": 400
+    },
+    {
+      "id": "E-housing",
+      "district": "E",
+      "use": "housing",
+      "x": 786,
+      "z": 242
+    },
+    {
+      "id": "E-civic",
+      "district": "E",
+      "use": "civic",
+      "x": 755,
+      "z": 370
+    }
+  ],
+  "roots": [
+    [
+      120,
+      0,
+      185,
+      178
+    ],
+    [
+      265,
+      0,
+      230,
+      270
+    ],
+    [
+      390,
+      0,
+      485,
+      220
+    ],
+    [
+      610,
+      0,
+      545,
+      400
+    ],
+    [
+      690,
+      0,
+      755,
+      370
+    ],
+    [
+      865,
+      0,
+      786,
+      242
+    ]
+  ],
+  "links": [
+    [
+      "W-market",
+      "W-assembly"
+    ],
+    [
+      "W-market",
+      "C-fabrication"
+    ],
+    [
+      "C-fabrication",
+      "C-library"
+    ],
+    [
+      "C-fabrication",
+      "E-housing"
+    ],
+    [
+      "E-housing",
+      "E-civic"
+    ]
+  ],
+  "annotation": "The drawing is an author 2D silhouette and abstract graph, NOT actual rooms, movement, support, or real 3D."
+}
