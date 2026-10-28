@@ -1,0 +1,56 @@
+{
+  "stage": "G4-C7 B11-R5 D9",
+  "source": "Conversation evidence, not GitHub binary; index is summary only",
+  "art": "G0 ART REJECT",
+  "next_sketch": "PRE-3D HOLD",
+  "official_art_adopted": 0,
+  "formal_qa": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "formal_contract": {
+    "body_points": 331,
+    "foot_points": 993,
+    "body_halfwidth_m": 0.65,
+    "body_collision_max": 45,
+    "unsupported_feet_max": 0
+  },
+  "variants": [
+    {
+      "name": "inhabited",
+      "faces": 5132,
+      "components": 344,
+      "floor_witnesses": 135,
+      "floor_samples": 135,
+      "overhead_hits": 0,
+      "maker_view_blocked": true,
+      "research_view_blocked": true,
+      "obj_sha256": "6544bc61e8ec36e27eb182ac6f5b19e00315a9e69a6dc3b63b8d1656b4d61ad0",
+      "glb_sha256": "93b1eb5c60eda93fa1a368be5367cd1bee8c22341fd6d0fb2505da0ec98a1088"
+    },
+    {
+      "name": "research_removed",
+      "faces": 3048,
+      "components": 189,
+      "floor_witnesses": 135,
+      "floor_samples": 135,
+      "overhead_hits": 0,
+      "maker_view_blocked": true,
+      "research_view_blocked": false,
+      "obj_sha256": "d8f880730eabbfd010b6e3ff46e41711f5f67fdded7d12d655b2f52f8a296e5a",
+      "glb_sha256": "3cabc54f1d98bb40a488bec1262652bf124d09fda28691a3ea895affb543ed73"
+    }
+  ],
+  "local_source_sha256": {
+    "build_py": "05580707998c9ccefe5aa85072e8183edba482aa4e24ff6a4a6b07e34e7d3d29",
+    "render_py": "0eeb352b11ac76905c9491f9403cb7c2e9bdab03e7dad2c7e314cc684fae7bc1",
+    "audit_py": "1f1020f21ffa5fa6b028976b42006424b78adc9127a89f2e2ed5a0b7b3b18848",
+    "next_gate_py": "0c9631adc1c192d1a881e1cf5c6081b3c97b6f70ffeaecc43d5cf5e6883ef5ce",
+    "evidence_zip": "9d026936093719029a6c6cae69b6f60f044dfa49a8fa7dbea596ed7d8817f487"
+  },
+  "warnings": [
+    "Not full raw audit JSON",
+    "No D9 source/binary included in this git commit",
+    "Review CI is NOT true-3D CI",
+    "135 points are not 331/993 formal QA",
+    "Art explicitly rejected"
+  ]
+}

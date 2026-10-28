@@ -1,0 +1,23 @@
+name: G4-C7 B11-R5 D9 review index gate (not 3D reconstruction)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d9/**"
+      - "docs/G4C7_B11_R5_D9_LOCAL_3D_ART_REJECT_JA.md"
+      - ".github/workflows/g4c7-b11-r5-d9-review-gate.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preserve-rejection-and-qa-hold:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate local-research snapshot integrity and required holds
+        run: python research/g4c7-b11-r5-d9/review_snapshot_gate.py
