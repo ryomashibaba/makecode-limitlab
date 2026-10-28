@@ -1,0 +1,75 @@
+name: G4-C7 B11-R3 independent real PLY room-witness audit
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-b11-r3-room-witness/room_witness.py'
+      - 'artifacts/g4c7-b11-r3-room-witness/test_room_witness.py'
+      - '.github/workflows/g4c7_b11_r3_real_room_witness.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-b11-r3-room-audit
+  cancel-in-progress: false
+jobs:
+  audit-existing-rejected-native-mesh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install geometry-only audit dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'Pillow==12.3.0'
+      - name: Run seven independent positive/negative controls against original PLY
+        run: |
+          cd 'artifacts/g4c7-b11-r3-room-witness'
+          python -m unittest -v test_room_witness
+      - name: Reimport actual old PLY and save independent six-direction witnesses
+        run: |
+          python 'artifacts/g4c7-b11-r3-room-witness/room_witness.py' --baseline 'artifacts/g4c7-b11-r2-causal-section/project/output/baseline' --out 'artifacts/g4c7-b11-r3-room-witness/evidence'
+      - name: Refuse any false positive from old geometry or certification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          from PIL import Image
+          f=Path('artifacts/g4c7-b11-r3-room-witness/evidence')
+          a=json.loads((f/'room_witness_audit.json').read_text())
+          assert a['faces']==3072 and a['probed_sites']==8
+          assert a['six_direction_local_witnesses']==0
+          assert all(not p['rays']['east']['hit'] and not p['rays']['west']['hit'] for p in a['probes'])
+          assert a['real_room_certification']=='NOT_CERTIFIED'
+          assert a['s1_g1_g2_g3']=='NOT_RUN'
+          assert a['minecraft']=='FORBIDDEN' and a['formal_art_adoptions']==0
+          with Image.open(f/'directional_room_witness.png') as im:
+            assert im.size==(1060,900)
+          print('B11_R3_REAL_PLY_EIGHT_ROOM_WITNESS_FAILURES_REPRODUCED; ART_HOLD')
+          PY
+      - name: Preserve proof even if concurrent GitHub update
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b11-r3-independent-real-ply-missing-room-evidence
+          path: 'artifacts/g4c7-b11-r3-room-witness/evidence/'
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only evidence to existing Draft PR branch
+        run: |
+          set -euo pipefail
+          D='artifacts/g4c7-b11-r3-room-witness/evidence'
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/room_witness_audit.json"
+          test -s "$D/directional_room_witness.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/"
+          if git diff --cached --quiet;then echo 'Already archived';exit 0;fi
+          git commit -m 'B11-R3: preserve actual independent eight-room PLY witness failures'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
