@@ -23,6 +23,18 @@ jobs:
           python-version: '3.11'
       - name: Install only 2D visual and geometric dependencies
         run: python -m pip install 'numpy>=1.26,<3' 'matplotlib>=3.9,<4' 'shapely>=2.0,<3'
+      - name: Install explicit Japanese font on Linux for legible evidence
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          fc-cache -f
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
+          python - <<'PY'
+          from matplotlib import font_manager
+          path=font_manager.findfont('Noto Sans CJK JP',fallback_to_default=False)
+          assert 'NotoSansCJK' in path or 'NotoSans' in path, path
+          print('Japanese font resolved:',path)
+          PY
       - name: Rebuild two authored original 2D visual studies
         run: python research/g4c7-b11-r5-d26/d26_author.py
       - name: Independently audit author JSON, real 2D geometry and four mutation controls
