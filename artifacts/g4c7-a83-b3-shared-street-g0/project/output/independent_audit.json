@@ -1,0 +1,51 @@
+{
+  "stage": "A83_B3_G0_INDEPENDENT_RELOADED_TRIANGLE_ONLY",
+  "n_triangle_groups": 335,
+  "observed_doors": [
+    {
+      "name": "W_lower_facade_true_open",
+      "center_clear": true,
+      "side_solid": true,
+      "lintel_solid": true
+    },
+    {
+      "name": "W_upper_facade_true_open",
+      "center_clear": true,
+      "side_solid": true,
+      "lintel_solid": true
+    },
+    {
+      "name": "C_lower_facade_true_open",
+      "center_clear": true,
+      "side_solid": true,
+      "lintel_solid": true
+    },
+    {
+      "name": "C_upper_facade_true_open",
+      "center_clear": true,
+      "side_solid": true,
+      "lintel_solid": true
+    },
+    {
+      "name": "E_lower_facade_true_open",
+      "center_clear": true,
+      "side_solid": true,
+      "lintel_solid": true
+    },
+    {
+      "name": "E_upper_facade_true_open",
+      "center_clear": true,
+      "side_solid": true,
+      "lintel_solid": true
+    }
+  ],
+  "observed_shared_slabs": 3,
+  "observed_full_stairs": 3,
+  "failures": [],
+  "narrow_g0_triangle_gate": true,
+  "full_human_sweep": "NOT_TESTED",
+  "true_supported_load": "NOT_TESTED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "art": "NEVER_AUTOMATED",
+  "minecraft": "FORBIDDEN"
+}

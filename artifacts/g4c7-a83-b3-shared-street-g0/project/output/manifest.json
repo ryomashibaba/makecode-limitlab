@@ -1,0 +1,74 @@
+{
+  "stage": "A83_B3_G0_TRUE3D_PROTOTYPE_ONLY",
+  "regions": [
+    {
+      "id": "W",
+      "lower_z": 0.05,
+      "shared_mid_floor_z": 16.0,
+      "upper_roof_z": 30.0,
+      "ground_entry_edge": 0,
+      "upper_entry_edge": 3,
+      "stairs": 80,
+      "stair_rise": 0.2,
+      "stairs_last_height": 16.0,
+      "ground_room": "TRUE_FACE_BOUNDING_ONLY_PARTIAL_OPENING",
+      "upper_room": "TRUE_FACE_BOUNDING_ONLY_PARTIAL_OPENING",
+      "valid_human_access": "NOT_TESTED",
+      "real_structural_load": "NOT_TESTED"
+    },
+    {
+      "id": "C",
+      "lower_z": 0.05,
+      "shared_mid_floor_z": 17.02,
+      "upper_roof_z": 31.38,
+      "ground_entry_edge": 0,
+      "upper_entry_edge": 3,
+      "stairs": 80,
+      "stair_rise": 0.21275,
+      "stairs_last_height": 17.02,
+      "ground_room": "TRUE_FACE_BOUNDING_ONLY_PARTIAL_OPENING",
+      "upper_room": "TRUE_FACE_BOUNDING_ONLY_PARTIAL_OPENING",
+      "valid_human_access": "NOT_TESTED",
+      "real_structural_load": "NOT_TESTED"
+    },
+    {
+      "id": "E",
+      "lower_z": 0.05,
+      "shared_mid_floor_z": 16.0,
+      "upper_roof_z": 30.0,
+      "ground_entry_edge": 0,
+      "upper_entry_edge": 3,
+      "stairs": 80,
+      "stair_rise": 0.2,
+      "stairs_last_height": 16.0,
+      "ground_room": "TRUE_FACE_BOUNDING_ONLY_PARTIAL_OPENING",
+      "upper_room": "TRUE_FACE_BOUNDING_ONLY_PARTIAL_OPENING",
+      "valid_human_access": "NOT_TESTED",
+      "real_structural_load": "NOT_TESTED"
+    }
+  ],
+  "actual_completed_minecraft_city": false,
+  "true_images": {
+    "oblique": "326fa380d445d1c9d6ccde2571e94b1f876fbe9313a7a1618e9556c7682575c5",
+    "district": "13f8cbe34c3cef780515f7d8e7564b5e2817cf9b30e03afc6584476ca0039a12",
+    "public_eye": "11429c8ce1fffacc96c9ad20dee35c695ca0bb78a224d8ae2c3156c0240c06f4",
+    "interior_eye": "5dadae42fc277823cf6c9c89ebcd5d85b872cdfcb6a0419bda369d14d4b3aa25"
+  },
+  "formal_safety": "NOT_RUN",
+  "art_acceptance": "NOT_APPROVED",
+  "minecraft_construction": "FORBIDDEN",
+  "city_integration": "FORBIDDEN",
+  "mesh": {
+    "objects": 335,
+    "triangles": 3972,
+    "vertices": 11916,
+    "obj_sha256": "7e9ac811afb3b8b1ebe3b71751676e5f6ed09915ad0ac4970812884884bf8b12"
+  },
+  "limits": {
+    "full_human_swept_volume": "NOT_TESTED",
+    "real_load_path": "NOT_TESTED",
+    "watertight_room_check": "NOT_TESTED",
+    "full_interdistrict_evacuation": "NOT_TESTED",
+    "331_human_993_foot_samples": "NOT_RUN"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "clean_g0_triangle_gate": "PASS",
+  "negative_controls": {
+    "deleted_actual_shared_slab": true,
+    "detached_last_stair_tread": true,
+    "gallery_separated_from_real_door": true,
+    "deleted_shared_ground": true,
+    "blocked_door": true
+  },
+  "all_invalid_states_rejected": true,
+  "s1_g1_g2_g3": "NOT_RUN",
+  "art": "REJECT",
+  "minecraft_construction": "FORBIDDEN"
+}
