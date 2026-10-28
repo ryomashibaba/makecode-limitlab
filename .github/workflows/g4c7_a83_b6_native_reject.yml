@@ -51,7 +51,7 @@ jobs:
           PY
       - name: Install pinned real geometry / VTK and EGL
         run: |
-          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'vtk==9.6.2' 'Pillow==12.3.0'
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'scipy==1.17.0' 'networkx==3.6.1' 'vtk==9.6.2' 'Pillow==12.3.0'
           sudo apt-get update -qq
           sudo apt-get install -qq -y libegl1 libgl1-mesa-dri libosmesa6
       - name: Generate one real source mesh and test independent triangle evidence
