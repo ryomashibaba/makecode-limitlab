@@ -1,0 +1,130 @@
+name: G4-C7 A83-B6 true 3D source and rejection evidence
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-a83-b6-shared-occupancy-g0/source_bundle.b64.part*'
+      - '.github/workflows/g4c7_a83_b6_native_reject.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-a83-b6-native-rejected-source
+  cancel-in-progress: false
+jobs:
+  B6-G0-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      VTK_DEFAULT_OPENGL_WINDOW: vtkEGLRenderWindow
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source integrity / fail-closed restore
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,gzip,base64,tarfile,io
+          d=Path('artifacts/g4c7-a83-b6-shared-occupancy-g0')
+          chunks=[(d/('source_bundle.b64.part'+str(i))).read_text().strip() for i in range(3)]
+          assert list(map(len,chunks))==[3000,3000,2296],'PART_LENGTH_MISMATCH'
+          gz=base64.b64decode(''.join(chunks),validate=True)
+          assert hashlib.sha256(gz).hexdigest()=='be360002cdc7cc36606bf672164b8ab17811106f29c547d9c88c22e415142108','SOURCE_GZIP_MISMATCH'
+          expected={'study.py':'48e74922bf79ab592c531fd8ae689e10ca7fc96e05b8cba4b6e6d8a4e45b698b',
+                    'audit.py':'307aa7d5c2ba77238a09f176af99b6cf3d00f9e4a3f440ac33ab7bbd6a5b7697',
+                    'render.py':'414a4331f300c58eb8a55149978ddd658191c38d266f792cc8dcf4828028ccba',
+                    'test_b6.py':'a324d36e20154073654f7d3a1a04640f4292db1ccd73a8f98038e6aff18d085c'}
+          out=d/'project';out.mkdir(exist_ok=False)
+          with tarfile.open(fileobj=io.BytesIO(gzip.decompress(gz))) as t:
+            assert set(t.getnames())==set(expected),'SOURCE_NAMES_MISMATCH'
+            for item in t:
+              assert item.isfile() and item.name in expected
+              data=t.extractfile(item).read()
+              assert hashlib.sha256(data).hexdigest()==expected[item.name],'SOURCE_SHA_FAIL_'+item.name
+              (out/item.name).write_bytes(data)
+          print('A83_B6_AUTHENTIC_REJECTED_SOURCE_PASS')
+          PY
+      - name: Install pinned real geometry / VTK and EGL
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5' 'trimesh==4.11.1' 'vtk==9.6.2' 'Pillow==12.3.0'
+          sudo apt-get update -qq
+          sudo apt-get install -qq -y libegl1 libgl1-mesa-dri libosmesa6
+      - name: Generate one real source mesh and test independent triangle evidence
+        run: |
+          cd artifacts/g4c7-a83-b6-shared-occupancy-g0/project
+          python study.py
+          python -m unittest test_b6 -v
+          python audit.py
+      - name: Render 4 genuine VTK views from source-geometry equivalent PLY
+        run: |
+          cd artifacts/g4c7-a83-b6-shared-occupancy-g0/project
+          python render.py
+      - name: Strict output manifest, canonical OBJ/PLY geometry, no art or safety overclaim
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          from PIL import Image,ImageStat
+          import trimesh
+          import sys
+          d=Path('artifacts/g4c7-a83-b6-shared-occupancy-g0/project')
+          sys.path.insert(0,str(d))
+          from audit import canonical_triangles_sha
+          o=d/'output';m=json.loads((o/'manifest.json').read_text());a=json.loads((o/'independent_audit.json').read_text())
+          obj=o/'b6_shared_occupied_boundary.obj';ply=o/'b6_shared_occupied_boundary.ply'
+          assert m['mesh']['triangles']==a['geometry']['triangles']==3288
+          assert m['mesh']['vertices']==a['geometry']['vertices']==4640
+          assert a['limited_triangle_gate']
+          assert len(a['door_rays'])==8
+          assert a['structural_load']=='NOT_TESTED'
+          assert a['human_331_foot_993']=='NOT_RUN'
+          assert a['formal_s1_g1_g2_g3']=='NOT_RUN'
+          assert a['minecraft_construction']=='FORBIDDEN' and m['minecraft_construction']=='FORBIDDEN'
+          assert a['obj_sha256']==hashlib.sha256(obj.read_bytes()).hexdigest()
+          canonA=canonical_triangles_sha(trimesh.load(obj,force='mesh',process=False))
+          canonB=canonical_triangles_sha(trimesh.load(ply,force='mesh',process=False))
+          assert canonA==canonB==a['canonical_face_digest']
+          # Cross-environment digest mismatch is a documented finding, NOT a claim of equivalence.
+          (o/'cross_env_digest.json').write_text(json.dumps({
+             'source':'G0_LIMITED','local_obj_digest':'0d1902f1249b5da8a2f04acc117dc992561e3dec1293fed25087998a12df9933',
+             'ci_obj_digest':a['obj_sha256'],
+             'local_canonical_digest':'ccbd76e9d4afeac60436aa5e0a5d9bd3d4bd9dd0d8a3a9e426ec44ea75eba056',
+             'ci_canonical_digest':a['canonical_face_digest'],
+             'same_canonical_geometry_as_local':a['canonical_face_digest']=='ccbd76e9d4afeac60436aa5e0a5d9bd3d4bd9dd0d8a3a9e426ec44ea75eba056',
+             'same_obj_bytes_as_local':a['obj_sha256']=='0d1902f1249b5da8a2f04acc117dc992561e3dec1293fed25087998a12df9933',
+             'art':'REJECT','formal_qa':'NOT_RUN','minecraft':'FORBIDDEN'
+          },indent=2)+'\n')
+          for name in ('macro','district','public_eye','upper_gallery'):
+            with Image.open(o/(name+'.png')) as img:
+              assert img.format=='PNG' and img.size==(1500,950)
+              assert max(ImageStat.Stat(img.convert('RGB')).stddev)>5
+          print('A83_B6_G0_MESH_RAYS_AND_FOUR_RENDER_REPRODUCED; ART_REJECT_NOT_APPROVED')
+          PY
+      - name: Preserve artifact even if branch moves
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a83-b6-rejected-real-geometry-safety-not-tested
+          path: artifacts/g4c7-a83-b6-shared-occupancy-g0/project/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Append-only archive to Draft PR branch
+        run: |
+          set -euo pipefail
+          D=artifacts/g4c7-a83-b6-shared-occupancy-g0/project
+          BRANCH=dev/g4c7-a17-monolithic-rift-fold-art-study
+          test -s "$D/output/independent_audit.json"
+          test -s "$D/output/public_eye.png"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$D/"
+          if git diff --cached --quiet; then echo 'Evidence already present'; exit 0; fi
+          git commit -m 'A83-B6: append actual rejected G0 OBJ/PLY, true VTK views, audit and native sources'
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:refs/heads/$BRANCH"
