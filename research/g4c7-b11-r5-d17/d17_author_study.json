@@ -1,0 +1,62 @@
+{
+  "stage": "G4-C7 B11-R5 D17",
+  "phase": "AUTHORED_2D_CONCEPT_COMPARISON",
+  "source": "The two .svg files are the complete editable authored source. No external ZIP required.",
+  "design_intent": "A shared cultural place must produce the visible far-distance building form; no canopies or towers attached as decoration.",
+  "candidates": [
+    {
+      "id": "C1",
+      "name": "潮縫いの公共谷",
+      "principle": "occupied ground/terraced mass opens around the public cultural court",
+      "eye_experience": "public court directly faces maker and public research bays, with a sky opening between active inhabited banks",
+      "far_view": "asymmetric low fissured inhabited landscape, not a detached shell",
+      "structural_hypothesis": "continuous inhabited earthform rooted into ground on both sides; NOT engineered",
+      "vertical_access": "E1 and E2 shown as volumes only; stairs/lifts/egress NOT modeled",
+      "life": "upper housing has visual relationship with court in concept only",
+      "light_weather": "open-air court with protected maker/research threshold; weather proof NOT modeled",
+      "activity_counterfactual": "removing public research must change inhabited research-bank court edge and urban profile, not just a roof vertex; not executed",
+      "pre3d_status": "ART HOLD / concept needs eye-level and skyline revision",
+      "risks": [
+        "bulk could obstruct everyday people like D10/D11",
+        "separate facades could hide activity just like D13",
+        "cannot yet demonstrate continuous 3D access"
+      ],
+      "next": "redesign mass-to-opening ratio; develop one full 3D prototype only if revised design shows credible visual improvement"
+    },
+    {
+      "id": "C2",
+      "name": "織り上がる文化結節",
+      "principle": "inhabited street lifted into a monumental thick arch to create a shared court underneath",
+      "eye_experience": "maker and research face the covered public crossing under a single inhabited arch",
+      "far_view": "single asymmetrical inhabited bridge becomes city sign",
+      "structural_hypothesis": "two integrated occupied piers and spanning thick inhabitable structure; NOT engineered",
+      "vertical_access": "two integrated access volumes; their actual connectivity NOT modeled",
+      "life": "high street/housing overlooks court; concept only",
+      "light_weather": "central roofed space may be under-lit, openings unverified",
+      "activity_counterfactual": "removing maker and research should change arch section, not just a label; not executed",
+      "pre3d_status": "PRE-3D ART REJECT / repeats huge-bridge primitive risk",
+      "risks": [
+        "resembles D7's overscaled beams",
+        "reads as a single bridge, not an inhabited district",
+        "public underpass might be dark",
+        "unverified span structure and unsafe false circulation"
+      ],
+      "next": "do not produce real 3D or multiply variants from this arch"
+    }
+  ],
+  "state": {
+    "overall": "ART HOLD",
+    "adopted_art_count": 0,
+    "official_G0": "NOT_RUN",
+    "official_S1": "NOT_RUN",
+    "official_G1": "NOT_RUN",
+    "official_G2": "NOT_RUN",
+    "official_G3": "NOT_RUN",
+    "true_3D": "NOT_RUN",
+    "minecraft_education_construction": "FORBIDDEN",
+    "city_integration": "FORBIDDEN",
+    "pr53": "KEEP_DRAFT_OPEN",
+    "main": "DO_NOT_EDIT"
+  },
+  "validation_scope": "SVG/JSON contract and deliberate negative mutations only: NOT optical proof, structural calculation, 3D clearance, official QA, or ART PASS."
+}

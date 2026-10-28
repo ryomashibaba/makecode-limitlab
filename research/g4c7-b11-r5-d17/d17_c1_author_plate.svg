@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<title>潮縫いの公共谷《CITY ESTUARY》</title><desc>断面模式図。正確な荷重、安全、寸法、同時視認は未実証。</desc>
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e1eef5"/><stop offset="1" stop-color="#fbf9ee"/></linearGradient>
+<linearGradient id="city" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#97b1b6"/><stop offset="1" stop-color="#506f76"/></linearGradient>
+</defs>
+<rect x="0" y="0" width="1600" height="900" fill="#f6f4ee"/>
+<text x="55" y="65" fill="#617d89" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="700">B11-R5 D17  /  C1 / 庭が建築を削る</text>
+<text x="55" y="117" fill="#173244" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="44" font-weight="750">潮縫いの公共谷《CITY ESTUARY》</text>
+<text x="55" y="151" fill="#516a74" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="500">制作と研究が顔を向け合う地上の広場を、住居を含む厚い地形建築が囲む。</text>
+<rect x="40" y="175" width="1020" height="520" fill="url(#sky)" stroke="#bacbc9" stroke-width="2" rx="16"/>
+<rect x="1080" y="175" width="480" height="520" fill="#eef1e8" stroke="#bacbc9" stroke-width="2" rx="16"/>
+
+<circle id="daylight" cx="565" cy="284" r="74" fill="#f3d998" opacity=".55"/>
+<path d="M 468 390 L 615 495 L 725 380" fill="none" stroke="#f6e4b0" stroke-width="32" opacity=".5"/>
+<path id="urban-silhouette" d="M 46 600 L 46 328 Q 145 210 275 255 L 398 325 L 466 400 L 422 456 L 334 418 L 248 424 L 195 510 L 195 600 Z M 838 600 L 838 468 L 815 390 L 862 320 Q 970 185 1054 258 L 1054 600 L 980 600 L 965 447 L 891 422 L 855 506 Z" fill="url(#city)" stroke="#29465a" stroke-width="2" stroke-linejoin="round"/>
+<path id="inhabited-mass" d="M 54 595 L 54 326 Q 150 232 269 269 L 404 332 L 436 393 L 401 440 L 311 404 L 218 444 L 197 595 Z" fill="#8baba8" stroke="#2c5a66" stroke-width="3" stroke-linejoin="round"/>
+<path d="M 76 395 Q 183 296 296 348 L 390 390" fill="none" stroke="#c4d3be" stroke-width="23" opacity=".85"/>
+<rect id="upper-home" x="106" y="331" width="132" height="45" fill="#e4e0c7" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="114" y="361" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="19" font-weight="500">上層住居</text>
+<path d="M 260 375 Q 312 350 382 395" fill="none" stroke="#ead6a9" stroke-width="12"/>
+<rect id="vertical-core-e1" x="91" y="410" width="53" height="176" fill="#487788" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="100" y="468" fill="#fff" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="700">E1</text>
+<path id="weather-shelter" d="M 210 481 L 422 481 L 392 458 L 264 448 Z" fill="#bcd0c7" stroke="#406d6d" stroke-width="2" stroke-linejoin="round"/>
+<rect id="maker-bay" x="224" y="485" width="198" height="87" fill="#dce6dc" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="236" y="520" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="500">制作公開工房</text>
+<path d="M 247 553 L 276 529 L 299 553 L 325 533 L 342 553" fill="none" stroke="#e5a75d" stroke-width="6"/>
+<path d="M 838 600 L 838 465 L 824 399 L 860 333 Q 943 249 1050 270 L 1050 600 Z" fill="#6e969c" stroke="#2e5467" stroke-width="3"/>
+<path d="M 861 379 L 937 334 L 1020 348" fill="none" stroke="#c9ceb2" stroke-width="22"/>
+<rect id="vertical-core-e2" x="986" y="409" width="54" height="181" fill="#487788" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="995" y="469" fill="#fff" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="700">E2</text>
+<rect x="881" y="366" width="82" height="45" fill="#e6dfc2" stroke="#315364"/>
+<text x="886" y="395" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="21" font-weight="500">住居</text>
+<rect id="research-bay" x="827" y="490" width="157" height="82" fill="#d1e5e9" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="831" y="524" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="500">公開研究室</text>
+<circle cx="880" cy="545" r="12" fill="#e2a95a"/>
+<path d="M 880 534 L 880 558 M 868 546 L 892 546" stroke="#516c70" stroke-width="2"/>
+<rect id="ground" x="52" y="588" width="1000" height="54" fill="#c6c0a0" stroke="#a7a184" stroke-width="2" rx="7"/>
+<path id="civic-route" d="M 458 597 Q 545 565 620 575 Q 728 600 816 597" fill="none" stroke="#d79a58" stroke-width="13" stroke-dasharray="18,9"/>
+<text x="481" y="546" fill="#173e55" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="27" font-weight="650">公開文化広場  /  空が主役</text>
+<circle cx="508" cy="581" r="6" fill="#d48748"/><line x1="508" y1="588" x2="508" y2="610" stroke="#325467" stroke-width="4" /><line x1="508" y1="599" x2="500" y2="606" stroke="#325467" stroke-width="3" /><line x1="508" y1="610" x2="502" y2="619" stroke="#325467" stroke-width="3" /><line x1="508" y1="610" x2="514" y2="619" stroke="#325467" stroke-width="3" /><circle cx="581" cy="586" r="6" fill="#325467"/><line x1="581" y1="593" x2="581" y2="615" stroke="#325467" stroke-width="4" /><line x1="581" y1="604" x2="573" y2="611" stroke="#325467" stroke-width="3" /><line x1="581" y1="615" x2="575" y2="624" stroke="#325467" stroke-width="3" /><line x1="581" y1="615" x2="587" y2="624" stroke="#325467" stroke-width="3" /><circle cx="667" cy="585" r="6" fill="#325467"/><line x1="667" y1="592" x2="667" y2="614" stroke="#325467" stroke-width="4" /><line x1="667" y1="603" x2="659" y2="610" stroke="#325467" stroke-width="3" /><line x1="667" y1="614" x2="661" y2="623" stroke="#325467" stroke-width="3" /><line x1="667" y1="614" x2="673" y2="623" stroke="#325467" stroke-width="3" /><circle cx="737" cy="584" r="6" fill="#d48748"/><line x1="737" y1="591" x2="737" y2="613" stroke="#325467" stroke-width="4" /><line x1="737" y1="602" x2="729" y2="609" stroke="#325467" stroke-width="3" /><line x1="737" y1="613" x2="731" y2="622" stroke="#325467" stroke-width="3" /><line x1="737" y1="613" x2="743" y2="622" stroke="#325467" stroke-width="3" />
+<text x="55" y="220" fill="#3d6572" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="23" font-weight="600">人間視点・想定断面（非スケール）</text>
+<text x="1098" y="222" fill="#244858" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="25" font-weight="700">都市構成の原理</text>
+<path d="M 1114 486 Q 1203 297 1300 425 Q 1411 267 1534 406 L 1510 585 Q 1384 538 1300 552 Q 1204 564 1137 596 Z" fill="#789a9d" stroke="#315365" stroke-width="3"/>
+<path d="M 1160 510 Q 1255 391 1312 470 Q 1410 370 1493 438" fill="none" stroke="#d5c8a3" stroke-width="28" stroke-linecap="round"/>
+<path d="M 1135 640 Q 1239 590 1300 533 Q 1380 518 1502 590" fill="none" stroke="#e0a35b" stroke-width="15"/>
+<circle cx="1300" cy="530" r="30" fill="#fbf4d8" stroke="#e0a35b" stroke-width="3"/>
+<text x="1148" y="264" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="500">生活の地形が広場を囲む</text>
+<text x="1148" y="291" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="500">巨大な単独屋根は置かない</text>
+<text x="1113" y="674" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="21" font-weight="500">遠景：非対称な低い谷状都市</text>
+
+
+<rect x="40" y="714" width="1520" height="145" rx="14" fill="#e7eae0"/>
+<text x="65" y="752" fill="#a65d35" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="700">PRE-3D AUTHOR STUDY  /  真正3D・構造認証ではない</text>
+<text x="65" y="797" fill="#263d47" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="23" font-weight="500">遠景の塊が文化活動を隠す危険は残る。C1は美術採用せず追加審査。</text>
+<text x="65" y="833" fill="#6b7980" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="600">ART HOLD ／ 正式採用0件 ／ G0・S1/G1/G2/G3未実施 ／ Minecraft施工禁止</text>
+<circle id="public-eye" cx="488" cy="584" r="7" fill="#f7d79b" stroke="#375a66" stroke-width="3"/></svg>

@@ -1,0 +1,36 @@
+name: G4-C7 B11-R5 D17 authored 2D study integrity (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d17/**'
+      - '.github/workflows/g4c7-b11-r5-d17-concept-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d17-authored-study
+  cancel-in-progress: true
+jobs:
+  source-integrity-not-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify independent records and intentionally broken negative cases
+        run: python research/g4c7-b11-r5-d17/d17_document_integrity_audit.py
+      - name: Save full authored 2D record (no art certification)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D17-two-authored-2D-studies-NO-ADOPTION
+          retention-days: 21
+          path: |
+            research/g4c7-b11-r5-d17/d17_author_study.json
+            research/g4c7-b11-r5-d17/d17_c1_author_plate.svg
+            research/g4c7-b11-r5-d17/d17_c2_author_plate.svg
+            research/g4c7-b11-r5-d17/d17_document_integrity_results.json

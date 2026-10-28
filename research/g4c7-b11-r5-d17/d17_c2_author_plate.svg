@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<title>織り上がる文化結節《CIVIC BRAID》</title><desc>断面模式図。アーチの支持・昇降・避難・3D視認は未実証。</desc>
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e1eef5"/><stop offset="1" stop-color="#fbf9ee"/></linearGradient>
+<linearGradient id="city" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#97b1b6"/><stop offset="1" stop-color="#506f76"/></linearGradient>
+</defs>
+<rect x="0" y="0" width="1600" height="900" fill="#f6f4ee"/>
+<text x="55" y="65" fill="#617d89" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="700">B11-R5 D17  /  C2 / 街路が空間を跨ぐ</text>
+<text x="55" y="117" fill="#173244" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="44" font-weight="750">織り上がる文化結節《CIVIC BRAID》</text>
+<text x="55" y="151" fill="#516a74" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="500">二つの都市街路を居住・研究・制作を含む厚い地上接続アーチで結び、下を公共広場とする。</text>
+<rect x="40" y="175" width="1020" height="520" fill="url(#sky)" stroke="#bacbc9" stroke-width="2" rx="16"/>
+<rect x="1080" y="175" width="480" height="520" fill="#eef1e8" stroke="#bacbc9" stroke-width="2" rx="16"/>
+
+<circle id="daylight" cx="623" cy="290" r="89" fill="#f1d690" opacity=".6"/>
+<path id="urban-silhouette" d="M 55 598 L 55 465 Q 154 377 255 426 Q 367 257 505 227 Q 636 212 743 249 Q 849 282 936 428 L 1052 474 L 1052 598 L 924 598 Q 911 499 870 437 Q 758 300 642 319 Q 479 302 391 432 L 328 530 L 328 598 Z" fill="#7d9fa0" stroke="#385766" stroke-width="4" stroke-linejoin="round"/>
+<path id="inhabited-mass" d="M 69 590 L 69 468 Q 187 376 274 436 Q 391 237 561 233 Q 730 211 858 343 Q 971 424 1028 476 L 1028 590 L 923 590 Q 907 500 854 440 Q 751 316 632 312 Q 473 307 394 445 L 331 533 L 331 590 Z" fill="#78989c" stroke="#315463" stroke-width="3" stroke-linejoin="round"/>
+<path d="M 340 440 Q 533 230 742 322 L 862 433" fill="none" stroke="#d7c8a5" stroke-width="37" opacity=".83"/>
+<rect id="upper-home" x="529" y="245" width="164" height="55" fill="#eee2c8" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="538" y="278" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="500">住居の街路</text>
+<rect id="vertical-core-e1" x="141" y="451" width="66" height="139" fill="#547c8a" stroke="#29465a" stroke-width="2" rx="7"/>
+<rect id="vertical-core-e2" x="936" y="455" width="70" height="135" fill="#547c8a" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="151" y="503" fill="#fff" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="700">E1</text>
+<text x="952" y="503" fill="#fff" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="700">E2</text>
+<path id="weather-shelter" d="M 361 434 Q 564 246 797 402 L 785 430 Q 584 317 391 463 Z" fill="#bccebf" stroke="#40626c" stroke-width="3" stroke-linejoin="round"/>
+<rect id="maker-bay" x="215" y="488" width="190" height="86" fill="#eadbc3" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="225" y="520" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="500">制作公開工房</text>
+<path d="M 252 559 L 281 526 L 312 559" fill="none" stroke="#d59d57" stroke-width="6"/>
+<rect id="research-bay" x="802" y="494" width="177" height="80" fill="#d3e8e5" stroke="#29465a" stroke-width="2" rx="7"/>
+<text x="810" y="530" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="23" font-weight="500">公開研究室</text>
+<circle cx="853" cy="550" r="12" fill="#d6a766"/>
+<path d="M 853 536 L 853 564" stroke="#315764" stroke-width="3"/>
+<rect id="ground" x="52" y="588" width="1000" height="54" fill="#c6c0a0" stroke="#a7a184" stroke-width="2" rx="7"/>
+<path id="civic-route" d="M 369 597 Q 564 570 797 598" fill="none" stroke="#dda461" stroke-width="13" stroke-dasharray="18,9"/>
+<text x="454" y="526" fill="#284b58" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="25" font-weight="650">交差する公衆の文化路</text>
+<circle cx="481" cy="584" r="6" fill="#d48748"/><line x1="481" y1="591" x2="481" y2="613" stroke="#325467" stroke-width="4" /><line x1="481" y1="602" x2="473" y2="609" stroke="#325467" stroke-width="3" /><line x1="481" y1="613" x2="475" y2="622" stroke="#325467" stroke-width="3" /><line x1="481" y1="613" x2="487" y2="622" stroke="#325467" stroke-width="3" /><circle cx="568" cy="582" r="6" fill="#325467"/><line x1="568" y1="589" x2="568" y2="611" stroke="#325467" stroke-width="4" /><line x1="568" y1="600" x2="560" y2="607" stroke="#325467" stroke-width="3" /><line x1="568" y1="611" x2="562" y2="620" stroke="#325467" stroke-width="3" /><line x1="568" y1="611" x2="574" y2="620" stroke="#325467" stroke-width="3" /><circle cx="654" cy="584" r="6" fill="#325467"/><line x1="654" y1="591" x2="654" y2="613" stroke="#325467" stroke-width="4" /><line x1="654" y1="602" x2="646" y2="609" stroke="#325467" stroke-width="3" /><line x1="654" y1="613" x2="648" y2="622" stroke="#325467" stroke-width="3" /><line x1="654" y1="613" x2="660" y2="622" stroke="#325467" stroke-width="3" /><circle cx="733" cy="584" r="6" fill="#d48748"/><line x1="733" y1="591" x2="733" y2="613" stroke="#325467" stroke-width="4" /><line x1="733" y1="602" x2="725" y2="609" stroke="#325467" stroke-width="3" /><line x1="733" y1="613" x2="727" y2="622" stroke="#325467" stroke-width="3" /><line x1="733" y1="613" x2="739" y2="622" stroke="#325467" stroke-width="3" />
+<text x="55" y="220" fill="#3d6572" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="23" font-weight="600">人間視点・想定断面（非スケール）</text>
+<text x="1098" y="222" fill="#244858" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="25" font-weight="700">都市構成の原理</text>
+<path d="M 1142 576 L 1142 485 Q 1245 335 1363 352 Q 1479 381 1512 497 L 1512 576 L 1462 576 Q 1420 432 1342 417 Q 1226 406 1199 576 Z" fill="#789a9d" stroke="#315365" stroke-width="4"/>
+<path d="M 1210 505 Q 1365 311 1491 514" fill="none" stroke="#d5c8a3" stroke-width="19"/>
+<path d="M 1145 615 Q 1300 559 1512 619" fill="none" stroke="#e0a35b" stroke-width="14"/>
+<text x="1131" y="266" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="500">街路を厚い居住橋へ持ち上げる</text>
+<text x="1131" y="294" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="500">下部を文化広場にする</text>
+<text x="1101" y="670" fill="#1d3449" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="21" font-weight="500">遠景：一本の居住アーチが主役</text>
+
+
+<rect x="40" y="714" width="1520" height="145" rx="14" fill="#e7eae0"/>
+<text x="65" y="752" fill="#a65d35" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="700">PRE-3D AUTHOR STUDY  /  真正3D・構造認証ではない</text>
+<text x="65" y="797" fill="#263d47" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="23" font-weight="500">遠景が巨大アーチ一つに単純化する危険が高い。C2はPRE-3D REJECT候補。</text>
+<text x="65" y="833" fill="#6b7980" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="600">ART HOLD ／ 正式採用0件 ／ G0・S1/G1/G2/G3未実施 ／ Minecraft施工禁止</text>
+<circle id="public-eye" cx="472" cy="581" r="7" fill="#f7d79b" stroke="#375a66" stroke-width="3"/></svg>
