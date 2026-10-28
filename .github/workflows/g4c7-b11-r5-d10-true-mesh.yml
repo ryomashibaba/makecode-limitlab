@@ -1,0 +1,78 @@
+name: G4-C7 B11-R5 D10 true mesh two-stage research (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d10/**'
+      - '.github/workflows/g4c7-b11-r5-d10-true-mesh.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d10-true-mesh
+  cancel-in-progress: true
+jobs:
+  replay-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install mesh and actual VTK renderer
+        run: |
+          python -m pip install numpy trimesh vtk Pillow networkx
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1 libgl1-mesa-dri libxrender1 libxext6
+      - name: Build and audit both D10A variants
+        working-directory: research/g4c7-b11-r5-d10
+        run: |
+          python build.py --variant both --clearance 70
+          python audit.py
+      - name: Build and independently audit D10B
+        working-directory: research/g4c7-b11-r5-d10
+        run: |
+          python d10b.py
+          python d10b_audit.py
+      - name: Render 21 views from persisted PLY
+        working-directory: research/g4c7-b11-r5-d10
+        run: xvfb-run -a python render_ci.py
+      - name: Verify both negative art gates and limited positive spatial witnesses
+        working-directory: research/g4c7-b11-r5-d10
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          a=json.loads(Path('audit.json').read_text())
+          assert len(a)==2 and a[0]['faces']>a[1]['faces']
+          assert all(x['route_centerline_surface_witnesses']==13 for x in a)
+          assert not a[0]['hard_gates']['two_cores_ground_connected_within_8m']
+          assert not a[0]['hard_gates']['two_cores_research_access_within_8m']
+          assert not a[0]['hard_gates']['maker_and_research_both_visible_from_public_eye']
+          assert all(x['hard_gates']['negative_fault_detection'] for x in a)
+          b=json.loads(Path('d10b/audit.json').read_text())
+          assert all(b['gates'].values()),b['gates']
+          assert abs(b['measured_working_clearance_m']-70)<.01
+          for name in ('all_70','no_research_70','d10b'):
+              p=Path(name)
+              m=json.loads((p/'manifest.json').read_text())
+              assert m.get('formal_qa',m.get('status',{}).get('formal_S1_G1_G2_G3'))=='NOT_RUN'
+              assert m.get('minecraft',m.get('status',{}).get('Minecraft'))=='FORBIDDEN'
+              assert (p/'study.glb').stat().st_size>1000
+              assert (p/'seven_views.png').stat().st_size>1000
+          print('D10 reproducible limited geometry PASS. G0 ART REJECT/PRE-ART HOLD, zero adopted, no formal QA/build.')
+          PY
+      - name: Archive actual 3D evidence even on failed audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d10-real3d-not-art-adopted
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            research/g4c7-b11-r5-d10/all_70/
+            research/g4c7-b11-r5-d10/no_research_70/
+            research/g4c7-b11-r5-d10/d10b/
+            research/g4c7-b11-r5-d10/audit.json
