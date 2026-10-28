@@ -1,6 +1,6 @@
 {
   "stage": "G4-C7 B11-R5 D17",
-  "phase": "AUTHORED_2D_CONCEPT_COMPARISON",
+  "phase": "AUTHORED_2D_CONCEPT_COMPARISON_VISUALLY_REVIEWED_BOTH_REJECT",
   "source": "The two .svg files are the complete editable authored source. No external ZIP required.",
   "design_intent": "A shared cultural place must produce the visible far-distance building form; no canopies or towers attached as decoration.",
   "candidates": [
@@ -15,13 +15,13 @@
       "life": "upper housing has visual relationship with court in concept only",
       "light_weather": "open-air court with protected maker/research threshold; weather proof NOT modeled",
       "activity_counterfactual": "removing public research must change inhabited research-bank court edge and urban profile, not just a roof vertex; not executed",
-      "pre3d_status": "ART HOLD / concept needs eye-level and skyline revision",
+      "pre3d_status": "PRE-3D ART REJECT / repeated D10-D11 monolithic two-wall composition",
       "risks": [
         "bulk could obstruct everyday people like D10/D11",
         "separate facades could hide activity just like D13",
         "cannot yet demonstrate continuous 3D access"
       ],
-      "next": "redesign mass-to-opening ratio; develop one full 3D prototype only if revised design shows credible visual improvement"
+      "next": "reject C1; no 3D of this morphology. New independent spatial language required before future candidate"
     },
     {
       "id": "C2",
@@ -34,7 +34,7 @@
       "life": "high street/housing overlooks court; concept only",
       "light_weather": "central roofed space may be under-lit, openings unverified",
       "activity_counterfactual": "removing maker and research should change arch section, not just a label; not executed",
-      "pre3d_status": "PRE-3D ART REJECT / repeats huge-bridge primitive risk",
+      "pre3d_status": "PRE-3D ART REJECT / repeated D7 monumental beam motif",
       "risks": [
         "resembles D7's overscaled beams",
         "reads as a single bridge, not an inhabited district",
@@ -58,5 +58,13 @@
     "pr53": "KEEP_DRAFT_OPEN",
     "main": "DO_NOT_EDIT"
   },
-  "validation_scope": "SVG/JSON contract and deliberate negative mutations only: NOT optical proof, structural calculation, 3D clearance, official QA, or ART PASS."
+  "validation_scope": "SVG/JSON contract and deliberate negative mutations only: NOT optical proof, structural calculation, 3D clearance, official QA, or ART PASS.",
+  "review": {
+    "method": "Original SVG authored studies rendered as PNG and visually inspected, with same diagram layout. Human-scale silhouettes and mass hierarchy reviewed.",
+    "date_jst": "2026-10-28",
+    "C1": "REJECT: two heavy blank enclosing masses dominate the composition; maker/research remain rectilinear inserts; D10/D11 failure repeats. Daylight is an icon, not a proven quality of place.",
+    "C2": "REJECT: single huge inhabited arch dominates, public functions below are tiny inserted labels/rectangles; D7 motif repeated. Not a distinctive lived district.",
+    "confidence": "These are authorial negative judgments on crude 2D representations; do not infer a physical or 3D certification.",
+    "outcome": "BOTH PRE-3D ART REJECT. No real 3D produced. ART HOLD remains."
+  }
 }

@@ -33,8 +33,9 @@ def inspect_record(record,svg_texts):
     assert s["pr53"]=="KEEP_DRAFT_OPEN" and s["main"]=="DO_NOT_EDIT"
     candidates=record["candidates"]
     assert [c["id"] for c in candidates]==["C1","C2"]
-    assert "HOLD" in candidates[0]["pre3d_status"]
+    assert "REJECT" in candidates[0]["pre3d_status"]
     assert "REJECT" in candidates[1]["pre3d_status"]
+    assert record["review"]["outcome"].startswith("BOTH PRE-3D ART REJECT")
     silhouettes=[inspect_svg(svg_texts[c["id"]]) for c in candidates]
     assert silhouettes[0]!=silhouettes[1], "same silhouette reused"
     for c in candidates:
