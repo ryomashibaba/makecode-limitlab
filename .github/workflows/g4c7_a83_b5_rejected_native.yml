@@ -46,7 +46,7 @@ jobs:
           PY
       - name: Install native Python geometry and software EGL
         run: |
-          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'trimesh>=4.5,<5' 'vtk==9.6.2' 'Pillow>=10,<13'
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'trimesh>=4.5,<5' 'networkx>=3,<4' 'vtk==9.6.2' 'Pillow>=10,<13'
           sudo apt-get update -qq
           sudo apt-get install -y -qq libegl1 libgl1-mesa-dri libosmesa6
       - name: Generate true OBJ and four true VTK views (never art pass)
