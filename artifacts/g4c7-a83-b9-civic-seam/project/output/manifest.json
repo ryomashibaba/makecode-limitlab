@@ -1,0 +1,778 @@
+{
+  "stage": "A83_B9_TRUE_G0_GEOMETRY",
+  "claimed_main_city_art": "NOT_APPROVED",
+  "elements": [
+    {
+      "name": "uninterrupted_common_ground_slab",
+      "kind": "floor",
+      "triangles": 12
+    },
+    {
+      "name": "uninterrupted_shared_second_level_slab",
+      "kind": "floor",
+      "triangles": 12
+    },
+    {
+      "name": "west_outer_wall",
+      "kind": "outer",
+      "triangles": 12
+    },
+    {
+      "name": "east_outer_wall",
+      "kind": "outer",
+      "triangles": 12
+    },
+    {
+      "name": "W_G_wall_left",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "W_G_wall_right",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "W_G_door_lintel",
+      "kind": "lintel",
+      "triangles": 12
+    },
+    {
+      "name": "W_U_wall_left",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "W_U_wall_right",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "W_U_door_lintel",
+      "kind": "lintel",
+      "triangles": 12
+    },
+    {
+      "name": "W_upper_separation",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "E_G_wall_left",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "E_G_wall_right",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "E_G_door_lintel",
+      "kind": "lintel",
+      "triangles": 12
+    },
+    {
+      "name": "E_U_wall_left",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "E_U_wall_right",
+      "kind": "partition",
+      "triangles": 12
+    },
+    {
+      "name": "E_U_door_lintel",
+      "kind": "lintel",
+      "triangles": 12
+    },
+    {
+      "name": "E_upper_separation",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "S_public_threshold_wall_-24.0",
+      "kind": "outer",
+      "triangles": 12
+    },
+    {
+      "name": "S_public_threshold_wall_24.0",
+      "kind": "outer",
+      "triangles": 12
+    },
+    {
+      "name": "S_public_threshold_header",
+      "kind": "lintel",
+      "triangles": 12
+    },
+    {
+      "name": "S_upper_frontage_-24",
+      "kind": "skylight",
+      "triangles": 12
+    },
+    {
+      "name": "S_upper_frontage_24",
+      "kind": "skylight",
+      "triangles": 12
+    },
+    {
+      "name": "N_public_threshold_wall_-24.0",
+      "kind": "outer",
+      "triangles": 12
+    },
+    {
+      "name": "N_public_threshold_wall_24.0",
+      "kind": "outer",
+      "triangles": 12
+    },
+    {
+      "name": "N_public_threshold_header",
+      "kind": "lintel",
+      "triangles": 12
+    },
+    {
+      "name": "N_upper_frontage_-24",
+      "kind": "skylight",
+      "triangles": 12
+    },
+    {
+      "name": "N_upper_frontage_24",
+      "kind": "skylight",
+      "triangles": 12
+    },
+    {
+      "name": "one_coordinated_roof",
+      "kind": "roof",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_00",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_01",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_02",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_03",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_04",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_05",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_06",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_07",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_08",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_09",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_10",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_11",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_12",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_13",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_14",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_15",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_16",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_17",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_18",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_19",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_20",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_21",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_22",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_23",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_24",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_25",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_26",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_27",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_28",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_29",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_30",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_31",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_32",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_33",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_34",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_35",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_36",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_37",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_38",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_39",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_40",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_41",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_42",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_43",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_44",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_45",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_46",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_47",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_48",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_tread_49",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_post_0",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_post_1",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_post_2",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_post_3",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "S_stair_post_4",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_00",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_01",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_02",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_03",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_04",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_05",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_06",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_07",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_08",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_09",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_10",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_11",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_12",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_13",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_14",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_15",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_16",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_17",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_18",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_19",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_20",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_21",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_22",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_23",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_24",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_25",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_26",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_27",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_28",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_29",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_30",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_31",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_32",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_33",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_34",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_35",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_36",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_37",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_38",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_39",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_40",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_41",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_42",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_43",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_44",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_45",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_46",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_47",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_48",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_tread_49",
+      "kind": "stair",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_post_0",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_post_1",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_post_2",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_post_3",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "N_stair_post_4",
+      "kind": "support",
+      "triangles": 12
+    },
+    {
+      "name": "work_ground_activity_0",
+      "kind": "work",
+      "triangles": 12
+    },
+    {
+      "name": "work_upper_activity_0",
+      "kind": "work",
+      "triangles": 12
+    },
+    {
+      "name": "work_ground_activity_1",
+      "kind": "work",
+      "triangles": 12
+    },
+    {
+      "name": "work_upper_activity_1",
+      "kind": "work",
+      "triangles": 12
+    },
+    {
+      "name": "work_ground_activity_2",
+      "kind": "work",
+      "triangles": 12
+    },
+    {
+      "name": "work_upper_activity_2",
+      "kind": "work",
+      "triangles": 12
+    },
+    {
+      "name": "activity_ground_activity_0",
+      "kind": "activity",
+      "triangles": 12
+    },
+    {
+      "name": "activity_upper_activity_0",
+      "kind": "activity",
+      "triangles": 12
+    },
+    {
+      "name": "activity_ground_activity_1",
+      "kind": "activity",
+      "triangles": 12
+    },
+    {
+      "name": "activity_upper_activity_1",
+      "kind": "activity",
+      "triangles": 12
+    },
+    {
+      "name": "activity_ground_activity_2",
+      "kind": "activity",
+      "triangles": 12
+    },
+    {
+      "name": "activity_upper_activity_2",
+      "kind": "activity",
+      "triangles": 12
+    }
+  ],
+  "vertices": 1208,
+  "triangles": 1812,
+  "sources": [
+    "two district frontages",
+    "single common floor",
+    "two levels",
+    "actual gaps in partition walls"
+  ],
+  "true_enclosed_rooms": "NOT_CERTIFIED",
+  "actual_accessible_city_routes": "NOT_TESTED",
+  "structural_load": "NOT_TESTED",
+  "formal_331_humans_993_feet": "NOT_RUN",
+  "s1_g1_g2_g3": "NOT_RUN",
+  "formal_art_adoptions": 0,
+  "overall_art": "HOLD",
+  "minecraft_construction": "FORBIDDEN",
+  "sha256_obj": "88d42e568b01162cda68ede91da8000222a482054c5a9552b64d00635c758ed4"
+}

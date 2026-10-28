@@ -1,0 +1,9 @@
+{
+  "local_obj_sha256": "88d42e568b01162cda68ede91da8000222a482054c5a9552b64d00635c758ed4",
+  "ci_obj_sha256": "88d42e568b01162cda68ede91da8000222a482054c5a9552b64d00635c758ed4",
+  "cross_env_byte_identical": true,
+  "status": "G0_TECH_ONLY",
+  "art": "G0_ART_REJECT_HUMAN_IMAGE_REVIEW",
+  "formal_safety": "NOT_RUN",
+  "minecraft": "FORBIDDEN"
+}

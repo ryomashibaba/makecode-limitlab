@@ -1,0 +1,131 @@
+{
+  "stage": "A83_B9_G0_INDEPENDENT_REAL_TRIANGLE_AUDIT",
+  "obj_sha256": "88d42e568b01162cda68ede91da8000222a482054c5a9552b64d00635c758ed4",
+  "vertices": 1208,
+  "triangles": 1812,
+  "portal_witnesses": [
+    {
+      "level": "ground",
+      "district": "W",
+      "clear_three_lanes": true,
+      "two_wall_sides": true,
+      "solid_lintel": true
+    },
+    {
+      "level": "ground",
+      "district": "E",
+      "clear_three_lanes": true,
+      "two_wall_sides": true,
+      "solid_lintel": true
+    },
+    {
+      "level": "upper",
+      "district": "W",
+      "clear_three_lanes": true,
+      "two_wall_sides": true,
+      "solid_lintel": true
+    },
+    {
+      "level": "upper",
+      "district": "E",
+      "clear_three_lanes": true,
+      "two_wall_sides": true,
+      "solid_lintel": true
+    }
+  ],
+  "narrow_air_lanes": [
+    {
+      "level": "ground",
+      "y": -0.65,
+      "no_triangle_on_crossing": true
+    },
+    {
+      "level": "ground",
+      "y": 0,
+      "no_triangle_on_crossing": true
+    },
+    {
+      "level": "ground",
+      "y": 0.65,
+      "no_triangle_on_crossing": true
+    },
+    {
+      "level": "upper",
+      "y": -0.65,
+      "no_triangle_on_crossing": true
+    },
+    {
+      "level": "upper",
+      "y": 0,
+      "no_triangle_on_crossing": true
+    },
+    {
+      "level": "upper",
+      "y": 0.65,
+      "no_triangle_on_crossing": true
+    }
+  ],
+  "ground_and_upper_slab_witnesses": [
+    {
+      "z": 0,
+      "x": -20,
+      "y": 0,
+      "triangle_at_level": true
+    },
+    {
+      "z": 0,
+      "x": 0,
+      "y": 0,
+      "triangle_at_level": true
+    },
+    {
+      "z": 0,
+      "x": 20,
+      "y": 0,
+      "triangle_at_level": true
+    },
+    {
+      "z": 10,
+      "x": -20,
+      "y": 0,
+      "triangle_at_level": true
+    },
+    {
+      "z": 10,
+      "x": 0,
+      "y": 0,
+      "triangle_at_level": true
+    },
+    {
+      "z": 10,
+      "x": 20,
+      "y": 0,
+      "triangle_at_level": true
+    }
+  ],
+  "stair_endpoint_design_only": [
+    {
+      "entrance": "S",
+      "last_step_height": 10.0,
+      "end_y": -14.11,
+      "upper_landing_height": 10.0,
+      "endpoint_geometry_expected": true
+    },
+    {
+      "entrance": "N",
+      "last_step_height": 10.0,
+      "end_y": 14.11,
+      "upper_landing_height": 10.0,
+      "endpoint_geometry_expected": true
+    }
+  ],
+  "limited_source_true_triangle_gate": true,
+  "room_enclosure": "NOT_TESTED",
+  "continuous_body_sweep": "NOT_TESTED",
+  "stair_full_body_and_egress": "NOT_TESTED",
+  "district_scale_city": "NOT_TESTED",
+  "structural_load": "NOT_TESTED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "art": "HOLD_PENDING_TRUE_IMAGE_REVIEW",
+  "minecraft_construction": "FORBIDDEN"
+}

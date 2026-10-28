@@ -1,0 +1,12 @@
+{
+  "stage": "A83_B9_TRUE_VTK_REJECTABLE",
+  "source": "b9_shared_civic_seam.ply",
+  "images": {
+    "macro": "27604a1e028ce19e5a3fbff36c21d269d2d512697807bc0204c8cb11853ab42f",
+    "district": "f04fa06854569a5920da7ae12a122aaa76d1f396a5eba58b5332c5de611f3257",
+    "public_eye": "314b4176f9ad46d524619ce9178f72f0d1f3cd7a366dd28c765d93994426f40b",
+    "upper_eye": "280ae1ba8c4b3c3895d92233604fc1dedae5158b95dba8893250dd37c1b5ba0f"
+  },
+  "art": "HOLD",
+  "formal_safety": "NOT_RUN"
+}
