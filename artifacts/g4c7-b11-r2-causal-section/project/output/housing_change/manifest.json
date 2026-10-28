@@ -1,0 +1,66 @@
+{
+  "study": "B11_R2_REAL_TRIANGLE_CAUSAL_SECTION_NOT_AN_ART_CANDIDATE",
+  "parameters": {
+    "plaza": 1.0,
+    "home_need": 1.24,
+    "bridge_open": true
+  },
+  "source_void_width_gate": "PASS_SOURCE_ONLY",
+  "profile": {
+    "void_width_at_nodes_m": [
+      39.12,
+      34.989,
+      40.904,
+      38.781
+    ],
+    "occupied_depth_at_nodes_m": [
+      22.881,
+      21.949,
+      23.283,
+      22.804
+    ],
+    "outer_halfspan_max_m": 45.066,
+    "roof_max_height_m": 53.842,
+    "min_clear_void_width_m": 30.93
+  },
+  "parts": {
+    "public": {
+      "faces": 320,
+      "vertices": 960,
+      "triangle_digest": "2791c2402303a1b090cc4cd01c34467a15eb401afb73d72f141123934429a920",
+      "file_sha256": "fa6a0e383aa597ef4ecb9bd1ab4d1047ddf39a25f3a7d685e37c5bb1e0bf8bc1"
+    },
+    "occupied": {
+      "faces": 960,
+      "vertices": 2880,
+      "triangle_digest": "09b13df69da24630fcfffbdbbc2ecf1f64fdff891fd62096c38ad1f82ed9cb55",
+      "file_sha256": "faa1c2bb9fa985cdb6f03a372bfd8e0ec164f57b82c41dc1e05b75e444e8dd72"
+    },
+    "envelope": {
+      "faces": 1600,
+      "vertices": 4800,
+      "triangle_digest": "a4a778b9557edc6b23a9a2991ad18f7ec84be9ebfc93fc7cbcd906d116621258",
+      "file_sha256": "8fdbaf88c67c27c5b06b906bec9a2b9bfdfc9ab79d327ac011873c5be26842db"
+    },
+    "supports": {
+      "faces": 176,
+      "vertices": 528,
+      "triangle_digest": "8415f875198c7be1e00397139660fb9cfb7069140e1041b8ba9961260da51fe5",
+      "file_sha256": "7ee0d193aa8ae6680ed5e2ebf2f6f5ee1cddd4c9f5759198af706b243a0bed05"
+    },
+    "activity": {
+      "faces": 16,
+      "vertices": 48,
+      "triangle_digest": "9fcbdf71773cdb19bbbcbbe002627ba797bb84a2cda52f42da2af7692cb8d3a4",
+      "file_sha256": "bf47c2aa6397eea8eb35e72f5f92aa1cbf14454529310187a51553f00091ce90"
+    }
+  },
+  "official_art": "HOLD",
+  "formal_adoptions": 0,
+  "real_enclosed_rooms": "NOT_TESTED",
+  "human_331_foot_993": "NOT_RUN",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "structural_load": "NOT_TESTED",
+  "actual_safe_walk": "NOT_TESTED",
+  "minecraft_construction": "FORBIDDEN"
+}
