@@ -168,8 +168,8 @@ def render(glb,out):
            '02_district':((142,-171,113),(0,0,11),52),
            '03_civic_eye':((0,-24,2.35),(2,22,7),85),
            '04_fabrication_eye':((-51,-17,2.3),(-55,12,6),72),
-           '05_research_eye':((58,-15,2.4),(48,20,8),75),
-           '06_elevated_view':((-94,44,29),(12,3,16),75)}
+           '05_research_eye':((43,18,2.4),(56,21,5),82),
+           '06_elevated_view':((4,-88,45),(0,15,12),75)}
     for name,(eye,target,angle) in shots.items():
         ren=vtk.vtkRenderer();ren.SetBackground(.89,.94,.97)
         win=vtk.vtkRenderWindow();win.SetOffScreenRendering(1);win.AddRenderer(ren);win.SetSize(1250,750)
