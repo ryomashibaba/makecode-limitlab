@@ -1,0 +1,16 @@
+{
+  "A": {
+    "obj_sha256": "2479077d484ec02aa05d065af68066828bc4ceeee7dea9704923d777f9b99c4a",
+    "local_obj_sha256": "2479077d484ec02aa05d065af68066828bc4ceeee7dea9704923d777f9b99c4a",
+    "byte_identical_to_local": true,
+    "art": "G0_ART_REJECT",
+    "official_S1_G1_G2_G3": "NOT_RUN"
+  },
+  "B": {
+    "obj_sha256": "715079aab7788a24815e3e7f0a462e58f0d9280b303290362573b2f894211832",
+    "local_obj_sha256": "715079aab7788a24815e3e7f0a462e58f0d9280b303290362573b2f894211832",
+    "byte_identical_to_local": true,
+    "art": "G0_ART_REJECT",
+    "official_S1_G1_G2_G3": "NOT_RUN"
+  }
+}

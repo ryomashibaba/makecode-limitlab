@@ -1,0 +1,147 @@
+{
+  "stage": "B11_G0_COARSE_CITY_RESEARCH",
+  "hypothesis": "B",
+  "vertices": 3624,
+  "triangles": 5848,
+  "bounds_m": [
+    [
+      -1170.0,
+      -700.0,
+      -21.0
+    ],
+    [
+      1170.0,
+      700.0,
+      415.8
+    ]
+  ],
+  "face_groups": {
+    "ground": 12,
+    "terrace": 1412,
+    "mass": 1800,
+    "support": 360,
+    "life": 2136,
+    "expose": 128
+  },
+  "districts": [
+    {
+      "name": "Civic canopy",
+      "anchor": [
+        -600,
+        -105,
+        10
+      ]
+    },
+    {
+      "name": "Cultural nebula",
+      "anchor": [
+        -110,
+        180,
+        10
+      ]
+    },
+    {
+      "name": "Learning ascension",
+      "anchor": [
+        570,
+        -125,
+        10
+      ]
+    },
+    {
+      "name": "Workshop commons",
+      "anchor": [
+        240,
+        380,
+        10
+      ]
+    }
+  ],
+  "candidate_public_routes": [
+    {
+      "name": "ground civic / culture / learning candidate route",
+      "waypoints": [
+        [
+          -900,
+          -450,
+          9
+        ],
+        [
+          -625,
+          -160,
+          9
+        ],
+        [
+          -405,
+          -45,
+          9
+        ],
+        [
+          -90,
+          80,
+          9
+        ],
+        [
+          170,
+          70,
+          9
+        ],
+        [
+          350,
+          190,
+          9
+        ],
+        [
+          570,
+          -125,
+          9
+        ]
+      ],
+      "width_m": 17,
+      "modelled_as": "continuous candidate surface pieces, not certified traversable"
+    },
+    {
+      "name": "upper shared research galleries, height unverified",
+      "waypoints": [
+        [
+          -600,
+          -105,
+          210
+        ],
+        [
+          -325,
+          65,
+          210
+        ],
+        [
+          -110,
+          180,
+          210
+        ],
+        [
+          140,
+          270,
+          210
+        ],
+        [
+          240,
+          380,
+          210
+        ]
+      ],
+      "width_m": 13,
+      "modelled_as": "continuous candidate surface pieces, not certified traversable"
+    }
+  ],
+  "modelled_route_not_human_walkable": true,
+  "real_enclosed_rooms": "NOT_TESTED",
+  "safe_entry_and_stairs": "NOT_TESTED",
+  "load_support": "NOT_TESTED",
+  "MakeCode_voxel_and_command_cost": "NOT_ESTIMATED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "formal_human_331_foot_993": "NOT_RUN",
+  "minecraft_construction": "FORBIDDEN",
+  "art_approval": "NOT_GRANTED",
+  "overall_art": "HOLD",
+  "obj_sha256": "715079aab7788a24815e3e7f0a462e58f0d9280b303290362573b2f894211832"
+}

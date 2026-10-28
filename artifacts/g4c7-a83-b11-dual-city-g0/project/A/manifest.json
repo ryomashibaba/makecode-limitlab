@@ -1,0 +1,158 @@
+{
+  "stage": "B11_G0_COARSE_CITY_RESEARCH",
+  "hypothesis": "A",
+  "vertices": 2228,
+  "triangles": 3480,
+  "bounds_m": [
+    [
+      -1175.0,
+      -710.0,
+      -21.0
+    ],
+    [
+      1175.0,
+      710.0,
+      177.95
+    ]
+  ],
+  "face_groups": {
+    "ground": 12,
+    "mass": 576,
+    "life": 1188,
+    "expose": 648,
+    "support": 864,
+    "terrace": 192
+  },
+  "districts": [
+    {
+      "name": "Harbor civic",
+      "anchor": [
+        -685,
+        -240,
+        12
+      ]
+    },
+    {
+      "name": "Making",
+      "anchor": [
+        -240,
+        265,
+        12
+      ]
+    },
+    {
+      "name": "Residential fjord",
+      "anchor": [
+        255,
+        -275,
+        12
+      ]
+    },
+    {
+      "name": "Learning spine",
+      "anchor": [
+        670,
+        150,
+        12
+      ]
+    },
+    {
+      "name": "Northern assembly",
+      "anchor": [
+        -440,
+        500,
+        12
+      ]
+    },
+    {
+      "name": "South terrace",
+      "anchor": [
+        660,
+        -445,
+        12
+      ]
+    }
+  ],
+  "candidate_public_routes": [
+    {
+      "name": "southwest public market to central assembly to east learning",
+      "waypoints": [
+        [
+          -930,
+          -405,
+          5
+        ],
+        [
+          -620,
+          -140,
+          5
+        ],
+        [
+          -400,
+          -10,
+          5
+        ],
+        [
+          110,
+          90,
+          5
+        ],
+        [
+          455,
+          -75,
+          5
+        ],
+        [
+          700,
+          155,
+          5
+        ]
+      ],
+      "width_m": 23,
+      "modelled_as": "continuous candidate surface pieces, not certified traversable"
+    },
+    {
+      "name": "upper public civic layer hypothesis",
+      "waypoints": [
+        [
+          -400,
+          -10,
+          50
+        ],
+        [
+          -210,
+          140,
+          50
+        ],
+        [
+          80,
+          105,
+          50
+        ],
+        [
+          295,
+          -80,
+          50
+        ],
+        [
+          470,
+          -70,
+          50
+        ]
+      ],
+      "width_m": 18,
+      "modelled_as": "continuous candidate surface pieces, not certified traversable"
+    }
+  ],
+  "modelled_route_not_human_walkable": true,
+  "real_enclosed_rooms": "NOT_TESTED",
+  "safe_entry_and_stairs": "NOT_TESTED",
+  "load_support": "NOT_TESTED",
+  "MakeCode_voxel_and_command_cost": "NOT_ESTIMATED",
+  "formal_s1_g1_g2_g3": "NOT_RUN",
+  "formal_human_331_foot_993": "NOT_RUN",
+  "minecraft_construction": "FORBIDDEN",
+  "art_approval": "NOT_GRANTED",
+  "overall_art": "HOLD",
+  "obj_sha256": "2479077d484ec02aa05d065af68066828bc4ceeee7dea9704923d777f9b99c4a"
+}
