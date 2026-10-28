@@ -1,0 +1,62 @@
+name: G4-C7 B11-R5 D11 PLY audit and ART-REJECT research
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d11/**'
+      - '.github/workflows/g4c7-b11-r5-d11-real3d.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d11-true-mesh
+  cancel-in-progress: true
+jobs:
+  independent-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencies and headless VTK
+        run: |
+          python -m pip install numpy trimesh vtk Pillow networkx
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1 libgl1-mesa-dri libxrender1 libxext6
+      - name: Generate all local mesh and ablation variants
+        working-directory: research/g4c7-b11-r5-d11
+        run: |
+          python build.py --case 70
+          python build.py --case 90
+          python build.py --case 70 --no-research
+      - name: Capture 21 real PLY views
+        working-directory: research/g4c7-b11-r5-d11
+        run: |
+          xvfb-run -a python render.py --case full_70
+          xvfb-run -a python render.py --case full_90
+          xvfb-run -a python render.py --case without_research_70
+      - name: Independently inspect persisted geometry and artificial obstruction
+        working-directory: research/g4c7-b11-r5-d11
+        run: python audit.py
+      - name: Count visible real-world-category PLY pixels
+        working-directory: research/g4c7-b11-r5-d11
+        run: xvfb-run -a python silhouette_audit.py
+      - name: Confirm art and connectivity rejection has not been silently promoted
+        working-directory: research/g4c7-b11-r5-d11
+        run: python preart_gate.py
+      - name: Upload even if a negative diagnostic fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-b11-r5-d11-local-real3d-ART-REJECT
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            research/g4c7-b11-r5-d11/full_70/
+            research/g4c7-b11-r5-d11/full_90/
+            research/g4c7-b11-r5-d11/without_research_70/
+            research/g4c7-b11-r5-d11/audit.json
+            research/g4c7-b11-r5-d11/silhouette_audit.json
