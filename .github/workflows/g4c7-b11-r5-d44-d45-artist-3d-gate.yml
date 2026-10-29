@@ -1,0 +1,62 @@
+name: G4-C7 B11-R5 D44-D45 artist real3D and stop gate (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d44-d45/**'
+      - '.github/workflows/g4c7-b11-r5-d44-d45-artist-3d-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d44-d45-art-hold
+  cancel-in-progress: true
+jobs:
+  artist-authored-real3d-and-independent-stop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install independent true-3D and rendering dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Install headless renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate A and B saved GLBs and 9 images from readback
+        run: xvfb-run -a python research/g4c7-b11-r5-d44-d45/d44_scene_first.py --out d44_build
+      - name: Independent saved-mesh geometry + 10 mutation tests
+        run: python research/g4c7-b11-r5-d44-d45/d44_independent_saved_mesh_audit.py --out d44_build
+      - name: D45 stop gate + 4 falsification controls
+        run: python research/g4c7-b11-r5-d44-d45/d45_art_regression_stop_gate.py --out d44_build
+      - name: Protect formal ART HOLD and no-city policy
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          o=Path('d44_build')
+          m=json.loads((o/'manifest.json').read_text())
+          a=json.loads((o/'d44_independent_result.json').read_text())
+          g=json.loads((o/'d45_stop_gate.json').read_text())
+          assert len(list(o.glob('d44_*.glb')))==4
+          assert len(list(o.glob('**/0*.png')))==9
+          assert len(a['negative_controls_detected'])==10
+          assert len(g['negative_controls_detected'])==4
+          assert g['adopted']==0 and g['ART']=='HOLD'
+          assert g['official_G0_S1_G1_G2_G3']=='NOT_RUN'
+          assert g['author_art_decision']=='BOTH A AND B PRE-G0 ART REJECT'
+          assert m['protection']['main']=='UNTOUCHED' and g['construction']=='FORBIDDEN'
+          print('D44/D45 PASS = audited REJECTION, not ART PASS or safety approval')
+          PY
+      - name: Archive genuine 3D evidence, images and independent audits
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D44-D45-REAL3D-ART-REJECT-NO-CITY-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: d44_build/
