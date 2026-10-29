@@ -1,0 +1,57 @@
+name: G4-C7 B11-R5 D36 local true3D negative study (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d36/**'
+      - '.github/workflows/g4c7-b11-r5-d36-true3d-art-hold.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d36-tru3d
+  cancel-in-progress: true
+jobs:
+  saved-3d-and-independent-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install 3D and software-rendering dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Install headless software renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate true GLBs and six images from reloaded GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d36/d36_civic_fault.py --out d36_build
+      - name: Independent saved-mesh inspection and seven malicious mutations
+        run: python research/g4c7-b11-r5-d36/d36_independent_audit.py --out d36_build
+      - name: Verify explicit scope and no false certification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d36_build')
+          j=json.loads((p/'d36_independent_result.json').read_text())
+          assert j['detected_mutations']==7 and j['adopted']==0
+          assert j['formal_G0_S1_G1_G2_G3']=='NOT_RUN'
+          assert j['artist_visual_review']=='REJECT_REPETITIVE_PAIRED_ARCHES'
+          assert j['construction']=='FORBIDDEN'
+          assert all(j['results']['upper_level_floor_footprint_overlaps'].values())
+          assert len(list(p.glob('d36_*.glb')))==3
+          assert len(list(p.glob('0*.png')))==6
+          print('PASS = auditable ART REJECT and bounded geometric checks, not ART PASS')
+          PY
+      - name: Preserve all genuine artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D36-TRUE3D-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: d36_build/
