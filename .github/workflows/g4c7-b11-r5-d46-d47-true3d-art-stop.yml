@@ -1,0 +1,59 @@
+name: G4-C7 B11-R5 D46-D47 true3D internal scene and visual STOP (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d46-d47/**'
+      - '.github/workflows/g4c7-b11-r5-d46-d47-true3d-art-stop.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d46-d47-stop
+  cancel-in-progress: true
+jobs:
+  saved-3d-and-human-view-diagnosis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install mesh and real renderer
+        run: |
+          python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10' 'pillow>=10,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: True GLBs and matched 12 camera images from saved GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d46-d47/d46_scene_first.py --out d46_build
+      - name: Independent reloaded saved mesh verification and negative controls
+        run: python research/g4c7-b11-r5-d46-d47/d46_independent_saved_glb_audit.py --out d46_build
+      - name: D47 matched render difference and 3D unchanged-geometry stop gate
+        run: python research/g4c7-b11-r5-d46-d47/d47_visual_difference_stop_gate.py --out d46_build
+      - name: Explicit non-adoption and no formal safety certification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('d46_build')
+          a=json.loads((root/'d46_independent_result.json').read_text(encoding='utf-8'))
+          b=json.loads((root/'d47_visual_difference_result.json').read_text(encoding='utf-8'))
+          assert a['count']==9 and a['approved']==False and a['construction']=='FORBIDDEN'
+          assert a['result']['stair_steps']==36
+          assert b['human_artist_review']=='REJECT_BOTH_A_AND_B'
+          assert b['underpowered_aesthetic_change_flag'] is True and b['adopted']==0
+          assert b['official_QA']=='NOT_RUN' and b['minecraft_construction']=='FORBIDDEN'
+          assert len(list(root.glob('d46_*.glb')))==4
+          assert len(list((root/'A').glob('0*.png')))==6 and len(list((root/'B').glob('0*.png')))==6
+          print('SUCCESS = independent ART REJECT reproduction; NOT ART PASS')
+          PY
+      - name: Preserve authentic negative study
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D46-D47-TRUE3D-ART-REJECT-NO-ADOPTION
+          path: d46_build/
+          retention-days: 21
+          if-no-files-found: warn
