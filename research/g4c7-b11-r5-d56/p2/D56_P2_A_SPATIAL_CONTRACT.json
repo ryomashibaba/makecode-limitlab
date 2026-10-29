@@ -1,0 +1,276 @@
+{
+  "id": "D56-P2-A-MULTIAXIAL-INHABITED-URBAN-SECTION",
+  "source_class": "AUTHOR_PRE3D_SPATIAL_RESERVATIONS_NOT_MESH",
+  "revised": "2026-10-30 JST",
+  "units": "research-only conceptual meters; not Minecraft coordinates or structural certification",
+  "bounds": {
+    "x": [
+      -300,
+      300
+    ],
+    "y": [
+      -270,
+      270
+    ],
+    "z": [
+      0,
+      390
+    ]
+  },
+  "void_axes": [
+    {
+      "id": "AXIS_A_CIVIC",
+      "start": [
+        -250,
+        -150,
+        90
+      ],
+      "end": [
+        250,
+        150,
+        170
+      ],
+      "minimum_radius_reservation": 55,
+      "role": "urban passage and public production; not proof of a carved open mesh"
+    },
+    {
+      "id": "AXIS_B_DAYLIGHT",
+      "start": [
+        -220,
+        180,
+        230
+      ],
+      "end": [
+        220,
+        -180,
+        70
+      ],
+      "minimum_radius_reservation": 45,
+      "role": "second nonparallel civic/light/observation void; not proof of sunlight"
+    }
+  ],
+  "activity_regions": [
+    {
+      "id": "MAKING",
+      "role": "public fabrication",
+      "box": {
+        "x": [
+          -120,
+          50
+        ],
+        "y": [
+          -85,
+          50
+        ],
+        "z": [
+          30,
+          126
+        ]
+      }
+    },
+    {
+      "id": "RESEARCH",
+      "role": "research and observatory work",
+      "box": {
+        "x": [
+          -35,
+          125
+        ],
+        "y": [
+          -65,
+          80
+        ],
+        "z": [
+          118,
+          214
+        ]
+      }
+    },
+    {
+      "id": "LIVING",
+      "role": "private habitation in shared material thickness",
+      "box": {
+        "x": [
+          55,
+          175
+        ],
+        "y": [
+          12,
+          145
+        ],
+        "z": [
+          208,
+          306
+        ]
+      }
+    },
+    {
+      "id": "MARKET_EDGE",
+      "role": "public neighbourhood interface",
+      "box": {
+        "x": [
+          -220,
+          -105
+        ],
+        "y": [
+          30,
+          170
+        ],
+        "z": [
+          35,
+          145
+        ]
+      }
+    },
+    {
+      "id": "UPPER_COMMONS",
+      "role": "shared elevated neighbourhood",
+      "box": {
+        "x": [
+          110,
+          250
+        ],
+        "y": [
+          -180,
+          -55
+        ],
+        "z": [
+          130,
+          280
+        ]
+      }
+    }
+  ],
+  "shared_thickness_reservations": [
+    {
+      "id": "M_R_SHARED",
+      "a": "MAKING",
+      "b": "RESEARCH",
+      "target": "one constructed layer is making ceiling and research supporting floor (UNBUILT)"
+    },
+    {
+      "id": "R_L_SHARED",
+      "a": "RESEARCH",
+      "b": "LIVING",
+      "target": "acoustically separable shared envelope (UNBUILT)"
+    }
+  ],
+  "access_nodes": [
+    "WEST_STREET",
+    "CIVIC_GATE",
+    "MAKING",
+    "PUBLIC_GALLERY",
+    "RESEARCH",
+    "PRIVATE_LOBBY",
+    "LIVING",
+    "EAST_STREET",
+    "UPPER_COMMONS",
+    "MARKET_EDGE"
+  ],
+  "access_edges": [
+    [
+      "WEST_STREET",
+      "CIVIC_GATE"
+    ],
+    [
+      "CIVIC_GATE",
+      "MAKING"
+    ],
+    [
+      "MAKING",
+      "PUBLIC_GALLERY"
+    ],
+    [
+      "PUBLIC_GALLERY",
+      "RESEARCH"
+    ],
+    [
+      "RESEARCH",
+      "UPPER_COMMONS"
+    ],
+    [
+      "WEST_STREET",
+      "PRIVATE_LOBBY"
+    ],
+    [
+      "PRIVATE_LOBBY",
+      "LIVING"
+    ],
+    [
+      "EAST_STREET",
+      "PUBLIC_GALLERY"
+    ],
+    [
+      "WEST_STREET",
+      "MARKET_EDGE"
+    ],
+    [
+      "MARKET_EDGE",
+      "CIVIC_GATE"
+    ]
+  ],
+  "privacy": {
+    "public_nodes": [
+      "WEST_STREET",
+      "EAST_STREET",
+      "CIVIC_GATE",
+      "MAKING",
+      "PUBLIC_GALLERY",
+      "MARKET_EDGE"
+    ],
+    "private_nodes": [
+      "PRIVATE_LOBBY",
+      "LIVING"
+    ],
+    "door_or_auth_separation": "UNBUILT; future true3d required"
+  },
+  "designed_camera_intents": [
+    {
+      "name": "01_CITY_DISTANT",
+      "intent": "three distinct density horizons and both axes from city distance",
+      "camera": "NOT PLACED IN TRUE3D"
+    },
+    {
+      "name": "02_STREET_TO_MAKING",
+      "eye_height": 1.65,
+      "camera": "NOT PLACED IN TRUE3D"
+    },
+    {
+      "name": "03_RESEARCH_TO_MAKING",
+      "eye_height": 1.65,
+      "camera": "NOT PLACED IN TRUE3D"
+    },
+    {
+      "name": "04_LIVING_TO_CITY",
+      "eye_height": 1.65,
+      "camera": "NOT PLACED IN TRUE3D"
+    },
+    {
+      "name": "05_REVERSE_FAR_VIEW",
+      "intent": "rule out giant wall seen from rear",
+      "camera": "NOT PLACED IN TRUE3D"
+    }
+  ],
+  "art_rejection_triggers": [
+    "monolithic carved sculpture",
+    "two parallel wall canyon",
+    "thin slab from side",
+    "independent low campus",
+    "shelf or isolated bridge is dominant",
+    "domestic enclosure requires external box"
+  ],
+  "verification_limitations": {
+    "actual_closed_room": "NOT RUN",
+    "actual_shared_solid": "NOT RUN",
+    "true_boolean_void": "NOT RUN",
+    "continuous_body_sweep": "NOT RUN",
+    "daylight": "NOT RUN",
+    "engineering_support": "NOT RUN",
+    "saved_glb_and_5_perspective_views": "NOT RUN",
+    "formal_331_993": "NOT RUN",
+    "formal_G0_S1_G1_G2_G3": "NOT RUN",
+    "art": "HOLD",
+    "Minecraft": "FORBIDDEN"
+  },
+  "source_note": "Source reservations and reachability topology are falsifiable before geometry, not actual building performance."
+}
