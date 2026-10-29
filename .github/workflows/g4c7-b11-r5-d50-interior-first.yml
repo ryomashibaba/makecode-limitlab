@@ -1,0 +1,71 @@
+name: G4-C7 B11-R5 D50 true3D interior pre-G0 ART HOLD
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - research/g4c7-b11-r5-d50/**
+      - .github/workflows/g4c7-b11-r5-d50-interior-first.yml
+  workflow_dispatch:
+jobs:
+  independent-real3d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract and hash-check original generator and independent auditor
+        run: |
+          set -euo pipefail
+          cd research/g4c7-b11-r5-d50
+          base64 -d d50_repro_sources.tar.xz.b64 > d50_repro_sources.tar.xz
+          echo '16328b1b86c60d794397f142b83edbbad2b882eeb2efb0c7d27984bf76a20c8d  d50_repro_sources.tar.xz' | sha256sum -c -
+          tar -xJf d50_repro_sources.tar.xz
+          python -m py_compile d50_interior_first.py d50_independent_saved_mesh_audit.py
+      - name: Set up actual saved GLB and VTK offscreen rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libgl1 libglx-mesa0 libosmesa6
+          python -m pip install 'numpy<3' trimesh shapely vtk pillow
+      - name: Render original saved GLB and audit independently
+        run: |
+          set -euo pipefail
+          D=research/g4c7-b11-r5-d50
+          mkdir -p d50_output
+          xvfb-run -a python "$D/d50_interior_first.py" --out d50_output
+          python "$D/d50_independent_saved_mesh_audit.py" --out d50_output
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('d50_output')
+          r=json.loads((p/'d50_independent_audit.json').read_text())
+          assert r['art_judgment']=='PRE_G0_ART_REJECT_INDUSTRIAL_SHED'
+          assert r['public_roof_coverage_grid']=='15/15'
+          assert r['negative_mutations_detected']==11 and r['adopted']==0
+          assert len(list(p.glob('*.glb')))==3 and len(list(p.glob('0*.png')))==6
+          print('D50 saved actual mesh audit SUCCESS; art remains REJECT')
+          PY
+      - name: Repeat rendering and verify 11 saved artifacts
+        run: |
+          set -euo pipefail
+          D=research/g4c7-b11-r5-d50
+          mkdir -p d50_regen
+          xvfb-run -a python "$D/d50_interior_first.py" --out d50_regen
+          python "$D/d50_independent_saved_mesh_audit.py" --out d50_regen
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          a=Path('d50_output');b=Path('d50_regen')
+          paths=sorted([x.name for x in a.glob('*.glb')]+[x.name for x in a.glob('0*.png')]+['manifest.json','d50_independent_audit.json'])
+          assert len(paths)==11,len(paths)
+          assert all(hashlib.sha256((a/n).read_bytes()).digest()==hashlib.sha256((b/n).read_bytes()).digest() for n in paths)
+          print('D50 repeated outputs 11/11 SHA256 consistent in runner')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: d50-local-interior-art-reject-evidence
+          path: d50_output/
+          retention-days: 14
