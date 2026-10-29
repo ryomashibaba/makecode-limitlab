@@ -1,0 +1,73 @@
+name: G4-C7 B11-R5 D33 occupied section and independent saved GLB audit (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d33/**'
+      - '.github/workflows/g4c7-b11-r5-d33-occupied-section.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d33-occupied-section
+  cancel-in-progress: true
+jobs:
+  true-3d-from-packed-reproducible-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencies for GLB, independent mesh inspection and real VTK images
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'shapely>=2,<3' 'vtk>=9.3,<10' 'brotli>=1,<2'
+      - name: Headless OpenGL
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Verify source digest and restore both true Python sources
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64,brotli,hashlib
+          s=Path('research/g4c7-b11-r5-d33/d33_source_min.br.b64').read_text().strip()
+          assert hashlib.sha256(s.encode()).hexdigest()=='86227abfe1210a0f9abc3db2d0332cad777e3252548b6d400c11b3ac3beefe34'
+          raw=brotli.decompress(base64.b64decode(s))
+          n=int.from_bytes(raw[:4],'big')
+          assert n>1000 and len(raw)>n+1000
+          Path('d33_inhabited_fault.py').write_bytes(raw[4:4+n])
+          Path('d33_independent_saved_glb_audit.py').write_bytes(raw[4+n:])
+          print('Source digest verified, both scripts reconstructed')
+          PY
+      - name: Rebuild three saved GLBs and six true renderings
+        run: xvfb-run -a python d33_inhabited_fault.py --out d33_build
+      - name: Independently audit saved meshes and six mutations
+        run: python d33_independent_saved_glb_audit.py --out d33_build
+      - name: Confirm boundaries and artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d33_build')
+          d=json.loads((p/'d33_independent_result.json').read_text())
+          assert d['actual_saved_glbs_loaded']==3
+          assert d['negative_control_count']==6
+          assert d['stair_flights']['out']['steps']==18 and d['stair_flights']['return']['steps']==18
+          assert d['upper_gallery_top']==7.1
+          assert d['art']=='PRE-G0 ART REJECT' and d['adopted']==0
+          assert d['formal_G0_S1_G1_G2_G3']=='NOT_RUN' and d['minecraft']=='FORBIDDEN'
+          assert d['stair_full_body_sweep']=='NOT_RUN' and d['structural_adequacy']=='NOT_RUN'
+          assert len(list(p.glob('d33_*.glb')))==3
+          assert len(list(p.glob('*.png')))==6
+          print('PASS = independently reproduced rejected local 3D only')
+          PY
+      - name: Persist GLBs, real views and independent falsification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D33-OCCUPIED-SECTION-TRUE3D-REJECT-NO-ADOPTION
+          if-no-files-found: warn
+          retention-days: 21
+          path: d33_build/
