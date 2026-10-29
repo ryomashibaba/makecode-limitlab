@@ -1,0 +1,25 @@
+{
+  "gate": "D56 P1 master-source SAME 2D SECTION ONLY",
+  "source_sha256": "95ff10bdc78f409fbd6a3fdf781bb5b10e88dc7df4e4ab07451152f9c13e5e13",
+  "master_id": "d56-p1-one-master-section",
+  "view_count": 4,
+  "one_material_outline": true,
+  "named_carved_regions": 5,
+  "activity_elements": 3,
+  "negative_controls_passed": [
+    "scene detached",
+    "invented research original",
+    "original material missing",
+    "independent living framing"
+  ],
+  "actual_3d": "NOT RUN",
+  "actual_eye_level_cameras": "NOT RUN",
+  "closed_watertight_living_room": "NOT RUN",
+  "sunlight_body_sweep_support": "NOT RUN",
+  "official_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "art": "HOLD - author review; no evidence of aesthetic acceptance",
+  "Minecraft": "CONSTRUCTION FORBIDDEN",
+  "rendered_preview_png_bytes": 430662,
+  "rendered_preview_png_sha256": "ba7f733132e913383520c0be403fcdc592d99c785aee2ff77c49ac4ed75d29ba"
+}
