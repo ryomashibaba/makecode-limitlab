@@ -1,3 +1,9 @@
+# 【D56-P1 同一原本4場面美術ボード・真正CI SUCCESS・P2奥行設計へ／2026-10-29 JST】
+
+> [D56-P1 Authors 4-crop storyboard](../research/g4c7-b11-r5-d56/D56_P1_FOUR_MOMENTS_ONE_MASTER.svg) と[生成PNG](../research/g4c7-b11-r5-d56/D56_P1_FOUR_MOMENTS_PREVIEW.png) をGitHubに保存。**遠景・到着/制作・研究・生活の全4場面は1つの2D原本 `d56-p1-one-master-section` を再利用した異なるcropであり、真正3Dの4カメラではない。** [専用CI #40873002327](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40873002327) はSUCCESS。単一原本の整合・4故意不正検出・1740×1260 PNG生成（430662B）・PNG/SVG/監査GitHub保管を確認。[同一性監査JSON](../research/g4c7-b11-r5-d56/D56_P1_SOURCE_IDENTITY_AUDIT.json)／[作者批判的美術審査](../research/g4c7-b11-r5-d56/D56_P1_AUTHOR_ART_GATE_JA.md)。**美術の欠点は単体巨大彫刻への収束・都市性の不足・奥行不在・室内/生活/道/自然光の未成立**。[D56-P2美術不足ゲート](../research/g4c7-b11-r5-d56/D56_P2_GAPS_AND_TRUE3D_ENTRY_JA.md)に従い、P1をそのまま押出TRUE3D化しない。**ART HOLD／正式採用0件／正式331/993・G0/S1/G1/G2/G3 NOT RUN／Minecraft施工・統合禁止／main不変更／PR #53 Draft／Work事前承認。**
+
+---
+
 # 【D55-A2 CI真正SUCCESS／PRE-ART原本不足・D56美術先行研究継続／2026-10-29 JST】
 
 > 前回Queuedだった[D55専用CI #40868614075](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40868614075)は**実際にSUCCESS**。6,777点×候補のA1=55件→A2=0件の限定干渉、4件の故意不正のREJECT、開口予約削除での故意障害再現、Actions artifact実在を確認。[本物のCIログから保存した限定結果](../research/g4c7-b11-r5-d55/D55_A2_CI_CONFIRMED_LIMITED_JA.md)。ただし実GLB、住戸・建築厚、人体連続通行、自然採光、正式331/993とG0以降はNOT RUN。A2は[独立PRE-ART形態不足審査](../research/g4c7-b11-r5-d55/D55_A2_SOURCE_GAP_PREART_JA.md)によりそのまま真正3D化禁止。次は[D56 ART-FIRSTの居住厚・多軸空洞研究](../research/g4c7-b11-r5-d56/D56_ART_FIRST_SPATIAL_BRIEF_JA.md)を適用。**ART HOLD／美術採用0／Minecraft施工・統合禁止／main不変更／PR #53 Draft・Work事前承認。**
