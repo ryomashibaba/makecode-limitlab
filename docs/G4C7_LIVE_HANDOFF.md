@@ -1,3 +1,21 @@
+# 【D56-P2-B 実Blender二案・5視点再読込比較／両案ART REJECT・通行干渉未解決／2026-10-30 JST】
+
+> Work明示承認に基づき、P2-Aを単純押出せず、湾曲段丘街区B1／分岐中庭街区B2をローカルBlender 5.2.1で実制作。[作者の5視点比較](../research/g4c7-b11-r5-d56/p2/b/D56_P2_B_FIVE_VIEW_COMPARISON.jpg)／[批判的美術審査と次の設計仮説](../research/g4c7-b11-r5-d56/p2/b/D56_P2_B_ART_REVIEW_JA.md)。**両案ART REJECT／全体ART HOLD／正式採用0**。高層住宅壁・反復階が支配し、中心の制作/研究/生活の実共有断面が都市全体の形を決めていない。内景も大きな腰壁と空虚な室が支配。不採用形状の装飾・増殖・巨大化は停止。
+>
+> **保存実在確認**：研究ブランチの成果保存HEAD `838fa75045e95d4e28777a6aed76d85e79819594`（本追記直前のHEAD）。[GitHub照合受領記録](../research/g4c7-b11-r5-d56/p2/b/GITHUB_ARCHIVE_RECEIPT.json)で、58ファイルのGitHub Contents API blob SHAとローカルGit木が全一致。5版の真正`.blend`＋5実GLB、25実PNG、作者コード、監査JSON、失敗版を研究ブランチに保存した。主比較は[B1R1](../research/g4c7-b11-r5-d56/p2/b/B1R1/)対[B2R2](../research/g4c7-b11-r5-d56/p2/b/B2R2/)。各案の都市遠景／真裏遠景／街から制作／研究から制作／生活内部は同じ保存GLBを再輸入した独立カメラ。両案のカメラ・焦点距離・照明・解像度は共通。壁の非表示や画像上の穴の偽装はない。補助照明を含み、画像の明るさは自然採光の証明ではない。
+>
+> **限定メッシュ監査**：B1R1=67メッシュ/125,580三角形、B2R2=72メッシュ/127,844三角形。native→GLB再読込の名前集合/三角形数/世界座標包絡の差異0。実床・共有材・実屋根・入口・観察/天空/生活二方向の開口レイを確認。局所169床標本の欠落はB1R1=2、B2R1/R2=0。階段90縦身体線の干渉は43→4→**3未解決**。連続全身歩行・通行成立は不合格/未証明。9種類の実幾何の故意破損はB1=7/9、B2=8/9検出。B2の残り1種は元の階段基準が既に不合格で負対照の前提不成立、成功に数えない。[B2R2独立診断](../research/g4c7-b11-r5-d56/p2/b/B2R2/independent_mesh_audit.json)。この診断のプロセス終了0は建築PASSではない。
+>
+> **契約未達**：非平行2軸は約61.198度の地上街路。P2-Aで目指した、居住厚の内部を高低差を持って抜ける立体公共空洞2軸ではない。外周街区全室の閉鎖、階間動線、壁床接合、構造、避難、防火、防音、照度/日照時間は未検証。**真正3Dを作ったことから、P2全体の技術PASSやART PASSを推定しない。**
+>
+> **CI状態（成果保存HEADで照合）**：[通常Verify #40903204010](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40903204010)は**SUCCESS**を実際に確認。新しい専用CIは追加していない。開始時HEAD `7bda4ee0…`の通常Verify #40899042201はSUCCESSだったが、新HEADへ転用しない。Windows作業ファイルの既存source hash検査はCRLF差で不一致。Git保存blobのP1.0原本2件は固定SHA-256と一致し、ソースや閾値は変更していない。[原本照合](../research/g4c7-b11-r5-d56/p2/b/SOURCE_PROTECTION_CHECK.json)。`ARCHIVE_MANIFEST.json`は元のWindows作業バイト、Git公開テキストのLFバイト照合には[ARCHIVE_GIT_BLOB_MANIFEST.json](../research/g4c7-b11-r5-d56/p2/b/ARCHIVE_GIT_BLOB_MANIFEST.json)を使う。
+>
+> **次の有望仮説**：P2-C候補《三つの街が共有する不均等な都市断面》。塔/階の反復をやめ、制作の実天井が研究床・居住側壁・街の入口へ連続変化する非同一3断面を先に作者手設計し、その同じ厚みから3街区と内部公共室2軸を生む。B1/B2を続投しない。この仮説はまだ未制作・未承認。詳細は美術審査末尾。
+>
+> **固定**：正式331人体・993足元／G0/S1/G1/G2/G3はすべて**NOT RUN**。169床/90縦線で代替しない。main不変更、PR #53 Open/Draft維持・merge禁止、Minecraft Education施工・都市統合禁止、外注なし。旧成果/旧証拠/ワールド無変更。過去のLIVE_HANDOFF本文を残した本追記のみ。次回は最新HEAD/PR/CIを再取得すること。
+
+---
+
 # 【D56-P2-A 3D空間予約・自作2D美術ボード・6負対照専用CI SUCCESS／美術HOLD・P2-B再設計へ／2026-10-30 JST】
 
 > [D56-P2作者3案比較](../research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_MULTIVIEW_DESIGN_JA.md)と[空間予約JSON](../research/g4c7-b11-r5-d56/p2/D56_P2_A_SPATIAL_CONTRACT.json)を追加。2本の非平行XYZ公共空洞の計画軸は平面交差角70.253度、交点Z差20研究単位。制作→研究→住居を3Dの共有厚**予約**とアクセスグラフへ結びつけた。意図的欠陥6種類は[独立source gate](../research/g4c7-b11-r5-d56/p2/d56_p2_source_gate.py)が全検出。[専用CI #40898625880](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40898625880) SUCCESS、[SVG作者絵](../research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_BOARD.svg)を1600×1040 [PNG](../research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_PREVIEW.png)へ変換、[限定監査JSON](../research/g4c7-b11-r5-d56/p2/D56_P2_A_PRE3D_AUDIT.json)とともにGitHubへ恒久保存を確認。ただし**巨壁・巨大彫刻回帰の美術上の危険は強く、真正3D穴/床/室/採光/人体経路はゼロ検証**。[P2-A批判的美術審査](../research/g4c7-b11-r5-d56/p2/D56_P2_A_CRITICAL_ART_HOLD_JA.md)で**SOURCE PREFLIGHT限定PASS／ART HOLD／TRUE3D NOT RUN**。P2-Aの単純押し出しを禁止。次はP2-Bとして3街区の相互関係・街路と奥行方向の本物の空洞・真裏と住戸内部の独立作者透視を先に改善し、説明抜きの美術飛躍がないなら重い3Dを停止。**正式美術採用0／G0/S1/G1/G2/G3および331人体・993足元NOT RUN／Minecraft施工・統合禁止／main不変更／PR #53 Draft／Work事前承認**。

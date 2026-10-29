@@ -1,0 +1,300 @@
+{
+  "head": "838fa75045e95d4e28777a6aed76d85e79819594",
+  "method": "GitHub Contents API blob SHA and size matched local committed Git tree for every archived file",
+  "files_verified": 58,
+  "files": [
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/ARCHIVE_GIT_BLOB_MANIFEST.json",
+      "sha": "c24a16c691af0d20b53b1fea0e0d436156229e29",
+      "size": 8656
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/ARCHIVE_MANIFEST.json",
+      "sha": "e3083824beeb441c8c329674c4d70f4301b726b4",
+      "size": 8363
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/D56_P2_B_ART_REVIEW_JA.md",
+      "sha": "ca45b4040d66be5e55f621e814c84f2182391048",
+      "size": 10840
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/D56_P2_B_FIVE_VIEW_COMPARISON.jpg",
+      "sha": "7b5767a84813a954d64b86db5c3770a83207f8ca",
+      "size": 449168
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/INTAKE_CHECKS_SNAPSHOT.json",
+      "sha": "74d563ecfd7d522af6adb999fbc549b6aba4596f",
+      "size": 639
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/INTAKE_PR_SNAPSHOT.json",
+      "sha": "64eb840be421f6dd333f6bdb7c786da8c887539f",
+      "size": 3304
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/README.md",
+      "sha": "94ed9156a94ecdda8e82ef56c38a41f6ed3f6d99",
+      "size": 2102
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/SOURCE_PROTECTION_CHECK.json",
+      "sha": "948209ff170506593f44e058e1b75a6b26799db0",
+      "size": 401
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/audit_p2b.py",
+      "sha": "b79d3fe64b58dd32b08dcfa836fa36a0fa13ab50",
+      "size": 7527
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/build_p2b.py",
+      "sha": "483fbf045aaccf9776b3347968897d23f4f1b901",
+      "size": 14415
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/build_p2b_courts.py",
+      "sha": "09b38645a9fb47d4c233e5322c07ca9807033868",
+      "size": 17947
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/prepare_review.py",
+      "sha": "447225f8d07590f60ac7abf3bedf213d4c704285",
+      "size": 3157
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/repair_local_overlap.py",
+      "sha": "40600e11675f7584722120d50631a9436ee94d7a",
+      "size": 1905
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/trace_stair_failures.py",
+      "sha": "ef547b361ef529103ee8fd9d7af93096c0053185",
+      "size": 834
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/01_CITY.png",
+      "sha": "a27c3b32ea180d5bbc32aad054d5ac2d252f4ba4",
+      "size": 986897
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/02_REVERSE.png",
+      "sha": "eb2341fc71093c7757b52a529edb0a94cf7219fb",
+      "size": 1067500
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/03_STREET_TO_MAKING.png",
+      "sha": "37e85a09667373bd241e123aea97414fa0d42265",
+      "size": 821493
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/04_RESEARCH_TO_MAKING.png",
+      "sha": "d54a2fc646dd4186d2be7e7119b829231a6a6033",
+      "size": 848186
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/05_HOME.png",
+      "sha": "ba4d23d2fce764757a81fbce88beb0a1dbceea74",
+      "size": 794981
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/B1.blend",
+      "sha": "a9be31c5794738a1ce7fb0d0644791d5703dd943",
+      "size": 1157915
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/B1.glb",
+      "sha": "0988abac71a9487d434c72bbf57e49875b2182c2",
+      "size": 6825484
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1/manifest.json",
+      "sha": "52d412f7c5a0430ad5aebbe3e12fb227c52b8333",
+      "size": 1377
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/01_CITY.png",
+      "sha": "ccf07ae75bb314dd6b512d52da838ce2947e4cd0",
+      "size": 997084
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/02_REVERSE.png",
+      "sha": "fed73336228d3a561df5cac99330bbbb53f0e5c4",
+      "size": 1139902
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/03_STREET_TO_MAKING.png",
+      "sha": "c74ab744bd726f0b4f07a65fe21ca549aeed28df",
+      "size": 831104
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/04_RESEARCH_TO_MAKING.png",
+      "sha": "03cd59b8cb5ea0d05e033d56871048a7cab40826",
+      "size": 823431
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/05_HOME.png",
+      "sha": "2d0f438a5241f015c4b18205bba37e0b809f4b38",
+      "size": 794849
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/B2.blend",
+      "sha": "f450d109045f87aaac60921ebc961c3ea3e2e001",
+      "size": 1398995
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/B2.glb",
+      "sha": "21800d15d303a1e7ad590d6bf7ad4fdf72f409f2",
+      "size": 6988016
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2/manifest.json",
+      "sha": "a08960bb4bd4b084aa1ce162ffb94050bcf44813",
+      "size": 1377
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/01_CITY.png",
+      "sha": "75d421662100f93100cddfadd8f164eb9e526944",
+      "size": 931141
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/02_REVERSE.png",
+      "sha": "62ecd6c82f2eeb64bac8b7bf80f4a5bbd654852f",
+      "size": 998877
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/03_STREET_TO_MAKING.png",
+      "sha": "af35202eb86f6d3d08bf5553b1c64c40c66a458c",
+      "size": 822736
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/04_RESEARCH_TO_MAKING.png",
+      "sha": "264971d503b2f18a5166c99eb9c8fa12f73c5528",
+      "size": 885773
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/05_HOME.png",
+      "sha": "ab98e9dd34fd7c6e4c80714590a9fbd468eafa7e",
+      "size": 860023
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/B1R1.blend",
+      "sha": "c2b77468a6770443670dd2b1055bdb9739613110",
+      "size": 1154815
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/B1R1.glb",
+      "sha": "0988abac71a9487d434c72bbf57e49875b2182c2",
+      "size": 6825484
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/camera_conditions.json",
+      "sha": "099495385b131fc31c0fda1191e8806d07a60d61",
+      "size": 1095
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B1R1/independent_mesh_audit.json",
+      "sha": "24fa327f0af432b15ebbc45a137fd57ddda05a63",
+      "size": 2932
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/01_CITY.png",
+      "sha": "fd4edae7c6c7d98f30efe3855cae6523edd288ef",
+      "size": 942406
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/02_REVERSE.png",
+      "sha": "1150be27ac52b6db332f1ba69e8c029ac3f4f700",
+      "size": 1062504
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/03_STREET_TO_MAKING.png",
+      "sha": "dfe90f234d240c218b35f577d2dce6fc829890e3",
+      "size": 853163
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/04_RESEARCH_TO_MAKING.png",
+      "sha": "5342debacd5b5f484a676b06d94eca70f7598b75",
+      "size": 855289
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/05_HOME.png",
+      "sha": "906cecd2b65fdf601fdf1d56b8a19c7e9481f71a",
+      "size": 845853
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/B2R1.blend",
+      "sha": "0331cf52a9c0cca7877981e53aaeb7c5ac02f891",
+      "size": 1395489
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/B2R1.glb",
+      "sha": "060188888e7c074f3b39aee4cb856838d230ef17",
+      "size": 6988836
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/camera_conditions.json",
+      "sha": "099495385b131fc31c0fda1191e8806d07a60d61",
+      "size": 1095
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/independent_mesh_audit.json",
+      "sha": "1d23445d2fd6ff8525dfbdf1f45cb2c66e9d58e5",
+      "size": 2928
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R1/stair_failure_trace.json",
+      "sha": "e60f74f3ea3250adb61dd9360b6097fd5b2e3699",
+      "size": 807
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/01_CITY.png",
+      "sha": "0051460f689f39358f59da3446222afc0045fa3b",
+      "size": 943204
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/02_REVERSE.png",
+      "sha": "9a0f0162539583072ca0ed8b5e9d4d0222652804",
+      "size": 1062797
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/03_STREET_TO_MAKING.png",
+      "sha": "3630ee7bc53b7a5accf844f829f0d4f03481f2cd",
+      "size": 853147
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/04_RESEARCH_TO_MAKING.png",
+      "sha": "81efba7890cb55fd0da2ad243c7fc70e9f9dfe9f",
+      "size": 855360
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/05_HOME.png",
+      "sha": "0c98cf4019cfdc27605a3a0911b046b6412f0c6c",
+      "size": 845574
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/B2R2.blend",
+      "sha": "cdeaf98bc99a89609f5553cfab8ae25e1630af94",
+      "size": 1420005
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/B2R2.glb",
+      "sha": "b1a1f81bc9320a1c30202d6b6d0a0245cdf987cf",
+      "size": 7154404
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/camera_conditions.json",
+      "sha": "99c7e4ee0e665c6c1f28c61d7da0646f5bf185b5",
+      "size": 1109
+    },
+    {
+      "path": "research/g4c7-b11-r5-d56/p2/b/B2R2/independent_mesh_audit.json",
+      "sha": "bbd9f2b2877fe1851ad59f68d8eb9dc1483708b5",
+      "size": 2928
+    }
+  ],
+  "art": "REJECT; global ART HOLD",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN"
+}
