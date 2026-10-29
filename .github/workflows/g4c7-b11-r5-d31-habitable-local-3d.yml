@@ -1,0 +1,57 @@
+name: G4-C7 B11-R5 D31 saved-3D functional structure audit (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d31/**'
+      - '.github/workflows/g4c7-b11-r5-d31-habitable-local-3d.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-d31-independent-saved-glb
+  cancel-in-progress: true
+jobs:
+  d31-local-real3d-reproducible-negative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install true-3D mesh and renderer dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Provide headless OpenGL
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Rebuild three saved GLBs and six images from reloaded GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d31/d31_habitable_section.py --out d31_build
+      - name: Independent mesh evidence and four adversarial mutations
+        run: python research/g4c7-b11-r5-d31/d31_independent_audit.py --out d31_build
+      - name: Assert exact limited research results without art promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d31_build');d=json.loads((p/'d31_independent_result.json').read_text())
+          assert len(list(p.glob('d31_*.glb')))==3
+          assert len(list(p.glob('0?_*.png')))==6
+          assert d['negative_controls_detected']==4
+          assert all(not v for targets in d['public_eyes_to_activity_sightline_blockers'].values() for v in targets.values())
+          assert not d['full_width_public_corridor_intruding_columns']
+          assert all(not x['7m_headroom_ray_blockers'] for x in d['interior_vertical_empty_space_witnesses'].values())
+          assert d['formal_QA']=='NOT_RUN' and d['adopted']==0 and d['construction']=='FORBIDDEN'
+          assert d['weatherproof_enclosure']=='NOT_ESTABLISHED_OPEN_SIDED_PAVILIONS'
+          print('PASS = saved 3D source/negative evidence, NOT art or safety certification')
+          PY
+      - name: Archive genuine 3D GLB, six images, and limited independent audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D31-SAVED-TRUE3D-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: d31_build/
