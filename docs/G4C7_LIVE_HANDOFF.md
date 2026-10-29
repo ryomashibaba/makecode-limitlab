@@ -1,3 +1,9 @@
+# 【D55-A2数学上の通路干渉改善／美術原本不足・D56空間美術先行研究開始／2026-10-29 JST】
+
+> D55-A2のGitHub設計JSONを既存Pythonとは別計算で再検証した結果、6,777離散サンプルの共有面干渉はA1=55件、A2=0件。ただし数値上の開口予約であり、実メッシュ・連続人体経路の成功ではない。[ソースからのみ再構成した2D断面投影](../research/g4c7-b11-r5-d55/D55_A2_SOURCE_PROJECTION_PRE3D.svg)、[PRE-ART不足監査](../research/g4c7-b11-r5-d55/D55_A2_SOURCE_GAP_PREART_JA.md)を保存。**A2は実生活室・共有した居住厚・遠景外観が原本に存在せず、そのままGLBへの移行を禁止**。建築3例の公式設計情報を参考に[D56のART-FIRST研究契約](../research/g4c7-b11-r5-d56/D56_ART_FIRST_SPATIAL_BRIEF_JA.md)を追加。Morpheusの内外接続空洞、Zeitz MOCAAの活動空間と厚み、横浜港大さん橋の動線/構造の相互形成を**手法だけ**学び、形状コピーは禁止。D55修正後[CI #40868614075](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40868614075)は確認時点Queued、PASS未確認。**全体ART HOLD／正式美術採用0／正式331人体・993足元/G0/S1/G1/G2/G3 NOT RUN／Minecraft施工・都市統合禁止／main不変更／PR #53 Draft／Work事前承認。**
+
+---
+
 # 【B11-R5 D55-A1 PRE-3D不採用／A2開口断面研究・2026-10-29 JST】
 
 > D55の[作者比較と共有断面契約](../research/g4c7-b11-r5-d55/D55_A_B_AUTHOR_PRE3D_REVIEW_JA.md)を保存。A1では二用途以上の共有境界を導入したが、[初回CI #40867861125](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40867861125)は故意縮小した入口空洞の異常を捕捉できずFAILURE。また独立試算で共有厚断面と人体経路の干渉を発見。**A1 PRE-3D REJECT**とし、[A2の開口予約原本](../research/g4c7-b11-r5-d55/D55_A2_APERTURE_CONTRACT.json)と[独立境界干渉監査](../research/g4c7-b11-r5-d55/d55_boundary_interference.py)を追加。修正コミット[62d8a209](https://github.com/ryomashibaba/makecode-limitlab/commit/62d8a20996b246c707c61dfd7e54df4ebef1b31b)の[D55 CI #40868614075](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40868614075)は記録時点でQueuedであり、PASS未確認。**A2の開口は数値予約であって穴の開いた3Dではない**。直ちに本格3D化しない。活動を共有する面・通路・生活・遠景が同一作品で美しく成立することを作者の空間美術審査で先に確認する。既存D54-Aの低層床板群へ再回帰しない。**ART HOLD／正式美術採用0／正式G0・S1・G1・G2・G3 NOT RUN／331人体・993足元未実施／Minecraft施工・都市統合禁止／main不変更／PR #53 Draft／Work事前承認**。
