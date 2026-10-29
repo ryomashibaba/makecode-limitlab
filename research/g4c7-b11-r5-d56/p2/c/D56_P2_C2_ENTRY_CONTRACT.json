@@ -54,13 +54,12 @@
   ],
   "audit_boundaries": {
     "formal_331_993": "NOT RUN",
-    "formal_G0_S1_G2_G3": "NOT RUN",
-    "formal_G1": "NOT RUN",
     "art": "HOLD",
     "no_minecraft_world_writes": true,
     "no_city_integration": true,
     "no_main_changes": true,
-    "draft_pr_53_must_stay_draft": true
+    "draft_pr_53_must_stay_draft": true,
+    "formal_G0_S1_G1_G2_G3": "NOT RUN"
   },
   "C1_local_evidence": "Conversation attachment D56_P2_C1_ART_REJECT_AND_C2_PLAN.zip, NOT archived to GitHub; six reimported GLB views and independent triangle audit, actual GLB and source",
   "C1_limited_diagnostics": {
