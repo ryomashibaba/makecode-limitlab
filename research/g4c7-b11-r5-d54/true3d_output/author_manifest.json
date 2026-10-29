@@ -1,0 +1,75 @@
+{
+  "stage": "EARLY TRUE3D - ART HOLD",
+  "cameras": {
+    "01_overview": [
+      [
+        110,
+        -113,
+        78
+      ],
+      [
+        0,
+        0,
+        13
+      ]
+    ],
+    "02_arrival": [
+      [
+        3,
+        -64,
+        8
+      ],
+      [
+        -8,
+        -15,
+        10
+      ]
+    ],
+    "03_maker": [
+      [
+        10,
+        -25,
+        8
+      ],
+      [
+        -3,
+        8,
+        13
+      ]
+    ],
+    "04_research": [
+      [
+        29,
+        6,
+        17
+      ],
+      [
+        -5,
+        24,
+        19
+      ]
+    ],
+    "05_living": [
+      [
+        -3,
+        34,
+        23
+      ],
+      [
+        -8,
+        -14,
+        8
+      ]
+    ]
+  },
+  "gates": "331/993 & formal G0/S1/G1/G2/G3 NOT RUN; Minecraft FORBIDDEN",
+  "sha256": {
+    "D54_A_true3d.glb": "4e321b9af545d393229e2de3b7f31b18d55b76a7324972c60bbff4b9baf51e41",
+    "broken_blocked.glb": "c354d6aba6c51021f8a4e83a56ac4a8f82fefcee5549d6820f090406ba648fe1",
+    "broken_canopy.glb": "91658cb7894ed8af8b57339a381028a2e11340a5f349edff608776361127c606",
+    "broken_landing.glb": "4149bd85dba7942286b3fa783b989fa6305288129f9e3ad655999a7b42457e86",
+    "minus_living.glb": "6f54bc47765473a74f9cfbba3606031d8aa6656d2bde9c0fe5e965245d3ac7f1",
+    "minus_maker.glb": "a637613c42363aecde2a9e2c5807e66ad872ff950796ed17866e0d9a4cd8996e",
+    "minus_research.glb": "1553edeb904341eb05337ed6eb0f5d2d2c03bb4e495504abed527c60470ea301"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "true3d_reloaded": true,
+  "node_count": 166,
+  "triangles": 2060,
+  "steps": [
+    20,
+    50,
+    50
+  ],
+  "landing_delta": 0.0,
+  "sampled_protected_maker_canopy": true,
+  "living_observation_structural_hits": [],
+  "malicious_sight_blocker_hits": [
+    "malicious_sightline_blocker"
+  ],
+  "negative_landing_detected": true,
+  "negative_canopy_detected": true,
+  "activity_removal_changes_actual_architecture": {
+    "maker": [
+      "maker_deck",
+      "maker_rib_0_lower",
+      "maker_rib_0_upper",
+      "maker_rib_1_lower",
+      "maker_rib_1_upper",
+      "maker_weather_canopy",
+      "shared_maker_research_transfer"
+    ],
+    "research": [
+      "research_deck",
+      "research_rib_0_lower",
+      "research_rib_0_upper",
+      "research_rib_1_lower",
+      "research_rib_1_upper",
+      "research_rib_2_lower",
+      "research_rib_2_upper",
+      "shared_maker_research_transfer",
+      "shared_research_living_transfer"
+    ],
+    "living": [
+      "living_deck",
+      "living_rib_0_lower",
+      "living_rib_0_upper",
+      "living_rib_1_lower",
+      "living_rib_1_upper",
+      "living_roof",
+      "shared_research_living_transfer"
+    ]
+  },
+  "sha256": "4e321b9af545d393229e2de3b7f31b18d55b76a7324972c60bbff4b9baf51e41",
+  "actual_daylight": "NOT RUN",
+  "full_body_sweep": "NOT RUN",
+  "structural_certification": "NOT RUN",
+  "weather_seal": "NOT RUN",
+  "official_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "art": "HOLD - human review of 5 persisted GLB renders required",
+  "minecraft": "CONSTRUCTION FORBIDDEN"
+}
