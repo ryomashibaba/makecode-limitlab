@@ -1,0 +1,41 @@
+{
+  "study": "D56-P2-D3 ART-FIRST",
+  "status": "INDEPENDENT 2D FOUR-SCENE HYPOTHESIS ONLY",
+  "art": "HOLD",
+  "art_adoptions": 0,
+  "real3d": "NOT BUILT",
+  "source_of_record": "Conversation artifact D56_P2_D_TWO_REAL_GLBS_AND_D3_ART_STUDY.zip. Full binary archive is NOT on GitHub.",
+  "rejected_generators": [
+    {
+      "id": "D1",
+      "reason": "three hollow bubble sculptures, 42 open shell edges, blank/blocked living and research eye views"
+    },
+    {
+      "id": "D2",
+      "reason": "three floating hollow tubular vaults, 156 open edges each, same generic activity floors pasted into incompatible new shell"
+    }
+  ],
+  "independent_scenes": [
+    "city front: 3 different occupied precincts shaped by civic voids",
+    "maker eye: wide public fabrication room whose roof is research's floor",
+    "research eye: uninterrupted sight to active making within shared enclosure",
+    "living eye: privacy+terrace+two real apertures and city connection"
+  ],
+  "graphic_notice": "These are separately authored 2D diagrams, NOT four views of one spatially consistent true 3D model.",
+  "first_gate": "Stop BEFORE heavy real 3D unless the 4 scenes are convincingly beautiful and meaningfully different; no shell, tube, slab, residential-wall/campus return.",
+  "later_real_geometry_requirements": [
+    "one coherent common XYZ for three activities",
+    "roof=research floor, roof=private terrace real shared triangles across two places",
+    "two nonparallel internal public room axes with different heights and accessible vertical intersection",
+    "roof/wall/door/air/light/privacy and actual floor support in human-eye scenes",
+    "same-saved-GLB city front, real reverse, three human eye cameras and at least two gates",
+    "external shell watertight; all entrances and all floors physically modeled",
+    "independent adversarial geometry obstruction and support controls, not only missing object names"
+  ],
+  "formal_331_humans_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "no_minecraft_construction": true,
+  "no_city_integration": true,
+  "no_main_changes": true,
+  "PR53_must_remain_draft": true
+}
