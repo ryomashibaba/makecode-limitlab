@@ -1,0 +1,64 @@
+name: G4-C7 D54-A EARLY TRUE3D (NOT ART PASS)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d54/*.py"
+      - "research/g4c7-b11-r5-d54/d54_spatial_contract.json"
+      - ".github/workflows/g4c7-d54-a-true3d.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  true3d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Setup pinned VTK GLB render stack
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libgl1 libxrender1 libsm6
+          python -m pip install numpy==2.3.5 scipy==1.16.3 trimesh==4.11.1 vtk==9.6.2
+      - name: Verify original PRE-3D contract
+        run: python research/g4c7-b11-r5-d54/d54_pre3d_gate.py
+      - name: Generate genuine GLB and same-model five views
+        run: xvfb-run -a python research/g4c7-b11-r5-d54/d54_early_true3d.py
+      - name: Independent saved geometry audit with negative controls
+        run: python research/g4c7-b11-r5-d54/d54_true3d_independent_audit.py
+      - name: Validate five actual images exist
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root=Path('research/g4c7-b11-r5-d54/true3d_output')
+          assert (root/'D54_A_true3d.glb').stat().st_size>10000
+          images=list(root.glob('0*.png'))
+          assert len(images)==5, images
+          assert all(p.stat().st_size>10000 for p in images)
+          print('Actual 3D evidence present. ART NOT JUDGED.')
+          PY
+      - name: Temporarily archive evidence regardless of Git write
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d54-a-real-3d-art-hold
+          path: |
+            research/g4c7-b11-r5-d54/true3d_output/
+            research/g4c7-b11-r5-d54/d54_early_true3d.py
+            research/g4c7-b11-r5-d54/d54_true3d_independent_audit.py
+            research/g4c7-b11-r5-d54/d54_spatial_contract.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Append-only archive of 3D and 5 renders to research branch
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/g4c7-b11-r5-d54/true3d_output/
+          git diff --cached --quiet && { echo 'No new assets: refuse misleading archive'; exit 1; }
+          git commit -m "archive(g4c7-d54): saved GLB, 5 true-3D views and negative audit (ART HOLD)"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+# Generated output never triggers this path-limited workflow.
