@@ -1,0 +1,58 @@
+name: G4-C7 D56 P1 same-source artboard proof (NOT ART PASS)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d56/*.svg"
+      - "research/g4c7-b11-r5-d56/*.py"
+      - "research/g4c7-b11-r5-d56/*CONTRACT.json"
+      - ".github/workflows/g4c7-d56-p1-artboard.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate one geometry source and 4 different crops, including four negatives
+        run: python research/g4c7-b11-r5-d56/d56_p1_same_source_gate.py
+      - name: Render editorial SVG as one PNG without independent redraws
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+          rsvg-convert --width 1740 --height 1260 --format png \
+            --output research/g4c7-b11-r5-d56/D56_P1_FOUR_MOMENTS_PREVIEW.png \
+            research/g4c7-b11-r5-d56/D56_P1_FOUR_MOMENTS_ONE_MASTER.svg
+      - name: Inspect raster header and record checksum
+        run: python research/g4c7-b11-r5-d56/d56_p1_same_source_gate.py
+      - name: Preserve the actual preview and audit even if branch archive unavailable
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d56-p1-author-2d-preview-not-art-pass
+          path: |
+            research/g4c7-b11-r5-d56/D56_P1_FOUR_MOMENTS_ONE_MASTER.svg
+            research/g4c7-b11-r5-d56/D56_P1_FOUR_MOMENTS_PREVIEW.png
+            research/g4c7-b11-r5-d56/D56_P1_VIEW_CONTRACT.json
+            research/g4c7-b11-r5-d56/D56_P1_SOURCE_IDENTITY_AUDIT.json
+            research/g4c7-b11-r5-d56/D56_P1_AUTHOR_ART_GATE_JA.md
+          if-no-files-found: error
+          retention-days: 30
+      - name: Append-only archive rendered 2D proof, preserving original SVG
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/g4c7-b11-r5-d56/D56_P1_FOUR_MOMENTS_PREVIEW.png
+          git add research/g4c7-b11-r5-d56/D56_P1_SOURCE_IDENTITY_AUDIT.json
+          git diff --cached --quiet && { echo "No new rendered proof, abort"; exit 1; }
+          git commit -m "archive(g4c7-d56): four-view single-source raster and negative controls (ART HOLD)"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+# Generated PNG and JSON audit are deliberately excluded from the path trigger.
