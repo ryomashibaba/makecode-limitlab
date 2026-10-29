@@ -1,0 +1,73 @@
+{
+  "gate": "D56-P2-A AUTHOR SOURCE PREFLIGHT ONLY",
+  "source_sha256": "8dca955394de284d2f582e4765ee70725f6d4eef99f4363320bd0f75ae627eaf",
+  "xy_crossing_angle_degrees": 70.253,
+  "crossing_parameters": [
+    0.5,
+    0.5
+  ],
+  "crossing_z_difference_reservation_only": 20.0,
+  "shared_box_overlap_reservations_only": {
+    "M_R_SHARED": {
+      "x": 85,
+      "y": 115,
+      "z": 8
+    },
+    "R_L_SHARED": {
+      "x": 70,
+      "y": 68,
+      "z": 6
+    }
+  },
+  "topologically_reachable_from_street": [
+    "CIVIC_GATE",
+    "LIVING",
+    "MAKING",
+    "MARKET_EDGE",
+    "PRIVATE_LOBBY",
+    "PUBLIC_GALLERY",
+    "RESEARCH",
+    "UPPER_COMMONS",
+    "WEST_STREET"
+  ],
+  "deliberate_negative_controls": [
+    {
+      "name": "parallel void axis",
+      "detected": true,
+      "reason": "parallel/collinear XY axes are not a 2-axis crossing"
+    },
+    {
+      "name": "street entrance disconnected",
+      "detected": true,
+      "reason": "street topology lacks one of the required destinations"
+    },
+    {
+      "name": "research/living thickness deleted",
+      "detected": true,
+      "reason": "missing essential actual-shared-thickness *reservation*"
+    },
+    {
+      "name": "living and research envelope no longer overlap",
+      "detected": true,
+      "reason": "shared envelope reservation does not intersect in XYZ"
+    },
+    {
+      "name": "private living exposed to public",
+      "detected": true,
+      "reason": "public realm directly opens into private residence"
+    },
+    {
+      "name": "false 3D success declaration",
+      "detected": true,
+      "reason": "saved_glb_and_5_perspective_views cannot be certified by this source"
+    }
+  ],
+  "body_clearance": "NOT RUN",
+  "real_closed_living_room": "NOT RUN",
+  "real_3d_material_subtraction": "NOT RUN",
+  "5_saved_model_cameras": "NOT RUN",
+  "art": "HOLD",
+  "formal_qa": "NOT RUN",
+  "minecraft": "FORBIDDEN",
+  "disclaimer": "Intersection of reservational axes/boxes is NOT open 3D geometry, light, structure, or navigability."
+}
