@@ -1,0 +1,65 @@
+name: G4-C7 B11-R5 D40-D41 true room and prior mass regression (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d40-d41/**'
+      - '.github/workflows/g4c7-b11-r5-d40-d41-hollow-room.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d40-d41-saved-room-research
+  cancel-in-progress: true
+jobs:
+  real-hollow-room-independent-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install actual mesh dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Headless software rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Reproduce D38 stored-geometry predecessor
+        run: xvfb-run -a python research/g4c7-b11-r5-d38-d39/d38_inhabited_scarp.py --out d38_for_d41
+      - name: D40 true GLB variants, genuine interior and six human/macro views
+        run: xvfb-run -a python research/g4c7-b11-r5-d40-d41/d40_real_room.py --out d40_build
+      - name: Independent opening, roof-joint and 138-path-sample audit plus 11 mutations
+        run: python research/g4c7-b11-r5-d40-d41/d40_independent_room_audit.py --out d40_build
+      - name: D41 comparison with D38 solid masses plus four negative mutations
+        run: python research/g4c7-b11-r5-d40-d41/d41_prior_filled_mass_regression.py --prior d38_for_d41/d38_baseline.glb --d40 d40_build --out d40_build
+      - name: Prevent false art, route and weather certification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d40_build')
+          a=json.loads((p/'d40_independent_result.json').read_text())
+          r=a['result']
+          b=json.loads((p/'d41_prior_to_room_evidence.json').read_text())
+          assert r['art']=='ART HOLD' and r['adopted']==0 and r['formal_QA']=='NOT_RUN'
+          assert r['full_triangle_body_sweep']=='NOT_RUN'
+          assert r['room_weather_integrity']=='NOT_CERTIFIED'
+          assert r['public_to_room_approx_aabb_clearance_samples']==138
+          assert len(a['negative_controls_detected'])==11
+          assert b['negative_controls']==4 and b['adopted']==0
+          assert b['overall_art']=='ART HOLD'
+          assert len(list(p.glob('d40_*.glb')))==3
+          assert len(list(p.glob('0*.png')))==6
+          print('D40-D41 audit PASS is NOT architectural safety, weather certification or artwork approval')
+          PY
+      - name: Save actual regenerated 3D and independent evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D40-D41-TRUE-ROOM-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: d40_build/
