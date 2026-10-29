@@ -1,3 +1,9 @@
+# 【B11-R5 D54-A真正3D ART REJECT／D55共有建築断面研究開始・2026-10-29 JST】
+
+> [D54-A保存GLB・5視点・独立監査 Actions #40865615222](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40865615222) **SUCCESS（技術限定）**。[実3D/5視点/監査原本](../research/g4c7-b11-r5-d54/true3d_output/)をGitHubに保存。166ノード・2060三角形・120段（20/50/50）、階段上端差0、被覆/着床/視線の故意破損検出等は限定技術成立。しかし保存GLBの5画像を目視すると、遠景は**小さな独立デッキと小さな上階住居を階段でつないだ低層キャンパス**、到着は床と階段、制作/研究は梁・板・机、生活は無地壁に視線を遮られた作品。**5視点ともART REJECT**。D54の体験空洞は生成原理に変換されず、用途別床板+階段+支持材に回帰した。**D54-Aを装飾・巨大化・部品追加で延命しない。**詳細：[D54-A独立5視点美術監査](../research/g4c7-b11-r5-d54/D54_A_FIVE_VIEW_ART_REJECT_JA.md)。次は[D55 Shared Inhabited Section First](../research/g4c7-b11-r5-d55/D55_SHARED_INHABITED_SECTION_DESIGN_GATE_JA.md)：複数用途が**本当に共有する建築厚・実空洞・床/被覆・採光境界**の断面から構成する。2案をPRE-3Dで厳しく比較し、不採用作品は真3Dまで延命しない。**ART HOLD／正式美術採用0件／正式G0・S1・G1・G2・G3 NOT RUN／331人体・993足元NOT RUN／Minecraft施工・都市統合禁止／main不変更／PR #53 Draft維持／Work事前承認**。
+
+---
+
 # 【A82真正再現確定／2026-10-28 JST】1枚の上下階共有床＋4実入口＋2共用間仕切り開口に進歩。しかし巨大な箱と外付け斜め板。G0 ART REJECT
 
 > [A82専用真正VTK Actions #40588475893](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40588475893) **SUCCESS**。現行ブランチで[Python本物の原本・OBJ・4視点PNG・独立メッシュ監査](../artifacts/g4c7-a82-shared-urban-section/)の実在確認。A81の「街路一区間に一個の室」から進め、四用途（下層MARKET/WORKSHOP、上層READING/RESIDENCE）の**実室床が上下で一枚の共有スラブを物理共用**。実間仕切りの扉が上下2、公共側扉4、共用屋根が上層全体を覆う一つのメッシュ。初回の屋根/周縁の隙間をソースから修正し**32頂点接合一致**。実ランプ147地点の高さ一致、120段板、実三角形に対する6種類の故意破損検出、7種ソース制約の故意不正を拒否。205部品・968OBJ頂点・780三角形。**これらは狭いG0幾何TECHのみ**：331人体/993足元の正式実験、連続掃引衝突、支持、居住安全、屋内品質は未検証。遠景は一つの箱建築＋巨大斜め板、公共/内観は無地壁、外界には本当の街の多層生活がなく**4視点ともG0 ART REJECT、正式採用0**。A82原型を増築、装飾、巨大化、他地区へ複製しない。次は作者設計による**非矩形の多重都市断面と外観/内装の相互必然性**を先に2案程度比較し、「外付け巨大フィン」「単一箱型シェル」「4個の別棟」「道路＋板」を禁止、遠景・公共・室内の同一3D早期反証を最優先。[A82詳細監査](./G4C7_A82_SHARED_SECTION_TRUE_MESH_G0_REJECT_JA.md)。**全体ART HOLD、S1/G1/G2/G3 NOT RUN、Minecraft施工・都市統合禁止、main不変更、Draft PR #53、Work事前承認、旧331/993契約変更なし**。
