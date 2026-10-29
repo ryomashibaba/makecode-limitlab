@@ -1,0 +1,39 @@
+name: G4-C7 D54 PRE-3D spatial envelope (NOT ART PASS)
+
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d54/**"
+      - ".github/workflows/g4c7-d54-pre3d-spatial.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pre3d-spatial-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Audit author-authored void and route design (no actual 3D)
+        run: python research/g4c7-b11-r5-d54/d54_pre3d_gate.py
+      - name: Preserve PRE-3D result as expiring Actions artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d54-pre3d-numeric-only
+          path: |
+            research/g4c7-b11-r5-d54/d54_spatial_contract.json
+            research/g4c7-b11-r5-d54/d54_pre3d_gate.py
+            research/g4c7-b11-r5-d54/d54_pre3d_audit.json
+            research/g4c7-b11-r5-d54/*JA.md
+          if-no-files-found: warn
+          retention-days: 30
+# Passing this workflow proves only an author-enveloped PRE-3D numerical check.
+# Formal 331/993, actual 3D, art, and Minecraft construction remain unapproved.
