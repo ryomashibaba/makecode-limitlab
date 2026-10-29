@@ -1,0 +1,111 @@
+{
+  "study": "B1",
+  "blender": "5.2.1 LTS",
+  "cameras": {
+    "01_CITY": [
+      [
+        490,
+        -650,
+        340
+      ],
+      [
+        -15,
+        35,
+        65
+      ],
+      48
+    ],
+    "02_REVERSE": [
+      [
+        -490,
+        600,
+        315
+      ],
+      [
+        -10,
+        40,
+        75
+      ],
+      48
+    ],
+    "03_STREET_TO_MAKING": [
+      [
+        0,
+        -24,
+        1.65
+      ],
+      [
+        0,
+        17,
+        6.5
+      ],
+      23
+    ],
+    "04_RESEARCH_TO_MAKING": [
+      [
+        -8,
+        12,
+        11.65
+      ],
+      [
+        10,
+        17,
+        4
+      ],
+      21
+    ],
+    "05_HOME": [
+      [
+        -12,
+        8,
+        17.65
+      ],
+      [
+        0,
+        -12,
+        17.8
+      ],
+      19
+    ]
+  },
+  "seed": 56,
+  "render": {
+    "resolution": [
+      1100,
+      720
+    ],
+    "samples": 24,
+    "engine": "Cycles CPU",
+    "artificial_fill_lights": true
+  },
+  "axes": [
+    [
+      [
+        -285,
+        -32,
+        0
+      ],
+      [
+        285,
+        -32,
+        0
+      ]
+    ],
+    [
+      [
+        -99,
+        -242,
+        0
+      ],
+      [
+        166,
+        240,
+        0
+      ]
+    ]
+  ],
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "upper_district_circulation": "NOT VERIFIED",
+  "art": "HOLD pending actual image review"
+}

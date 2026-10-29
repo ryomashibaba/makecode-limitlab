@@ -1,0 +1,114 @@
+{
+  "study": "B2R2",
+  "source": "Saved GLB reimported in a fresh Blender process; real triangle BVH",
+  "native_meshes": 72,
+  "glb_meshes": 72,
+  "triangles": 127844,
+  "roundtrip_errors": [],
+  "axis_plan_angle_degrees": 61.19833342214497,
+  "baseline": {
+    "tests": {
+      "making_floor": true,
+      "research_floor": true,
+      "home_floor": true,
+      "making_actual_roof": true,
+      "research_actual_roof": true,
+      "home_actual_roof": true,
+      "home_actual_privacy_wall": true,
+      "real_entry_open": true,
+      "research_sees_making": true,
+      "original_research_camera_sees_making": false,
+      "home_south_light_aperture": true,
+      "making_sky_through_roof_court": true,
+      "home_second_direction_aperture": true,
+      "axis_A_3_actual_mesh_rays": true,
+      "axis_B_3_actual_mesh_rays": true,
+      "local_route_floor_samples": true,
+      "local_stair_vertical_body_segments": false
+    },
+    "floor_samples": 169,
+    "floor_missing": 0,
+    "stair_body_segments": 90,
+    "stair_body_obstructions": 3,
+    "axis_ray_results": [
+      [
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true
+      ]
+    ]
+  },
+  "negative_controls": [
+    {
+      "mutation": "entry filled",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    },
+    {
+      "mutation": "research view blocked",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    },
+    {
+      "mutation": "home aperture bricked",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    },
+    {
+      "mutation": "sky court capped",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    },
+    {
+      "mutation": "civic void A plugged",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    },
+    {
+      "mutation": "stair body blocked",
+      "baseline": false,
+      "mutated": false,
+      "detected": false
+    },
+    {
+      "mutation": "home roof removed",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    },
+    {
+      "mutation": "shared research support removed",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    },
+    {
+      "mutation": "stair support removed",
+      "baseline": true,
+      "mutated": false,
+      "detected": true
+    }
+  ],
+  "negatives_detected": 8,
+  "negative_total": 9,
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "continuous_body_sweep": "NOT RUN",
+  "structural_fire_acoustic_privacy_daylight_simulation": "NOT RUN",
+  "district_upper_routes_envelope_weather_sealing": "NOT VERIFIED",
+  "art": "REJECT; independent visual assessment required, no promotion from checks",
+  "sha256": {
+    "B2R2.blend": "ac1de54461327af3ed4ec33bb3f7ffdeab522d2c44c26d58ab2089bba0341592",
+    "B2R2.glb": "c56e9cb7d50067f3b0de0a647531bb0122ba8e2a42c2f01241dfbd2f77ad40ce"
+  }
+}

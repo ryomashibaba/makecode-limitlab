@@ -1,0 +1,12 @@
+{
+  "makecode/main.ts": {
+    "canonical_git_sha256": "86d8329cab5af6391756878bbff186af4f118e6750903bbfe84445f5fec54f67",
+    "working_copy_crlf_only": true,
+    "pinned_original_matches": true
+  },
+  "makecode/P1_0_main.ts": {
+    "canonical_git_sha256": "86d8329cab5af6391756878bbff186af4f118e6750903bbfe84445f5fec54f67",
+    "working_copy_crlf_only": true,
+    "pinned_original_matches": true
+  }
+}
