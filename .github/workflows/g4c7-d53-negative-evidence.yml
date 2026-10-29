@@ -1,0 +1,54 @@
+name: G4-C7 D53 saved-GLB negative evidence (NOT ART PASS)
+
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d53/**"
+      - ".github/workflows/g4c7-d53-negative-evidence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rejected-candidate-reproduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Setup headless rendering dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libgl1 libxrender1 libsm6
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.3.5 trimesh==4.11.1 vtk==9.6.2
+      - name: Build both GLBs and render from saved models
+        run: |
+          cd research/g4c7-b11-r5-d53
+          xvfb-run -a python d53_build.py
+      - name: Independently audit saved GLBs
+        run: |
+          cd research/g4c7-b11-r5-d53
+          python d53_independent_audit.py
+      - name: Confirm documented negative results remain reproducible
+        run: |
+          python research/g4c7-b11-r5-d53/d53_negative_ci_assertions.py
+      - name: Archive actual GLBs, renders, audit and code
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d53-rejected-true3d-evidence
+          path: |
+            research/g4c7-b11-r5-d53/A/
+            research/g4c7-b11-r5-d53/B/
+            research/g4c7-b11-r5-d53/*.py
+            research/g4c7-b11-r5-d53/*.md
+          retention-days: 30
+
+# Passing this workflow means the known rejected D53 studies reproduce.
+# It never changes ART HOLD, formal G0/S1/G1/G2/G3, Minecraft or merge status.
