@@ -1,0 +1,75 @@
+{
+  "project": "MakeCode LimitLab G4-C7 / D56-P2-C2",
+  "state": "PRE-DESIGN ONLY / NOT BUILT / ART HOLD / FORMAL ART ADOPTION 0",
+  "precedent_rejected": [
+    "P2-B repeated high-rise residential wall",
+    "P2-C1 floating plate and stick scaffold",
+    "central small studio added after city mass",
+    "ground-only crossed roads",
+    "two disconnected elevated viaducts as fake 3D civic rooms"
+  ],
+  "creative_priority": "human lived scenes and dense interlocked rooms first, then giant city silhouette",
+  "program_spatial_sections": [
+    {
+      "id": "M",
+      "name": "making",
+      "location_rule": "sheltered tall fabrication public hall under a true roof that becomes R's structural floor",
+      "witness": "street-level view shows a working and exhibited maker public room, not a blank wall"
+    },
+    {
+      "id": "R",
+      "name": "research",
+      "location_rule": "actual observation and experiments around making volume; roof and wall intersect L's private/public thresholds",
+      "witness": "human eye camera genuinely sees into M without near-field opaque parapet"
+    },
+    {
+      "id": "L",
+      "name": "living",
+      "location_rule": "private interior floor and roof, entrance from semipublic court, two directional apertures, no identical housing window grid",
+      "witness": "inside camera shows inhabitability and city relation, not one floating chair on a deck"
+    }
+  ],
+  "true_public_axes": {
+    "count": 2,
+    "geometry": "nonparallel internal XYZ room sequences in occupied building thickness",
+    "forbidden": [
+      "two open streets",
+      "two disconnected sky bridges"
+    ],
+    "required": [
+      "separate entrances and exits",
+      "wall/floor/roof genuine mesh",
+      "connected public rooms",
+      "demonstrated vertical interconnection",
+      "human body cross-section clearance"
+    ]
+  },
+  "early_falsification": [
+    "three independent eye-height interior scenes before exterior skyline",
+    "at least two true shared occupied boundaries between differently used spaces",
+    "genuine reimported mesh camera scenes",
+    "same condition city-front/reverse/street-maker/research-maker/home views",
+    "full width + body height clearance finite tests and adversarial negative controls",
+    "reject visually weak sources without adding decorative details"
+  ],
+  "audit_boundaries": {
+    "formal_331_993": "NOT RUN",
+    "formal_G0_S1_G2_G3": "NOT RUN",
+    "formal_G1": "NOT RUN",
+    "art": "HOLD",
+    "no_minecraft_world_writes": true,
+    "no_city_integration": true,
+    "no_main_changes": true,
+    "draft_pr_53_must_stay_draft": true
+  },
+  "C1_local_evidence": "Conversation attachment D56_P2_C1_ART_REJECT_AND_C2_PLAN.zip, NOT archived to GitHub; six reimported GLB views and independent triangle audit, actual GLB and source",
+  "C1_limited_diagnostics": {
+    "named_meshes": 210,
+    "triangles": 4780,
+    "axis_A_body_clear": "84/84 discrete vertical columns",
+    "axis_B_body_clear": "81/84; three collisions",
+    "A_and_B_floor_support": "84/84 each discrete rays",
+    "mutations": "2/2 specific adversarial changes detected",
+    "Z_gap_at_plan_intersection": 41.37701778385773
+  }
+}
