@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1040" width="1600" height="1040" role="img" aria-labelledby="title desc">
+<title id="title">D56 P2 multi-axis inhabited urban section - authored spatial preflight board</title>
+<desc id="desc">Author concept showing three unequal urban density fields, crossing diagonal public void reservations and inhabited sharing thickness. This is not a true 3D perspective image, nor a validated building.</desc>
+<defs>
+  <linearGradient id="night" x2="0.8" y2="1"><stop stop-color="#081524"/><stop offset=".56" stop-color="#143344"/><stop offset="1" stop-color="#276a70"/></linearGradient>
+  <linearGradient id="stone" x2=".85" y2="1"><stop stop-color="#b8c8bd"/><stop offset=".42" stop-color="#6a8690"/><stop offset="1" stop-color="#304958"/></linearGradient>
+  <linearGradient id="bronze" x2="0.8" y2="1"><stop stop-color="#e1c4a1"/><stop offset="1" stop-color="#786a68"/></linearGradient>
+  <linearGradient id="deep" x2="0" y2="1"><stop stop-color="#133e4c"/><stop offset="1" stop-color="#081b30"/></linearGradient>
+  <linearGradient id="light" x2="0" y2="1"><stop stop-color="#7ffff0" stop-opacity=".55"/><stop offset="1" stop-color="#7ffff0" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1600" height="1040" fill="#07111e"/>
+<text x="47" y="56" fill="#edf6ed" font-family="Arial,sans-serif" font-size="35" font-weight="bold">D56 / P2  —  INHABITED CROSSED URBAN VEINS</text>
+<text x="47" y="85" fill="#98b8bf" font-family="Arial,sans-serif" font-size="18">AUTHOR PRE-3D SPATIAL RESEARCH    /    NOT A SAVED 3D MODEL    /    ART HOLD</text>
+<rect x="40" y="112" width="949" height="842" rx="18" fill="url(#night)" stroke="#386573" stroke-width="2"/>
+<g opacity=".23" fill="#4da3a3">
+  <path d="M49 722 L49 590 L87 590 L87 547 L122 547 L122 713 Z"/>
+  <path d="M904 715 L904 574 L934 574 L934 518 L981 518 L981 732Z"/>
+  <path d="M840 710 L840 616 L874 616 L874 544 L906 544 L906 705Z"/>
+</g>
+<path d="M51 782 Q442 712 982 779 L982 918 L51 918 Z" fill="#0c2533"/>
+<g id="three_district_author_silhouette">
+  <path d="M93 753 L135 576 L222 548 L252 471 L344 446 L398 376 L473 383 L515 458 L531 574 L573 727 L453 777Z" fill="url(#stone)" stroke="#d8ded1" stroke-width="4"/>
+  <path d="M135 576 L189 604 L246 574 L315 590 L351 545 L416 562 L461 489 L504 509" fill="none" stroke="#e0d1b1" stroke-width="12" opacity=".65"/>
+  <path d="M416 763 L445 539 L508 472 L555 404 L617 393 L651 324 L736 301 L771 377 L827 390 L868 466 L857 547 L922 728 L830 790Z" fill="url(#stone)" stroke="#dae0d6" stroke-width="5"/>
+  <path d="M499 472 L554 500 L617 462 L676 476 L729 398 L796 430 L852 473" fill="none" stroke="#d5b48c" stroke-width="12" opacity=".7"/>
+  <path d="M290 766 L327 674 L395 621 L447 630 L515 594 L590 616 L631 575 L703 588 L742 649 L789 770Z" fill="url(#bronze)" stroke="#e1d9c2" stroke-width="4"/>
+  <path d="M300 767 L340 728 L404 688 L474 693 L539 662 L591 680 L640 652 L716 697 L769 767" fill="none" stroke="#c1ebdf" stroke-width="6" opacity=".65"/>
+</g>
+<g id="AXIS_A_CIVIC" fill="none">
+  <path d="M87 749 Q302 718 401 671 Q576 593 676 590 Q791 574 962 487" stroke="#09293a" stroke-width="83" opacity=".92"/>
+  <path d="M87 749 Q302 718 401 671 Q576 593 676 590 Q791 574 962 487" stroke="#8bf2d9" stroke-width="8" opacity=".7"/>
+</g>
+<g id="AXIS_B_DAYLIGHT" fill="none">
+  <path d="M386 281 Q467 396 574 479 Q668 546 790 633 Q861 678 956 756" stroke="#0e2936" stroke-width="66" opacity=".9"/>
+  <path d="M386 281 Q467 396 574 479 Q668 546 790 633 Q861 678 956 756" stroke="#bcf8e2" stroke-width="8" opacity=".72"/>
+</g>
+<path d="M554 300 L593 301 L610 398 L579 457 L550 456Z" fill="url(#light)"/>
+<path d="M754 448 L813 472 L854 575 L821 580Z" fill="url(#light)"/>
+<g fill="#193342" stroke="#c8dfd8" stroke-width="3">
+  <path d="M164 559 L219 534 L240 556 L207 577Z"/>
+  <path d="M248 494 L287 477 L315 491 L294 511Z"/>
+  <path d="M674 348 L708 332 L738 354 L704 367Z"/>
+  <path d="M730 405 L784 408 L814 432 L762 438Z"/>
+  <path d="M611 579 L644 564 L676 577 L663 600Z"/>
+</g>
+<g fill="#f8dbab">
+  <rect x="184" y="548" width="18" height="5" rx="2"/>
+  <rect x="202" y="548" width="18" height="5" rx="2"/>
+  <rect x="279" y="495" width="17" height="4" rx="2"/>
+  <rect x="677" y="351" width="17" height="5" rx="2"/>
+  <rect x="704" y="351" width="17" height="5" rx="2"/>
+  <rect x="755" y="422" width="19" height="5" rx="2"/>
+  <rect x="782" y="426" width="19" height="5" rx="2"/>
+  <rect x="627" y="577" width="17" height="5" rx="2"/>
+</g>
+<g font-family="Arial,sans-serif">
+  <rect x="62" y="135" width="470" height="105" rx="14" fill="#0b2435" opacity=".93"/>
+  <text x="85" y="175" fill="#edf7ef" font-size="26" font-weight="bold">01 / ARTIST MASSING QUESTION</text>
+  <text x="85" y="205" fill="#abc9c9" font-size="18">Three unequal civic densities; two open axes.</text>
+  <text x="85" y="229" fill="#eac595" font-size="17">Can this become an inhabited CITY, not cliffs?</text>
+  <text x="92" y="861" fill="#eff5df" font-size="23">NO FAKED PERSPECTIVE CLAIM</text>
+  <text x="92" y="893" fill="#aed0ce" font-size="17">Illustrative oblique silhouette; cavities/rooms are NOT meshed.</text>
+</g>
+<rect x="1015" y="112" width="545" height="423" rx="16" fill="#122b3a" stroke="#386573" stroke-width="2"/>
+<text x="1038" y="151" fill="#eef3e5" font-family="Arial,sans-serif" font-size="25" font-weight="bold">02 / X-Y URBAN VOID PLAN</text>
+<rect x="1075" y="190" width="425" height="295" fill="#1b3a46" stroke="#65909a" stroke-width="2"/>
+<g opacity=".67" fill="#6a9295">
+  <path d="M1112 434 L1153 364 L1181 334 L1207 290 L1249 283 L1262 331 L1231 384 L1187 451Z"/>
+  <path d="M1237 453 L1247 380 L1293 319 L1352 261 L1419 259 L1456 307 L1424 371 L1363 435Z"/>
+  <path d="M1166 473 L1192 431 L1287 399 L1378 435 L1410 466Z"/>
+</g>
+<g fill="none" stroke-width="29" opacity=".84">
+  <path d="M1099 464 L1477 238" stroke="#71eac8" id="plan-axis-a"/>
+  <path d="M1101 221 L1485 463" stroke="#e7bfa0" id="plan-axis-b"/>
+</g>
+<circle cx="1290" cy="343" r="33" fill="#faf6b7" opacity=".45"/>
+<g font-family="Arial,sans-serif" font-size="16" fill="#eef7e9">
+  <text x="1100" y="512">A / THROUGH-CITY</text>
+  <text x="1306" y="512">B / LIGHT AND VIEW</text>
+  <text x="1224" y="371" font-size="13">X</text>
+</g>
+<rect x="1015" y="552" width="545" height="402" rx="16" fill="#122b3a" stroke="#386573" stroke-width="2"/>
+<text x="1037" y="594" fill="#edf6ed" font-family="Arial,sans-serif" font-size="25" font-weight="bold">03 / INHABITED SHARED THICKNESS</text>
+<g font-family="Arial,sans-serif">
+  <path d="M1086 842 Q1133 815 1184 815 L1240 787 L1289 779 L1331 792 L1413 773 L1485 806 L1485 867 L1086 867Z" fill="#466473" stroke="#d3e0d7" stroke-width="3"/>
+  <path d="M1123 772 L1164 743 L1248 748 L1303 722 L1367 732 L1422 698 L1461 728 L1461 759 L1414 770 L1366 758 L1305 763 L1251 778 L1169 780Z" fill="#73969a" stroke="#d3f1dd" stroke-width="3"/>
+  <path d="M1191 698 L1238 664 L1311 677 L1337 657 L1410 662 L1422 690 L1368 711 L1310 704 L1252 721Z" fill="#baa994" stroke="#f2d4ad" stroke-width="3"/>
+  <path d="M1191 720 L1260 725" stroke="#f2ce9d" stroke-width="9"/>
+  <path d="M1241 781 L1307 765" stroke="#89f3da" stroke-width="9"/>
+  <g fill="#f1f6e4" font-size="17">
+    <text x="1050" y="843">MAKING</text>
+    <text x="1050" y="760">RESEARCH</text>
+    <text x="1050" y="683">LIVING</text>
+  </g>
+  <text x="1038" y="903" fill="#b3ced0" font-size="15">Diagram of reserved relationships, NOT closed rooms or actual load path.</text>
+  <text x="1038" y="928" fill="#efc399" font-size="16">If it resolves to walls, shelves, or giant sculpture: ART REJECT.</text>
+</g>
+<text x="45" y="994" fill="#f2bf96" font-family="Arial,sans-serif" font-size="19">SOURCE-ONLY / no Boolean geometry, saved GLB, 5 true cameras, daylight, supporting solids, human walk verification, or formal QA.</text>
+<text x="45" y="1021" fill="#9ac4c8" font-family="Arial,sans-serif" font-size="15">Research: MakeCode LimitLab G4-C7 D56-P2    |    ART HOLD    |    Minecraft construction forbidden    |    Draft PR #53</text>
+</svg>
