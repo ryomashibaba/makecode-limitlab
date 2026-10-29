@@ -1,0 +1,62 @@
+name: G4-C7 B11-R5 D48-D49 independent reconstructed civic rift (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d48-d49/**'
+      - '.github/workflows/g4c7-b11-r5-d48-d49-spatial-redesign.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d48-d49-real-3d
+  cancel-in-progress: true
+jobs:
+  reconstruct-and-reject-unenclosed-public-scene:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Python dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'shapely>=2.0,<3' 'Pillow>=10,<13' 'vtk>=9.3,<10'
+      - name: Install offscreen renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate three actual saved GLB cases and six reloaded-GLB camera frames
+        run: xvfb-run -a python research/g4c7-b11-r5-d48-d49/d48_civic_rift.py --out d48_build
+      - name: Independently audit saved meshes and detect all deliberate defects
+        run: python research/g4c7-b11-r5-d48-d49/d48_independent_saved_mesh_audit.py --out d48_build
+      - name: D49 stop gate—public atrium is open air, not enclosed interior
+        run: python research/g4c7-b11-r5-d48-d49/d49_public_interior_stop_gate.py --out d48_build
+      - name: Rejection, geometry evidence and nonadoption contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d48_build')
+          a=json.loads((p/'d48_independent_result.json').read_text())
+          b=json.loads((p/'d49_public_interior_stop_result.json').read_text())
+          assert len(list(p.glob('d48_*.glb')))==3
+          assert len(list(p.glob('0*.png')))==6
+          assert a['detected_negative_mutations']==10
+          assert a['technical']['upper_room_geometry']=='LIMITED_PASS'
+          assert a['technical']['shared_civic_indoor_enclosure']=='FAIL_OPEN_AIR_CORRIDOR'
+          assert b['public_footprint_samples_without_overhead']>=2
+          assert b['artist_decision']=='PRE_G0_REJECT'
+          assert a['formal_G0_S1_G1_G2_G3']=='NOT_RUN'
+          assert a['construction']=='FORBIDDEN' and a['adopted']==0
+          print('CI PASS means reproducible, audited PRE-G0 REJECTION; not ART PASS nor safe indoor building')
+          PY
+      - name: Preserve generated GLB images and rejection audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D48-D49-TRUE3D-PRE-G0-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: d48_build/
