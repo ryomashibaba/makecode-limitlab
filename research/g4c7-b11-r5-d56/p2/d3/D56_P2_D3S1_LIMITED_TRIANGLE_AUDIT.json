@@ -1,0 +1,57 @@
+{
+  "study": "D56-P2-D3S1",
+  "date_JST": "2026-10-30",
+  "status": "ART_REJECT",
+  "formal_art_adoption": 0,
+  "materials_location": "Conversation artifact D56_P2_D3S1_ART_REJECT_AND_S2_PLAN.zip; GLB+PNG+Python NOT archived to GitHub",
+  "authoring": {
+    "python_trimesh": true,
+    "Blender": false,
+    "save_GL_B": true,
+    "reimport_GL_B": true,
+    "meshes": 278,
+    "triangles": 3864,
+    "sha256": "03c084856161a951354dc93122b4b3e8a42ebe3b65de6d7a401de84985c1809a",
+    "independent_cameras": 8,
+    "eye_perspective": 5,
+    "city_orthographic": 3
+  },
+  "independent_audit": {
+    "based_on": "saved GLB actual triangles, separate program",
+    "actual_named_shared_triangular_roof_floor_surfaces": 3,
+    "negative_controls": "3/3 deliberate removal of shared named geometry, sentinel only",
+    "public_axes": {
+      "A": {
+        "support_line_samples": 99,
+        "covered_overhead_samples": 44,
+        "total": 99
+      },
+      "B": {
+        "support_line_samples": 99,
+        "covered_overhead_samples": 43,
+        "total": 99
+      }
+    },
+    "full_public_3d_room_axis_A": false,
+    "full_public_3d_room_axis_B": false,
+    "body_continuous_sweep": "NOT RUN",
+    "full_width": "NOT RUN"
+  },
+  "art_failure": [
+    "maker scene industrial beams dominate human meaning",
+    "research camera occluded by nearby real slabs",
+    "living scene dominated by blank wall and floor",
+    "front/reverse/high skyline repeats orthogonal industrial campus boxes"
+  ],
+  "root_cause": "Room-first seed reverted to separate rectangular box expansion grammar, defeating intended shared living spatial section",
+  "next_stage": "D3S2 only artistic human-scene-first and shared-structure continuous grammar, not D3S1 boxes decorated",
+  "restrictions": {
+    "main_unchanged": true,
+    "PR_53_draft": true,
+    "old_assets_preserved": true,
+    "minecraft_build": false,
+    "city_integration": false,
+    "formal_331_993": "NOT RUN",
+    "formal_G0_S1_G1_G2_G3": "NOT RUN"
+  }
+}
