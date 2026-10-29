@@ -1,0 +1,91 @@
+name: G4-C7 D56 P2 authored multiaxial PRE3D (NOT TRUE3D/NOT ART PASS)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d56/p2/D56_P2_A_SPATIAL_CONTRACT.json"
+      - "research/g4c7-b11-r5-d56/p2/d56_p2_source_gate.py"
+      - "research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_BOARD.svg"
+      - ".github/workflows/g4c7-d56-p2-pre3d-art-source.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: d56-p2-author-source-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Independently falsify PRE3D spatial reservation contract
+        run: python research/g4c7-b11-r5-d56/p2/d56_p2_source_gate.py
+      - name: Inspect authored artwork source and required labels, NOT 3D
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root=Path("research/g4c7-b11-r5-d56/p2")
+          art=ET.parse(root/"D56_P2_AUTHOR_SPATIAL_BOARD.svg").getroot()
+          elements=list(art.iter())
+          ids={node.get("id") for node in elements if node.get("id")}
+          assert {"AXIS_A_CIVIC","AXIS_B_DAYLIGHT","three_district_author_silhouette"} <= ids
+          assert not any(node.tag.endswith("}image") or node.tag.endswith("}foreignObject") for node in elements)
+          print("P2 authored 2D source labels intact. TRUE3D NOT RUN.")
+          PY
+      - name: Render artist SVG to one editorial preview
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+          rsvg-convert --width 1600 --height 1040 --format png \
+            --output research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_PREVIEW.png \
+            research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_BOARD.svg
+      - name: Audit actual PNG header dimensions and file size
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import struct
+          base=Path('research/g4c7-b11-r5-d56/p2')
+          png=base/'D56_P2_AUTHOR_SPATIAL_PREVIEW.png'
+          data=png.read_bytes()
+          assert data.startswith(b'\x89PNG\r\n\x1a\n') and len(data)>25000
+          assert struct.unpack('>II',data[16:24])==(1600,1040)
+          assert (base/'D56_P2_A_PRE3D_AUDIT.json').stat().st_size>500
+          print('Rendered authored 2D board + PRE3D source audit present. NOT actual 3D.')
+          PY
+      - name: Save immutable temporary evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d56-p2-author-pre3d-only-art-hold
+          path: |
+            research/g4c7-b11-r5-d56/p2/D56_P2_A_SPATIAL_CONTRACT.json
+            research/g4c7-b11-r5-d56/p2/D56_P2_A_PRE3D_AUDIT.json
+            research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_BOARD.svg
+            research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_PREVIEW.png
+            research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_MULTIVIEW_DESIGN_JA.md
+          if-no-files-found: error
+          retention-days: 30
+      - name: Archive PRE3D audit and artboard PNG to research branch (not main)
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/g4c7-b11-r5-d56/p2/D56_P2_A_PRE3D_AUDIT.json
+          git add research/g4c7-b11-r5-d56/p2/D56_P2_AUTHOR_SPATIAL_PREVIEW.png
+          if git diff --cached --quiet; then
+            echo "Exact archived evidence already present; no duplicate commit"
+            exit 0
+          fi
+          git commit -m "archive(g4c7-d56): P2 source-only negatives and 2D art preview (ART HOLD)"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+# Generated PNG and audit JSON cannot retrigger this source-scoped workflow.
