@@ -1,3 +1,9 @@
+# 【B11-R5 D55-A1 PRE-3D不採用／A2開口断面研究・2026-10-29 JST】
+
+> D55の[作者比較と共有断面契約](../research/g4c7-b11-r5-d55/D55_A_B_AUTHOR_PRE3D_REVIEW_JA.md)を保存。A1では二用途以上の共有境界を導入したが、[初回CI #40867861125](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40867861125)は故意縮小した入口空洞の異常を捕捉できずFAILURE。また独立試算で共有厚断面と人体経路の干渉を発見。**A1 PRE-3D REJECT**とし、[A2の開口予約原本](../research/g4c7-b11-r5-d55/D55_A2_APERTURE_CONTRACT.json)と[独立境界干渉監査](../research/g4c7-b11-r5-d55/d55_boundary_interference.py)を追加。修正コミット[62d8a209](https://github.com/ryomashibaba/makecode-limitlab/commit/62d8a20996b246c707c61dfd7e54df4ebef1b31b)の[D55 CI #40868614075](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40868614075)は記録時点でQueuedであり、PASS未確認。**A2の開口は数値予約であって穴の開いた3Dではない**。直ちに本格3D化しない。活動を共有する面・通路・生活・遠景が同一作品で美しく成立することを作者の空間美術審査で先に確認する。既存D54-Aの低層床板群へ再回帰しない。**ART HOLD／正式美術採用0／正式G0・S1・G1・G2・G3 NOT RUN／331人体・993足元未実施／Minecraft施工・都市統合禁止／main不変更／PR #53 Draft／Work事前承認**。
+
+---
+
 # 【B11-R5 D54-A真正3D ART REJECT／D55共有建築断面研究開始・2026-10-29 JST】
 
 > [D54-A保存GLB・5視点・独立監査 Actions #40865615222](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40865615222) **SUCCESS（技術限定）**。[実3D/5視点/監査原本](../research/g4c7-b11-r5-d54/true3d_output/)をGitHubに保存。166ノード・2060三角形・120段（20/50/50）、階段上端差0、被覆/着床/視線の故意破損検出等は限定技術成立。しかし保存GLBの5画像を目視すると、遠景は**小さな独立デッキと小さな上階住居を階段でつないだ低層キャンパス**、到着は床と階段、制作/研究は梁・板・机、生活は無地壁に視線を遮られた作品。**5視点ともART REJECT**。D54の体験空洞は生成原理に変換されず、用途別床板+階段+支持材に回帰した。**D54-Aを装飾・巨大化・部品追加で延命しない。**詳細：[D54-A独立5視点美術監査](../research/g4c7-b11-r5-d54/D54_A_FIVE_VIEW_ART_REJECT_JA.md)。次は[D55 Shared Inhabited Section First](../research/g4c7-b11-r5-d55/D55_SHARED_INHABITED_SECTION_DESIGN_GATE_JA.md)：複数用途が**本当に共有する建築厚・実空洞・床/被覆・採光境界**の断面から構成する。2案をPRE-3Dで厳しく比較し、不採用作品は真3Dまで延命しない。**ART HOLD／正式美術採用0件／正式G0・S1・G1・G2・G3 NOT RUN／331人体・993足元NOT RUN／Minecraft施工・都市統合禁止／main不変更／PR #53 Draft維持／Work事前承認**。
