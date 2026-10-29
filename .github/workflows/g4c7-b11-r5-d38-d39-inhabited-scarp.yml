@@ -1,0 +1,62 @@
+name: G4-C7 B11-R5 D38-D39 saved real3D and uninhabitable-void rejection (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d38-d39/**'
+      - '.github/workflows/g4c7-b11-r5-d38-d39-inhabited-scarp.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d38-d39-negative-research
+  cancel-in-progress: true
+jobs:
+  independently-check-saved-glb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical mesh and software renderer
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Headless rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate three genuine GLBs and six images from saved baseline
+        run: xvfb-run -a python research/g4c7-b11-r5-d38-d39/d38_inhabited_scarp.py --out d38_build
+      - name: Independent saved-mesh and stair/sightline audit
+        run: python research/g4c7-b11-r5-d38-d39/d38_independent_saved_glb_audit.py --out d38_build
+      - name: D39 inspect SOLID uninhabitable wedges and four falsehood mutations
+        run: python research/g4c7-b11-r5-d38-d39/d39_habitable_void_and_massing_gate.py --d38 d38_build --out d39_build
+      - name: Assert art remains NOT ADOPTED
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('d38_build/d38_independent_result.json').read_text())
+          b=json.loads(Path('d39_build/d39_void_and_massing_gate.json').read_text())
+          assert a['negative_controls_detected']==9
+          assert b['negative_controls_detected']==4
+          assert b['claimed_habitable_room_nodes']==0 and b['massing_dependency_failure']
+          assert b['preflight_decision']=='STOP_D38_BEFORE_MEGACITY_AND_DETAILING'
+          assert b['adopted']==0 and b['ART']=='HOLD'
+          assert a['formal_G0_S1_G1_G2_G3']=='NOT_RUN'
+          assert b['construction']=='FORBIDDEN'
+          assert len(list(Path('d38_build').glob('d38_*.glb')))==3
+          assert len(list(Path('d38_build').glob('0*.png')))==6
+          print('CI PASS=negative architectural audit. ART REJECT remains. No construction.')
+          PY
+      - name: Preserve source-derived genuine evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D38-D39-TRUE-GLB-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          path: |
+            d38_build/
+            d39_build/
