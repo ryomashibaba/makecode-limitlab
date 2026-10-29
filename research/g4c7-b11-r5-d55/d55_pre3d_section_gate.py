@@ -137,7 +137,7 @@ def main():
     negatives={}
     for label,mutate in [
       ("break_landing",lambda x:x["programs"]["living"]["foot"].__setitem__(2,20.74)),
-      ("collapse_arrival_void",lambda x:x["clearance_envelopes"][1]["radii"].__setitem__(1,5)),
+      ("collapse_arrival_void",lambda x:x["clearance_envelopes"][1]["radii"].__setitem__(slice(None),[.5,.5,.5])),
       ("remove_third_owner",lambda x:x["shared_thick_sections"][0]["owners"].remove("maker")),
       ("flatten_light_dirs",lambda x:x["daylight_portals"][1]["direction"].__setitem__(slice(None),x["daylight_portals"][0]["direction"]))
     ]:

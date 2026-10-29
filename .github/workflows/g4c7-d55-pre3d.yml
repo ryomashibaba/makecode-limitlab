@@ -20,6 +20,8 @@ jobs:
           python-version: "3.11"
       - name: Run author section and numeric failure controls only
         run: python research/g4c7-b11-r5-d55/d55_pre3d_section_gate.py
+      - name: Check shared-section path interference and notch falsification
+        run: python research/g4c7-b11-r5-d55/d55_boundary_interference.py
       - name: Preserve reproducible source and PRE-3D result
         if: always()
         uses: actions/upload-artifact@v4
@@ -29,6 +31,9 @@ jobs:
             research/g4c7-b11-r5-d55/D55_A_SHARED_SECTION_CONTRACT.json
             research/g4c7-b11-r5-d55/d55_pre3d_section_gate.py
             research/g4c7-b11-r5-d55/D55_A_PRE3D_AUDIT.json
+            research/g4c7-b11-r5-d55/D55_A1_A2_INTERFERENCE_AUDIT.json
+            research/g4c7-b11-r5-d55/D55_A2_APERTURE_CONTRACT.json
+            research/g4c7-b11-r5-d55/d55_boundary_interference.py
             research/g4c7-b11-r5-d55/*.md
           retention-days: 30
 # A passing test is NOT TRUE3D, art, official 331/993 or Minecraft permission.
