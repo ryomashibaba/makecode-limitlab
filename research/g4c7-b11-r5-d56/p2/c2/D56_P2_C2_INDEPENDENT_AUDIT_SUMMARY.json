@@ -1,0 +1,80 @@
+{
+  "study": "D56-P2-C2",
+  "version": "C2_S1R4",
+  "created": "2026-10-30 JST",
+  "baseline_head": "8ffe191ade7c0c3a282d355bff43bef2a21d7ad4",
+  "origin": "local Chat original trimesh, not Blender",
+  "saved_glb_reopened": true,
+  "named_meshes": 280,
+  "actual_triangles": 4848,
+  "glb_sha256": "ad30eafcc2cd77f30745f5b504ebbd4a0d83a896de9e45a9fba790d9e55aa8fa",
+  "independent_audit_sha256": "ed5918c326f8c47c1e6af8bdbfc744295db2c8120cf5ae4fb943e110fc29acf0",
+  "variants": [
+    "C2_S1",
+    "C2_S1R1",
+    "C2_S1R2",
+    "C2_S1R3",
+    "C2_S1R4"
+  ],
+  "reimported_real_camera_images": 40,
+  "independent_mesh_probe": {
+    "A": {
+      "samples": 165,
+      "floor_supported": 165,
+      "body_line_clear": 165,
+      "roof_ray_hit": 159
+    },
+    "B": {
+      "samples": 165,
+      "floor_supported": 165,
+      "body_line_clear": 165,
+      "roof_ray_hit": 108
+    },
+    "STAIR": {
+      "samples": 360,
+      "floor_supported": 360,
+      "body_line_clear": 360
+    },
+    "shared_M_R_witness": {
+      "x": -60,
+      "y": 15,
+      "z": 21,
+      "hit_from_above": true,
+      "hit_from_below": true
+    },
+    "shared_R_L_witness": {
+      "x": 35,
+      "y": 40,
+      "z": 47,
+      "hit_from_above": true,
+      "hit_from_below": true
+    },
+    "negative_controls": {
+      "added_A_body_obstacle": true,
+      "removed_B_walkable_floor": true,
+      "removed_M_R_shared_slab": true,
+      "total_detected": 3,
+      "total": 3
+    },
+    "line_of_sight": {
+      "research_to_making": true,
+      "living_to_court": true,
+      "making_to_public": true
+    }
+  },
+  "independent_test_critical_fix": "VTK IntersectWithLine may return -1 with 2 actual hits; compute intersections using vtkPoints.GetNumberOfPoints()>0, not status>0",
+  "limitations": [
+    "all sample-based and sparse; no continuous full-body sweep",
+    "B gallery has no overhead roof on 57 of 165 probes; full 2-axis interior-room contract NOT SATISFIED",
+    "one LOS per scene does not establish comfort, privacy, or overall functional sight",
+    "GLB/code/40 render binaries in conversation ZIP, NOT GitHub archived",
+    "sunlight, structure, fire egress, rain protection, all residences: NOT VERIFIED"
+  ],
+  "art": "REJECT",
+  "formal_art_adoption": 0,
+  "formal_331_body_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "minecraft_world_writes": 0,
+  "main_changes": 0,
+  "PR53": "DRAFT"
+}
