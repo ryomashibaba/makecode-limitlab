@@ -1,0 +1,60 @@
+name: G4-C7 B11-R5 D37 saved GLB interior-section negative audit (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d37/**'
+      - '.github/workflows/g4c7-b11-r5-d37-inhabited-light-fault.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d37-true3d
+  cancel-in-progress: true
+jobs:
+  independently-falsify-saved-mesh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install genuine GLB and VTK rendering dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Provide offscreen software rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Rebuild all saved true GLBs and images
+        run: xvfb-run -a python research/g4c7-b11-r5-d37/d37_inhabited_light_fault.py --out d37_build
+      - name: Independent saved-GLB audit and eight mutation tests
+        run: python research/g4c7-b11-r5-d37/d37_independent_saved_glb_audit.py --out d37_build
+      - name: Do not promote failed model
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d37_build')
+          a=json.loads((p/'independent_result.json').read_text())
+          r=a['result']
+          assert a['art']=='ART HOLD' and a['adopted']==0
+          assert a['formal_G0_S1_G1_G2_G3']=='NOT_RUN'
+          assert a['construction']=='FORBIDDEN' and a['mutation_controls_caught']==8
+          assert all(r['stair']['contact_footprints_same_top'].values())
+          assert r['shared_roof_is_not_role_dependent'] is True
+          assert r['limited_activity_sightline_architectural_intersections']['entry']['research']
+          assert r['limited_activity_sightline_architectural_intersections']['civic']['research']
+          assert len(list(p.glob('d37_*.glb')))==3
+          assert len(list(p.glob('0*.png')))==6
+          print('SUCCESS = honest ART REJECT evidence and bounded geometric checks')
+          PY
+      - name: Save genuine saved GLB and image evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D37-SAVED-GLB-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: d37_build/
