@@ -1,0 +1,34 @@
+name: G4-C7 D55 shared-section PRE-3D falsification (NOT ART)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d55/**"
+      - ".github/workflows/g4c7-d55-pre3d.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  section-contract-pre3d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run author section and numeric failure controls only
+        run: python research/g4c7-b11-r5-d55/d55_pre3d_section_gate.py
+      - name: Preserve reproducible source and PRE-3D result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d55-pre3d-only-no-art-pass
+          path: |
+            research/g4c7-b11-r5-d55/D55_A_SHARED_SECTION_CONTRACT.json
+            research/g4c7-b11-r5-d55/d55_pre3d_section_gate.py
+            research/g4c7-b11-r5-d55/D55_A_PRE3D_AUDIT.json
+            research/g4c7-b11-r5-d55/*.md
+          retention-days: 30
+# A passing test is NOT TRUE3D, art, official 331/993 or Minecraft permission.

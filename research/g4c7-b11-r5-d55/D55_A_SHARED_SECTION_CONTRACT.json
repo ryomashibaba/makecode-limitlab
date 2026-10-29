@@ -1,0 +1,276 @@
+{
+  "stage": "D55 A PRE-3D AUTHOR SECTION, geometry NOT exported, ART HOLD",
+  "units": "unscaled author design units; no Minecraft conversion",
+  "primary_hypothesis": "A: oblique shared inhabited cross-section",
+  "architectural_invariant": "one shared cross-use solid boundary must shift when ANY active program is removed; independent decks are forbidden",
+  "programs": {
+    "arrival": {
+      "foot": [
+        0,
+        -26,
+        0
+      ],
+      "purpose": "enter from street into shared inhabited void"
+    },
+    "maker": {
+      "foot": [
+        -4,
+        -7,
+        3.4
+      ],
+      "purpose": "active production, broad clearance and safe public observation"
+    },
+    "research": {
+      "foot": [
+        11,
+        9,
+        11.9
+      ],
+      "purpose": "exchange with maker activity from protected elevated threshold"
+    },
+    "living": {
+      "foot": [
+        -4,
+        23,
+        20.4
+      ],
+      "purpose": "privacy and view from inhabited thickness instead of detached upper box"
+    }
+  },
+  "walk": {
+    "rise": 0.17,
+    "run": 0.29,
+    "sample_width": 2.8,
+    "sample_headroom": 2.15,
+    "legs": [
+      {
+        "from": "arrival",
+        "to": "maker",
+        "steps": 20
+      },
+      {
+        "from": "maker",
+        "to": "research",
+        "steps": 50
+      },
+      {
+        "from": "research",
+        "to": "living",
+        "steps": 50
+      }
+    ]
+  },
+  "clearance_envelopes": [
+    {
+      "id": "public_inhabited_lumen",
+      "center": [
+        1,
+        3,
+        12
+      ],
+      "radii": [
+        23,
+        35,
+        20
+      ],
+      "owners": [
+        "maker",
+        "research",
+        "living"
+      ],
+      "notes": "reserved empty volume; not an outer egg or shell"
+    },
+    {
+      "id": "arrival_throat",
+      "center": [
+        0,
+        -24,
+        4
+      ],
+      "radii": [
+        12,
+        12,
+        8
+      ],
+      "owners": [
+        "arrival",
+        "maker"
+      ],
+      "notes": "open connection to public inhabited lumen"
+    }
+  ],
+  "shared_thick_sections": [
+    {
+      "id": "tri_program_civic_keel",
+      "base_origin": [
+        0,
+        1,
+        13
+      ],
+      "u": [
+        8,
+        2,
+        3
+      ],
+      "v": [
+        -2,
+        6,
+        4
+      ],
+      "thickness": 2.1,
+      "owners": [
+        "maker",
+        "research",
+        "living"
+      ],
+      "owner_deltas": {
+        "maker": [
+          -1,
+          -0.5,
+          -0.7
+        ],
+        "research": [
+          0.5,
+          0.8,
+          1.2
+        ],
+        "living": [
+          1.2,
+          2,
+          1
+        ]
+      },
+      "opening": [
+        0.35,
+        0.65
+      ],
+      "interpretation": "single authored potential physical shared boundary shaped by work clearance, public research sight and domestic privacy"
+    },
+    {
+      "id": "maker_research_transition",
+      "base_origin": [
+        -6,
+        -1,
+        10
+      ],
+      "u": [
+        6,
+        4,
+        2
+      ],
+      "v": [
+        -2,
+        5,
+        3.5
+      ],
+      "thickness": 1.3,
+      "owners": [
+        "maker",
+        "research"
+      ],
+      "owner_deltas": {
+        "maker": [
+          -1,
+          0.3,
+          -0.6
+        ],
+        "research": [
+          1.2,
+          0.2,
+          0.7
+        ]
+      },
+      "opening": [
+        0.3,
+        0.7
+      ],
+      "interpretation": "research threshold is partly maker weather cover; its central gap preserves working view"
+    },
+    {
+      "id": "research_living_privacy_section",
+      "base_origin": [
+        3,
+        14,
+        20
+      ],
+      "u": [
+        -5,
+        4,
+        2
+      ],
+      "v": [
+        2,
+        3,
+        4
+      ],
+      "thickness": 2.3,
+      "owners": [
+        "research",
+        "living"
+      ],
+      "owner_deltas": {
+        "research": [
+          1.1,
+          -0.8,
+          -0.5
+        ],
+        "living": [
+          -0.9,
+          1.2,
+          0.8
+        ]
+      },
+      "opening": [
+        0.25,
+        0.6
+      ],
+      "interpretation": "one material section serving both shared research and inhabited privacy, not detached room"
+    }
+  ],
+  "daylight_portals": [
+    {
+      "id": "maker_high_lateral",
+      "direction": [
+        1,
+        -0.25,
+        0.6
+      ],
+      "owners": [
+        "maker",
+        "research"
+      ]
+    },
+    {
+      "id": "living_oblique_top",
+      "direction": [
+        -0.4,
+        1,
+        1
+      ],
+      "owners": [
+        "research",
+        "living"
+      ]
+    }
+  ],
+  "pre3d_vetoes": [
+    "two or more disconnected building envelopes",
+    "a primary solitary horizontal shelf",
+    "massive parallel canyon walls",
+    "an exterior giant fin or egg",
+    "detached upper small box",
+    "view blocked by major blank facade"
+  ],
+  "explicit_nonclaims": [
+    "not a 3D building",
+    "no roof mesh",
+    "no actual usable room",
+    "no solids vs voids CSG",
+    "no walking certification",
+    "no physical natural light",
+    "no official 331/993",
+    "no formal G0/S1/G1/G2/G3",
+    "no beauty score",
+    "no Minecraft construction"
+  ]
+}
