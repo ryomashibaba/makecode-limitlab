@@ -1,0 +1,76 @@
+{
+  "id": "D56-P1-SHARED-INHABITED-STRATA-STORYBOARD",
+  "status": "author 2D cross-section exploration only; ART HOLD; not Minecraft geometry",
+  "master_id": "d56-p1-one-master-section",
+  "four_panels": [
+    {
+      "id": "panel_far",
+      "label": "Distant silhouette",
+      "viewBox": [
+        0,
+        0,
+        1200,
+        740
+      ],
+      "reused_master": "d56-p1-one-master-section"
+    },
+    {
+      "id": "panel_civic",
+      "label": "Arrival & making",
+      "viewBox": [
+        225,
+        423,
+        695,
+        315
+      ],
+      "reused_master": "d56-p1-one-master-section"
+    },
+    {
+      "id": "panel_research",
+      "label": "Research sharing civic cavity",
+      "viewBox": [
+        595,
+        302,
+        455,
+        255
+      ],
+      "reused_master": "d56-p1-one-master-section"
+    },
+    {
+      "id": "panel_living",
+      "label": "Living within same mass",
+      "viewBox": [
+        750,
+        165,
+        395,
+        235
+      ],
+      "reused_master": "d56-p1-one-master-section"
+    }
+  ],
+  "one_outer_material_outline_id": "outer-inhabited-mass",
+  "subtractions": [
+    "civic-void",
+    "research-void",
+    "living-void",
+    "sun-cut-west",
+    "light-spill-east"
+  ],
+  "occupancies": [
+    "maker-in-civic-void",
+    "research-in-shared-section",
+    "living-inside-same-mass"
+  ],
+  "limitation": "same 2D vector source, not same 3D model, no actual eye-level view, no volumes/physical lighting/doors/stairs/roof safety validated",
+  "next_gate": "critical art assessment before geometric modeling; no automatic promotion",
+  "formal": {
+    "ART": "HOLD",
+    "G0": "NOT RUN",
+    "S1": "NOT RUN",
+    "G1": "NOT RUN",
+    "G2": "NOT RUN",
+    "G3": "NOT RUN",
+    "331/993": "NOT RUN",
+    "Minecraft": "FORBIDDEN"
+  }
+}
