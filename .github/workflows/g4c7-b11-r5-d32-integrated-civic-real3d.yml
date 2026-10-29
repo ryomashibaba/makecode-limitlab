@@ -1,0 +1,54 @@
+name: G4-C7 B11-R5 D32 integrated civic chamber independent 3D (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d32/**'
+      - '.github/workflows/g4c7-b11-r5-d32-integrated-civic-real3d.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d32-local-chamber
+  cancel-in-progress: true
+jobs:
+  reproduce-and-independent-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned-range geometry dependencies and VTK rendering
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'shapely>=2,<3' 'vtk>=9.3,<10'
+      - name: Install headless OpenGL support
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Rebuild 3 GLBs and render 6 frames FROM RELOADED GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d32/d32_braided_civic_chamber.py --out d32_build
+      - name: Independently audit saved mesh and six mutations
+        run: python research/g4c7-b11-r5-d32/d32_independent_saved_glb_audit.py --out d32_build
+      - name: Keep ART REJECT / formal-QA NOT RUN
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          b=Path('d32_build');a=json.loads((b/'d32_independent_result.json').read_text())
+          assert a['adversarial_checks_detected']==6
+          assert a['art']=='PRE-G0 ART REJECT' and a['adopted']==0
+          assert a['formal_G0_S1_G1_G2_G3']=='NOT_RUN' and a['construction']=='FORBIDDEN'
+          assert len(list(b.glob('d32_*.glb')))==3 and len(list(b.glob('0*.png')))==6
+          assert all(f.stat().st_size>12000 for f in b.glob('0*.png')),'blank render failure'
+          print('PASS = reproducible PRE-G0 ART REJECT, NOT A SAFETY OR BEAUTY APPROVAL')
+          PY
+      - name: Preserve the GLBs, views and independent rejection report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D32-LOCAL-TRUE3D-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          if-no-files-found: warn
+          path: d32_build/
