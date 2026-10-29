@@ -1,0 +1,59 @@
+name: G4-C7 B11-R5 D42-D43 independent hollow upper room study (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'research/g4c7-b11-r5-d42-d43/**'
+      - '.github/workflows/g4c7-b11-r5-d42-d43-hollow-upper-room.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-b11-r5-d42-d43
+  cancel-in-progress: true
+jobs:
+  saved-3d-hollow-upper-and-negative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install genuine 3D and VTK
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'vtk>=9.3,<10'
+      - name: Install headless image renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Generate THREE real GLBs and SIX views from reloaded GLB
+        run: xvfb-run -a python research/g4c7-b11-r5-d42-d43/d42_civic_inhabited_section.py --out d42_build
+      - name: Independent saved mesh audit and TEN negative controls
+        run: python research/g4c7-b11-r5-d42-d43/d42_independent_saved_glb_audit.py --out d42_build
+      - name: Independent upper access preflight and SEVEN negative controls
+        run: python research/g4c7-b11-r5-d42-d43/d43_upper_living_access_preflight.py --out d42_build
+      - name: Assert anti-adoption boundary without claiming real safety
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d42_build')
+          a=json.loads((p/'d42_independent_result.json').read_text())
+          b=json.loads((p/'d43_upper_access_result.json').read_text())
+          assert len(list(p.glob('d42_*.glb')))==3
+          assert len(list(p.glob('0*.png')))==6
+          assert len(a['negative_controls_detected'])==10
+          assert len(b['negative_controls_detected'])==7
+          assert a['result']['formal_qa']=='NOT_RUN' and a['result']['adopted']==0
+          assert b['body_sweep_certified'] is False and b['no_adoption'] is True
+          assert all(b['7_floor_overlap_edges'].values())
+          assert not b['upper_room_entry_corridor_aabb_blockers']
+          print('PASS means limited repeatable geometric evidence of ART REJECT, NOT engineering safety or ART PASS')
+          PY
+      - name: Save real 3D images and audit source evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D42-D43-TRUE-GLB-ROOM-ART-REJECT-NO-ADOPTION
+          retention-days: 21
+          path: d42_build/
