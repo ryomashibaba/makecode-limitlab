@@ -1,0 +1,46 @@
+{
+  "stage": "D35",
+  "scope": "D31-D34 locally loaded saved true GLB comparison",
+  "not_beauty_score": true,
+  "samples": [
+    {
+      "stage": "D31",
+      "nodes": 67,
+      "box_like_nodes": 45,
+      "box_like_node_percent": 67.2,
+      "triangles": 1596,
+      "glb_sha256": "f7267fd36d99ac513e946b0f8c7d82dbe667b8dce8e17eb08b13e2ca3ad5f922"
+    },
+    {
+      "stage": "D32",
+      "nodes": 116,
+      "box_like_nodes": 39,
+      "box_like_node_percent": 33.6,
+      "triangles": 3996,
+      "glb_sha256": "6836a9bd2426d7ad0b761b99b38d658d6a4821fdcb8528ca6e30c410b9307b0a"
+    },
+    {
+      "stage": "D33",
+      "nodes": 117,
+      "box_like_nodes": 91,
+      "box_like_node_percent": 77.8,
+      "triangles": 2180,
+      "glb_sha256": "a177b6ade2eba9709dcf3118a19cc983ca7ea0f2b04a447d6392a1d85038a7e4"
+    },
+    {
+      "stage": "D34",
+      "nodes": 119,
+      "box_like_nodes": 89,
+      "box_like_node_percent": 74.8,
+      "triangles": 2668,
+      "glb_sha256": "436f66088fd001d830a5fbeabecebe49c17f093e9ff5c50879a9fb5b8b1daec8"
+    }
+  ],
+  "safety": {
+    "art": "ART HOLD",
+    "adopted": 0,
+    "formal_QA": "NOT_RUN",
+    "construction": "FORBIDDEN",
+    "integration": "FORBIDDEN"
+  }
+}

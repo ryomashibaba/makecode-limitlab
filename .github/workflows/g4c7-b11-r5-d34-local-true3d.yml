@@ -1,0 +1,73 @@
+name: G4-C7 B11-R5 D34 local true3D study reproducibility (ART HOLD)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d34/**'
+      - '.github/workflows/g4c7-b11-r5-d34-local-true3d.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d34-local-true3d
+  cancel-in-progress: true
+jobs:
+  independently-reproduce-rejected-glb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install GLB and rendering requirements
+        run: python -m pip install 'numpy>=1.26,<3' 'trimesh>=4.8,<5' 'shapely>=2,<3' 'vtk>=9.3,<10' 'brotli>=1,<2'
+      - name: Headless software rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libosmesa6 libegl1 libgl1
+      - name: Restore exact AST-normalized generator and independent auditor from verified archive
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,base64,brotli
+          p=Path('research/g4c7-b11-r5-d34')
+          s=(p/'d34_source_part1.b64').read_text().strip()+(p/'d34_source_part2.b64').read_text().strip()
+          assert len(s)==7532
+          assert hashlib.sha256(s.encode()).hexdigest()=='7bd15bb49d5681c774fde1e48e91da79b97fcf7dd3bfd1391dcbec6336266ab1'
+          raw=brotli.decompress(base64.b64decode(s))
+          n=int.from_bytes(raw[:4],'big')
+          assert n>5000 and len(raw)-n>2000
+          Path('d34_civic_section.py').write_bytes(raw[4:4+n])
+          Path('d34_independent_audit.py').write_bytes(raw[4+n:])
+          print('D34 full sources verified and reconstructed')
+          PY
+      - name: Generate real GLBs and render from saved GLB
+        run: xvfb-run -a python d34_civic_section.py --out d34_build
+      - name: Reopen actual GLBs independently and falsify six defects
+        run: python d34_independent_audit.py --out d34_build
+      - name: Protect the formal and artistic boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('d34_build'); d=json.loads((p/'d34_independent_result.json').read_text())
+          assert d['three_cases_reloaded']==3 and d['negative_controls_passed']==6
+          assert d['stair']['steps']==36 and d['stair']['flights']==2
+          assert d['art_review']=='PRE-G0 ART REJECT' and d['adopted']==0
+          assert d['formal_QA']=='NOT_RUN' and d['actual_3d_body_sweep']=='NOT_RUN'
+          assert d['upper_side_terraces_to_public_route']=='NOT_DEMONSTRATED'
+          assert d['minecraft']=='FORBIDDEN'
+          assert len(list(p.glob('d34_*.glb')))==3
+          assert len(list(p.glob('*.png')))==6
+          print('PASS = reproducibility of rejected research; NO ART or safety certification')
+          PY
+      - name: Preserve 3 GLBs, 6 true views, manifests and independent audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: D34-INHABITED-CUT-TRUE3D-ART-REJECT-NO-ADOPTION
+          if-no-files-found: warn
+          retention-days: 21
+          path: d34_build/
