@@ -1,0 +1,112 @@
+{
+  "id": "D54-A-PRE3D",
+  "status": "SPATIAL DESIGN ONLY - not geometry/art acceptance",
+  "units": "author-design-units-not-Minecraft-blocks",
+  "tread_rise": 0.17,
+  "tread_run": 0.29,
+  "width": 2.8,
+  "headroom_sample": 2.15,
+  "scenes": [
+    {
+      "id": "arrival",
+      "foot": [
+        0,
+        -49,
+        0
+      ],
+      "void_center": [
+        0,
+        -45,
+        4
+      ],
+      "void_radii": [
+        14,
+        17,
+        8
+      ]
+    },
+    {
+      "id": "maker",
+      "foot": [
+        -10,
+        -16,
+        3.4
+      ],
+      "void_center": [
+        -8,
+        -14,
+        10
+      ],
+      "void_radii": [
+        25,
+        20,
+        12
+      ]
+    },
+    {
+      "id": "research",
+      "foot": [
+        8,
+        11,
+        11.9
+      ],
+      "void_center": [
+        8,
+        12,
+        15
+      ],
+      "void_radii": [
+        24,
+        20,
+        13
+      ]
+    },
+    {
+      "id": "living",
+      "foot": [
+        -3,
+        30,
+        20.4
+      ],
+      "void_center": [
+        -3,
+        30,
+        26
+      ],
+      "void_radii": [
+        18,
+        18,
+        11
+      ]
+    }
+  ],
+  "legs": [
+    {
+      "start": "arrival",
+      "end": "maker",
+      "stairs": 20
+    },
+    {
+      "start": "maker",
+      "end": "research",
+      "stairs": 50
+    },
+    {
+      "start": "research",
+      "end": "living",
+      "stairs": 50
+    }
+  ],
+  "unverified": [
+    "real 3D geometry",
+    "interior rooms",
+    "real supports",
+    "sunlight",
+    "visible sightlines",
+    "step meshes",
+    "body sweep on saved mesh",
+    "official 331/993",
+    "formal G0/S1/G1/G2/G3",
+    "art approval"
+  ]
+}
