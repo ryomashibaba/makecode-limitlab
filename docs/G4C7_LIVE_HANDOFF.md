@@ -1,3 +1,9 @@
+# 【D55-A2 CI真正SUCCESS／PRE-ART原本不足・D56美術先行研究継続／2026-10-29 JST】
+
+> 前回Queuedだった[D55専用CI #40868614075](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40868614075)は**実際にSUCCESS**。6,777点×候補のA1=55件→A2=0件の限定干渉、4件の故意不正のREJECT、開口予約削除での故意障害再現、Actions artifact実在を確認。[本物のCIログから保存した限定結果](../research/g4c7-b11-r5-d55/D55_A2_CI_CONFIRMED_LIMITED_JA.md)。ただし実GLB、住戸・建築厚、人体連続通行、自然採光、正式331/993とG0以降はNOT RUN。A2は[独立PRE-ART形態不足審査](../research/g4c7-b11-r5-d55/D55_A2_SOURCE_GAP_PREART_JA.md)によりそのまま真正3D化禁止。次は[D56 ART-FIRSTの居住厚・多軸空洞研究](../research/g4c7-b11-r5-d56/D56_ART_FIRST_SPATIAL_BRIEF_JA.md)を適用。**ART HOLD／美術採用0／Minecraft施工・統合禁止／main不変更／PR #53 Draft・Work事前承認。**
+
+---
+
 # 【D55-A2数学上の通路干渉改善／美術原本不足・D56空間美術先行研究開始／2026-10-29 JST】
 
 > D55-A2のGitHub設計JSONを既存Pythonとは別計算で再検証した結果、6,777離散サンプルの共有面干渉はA1=55件、A2=0件。ただし数値上の開口予約であり、実メッシュ・連続人体経路の成功ではない。[ソースからのみ再構成した2D断面投影](../research/g4c7-b11-r5-d55/D55_A2_SOURCE_PROJECTION_PRE3D.svg)、[PRE-ART不足監査](../research/g4c7-b11-r5-d55/D55_A2_SOURCE_GAP_PREART_JA.md)を保存。**A2は実生活室・共有した居住厚・遠景外観が原本に存在せず、そのままGLBへの移行を禁止**。建築3例の公式設計情報を参考に[D56のART-FIRST研究契約](../research/g4c7-b11-r5-d56/D56_ART_FIRST_SPATIAL_BRIEF_JA.md)を追加。Morpheusの内外接続空洞、Zeitz MOCAAの活動空間と厚み、横浜港大さん橋の動線/構造の相互形成を**手法だけ**学び、形状コピーは禁止。D55修正後[CI #40868614075](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40868614075)は確認時点Queued、PASS未確認。**全体ART HOLD／正式美術採用0／正式331人体・993足元/G0/S1/G1/G2/G3 NOT RUN／Minecraft施工・都市統合禁止／main不変更／PR #53 Draft／Work事前承認。**
