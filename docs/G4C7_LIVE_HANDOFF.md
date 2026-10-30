@@ -1,3 +1,19 @@
+# 【D56-P2-D3S6：S5-B 2D→同一XYZ実GLB×2版・9台×2実カメラ／美術Gate 0 REJECT・次D3S7／2026-10-30 JST】
+
+> **実制作と独立判定**：[D3S6実モデル・批判的ART REJECT全文](../research/g4c7-b11-r5-d56/p2/d3s6/D3S6_GATE0_TRUE3D_ART_REJECT_JA.md)、[再読込GLB実三角形監査サマリー](../research/g4c7-b11-r5-d56/p2/d3s6/D3S6_GATE0_SAVED_GLB_AUDIT_SUMMARY.json)、[D3S7同一居住断面＋人の実アクセス設計契約](../research/g4c7-b11-r5-d56/p2/d3s6/D3S7_ONE_SECTION_HUMAN_ROUTE_ART_FIRST_CONTRACT.json)。D3S5のB案独立2D都市/制作/研究/生活作者絵とXYZ予約を実際に照合し、ChatのPython trimeshで**同一XYZの局所実建築GLBを制作**。初版GATE0_Bと部材配置R1の**2真GLB・各81メッシュ/2,128三角形**を保存し、真に別途再読込して制作眼高・研究眼高・生活眼高・公開到着・庭から研究・庭から都市の6透視＋都市正・真裏・高所の3正投影の**9実カメラ×2版=18実PNG**を生成（Blenderは不使用、人工照明は自然採光証明ではない）。実メッシュM屋根兼R床の3区画、R屋根兼L庭床1区画を実際に配置。体験の統合ができたと認定せず、ART優先で判定。
+
+> **美術 Gate 0：REJECT**。都市正/裏とも低層のデッキ・箱/棒・孤立私室が中心で、巨大多街区の美しさ不成立。研究眼高から制作現場へ単一中心レイは通るが、**実画像は床と低い工作場が支配**。制作も棒状工作物が主役。初版の生活眼高から庭を見る有限レイはベッドに**1.028研究単位**で衝突。R1でベッド位置を本当に変えると自分の私室床に**18.848研究単位**で遮られ、11単位の高度差を結ぶ実階段も未作成。住居眼高の鉛直最近接支持は初版寝台0.3→R1私室実床5.5。5つの`M_EDGE_THICK_OCCUPIED_BAY`は全て**完全充填されたwatertightな箱**であり居住室としては不適合。これを「都市が存在する」と誤認しない。R1の美術もREJECT、巨大外形化を停止。実公的2軸と上下乗り換えは**NOT BUILT**。**正式美術採用0／P2全体ART HOLD**。
+
+> **限定的な独立検査**：保存GLBを別コードで読み実三角形へVTK OBBTreeを当て、M/R屋根の同一実材・L庭実床存在、眼高3点床、制作/研究/生活の方向レイと各9個の有限視野サンプルを監査。別に全身線分が閉じた障害ソリッドの内部にある合成負例は、**表面交点0でも点包含で検出**。この1合成検査は実際の人体通行PASSではない。虚偽の実都市・全天候・消防・自然光・正式QAは申告しない。
+
+> **原本保存範囲**：Chat成果`D56_P2_D3S6_GATE0_TRUE3D_ART_REJECT.zip`には**作者Python2本、別独立監査Python2本、2GLB、18実PNG、初版/R1の5視点比較JPEG、2完全独立監査JSON、2manifest、SHA256一覧、批評、次契約**。GitHubへ恒久保存したものは今回の**審査本文、監査要約、次D3S7契約**のみであり、実GLB/PNG/作者PythonのGitHub保管成功とは称さない。旧成果全保持。
+
+> **D3S7は未制作**。公共制作→研究観察→半公共庭→実住居の人物移動と3つの室内眼高が**一つの建築断面**で成立して初めて大型都市へ進む。S5-Bの低層キャンパス・浮いた箱・見せかけのソリッド居住室を直接増殖することは禁止。ART/身体経路の早期反証に失敗したら止める。
+
+> **不変条件**：正式331人体・993足元、G0/S1/G1/G2/G3全NOT RUN、Minecraft Educationの施工・都市統合なし、main不変更、PR#53 Draft維持。通常CIはHEADに対して別途確認する。旧LIVE_HANDOFF全保持。
+
+---
+
 # 【D56-P2-D3S5 専用SOURCE CI 7/7 SUCCESS・監査JSONをGitHub恒久保管／2026-10-30 JST 追加照合】
 
 > 直前のD3S5研究エントリはそのまま保持。**実際の専用SOURCE/PRE3D CI** [#40997909033](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40997909033) が**completed / SUCCESS**。保存契約とGitHub上の真正Pythonで7種類の意図的な不正を全検出。GitHub Actions botが [`5f08080175b1dab6395ac6b8c7753ca430facd7c`](https://github.com/ryomashibaba/makecode-limitlab/commit/5f08080175b1dab6395ac6b8c7753ca430facd7c) に[検査生成原本`D3S5_B_PRE3D_AUDIT.json`](../research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_PRE3D_AUDIT.json)を恒久保管したことを**実ファイル再取得**で確認。数値はXY交点(8.461,39.284)、軸Z差20.430、交差角75.407°、予約厚M/R 105×37×4・R/L 70×38×2、グラフ12ノード/12エッジ、故意破損7/7。**真のGLB・公共室・人体検査・ART採用の証明ではない**。通常Verify [#40998017956](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40998017956) SUCCESSは旧HEAD `e390dca540c46639f2912e6eae89901bf9e6c8ca` 対応であり、bot生成の後続HEADへ無条件に転用しない。PR#53 Draft維持、main/ワールド変更なし。
