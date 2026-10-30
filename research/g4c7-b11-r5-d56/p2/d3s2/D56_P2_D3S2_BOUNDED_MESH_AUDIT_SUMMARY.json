@@ -1,0 +1,68 @@
+{
+  "study": "D56-P2-D3S2",
+  "classification": "independent bounded saved-GLB actual triangle probes; NOT FORMAL QA",
+  "base_head": "5f96cb141f6c79105b7713453b5e3d831adf75d3",
+  "date_JST": "2026-10-30",
+  "variants": [
+    {
+      "id": "S2A",
+      "sha256": "439ff6a0e6f98e0efe9e043d869e19cec501172baa9436d40b00565beb6e78d8",
+      "geom_count": 229,
+      "triangles": 4604,
+      "reloaded_actual_views": 9,
+      "watertight_large_lofts": 3,
+      "axis_A": {
+        "ray_samples": 93,
+        "supported": 93,
+        "body_clear": 82,
+        "roof_detected": 54
+      },
+      "axis_B": {
+        "ray_samples": 93,
+        "supported": 70,
+        "body_clear": 93,
+        "roof_detected": 0
+      },
+      "mutated_body_block_detected": true,
+      "mutated_real_floor_removal_detected": true,
+      "first_research_eye_hit": "R_ACTUAL_LAB_WORKSPACE_0"
+    },
+    {
+      "id": "S2B",
+      "sha256": "b85e29066c5aa13f88c34fa22e994acb9ad23b07f8e8db317a1cd7588caebd3c",
+      "geom_count": 229,
+      "triangles": 4604,
+      "reloaded_actual_views": 9,
+      "watertight_large_lofts": 3,
+      "axis_A": {
+        "ray_samples": 93,
+        "supported": 93,
+        "body_clear": 82,
+        "roof_detected": 51
+      },
+      "axis_B": {
+        "ray_samples": 93,
+        "supported": 70,
+        "body_clear": 93,
+        "roof_detected": 0
+      },
+      "mutated_body_block_detected": true,
+      "mutated_real_floor_removal_detected": true,
+      "first_research_eye_hit": "R_ACTUAL_LAB_WORKSPACE_0"
+    }
+  ],
+  "sampling": "31 longitudinal x 3 lateral finite vertical probes per axis; no continuous sweep or total roof certification; sampling z A=2 B=53",
+  "visual_cameras": "6 perspective eye/street + 3 identical orthographic front/reverse/high per variant, reimported GLB, 3 artificial lights",
+  "shader_note": "VTK opaque material proxy, no certified glazing or sun daylight",
+  "art": "REJECT both (same external loft generator different control points, NOT two independently different design grammars)",
+  "full_civic_2_axes": "FAIL",
+  "continuous_body_walk": "NOT RUN",
+  "building_safety": "NOT VERIFIED",
+  "formal_331_humans_993_feet": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "full_binary_evidence": "Current conversation attachment D56_P2_D3S2_TWO_TRUE_GLBS_ART_REJECT_AND_S3_PLAN.zip; NOT committed to GitHub",
+  "main_modified": false,
+  "PR53_draft": true,
+  "minecraft_education_construction": false,
+  "city_integration": false
+}
