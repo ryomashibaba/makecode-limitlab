@@ -1,3 +1,17 @@
+# 【D56-P2-D3S9 都市美術先行2方向の個別SVG原本／A・B ART REJECT → D3S10都市寸法入り平面＋2断面へ／2026-10-30 JST】
+
+> **新規作者美術原本とART第一ゲート**：[D3S9二方向のART REJECT審査全文](../research/g4c7-b11-r5-d56/p2/d3s9/D3S9_TWO_ART_MASTERS_REJECT_JA.md)／[美術採否と未建造SOURCE状態](../research/g4c7-b11-r5-d56/p2/d3s9/D3S9_ART_GATE_STATE.json)。D3S8 A/Bの真正GLBはどちらもART REJECT（[原本審査](../research/g4c7-b11-r5-d56/p2/d3s8/D3S8_TWO_TRUE3D_CITY_ART_REJECT_JA.md)）：Aは多色細棒/管の束、Bは箱の集合で、実住居14/15室と技術要素があっても都市全体の美術・公共2軸が成立しない。これを受け、D3S9では**GLBを作る前に**A《INHABITED VORTEX》とB《ESTUARY OF SHARED THICKNESS》の作者独立2D視覚マスターを制作。各案の正面、別途作者作図の裏面、制作・研究・生活の眼高イメージの**5場面×2方向**を比較した。画像のAは穿孔3モノリスの巨大彫刻、Bも3枚の大きな楔と象徴的な公共線であり、**両案ともART REJECT・全体ART HOLD・正式採用0**。**美術Gate 0の不合格を尊重し、D3S9の新GLBは0件、3D撮影は0件**。別々の作者2D構図を同一XYZの独立カメラとは称さない。
+
+> **SOURCE検査の誠実な限定**：[8種類の偽昇格対照コード](../research/g4c7-b11-r5-d56/p2/d3s9/d3s9_source_only_art_guard.py)、[専用GitHub Actions](../.github/workflows/g4c7-d56-d3s9-art-source-guard.yml)を研究ブランチに保存。偽ART採用・偽GLB・偽共有床/屋根・偽公共室・偽331/993 PASS・main書換え・コンピュータ美術判定などを8/8検出するのは**SOURCEゲートだけ**であり、美しさや人の歩行を数値認証しない。専用CIの結果はHEADごとに別確認する。**真の実内部公共2軸/垂直移動/居住性の制作・検証なし、正式G0/S1/G1/G2/G3・331人体/993足元全NOT RUN**。
+
+> **次D3S10は未制作**：[全体都市を一つのXYZで設計する平面＋縦/横2断面の着手契約](../research/g4c7-b11-r5-d56/p2/d3s9/D3S10_SINGLE_XYZ_CITY_PLAN_AND_2_SECTIONS_ENTRY_CONTRACT.json)。今後はバラバラの都市正/裏/3眼高イラストを揃えるだけでなく、**寸法の整合した平面図・都市長手断面・横断面を同一原本**として先に制作。公開制作屋根=研究床／研究屋根壁=生活庭と私的境界、異なる非平行2本の実公共空洞を大都市外形の決定要因にする。そこから正・真裏と人間眼高3種へ整合した美術展開をし、強い巨大未来都市として成立しなければGLBもMinecraftも禁止する。
+
+> **元の制作証拠保管**：チャット成果ZIP `D56_P2_D3S9_ART_GATE_REJECT_AND_S10_RESET.zip` に**作者編集可能SVG2件、PNG2件、両案比較JPEG、作者作図Python、独立SOURCE監査Pythonと8/8検出JSON、レビュー、次契約、SHA256全ファイル一覧**を保管。作者SVG SHA256 A=`71d29b299077759e8acdb521e585bfd548634b379b2e114614e059d5077299c6`／B=`6bf12579969cda7fd7b9ff57aa06d4f03d02b9bcb3f461ea1235fc1f934c2c72`。GitHubへ今回は**審査・状態JSON・検査Python・専用CI・D3S10契約**を保存。SVG/PNGの元画像・作者画面生成Pythonの完全原本をGitHubへアップロード済みと称さない。旧原本/引継ぎ本文は文字列全保持。
+
+> **不変**：main変更なし、PR#53 Draft維持、Minecraft Educationの施工/都市統合なし、正式QA全NOT RUN、ART採用0。技術CI SUCCESSは美術合格ではない。
+
+---
+
 # 【D3S7証拠注記：研究・私室眼高はカメラ位置変更、都市遠景は固定条件／2026-10-30 JST】
 
 > [D3S7審査原文に追記した撮影条件の注意点](../research/g4c7-b11-r5-d56/p2/d3s7/D3S7_TRUE3D_3VERSION_ROUTE_ART_REJECT_JA.md)：初版とR2の研究・住居眼高の位置/注視は変えているため、**この2組は同条件カメラの厳密な前後比較ではない**。改善の主張は視点変更と実建築形状修正を混同しない。都市正/真裏/俯瞰は固定カメラ。会話ZIPにカメラ相違を明示した比較JPEGを追加。実GLBへの独立有限検査は引き続き別の根拠であり、ART REJECT／正式採用0に変更なし。
