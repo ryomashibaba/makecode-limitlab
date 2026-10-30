@@ -1,0 +1,52 @@
+{
+  "study": "D56-P2-D3S13",
+  "current_status": "UNBUILT ART HOLD / S12 A PRE-ART HOLD NOT APPROVED, B ART REJECT",
+  "official_art_adoptions": 0,
+  "art_goal": "A breathtaking beautiful multi-district inhabited future city whose public manufacturing action, research observation and residential life all create the same majestic interior civic void and exterior silhouette",
+  "keep_only_lessons_not_geometry": [
+    "from S12 A: a specific extraordinary public manufacturing act with recognizable large vehicle and real workers",
+    "researcher actually has unobstructed full-FOV view into that SAME act, own floor supported beside aperture",
+    "resident has connected usable room, private door and level semipublic garden, with deep inhabited city beyond",
+    "same void and true occupied roofs/walls form an asymmetrical beautiful CITY FRONT AND GENUINELY DISTINCT REVERSE"
+  ],
+  "hard_gate_0_art": [
+    "create an unusually powerful close-up from the MAKER EYE, not a tiny hull in an urban cartoon",
+    "give RESEARCH perspective an intelligible spatial relationship with wide view; protect real roof opening without losing own floor",
+    "give LIVING perspective unmistakable private daily activity, real garden boundary and giant city view",
+    "make city silhouette, front and back have habitation depth and drama; no flat vector roof or rows of low cottage roofs",
+    "reject at art board stage if still reads as low campus, perforated boulder, tubes or single suspended plate"
+  ],
+  "hard_gate_I_actual_3D_ONLY_IF_ART_CONVINCING": [
+    "one physically coherent same XYZ author source and actual saved GLB; independent reimport with at least 5 distinct documented cameras",
+    "M actual roof=R actual supported floor and R actual roof/wall=L garden or privacy boundary as true nonduplicated meshes",
+    "room occupancy, doors and roof as usable real volumes, not graphic icons or solid fake residences",
+    "verify first actual supporting floor, researcher-to-maker full viewing rays, resident-to-garden boundary with independent real triangles",
+    "honest city front/reverse urban beauty ART decision distinct from geometry correctness"
+  ],
+  "hard_gate_II_public_rooms": [
+    "two nonparallel, fully side-enclosed public civic ROOM sequences with actual roof/floor and measurable headroom and width",
+    "actual vertical connection: S12 source z-gap 89.666 conceptual units means it is NOT yet connected",
+    "full 3D human swept-body test including watertight closed-solid inclusion and adversarial missing tread/door obstacle",
+    "proper barrier-free, weather, privacy, egress and daylight checks BEFORE construction claims"
+  ],
+  "formal_QA_after_art": [
+    "331 actual human bodies + 993 foot positions",
+    "G0/S1/G1/G2/G3 strict gates, not inherited technical PASS"
+  ],
+  "reject_repeating": [
+    "S11 U-ring and small houses",
+    "S12 B cartoon cottages/terraced campus",
+    "A SVG exterior adopted as 3D without reworking",
+    "flat facade or shallow small windows instead of deep city",
+    "loft shell, monolith, thin exposed elevated bridges, ornamental plate stacks",
+    "repeated QA mutations and metrics without art improvement"
+  ],
+  "prohibited_actions": {
+    "main_changes": true,
+    "PR53_merge": true,
+    "minecraft_education_world_write": true,
+    "city_integration": true
+  },
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN"
+}
