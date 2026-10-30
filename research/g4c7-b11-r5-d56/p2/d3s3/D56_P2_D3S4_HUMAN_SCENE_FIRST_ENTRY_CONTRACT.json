@@ -1,0 +1,51 @@
+{
+  "study": "D56-P2-D3S4",
+  "status": "ENTRY CONTRACT ONLY / NOT BUILT / ART HOLD",
+  "root_cause": "Even a single continuous real watertight fold generated before human experiential scenes becomes a low white tent/sculpture and closes usable vision",
+  "human_scene_gate_first": [
+    {
+      "id": "M",
+      "must_demonstrate": "maker's eye: visible people truly making large objects inside a monumental, sheltered public fabrication room, linked to accessible public arrival"
+    },
+    {
+      "id": "R",
+      "must_demonstrate": "researcher's eye: same real production activity is visible unobstructed, no shared roof directly in sight at eye origin"
+    },
+    {
+      "id": "L",
+      "must_demonstrate": "resident's eye: distinct private room, protective boundary, semi-public garden and visible larger neighborhood"
+    }
+  ],
+  "next_gates": [
+    "three scenes grounded in consistent common XYZ before giant silhouette",
+    "a real occupied shared section joins rooms and 2 interlinked internal civic room axes with actual floor/roof/body width",
+    "only then independently render city front/reverse/high from the SAME saved GLB and judge whether it is a distinctive multi-district city",
+    "independent negative controls MUST include surface-ray blind spot from whole body enclosed inside closed solid; no false 'clear' on ray hit count zero"
+  ],
+  "forbidden": [
+    "new isolated megashell",
+    "Loft tube/sphere",
+    "single white folded roof",
+    "repetitive apartment wall or six-meter floor mass replication",
+    "floating slabs and thin columns",
+    "automated tower/ornament growth to hide rejected source"
+  ],
+  "latest_failed_discrete_gate": {
+    "fold_watertight": true,
+    "camera_views": 9,
+    "axisA_clear": 59,
+    "axisA_samples": 93,
+    "axisB_floor_support": 90,
+    "axisB_samples": 93,
+    "body_inside_solid_detection_negative_controls": "4/4",
+    "research_eye_unobstructed": false,
+    "city_art": false
+  },
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "formal_art_adoption": 0,
+  "main_unchanged": true,
+  "PR53_draft": true,
+  "minecraft_education_construction": false,
+  "city_integration": false
+}
