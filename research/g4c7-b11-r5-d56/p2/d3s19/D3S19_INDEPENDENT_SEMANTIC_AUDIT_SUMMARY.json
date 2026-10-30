@@ -1,0 +1,39 @@
+{
+  "study": "D56-P2-D3S19",
+  "independent_source": "D3S19_SPATIAL_MASTER_XYZ.json (read by separate script)",
+  "scope": "semantic geometric planning only, no GLB or human-body QA",
+  "positive_9_of_9": [
+    "hall simple valid positive-area polygon",
+    "maker in hall polygon XY",
+    "researcher in hall polygon XY",
+    "researcher points to same spacecraft XY",
+    "maker points to same spacecraft XY",
+    "resident/garden same floor Z163",
+    "room/garden outside hall footprint XY",
+    "vessel top z181 below intended roof z246",
+    "3 eye positions within declared design bounds"
+  ],
+  "negative_5_of_5": [
+    "deliberately wrong garden floor detected",
+    "too-low intended roof detected",
+    "research target changed detected",
+    "maker eye moved outside hall detected",
+    "self-intersecting hall polygon detected"
+  ],
+  "garden_boundary_distance_xy": 3.7453,
+  "near_hall_private_space_risk": "UNRESOLVED",
+  "overhead_clearance": "NOT TESTED",
+  "sightline_3d_ray": "NOT TESTED",
+  "roof_side_wall_constructed": false,
+  "continuous_human_sweep": "NOT RUN",
+  "formal_331_993": "NOT RUN",
+  "G0_S1_G1_G2_G3": "NOT RUN",
+  "overall_art": "HOLD",
+  "candidate_art": "PRE-ART HOLD",
+  "formal_adopted": 0,
+  "actual_GLB": "NONE",
+  "world_write": false,
+  "city_integration": false,
+  "main_change": false,
+  "pr53_merge": false
+}
