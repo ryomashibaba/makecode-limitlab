@@ -1,3 +1,17 @@
+# 【D56-P2-D3S5 作者美術2方向/8個別2D場面、BのXYZ共有厚・2軸SOURCE予約と7故意破損／A ART REJECT・B PRE-ART HOLD → D3S6／2026-10-30 JST】
+
+> **実際の美術制作と厳しい採否**：[D3S5独立作者2D美術2方向・SOURCE限定審査](../research/g4c7-b11-r5-d56/p2/d3s5/D3S5_TWO_AUTHOR_ART_GATE_JA.md)。A《深層工房を抱く都市峡谷》とB《多重庭街区の編まれた公共室》は別の造形原理で作成。各都市俯瞰＋制作M・研究R・生活Lの**個別作者2D場面**をPNGと編集可能SVGで作図し、2案比較JPEGを実際に目視。Aは再び巨大壁の間の孤立中央工房に見えるため**ART REJECT**。Bは庭・街区・研究と制作の連続性に相対的な可能性があるが、低層キャンパス化・抽象的な工房表現・実住居の不足が残り**PRE-ART HOLD**。**両案ともART PASSではなく、正式美術採用0**。4場面は同一GLBからの独立透視ではない。**今回はGLB/BLENDを作成していない**（前段Gateの否決を尊重）。
+
+> **BのSOURCE予約検査**：[XYZ予約JSON](../research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_SPATIAL_RESERVATION.json)／[独立検査コード](../research/g4c7-b11-r5-d56/p2/d3s5/d3s5_b_source_gate.py)／[専用CI定義](../.github/workflows/g4c7-d56-d3s5-b-source-preflight.yml)。制作M・研究R・生活Lの概念空間予約で M/R予約体積交差**105×37×4**、R/L**70×38×2**研究単位。非平行公共軸2本は平面小交差角**75.407°**、XY交点**(8.461,39.284)**、Z交点差**約20.430概念単位**。私室へ公共空間から直接入らないための半公共ロビーを12ノード・12エッジのグラフとして予約し、垂直移動も**未施工の予約ノード**のみ。平行軸化・共有厚消失・上下連絡切断・公開→私室直結・実メッシュ偽PASS・住居眼高逸脱・正式QA偽PASSという**7種類の故意不正をローカルSOURCE検査で7/7検出**。CI専用ゲートも起動したが最新結果を別確認する。**実メッシュ、実屋根、屋内公共2軸、実上下移動、幅/身体安全/自然光をPASSしたものでは一切ない**。
+
+> **D3S6は未着手**：[B案の整合したXYZ TRUE3D着手条件](../research/g4c7-b11-r5-d56/p2/d3s5/D3S6_B_COHERENT_XYZ_TRUE3D_ENTRY_CONTRACT.json)。Gate 0でBの別々に描いた都市・M/R/Lの4場面を、**同一スケールの共通XYZの一つの建築として整合**。その段階で美術不十分なら重いGLB停止。次にGate I真の私室・制作活動/研究観察、II真の公共2室・実床/屋根/全幅・上下アクセス、III同一GLB独立5視点以上から正・真裏の美術審査。D3S5のSOURCE成功をARTに流用禁止。
+
+> **成果原本の区別**：Chat成果`D56_P2_D3S5_ART_GATES.zip`に**作者SVG2件とそのPNG、実際の比較JPEG、作者Python、空間予約図PNG/SVG、Bの予約JSON、ローカルSOURCE検査・監査JSON、SHA256一覧**を保存。GitHubへ保存したのは今工程の**美術審査テキスト、SOURCE予約JSON、テストPython、専用CI設定、次D3S6契約**。SVG/PNGの実画像および作者アート生成PythonをGitHubへアップロード成功したとは称さない。ワーク成果全体をChat ZIPで提供。従来のD3S4 GLB等は旧証拠として無変更。
+
+> **不変**：正式331人体/993足元・G0/S1/G1/G2/G3すべてNOT RUN。Minecraft Education施工/都市統合なし、main無変更、PR #53 Draft/未マージ、旧LIVE_HANDOFFの文字列全保持。通常CIも専用CIも成果の美術合格を意味しない。
+
+---
+
 # 【D56-P2-D3S4 人間眼高Gate Iの3版真正GLB・支持と住居屋根交差を実メッシュ修正／ART REJECT・巨大都市化停止→D3S5美術二方向へ／2026-10-30 JST】
 
 > **今回の実作業と決定**：[D3S4の3版TRUE3D美術REJECT全文](../research/g4c7-b11-r5-d56/p2/d3s4/D56_P2_D3S4_GATE_I_TRUE3D_ART_REJECT_JA.md)／[独立再読込GLB診断サマリー](../research/g4c7-b11-r5-d56/p2/d3s4/D56_P2_D3S4_SAVED_GLB_AUDIT_SUMMARY.json)／[D3S5新しい二美術方向の条件](../research/g4c7-b11-r5-d56/p2/d3s4/D56_P2_D3S5_TWO_ART_DIRECTIONS_ENTRY_CONTRACT.json)。Chat内で初めてD3S4**眼高Gate Iだけ**を着手。M制作稼働ホール→R観察席→L私室＋半公共庭を同一XYZに実GLBで配置（Python trimesh／VTK、Blenderは不使用）。ROOM_A→実観察床改修R1→住居屋根侵入解消R2の**計3真正GLB・各68 named meshes/6,236 triangles**を別途保存→再読込し、**3版×8独立カメラ=24実PNG**。正/裏/俯瞰の画像は現在の局所区画の証拠であって**巨大都市遠景が成立したと称さない**。3版で同位置・同レンズ・同照明の実比較。
