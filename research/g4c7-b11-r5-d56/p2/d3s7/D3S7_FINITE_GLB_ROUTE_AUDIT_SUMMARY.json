@@ -1,0 +1,67 @@
+{
+  "study": "D56-P2-D3S7",
+  "baseline_head": "d393935ae25903df2ac70892f84aebb767806add",
+  "date_JST": "2026-10-30",
+  "outcome": "LOCAL_TECH_RESEARCH_ONLY / ART_REJECT / OVERALL_ART_HOLD",
+  "formal_art_adoption": 0,
+  "authoring": "Python trimesh + VTK (NOT Blender)",
+  "saved_glb_reloaded": true,
+  "variants": [
+    {
+      "id": "SECTION_ROUTE_01",
+      "meshes": 180,
+      "triangles": 3384,
+      "independent_cameras": 9,
+      "stair_M_R_support": 180,
+      "stair_M_R_body_surface_clear": 135,
+      "stair_R_G_support": 120,
+      "stair_R_G_body_surface_clear": 120
+    },
+    {
+      "id": "SECTION_ROUTE_01_R1",
+      "meshes": 186,
+      "triangles": 3456,
+      "independent_cameras": 9,
+      "stair_M_R_support": 180,
+      "stair_M_R_body_surface_clear": 180,
+      "stair_R_G_support": 120,
+      "stair_R_G_body_surface_clear": 120
+    },
+    {
+      "id": "SECTION_ROUTE_01_R2",
+      "meshes": 186,
+      "triangles": 3456,
+      "independent_cameras": 9,
+      "sha256": "860eae1df3f31a2fc140fdd46b5365aa530015d1d17459c9b7bd30f1427ce1ea",
+      "stair_M_R_support": 180,
+      "stair_M_R_body_surface_clear": 180,
+      "stair_R_G_support": 120,
+      "stair_R_G_body_surface_clear": 120,
+      "extra_connectors_support": 336,
+      "extra_connectors_body_surface_clear": 336
+    }
+  ],
+  "real_shared_roof_floor_regions": "M roof=R research floor patches, R roof=G garden floor patches; actual triangles in saved GLB",
+  "real_route_description": "M z0 -> 60 steps R z12 -> corridors -> 40 steps G z20 -> garden level L private entrance z20",
+  "city_extent": "only a LOCAL SPATIAL MODEL, NOT giant metropolis",
+  "negative_tests": {
+    "remove_actual_tread": true,
+    "add_real_private_door_obstacle": true,
+    "fully_enclosed_body_line_inside_watertight_solid_detected_despite_zero_surface_crossing": true
+  },
+  "evidence_type": "finite line and point samples ONLY; not continuous 3D human body",
+  "limitation": [
+    "R2 has 636 discrete vertical floor/height sample pairs only",
+    "no actual continuous full-volume walking or cross-section sweep",
+    "no universal access, proper private vestibule, code egress, weather or daylight",
+    "actual internal public civic axis 2 NOT BUILT",
+    "city skyline art fails: small canopy/stage with attached house"
+  ],
+  "formal_331_body_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "original_binary_and_source": "conversation archive D56_P2_D3S7_REAL_ROUTE_THREE_VERSIONS_ART_REJECT.zip only; full GitHub archive NOT CONFIRMED",
+  "no_main_changes": true,
+  "PR53_must_remain_draft": true,
+  "no_mc_education_construction": true,
+  "no_city_integration": true
+}
