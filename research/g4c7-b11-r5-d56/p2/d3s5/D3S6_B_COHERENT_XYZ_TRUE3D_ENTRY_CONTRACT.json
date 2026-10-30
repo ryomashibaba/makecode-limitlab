@@ -1,0 +1,55 @@
+{
+  "study": "D56-P2-D3S6",
+  "status": "NOT STARTED / ART HOLD",
+  "candidate": "S5-B only, not adopted",
+  "design_intent": "Convert 4 separately drawn 2D human scenes and editorial skyline into ONE actual coherent XYZ scene, while preserving visually inhabited gardens and three functional precincts",
+  "hard_gate_order": [
+    {
+      "gate": "0 ART/SPATIAL",
+      "requirements": [
+        "all maker/research/living experiences occupy one coherent XYZ and each can be separately viewed from real human eye",
+        "city front and genuine reverse both read as occupied neighborhoods, not isolated campus/rock masses",
+        "no isolated new shell/tower/Loft/spike from old rejects"
+      ],
+      "result": "NOT RUN"
+    },
+    {
+      "gate": "I INTERIOR",
+      "requirements": [
+        "actual closed private room + semi-public courtyard with threshold",
+        "M actual roof equals R actual support floor at more than one sample and supports research observation",
+        "R roof/wall genuinely forms privacy boundary and garden support for L",
+        "independent reimported GLB, actual eye-height perspective LOS/FOV, no occluded floor as research scene"
+      ],
+      "result": "NOT RUN"
+    },
+    {
+      "gate": "II PUBLIC TWO AXES",
+      "requirements": [
+        "two nonparallel roofed and walled internal rooms, not open roads",
+        "real 3D vertical transfer across the gap",
+        "full-width floor/roof/headroom and continuous body sweep",
+        "multiple adversarial negative tests including fully enclosed person"
+      ],
+      "result": "NOT RUN"
+    },
+    {
+      "gate": "III CITY ART",
+      "requirements": [
+        "same-GLB equal-condition front and true reverse with 3 independent eye-height cameras",
+        "distinct large inhabited districts and monumental beautiful voids, no thin slabs/campus",
+        "explicit ART decision independent from technical code success"
+      ],
+      "result": "NOT RUN"
+    }
+  ],
+  "reality": "D3S5 B is a 2D authored editorial concept and source-only reservation. Do NOT treat intersecting lines, bounds or graph edges as mesh.",
+  "formal_331_humans_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "art": "HOLD",
+  "art_adoption": 0,
+  "main_unchanged": true,
+  "PR53_must_stay_draft": true,
+  "no_minecraft_education_world_writes": true,
+  "no_city_integration": true
+}
