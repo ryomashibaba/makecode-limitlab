@@ -1,3 +1,19 @@
+# 【D56-P2-D3S12 実制作行為を中心にした新しい都市美術2方向／A PRE-ART HOLD・B ART REJECT、A概念XYZ 9故意破損／D3S13美術優先へ／2026-10-30 JST】
+
+> **重要な基準HEADの変更**：次工程に入る時点で最新研究HEADは `7d7e145291d275c275d592dba208a6f71c221be4` に進んでおり、すでにD3S11が実施・ART REJECTだった。したがってD3S11をやり直さず**D3S12**を実施。D3S11は[実GLB美術REJECT](../research/g4c7-b11-r5-d56/p2/d3s11/D3S11_TRUE3D_CIVIC_CLEFT_ART_REJECT_JA.md)、38組の中空室原型、2公共軸各57点床・屋根有限サンプル、研究→製作視線が研究の実床に遮蔽、私室直下に別区画ギャラリーが入り込む問題、U字段丘と小住宅・薄高架の都市美術不合格だった。これを拡張・飾り直さない。
+
+> **D3S12の実制作（編集可能な美術原本）**：[A/B独立作者SVG都市美術の比較審査](../research/g4c7-b11-r5-d56/p2/d3s12/D3S12_TWO_AUTHOR_CIVIC_ART_GATE_JA.md)。**A《THE INHABITED SHEAR》**は、巨大宇宙機の公開製作活動と参加者、研究観察、住居と庭を、厚い斜交建築が結ぶ作者2D表現へ変更。従来の単なる大穴より出来事が読めるが、都市の迫力・生活密度・裏側の固有表情が不足し、**PRE-ART HOLD**。**B《DELTA OF THE LIVED CITY》**は水平に重なる都市を狙ったが、再び段丘の小住宅屋根と浅い制作場に戻り**ART REJECT**。**正式美術採用0、全体ART HOLD**。各案の都市正面・別作者構図の都市裏面・制作者/研究者/住人の独立2D場面**5場面×2案**を、編集可能SVG2＋PNG2＋比較JPEGとして実際に制作した。**2D美術は同じGLBから独立9カメラを撮った証拠ではない。D3S12ではGLB0・実3Dカメラ0**。Bは詳細化停止、Aもまだ実3Dへ進めない。
+
+> **AのSOURCE限定の設計反証**：[概念XYZ予約要約](../research/g4c7-b11-r5-d56/p2/d3s12/D3S12_A_SPATIAL_RESERVATION_SUMMARY.json)／[独立9負対照サマリー](../research/g4c7-b11-r5-d56/p2/d3s12/D3S12_A_SOURCE_AUDIT_SUMMARY.json)／[GitHub同等SOURCE検査コード](../research/g4c7-b11-r5-d56/p2/d3s12/d3s12_source_intent_guard.py)／[専用CI設定](../.github/workflows/g4c7-d56-d3s12-source-intent.yml)。製造ホールの予定屋根z160=研究観察床z160、研究者目(-54,65,176)から製作目標(0,0,60)までの予定屋根交点(-46.552,56.034,160)は予定開口に入るが、研究者自身は隣の予定支持床上にいる。R屋根兼生活庭と私室床は概念z240。予定公共2軸のXY交点(14.932,5.560)、高さ差**89.666概念単位**、実垂直移動なし。元作者SOURCEを別Pythonで故意に9通り変更（研究開口閉鎖・研究眼高支持喪失・私床と庭の高度差・私扉ずれ・軸平行化・偽GLB・偽共有実材・偽331/993 QA・偽ART採用）して**9/9検出**。SOURCE幾何確認は**実屋根・床・公共室・中空住居・真正3D・正式QAのPASSではない**。SVGはこのSOURCEからの正確な3D射影でもない。
+
+> **次D3S13は未制作**：[D3S13美術/人間活動先行契約](../research/g4c7-b11-r5-d56/p2/d3s12/D3S13_ART_FIRST_GATE_CONTRACT.json)。**単一の圧倒的な制作眼高と研究の広角の同一活動観察、実私室と半公共庭、奥行と相違を持つ都市正面と真裏**を美術原本として先に強化し、そこから使える2屋内公共室と一つの世界XYZへ進める。A案のSVG外形を丸ごとGLBへコピーせず、B案の低層段丘への回帰も禁止。美術が先に飛躍しなければ巨大モデル量産と施工は停止。
+
+> **保管**：会話ZIP `D56_P2_D3S12_ART_FIRST_TWO_AUTHOR_DIRECTIONS.zip` には**作者SVG2、PNG2、比較JPEG、元作者Python、SOURCE概念XYZ JSON、図示平面/断面SVG+PNG、9負対照監査Python/JSON、批判的レポート、次契約、SHA256マニフェスト、review.html**を保存しCRC検査済み。GitHubには今工程の**審査原文・SOURCE概念要約・9負対照要約・検査Python・専用CI・次契約**を保存した。PNG/SVG美術原本や作者コードをGitHub完全アーカイブしたと偽らない。旧研究原本・引継ぎは全文保持。
+
+> **不変**：正式331人体/993足元、G0/S1/G1/G2/G3すべてNOT RUN。Minecraft Educationワールド施工・都市統合なし、main変更なし、PR#53 Draft未merge。通常CIと専用SOURCE CIの結論は最新HEADと照合して報告し、CIをART認定へ格上げしない。
+
+---
+
 # 【D56-P2-D3S11 実GLB制作・9真正カメラ／38中空室原型と2軸57×2点監査／ART REJECT → D3S12実際の居住都市美術再設計／2026-10-30 JST】
 
 > **今回の実作業**：[D3S11 REAL GLBからの批判的美術審査](../research/g4c7-b11-r5-d56/p2/d3s11/D3S11_TRUE3D_CIVIC_CLEFT_ART_REJECT_JA.md)、[作者コードをimportしないGLB監査要約](../research/g4c7-b11-r5-d56/p2/d3s11/D3S11_INDEPENDENT_GLB_AUDIT_SUMMARY.json)、[D3S12美術先行の禁止・要求契約](../research/g4c7-b11-r5-d56/p2/d3s11/D3S12_RESTART_FROM_ACTUAL_OCCUPIED_CIVIC_VOID_CONTRACT.json)。透明なVolume群のD3S10を延長せず、公共制作の空洞を中心にした段丘状の実居住街区という新案をChatのPython trimeshで生成。**784 named actual meshes／9,424 triangles**、SHA256 `8bc4bc7568aa638b4a2d9fc3950cd61c7f9f59f29813064be953c19b018c5ecf`。実GLBを保存してから**独立VTK撮影器が再読込**し、都市正面・真裏・俯瞰、制作/研究/生活眼高、二公共軸視点、庭の**9つの独立実カメラ**で撮影。Blender未使用、人工照明で自然光は未検証。
