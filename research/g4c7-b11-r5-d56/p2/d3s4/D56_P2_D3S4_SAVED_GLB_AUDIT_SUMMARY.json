@@ -1,0 +1,77 @@
+{
+  "study": "D56-P2-D3S4",
+  "time_JST": "2026-10-30",
+  "art": "REJECT_ALL_THREE",
+  "overall_art": "HOLD",
+  "formal_art_adoption": 0,
+  "mode": "GATE_I_HUMAN_INTERIOR_ONLY_NO_CITY_SKYLINE",
+  "authoring": "Python trimesh + VTK, real saved GLB reloaded; NOT Blender",
+  "variants": [
+    {
+      "id": "ROOM_A",
+      "sha256": "5570d1d7b7584ccff35487566f0eb6202a6ae53c8c895d513535fc4443974bf7",
+      "named_meshes": 68,
+      "triangles": 6236,
+      "true_views": 8,
+      "research_eye_support": false,
+      "living_eye_first_floor_hit": "maker roof intrudes living volume at z ~46.287 ahead of own private floor z ~43.900"
+    },
+    {
+      "id": "ROOM_A_R1",
+      "sha256": "25e09e7a24a1c05ce613739635d7ab36e6b53fa6beb0c9198f9d2196512de2e7",
+      "named_meshes": 68,
+      "triangles": 6236,
+      "true_views": 8,
+      "research_eye_support": true,
+      "shared_M_R_floor_first_hit_z": 24.921,
+      "living_eye_first_floor_hit": "maker roof intrudes living volume z ~46.287"
+    },
+    {
+      "id": "ROOM_A_R2",
+      "sha256": "558f3bc0df98f8ad1ee76085ef78b8c5100aa71926da269429e2da2404dda9c5",
+      "named_meshes": 68,
+      "triangles": 6236,
+      "true_views": 8,
+      "research_eye_support": true,
+      "shared_M_R_floor_first_hit_z": 24.921,
+      "living_eye_own_floor_first_hit_z": 43.9,
+      "research_to_making_one_center_ray_unobstructed": true,
+      "maker_to_fabrication_one_center_ray_unobstructed": true,
+      "public_entry_to_maker_one_center_ray_unobstructed": true,
+      "living_to_garden": "actual shrub intersects line; screen no longer first hit; NOT a wide FOV certification"
+    }
+  ],
+  "tests": {
+    "independent": true,
+    "source": "saved reimported GLB actual triangles only, generator not imported",
+    "closed_solid_enclosure_adversary": {
+      "original_surface_intersections": 0,
+      "point_in_solid_detected": true,
+      "model": "fabricated sealed box enclosing whole 2.6-unit body line",
+      "detected": true
+    },
+    "shared_material_named_removal_sentinel": {
+      "detected": 2,
+      "total": 2,
+      "limitation": "named mesh removal only, not actual occupancy or navigability"
+    },
+    "nature_of_witnesses": "sparse camera and vertical point rays only; no continuous human body sweep"
+  },
+  "assessed_art_failures": [
+    "making shot dominated by robotic arms and low roof slab rather than dramatic city fabrication",
+    "research center ray clear yet image predominantly local floor/arm rather than visually compelling observatory",
+    "residential interior shallow, generic enclosure and planters; no coherent urban backdrop",
+    "side/reverse/high views low small campus canopy; city form not even attempted"
+  ],
+  "stageII_public_3d_axes": "NOT BUILT",
+  "stageIII_city_front_reverse": "NOT BUILT",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "structural_weather_privacy_fire_daylight": "NOT VERIFIED",
+  "original_artifact": "D56_P2_D3S4_HUMAN_SCENE_GATE_I_ART_REJECT.zip in conversation only; binary source NOT GitHub archived",
+  "git_changes": "review, audit summary and next gate contract on research branch only",
+  "main_unchanged": true,
+  "draft_pr53": true,
+  "minecraft_education_world_writes": false,
+  "city_integration": false
+}
