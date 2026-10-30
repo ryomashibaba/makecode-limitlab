@@ -1,0 +1,34 @@
+{
+  "study": "D56-P2-D3S12",
+  "status": "NOT BUILT / ART HOLD",
+  "formal_art_adoptions": 0,
+  "prior": "D3S11 784-mesh 9424-triangle actual GLB, 9 independent reimport views; 38 hollow room shell sets, 2 partial roof/floor axes, ART REJECT",
+  "root_cause": "Ring of small rooms and thin crossing decks is still not monumental, inhabited, original future city art; research view actually hits nearby floor and living own ground is overlapped by neighboring elevated gallery",
+  "nonnegotiable_art_first_gate": [
+    "An iconic public manufacturing act and workers within a truly occupied, monumental civic VOID, not a small workbench in a mini-campus",
+    "Researcher's broad real viewpoint into the SAME manufacturing activity, no self-floor/roof occlusion",
+    "Resident's own supported floor first, actual privacy threshold, usable semi-public garden and recognizable dense city beyond",
+    "CITY FRONT and genuinely inhabited REVERSE visually different, monumental asynchronous precinct relation and deep urban negative space",
+    "Independent art rejection review before adding detailed mesh, repeating units, or building city size"
+  ],
+  "technical_requirements_only_after_visual_gate": [
+    "One actual same-XYZ architectural volume for all human/city camera positions",
+    "Continuous side-enclosed two nonparallel PUBLIC ROOM axes with real supported floor/ceiling/true connected vertical transfer, not floor+roof bridge fragments",
+    "Actual M roof=R floor and R roof/wall=L lived garden/private boundary one actual source geometry, not overlapping named copies",
+    "Continuous full human body 3D sweep and watertight-solid internal containment detection across routes, plus negative obstacle and missing step tests",
+    "Real dwelling occupancy privacy and climate safety tests; formal 331 body / 993 foot and G0/S1/G1/G2/G3 only after all earlier gates"
+  ],
+  "forbidden": [
+    "copying S11's U ring and subdividing more hollow small boxes",
+    "thin crossing ramps and open elevated walkways pretending to be complete interior civic streets",
+    "vague source-only shared patches falsely claimed as architectural roof=floor",
+    "enlarging bad source geometry/adding decorative beams or plants to force ART PASS",
+    "isolated three monoliths, colored pipes, stacked low campus box slabs, giant folded tent"
+  ],
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "pr53_must_remain_draft": true,
+  "main_unchanged": true,
+  "minecraft_education_construction": false,
+  "city_integration": false
+}
