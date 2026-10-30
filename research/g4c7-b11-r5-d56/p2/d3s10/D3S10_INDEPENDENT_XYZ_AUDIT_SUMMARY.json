@@ -1,0 +1,112 @@
+{
+  "study": "D56-P2-D3S10",
+  "model_class": "PARAMETRIC_SOURCE_XYZ_MASSING_ONLY_NOT_ACTUAL_ARCHITECTURAL_3D",
+  "date_JST": "2026-10-30",
+  "original_3D_envelopes": 21,
+  "precincts": {
+    "M": 7,
+    "R": 7,
+    "L": 7
+  },
+  "views_per_revision": {
+    "one_urban_plan": 1,
+    "longitudinal_section": 1,
+    "transverse_section": 1,
+    "volume_renderer_front": 1,
+    "volume_renderer_reverse": 1,
+    "volume_renderer_high": 1,
+    "makers_massing_eye": 1,
+    "research_massing_eye": 1,
+    "living_massing_eye": 1,
+    "total": 9
+  },
+  "original": {
+    "geometry_source": "D3S10_SINGLE_SOURCE_XYZ_MASTER.json in conversation ZIP",
+    "source_only_gate": "FAIL",
+    "shared_planar_face_mismatch": [
+      {
+        "name": "M_ROOF_R_FLOOR",
+        "z": 97,
+        "proposed_patch_area": 5950,
+        "dual_face_touch_area": 0,
+        "real_triangles": "NOT BUILT"
+      },
+      {
+        "name": "R_ROOF_L_GARDEN",
+        "z": 169,
+        "proposed_patch_area": 3399,
+        "dual_face_touch_area": 0,
+        "real_triangles": "NOT BUILT"
+      }
+    ]
+  },
+  "R1": {
+    "geometry_source": "D3S10_R1_XYZ_SOURCE_CORRECTED.json in conversation ZIP",
+    "source_only_gate": "PASS",
+    "changed_z_faces": [
+      "R_LOW_GALLERY z_min = 97",
+      "R_EAST_BROW z_max = 169",
+      "L_GARDEN_RING z_min = 169"
+    ],
+    "shared_planar_face_alignments": [
+      {
+        "name": "M_ROOF_R_FLOOR",
+        "z": 97,
+        "common_patch_area": 1270.9,
+        "dual_touch_ratio": 1,
+        "physical_mesh": "NOT BUILT"
+      },
+      {
+        "name": "R_ROOF_L_GARDEN",
+        "z": 169,
+        "common_patch_area": 330.76,
+        "dual_touch_ratio": 1,
+        "physical_mesh": "NOT BUILT"
+      }
+    ],
+    "axes": {
+      "XY_intersection": {
+        "x": 3.139,
+        "y": 2.016
+      },
+      "different_Z_at_intersection": 50.676,
+      "vertical_connection": "NOT BUILT",
+      "A_samples_in_uncarved_massing": {
+        "count": 23,
+        "total": 53
+      },
+      "B_samples_in_uncarved_massing": {
+        "count": 30,
+        "total": 53
+      },
+      "actual_covered_floor_ceilings_for_public_rooms": "NOT BUILT"
+    },
+    "source_negative_controls": {
+      "count": 8,
+      "detected": 8,
+      "category": [
+        "shared M/R z broken",
+        "shared R/L z broken",
+        "shared polygon moved",
+        "public axis parallel",
+        "vertical transfer plan mislocated",
+        "fake public room construction",
+        "fake formal 331/993 certification",
+        "fake ART PASS"
+      ]
+    }
+  },
+  "art": "REJECT BOTH ORIGINAL AND R1",
+  "art_adoption": 0,
+  "actual_GL_B": "NOT BUILT",
+  "true_construction_3D_rooms": "NOT BUILT",
+  "public_axis_civic_rooms": "NOT BUILT",
+  "continuous_human_body_sweep": "NOT RUN",
+  "formal_331_humans_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "glb_source_binary_persistent_location": "Conversation ZIP only; GitHub holds this audit summary and art review, not entire binary",
+  "main_unchanged": true,
+  "PR53_draft": true,
+  "minecraft_education_world_writes": false,
+  "city_integration": false
+}
