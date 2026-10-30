@@ -1,0 +1,32 @@
+{
+  "study": "D56-P2-D3S19",
+  "state": "ENTRY CONTRACT / NOT BUILT / ART HOLD / FORMAL ADOPTIONS 0",
+  "objective": "Make actually beautiful, giant, functional futuristic CITY through art-directed inhabited civic architectural system, rather than changing box placement rules",
+  "why": "D3S18 built three genuinely different SOURCE layouts but all independently rendered saved GLBs read as generic cuboids with isolated spacecraft capsule. Previous D3S17 made 902 meshes and still became low campus.",
+  "gates": [
+    "ARTIST-DIRECTED DESIGN FIRST: one distinctive whole-city master image of front and real reverse with strong asymmetry, deep lived-in silhouette, urban density and focal active interior. Do not use auto cuboid layouts.",
+    "Coherently design actual spacecraft fabrication civic HALL with substantial roof and both side walls plus supported research eye and truly bounded privacy/level garden. A concept is NOT yet real geometry.",
+    "Specify same-world XYZ plan and 2 orthogonal sections, maker/research/resident eye spatial compositions from this SAME source. Identify every reservation vs actual mesh vs proven inhabitation separately.",
+    "Review composition before generating any heavy GLB. If not categorically better than D3S17/D3S18, ART REJECT and reconsider the design method, not superficial parameter swapping.",
+    "Only approved art-feasibility hypothesis proceeds to independently reloaded GLB, same-camera front/reverse/3 human eyes, true triangle intersections, mesh orientation/support/solid containment/negative controls.",
+    "Only after a real-city ART PASS candidate: 2 enclosed nonparallel public room axes, actual continuous vertical connection, real human body sweep, formal 331/993 and G0/S1/G1/G2/G3."
+  ],
+  "hard_boundaries": [
+    "No Minecraft Education world construction",
+    "No city integration",
+    "No changes to main",
+    "No PR #53 merge",
+    "No deleted/overwritten historic original evidence",
+    "No artificial score/PASS in generated art used as geometry proof"
+  ],
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "halfwidth": 0.65,
+  "body_height_range": [
+    0.15,
+    3.25
+  ],
+  "historical_45_body_interference_ceiling": 45,
+  "historical_0_unsupported_feet": 0,
+  "adopted": 0
+}
