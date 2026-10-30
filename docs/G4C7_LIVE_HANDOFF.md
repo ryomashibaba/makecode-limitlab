@@ -1,3 +1,19 @@
+# 【D56-P2-D3S16 真正GLB二案・7×2独立実カメラ・正の体積改善も美術REJECT → D3S17／2026-10-30 JST】
+
+> **研究開始時にGitHub照合：** 現行PR#53はDraft/未マージ、直前HEAD `d423d71537e638e556c43357526786c2f61ea390` で通常CI [#41063489635](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41063489635) はSUCCESS。D3S15契約・元研究を踏まえ、過去の段丘/リング/倉庫/楔形ソリッドを延長せずA《INHABITED SPLIT-VAULT》、B《INTERWOVEN CIVIC ESTUARY》の真GLBを新造。
+
+> **実制作：** Python trimeshの共通XYZから保存実GLB A**175メッシュ/4,432三角形**、B**178メッシュ/4,604三角形**。メーカー公開船体/作業者、研究実観察床、私室・庭を単一世界へ配置（ただし正式居住・2公共軸は未成立）。作者とは独立したVTKプロセスで保存GLB再読込、**同一カメラ7視点×2案=14真正PNG、A/B比較JPEG7枚**を実制作。美術の参考AIイラストは不使用。
+
+> **厳密な限定監査：** 両案とも全メッシュwatertight/正の符号付き体積（A175/175、B178/178）、局所床支持**4/4ずつ**、故意の研究床削除・庭床削除・私室扉閉塞・閉体内点の合成負例**4/4ずつ検出**。しかし両案の研究眼高→自分の共有床**18.7803概念単位**、住人眼高→私室正面壁**14.2828**で第一交差。中心製作視線は船体**62.4934**。有限点成功は広角視界・歩行・安全の証明ではない。
+
+> **ART REJECT：** 実前面・真裏・斜視ではAが巨大な双斜材と小バルコニー、Bが交差梁と細い連絡材に見え、またしても**人が住む都市でなく巨大な彫刻・構造実験**。局所技術改善でもART成功にはならない。A/BともART REJECT、全体ART HOLD、採用0。形状の巨大化・装飾・量産を禁止し、D3S17は**「最初に本物の魅力的な人間眼高の室と都市街路を作り、その同じ建築から巨大都市正/真裏を形づくる」**方式へ変更。建築名称だけを居住可能認定しない。
+
+> **GitHub正本：** [D3S16 ART監査](../research/g4c7-b11-r5-d56/p2/d3s16/D3S16_TRUE3D_ART_GATE_JA.md)／[独立有限監査要約](../research/g4c7-b11-r5-d56/p2/d3s16/D3S16_INDEPENDENT_COMPACT_AUDIT.json)／[D3S17正式着手契約](../research/g4c7-b11-r5-d56/p2/d3s16/D3S17_RESET_TO_INHABITED_CITY_CONTRACT.json)。会話ZIP `D56_P2_D3S16_TRUE3D_ART_REJECT_AND_D3S17.zip` には**33実ファイル、CRC成功**：2実GLB、14実PNG、7比較JPEG、2再現/独立監査Python、監査JSON、SHA256、次契約、報告。GitHubへ保存したのはテキスト研究文書であり**GLB/PNG/Python原本のGitHub恒久アーカイブではない**。
+
+> **不変ゲート：** 正式331人体/993足元、G0/S1/G1/G2/G3すべてNOT RUN。完全な実屋内公共2軸・上下人体連続接続NOT BUILT。main変更・Minecraft Education施工・都市統合・PR#53マージ禁止、歴史的証拠保護。新HEADでのCIは別途再検証。
+
+---
+
 # 【D56-P2-D3S15 R0→R1真正GLB二方向・14実視点と独立面方向監査／両ART REJECT→D3S16／2026-10-30 JST】
 
 > **最終判定：A/BともART REJECT、全体ART HOLD、正式美術採用0、TECH HOLD。** D3S14の「倉庫＋左右の箱塔」を改変・大型化せず、A《INHABITED SHEAR STRATA》とB《INHABITED RADIAL FAN》の異なる世界XYZ上の建築構成を本物のGLBで制作。保存GLB再読込R1の実測は**A=220ノード/4,368三角形、B=294ノード/5,256三角形**。独立VTKカメラで両案各**都市正面・真裏・斜視・俯瞰・制作者・研究者・住人の7実PNG**、同一カメラA/B比較JPEG7枚。参照のAI画像や単なるSOURCEの数値ではない。
