@@ -1,0 +1,70 @@
+{
+  "study": "D56-P2-D3S7",
+  "stage": "UNBUILT ART-FIRST REDESIGN",
+  "origin": "D3S6 B Gate0 independently reloaded GLB art reject",
+  "art": "HOLD",
+  "formal_adoption": 0,
+  "objective": "An inhabited sectional city in which one actual lived path leads from public fabrication to research observation to semiprivate garden and private residence, where the same physical roof/floor/wall shapes the large public void and urban silhouette",
+  "stop_list": [
+    "do not reuse the D3S6 low campus from one-XYZ witness",
+    "do not use five solid nonhabitable fake OCCUPIED bays",
+    "do not add loft towers, giant arches, decorative roofs or thin separate slab bridges",
+    "do not say that separate hand-drawn 2D crops equal same 3D camera",
+    "do not count a clear center ray as a usable research view"
+  ],
+  "hard_gates": [
+    {
+      "name": "0A coherent eye-level art",
+      "measures": [
+        "maker truly makes large work inside sheltered public civic room",
+        "research actually sees the same activity through unobstructed full view from supported floor",
+        "resident sees urban garden through real private threshold and not own floor",
+        "city both sides reads original multi-district futuristic metropolis, not a low campus"
+      ],
+      "status": "NOT RUN"
+    },
+    {
+      "name": "0B occupied actual human route",
+      "measures": [
+        "one traversable corridor maker to research with real stairs/ramp/elevator",
+        "one secure access from semipublic garden to dwelling; prior private floor-to-garden z gap 11 units must be solved with physical geometry",
+        "real inhabitable M/R/L interiors; NO closed solid occupancy placeholders",
+        "independent route and floor tests incl point-in-solid adversarial negative controls"
+      ],
+      "status": "NOT RUN"
+    },
+    {
+      "name": "I 3D coherence",
+      "measures": [
+        "GLB export and actual independent reimport",
+        "same true real triangles act as roof/floor in both M/R and R/L borders",
+        "3 independent human eye views and actual front/reverse sky views on same saved GLB"
+      ],
+      "status": "NOT RUN"
+    },
+    {
+      "name": "II two public internal room axes",
+      "measures": [
+        "two nonparallel occupied-thickness public room axes with genuine walls, roofs and real supported floor",
+        "fully realized level transfer, full-width human body path sweeps",
+        "separate adversarial real geometry mutations"
+      ],
+      "status": "NOT RUN"
+    },
+    {
+      "name": "III formal QA only after art gate",
+      "measures": [
+        "traditional 331 body / 993 foot locations and G0/S1/G1/G2/G3 in distinct strict stages",
+        "false technical success not artistic approval"
+      ],
+      "status": "NOT RUN"
+    }
+  ],
+  "formal_331_humans_993_feet": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "minecraft_world_construction": false,
+  "city_integration": false,
+  "main_branch_change": false,
+  "PR53_must_remain_draft": true,
+  "status": "READY_FOR_ART_FIRST_SECTION_DESIGN_ONLY"
+}
