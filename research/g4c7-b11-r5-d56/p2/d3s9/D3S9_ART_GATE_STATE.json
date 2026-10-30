@@ -1,0 +1,50 @@
+{
+  "study": "D56-P2-D3S9",
+  "phase": "ART_FIRST_PRE3D",
+  "art_criterion_is_manual": true,
+  "art_adoptions": 0,
+  "approved_true3d_models": 0,
+  "candidates": {
+    "A": {
+      "name": "Inhabited Vortex",
+      "author_art": "REJECT",
+      "scenes": [
+        "CITY_FRONT_2D",
+        "CITY_REVERSE_2D",
+        "MAKER_2D",
+        "RESEARCH_2D",
+        "LIVING_2D"
+      ],
+      "full_glb": "NOT_BUILT",
+      "failure": "disconnected monoliths and sculptural punched void"
+    },
+    "B": {
+      "name": "Estuary of Shared Thickness",
+      "author_art": "REJECT",
+      "scenes": [
+        "CITY_FRONT_2D",
+        "CITY_REVERSE_2D",
+        "MAKER_2D",
+        "RESEARCH_2D",
+        "LIVING_2D"
+      ],
+      "full_glb": "NOT_BUILT",
+      "failure": "three wedges symbolic axes no actual inhabited interior"
+    }
+  },
+  "actual_model_reimport": "NOT_RUN",
+  "actual_roof_floor_shared": "NOT_BUILT",
+  "actual_internal_public_axes": "NOT_BUILT",
+  "actual_vertical_transfer": "NOT_BUILT",
+  "human_body_331_foot_993": "NOT_RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT_RUN",
+  "minecraft_world_changes": false,
+  "city_integration": false,
+  "main_branch_changes": false,
+  "PR53_must_be_draft": true,
+  "author_svg_sha256": {
+    "A": "71d29b299077759e8acdb521e585bfd548634b379b2e114614e059d5077299c6",
+    "B": "6bf12579969cda7fd7b9ff57aa06d4f03d02b9bcb3f461ea1235fc1f934c2c72"
+  },
+  "new_art_gate_condition": "Dimensioned coherent plan, long section, cross section and beautiful urban front/reverse before any TRUE3D"
+}
