@@ -1,0 +1,73 @@
+{
+  "study": "D56-P2-D3S16",
+  "date_jst": "2026-10-30",
+  "source": "True saved GLB reloaded by independent VTK code; camera and finite triangle rays NOT formal QA",
+  "variants": {
+    "A": {
+      "name": "INHABITED SPLIT-VAULT",
+      "glb_sha256": "8687b0b1bc3820b47915fd6a56a7cb20d4771580934197e3ef3ba825b1efe0ef",
+      "meshes": 175,
+      "triangles": 4432,
+      "watertight": 175,
+      "nonpositive_signed_volume": 0,
+      "real_cameras": 7,
+      "finite_support": "4/4",
+      "synthetic_negative_controls": "4/4",
+      "maker_center_hit": [
+        "M_SPACECRAFT_UNDER_CONSTRUCTION",
+        62.4934
+      ],
+      "research_center_hit": [
+        "SHARED_M_REAL_ROOF_R_RESEARCH_FLOOR",
+        18.7803
+      ],
+      "living_center_hit": [
+        "L_PRIVATE_OCCUPIABLE_SHELL_S_L",
+        14.2828
+      ],
+      "art": "REJECT",
+      "tech": "HOLD"
+    },
+    "B": {
+      "name": "INTERWOVEN CIVIC ESTUARY",
+      "glb_sha256": "f39f3485436af96cdf154c3779959c743af4a56973da01871661f642136627ba",
+      "meshes": 178,
+      "triangles": 4604,
+      "watertight": 178,
+      "nonpositive_signed_volume": 0,
+      "real_cameras": 7,
+      "finite_support": "4/4",
+      "synthetic_negative_controls": "4/4",
+      "maker_center_hit": [
+        "M_SPACECRAFT_UNDER_CONSTRUCTION",
+        62.4934
+      ],
+      "research_center_hit": [
+        "SHARED_M_REAL_ROOF_R_RESEARCH_FLOOR",
+        18.7803
+      ],
+      "living_center_hit": [
+        "L_PRIVATE_OCCUPIABLE_SHELL_S_L",
+        14.2828
+      ],
+      "art": "REJECT",
+      "tech": "HOLD"
+    }
+  },
+  "conclusions": [
+    "Both urban forms visually dominated by huge braces and thin platforms, not lived-in future city",
+    "Research eye intersects own floor in both",
+    "Resident eye intersects own front room wall in both",
+    "Actual floor sample support and mesh orientation improved relative to D3S15",
+    "Positive volumes and closed meshes do NOT mean structure/habitation or ART PASS"
+  ],
+  "overall_art": "HOLD",
+  "formal_art_adoptions": 0,
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G2_G3": "NOT RUN",
+  "continuous_indoor_civic_room_axes": "NOT BUILT",
+  "continuous_body_sweep": "NOT RUN",
+  "world_construction": false,
+  "city_integration": false,
+  "source_archive": "D56_P2_D3S16_TRUE3D_ART_REJECT_AND_D3S17.zip (33 files, CRC pass) in conversation; original GLB/PNG/Python NOT archived in GitHub by this text commit"
+}
