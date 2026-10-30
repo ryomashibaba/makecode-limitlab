@@ -1,0 +1,55 @@
+{
+  "study": "D56-P2-D3S13",
+  "date_JST": "2026-10-30",
+  "classification": "INDEPENDENT RELOADED GLB FINITE TRIANGLE AUDIT, NOT FORMAL CITY QA",
+  "model": {
+    "saved_glb_name": "D3S13_GATE0_REAL_CONCEPT_MASSING.glb",
+    "sha256": "cccad9a37967bbde6ff0bafc2f463358a547056b002efc82200759d9096a8267",
+    "meshes": 39,
+    "triangles": 2048,
+    "true_independent_reimported_camera_views": 9,
+    "concept_kind": "non-habitable opaque SOLID CITY MASSING, one modeled fabrication ship prop"
+  },
+  "rays": {
+    "maker": {
+      "first_forward_hit": "MAKER_WEST_DOCK_MASS",
+      "first_distance": 190.621,
+      "sampled_sub_fov_obstructed": 9,
+      "sampled_sub_fov_total": 9,
+      "first_downward_support": "MAKER_WEST_DOCK_MASS"
+    },
+    "research": {
+      "first_forward_hit": "RESEARCH_OBSERVATION_EDGE",
+      "first_distance": 91.029,
+      "sampled_sub_fov_obstructed": 7,
+      "sampled_sub_fov_total": 9,
+      "first_downward_support": "RESEARCH_OBSERVATION_EDGE"
+    },
+    "living": {
+      "first_forward_hit": "RESIDENTIAL_SEMI_PUBLIC_GARDEN",
+      "first_distance": 61.576,
+      "sampled_sub_fov_obstructed": 9,
+      "sampled_sub_fov_total": 9,
+      "first_downward_support": "RESIDENTIAL_SEMI_PUBLIC_GARDEN"
+    }
+  },
+  "limitations": [
+    "3x3 finite target rays not continuous FOV or body sweep",
+    "Actual 3 precincts are SOLID city-mass volumes; no inhabited room certification",
+    "Roof/floor/side-enclosed civic room axis A/B and vertical transfer NOT BUILT",
+    "AI illustration generated false performance numerals and 'PASS'; no claims trusted; all illustration numbers voided",
+    "Actual independent GLB cameras do not match or validate separate AI-generated reference images"
+  ],
+  "actual_two_internal_civic_rooms": "NOT BUILT",
+  "actual_connected_human_vertical_route": "NOT BUILT",
+  "formal_331_humans_993_feet": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "art": "REJECT",
+  "overall_art": "HOLD",
+  "formal_adoptions": 0,
+  "source_code_and_binaries": "Conversation ZIP D56_P2_D3S13_REAL_GLB_ART_REJECT_AND_S14_CONTRACT.zip; Github stores this summary, not binary",
+  "main_unchanged": true,
+  "PR53_draft": true,
+  "minecraft_world_write": false,
+  "city_integration": false
+}
