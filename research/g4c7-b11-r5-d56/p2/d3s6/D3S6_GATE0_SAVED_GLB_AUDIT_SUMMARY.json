@@ -1,0 +1,71 @@
+{
+  "study": "D56-P2-D3S6-GATE0-B",
+  "classification": "SAVED_TRUE_GLB_LOCAL_SPATIAL_WITNESS; ART_REJECT; NOT_FULL_CITY",
+  "date_JST": "2026-10-30",
+  "authoring": "trimesh+VTK; NOT Blender",
+  "reimported_independent_cameras": 9,
+  "variants": [
+    {
+      "id": "GATE0_B",
+      "sha256": "15d735e030ea6fb0aadc611c917b7d77ee215acf783d1bdad5bc102bce4344f8",
+      "meshes": 81,
+      "triangles": 2128,
+      "research_eye_actual_downward_support_distance": 4,
+      "maker_eye_actual_downward_support_distance": 4.8,
+      "living_eye_downward_first_hit": {
+        "component": "L_PRIVATE_SLEEP_PLATFORM",
+        "distance": 0.3
+      },
+      "living_to_garden_first_hit": {
+        "component": "L_PRIVATE_SLEEP_PLATFORM",
+        "distance": 1.028
+      }
+    },
+    {
+      "id": "GATE0_B_R1",
+      "sha256": "0cd6535fa1ba32484a5a6296e5eeb1f6a4d21a9721d5fe2d73668f66e536f299",
+      "meshes": 81,
+      "triangles": 2128,
+      "research_eye_actual_downward_support_distance": 4,
+      "maker_eye_actual_downward_support_distance": 4.8,
+      "living_eye_downward_first_hit": {
+        "component": "L_PRIVATE_ACTUAL_FLOOR",
+        "distance": 5.5
+      },
+      "living_to_garden_first_hit": {
+        "component": "L_PRIVATE_ACTUAL_FLOOR",
+        "distance": 18.848
+      }
+    }
+  ],
+  "actual_shared_geometry_witnesses": [
+    "SHARED_M_ROOF_EQUALS_R_OBSERVATION_FLOOR_WEST at z32.5",
+    "SHARED_M_ROOF_EQUALS_R_OBSERVATION_FLOOR_EAST at z32.5",
+    "SHARED_M_ROOF_EQUALS_R_OBSERVATION_FLOOR_BACK at z32.5",
+    "SHARED_R_ROOF_EQUALS_L_GARDEN_FLOOR at z61.5"
+  ],
+  "garden_to_private_floor_height_gap": 11,
+  "garden_vertical_connection": "NOT BUILT",
+  "five_solid_not_habitable_bays": 5,
+  "research_eye_one_center_ray_to_making": "CLEAR both versions; NOT wide-angle art PASS",
+  "negative_closed_solid_body_control": {
+    "surface_intersections": 0,
+    "body_center_inside_solid": true,
+    "detected": true
+  },
+  "actual_public_room_axis_A": "NOT BUILT",
+  "actual_public_room_axis_B": "NOT BUILT",
+  "continuous_body_sweep": "NOT RUN",
+  "formal_331_humans_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "art": "REJECT",
+  "formal_adoption": 0,
+  "actual_binary_source": "Conversation ZIP D56_P2_D3S6_GATE0_TRUE3D_ART_REJECT.zip, NOT committed to GitHub",
+  "restrictions": {
+    "main_unchanged": true,
+    "PR53_Draft": true,
+    "minecraft_education_world_construction": false,
+    "city_integration": false,
+    "old_assets_unchanged": true
+  }
+}
