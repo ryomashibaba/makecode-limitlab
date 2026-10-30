@@ -1,0 +1,77 @@
+{
+  "study": "D56-P2-D3S17",
+  "date_jst": "2026-10-31",
+  "status": "SAVED GLB INDEPENDENT LIMITED AUDIT / NOT FORMAL SAFETY QA",
+  "artifact": "D3S17_INHABITED_CIVIC_DELTA_GATE0.glb",
+  "sha256": "5e2c07ecf6e4877ea0a2268fcfb0993812ee90e1b92b1c196c790bb828546dde",
+  "real_nodes": 902,
+  "real_triangles": 21892,
+  "watertight": 902,
+  "nonpositive_signed_volume": 0,
+  "cameras": [
+    "city_front",
+    "city_reverse",
+    "city_oblique",
+    "city_aerial",
+    "maker_eye",
+    "research_eye",
+    "living_eye",
+    "city_street_eye",
+    "garden_eye"
+  ],
+  "maker_centre_first_hit": {
+    "name": "M_SPACECRAFT_VISIBLE_UNDER_CONSTRUCTION",
+    "distance": 52.42956
+  },
+  "research_centre_first_hit": {
+    "name": "M_SPACECRAFT_VISIBLE_UNDER_CONSTRUCTION",
+    "distance": 120.77336
+  },
+  "living_centre_first_hit": {
+    "name": "L_LIVED_SEMIPUBLIC_GARDEN_1_CANOPY",
+    "distance": 30.55344
+  },
+  "initial_floor_support": {
+    "expected_first": 2,
+    "total": 4,
+    "research_first_hit": "R_REAL_RESEARCHER_0_HEAD",
+    "garden_first_hit": "E_CITY_REAL_SHARED_LIVING_STREET_FLOOR_3_1",
+    "warning": "do not infer garden floor missing or research floor unsupported; raw samples intersect unrelated material first"
+  },
+  "research_nearby_probe": {
+    "xy": [
+      98,
+      78
+    ],
+    "floor_first": true,
+    "floor_z": 52,
+    "scope": "one non-person location; not a formal human shoe sweep"
+  },
+  "garden_clearance_contradiction": {
+    "xy": [
+      129,
+      123
+    ],
+    "garden_top_z": 84,
+    "overhead_underside_z": 87,
+    "clearance": 3,
+    "required_up_to": 3.25,
+    "formal_human_body_test": false
+  },
+  "private_door_finite_centre_ray_hits": 0,
+  "synthetic_negative_door_blocker_detected": true,
+  "synthetic_closed_solid_interior_detected": true,
+  "overall_art": "HOLD",
+  "candidate_art": "REJECT",
+  "tech": "HOLD",
+  "adoptions": 0,
+  "complete_indoor_civic_rooms": "NOT BUILT",
+  "connected_vertical_route": "NOT BUILT",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "source_archive": "Conversation ZIP, 20 files, CRC passed; GitHub text only",
+  "no_minecraft_write": true,
+  "no_city_integration": true,
+  "no_main_change": true,
+  "no_pr53_merge": true
+}
