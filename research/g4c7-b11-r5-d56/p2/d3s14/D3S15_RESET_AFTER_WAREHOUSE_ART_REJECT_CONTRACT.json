@@ -1,0 +1,28 @@
+{
+  "study": "D56-P2-D3S15",
+  "state": "ENTRY CONTRACT / NOT BUILT / ART HOLD",
+  "inherited_d3s14": "A/B real GLB art reject; 14 reloaded camera views; four finite floor support checks and three in-memory negative controls each",
+  "target": "extraordinary inhabited futuristic urban architecture shaped by the real fabrication, research, and lived private thresholds",
+  "forbidden_repeats": [
+    "warehouse plus attached box skyscrapers",
+    "left-right swapping of essentially the same skyline",
+    "decorating or multiplying rejected D3S14 block geometry",
+    "D3S13 solid mass wedges, S11 box campus, S12 flat frames"
+  ],
+  "art_gate_first": [
+    "architecturally distinct real spatial systems, not the same maker hall with swapped towers",
+    "making/research/living human eye compositions and front/reverse urban silhouettes must both be compelling",
+    "same coherent XYZ; use one actual shared surface where warranted",
+    "reject on unconvincing urban beauty before large 3D/QA expansion"
+  ],
+  "post_art_only": [
+    "actual continuous two-axis enclosed public room and real vertical access",
+    "independent reloaded GLB body+solid/line intersection with negative controls",
+    "formal 331/993 and G0/S1/G1/G2/G3 without relaxation"
+  ],
+  "no_minecraft_world_write": true,
+  "no_city_integration": true,
+  "no_main_edit": true,
+  "no_pr53_merge": true,
+  "formal_art_adoptions": 0
+}
