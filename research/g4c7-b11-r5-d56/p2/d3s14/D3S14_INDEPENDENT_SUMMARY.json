@@ -1,0 +1,46 @@
+{
+  "study": "D56-P2-D3S14",
+  "date_JST": "2026-10-30",
+  "source": "independently reloaded true saved GLB, limited finite geometric audit; primary binary and scripts in conversation ZIP, NOT permanently GitHub archived",
+  "variants": {
+    "A": {
+      "meshes": 166,
+      "triangles": 3436,
+      "cameras": 7,
+      "maker_first_ship_related": 9,
+      "research_first": {
+        "transparent_guard": 6,
+        "crane_beam": 2,
+        "ship": 1
+      },
+      "living_unobstructed_9": 9,
+      "finite_support": 4,
+      "negative_controls": 3,
+      "art": "REJECT"
+    },
+    "B": {
+      "meshes": 177,
+      "triangles": 3568,
+      "cameras": 7,
+      "maker_first_ship_related": 9,
+      "research_first": {
+        "transparent_guard": 6,
+        "crane_beam": 2,
+        "ship": 1
+      },
+      "living_unobstructed_9": 7,
+      "finite_support": 4,
+      "negative_controls": 3,
+      "art": "REJECT"
+    }
+  },
+  "overall_art": "HOLD",
+  "formal_art_adoptions": 0,
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "two_real_internal_civic_room_axes": "NOT BUILT",
+  "full_body_sweep": "NOT RUN",
+  "city_integration": false,
+  "minecraft_world_write": false,
+  "source_scope": "finite 3x3 rays not continuous FOV; transparent glass hit not necessarily opaque obstruction"
+}
