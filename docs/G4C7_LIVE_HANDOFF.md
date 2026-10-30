@@ -1,3 +1,9 @@
+# 【D56-P2-D3S5 専用SOURCE CI 7/7 SUCCESS・監査JSONをGitHub恒久保管／2026-10-30 JST 追加照合】
+
+> 直前のD3S5研究エントリはそのまま保持。**実際の専用SOURCE/PRE3D CI** [#40997909033](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40997909033) が**completed / SUCCESS**。保存契約とGitHub上の真正Pythonで7種類の意図的な不正を全検出。GitHub Actions botが [`5f08080175b1dab6395ac6b8c7753ca430facd7c`](https://github.com/ryomashibaba/makecode-limitlab/commit/5f08080175b1dab6395ac6b8c7753ca430facd7c) に[検査生成原本`D3S5_B_PRE3D_AUDIT.json`](../research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_PRE3D_AUDIT.json)を恒久保管したことを**実ファイル再取得**で確認。数値はXY交点(8.461,39.284)、軸Z差20.430、交差角75.407°、予約厚M/R 105×37×4・R/L 70×38×2、グラフ12ノード/12エッジ、故意破損7/7。**真のGLB・公共室・人体検査・ART採用の証明ではない**。通常Verify [#40998017956](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/40998017956) SUCCESSは旧HEAD `e390dca540c46639f2912e6eae89901bf9e6c8ca` 対応であり、bot生成の後続HEADへ無条件に転用しない。PR#53 Draft維持、main/ワールド変更なし。
+
+---
+
 # 【D56-P2-D3S5 作者美術2方向/8個別2D場面、BのXYZ共有厚・2軸SOURCE予約と7故意破損／A ART REJECT・B PRE-ART HOLD → D3S6／2026-10-30 JST】
 
 > **実際の美術制作と厳しい採否**：[D3S5独立作者2D美術2方向・SOURCE限定審査](../research/g4c7-b11-r5-d56/p2/d3s5/D3S5_TWO_AUTHOR_ART_GATE_JA.md)。A《深層工房を抱く都市峡谷》とB《多重庭街区の編まれた公共室》は別の造形原理で作成。各都市俯瞰＋制作M・研究R・生活Lの**個別作者2D場面**をPNGと編集可能SVGで作図し、2案比較JPEGを実際に目視。Aは再び巨大壁の間の孤立中央工房に見えるため**ART REJECT**。Bは庭・街区・研究と制作の連続性に相対的な可能性があるが、低層キャンパス化・抽象的な工房表現・実住居の不足が残り**PRE-ART HOLD**。**両案ともART PASSではなく、正式美術採用0**。4場面は同一GLBからの独立透視ではない。**今回はGLB/BLENDを作成していない**（前段Gateの否決を尊重）。
