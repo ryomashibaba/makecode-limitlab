@@ -1,0 +1,78 @@
+{
+  "study": "D56-P2-D3S18",
+  "date_jst": "2026-10-31",
+  "classification": "ART-FIRST LIGHTWEIGHT SAVED-GLB THREE CONCEPT SCOUTS, NOT ACTUAL HABITATION / FORMAL QA",
+  "variants": [
+    {
+      "candidate": "A",
+      "name": "TRIBUTARY CIVIC BASIN",
+      "saved_glb": "D3S18_A_LIGHTWEIGHT_SCOUT.glb",
+      "sha256": "1383647b25fdc0afa66c5936d733617eebb89a550e617d7f84274fd9a3bae213",
+      "nodes": 234,
+      "triangles": 3228,
+      "watertight_nodes": 234,
+      "nonpositive_volume": 0,
+      "true_cameras": 7,
+      "true_triangle_cut_diagrams": 3,
+      "art": "REJECT"
+    },
+    {
+      "candidate": "B",
+      "name": "VERTICAL CIVIC FOLD",
+      "saved_glb": "D3S18_B_LIGHTWEIGHT_SCOUT.glb",
+      "sha256": "cf6a8a2668884b6ccb5bc3450018cb3cf1e19c167124ebf9bcb7f7bf50f95b36",
+      "nodes": 321,
+      "triangles": 4272,
+      "watertight_nodes": 321,
+      "nonpositive_volume": 0,
+      "true_cameras": 7,
+      "true_triangle_cut_diagrams": 3,
+      "art": "REJECT"
+    },
+    {
+      "candidate": "C",
+      "name": "FRACTURED MULTI-COURT CITY",
+      "saved_glb": "D3S18_C_LIGHTWEIGHT_SCOUT.glb",
+      "sha256": "79af1bb7fa851e0375ca8a42126aa5e9716fec63507e58a1883278cba8b6e69e",
+      "nodes": 355,
+      "triangles": 4680,
+      "watertight_nodes": 355,
+      "nonpositive_volume": 0,
+      "true_cameras": 7,
+      "true_triangle_cut_diagrams": 3,
+      "art": "REJECT"
+    }
+  ],
+  "original_glb_and_python": "CONVERSATION ZIP ONLY, not GitHub archived",
+  "source_read_path": "GLB reloaded independently of author script",
+  "cross_sections": [
+    "plan z32",
+    "long y0",
+    "transverse x0"
+  ],
+  "actual_public_indoor_fabrication_room": "NOT BUILT",
+  "real_occupiable_private_room": "NOT BUILT",
+  "connected_vertical_route": "NOT BUILT",
+  "two_nonparallel_covered_civic_areas": "NOT BUILT",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "continuous_body_test": "NOT RUN",
+  "negative_controls": "NOT RUN: candidates rejected at Gate 0",
+  "formal_adoptions": 0,
+  "overall_art": "HOLD",
+  "inherited_constraints": {
+    "body_331": 331,
+    "feet_993": 993,
+    "halfwidth": 0.65,
+    "height": [
+      0.15,
+      3.25
+    ],
+    "historic_ceiling_interference": 45,
+    "unsupported_foot": 0
+  },
+  "world_write": false,
+  "city_integration": false,
+  "main_edit": false,
+  "pr53_merge": false
+}
