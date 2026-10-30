@@ -1,0 +1,32 @@
+name: G4-C7 D56 D3S9 art-first SOURCE guard (not ART PASS)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d56/p2/d3s9/D3S9_ART_GATE_STATE.json'
+      - 'research/g4c7-b11-r5-d56/p2/d3s9/d3s9_source_only_art_guard.py'
+      - '.github/workflows/g4c7-d56-d3s9-art-source-guard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  anti-false-promotion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source-only guard, deliberately not beauty evaluation
+        run: python research/g4c7-b11-r5-d56/p2/d3s9/d3s9_source_only_art_guard.py
+      - name: Preserve exact model rejection inputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d3s9-art-source-reject-not-glb
+          path: |
+            research/g4c7-b11-r5-d56/p2/d3s9/D3S9_ART_GATE_STATE.json
+            research/g4c7-b11-r5-d56/p2/d3s9/d3s9_source_only_art_guard.py
+          if-no-files-found: error
+          retention-days: 30
