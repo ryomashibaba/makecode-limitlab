@@ -1,0 +1,74 @@
+{
+  "study": "D56-P2-D3S5-B",
+  "classification": "SOURCE PREFLIGHT ONLY; NOT ACTUAL MESH OR ART PASS",
+  "source_sha256": "21b0730b784c9df1c4fc9103300123f5b9f1155b3a34a401a5417957345d368c",
+  "overlap_reservations": [
+    {
+      "pair": "M/R",
+      "reserved_overlap": [
+        105,
+        37,
+        4
+      ],
+      "physical_triangle_support": "NOT BUILT"
+    },
+    {
+      "pair": "R/L",
+      "reserved_overlap": [
+        70,
+        38,
+        2
+      ],
+      "physical_triangle_support": "NOT BUILT"
+    }
+  ],
+  "intersecting_axes_not_mesh": {
+    "x": 8.461,
+    "y": 39.284,
+    "z_gap": 20.43,
+    "smaller_angle_deg": 75.407
+  },
+  "graph_nodes": 12,
+  "graph_edges": 12,
+  "detected": 7,
+  "total_negative_controls": 7,
+  "negative_controls": [
+    {
+      "mutation": "parallel axes",
+      "detected": true,
+      "reason": "parallel public axes"
+    },
+    {
+      "mutation": "remove shared thickness",
+      "detected": true,
+      "reason": "shared XYZ reservation collapsed"
+    },
+    {
+      "mutation": "break vertical interchange",
+      "detected": true,
+      "reason": "no reserved vertical interchange"
+    },
+    {
+      "mutation": "public directly opens into private",
+      "detected": true,
+      "reason": "privacy bypass"
+    },
+    {
+      "mutation": "false actual public-room mesh",
+      "detected": true,
+      "reason": "false physical pass"
+    },
+    {
+      "mutation": "eye outside living room",
+      "detected": true,
+      "reason": "eye outside L"
+    },
+    {
+      "mutation": "false formal human QA",
+      "detected": true,
+      "reason": "false formal pass"
+    }
+  ],
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN"
+}
