@@ -1,0 +1,78 @@
+{
+  "study": "D56-P2-D3S10-R1",
+  "source_kind": "STRICT_2D_FACE_TOUCH_RESERVATIONS_IN_COMMON_XYZ_NOT_REAL_MESH",
+  "original_full_XYZ_source_location": "current conversation D56_P2_D3S10_XYZ_MASTER_SOURCE_AND_ART_REJECT.zip",
+  "edits_to_named_volumes": [
+    {
+      "id": "R_LOW_GALLERY",
+      "set_z_min": 97
+    },
+    {
+      "id": "R_EAST_BROW",
+      "set_z_max": 169
+    },
+    {
+      "id": "L_GARDEN_RING",
+      "set_z_min": 169
+    }
+  ],
+  "shared_patches": [
+    {
+      "id": "M_ROOF_R_FLOOR",
+      "from_zone": "M",
+      "to_zone": "R",
+      "z": 97,
+      "polygon": [
+        [
+          -46.2165,
+          -97.7297
+        ],
+        [
+          -79.5033,
+          -94.7614
+        ],
+        [
+          -66.8283,
+          -51.3043
+        ],
+        [
+          -40.9996,
+          -58.1679
+        ]
+      ],
+      "dual_face_source_overlap": 1,
+      "actual_triangles": "NOT_BUILT"
+    },
+    {
+      "id": "R_ROOF_L_GARDEN",
+      "from_zone": "R",
+      "to_zone": "L",
+      "z": 169,
+      "polygon": [
+        [
+          130.8446,
+          -48.2911
+        ],
+        [
+          133.2773,
+          -54.5756
+        ],
+        [
+          77.3061,
+          -65.6844
+        ],
+        [
+          78.2366,
+          -60.1011
+        ]
+      ],
+      "dual_face_source_overlap": 1,
+      "actual_triangles": "NOT_BUILT"
+    }
+  ],
+  "verified_against": "the complete R1 SOURCE inside conversation ZIP; full code/actual massing JSON not GitHub archived",
+  "actual_vertical_transfer": "NOT_BUILT",
+  "actual_living_room": "NOT_BUILT",
+  "art": "REJECT",
+  "formal_331_993": "NOT RUN"
+}
