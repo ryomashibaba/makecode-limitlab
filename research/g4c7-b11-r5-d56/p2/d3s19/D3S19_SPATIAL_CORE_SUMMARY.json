@@ -1,0 +1,128 @@
+{
+  "study": "D56-P2-D3S19",
+  "mode": "DESIGN INTENT ONLY, NO TRUE GLB",
+  "direction": "VEIL GARDEN (PRE-ART HOLD)",
+  "coordinate_system": "right handed X EAST, Y NORTH, Z UP; symbolic units NOT Minecraft coordinates",
+  "bound": {
+    "x": [
+      -400,
+      400
+    ],
+    "y": [
+      -280,
+      280
+    ],
+    "z": [
+      0,
+      400
+    ]
+  },
+  "hall_outline_xy": [
+    [
+      -156,
+      -158
+    ],
+    [
+      125,
+      -158
+    ],
+    [
+      194,
+      -80
+    ],
+    [
+      191,
+      88
+    ],
+    [
+      103,
+      149
+    ],
+    [
+      -158,
+      141
+    ],
+    [
+      -214,
+      58
+    ]
+  ],
+  "hall_floor_z": 0,
+  "spacecraft": {
+    "xy": [
+      13,
+      -6
+    ],
+    "top_z": 181
+  },
+  "maker": {
+    "eye_xyz": [
+      -43,
+      -112,
+      1.7
+    ],
+    "floor_z": 0,
+    "target_xyz": [
+      13,
+      -6,
+      95
+    ]
+  },
+  "researcher": {
+    "eye_xyz": [
+      164,
+      -24,
+      109.7
+    ],
+    "floor_z": 108,
+    "target_xyz": [
+      13,
+      -6,
+      108
+    ]
+  },
+  "resident": {
+    "eye_xyz": [
+      -249,
+      95,
+      164.7
+    ],
+    "floor_z": 163
+  },
+  "private_garden": {
+    "center_xyz": [
+      -203,
+      81,
+      163
+    ],
+    "floor_z": 163,
+    "human_overhead_clearance_target": 3.25,
+    "actual_clearance": "NOT TESTED"
+  },
+  "canopy_roof": {
+    "top_target_z": 246,
+    "actual_enclosure": "NOT BUILT"
+  },
+  "outer_south_silhouette_peak_approx_z": 350,
+  "outer_north_silhouette_peak_approx_z": 360,
+  "formally_enclosed_2_civic_axes": "NOT BUILT",
+  "actual_three_dimensional_rays": "NOT TESTED",
+  "real_glb": "NONE",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "other_concepts": [
+    {
+      "name": "HIGH SHELL RING",
+      "outcome": "EARLY REJECT: giant ring recurs"
+    },
+    {
+      "name": "STACKED CIVIC CANYON",
+      "outcome": "EARLY REJECT: repeated terraces recurs"
+    }
+  ],
+  "sources": {
+    "complete_binary_and_program": "conversation ZIP, not GitHub",
+    "vector_svg_sha256": "8c02a6b2278ed1ff55705d47d81503bad2fc5cee3bb2dbaed164e3030322aea2",
+    "source_json_sha256": "fb62c0957619d34f82e57235f7a91590c5998f1d7681e105cadf94681fb76d99"
+  }
+}
