@@ -1,0 +1,41 @@
+{
+  "study": "D56-P2-D3S11",
+  "status": "NOT_BUILT_ART_HOLD",
+  "major_correction": "Stop treating a set of semi-transparent 3D mass envelopes as a city; first produce a single beautiful and lived-in civic negative space and coherent inhabited reverse/front.",
+  "prior_evidence": {
+    "D3S8": "2 independently constructed GLB art rejects, A colorful tubes B box assembly",
+    "D3S9": "two 2D city art silhouettes both rejected, no GLB",
+    "D3S10": "single XYZ 21 volumetric reservations and plan+two sections+6 massing cameras (each original and corrected R1), source-only shared-face mismatch fixed R1; both ART REJECT"
+  },
+  "art_first_requirements": [
+    "The source of beauty is actual shared fabrication/research/living experience and human-scaled civic rooms, not placeholder geometry",
+    "Create a truly iconic inhabited urban VOID visible from the maker, researcher, resident, CITY FRONT and genuinely distinct REVERSE",
+    "Two nonparallel axes must be explicitly wide internal ROOM volumes carved out of buildings, not centerline reservations overlapping uncarved solids",
+    "Same source XYZ plan/long section/cross section must include actual human-facing interior, usable supported floors and door thresholds",
+    "Show roofs and side enclosure as usable shared architecture that controls silhouette, not transparent conceptual blocks",
+    "Artwork must be critically inspected before producing repetitive architecture or large GLB"
+  ],
+  "negative_tests_to_carry": [
+    "exact M/R and R/L dual-touch XY+Z SOURCE face test",
+    "detect 2 axes crossing uncarved solids and their z gap at transfer",
+    "body completely contained inside a solid must fail despite no surface intersections",
+    "adversarial removal of actual step/door obstruction if real GLB is built"
+  ],
+  "red_flags_to_reject": [
+    "colored semi-transparent stacks of cuboids",
+    "three detached sculptural stones or holes",
+    "single huge tent or pile of roof plates",
+    "pipe, spike or skinny girder bundle",
+    "small single-campus cluster pretending to be an enormous city",
+    "large volumes with no usable inhabited interiors",
+    "public roads/crossing lines masquerading as indoor corridors"
+  ],
+  "formal_ART_adoptions": 0,
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "minecraft_education_construction": false,
+  "city_integration": false,
+  "main_unchanged": true,
+  "PR53_must_remain_draft": true,
+  "actual_completed_true_GL_B": false
+}
