@@ -1,0 +1,35 @@
+{
+  "study": "D56-P2-D3S17",
+  "status": "ENTRY / NOT BUILT / ART HOLD / ZERO ADOPTIONS",
+  "objective": "Truly extraordinary inhabited futuristic mega-city whose public spacecraft fabrication, research sightlines and private living make the same physical architecture",
+  "rejected_lessons": [
+    "D3S14: warehouse + box towers",
+    "D3S15: stepped apartment shelves, repeated arcs and floor view collisions; mesh orientation failures",
+    "D3S16: two sets of monumental diagonal braces/bridges that look like sculptures, both maker/research/living lives visually unresolved"
+  ],
+  "work_sequence": [
+    "First genuinely inhabitable public manufacturing ROOM: full-height clear industrial activity with roof, lateral enclosure and actual humans around extraordinary spacecraft, not an exposed rectangular slab",
+    "Independently composed research eye with wide open view of that SAME manufacturing activity and a genuinely supported observation floor",
+    "Genuinely enclosed private room with level-access semi-public garden, door sized for real human use, and meaningful surrounding city vista",
+    "One spatial original in single XYZ. Actual city street, urban void, inhabited facade and distinct front/reverse skyline derive from the *same* real activities. Check maker/research/living eyes before extending outer silhouette",
+    "Prefer one artistically convincing comprehensive candidate over many superficial geometric alternatives. Gate 0 reject bland monumental braces/flat platforms/single-scene sculptures before costly modeling",
+    "Independently reload actual saved GLB; audit mesh orientation, support, eye rays and synthetic negative controls without conflating these with ART",
+    "Only after ART feasibility, advance to complete 2 nonparallel side-enclosed civic room axes, real connected vertical route, continuous body sweep, formal 331/993 and G0/S1/G1/G2/G3"
+  ],
+  "no_automatic_art_pass": true,
+  "still_not_built": [
+    "2 complete indoor public room axes",
+    "connected full human vertical route"
+  ],
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "formal_art_adoptions": 0,
+  "forbidden": [
+    "Minecraft Education construction",
+    "city integration",
+    "main write",
+    "PR53 merge",
+    "old original overwrites",
+    "reusing the rejected A/B braces or treating positive signed volumes as beauty"
+  ]
+}
