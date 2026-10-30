@@ -1,0 +1,65 @@
+name: G4-C7 D56 D3S5 B source-only spatial reservation / ART HOLD
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - "research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_SPATIAL_RESERVATION.json"
+      - "research/g4c7-b11-r5-d56/p2/d3s5/d3s5_b_source_gate.py"
+      - ".github/workflows/g4c7-d56-d3s5-b-source-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: d3s5-b-pre3d-single-research-branch
+  cancel-in-progress: false
+
+jobs:
+  source-only-not-true3d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify artist-side XYZ reservation and seven deliberate faults
+        run: python research/g4c7-b11-r5-d56/p2/d3s5/d3s5_b_source_gate.py
+      - name: Assert generated evidence is explicitly NOT ART / NOT TRUE3D
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_PRE3D_AUDIT.json')
+          d=json.loads(p.read_text())
+          assert d["detected"]==d["total_negative_controls"]==7
+          assert d["classification"]=="SOURCE PREFLIGHT ONLY; NOT ACTUAL MESH OR ART PASS"
+          assert d["formal_331_993"]=="NOT RUN"
+          assert d["formal_G0_S1_G1_G2_G3"]=="NOT RUN"
+          print("D3S5 source-only finite checks PASS; ART HOLD; TRUE3D NOT BUILT")
+          PY
+      - name: Archive auditable SOURCE-ONLY evidence to Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d56-d3s5-b-pre3d-source-hold
+          path: |
+            research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_SPATIAL_RESERVATION.json
+            research/g4c7-b11-r5-d56/p2/d3s5/d3s5_b_source_gate.py
+            research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_PRE3D_AUDIT.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Persist SOURCE-only audit JSON to research branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/g4c7-b11-r5-d56/p2/d3s5/D3S5_B_PRE3D_AUDIT.json
+          if git diff --cached --quiet; then
+            echo "Evidence already archived; nothing to change"
+            exit 0
+          fi
+          git commit -m "archive(g4c7): D3S5 B 7 negative pre3d sources, no TRUE3D or ART claim"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
