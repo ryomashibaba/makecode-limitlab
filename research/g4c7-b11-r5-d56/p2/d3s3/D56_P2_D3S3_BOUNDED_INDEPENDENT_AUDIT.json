@@ -1,0 +1,81 @@
+{
+  "study": "D56-P2-D3S3",
+  "variant": "SECTION_A",
+  "date_JST": "2026-10-30",
+  "model": {
+    "format": "trimesh GLB saved and reloaded",
+    "blender_used": false,
+    "meshes": 140,
+    "triangles": 4536,
+    "glb_sha256": "a33a6b92462b7d8045bbf2d902ea3a88c0dd7af6e13a8fe743e543b359e9c4df",
+    "continuous_fold_watertight": true,
+    "continuous_fold_euler": 2,
+    "actual_independent_cameras": 9
+  },
+  "independent_mesh_gate": {
+    "data": "actual triangles from newly reloaded GLB; generator NOT imported",
+    "samples_per_axis": 93,
+    "axes": {
+      "A": {
+        "floor_support": 93,
+        "body_vertical_clear_combined": 59,
+        "roof_above_somewhere": 93,
+        "body_surface_intersection": 28,
+        "body_closed_solid_interior": 34
+      },
+      "B": {
+        "floor_support": 90,
+        "body_vertical_clear_combined": 93,
+        "roof_above_somewhere": 93,
+        "body_surface_intersection": 0,
+        "body_closed_solid_interior": 0
+      }
+    },
+    "view_rays": {
+      "maker_to_machine": {
+        "blocked": false
+      },
+      "research_to_making": {
+        "blocked": true,
+        "blocker": "ACTUAL_SINGLE_SECTION_M_R_L_CITY_SKYLINE",
+        "first_hit_distance": 0.1535913664450631
+      },
+      "living_to_tree": {
+        "blocked_surface": true,
+        "material_block_before_last_2_units": false,
+        "blocker": "L_GARDEN_TREE_TRUNK_2",
+        "first_hit_distance": 101.42938250632754,
+        "target_distance": 102.04410811016969
+      },
+      "public_A_to_making": {
+        "blocked": true,
+        "blocker": "ACTUAL_SINGLE_SECTION_M_R_L_CITY_SKYLINE",
+        "first_hit_distance": 19.52415737551065
+      }
+    },
+    "negative_controls": {
+      "M_real_floor_removed": true,
+      "B_real_floor_removed": true,
+      "body_crossing_blocker_added": true,
+      "body_fully_enclosed_in_watertight_solid_detected": true,
+      "surface_intersect_fully_enclosed_only": false,
+      "detected": 4,
+      "total": 4
+    }
+  },
+  "model_art": "REJECT",
+  "overall_art": "HOLD",
+  "art_adoption": 0,
+  "SECTION_B": "NOT GENERATED: early art gate abort after A",
+  "city_topology": "FAIL: white folded roof isolated architecture, not 3 inhabited city districts",
+  "public_two_internal_axial_room_contract": "NOT MET",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "human_body_continuous_sweep": "NOT RUN",
+  "structural_safety_weather_fire_daylighting": "NOT VERIFIED",
+  "source_and_binary_location": "Conversation ZIP D56_P2_D3S3_TRUE_GL_B_ART_REJECT_AND_S4_PLAN.zip, NOT GitHub archived",
+  "main_unchanged": true,
+  "PR53_draft": true,
+  "minecraft_construction": false,
+  "city_integration": false
+}
