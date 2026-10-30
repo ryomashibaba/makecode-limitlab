@@ -1,0 +1,145 @@
+{
+  "study": "D56-P2-D3S12-A",
+  "type": "AUTHOR INTENT ONLY, NOT BUILT OR REAL GLB",
+  "geometry_units": "conceptual, NOT Minecraft metres/blocks",
+  "manufacturing": {
+    "bounds_min": [
+      -150,
+      -120,
+      0
+    ],
+    "bounds_max": [
+      120,
+      90,
+      160
+    ],
+    "event_target": [
+      0,
+      0,
+      60
+    ],
+    "intended_roof_level": 160,
+    "aperture_xy": [
+      [
+        -50,
+        -15
+      ],
+      [
+        55,
+        75
+      ]
+    ]
+  },
+  "research": {
+    "eye_xyz": [
+      -54,
+      65,
+      176
+    ],
+    "intended_shared_M_roof_R_floor_patch_xy": [
+      [
+        -85,
+        -10
+      ],
+      [
+        -50,
+        95
+      ]
+    ],
+    "source_level_z": 160,
+    "actual_triangle_support": "NOT BUILT"
+  },
+  "living": {
+    "eye_xyz": [
+      95,
+      54,
+      246
+    ],
+    "garden_target_xyz": [
+      58,
+      54,
+      242
+    ],
+    "private_room_xy": [
+      [
+        80,
+        25
+      ],
+      [
+        145,
+        85
+      ]
+    ],
+    "private_floor_z": 240,
+    "garden_xy": [
+      [
+        30,
+        25
+      ],
+      [
+        80,
+        85
+      ]
+    ],
+    "garden_z": 240,
+    "shared_R_roof_L_garden_patch_xy": [
+      [
+        30,
+        25
+      ],
+      [
+        70,
+        85
+      ]
+    ],
+    "intended_door": {
+      "x": 80,
+      "y_min": 45,
+      "y_max": 63
+    },
+    "actual_roof_floor_door": "NOT BUILT"
+  },
+  "axes": {
+    "A": {
+      "start_xyz": [
+        -235,
+        -110,
+        70
+      ],
+      "end_xyz": [
+        230,
+        105,
+        125
+      ],
+      "planned_width": 16,
+      "planned_height": 16
+    },
+    "B": {
+      "start_xyz": [
+        -185,
+        125,
+        210
+      ],
+      "end_xyz": [
+        200,
+        -105,
+        170
+      ],
+      "planned_width": 14,
+      "planned_height": 14
+    },
+    "actual_civic_rooms": "NOT BUILT",
+    "vertical_transfer": "NOT BUILT"
+  },
+  "source_status": {
+    "author_svg_not_same_xyz_cameras": true,
+    "true_glb": "NOT BUILT",
+    "formal_art_adoptions": 0,
+    "formal_331_993": "NOT RUN",
+    "formal_G0_S1_G1_G2_G3": "NOT RUN",
+    "minecraft_ed_world_write": false,
+    "main_unchanged": true,
+    "PR53_draft": true
+  },
+  "complete_original_json_location": "current conversation ZIP D56_P2_D3S12_ART_FIRST_TWO_AUTHOR_DIRECTIONS.zip"
+}
