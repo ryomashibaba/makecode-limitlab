@@ -1,0 +1,200 @@
+{
+  "study": "D56-P2-D3S5-B",
+  "status": "PRE3D RESERVATION ONLY; NOT ACTUAL GLB; NOT ART PASS",
+  "coordinates": "author concept units; NOT measured construction lengths",
+  "districts": {
+    "M": {
+      "name": "Public Fabrication Commons",
+      "bounds": [
+        [
+          -90,
+          -55,
+          4
+        ],
+        [
+          80,
+          45,
+          34
+        ]
+      ],
+      "eye": [
+        -42,
+        -8,
+        7
+      ],
+      "experience": "A working public production court opening visually onto neighborhood gardens"
+    },
+    "R": {
+      "name": "Observation and Research Inhabited Hall",
+      "bounds": [
+        [
+          -25,
+          8,
+          30
+        ],
+        [
+          105,
+          82,
+          62
+        ]
+      ],
+      "eye": [
+        15,
+        45,
+        42
+      ],
+      "experience": "Observation with floor support and unblocked view into the same making room"
+    },
+    "L": {
+      "name": "Private Dwelling / Semi-public Garden",
+      "bounds": [
+        [
+          35,
+          44,
+          60
+        ],
+        [
+          125,
+          140,
+          102
+        ]
+      ],
+      "eye": [
+        65,
+        108,
+        76
+      ],
+      "experience": "A private room with door threshold, garden, and a visible second district"
+    }
+  },
+  "unbuilt_shared_thickness_reservations": [
+    {
+      "pair": [
+        "M",
+        "R"
+      ],
+      "role": "making REAL roof must become research REAL floor"
+    },
+    {
+      "pair": [
+        "R",
+        "L"
+      ],
+      "role": "research REAL roof/wall must become living REAL garden/privacy boundary"
+    }
+  ],
+  "civic_axes": [
+    {
+      "id": "A",
+      "from": [
+        -150,
+        -70,
+        17
+      ],
+      "to": [
+        140,
+        130,
+        44
+      ],
+      "proposed_internal_clear_width": 16,
+      "proposed_internal_clear_height": 11,
+      "note": "not a ground-only painted road"
+    },
+    {
+      "id": "B",
+      "from": [
+        -85,
+        120,
+        73
+      ],
+      "to": [
+        135,
+        -70,
+        24
+      ],
+      "proposed_internal_clear_width": 14,
+      "proposed_internal_clear_height": 10,
+      "note": "not a detached unsupported skybridge"
+    }
+  ],
+  "public_route_edges_undirected": [
+    [
+      "A_WEST",
+      "MAKER_PUBLIC"
+    ],
+    [
+      "MAKER_PUBLIC",
+      "RESEARCH_PUBLIC"
+    ],
+    [
+      "RESEARCH_PUBLIC",
+      "A_EAST"
+    ],
+    [
+      "B_NORTH",
+      "GARDEN_PUBLIC"
+    ],
+    [
+      "GARDEN_PUBLIC",
+      "INTERCHANGE_UPPER"
+    ],
+    [
+      "INTERCHANGE_UPPER",
+      "RESEARCH_PUBLIC"
+    ],
+    [
+      "RESEARCH_PUBLIC",
+      "INTERCHANGE_LOWER"
+    ],
+    [
+      "INTERCHANGE_LOWER",
+      "B_SOUTH"
+    ],
+    [
+      "INTERCHANGE_UPPER",
+      "VERTICAL_TRANSFER"
+    ],
+    [
+      "VERTICAL_TRANSFER",
+      "INTERCHANGE_LOWER"
+    ],
+    [
+      "GARDEN_PUBLIC",
+      "LIVING_LOBBY"
+    ],
+    [
+      "LIVING_LOBBY",
+      "LIVING_PRIVATE"
+    ]
+  ],
+  "public_nodes": [
+    "A_WEST",
+    "MAKER_PUBLIC",
+    "RESEARCH_PUBLIC",
+    "A_EAST",
+    "B_NORTH",
+    "GARDEN_PUBLIC",
+    "INTERCHANGE_UPPER",
+    "INTERCHANGE_LOWER",
+    "VERTICAL_TRANSFER",
+    "B_SOUTH"
+  ],
+  "private_nodes": [
+    "LIVING_PRIVATE"
+  ],
+  "semi_private_transition": "LIVING_LOBBY",
+  "vertical_transfer": {
+    "node": "VERTICAL_TRANSFER",
+    "status": "TO BE ACTUALLY DESIGNED & BODY-SWEPT IN TRUE3D",
+    "unverified": true
+  },
+  "art": "B: PRE-ART HOLD / A: ART REJECT / formal adoption 0",
+  "actual_roof_floor_triangles": "NOT BUILT",
+  "actual_public_room_meshes": "NOT BUILT",
+  "actual_resident_privacy": "NOT BUILT",
+  "true3d_independent_cameras": "NOT RUN",
+  "formal_331_body_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "minecraft_world_write": false,
+  "city_integration": false
+}
