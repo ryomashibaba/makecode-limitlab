@@ -1,35 +1,48 @@
-# D3S20 — CONFLUENCE public-portal / shared-axis independent negative audit
+# D3S20 — CONFLUENCE「公共核」実3D・入口干渉の独立反証監査
 
-**2026-10-31 JST / ART REJECT / entire project ART HOLD / formally adopted ART 0 / no Minecraft construction**
+**2026-10-31 JST｜ART REJECT／全体ART HOLD／正式採用0／Minecraft Education施工禁止**
 
-## Intent and gate
+## 1. 目的と従来方針との照合
 
-This is an **independent, partial, nonconstruction architecture/portal authoring probe**, *not* a proposed full city and *not* a reversal of D3S19 VEIL GARDEN PRE-ART HOLD or earlier K0, K1, K2, SECTION, and COUPLED ART REJECT results. It attempts to correct repeated disconnected-door / independently edited-street errors without confusing a successful connection test with a beautiful large city.
+D3S19 VEIL GARDEN（PRE-ART HOLD）、K0/K1/K2/SECTION/COUPLEDの不採用・原本を変更せず、**実際の道路床・建築入口・建築外形が別々の座標で設計される問題**を改善できるか、既存研究の一環として小規模な技術試作を行った。巨大未来都市の完成でも、正式ART採用でも、実歩行安全の達成でもない。
 
-Repository baseline before this document: `10f43c91cc0a9a1464ae10540847d3d9e712d61c`, Draft PR #53, research branch `dev/g4c7-a17-monolithic-rift-fold-art-study`.
+開始時GitHub HEAD：`10f43c91cc0a9a1464ae10540847d3d9e712d61c`。継続研究ブランチ`dev/g4c7-a17-monolithic-rift-fold-art-study`、Draft PR #53。main変更なし。
 
-## Saved TRUE 3D evidence
+## 2. 実制作と保存GLBの監査
 
-- One **shared programme** defines four programme rooms (fabrication, research, culture, habitat) and an open civic crossing, using shared station XY, tangent and arterial width for actual street slabs, entry openings and room envelope. The output uses real separate floor, side and back walls, opening jambs and programme-specific roof/deck parts. **It is still architecturally rudimentary.**
-- Original saved GLB after independent VTK point-detection identified a conflict: SHA256 `63899e0ebde713c0fe2373ebbc49d9f2277676cc29cb216c06f6989fb1ee4b09`; the initial residence entry had **6/36** sample points within another building's outer wall mesh.
-- Changed the residence station/side rather than suppressing the collision. Final saved/reimported GLB: **41,380 bytes**, SHA256 `9b9237a5902a55b5a6da38ad6c4828f46fcbe83e42258eb468f3489feb73bf93`, **70 real meshes**, bounds on source and reload matched within `3.9545e-6` design units. X roughly [-199.876, 166.572], Y [-145.471, 192.898], Z [6.8, 94.3]; **conceptual design coordinate system only**.
-- 8 screenshots from **independently reloaded GLB via VTK**, including far, aerial, public eye-level and internal/entry views. NOT generative reference imagery.
-- Independent VTK containment probe on the saved meshes: **95/95 sampled arterial chest-height centre points** found no room/roof interior conflict (5 paths x 19); **144/144 samples** in 4 opening corridors (each 3 lateral x 4 length x 3 height) found no obstructing part interiors in the revised file. Roads and floors were explicitly excluded from the collision target list. These are **sample-point checks, NOT human sweep / free passable-width / flooring-support QA**.
-- A negative control that inserts an actual opaque block at the forge door is **correctly detected as blocked** by the same independent probe.
-- Two saved-reimported counterfactual models: research anchor X+24 changed **15** named saved meshes, including `street_0_1` and 14 research parts; narrowing research width 20% changed **32** meshes, including `street_0_0`, `street_0_1` and research parts. **Limited geometric co-dependence only**, not a proven safe or useable inhabited urban section.
-- Surface-only nonconstruction voxel samples on four saved meshes with conceptual pitches 1/2/4: researchward street floor 4928/1236/177; forge floor 17780/4556/599; research portal side 5122/1152/272; habitat upper terrace 5189/1310/180. Not unique whole-city voxel counts, MakeCode Fill/Clone/Place commands, performance or 1block/m calibration.
+- 共有のプログラム座標から公共道路5セグメント、交差広場、4つの用途空間（製造・研究・文化・居住）の床・側壁・入口開口・用途別上層を生成。道路と出入口は同じXYステーション・接線・道路幅を参照。
+- 初回GLB（SHA256 `63899e0ebde713c0fe2373ebbc49d9f2277676cc29cb216c06f6989fb1ee4b09`）の独立内包検査により、**居住入口36サンプル中6サンプルに他施設側壁との干渉**を発見。居住施設位置・建築側を改修し、旧原本を別に保持。
+- 修正版GLB：**41,380 bytes／70実メッシュ／SHA256 `9b9237a5902a55b5a6da38ad6c4828f46fcbe83e42258eb468f3489feb73bf93`**。保存→再読込は70メッシュ一致、作者と再読込のAABB最大差`3.9545e-6`概念単位。範囲X[-199.876,166.572]、Y[-145.471,192.898]、Z[6.8,94.3]。これらはMinecraftの施工座標でない。
+- 保存GLBを再読込し、独立VTKで全景・空撮・市民眼高など真正8視点を描画。生成AIの参考画像を実モデルと混同しない。
 
-## Art Gate 0 — REJECT
+### 最終修正版に対する点包含・負の検査
 
-1. **Far skyline: REJECT.** The four programme boxes are separated by large empty distances and linked by thin strips, not one high-density, visually original, giant urban system.
-2. **District identities: REJECT.** Roof variants differ but share the same basic envelope grammar and remain low-density detached facilities, reminiscent of older campus failures.
-3. **Public eye-level: REJECT.** The real camera scenes do not convey vital public life or a strong sequential spatial experience. Narrow point-check success is not architectural quality.
-4. **Interior and high-level: HOLD/REJECT.** Real open gaps and solids exist, but there are no qualified habitable rooms, real stairs/landings, continuous public axes or upper access, egress, stability, privacy, payload or verified daylight sections.
+保存GLBの実三角形をVTKで判定し、道路5本×19点の中心サンプル**95/95**と、4入口×36点の局所サンプル**144/144**で、対象の壁・屋根部材の内部への侵入を検出しなかった。道路と必要床を干渉対象から除外した検査であり、**人体幅、連続歩行、床支持、頭上安全、道路交差・避難の正式合格ではない**。また、故意に製造入口を塞ぐ負のテストで閉塞が検出された。
 
-**Do not detail, decorate, scale up or multiply this CONFLUENCE GLB. The key evidence is the detection/repair of a conflict and source-to-mesh coupling.** The next authoring brief must change the *urban spatial composition* (what spans what public area, layered district experience, visible active sections and density) before generating another candidate. In particular, stop generating one independent building per programme and then adding roads. Max 2 genuinely dissimilar design hypotheses and stop if both art-rejected.
+## 3. 双方向連動の保存GLB反実験（限定TECH証拠）
 
-## Evidence and safety limits
+| 設計変更 | 変化した実メッシュ数 | 変化した道路床 | 建築の変化 |
+|---|---:|---|---|
+| 研究地点をX+24移動 | 15 | `street_0_1` | 研究関連14部材 |
+| 研究空間幅を20%縮小 | 32 | `street_0_0`, `street_0_1` | 研究関連複数部材 |
 
-Conversation-produced independent evidence archive: `D3S20_CONFLUENCE_SPATIAL_GATE_ART_REJECT.zip` (19 files; **411,897 bytes**, ZIP CRC PASS; SHA256 `4b95881e0dddf75e31b77febcdccbd0f5d0e2ba83f383bf45e9965f232e9b059`). Contains reproducible Python authors, independent VTK / probe scripts, before-and-after GLB, two counterfactual GLBs, 8 view board, raw audit JSON, surface voxel samples and file hashes. **The binary/source files in that ZIP are separate conversation artifacts and not asserted to be committed in GitHub by creating this text note**.
+SECTION時の「室だけ変わり道路は変化しない」問題からは前進した。ただし**街路と部材が同時変化すること≠機能的な一体都市の成立**。
 
-Formal original conditions (331 body samples, 993 foot samples, halfwidth 0.65, foot-relative +0.15..+3.25, inherited body 45/foot-unsupported 0, continuous swept body, formal intentional-break contract, G0/S1/G1/G2/G3): **NOT RUN, thresholds unchanged.** GitHub Actions CI for this new note is **NOT CONFIRMED SUCCESS**. No Minecraft Education world changes, no city integration, no main modifications, no PR Ready/Merge. Formal ART adoption is reserved for user review.
+## 4. MakeCode向けの非施工調査
+
+保存GLBから4つの代表部材の表面ボクセルのみをサンプリング（概念ピッチ1/2/4）。研究方向道路床4,928/1,236/177、製造床17,780/4,556/599、研究室入口壁片5,122/1,152/272、居住上層テラス5,189/1,310/180。**同じ位置を重複除去した都市全体の占有数ではなく、Fill/Clone/Place命令数、Minecraft1ブロック換算、実施工時間も不明。**
+
+## 5. 四尺度ART Gate 0：不採用
+
+1. **都市遠景 REJECT**：離れた4施設が細い道路で接続された低密度モデルであり、都市の巨大な一体感・奥行・主従が不足。
+2. **地区 REJECT**：屋根の形は違っても、入力の主役は「用途ごとに独立した箱状建築を配置すること」であり、旧低層キャンパスへの回帰。
+3. **市民眼高 REJECT**：入口中央の点検査は改善したが、魅力的な街路生活や明瞭な行先・深い都市空間がない。
+4. **内部/高所 HOLD・REJECT**：実床・開口などは生成したが、実使用室の完全性、実階段・踊り場・高所への到達、荷重支持、避難、プライバシー等は不成立・未検証。
+
+**結論：ART REJECT。同じ作者文法による施設量産・装飾・巨大化は禁止。** 次は都市の公共生活と立体的街区断面そのものが複数用途の建築外形を同時に決める作者ブリーフへ戻る。新しい番号を付けるだけのモデル量産はしない。正式美術採用はユーザーの判断。
+
+## 6. 原本所在・安全境界
+
+会話成果物：`D3S20_CONFLUENCE_SPATIAL_GATE_ART_REJECT.zip`（**19ファイル／411,897 bytes／CRC PASS／SHA256 `4b95881e0dddf75e31b77febcdccbd0f5d0e2ba83f383bf45e9965f232e9b059`**）。旧GLB・修正版GLB・反実験2 GLB、作者Python、独立検査器、レンダラー、8視点比較、ボクセルサンプル、証拠SHAを収録。**ZIP内のGLB・完全Pythonは会話側原本であり、このGitHub文書だけでバイナリまでGitHub保存済みとは主張しない。**
+
+正式331人体／993足元、半幅0.65、足元相対+0.15〜+3.25、歴史的身体干渉上限45・未支持0、正式故意破損・連続人体掃引・G0/S1/G1/G2/G3は**すべてNOT RUN**、閾値変更なし。GitHub Actions成功も未確認。Minecraft Educationワールド施工・都市統合・main変更・PR Ready化・マージは行わない。
