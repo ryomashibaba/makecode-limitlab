@@ -1,0 +1,33 @@
+{
+  "study": "D56-P2-D3S8",
+  "state": "NOT BUILT / ART HOLD",
+  "baseline": "D3S7 local true3D 3 variants rejected visually despite bounded finite foot/body checks",
+  "priority": "giant beautiful futuristic multi-district city with actual inhabitants, not only small room+stairs QA",
+  "design_preconditions": [
+    "Produce one visual spatial master where 3 distinct making/research/living precincts are inseparable from majestic urban external silhouette; independent author critic must see a CITY and not canopy",
+    "Same master must have real city-front and real reverse sense of built density, complex asymmetric void, neighborhoods, not repackaged previous Loft/canyon/tower shell",
+    "At human eye, public production, research observation and real private garden thresholds must be visually excellent in a single common XYZ; no flat slabs blocking view",
+    "Proof of actual internal public civic rooms in two nonparallel XYZ axes, physically accessible with verified floor/roof/body volume and level transfer",
+    "Actual inhabited rooms instead of named fully solid fake blocks, no automatically repeated window/roof box floors",
+    "Show architectural urban artistic leap at early low-cost gate; if absent REJECT without mesh replication"
+  ],
+  "technical_priors_to_reuse_not_as_art": [
+    "D3S7 shared M-roof=R-floor and R-roof=G-floor real triangle geometry",
+    "D3S7 60+40 step discrete checks, do not treat as continuous body sweeping",
+    "adversarial removed tread and solid inserted at real door",
+    "adversarial line wholly enclosed in watertight body with surface hits 0 must still be detected"
+  ],
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "art": "HOLD",
+  "adoption": 0,
+  "prohibited": [
+    "main changes",
+    "PR#53 merge",
+    "Minecraft Education construction",
+    "city integration",
+    "promoting technical/CI pass to aesthetic success",
+    "repairing D3S7 canopy with decorative skins, high-rise clones, or giant isolated shell"
+  ],
+  "note": "Two-axis public city and full traversal not certified; any future S8 should return to design creativity rather than endlessly accumulating QA-gated miniature buildings."
+}
