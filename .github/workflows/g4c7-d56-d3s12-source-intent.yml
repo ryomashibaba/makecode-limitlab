@@ -1,0 +1,32 @@
+name: G4-C7 D3S12 art-source invariants (NO actual GLB / NO ART PASS)
+on:
+  push:
+    branches:
+      - dev/g4c7-a17-monolithic-rift-fold-art-study
+    paths:
+      - 'research/g4c7-b11-r5-d56/p2/d3s12/D3S12_A_SPATIAL_RESERVATION_SUMMARY.json'
+      - 'research/g4c7-b11-r5-d56/p2/d3s12/d3s12_source_intent_guard.py'
+      - '.github/workflows/g4c7-d56-d3s12-source-intent.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pre3d-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard source art intent against nine false claims or broken relations
+        run: python research/g4c7-b11-r5-d56/p2/d3s12/d3s12_source_intent_guard.py
+      - name: Retain only source, not fake artwork certification
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d3s12-source-geometry-only-art-hold
+          path: |
+            research/g4c7-b11-r5-d56/p2/d3s12/D3S12_A_SPATIAL_RESERVATION_SUMMARY.json
+            research/g4c7-b11-r5-d56/p2/d3s12/d3s12_source_intent_guard.py
+          if-no-files-found: error
+          retention-days: 30
