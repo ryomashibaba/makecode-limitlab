@@ -1,0 +1,62 @@
+{
+  "study": "D56-P2-D3S12-A",
+  "data_origin": "local independent author-source audit over S12_A_SPATIAL_SOURCE.json, NOT a GLB; Github guard is a separately encoded equivalent source gate",
+  "source_sha256_original_conversation": "3e5bb286efdc8e73b58598f686527600968bdbd0fa1e6e96ca3e6f372e9d5ba0",
+  "classification": "SOURCE ONLY / NOT BUILT / NOT ART APPROVED",
+  "research_single_intended_roof_plane_intersection_xyz": [
+    -46.552,
+    56.034,
+    160
+  ],
+  "research_support_plan_notch_semantics": "observer XY lies on adjacent support patch; forward single ray crosses planned roof aperture; no broad FOV/actual build",
+  "living_garden_private_source_floor_z": 240,
+  "crossing_public_axes_plan": {
+    "xy": [
+      14.932,
+      5.56
+    ],
+    "z_A": 99.562,
+    "z_B": 189.228,
+    "z_gap": 89.666,
+    "vertical_transfer": "NOT BUILT"
+  },
+  "negative_controls": {
+    "count": 9,
+    "detected": 9,
+    "categories": [
+      "research aperture closes",
+      "research observer unsupported",
+      "private/garden z gap",
+      "door misaligned",
+      "axes parallelized",
+      "false real shared mesh",
+      "false true GLB",
+      "false formal QA",
+      "false ART adoption"
+    ],
+    "meaning": "source guard sensitivity to prescribed mutations only, no physical or art validation"
+  },
+  "source_geometry_status": {
+    "actual_occupied_hall": "NOT BUILT",
+    "actual_research_terrace": "NOT BUILT",
+    "actual_living_private_room": "NOT BUILT",
+    "actual_civic_rooms_A_B": "NOT BUILT",
+    "actual_GL_B": "NOT BUILT",
+    "actual_5_eye_cameras": "NOT RUN",
+    "actual_continuous_body_sweep": "NOT RUN",
+    "formal_331_humans_993_feet": "NOT RUN",
+    "formal_G0_S1_G1_G2_G3": "NOT RUN"
+  },
+  "art_status": {
+    "A": "PRE-ART HOLD",
+    "B": "ART REJECT",
+    "formal_adoptions": 0
+  },
+  "original_source_binary_location": "Current conversation D56_P2_D3S12_ART_FIRST_TWO_AUTHOR_DIRECTIONS.zip; no Github binary source archiving claimed",
+  "constraints": {
+    "main_unchanged": true,
+    "PR53_Draft": true,
+    "minecraft_education_construction": false,
+    "city_integration": false
+  }
+}
