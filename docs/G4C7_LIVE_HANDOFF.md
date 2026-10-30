@@ -1,3 +1,15 @@
+# 【D56-P2-D3S20-K0／正式戦略復帰 → 保存GLB 8実視点で反復塔 ART REJECT／2026-10-31 JST】
+
+> **方針修正をGitHubへ追記：** 10/28正式戦略を優先し、旧D3S20の局所室先行から、全域都市形態×人間生活空間の**同時・相互拘束設計**に戻す。変更判断正本 [D3S20統合契約](../research/g4c7-b11-r5-d56/p2/d3s20/D3S20_RECONCILED_CITY_AND_HUMAN_ART_GATE_JA.md)。旧D3S20契約は歴史的証拠として無改変。
+
+> **最初の実制作K0：** 作者Pythonから一つの都市構成を**真正GLBとして保存→再読込**し、南・北・斜視・製作者・研究者・住人・公共街路・高所の8真正カメラで確認。455ジオメトリ/3940頂点、GLB SHA256 `040b61b66da470f1f09b59e94b2318ae0f00aab7e749234b1349041d5806e448`。住居アンカー移動と西地区頂部変更への**限定的なsource-level形態応答**を測定した。しかし実画像は**5つの分離した反復棚塔・巨大空白・人間眼高の遮蔽**で、以前の失敗文法へ再帰。**K0 ART REJECT**。建物数・パラメータ応答・保存GLBは美術改善の証拠ではない。結果と入力修正は [K0 ART REJECT監査](../research/g4c7-b11-r5-d56/p2/d3s20/D3S20_K0_SAVED_GLB_ART_REJECT_AND_REBRIEF_JA.md)。
+
+> **重要な原本所在：** 作者.py・実GLB・8PNG・監査JSON・レビューJPGの完全12ファイルは会話成果物 `D3S20_K0_TRUE3D_ART_REJECT_LIGHT.zip`（ZIP CRC PASS）にある。GitHubへ完全バイナリ/ソースを保存済みと主張しない。類似の塔を大型化/装飾/量産せず、**入力となる公共断面・地区間体験・実建築空間の構成法**に戻る。
+
+> **現行：全体ART HOLD、正式採用0、D3S19 VEIL GARDEN PRE-ART HOLD不変更、D3S20-K0 ART REJECT、正式331/993とG0/S1/G1/G2/G3 NOT RUN、MakeCode変換コストNOT MEASURED、Minecraft Education施工・都市統合禁止、main不変更、PR #53 Draft。** 新HEADに対応するCIは実確認まではPASSと呼ばない。
+
+---
+
 # 【D56-P2-D3S19／美術主導マスター作図・設計9/9検査/負例5/5／GLB未制作・PRE-ART HOLD → D3S20／2026-10-31 JST】
 
 > **今回の根本的な工程変更：** D3S18 A/B/Cを各真正GLBまで作っても全3案が箱都市ART REJECTだった問題を踏まえ、**新たな大型GLBを一切作らず、先に都市美術主導の一つの共通XYZ構図**を作者スクリプトで制作した。HIGH SHELL RING（巨大環の反復）とSTACKED CIVIC CANYON（平板段丘の反復）を初期除外。C《VEIL GARDEN／星層の峡市》で南都市正面・北真裏面・XY配置・XZ/YZ直交断面・製作者/研究者/住人の3視点位置を**一枚の編集可能なSVG、PNGに一貫した空間原本から記述**。**画像はコンセプト作図であり、真正GLBレンダリング・実三角形断面・実居住の証拠ではない**。
