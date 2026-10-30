@@ -1,0 +1,50 @@
+{
+  "study": "D56-P2-D3S5",
+  "status": "AUTHORING_GATE_NOT_BUILT",
+  "art": "HOLD",
+  "formal_art_adoption": 0,
+  "objective": "Not another geometry-variant. Establish genuinely beautiful, inhabited maker/research/living urban experiences from three human eye-level art scenes and an integrated shared-city section before heavy 3D",
+  "two_author_directions": [
+    {
+      "id": "S5_A",
+      "type": "inward, deep civic-making canyon intertwined with inhabited research and living terrace boundaries",
+      "must_show": "an actual workshop, observer space, and lived privacy boundary in one spatially legible 3D city thickness; not an isolated gigantic rock canyon"
+    },
+    {
+      "id": "S5_B",
+      "type": "interwoven occupied urban halls and stepped internal garden neighborhoods",
+      "must_show": "two publicly intelligible interior streets of different elevations from visibly distinct lived precincts; not two disconnected sky bridges, stacked campus blocks or giant tubes"
+    }
+  ],
+  "mandatory_before_glb": [
+    "two separately authored original interior-and-city compositions, not A/B control-point changes",
+    "maker's human-eye scene: working people and memorable fabrication scale within genuine shared urban room",
+    "researcher's human-eye scene: actual sight to same making activity from genuinely supported observation with no near-eye opaque floor",
+    "resident's human-eye scene: real privacy, real entrance, private rest spot, semi-public garden with visible district beyond",
+    "one front and one reverse city art silhouette; three functions together physically shape same shared occupied thickness",
+    "independent artist-style criticism; reject weak directions before expensive mesh generation"
+  ],
+  "mandatory_if_GL_B_attempt": [
+    "GLB saved and genuinely reloaded, author code retained",
+    "same 3 independent person-eye perspective cameras and city front/reverse in single geometry, no camera-only deception",
+    "M roof equals R floor and R roof/wall equals L garden/private boundary are actual co-owned geometry, not duplicate slabs",
+    "two INTERNAL nonparallel enclosed public ROOM sequences with real vertical connection and actual floor roof, not open roads or elevated viaducts",
+    "adversarial full-body-in-closed-solid containment test alongside surface ray checks",
+    "exact per-view sightline and own-floor witness; room volume must not be filled by another district roof",
+    "visual art gate remains independent from CI and topology checks"
+  ],
+  "prohibited": [
+    "new Lofts/shells/tubes/towers generated to save a failed interior scene",
+    "making a few isolated projective crops look like 3D independent cameras",
+    "claiming eye camera clear based only on a single center ray",
+    "calling 2D art trueGLB or CI success an artistic approval",
+    "repeating current ROOM_A_R2 canopy with cosmetic edits"
+  ],
+  "previous_benchmark": "D3S4 ROOM_A/R1/R2 independently reloaded real GLB 68 meshes 6236 tris 24 true camera renders, R2 fixes actual R floor and L canopy collision, all ART REJECT",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "main_write_forbidden": true,
+  "PR53_must_stay_draft": true,
+  "mc_education_world_write_forbidden": true,
+  "city_integration_forbidden": true
+}
