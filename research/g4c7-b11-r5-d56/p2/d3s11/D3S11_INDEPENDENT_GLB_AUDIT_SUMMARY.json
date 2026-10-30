@@ -1,0 +1,83 @@
+{
+  "study": "D56-P2-D3S11",
+  "date_JST": "2026-10-30",
+  "classification": "LIMITED INDEPENDENT REIMPORT OF SAVED REAL GLB, NOT FORMAL QA",
+  "source_glb_sha256": "8bc4bc7568aa638b4a2d9fc3950cd61c7f9f59f29813064be953c19b018c5ecf",
+  "author_generator_imported": false,
+  "rendering": "reimported actual GLB, VTK artificial lights, 9 genuinely independent cameras",
+  "mesh_count": 784,
+  "triangle_count": 9424,
+  "hollow_room_surface_sets": {
+    "count": 38,
+    "all_named_required_parts_present": true,
+    "actual_occupied_safety": "NOT VERIFIED",
+    "true_private_shelter": "NOT VERIFIED",
+    "do_not_count_retaining_solid_as_occupied": true
+  },
+  "axes": {
+    "A": {
+      "samples": 57,
+      "expected_actual_floor_mesh_hit": 57,
+      "expected_actual_roof_mesh_hit": 57,
+      "short_body_vertical_ray_surface_intersections": 0
+    },
+    "B": {
+      "samples": 57,
+      "expected_actual_floor_mesh_hit": 57,
+      "expected_actual_roof_mesh_hit": 57,
+      "short_body_vertical_ray_surface_intersections": 0
+    },
+    "true_two_internal_public_civic_rooms": "NOT BUILT",
+    "continuous_full_width_full_body": "NOT RUN",
+    "real_vertical_transfer": "NOT VERIFIED",
+    "actual_adequate_roof_wall_enclosure": "NOT VERIFIED"
+  },
+  "eye_rays": {
+    "maker": {
+      "first_forward_hit": "MAKER_REAL_ARM_01",
+      "dist": 65.422,
+      "first_floor_down": "WEST_MAKER_ATRIUM_FLOOR",
+      "dist_down": 10
+    },
+    "research": {
+      "first_forward_hit": "RESEARCH_WEST_OBSERVATION_FLOOR",
+      "dist": 24.772,
+      "first_floor_down": "RESEARCH_WEST_OBSERVATION_FLOOR",
+      "dist_down": 15.5
+    },
+    "living": {
+      "first_forward_hit": null,
+      "first_floor_down": "VISIBLE_INCOMPLETE_UPWARD_GALLERY_2",
+      "dist_down": 15.068,
+      "actual_private_floor_first": false
+    },
+    "garden": {
+      "first_forward_hit": "LIVING_PRIVATE_THRESHOLD_3",
+      "dist": 3.086,
+      "first_floor_down": "LIVING_PRIVATE_QUARTER_3_FLOOR",
+      "dist_down": 2.5
+    }
+  },
+  "negative_controls": {
+    "real_public_floor_mesh_exclusion_loss_detected": true,
+    "insert_real_eye_obstacle_detected": true,
+    "full_body_segment_enclosed_in_watertight_solid_with_no_surface_intersections_detected": true,
+    "detected": 3,
+    "total": 3
+  },
+  "sampling_correction": "initial body sample intersected bridge floor at +3..+6.5; fixed to +4.6..+7.3 relative to floor baseline, above actual 4-unit floor, reran saved GLB; does not repair built geometry",
+  "art": "REJECT",
+  "overall_art": "HOLD",
+  "art_adoptions": 0,
+  "actual_331_body_993_foot": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "blender_used": false,
+  "source_binary_location": "Conversation artifact D56_P2_D3S11_ONE_TRUE_GLB_ART_REJECT_AND_S12_RESET.zip; NOT uploaded in GitHub",
+  "restrictions": {
+    "main_unchanged": true,
+    "pr53_draft": true,
+    "no_minecraft_world_writes": true,
+    "no_city_integration": true,
+    "old_research_preserved": true
+  }
+}
