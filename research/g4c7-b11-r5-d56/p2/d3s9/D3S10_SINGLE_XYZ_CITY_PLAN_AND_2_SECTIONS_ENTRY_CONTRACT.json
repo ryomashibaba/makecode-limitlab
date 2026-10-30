@@ -1,0 +1,55 @@
+{
+  "study": "D56-P2-D3S10",
+  "state": "ART_MASTER_AND_DIMENSIONED_SECTION_NOT_BUILT",
+  "purpose": "Create one coherent, richly inhabited, dramatically beautiful multi-district future city rather than small campus, tube bundle or disconnected sculpture",
+  "manual_art_gate": "REQUIRED / NO NUMERIC ART PASS",
+  "starting_evidence": {
+    "D3S8": "2 actual GLBs, both ART REJECT",
+    "D3S9": "2 independently drawn author 2D concepts, both ART REJECT; zero GLB fabricated"
+  },
+  "required_master_outputs": [
+    "One consistent common-XYZ plan showing actual M production, R research, L private living and two public room axes",
+    "A LONGITUDINAL urban section through making hall, visible research observation, public transfer and L garden/private threshold",
+    "A TRANSVERSE urban section explaining roof=floor two shared inhabited boundaries and large public VOID as an urban room not graphic hole",
+    "Two coherent opposite CITY exterior perspectives revealing the same real structural hierarchy and large architecturally occupied volume",
+    "At least 3 human-eye AUTHOR views derived from exactly these same plan+sections (not independent contradictory panels)",
+    "Explicit artist review: city-scale asymmetry, heroic inhabited negative space, reverse elevation depth, and convincing everyday human use"
+  ],
+  "canonical_space_contract": {
+    "geometry_units": "conceptual, common XYZ only; not Minecraft blocks or certified meters",
+    "maker": "genuinely roofed large public production room and arrival; shared roof physically supports research",
+    "research": "inhabited observation room with broad view into active maker room and connected public route",
+    "living": "private entrance+room inside substantial neighborhood mass with semi-public garden, daylight apertures and shelter",
+    "shared_boundaries": "M true roof=R true supported floor AND R true roof/wall=L usable garden or privacy wall; ONE source each, not duplicate slabs",
+    "public_rooms": "Two nonparallel INTERNAL civic rooms of significant 3D volume with real floor, roof, side enclosure, entrances and vertical transfer; no roads/loft bridges posing as rooms",
+    "city_formation": "Large art-defining spaces must dictate the EXTERIOR shape; never add separate outer shell after interior model"
+  },
+  "visual_disqualifiers": [
+    "primary silhouette reads as 3 isolated stones/monoliths",
+    "small punched hole in otherwise solid blocks",
+    "bunch of exposed multicolored tube lines",
+    "box/campus floor-stack",
+    "low broad tent/canopy only",
+    "back view looks like same flat pasted facade with no urban depth",
+    "maker/research/living human eye reduced to generic symbolic icons",
+    "a void is only a line drawn on front facade"
+  ],
+  "hard_stop_if_failed": "No complex real GLB, no addition of model detail, no quantity-upscaling; record ART REJECT/HOLD with actual images and explicit causes",
+  "post_art_gate_only": [
+    "One same-XYZ true GLB source, genuine saved and independently reloaded to 5+ human and front/reverse cameras",
+    "Actual M/R and R/L shared triangle evidence from independent auditor",
+    "Independent finite floor, full-width+body continuous sweep plus enclosed-solid detector and negative controls",
+    "Two public room axes and vertical transfer verified with actual geometry",
+    "Formal 331/993 and G0/S1/G1/G2/G3 in separate strict QA after art approval"
+  ],
+  "safety": {
+    "main_unchanged": true,
+    "PR53_draft": true,
+    "mc_world_write": false,
+    "city_integration": false,
+    "formal_331_993": "NOT RUN",
+    "formal_G0_S1_G1_G2_G3": "NOT RUN"
+  },
+  "overall_art": "HOLD",
+  "art_adoption": 0
+}
