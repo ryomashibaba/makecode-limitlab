@@ -1,0 +1,34 @@
+{
+  "study": "D56-P2-D3S20",
+  "status": "ENTRY / NOT BUILT / ART HOLD / 0 ADOPTIONS",
+  "from_D3S19": "VEIL GARDEN has common XYZ vector board and limited semantic controls, but looks like two giant wedges + one translucent roof; no scene image or real GLB",
+  "sequence": [
+    "Create human scale visual art in actual maker space, broad research overlook, and private room/garden plus civic pedestrian street before huge geometry",
+    "Each visual direction must fit same stated XYZ; prohibit claiming disparate 2D art as true same-GLB cameras",
+    "Generate a nonmonumental living city with complex inhabited urban thickness and nonrepetitive front/reverse; keep hierarchy and emotional power without wedge mountains, rings, giant slabs or empty boxes",
+    "Resolve garden XY closeness to hall (3.7453 units at concept), private threshold width, roof/wall enclosure and inherited 3.25 overhead target in architectural design",
+    "Subject ART to critical comparison versus D3S17 and D3S18; do not promote a visually weak idea to GLB simply because JSON is internally consistent",
+    "If Gate 0 artistically persuasive, build a single true shared XYZ GLB with complete manufacture room, supported research floor and private room/level garden; independent reload and synthetic negatives; only later actual two civic axes and formal 331/993 tests"
+  ],
+  "no_art_auto_pass": true,
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "inherit": {
+    "body_halfwidth": 0.65,
+    "feet_height_range": [
+      0.15,
+      3.25
+    ],
+    "historical_max_body_interferences": 45,
+    "historical_unsupported_foot": 0
+  },
+  "prohibited": [
+    "Minecraft Education world writes",
+    "city integration",
+    "main write",
+    "PR53 merge",
+    "historical evidence edits",
+    "using concept vector art as geometry proof"
+  ],
+  "formal_adoptions": 0
+}
