@@ -1,0 +1,63 @@
+{
+  "study": "D56-P2-D3S15",
+  "date_JST": "2026-10-30",
+  "classification": "R0/R1 persisted GLB, independent VTK cameras and finite audit only",
+  "variants": {
+    "A": {
+      "name": "INHABITED SHEAR STRATA",
+      "r1_reloaded_named_geometry": 220,
+      "r1_reloaded_real_triangles": 4368,
+      "glb_sha256": "8eaac0d0ab1dca33336d0b5f18fb280e3cacfb582ef52817fc777e4d4f67df6b",
+      "cameras": 7,
+      "finite_support": "4/4",
+      "negative_controls": "3/3",
+      "maker_center_hit": [
+        "M_HUMAN_BUILT_SPACECRAFT_HULL",
+        67.46
+      ],
+      "research_center_hit": [
+        "A_DIAGONAL_INHABITED_PUBLIC_CROSSING",
+        39.268
+      ],
+      "living_center_hit": null,
+      "mesh_watertight": 220,
+      "nonpositive_signed_volume_meshes": 48,
+      "art": "REJECT"
+    },
+    "B": {
+      "name": "INHABITED RADIAL FAN",
+      "r1_reloaded_named_geometry": 294,
+      "r1_reloaded_real_triangles": 5256,
+      "glb_sha256": "f9d8b88c493c4af5ac53af0a61e005e9094ee1418bdc730179239f5f32b6bbf1",
+      "cameras": 7,
+      "finite_support": "4/4",
+      "negative_controls": "3/3",
+      "maker_center_hit": [
+        "M_HUMAN_BUILT_SPACECRAFT_HULL",
+        67.46
+      ],
+      "research_center_hit": [
+        "M_HUMAN_BUILT_SPACECRAFT_HULL",
+        108.408
+      ],
+      "living_center_hit": null,
+      "mesh_watertight": 294,
+      "nonpositive_signed_volume_meshes": 60,
+      "art": "REJECT"
+    }
+  },
+  "r0": "Independent auditor found each research eye first intersects own shared deck at distance 10.036; original GLB, scripts, audits and side-by-side views kept in conversation ZIP R0_EVIDENCE",
+  "r1": "Changed actual deck geometry to create front opening and two flank decks; identical cameras, no relabelled 2D image",
+  "actual_cameras": "7 x 2 = 14 true independent saved-GLB rendered PNGs; 7 A/B same-camera panels",
+  "independent_mesh_winding": "TECH HOLD / ORIENTATION FAIL",
+  "overall_art": "HOLD",
+  "formal_adoptions": 0,
+  "full_continuous_2_civic_rooms": "NOT BUILT",
+  "human_swept_body": "NOT RUN",
+  "formal_331_993": "NOT RUN",
+  "formal_G0_S1_G1_G2_G3": "NOT RUN",
+  "stored_primary_binaries": "CONVERSATION ZIP ONLY, NOT GITHUB",
+  "no_world_write": true,
+  "no_main_write": true,
+  "no_pr53_merge": true
+}
