@@ -1,0 +1,126 @@
+{
+  "method": "trimesh.voxelized(...).fill on individual saved GLB meshes only",
+  "caveat": "Not Minecraft voxel counts, no MakeCode Fill/Clone/Place estimates; thin physical walls may thicken at coarse pitch.",
+  "sample_parts": {
+    "step_03": {
+      "mesh": "STAIR_TREAD_03",
+      "bounds": [
+        [
+          21.137500762939453,
+          9.375,
+          0.0
+        ],
+        [
+          25.3799991607666,
+          11.0600004196167,
+          1.600000023841858
+        ]
+      ],
+      "real_volume_abstract_cubic": 6.33642122372396,
+      "pitches": {
+        "1": {
+          "center_cells": 33,
+          "center_cell_volume_estimate": 33.0
+        },
+        "2": {
+          "center_cells": 8,
+          "center_cell_volume_estimate": 64.0
+        },
+        "4": {
+          "center_cells": 4,
+          "center_cell_volume_estimate": 256.0
+        }
+      }
+    },
+    "portal_lintel": {
+      "mesh": "PORTAL_LINTEL_(0,4,0)_(1,4,0)",
+      "bounds": [
+        [
+          5.976644515991211,
+          17.10936164855957,
+          2.450000047683716
+        ],
+        [
+          6.433355331420898,
+          19.560638427734375,
+          3.200000047683716
+        ]
+      ],
+      "real_volume_abstract_cubic": 0.29399994921561756,
+      "pitches": {
+        "1": {
+          "center_cells": 8,
+          "center_cell_volume_estimate": 8.0
+        },
+        "2": {
+          "center_cells": 4,
+          "center_cell_volume_estimate": 32.0
+        },
+        "4": {
+          "center_cells": 3,
+          "center_cell_volume_estimate": 192.0
+        }
+      }
+    },
+    "nonorthogonal_wall": {
+      "mesh": "WALL_(-1,6,0)_(0,6,0)",
+      "bounds": [
+        [
+          2.6205015182495117,
+          23.991056442260742,
+          0.0
+        ],
+        [
+          3.2294983863830566,
+          28.008943557739258,
+          3.200000047683716
+        ]
+      ],
+      "real_volume_abstract_cubic": 2.0609183005418186,
+      "pitches": {
+        "1": {
+          "center_cells": 20,
+          "center_cell_volume_estimate": 20.0
+        },
+        "2": {
+          "center_cells": 15,
+          "center_cell_volume_estimate": 120.0
+        },
+        "4": {
+          "center_cells": 4,
+          "center_cell_volume_estimate": 256.0
+        }
+      }
+    },
+    "upper_landing": {
+      "mesh": "FLOOR_ROOF_(5,3,0)_(5,3,1)",
+      "bounds": [
+        [
+          21.950000762939453,
+          14.375,
+          3.0
+        ],
+        [
+          26.760000228881836,
+          19.059999465942383,
+          3.200000047683716
+        ]
+      ],
+      "real_volume_abstract_cubic": 3.220209881870595,
+      "pitches": {
+        "1": {
+          "center_cells": 27,
+          "center_cell_volume_estimate": 27.0
+        },
+        "2": {
+          "center_cells": 10,
+          "center_cell_volume_estimate": 80.0
+        },
+        "4": {
+          "center_cells": 5,
+          "center_cell_volume_estimate": 320.0
+        }
+      }
+    }
+  }
+}

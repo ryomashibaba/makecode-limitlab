@@ -1,0 +1,403 @@
+{
+  "V2_WARPED_STAIRS_BASE.glb": {
+    "file": "V2_WARPED_STAIRS_BASE.glb",
+    "glb_bytes": 152632,
+    "mesh_count": 293,
+    "watertight_parts": 293,
+    "tested_clearance_points": 152,
+    "body_collision_sample_count": 0,
+    "collision_parts": [],
+    "collision_examples": [],
+    "supported_stair_treads": 8,
+    "tested_stair_treads": 8,
+    "support_details": [
+      {
+        "step": 0,
+        "target_surface_z": 0.4,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_00"
+        ]
+      },
+      {
+        "step": 1,
+        "target_surface_z": 0.8,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_01"
+        ]
+      },
+      {
+        "step": 2,
+        "target_surface_z": 1.2000000000000002,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_02"
+        ]
+      },
+      {
+        "step": 3,
+        "target_surface_z": 1.6,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_03"
+        ]
+      },
+      {
+        "step": 4,
+        "target_surface_z": 2.0,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_04"
+        ]
+      },
+      {
+        "step": 5,
+        "target_surface_z": 2.4000000000000004,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_05"
+        ]
+      },
+      {
+        "step": 6,
+        "target_surface_z": 2.8000000000000003,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_06"
+        ]
+      },
+      {
+        "step": 7,
+        "target_surface_z": 3.2,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_07"
+        ]
+      }
+    ],
+    "supported_landings": 2,
+    "tested_landings": 2,
+    "landing_details": [
+      {
+        "name": "lower_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,0,-1)_(5,0,0)"
+        ]
+      },
+      {
+        "name": "upper_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,3,0)_(5,3,1)"
+        ]
+      }
+    ],
+    "limited_status": "LOCAL_SAMPLE_GATE_PASS",
+    "disclaimer": "NOT continuous swept body, rails, loads, structural support, escape, full city art, or formal 331/993 QA"
+  },
+  "V2_NEGATIVE_STAIR_BLOCK.glb": {
+    "file": "V2_NEGATIVE_STAIR_BLOCK.glb",
+    "glb_bytes": 153380,
+    "mesh_count": 294,
+    "watertight_parts": 294,
+    "tested_clearance_points": 152,
+    "body_collision_sample_count": 6,
+    "collision_parts": [
+      "NEGATIVE_BLOCKED_HEADSPACE"
+    ],
+    "collision_examples": [
+      {
+        "sample": 37,
+        "part": "NEGATIVE_BLOCKED_HEADSPACE",
+        "location": [
+          "stair",
+          3
+        ]
+      },
+      {
+        "sample": 38,
+        "part": "NEGATIVE_BLOCKED_HEADSPACE",
+        "location": [
+          "stair",
+          3
+        ]
+      },
+      {
+        "sample": 41,
+        "part": "NEGATIVE_BLOCKED_HEADSPACE",
+        "location": [
+          "stair",
+          3
+        ]
+      },
+      {
+        "sample": 42,
+        "part": "NEGATIVE_BLOCKED_HEADSPACE",
+        "location": [
+          "stair",
+          3
+        ]
+      },
+      {
+        "sample": 45,
+        "part": "NEGATIVE_BLOCKED_HEADSPACE",
+        "location": [
+          "stair",
+          3
+        ]
+      },
+      {
+        "sample": 46,
+        "part": "NEGATIVE_BLOCKED_HEADSPACE",
+        "location": [
+          "stair",
+          3
+        ]
+      }
+    ],
+    "supported_stair_treads": 8,
+    "tested_stair_treads": 8,
+    "support_details": [
+      {
+        "step": 0,
+        "target_surface_z": 0.4,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_00"
+        ]
+      },
+      {
+        "step": 1,
+        "target_surface_z": 0.8,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_01"
+        ]
+      },
+      {
+        "step": 2,
+        "target_surface_z": 1.2000000000000002,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_02"
+        ]
+      },
+      {
+        "step": 3,
+        "target_surface_z": 1.6,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_03"
+        ]
+      },
+      {
+        "step": 4,
+        "target_surface_z": 2.0,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_04"
+        ]
+      },
+      {
+        "step": 5,
+        "target_surface_z": 2.4000000000000004,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_05"
+        ]
+      },
+      {
+        "step": 6,
+        "target_surface_z": 2.8000000000000003,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_06"
+        ]
+      },
+      {
+        "step": 7,
+        "target_surface_z": 3.2,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_07"
+        ]
+      }
+    ],
+    "supported_landings": 2,
+    "tested_landings": 2,
+    "landing_details": [
+      {
+        "name": "lower_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,0,-1)_(5,0,0)"
+        ]
+      },
+      {
+        "name": "upper_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,3,0)_(5,3,1)"
+        ]
+      }
+    ],
+    "limited_status": "LOCAL_SAMPLE_GATE_FAIL",
+    "disclaimer": "NOT continuous swept body, rails, loads, structural support, escape, full city art, or formal 331/993 QA"
+  },
+  "V2_NEGATIVE_MISSING_TREAD.glb": {
+    "file": "V2_NEGATIVE_MISSING_TREAD.glb",
+    "glb_bytes": 152152,
+    "mesh_count": 292,
+    "watertight_parts": 292,
+    "tested_clearance_points": 152,
+    "body_collision_sample_count": 0,
+    "collision_parts": [],
+    "collision_examples": [],
+    "supported_stair_treads": 7,
+    "tested_stair_treads": 8,
+    "support_details": [
+      {
+        "step": 0,
+        "target_surface_z": 0.4,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_00"
+        ]
+      },
+      {
+        "step": 1,
+        "target_surface_z": 0.8,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_01"
+        ]
+      },
+      {
+        "step": 2,
+        "target_surface_z": 1.2000000000000002,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_02"
+        ]
+      },
+      {
+        "step": 3,
+        "target_surface_z": 1.6,
+        "supporting_real_triangles": []
+      },
+      {
+        "step": 4,
+        "target_surface_z": 2.0,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_04"
+        ]
+      },
+      {
+        "step": 5,
+        "target_surface_z": 2.4000000000000004,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_05"
+        ]
+      },
+      {
+        "step": 6,
+        "target_surface_z": 2.8000000000000003,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_06"
+        ]
+      },
+      {
+        "step": 7,
+        "target_surface_z": 3.2,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_07"
+        ]
+      }
+    ],
+    "supported_landings": 2,
+    "tested_landings": 2,
+    "landing_details": [
+      {
+        "name": "lower_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,0,-1)_(5,0,0)"
+        ]
+      },
+      {
+        "name": "upper_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,3,0)_(5,3,1)"
+        ]
+      }
+    ],
+    "limited_status": "LOCAL_SAMPLE_GATE_FAIL",
+    "disclaimer": "NOT continuous swept body, rails, loads, structural support, escape, full city art, or formal 331/993 QA"
+  },
+  "V2_MUTATED_MARKET.glb": {
+    "file": "V2_MUTATED_MARKET.glb",
+    "glb_bytes": 155700,
+    "mesh_count": 299,
+    "watertight_parts": 299,
+    "tested_clearance_points": 152,
+    "body_collision_sample_count": 0,
+    "collision_parts": [],
+    "collision_examples": [],
+    "supported_stair_treads": 8,
+    "tested_stair_treads": 8,
+    "support_details": [
+      {
+        "step": 0,
+        "target_surface_z": 0.4,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_00"
+        ]
+      },
+      {
+        "step": 1,
+        "target_surface_z": 0.8,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_01"
+        ]
+      },
+      {
+        "step": 2,
+        "target_surface_z": 1.2000000000000002,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_02"
+        ]
+      },
+      {
+        "step": 3,
+        "target_surface_z": 1.6,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_03"
+        ]
+      },
+      {
+        "step": 4,
+        "target_surface_z": 2.0,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_04"
+        ]
+      },
+      {
+        "step": 5,
+        "target_surface_z": 2.4000000000000004,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_05"
+        ]
+      },
+      {
+        "step": 6,
+        "target_surface_z": 2.8000000000000003,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_06"
+        ]
+      },
+      {
+        "step": 7,
+        "target_surface_z": 3.2,
+        "supporting_real_triangles": [
+          "STAIR_TREAD_07"
+        ]
+      }
+    ],
+    "supported_landings": 2,
+    "tested_landings": 2,
+    "landing_details": [
+      {
+        "name": "lower_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,0,-1)_(5,0,0)"
+        ]
+      },
+      {
+        "name": "upper_landing",
+        "supporting_saved_meshes": [
+          "FLOOR_ROOF_(5,3,0)_(5,3,1)"
+        ]
+      }
+    ],
+    "limited_status": "LOCAL_SAMPLE_GATE_PASS",
+    "disclaimer": "NOT continuous swept body, rails, loads, structural support, escape, full city art, or formal 331/993 QA"
+  }
+}

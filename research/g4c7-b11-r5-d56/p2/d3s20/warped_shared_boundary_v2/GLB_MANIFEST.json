@@ -1,0 +1,30 @@
+{
+  "V2_WARPED_STAIRS_BASE.glb": {
+    "geometries": 293,
+    "glb_bytes": 152632,
+    "sha256": "dda1ce7d16567948b36b6874d0c297d932cef7782ce03400e47008f6a75f8c3f",
+    "aabb_error": 4.517845724194558e-07,
+    "watertight_meshes": 293
+  },
+  "V2_NEGATIVE_STAIR_BLOCK.glb": {
+    "geometries": 294,
+    "glb_bytes": 153380,
+    "sha256": "b8dadd27940292e9f2ad78419af5fb50d54cc2676299ec2222b7d96fae0ce168",
+    "aabb_error": 4.517845724194558e-07,
+    "watertight_meshes": 294
+  },
+  "V2_NEGATIVE_MISSING_TREAD.glb": {
+    "geometries": 292,
+    "glb_bytes": 152152,
+    "sha256": "a3d6f5295bc684d3d1a87b9f5faa36c1dddb16336fe82427821e220a159458a5",
+    "aabb_error": 4.517845724194558e-07,
+    "watertight_meshes": 292
+  },
+  "V2_MUTATED_MARKET.glb": {
+    "geometries": 299,
+    "glb_bytes": 155700,
+    "sha256": "f160828699105f4d51787b4933eb827720a630d15fc7c0096ea33c2220381474",
+    "aabb_error": 4.517845724194558e-07,
+    "watertight_meshes": 299
+  }
+}
