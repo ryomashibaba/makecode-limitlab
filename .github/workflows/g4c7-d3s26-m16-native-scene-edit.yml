@@ -23,7 +23,7 @@ jobs:
       - name: Recover immutable original native M15C from prior successful run
         uses: actions/download-artifact@v4
         with:
-          name: g4c7-d3s26-m16b-second-visual-correction-ART-HOLD
+          name: g4c7-d3s26-m16-direct-native-revision-ART-HOLD
           run-id: 41254354425
           github-token: ${{ github.token }}
           path: artifacts/m16b_immutable_m16_seed
