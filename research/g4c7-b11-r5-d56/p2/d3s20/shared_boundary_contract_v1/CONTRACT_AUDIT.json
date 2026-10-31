@@ -1,0 +1,183 @@
+{
+  "title": "D3S20 shared-boundary input contract preflight, non-art",
+  "scope": "abstract 4x4x4-unit cells; NOT city full-size / 1:1 blocks / MakeCode",
+  "baseline": {
+    "ok": true,
+    "errors": [],
+    "reached_programs": [
+      "CULTURE",
+      "FORGE",
+      "HABITAT",
+      "MARKET",
+      "PUBLIC",
+      "RESEARCH"
+    ],
+    "active_air_cells": 92,
+    "shared_faces": 259,
+    "internal_portals": 5,
+    "external_entries": 1,
+    "roof_faces": 86,
+    "envelope_wall_faces": 50,
+    "vertical_access": "NOT_BUILT",
+    "claims": [
+      "cell-level horizontal topology ONLY",
+      "no embodied passage",
+      "no structural support QA",
+      "no full-scale city 3D",
+      "no MakeCode conversion",
+      "no artistic adoption"
+    ]
+  },
+  "frontage_change": {
+    "result": {
+      "ok": true,
+      "errors": [],
+      "reached_programs": [
+        "CULTURE",
+        "FORGE",
+        "HABITAT",
+        "MARKET",
+        "PUBLIC",
+        "RESEARCH"
+      ],
+      "active_air_cells": 93,
+      "shared_faces": 265,
+      "internal_portals": 5,
+      "external_entries": 1,
+      "roof_faces": 87,
+      "envelope_wall_faces": 52,
+      "vertical_access": "NOT_BUILT",
+      "claims": [
+        "cell-level horizontal topology ONLY",
+        "no embodied passage",
+        "no structural support QA",
+        "no full-scale city 3D",
+        "no MakeCode conversion",
+        "no artistic adoption"
+      ]
+    },
+    "diff": {
+      "rooms": {
+        "CULTURE": 0,
+        "FORGE": 0,
+        "HABITAT": 0,
+        "MARKET": 2,
+        "PUBLIC": 1,
+        "RESEARCH": 0,
+        "UPPER": 0
+      },
+      "portals": 2,
+      "shared_boundaries": 10,
+      "outer_faces": 5
+    }
+  },
+  "envelope_push": {
+    "result": {
+      "ok": true,
+      "errors": [],
+      "reached_programs": [
+        "CULTURE",
+        "FORGE",
+        "HABITAT",
+        "MARKET",
+        "PUBLIC",
+        "RESEARCH"
+      ],
+      "active_air_cells": 93,
+      "shared_faces": 263,
+      "internal_portals": 5,
+      "external_entries": 1,
+      "roof_faces": 87,
+      "envelope_wall_faces": 52,
+      "vertical_access": "NOT_BUILT",
+      "claims": [
+        "cell-level horizontal topology ONLY",
+        "no embodied passage",
+        "no structural support QA",
+        "no full-scale city 3D",
+        "no MakeCode conversion",
+        "no artistic adoption"
+      ]
+    },
+    "diff": {
+      "rooms": {
+        "CULTURE": 0,
+        "FORGE": 0,
+        "HABITAT": 0,
+        "MARKET": 1,
+        "PUBLIC": 0,
+        "RESEARCH": 0,
+        "UPPER": 0
+      },
+      "portals": 0,
+      "shared_boundaries": 6,
+      "outer_faces": 5
+    }
+  },
+  "negative_cases": {
+    "missing_public_entrance": {
+      "passed_as_expected": true,
+      "errors": [
+        "NO_PUBLIC_ENTRANCE"
+      ]
+    },
+    "disconnected_portal_legacy": {
+      "passed_as_expected": true,
+      "errors": [
+        "PORTAL_NOT_ADJACENT",
+        "PORTAL_NOT_SHARED_FACE"
+      ]
+    },
+    "missing_real_room": {
+      "passed_as_expected": true,
+      "errors": [
+        "MISSING_PROGRAM_RESEARCH",
+        "UNREACHABLE_RESEARCH"
+      ]
+    },
+    "required_upper_route": {
+      "passed_as_expected": true,
+      "errors": [
+        "UPPER_ACCESS_NOT_BUILT"
+      ]
+    },
+    "stale_door_after_frontage_move": {
+      "passed_as_expected": true,
+      "errors": [
+        "PORTAL_NOT_SHARED_FACE",
+        "UNREACHABLE_GROUND_CELLS",
+        "UNREACHABLE_MARKET"
+      ]
+    },
+    "false_vertical_access_claim": {
+      "passed_as_expected": true,
+      "errors": [
+        "UNVERIFIED_VERTICAL_ACCESS_CLAIM",
+        "UPPER_ACCESS_NOT_BUILT"
+      ]
+    }
+  },
+  "saved_glb": {
+    "original_geometries": 272,
+    "reloaded_geometries": 272,
+    "max_bounds_abs_error": 1.5258789076710855e-06,
+    "glb_bytes": 144484
+  },
+  "saved_glb_independent_probe": {
+    "base_glb_sha256": "bc7b758f69c743c11dad7c2d6b83df13b6c44b57b020923a32fb5d219e65551b",
+    "persisted_geometry_count": 272,
+    "baseline_door_samples": 162,
+    "baseline_blocked": 0,
+    "negative_glb_sha256": "26477498d9492c208a8e2965e6962d4f89b3e223d24a4b3be6a7b96ad23c3f19",
+    "negative_blocked_samples": 27,
+    "negative_external_gate_blocked": 27,
+    "scope": "AABB exact for this fixture boxes only; NOT triangulated swept-body QA; not MakeCode"
+  },
+  "pytest": "..........                                                               [100%]\n10 passed in 0.05s",
+  "pytest_returncode": 0,
+  "formal_qa": "NOT RUN",
+  "art_gate": "NOT PERFORMED; deliberately non-art test fixture",
+  "construction": "NOT RUN; forbidden",
+  "official_art_adoptions": 0,
+  "do_not_use_as_urban_form": "true"
+}
