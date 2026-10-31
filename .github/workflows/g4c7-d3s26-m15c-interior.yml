@@ -1,0 +1,63 @@
+name: D3S26 M15C one inhabited interior native Cycles review
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_d3s26_m15c_occupied_interior.py"
+      - ".github/workflows/g4c7-d3s26-m15c-interior.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-d3s26-m15c-interior
+  cancel-in-progress: false
+jobs:
+  test-native-occupied-interior:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Static errors before downloading Blender
+        run: |
+          python -m py_compile tools/g4c7_d3s26_m15c_occupied_interior.py
+          python tools/g4c7_d3s26_m15c_occupied_interior.py --preflight
+      - name: Official native Blender Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build real edited Blender scene and eight real rendered views
+        run: python tools/g4c7_d3s26_m15c_occupied_interior.py
+      - name: Independent binary evidence audit, not ART PASS
+        run: |
+          python - <<'PY'
+          import hashlib,json,os,struct
+          from pathlib import Path
+          D=Path('artifacts/g4c7-d3s26-m15c-occupied-room')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((D/'manifest.json').read_text())
+          assert m['status']['art']=='HOLD_NOT_APPROVED'
+          assert m['status']['construction']=='FORBIDDEN'
+          assert m['stair_treads']==40 and len(m['views'])==8
+          b=D/'M15C_EDITABLE_PUBLIC_INTERIOR.blend'
+          g=D/'M15C_PUBLIC_INTERIOR_NOT_ART_APPROVED.glb'
+          assert b.read_bytes()[:7]==b'BLENDER'
+          assert g.read_bytes()[:4]==b'glTF'
+          assert hashlib.sha256(b.read_bytes()).hexdigest()==m['blend_sha256']
+          assert hashlib.sha256(g.read_bytes()).hexdigest()==m['glb_sha256']
+          for name,v in m['views'].items():
+            d=(D/('M15C_'+name+'.png')).read_bytes()
+            assert d[:8]==b'\x89PNG\r\n\x1a\n'
+            assert struct.unpack('>II',d[16:24])==(960,540)
+            assert hashlib.sha256(d).hexdigest()==v['sha256']
+          print('M15C_NATIVE_BLENDER_BINARY_PASS_ART_HOLD_NOT_FORMAL_QA')
+          PY
+      - name: Preserve originals without writing to the protected branch
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-d3s26-m15c-inhabited-interior-ART-HOLD
+          path: artifacts/g4c7-d3s26-m15c-occupied-room/run_*/
+          retention-days: 21
+          if-no-files-found: warn
