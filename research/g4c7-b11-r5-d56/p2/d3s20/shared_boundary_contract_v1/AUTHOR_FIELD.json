@@ -1,0 +1,866 @@
+{
+  "contract": "D3S20_SHARED_BOUNDARY_LEDGER_V1",
+  "non_art_fixture": true,
+  "non_construction": true,
+  "units": "abstract: each integer cell = 4 design units, NOT Minecraft blocks",
+  "cell_axes": "X East / Y North / Z Up",
+  "cell_size": 4,
+  "portal_width": 2.4,
+  "portal_height": 3.6,
+  "programs": [
+    "CULTURE",
+    "FORGE",
+    "HABITAT",
+    "MARKET",
+    "PUBLIC",
+    "RESEARCH",
+    "UPPER"
+  ],
+  "air_cell_ownership": [
+    {
+      "ijk": [
+        0,
+        6,
+        0
+      ],
+      "program": "CULTURE"
+    },
+    {
+      "ijk": [
+        0,
+        7,
+        0
+      ],
+      "program": "CULTURE"
+    },
+    {
+      "ijk": [
+        0,
+        8,
+        0
+      ],
+      "program": "CULTURE"
+    },
+    {
+      "ijk": [
+        1,
+        0,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        1,
+        1,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        1,
+        2,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        1,
+        3,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        1,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        1,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        1,
+        6,
+        0
+      ],
+      "program": "CULTURE"
+    },
+    {
+      "ijk": [
+        1,
+        7,
+        0
+      ],
+      "program": "CULTURE"
+    },
+    {
+      "ijk": [
+        1,
+        8,
+        0
+      ],
+      "program": "CULTURE"
+    },
+    {
+      "ijk": [
+        2,
+        0,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        2,
+        1,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        2,
+        2,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        2,
+        3,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        2,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        2,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        2,
+        6,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        2,
+        7,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        2,
+        8,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        3,
+        0,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        3,
+        1,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        3,
+        2,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        3,
+        3,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        3,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        3,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        3,
+        6,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        3,
+        7,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        3,
+        8,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        4,
+        0,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        4,
+        1,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        4,
+        2,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        4,
+        3,
+        0
+      ],
+      "program": "FORGE"
+    },
+    {
+      "ijk": [
+        4,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        4,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        4,
+        6,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        4,
+        7,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        4,
+        8,
+        0
+      ],
+      "program": "MARKET"
+    },
+    {
+      "ijk": [
+        5,
+        0,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        1,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        2,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        3,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        3,
+        1
+      ],
+      "program": "UPPER"
+    },
+    {
+      "ijk": [
+        5,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        4,
+        1
+      ],
+      "program": "UPPER"
+    },
+    {
+      "ijk": [
+        5,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        5,
+        1
+      ],
+      "program": "UPPER"
+    },
+    {
+      "ijk": [
+        5,
+        6,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        7,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        5,
+        8,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        0,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        1,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        2,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        3,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        3,
+        1
+      ],
+      "program": "UPPER"
+    },
+    {
+      "ijk": [
+        6,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        4,
+        1
+      ],
+      "program": "UPPER"
+    },
+    {
+      "ijk": [
+        6,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        5,
+        1
+      ],
+      "program": "UPPER"
+    },
+    {
+      "ijk": [
+        6,
+        6,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        7,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        6,
+        8,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        7,
+        1,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        7,
+        2,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        7,
+        3,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        7,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        7,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        7,
+        6,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        7,
+        7,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        7,
+        8,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        8,
+        1,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        8,
+        2,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        8,
+        3,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        8,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        8,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        8,
+        6,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        8,
+        7,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        8,
+        8,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        9,
+        1,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        9,
+        2,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        9,
+        3,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        9,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        9,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        9,
+        6,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        9,
+        7,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        9,
+        8,
+        0
+      ],
+      "program": "HABITAT"
+    },
+    {
+      "ijk": [
+        10,
+        1,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        10,
+        2,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        10,
+        3,
+        0
+      ],
+      "program": "RESEARCH"
+    },
+    {
+      "ijk": [
+        10,
+        4,
+        0
+      ],
+      "program": "PUBLIC"
+    },
+    {
+      "ijk": [
+        10,
+        5,
+        0
+      ],
+      "program": "PUBLIC"
+    }
+  ],
+  "portals": [
+    {
+      "cells": [
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          1,
+          4,
+          0
+        ]
+      ],
+      "purpose": "external"
+    },
+    {
+      "cells": [
+        [
+          1,
+          5,
+          0
+        ],
+        [
+          1,
+          6,
+          0
+        ]
+      ],
+      "purpose": "interface"
+    },
+    {
+      "cells": [
+        [
+          3,
+          3,
+          0
+        ],
+        [
+          3,
+          4,
+          0
+        ]
+      ],
+      "purpose": "interface"
+    },
+    {
+      "cells": [
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          3,
+          6,
+          0
+        ]
+      ],
+      "purpose": "interface"
+    },
+    {
+      "cells": [
+        [
+          8,
+          5,
+          0
+        ],
+        [
+          8,
+          6,
+          0
+        ]
+      ],
+      "purpose": "interface"
+    },
+    {
+      "cells": [
+        [
+          9,
+          3,
+          0
+        ],
+        [
+          9,
+          4,
+          0
+        ]
+      ],
+      "purpose": "interface"
+    }
+  ],
+  "external_portal": [
+    [
+      1,
+      4,
+      0
+    ],
+    [
+      0,
+      4,
+      0
+    ]
+  ],
+  "vertical_access": "NOT_BUILT",
+  "all_interfaces_generated_from_shared_cell_face": true,
+  "separate_room_boxes_or_road_meshes_authorable": false,
+  "visual_status": "NOT AN ART CANDIDATE",
+  "formal_safety": "NOT_RUN"
+}
