@@ -1,9 +1,9 @@
-name: G4-C7 M16 protected native Blender visual revision
+name: G4-C7 M16B second native visual correction
 on:
   push:
     branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
     paths:
-      - "tools/g4c7_d3s26_m16_native_scene_edit.py"
+      - "tools/g4c7_d3s26_m16b_second_visual_edit.py"
       - ".github/workflows/g4c7-d3s26-m16-native-scene-edit.yml"
 permissions:
   contents: read
@@ -23,36 +23,36 @@ jobs:
       - name: Recover immutable original native M15C from prior successful run
         uses: actions/download-artifact@v4
         with:
-          name: g4c7-d3s26-m15c-inhabited-interior-ART-HOLD
-          run-id: 41253780068
+          name: g4c7-d3s26-m16b-second-visual-correction-ART-HOLD
+          run-id: 41254354425
           github-token: ${{ github.token }}
-          path: artifacts/m16_immutable_m15c_seed
+          path: artifacts/m16b_immutable_m16_seed
       - name: Check Python and exact original SHA before startup
         run: |
-          python -m py_compile tools/g4c7_d3s26_m16_native_scene_edit.py
-          python tools/g4c7_d3s26_m16_native_scene_edit.py --preflight
+          python -m py_compile tools/g4c7_d3s26_m16b_second_visual_edit.py
+          python tools/g4c7_d3s26_m16b_second_visual_edit.py --preflight
       - name: Official native Blender Python 4.5.15
         run: |
           python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
           python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
       - name: Directly edit existing M15C .blend; output edited .blend GLB and eight Cycles images
-        run: python tools/g4c7_d3s26_m16_native_scene_edit.py
+        run: python tools/g4c7_d3s26_m16b_second_visual_edit.py
       - name: Independently check saved file identities, not ART PASS
         run: |
           python - <<'PY'
           import os,json,hashlib,struct
           from pathlib import Path
-          root=Path('artifacts/g4c7-d3s26-m16-native-revision')/('run_'+os.environ['GITHUB_SHA'][:12])
+          root=Path('artifacts/g4c7-d3s26-m16b-second-visual-correction')/('run_'+os.environ['GITHUB_SHA'][:12])
           m=json.loads((root/'manifest.json').read_text())
           assert m['art']=='HOLD' and m['adopted']==0 and m['minecraft']=='FORBIDDEN'
           assert m['formal_331_993']=='NOT_RUN' and len(m['views'])==8
           for name,key,signature in (
-           ('M16_EDITED_M15C_NATIVE_SCENE.blend','native_blend_sha256',b'BLENDER'),
-           ('M16_M15C_GEOMETRY_UNAPPROVED.glb','glb_sha256',b'glTF')):
+           ('M16B_EDITED_NATIVE_SCENE.blend','native_blend_sha256',b'BLENDER'),
+           ('M16B_SAVED_MESH_UNAPPROVED.glb','glb_sha256',b'glTF')):
             b=(root/name).read_bytes()
             assert b.startswith(signature) and hashlib.sha256(b).hexdigest()==m[key]
           for name,rec in m['views'].items():
-            b=(root/('M16_'+name+'.png')).read_bytes()
+            b=(root/('M16B_'+name+'.png')).read_bytes()
             assert b[:8]==b'\x89PNG\r\n\x1a\n'
             assert struct.unpack('>II',b[16:24])==(960,540)
             assert hashlib.sha256(b).hexdigest()==rec['sha256']
@@ -62,7 +62,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g4c7-d3s26-m16-direct-native-revision-ART-HOLD
-          path: artifacts/g4c7-d3s26-m16-native-revision/run_*/
+          name: g4c7-d3s26-m16b-second-visual-correction-ART-HOLD
+          path: artifacts/g4c7-d3s26-m16b-second-visual-correction/run_*/
           retention-days: 21
           if-no-files-found: warn
