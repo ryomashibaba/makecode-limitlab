@@ -1,0 +1,53 @@
+{
+  "study": "D3S22 post-reject art production contract",
+  "status": "METHOD RESET ONLY / ART HOLD / 0 ADOPTIONS / NO MINECRAFT CONSTRUCTION",
+  "freeze": [
+    "D3S21 RIFT CITY / ART REJECT",
+    "D3S22 INHABITED CONFLUENCE / ART REJECT"
+  ],
+  "grammar": "HABITABLE THICKNESS BEFORE EXPRESSION",
+  "binding": "Real enclosed and publicly accessible rooms, daylight clearance, complete vertical access and view relationships determine building masses and silhouette; not loft ribbons, independent ridge factor, primitive boxes or facade ornaments.",
+  "programs": [
+    "fabrication",
+    "research and education",
+    "commerce",
+    "culture and public realm",
+    "residential neighborhoods",
+    "urban public streets and gardens"
+  ],
+  "shared_coordinates": "full-city skyline, public and resident eyes, rooms and three-dimensional route in the same saved GLB",
+  "stop_conditions": [
+    "uninhabitable ribbons dominate city silhouette",
+    "public upper route without true stairs/elevator",
+    "unusable eye views",
+    "no actual complete enclosed room or realistic entrance",
+    "bundled manual exterior adjustment misreported as program-driven skyline"
+  ],
+  "tests": [
+    "saved GLB reload and true same-scene camera art gate",
+    "one program input per independent counterfactual; inspect physical rooms/route and silhouette",
+    "only art-plausible candidate receives formal 331/993, G0/S1/G1/G2/G3",
+    "non-construction MakeCode voxel/Fill/Clone estimate alongside design"
+  ],
+  "prohibited": [
+    "Minecraft Education world writes",
+    "city integration",
+    "main writes",
+    "PR #53 merge or Ready",
+    "historical evidence overwrite",
+    "TECH to ART automatic promotion"
+  ],
+  "fixed_QA": {
+    "human_samples": 331,
+    "foot_samples": 993,
+    "half_width": 0.65,
+    "clearance_window": [
+      0.15,
+      3.25
+    ],
+    "historical_collision_ceiling": 45,
+    "unsupported_foot_ceiling": 0,
+    "official_status": "NOT RUN"
+  },
+  "evidence_zip_sha256": "2e63abccd8c1d632489604e53c4f358cbf17917e17ec33daee638b5714779cca"
+}
