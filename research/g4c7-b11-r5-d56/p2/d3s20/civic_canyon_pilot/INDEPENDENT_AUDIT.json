@@ -1,0 +1,145 @@
+{
+  "study": "D3S20 independent persisted GLB broad-phase only",
+  "models": {
+    "CIVIC_CANYON_PILOT.glb": {
+      "geometries": 363,
+      "triangles": 4532,
+      "vertices": 2992,
+      "bounds": [
+        [
+          -209.0,
+          -243.279663,
+          4.506324
+        ],
+        [
+          199.694733,
+          247.930054,
+          287.0
+        ]
+      ],
+      "extents": [
+        408.694733,
+        491.209717,
+        282.493676
+      ]
+    },
+    "COUNTERFACTUAL_CIVIC_SHIFT.glb": {
+      "geometries": 363,
+      "triangles": 4532,
+      "vertices": 2992,
+      "bounds": [
+        [
+          -187.0,
+          -243.279663,
+          4.463741
+        ],
+        [
+          208.800003,
+          247.930054,
+          287.0
+        ]
+      ],
+      "extents": [
+        395.800003,
+        491.209717,
+        282.536259
+      ]
+    },
+    "COUNTERFACTUAL_WIDTH_SHRINK.glb": {
+      "geometries": 363,
+      "triangles": 4532,
+      "vertices": 2992,
+      "bounds": [
+        [
+          -197.399994,
+          -242.226761,
+          4.55342
+        ],
+        [
+          189.079254,
+          246.944183,
+          287.0
+        ]
+      ],
+      "extents": [
+        386.479248,
+        489.170944,
+        282.44658
+      ]
+    }
+  },
+  "files_sha256": {
+    "CIVIC_CANYON_PILOT.glb": "ccd52cf64425998c7b60225274297c497bb899c2a3ce739e9c00b829a30820ab",
+    "COUNTERFACTUAL_CIVIC_SHIFT.glb": "74bd92eb4e115ccc05f21da9528e33c87f29c85a9af94417112bfbe54a2b2023",
+    "COUNTERFACTUAL_WIDTH_SHRINK.glb": "91971a0d5194ea389e048b0beeddd04a1b657001a6e7f538672d9531d7dc9faa"
+  },
+  "counterfactuals": {
+    "COUNTERFACTUAL_CIVIC_SHIFT.glb": {
+      "same_geometry_names": 363,
+      "changed": 258,
+      "changes_by_kind": {
+        "other": 33,
+        "public_axis": 12,
+        "crossing": 4,
+        "built_frontage": 209
+      },
+      "public_spine_changed": true,
+      "frontage_changed": true,
+      "examples": [
+        "civic_portico_0_-40",
+        "civic_portico_0_42",
+        "civic_portico_1_-40",
+        "civic_portico_1_42",
+        "civic_portico_2_-40",
+        "civic_portico_2_42",
+        "civic_portico_3_-40",
+        "civic_portico_3_42",
+        "civic_portico_4_-40",
+        "civic_portico_4_42",
+        "civic_roof_louver_0",
+        "civic_roof_louver_1"
+      ]
+    },
+    "COUNTERFACTUAL_WIDTH_SHRINK.glb": {
+      "same_geometry_names": 363,
+      "changed": 348,
+      "changes_by_kind": {
+        "public_axis": 18,
+        "crossing": 4,
+        "other": 20,
+        "built_frontage": 306
+      },
+      "public_spine_changed": true,
+      "frontage_changed": true,
+      "examples": [
+        "civic_spine_0_0",
+        "civic_spine_0_1",
+        "civic_spine_0_2",
+        "civic_spine_1_0",
+        "civic_spine_1_1",
+        "civic_spine_1_2",
+        "civic_spine_2_0",
+        "civic_spine_2_1",
+        "civic_spine_2_2",
+        "civic_spine_3_0",
+        "civic_spine_3_1",
+        "civic_spine_3_2"
+      ]
+    }
+  },
+  "limited_24_public_eye_sample": {
+    "sample_points": 24,
+    "points_with_potential_aabb_obstruction": 0,
+    "examples": [],
+    "limitation": "AABB broad-phase, neither actual mesh intersection nor human 3D sweep"
+  },
+  "synthetic_obstruction_detected": true,
+  "design_rejection_flags": [
+    "a near-uniform row of 3-8 horizontal floor plates on each of 12 sides",
+    "public axes do not imply real room entrance/physical route",
+    "no built staircases or landing sequence",
+    "study silhouette does not cover original intended X+-400/Y+-280/Z0..400 envelope"
+  ],
+  "formal_331_993": "NOT RUN",
+  "makecode_instruction_counts": "NOT MEASURED"
+}
