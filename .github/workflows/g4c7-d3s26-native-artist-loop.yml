@@ -32,9 +32,39 @@ jobs:
           data=gzip.decompress(base64.b64decode(p.read_text().strip()))
           assert len(data)==13427,len(data)
           assert hashlib.sha256(data).hexdigest()=='9c42fcd5b50b3917e26fa69c2b94289d0a9a3e379dd17f5cf71b3db73bdfd45e'
+          # Correct the sole confirmed M13 crash without modifying pinned original evidence.
+          bad=b"M13_CROSS_STREET_AWNING_%02'%i"
+          good=b"M13_CROSS_STREET_AWNING_%02d'%i"
+          assert data.count(bad)==1,'Expected exactly one known format defect'
+          repaired=data.replace(bad,good)
           target=pathlib.Path('tools/g4c7_d3s26_m13_lived_spine.py')
-          assert not target.exists()
-          target.write_bytes(data)
+          assert not target.exists(),'Original archive source must never be overwritten'
+          target.write_bytes(repaired)
+          print('M13_KNOWN_FORMAT_DEFECT_FIXED original_sha256=',hashlib.sha256(data).hexdigest(),
+                'repaired_sha256=',hashlib.sha256(repaired).hexdigest())
+          PY
+          python - <<'PY'
+          import ast,re,pathlib
+          p=pathlib.Path('tools/g4c7_d3s26_m13_lived_spine.py')
+          src=p.read_text()
+          tree=ast.parse(src)
+          # Inspect every source-literal %-format expression before loading Blender.
+          checked=0
+          for n in ast.walk(tree):
+            if isinstance(n,ast.BinOp) and isinstance(n.op,ast.Mod) and isinstance(n.left,ast.Constant) and isinstance(n.left.value,str):
+              fmt=n.left.value
+              if '%' not in fmt:continue
+              checked+=1
+              try:
+                _=fmt % (tuple(1 for _ in n.right.elts) if isinstance(n.right,ast.Tuple) else 1)
+              except ValueError as e:
+                if 'incomplete format' in str(e):
+                  raise AssertionError(f'M13 incomplete %-format line {n.lineno}: {fmt}') from e
+              except (TypeError,KeyError,OverflowError):
+                pass
+          assert checked>0,'Format regression check did not run'
+          assert "M13_CROSS_STREET_AWNING_%02d" in src
+          print('M13_FORMAT_STRING_REGRESSION_PASS',checked)
           PY
           python -m py_compile tools/g4c7_d3s26_m13_lived_spine.py
           python tools/g4c7_d3s26_m13_lived_spine.py --preflight
