@@ -1,0 +1,68 @@
+{
+  "baseline": {
+    "sha256": "bc7b758f69c743c11dad7c2d6b83df13b6c44b57b020923a32fb5d219e65551b",
+    "saved_geometry_count": 272,
+    "bounds": [
+      [
+        -0.10000000149011612,
+        -0.10000000149011612,
+        -0.11999999731779099
+      ],
+      [
+        44.099998474121094,
+        36.099998474121094,
+        8.119999885559082
+      ]
+    ],
+    "portal_samples": 162,
+    "portal_point_collisions": 0,
+    "exterior_arrival_apron_present_at_z0": true,
+    "roof_faces": 86,
+    "public_air_cells": 34,
+    "market_air_cells": 9
+  },
+  "frontage": {
+    "sha256": "575b4b33f8d8e4a8af47f8fd0f550fd0ec699d630f306110da2bdad2fe49ab66",
+    "saved_geometry_count": 278,
+    "bounds": [
+      [
+        -0.10000000149011612,
+        -0.10000000149011612,
+        -0.11999999731779099
+      ],
+      [
+        44.099998474121094,
+        40.099998474121094,
+        8.119999885559082
+      ]
+    ],
+    "portal_samples": 162,
+    "portal_point_collisions": 0,
+    "exterior_arrival_apron_present_at_z0": true,
+    "roof_faces": 87,
+    "public_air_cells": 33,
+    "market_air_cells": 11
+  },
+  "envelope": {
+    "sha256": "559e04dc11b1187ff526b501bc71e37a4185e3ac9982b57cd680cc885ee29d5c",
+    "saved_geometry_count": 276,
+    "bounds": [
+      [
+        -0.10000000149011612,
+        -0.10000000149011612,
+        -0.11999999731779099
+      ],
+      [
+        44.099998474121094,
+        40.099998474121094,
+        8.119999885559082
+      ]
+    ],
+    "portal_samples": 162,
+    "portal_point_collisions": 0,
+    "exterior_arrival_apron_present_at_z0": true,
+    "roof_faces": 87,
+    "public_air_cells": 34,
+    "market_air_cells": 10
+  }
+}
