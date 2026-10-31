@@ -5,10 +5,11 @@ on:
     paths:
       - 'tools/g4c7_d3s26_m11_native_artist.py'
       - 'tools/g4c7_d3s26_m12_visual_first.py'
+      - 'research/g4c7-b11-r5-d56/p2/d3s26/M13_SOURCE_GZIP_BASE64.txt'
       - '.github/workflows/g4c7-d3s26-native-artist-loop.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: g4c7-d3s26-native-artist-loop
   cancel-in-progress: false
@@ -18,45 +19,93 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Preflight authored native scene
-        run: |
-          python -m py_compile tools/g4c7_d3s26_m12_visual_first.py
-          python tools/g4c7_d3s26_m12_visual_first.py --preflight
-      - name: Install official Blender Foundation bpy 4.5.15
-        run: |
-          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
-          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
-      - name: Author native city form and produce eight real Cycles images
-        run: python tools/g4c7_d3s26_m12_visual_first.py
-      - name: Verify output signatures and view identity (not ART or safety)
+      - name: Recover and verify readable, unmodified M13 source from pinned source envelope
         run: |
           python - <<'PY'
-          import hashlib,json,os,struct
-          from pathlib import Path
-          root=Path('artifacts/g4c7-d3s26-m12-visual-first')/('run_'+os.environ['GITHUB_SHA'][:12])
-          m=json.loads((root/'manifest.json').read_text())
-          assert m['art']=='HOLD' and m['construction']=='FORBIDDEN' and m['formal_QA']=='NOT_RUN'
-          assert len(m['views'])==8 and m['district_count']==5
-          b=root/'M12_HAND_AUTHORED_DISTRICT_SCENE.blend'
-          assert b.read_bytes()[:7]==b'BLENDER'
-          assert hashlib.sha256(b.read_bytes()).hexdigest()==m['blend_sha256']
-          glb=root/'M12_REAL_MESH_UNASSESSED.glb'
-          assert glb.read_bytes()[:4]==b'glTF'
-          for key,item in m['views'].items():
-              raw=(root/('M12_'+key+'.png')).read_bytes()
-              assert raw[:8]==b'\x89PNG\r\n\x1a\n'
-              assert struct.unpack('>II',raw[16:24])==(960,540)
-              assert hashlib.sha256(raw).hexdigest()==item['sha256']
-          print('M12_EIGHT_BLENDER_RENDER_BINARY_PASS_NOT_ART_PASS')
+          import base64,gzip,hashlib,pathlib
+          p=pathlib.Path('research/g4c7-b11-r5-d56/p2/d3s26/M13_SOURCE_GZIP_BASE64.txt')
+          data=gzip.decompress(base64.b64decode(p.read_text().strip()))
+          assert len(data)==13427,len(data)
+          assert hashlib.sha256(data).hexdigest()=='9c42fcd5b50b3917e26fa69c2b94289d0a9a3e379dd17f5cf71b3db73bdfd45e'
+          target=pathlib.Path('tools/g4c7_d3s26_m13_lived_spine.py')
+          assert not target.exists()
+          target.write_bytes(data)
           PY
-      - name: Archive append-only native evidence without branch write
+          python -m py_compile tools/g4c7_d3s26_m13_lived_spine.py
+          python tools/g4c7_d3s26_m13_lived_spine.py --preflight
+      - name: Install official Blender 4.5.15 bpy
+        run: |
+          python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Make one inhabited-section native scene and eight Blender Cycles images
+        run: python tools/g4c7_d3s26_m13_lived_spine.py
+      - name: Independent native source and visual evidence audit (not formal G0)
+        run: |
+          python - <<'PY'
+          import bpy,json,hashlib,struct,os,math
+          from pathlib import Path
+          p=Path('artifacts/g4c7-d3s26-m13-lived-spine')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='HOLD_NOT_APPROVED' and m['construction']=='FORBIDDEN'
+          assert m['negative_controls']==3
+          assert len(m['views'])==8
+          blend=p/'M13_EDITABLE_TRUE_LIVED_SECTION.blend'
+          assert blend.read_bytes()[:7]==b'BLENDER'
+          assert hashlib.sha256(blend.read_bytes()).hexdigest()==m['blend_sha256']
+          glb=p/'M13_TRUE_EDITABLE_SECTION_NOT_APPROVED.glb'
+          assert glb.read_bytes()[:4]==b'glTF'
+          assert hashlib.sha256(glb.read_bytes()).hexdigest()==m['glb_sha256']
+          for k,v in m['views'].items():
+            png=(p/('M13_'+k+'.png')).read_bytes()
+            assert png[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',png[16:24])==(900,540)
+            assert hashlib.sha256(png).hexdigest()==v['sha256']
+          bpy.ops.wm.open_mainfile(filepath=str(blend.resolve()))
+          for required in ('M13_TRUE_PEDESTRIAN_SPINE','M13_RESEARCH_TRUE_GALLERY_FLOOR',
+                           'M13_TRUE_RESEARCH_BRIDGE','M13_TRUE_RESIDENTIAL_BRIDGE',
+                           'M13_REAL_ENCLOSURE_MARKET_FRONT_BEAM',
+                           'M13_REAL_ENCLOSURE_MAKER_FRONT_BEAM'):
+            assert bpy.data.objects.get(required),required
+          def bounds(name):
+            ob=bpy.data.objects.get(name)
+            assert ob and ob.type=='MESH',name
+            from mathutils import Vector
+            corners=[ob.matrix_world@Vector(c) for c in ob.bound_box]
+            return [min(v[j] for v in corners) for j in range(3)],[max(v[j] for v in corners) for j in range(3)]
+          for fl in (1,2):
+            for i in range(18):
+              lo,hi=bounds('M13_TRUE_STAIR%d_TREAD_%02d'%(fl,i+1))
+              expect=(fl-1)*5.4+(i+1)*.3
+              assert abs(hi[2]-expect)<1e-4,(fl,i,hi,expect)
+              assert hi[0]-lo[0]>=5.5-1e-4
+              assert abs(hi[1]-lo[1]-.75)<1e-4
+              if i:
+                _,prev=bounds('M13_TRUE_STAIR%d_TREAD_%02d'%(fl,i))
+                assert abs(prev[1]-lo[1])<1e-4
+          assert len([x for x in bpy.data.objects if x.type=='CAMERA' and x.name.startswith('M13_CAMERA_')])==8
+          print('M13_NATIVE_SAVED_SCENE_REOPEN_36_TREADS_8_VIEWS_PASS_NOT_ART_OR_SAFETY_PASS')
+          PY
+      - name: Preserve complete real native evidence (even if later branch push fails)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g4c7-d3s26-m12-art-direction-ART-HOLD
-          path: artifacts/g4c7-d3s26-m12-visual-first/run_*/
-          retention-days: 14
+          name: g4c7-d3s26-m13-inhabited-section-ART-HOLD
+          path: artifacts/g4c7-d3s26-m13-lived-spine/run_*/
+          retention-days: 21
           if-no-files-found: warn
+      - name: Archive verified readable M13 Python source on research branch, never main
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- tools/g4c7_d3s26_m13_lived_spine.py
+          git diff --cached --quiet && { echo 'Missing recovered readable source'; exit 1; }
+          git commit -m 'D3S26 M13: archive verified readable route-first Blender artist source (ART HOLD)'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
