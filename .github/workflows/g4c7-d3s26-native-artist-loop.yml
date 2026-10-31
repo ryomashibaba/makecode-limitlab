@@ -4,6 +4,7 @@ on:
     branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
     paths:
       - 'tools/g4c7_d3s26_m11_native_artist.py'
+      - 'tools/g4c7_d3s26_m12_visual_first.py'
       - '.github/workflows/g4c7-d3s26-native-artist-loop.yml'
   workflow_dispatch:
 permissions:
@@ -20,43 +21,42 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Preflight native artist inputs
+      - name: Preflight authored native scene
         run: |
-          python -m py_compile tools/g4c7_d3s26_m11_native_artist.py
-          python tools/g4c7_d3s26_m11_native_artist.py --preflight
-          test -s artifacts/g4c7-a72-authored-native/native-output/a72_authored_true_section.blend
+          python -m py_compile tools/g4c7_d3s26_m12_visual_first.py
+          python tools/g4c7_d3s26_m12_visual_first.py --preflight
       - name: Install official Blender Foundation bpy 4.5.15
         run: |
           python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
           python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
-      - name: Native scene edit, versioned save, eight actual Cycles images and GLB
-        run: python tools/g4c7_d3s26_m11_native_artist.py
-      - name: Independently verify output signatures and review provenance
+      - name: Author native city form and produce eight real Cycles images
+        run: python tools/g4c7_d3s26_m12_visual_first.py
+      - name: Verify output signatures and view identity (not ART or safety)
         run: |
           python - <<'PY'
           import hashlib,json,os,struct
           from pathlib import Path
-          root=Path('artifacts/g4c7-d3s26-m11-native-artist')/('run_'+os.environ['GITHUB_SHA'][:12])
+          root=Path('artifacts/g4c7-d3s26-m12-visual-first')/('run_'+os.environ['GITHUB_SHA'][:12])
           m=json.loads((root/'manifest.json').read_text())
-          assert m['status']['ART']=='HOLD' and m['status']['construction']=='FORBIDDEN'
-          assert len(m['views'])==8
-          b=root/'M11_NATIVE_EDITED_FROM_A72_TECH_SEED.blend'
+          assert m['art']=='HOLD' and m['construction']=='FORBIDDEN' and m['formal_QA']=='NOT_RUN'
+          assert len(m['views'])==8 and m['district_count']==5
+          b=root/'M12_HAND_AUTHORED_DISTRICT_SCENE.blend'
           assert b.read_bytes()[:7]==b'BLENDER'
-          assert hashlib.sha256(b.read_bytes()).hexdigest()==m['saved_blend_sha256']
-          glb=root/'M11_NATIVE_EDITED_GEOMETRY_UNASSESSED.glb'
+          assert hashlib.sha256(b.read_bytes()).hexdigest()==m['blend_sha256']
+          glb=root/'M12_REAL_MESH_UNASSESSED.glb'
           assert glb.read_bytes()[:4]==b'glTF'
           for key,item in m['views'].items():
-              raw=(root/('M11_'+key+'.png')).read_bytes()
+              raw=(root/('M12_'+key+'.png')).read_bytes()
               assert raw[:8]==b'\x89PNG\r\n\x1a\n'
-              assert struct.unpack('>II',raw[16:24])==(800,450)
+              assert struct.unpack('>II',raw[16:24])==(960,540)
               assert hashlib.sha256(raw).hexdigest()==item['sha256']
-          print('M11_EIGHT_TRUE_CYCLES_IMAGES_BINARY_PASS_NOT_ART_PASS')
+          print('M12_EIGHT_BLENDER_RENDER_BINARY_PASS_NOT_ART_PASS')
           PY
-      - name: Archive native source and review evidence without branch write
+      - name: Archive append-only native evidence without branch write
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g4c7-d3s26-m11-native-artist-ART-HOLD
-          path: artifacts/g4c7-d3s26-m11-native-artist/run_*/
+          name: g4c7-d3s26-m12-art-direction-ART-HOLD
+          path: artifacts/g4c7-d3s26-m12-visual-first/run_*/
           retention-days: 14
           if-no-files-found: warn
