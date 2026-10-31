@@ -1,0 +1,45 @@
+{
+  "current_study": "D3S25 THE INHABITED APERTURE / ART REJECT",
+  "overall_status": "ART HOLD / 0 formally adopted / Minecraft Education construction PROHIBITED",
+  "next_study": "D3S26",
+  "proven_failures": {
+    "market_entrances_correct_side": "0/11",
+    "research_stair_overhead_intersections": "34/126",
+    "maker_main_view_triangle_hits": 2,
+    "research_main_view_triangle_hits": 2,
+    "forge_upper_stair_to_gallery_design_unit_mismatch": 13.75
+  },
+  "method_reset": "Do not extend D3S25 giant ribs, shifted stacked research boxes or backwards market rooms. Author human-activity city 3D with actual street-front doors, full up/down pedestrian access, view-clear public fabrication and research observer positions, supported occupied thickness forming high-density skyline. Review actual saved GLB south/north/district/maker/research/inhabitant/internal before further automatic generation.",
+  "hard_pre_art_gates": [
+    "Shopfront physical thresholds open onto supported public pedestrian streets rather than the opposite side",
+    "Maker and research finite sightlines to actual work must be unobstructed after independently reloading GLB",
+    "Representative full upper destination must have walkable stairs, real landings and 3.25m headroom by width, not point-only rays",
+    "Strong distinctive inhabited whole-city silhouette seen from both north and south, not scaffold, boxes, ribbons or plain campus",
+    "One program input only counterfactual verifies actual room/access/silhouette relations; D3S25 NOT RUN",
+    "If second truly different direction also fails, stop mass generation and revisit authoring medium and human art brief"
+  ],
+  "fixed_qa": {
+    "human_samples": 331,
+    "foot_samples": 993,
+    "body_half_width": 0.65,
+    "clearance": [
+      0.15,
+      3.25
+    ],
+    "old_collision_ceiling": 45,
+    "unsupported_feet": 0,
+    "formal_status": "NOT RUN"
+  },
+  "strict_prohibitions": [
+    "Minecraft Education writes",
+    "city integration",
+    "main writes",
+    "merge / Ready PR53",
+    "modify historical evidence",
+    "claim formal safety from limited triangle rays",
+    "promote ART from test counts",
+    "Work without explicit user approval"
+  ],
+  "artifact_zip_sha256": "bd766268bdf7955621bb2d77a2a81a463c20820f17f28c21763b192a8f51622a",
+  "binary_assets_on_github": false
+}
