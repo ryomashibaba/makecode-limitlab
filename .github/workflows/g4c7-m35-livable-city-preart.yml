@@ -1,0 +1,127 @@
+name: G4C7 M35 actual inhabited-city native Blender and strict early-art evidence
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_m35_native_four_district_city.py'
+      - '.github/workflows/g4c7-m35-livable-city-preart.yml'
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m35-real-native-early-art
+  cancel-in-progress: false
+jobs:
+  author-and-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile actual source
+        run: python -m py_compile tools/g4c7_m35_native_four_district_city.py
+      - name: Install Blender 4.5 and separate GLB reader
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "numpy==2.3.4"
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Generate new genuine editable Blender city, real GLB and 9 fixed screenshots
+        run: python tools/g4c7_m35_native_four_district_city.py
+      - name: Independent stored-file validation and honest negative controls
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import bpy,trimesh,json,hashlib,struct,numpy as np
+          from mathutils import Vector
+          p=Path('artifacts/g4c7-m35-author-scene')
+          m=json.loads((p/'M35_MANIFEST.json').read_text())
+          assert m['art']=='HOLD_NOT_ADOPTED'
+          assert m['formal_safety']=='331_993_NOT_RUN'
+          assert m['minecraft']=='NO_WRITES'
+          assert m['official_adoption']==0
+          assert len(m['cameras'])==9
+          def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
+          blend=p/m['blend']['file'];glb=p/m['glb']['file']
+          assert blend.read_bytes().startswith(b'BLENDER')
+          assert glb.read_bytes().startswith(b'glTF')
+          assert sha(blend)==m['blend']['sha256'] and sha(glb)==m['glb']['sha256']
+          for k,v in m['cameras'].items():
+              f=p/v['file']; b=f.read_bytes()
+              assert b[:8]==b'\x89PNG\r\n\x1a\n'
+              assert struct.unpack('>II',b[16:24])==(850,510)
+              assert sha(f)==v['sha256'],k
+          s=trimesh.load(str(glb),force='scene')
+          n2m={}
+          for n in s.graph.nodes_geometry:
+              tr,geoname=s.graph.get(n)
+              geom=s.geometry[geoname].copy()
+              geom.apply_transform(tr)
+              n2m[n]=geom
+          assert len(n2m)>160,len(n2m)
+          for needed in ['M35_CIVIC_CROSS','M35_EAST_AXIS','M35_WEST_AXIS',
+              'M35_NORTH_AXIS','M35_SOUTH_AXIS','M35_FAB_REAL_FLOOR',
+              'M35_RESEARCH_REAL_FLOOR','M35_HABITAT_GROUND',
+              'M35_CULTURE_GROUND','M35_UPPER_CITY_PUBLIC_BRIDGE',
+              'M35_HABITAT_GARDEN','M35_RESEARCH_UPPER_GALLERY']:
+              assert needed in n2m,needed
+          assert len([n for n in n2m if n.startswith('M35_HAB_TREAD_')])==72
+          assert len([n for n in n2m if n.startswith('M35_RESEARCH_TREAD_')])==72
+          # Inspect actual vertical coordinate ranges from SAVED GLB.
+          def zmax(name):return n2m[name].vertices[:,2].max()
+          assert abs(zmax('M35_CIVIC_CROSS')-.2)<.015
+          assert abs(zmax('M35_UPPER_CITY_PUBLIC_BRIDGE')-18.2)<.015
+          assert abs(zmax('M35_HAB_TREAD_072')-18.0)<.02
+          assert abs(zmax('M35_RESEARCH_TREAD_072')-18.0)<.02
+          def horizontal_support(node,x,y,expect):
+              geom=n2m[node]
+              vertices=geom.vertices
+              for face in geom.faces:
+                  a,b,c=vertices[face]
+                  if max(abs(a[2]-expect),abs(b[2]-expect),abs(c[2]-expect))>.018:continue
+                  va,vb,vc=a[:2],b[:2],c[:2]
+                  den=(vb[1]-vc[1])*(va[0]-vc[0])+(vc[0]-vb[0])*(va[1]-vc[1])
+                  if abs(den)<1e-9:continue
+                  u=((vb[1]-vc[1])*(x-vc[0])+(vc[0]-vb[0])*(y-vc[1]))/den
+                  v=((vc[1]-va[1])*(x-vc[0])+(va[0]-vc[0])*(y-vc[1]))/den
+                  if min(u,v,1-u-v)>=-1e-5:return True
+              return False
+          # Public cross: actual horizontal support, sampled from SAVED geometry.
+          assert horizontal_support('M35_CIVIC_CROSS',0,0,.2)
+          assert horizontal_support('M35_EAST_AXIS',105,0,.2)
+          assert horizontal_support('M35_WEST_AXIS',-105,0,.2)
+          assert horizontal_support('M35_NORTH_AXIS',0,100,.2)
+          assert horizontal_support('M35_SOUTH_AXIS',0,-100,.2)
+          # Door's outdoor and indoor real planes must both exist. This is NOT body sweep.
+          for street,inside,x,y in [
+            ('M35_FAB_ENTRANCE_STREET','M35_FAB_REAL_FLOOR',-96,-30),
+            ('M35_RESEARCH_ENTRANCE_STREET','M35_RESEARCH_REAL_FLOOR',96,30),
+            ('M35_HABITAT_ENTRANCE_STREET','M35_HABITAT_GROUND',-90,30),
+            ('M35_CULTURE_ENTRANCE_STREET','M35_CULTURE_GROUND',90,-30)]:
+              outdoor=y+.35 if y<0 else y-.35
+              indoor=y-.35 if y<0 else y+.35
+              # For culture, ground interior is on SOUTH, not north.
+              if inside=='M35_CULTURE_GROUND':outdoor,indoor=y+.35,y-.35
+              assert horizontal_support(street,x,outdoor,.2),(street,x,outdoor)
+              assert horizontal_support(inside,x,indoor,.2),(inside,x,indoor)
+          # Deliberate faulty source claim is rejected by actual GLB.
+          assert not horizontal_support('M35_CIVIC_CROSS',300,300,.2)
+          # Reopen the actual native .blend and check same scene's editable collections.
+          bpy.ops.wm.open_mainfile(filepath=str(blend.resolve()))
+          names={o.name for o in bpy.data.objects}
+          assert 'M35_CAMERA_FAB_EYE' in names and 'M35_CAMERA_HAB_EYE' in names
+          assert 'M35_FAB_ACTIVITY_ROOF' in names
+          assert 'M35_HAB_INHABITED_SKYLINE' in names
+          assert len([o for o in bpy.data.objects if o.type=='CAMERA' and o.name.startswith('M35_CAMERA_')])==9
+          assert len([c for c in bpy.data.collections if c.name.startswith('M35_')])==9
+          print('M35_NATIVE_REOPEN_SAVED_GLBS_9_CAMS_AND_LOCAL_FLOOR_PREART_PASS')
+          print('ART_HOLD_NO_CONTINUOUS_WALK_NO_331_993_NO_MINECRAFT')
+          PY
+      - name: Archive originals without making any design adoption claim
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m35-editable-native-9-eyes-ART-HOLD
+          path: artifacts/g4c7-m35-author-scene/
+          retention-days: 21
+          if-no-files-found: warn
