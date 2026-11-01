@@ -1,0 +1,117 @@
+name: G4C7 M37-P2 create empty native direct-author studio ONLY (NOT ART)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_direct_author_studio.py
+      - .github/workflows/g4c7-m37p2-empty-direct-author-studio-native.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37p2-new-empty-artist-studio-once
+  cancel-in-progress: true
+jobs:
+  bootstrap-real-blender-studio-art-hold:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile script (NO procedural city creation permitted)
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_direct_author_studio.py
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("tools/g4c7_m37p2_direct_author_studio.py").read_text()
+          for forbidden in ("bpy.ops.mesh.", "bpy.data.meshes.new(", "mesh.from_pydata("):
+              assert forbidden not in s, "PROGRAMMATIC_CITY_FORM_FORBIDDEN:" + forbidden
+          assert "EMPTY_NO_ART_CREATED" in s
+          print("SOURCE_CREATES_NO_CITY_GEOMETRY_NOT_ART")
+          PY
+      - name: Install authentic bpy 4.5.x native file writer
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Create fresh EDITABLE native Blender template WITHOUT any art meshes
+        run: |
+          set -euo pipefail
+          target=artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED
+          test ! -e "$target"
+          mkdir -p "$target"
+          python -u tools/g4c7_m37p2_direct_author_studio.py --create-template "$target/M37P2_EMPTY_DIRECT_AUTHOR_MASTER_NOT_ART.blend"
+      - name: Independent open saved .blend, verify empty no-ART and all safeties
+        run: |
+          python - <<'PY'
+          import bpy, hashlib, json
+          from pathlib import Path
+          d=Path("artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED")
+          p=d/"M37P2_EMPTY_DIRECT_AUTHOR_MASTER_NOT_ART.blend"
+          data=p.read_bytes()
+          assert data[:7]==b"BLENDER"
+          bpy.ops.wm.read_factory_settings(use_empty=True)
+          bpy.ops.wm.open_mainfile(filepath=str(p.absolute()))
+          s=bpy.context.scene
+          assert s.name=="M37P2_EMPTY_DIRECT_AUTHOR_MASTER_NOT_ART"
+          assert len([o for o in s.objects if o.type=="MESH"])==0
+          assert len([o for o in s.objects if o.type=="CAMERA"])==3
+          for name in (
+              "P2_CITY_MACRO_DIRECT_AUTHOR",
+              "P2_INHABITED_SECTION_DIRECT_AUTHOR",
+              "P2_PUBLIC_FACTORY_BOUNDARY_DIRECT_AUTHOR",
+              "P2_RESEARCH_CULTURE_DIRECT_AUTHOR",
+              "P2_HABITAT_PRIVATE_DIRECT_AUTHOR"):
+              assert bpy.data.collections.get(name)
+          assert s["P2_SOURCE_KIND"]=="UNAUTHORED_EMPTY_TEMPLATE"
+          assert s["P2_STUDIO_STAGE"]=="EMPTY_NO_ART_CREATED"
+          assert s["P2_ART"]=="HOLD"
+          assert s["P2_OFFICIAL_ADOPTIONS"]==0
+          assert s["P2_FORMAL_331_993"]=="NOT_RUN"
+          assert s["P2_MINECRAFT"]=="FORBIDDEN"
+          assert "M37P2_RUN_ONCE_ENABLE_AUTHOR_REVIEW_PANEL.py" in bpy.data.texts
+          report={"status":"NATIVE_EMPTY_ARTIST_STUDIO_REOPENED_NOT_ART",
+                  "real_blend_sha256":hashlib.sha256(data).hexdigest(),
+                  "real_blend_bytes":len(data),"real_mesh_objects":0,
+                  "provisional_native_cameras":3,
+                  "author_sections_with_real_mesh":0,
+                  "art":"HOLD","official_adoptions":0,
+                  "formal_331_993":"NOT_RUN",
+                  "G0_S1_G1_G2_G3":"NOT_RUN",
+                  "MakeCode":"NOT_EVALUATED",
+                  "Minecraft":"FORBIDDEN"}
+          (d/"M37P2_EMPTY_STUDIO_NATIVE_AUDIT.json").write_text(
+              json.dumps(report,indent=2))
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Archive new EMPTY original only; never archive as ART model
+        run: |
+          set -euo pipefail
+          target=artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED
+          cp tools/g4c7_m37p2_direct_author_studio.py "$target/"
+          cat > "$target/README_JA.md" <<'TXT'
+          # M37-P2 完全に空の直接造形Blender作業原本（美術作品ではない）
+
+          M37-L/N/O1/P1の不採用美術形態をコピーせず、新規の真正Blenderファイルとして3カメラと5つの空の制作コレクションを作成。**本ファイルには都市形態の実メッシュは1つもない**。これはアーティストが直接Blenderで形態制作を始めるための空の作業原本であり、新美術候補・ART改善・正式ユーザー採用は一切意味しない。各視点カメラ位置は暫定であり制作後に作者が同一原本の視点を検討する必要がある。
+
+          Blenderで開き、Text Editorから `M37P2_RUN_ONCE_ENABLE_AUTHOR_REVIEW_PANEL.py` を手動実行して3D View > Nキー > P2 Authorに審査操作を出す。**自動実行はしない**。ARTモデルを形成する形はコードのbox/patch/wall/bridgeへ委譲せず、Blenderの直接編集で全市街の粗3Dと代表の工場・研究・住宅・文化の生活断面を同じ原本で並行制作する。保存時は旧テンプレートの上書きを避け、新しい名前にする。審査への準備完了は正式ART採用を意味しない。
+
+          **ART HOLD、正式採用0、正式331/993とG0/S1/G1/G2/G3未実施、MakeCode実コスト未評価、Minecraft施工禁止、main変更禁止、PR #53 Draft維持、Work事前明示承認。**
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$target"
+          git diff --cached --quiet && exit 1
+          git commit -m "research(g4c7): archive authentic EMPTY M37-P2 direct-author Blender studio NOT ART"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Keep authentic native template inspectable if branch write fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37p2-empty-studio-NOT-ART
+          path: artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED
+          retention-days: 21
+          if-no-files-found: warn
