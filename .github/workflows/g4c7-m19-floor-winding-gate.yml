@@ -1,0 +1,23 @@
+name: G4C7 M19 public floor winding regression gate
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m19_floor_winding_gate.py"
+      - ".github/workflows/g4c7-m19-floor-winding-gate.yml"
+      - "research/g4c7-b11-r5-d56/p2/d3s26/M17_CIVIC_FABRIC_NETWORK.json"
+permissions:
+  contents: read
+jobs:
+  inexpensive-geometry-design-math:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check positive-Z floor winding and negative test, no Blender setup
+        run: |
+          python -m py_compile tools/g4c7_m19_floor_winding_gate.py
+          python tools/g4c7_m19_floor_winding_gate.py
