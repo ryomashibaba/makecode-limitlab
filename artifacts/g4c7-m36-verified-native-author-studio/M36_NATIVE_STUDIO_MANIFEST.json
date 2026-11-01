@@ -1,0 +1,73 @@
+{
+  "study": "M36_BLENDER_DIRECT_ARTIST_AUTHORING_STUDIO",
+  "result": "METHOD_GATE_CANDIDATE_NEEDS_INDEPENDENT_NATIVE_REOPEN",
+  "reference_original_sha256": "2cb51ded85bb5f541fd56058f14e639098e6592e7082e41c417083a16d55dce4",
+  "reference_mesh_sha256": "0ed942d79cec61420f719838537138a488e2760aa55b6bd5dae57035816235f5",
+  "locked_reference_scene": "M35_REJECTED_REFERENCE_LOCKED",
+  "editable_scene": "M36_AUTHORING_STUDIO_ART_HOLD",
+  "saved_blend": {
+    "file": "M36_NATIVE_DUAL_SCENE_ARTIST_STUDIO.blend",
+    "sha256": "be8d6eb0c37f58de4d677c12c4382f4f254ce51fe36e022946d4d9315301dc06"
+  },
+  "editable_mesh_count": 208,
+  "protected_reference_mesh_count": 208,
+  "separate_editable_datablocks": true,
+  "deliberate_proof_edit": {
+    "object": "M35_FAB_ACTIVITY_ROOF",
+    "vertex": 0,
+    "z_shift": 0.005,
+    "reference_unchanged": true
+  },
+  "art_guide_count": 8,
+  "fixed_camera_bookmarks": [
+    {
+      "key": "SOUTH",
+      "source_camera": "M35_CAMERA_SOUTH",
+      "editable_camera": "M36_EDIT_M35_CAMERA_SOUTH"
+    },
+    {
+      "key": "NORTH",
+      "source_camera": "M35_CAMERA_NORTH",
+      "editable_camera": "M36_EDIT_M35_CAMERA_NORTH"
+    },
+    {
+      "key": "AERIAL",
+      "source_camera": "M35_CAMERA_AERIAL",
+      "editable_camera": "M36_EDIT_M35_CAMERA_AERIAL"
+    },
+    {
+      "key": "PUBLIC_EYE",
+      "source_camera": "M35_CAMERA_PUBLIC_EYE",
+      "editable_camera": "M36_EDIT_M35_CAMERA_PUBLIC_EYE"
+    },
+    {
+      "key": "FAB_EYE",
+      "source_camera": "M35_CAMERA_FAB_EYE",
+      "editable_camera": "M36_EDIT_M35_CAMERA_FAB_EYE"
+    },
+    {
+      "key": "RESEARCH_EYE",
+      "source_camera": "M35_CAMERA_RESEARCH_EYE",
+      "editable_camera": "M36_EDIT_M35_CAMERA_RESEARCH_EYE"
+    },
+    {
+      "key": "HAB_EYE",
+      "source_camera": "M35_CAMERA_HAB_EYE",
+      "editable_camera": "M36_EDIT_M35_CAMERA_HAB_EYE"
+    },
+    {
+      "key": "CULTURE_EYE",
+      "source_camera": "M35_CAMERA_CULTURE_EYE",
+      "editable_camera": "M36_EDIT_M35_CAMERA_CULTURE_EYE"
+    },
+    {
+      "key": "UPPER_BRIDGE_EYE",
+      "source_camera": "M35_CAMERA_UPPER_BRIDGE_EYE",
+      "editable_camera": "M36_EDIT_M35_CAMERA_UPPER_BRIDGE_EYE"
+    }
+  ],
+  "whole_city_art": "HOLD_NOT_PASSED",
+  "formal_331_993": "NOT_RUN",
+  "construction": "FORBIDDEN",
+  "important": "Not a new city, no art pass, no safety pass, guide curves are not real geometry."
+}
