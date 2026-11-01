@@ -1,0 +1,169 @@
+{
+  "test": "M37E_INDEPENDENT_NATIVE_FLOOR_OVERLAP_AND_9_CAMERA_CENTER_RAYS",
+  "status": "METHOD_AUDIT_ONLY_NO_ART_OR_SAFETY_PASS",
+  "source_blend_sha256": "22877ffa19e79e897574d64d897b2f4a4d2efaede1e15c64ae57c7e3dbf8c856",
+  "new_scene_meshes": 1163,
+  "floor_proxy": {
+    "count": 363,
+    "strict_xy_overlap_edges_height_delta_le_0_36": 225,
+    "excluded_boundary_near_edges": 274,
+    "connected_components": 180,
+    "largest_component_floors": 12,
+    "gate_anchor": "M37D_PUBLIC_GATE_REAL_FLOOR",
+    "gate_strict_component_floors": 5,
+    "group_counts": {
+      "CULTURE": {
+        "floor_proxies": 63,
+        "gate_strict_overlap_connected": 4
+      },
+      "FABRICATION": {
+        "floor_proxies": 43,
+        "gate_strict_overlap_connected": 0
+      },
+      "HABITAT": {
+        "floor_proxies": 115,
+        "gate_strict_overlap_connected": 0
+      },
+      "PUBLIC": {
+        "floor_proxies": 7,
+        "gate_strict_overlap_connected": 1
+      },
+      "RESEARCH": {
+        "floor_proxies": 62,
+        "gate_strict_overlap_connected": 0
+      },
+      "VERTICAL": {
+        "floor_proxies": 73,
+        "gate_strict_overlap_connected": 0
+      }
+    }
+  },
+  "nominal_door_lintels": {
+    "count": 113,
+    "door_floor_on_gate_contact_component": 3,
+    "door_floors_not_on_gate_contact_component": 110,
+    "not_on_gate_component_examples": [
+      {
+        "door_lintel": "M37D_FAB1_L0_B0_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L0_B0_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB1_L0_B1_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L0_B1_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB1_L0_B2_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L0_B2_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB1_L1_B0_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L1_B0_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB1_L1_B1_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L1_B1_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB1_L1_B2_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L1_B2_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB1_L2_B0_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L2_B0_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB1_L2_B2_DOOR_LINTEL",
+        "floor": "M37D_FAB1_L2_B2_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB2_L0_B0_DOOR_LINTEL",
+        "floor": "M37D_FAB2_L0_B0_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB2_L0_B1_DOOR_LINTEL",
+        "floor": "M37D_FAB2_L0_B1_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB2_L0_B2_DOOR_LINTEL",
+        "floor": "M37D_FAB2_L0_B2_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      },
+      {
+        "door_lintel": "M37D_FAB2_L1_B0_DOOR_LINTEL",
+        "floor": "M37D_FAB2_L1_B0_OCCUPIED_FLOOR",
+        "in_gate_strict_floor_component": false
+      }
+    ]
+  },
+  "camera_center_rays": [
+    {
+      "camera": "M37D_CAM_AERIAL",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_CULTURE_EYE",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_HAB_EYE",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_NORTH",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_RESEARCH_EYE",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_SOUTH",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_STREET",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_UPPER_EYE",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    },
+    {
+      "camera": "M37D_CAM_YARD",
+      "first_hit_polygon": "M37D_PUBLIC_DELTA_REAL_FLOOR",
+      "distance_research_units": 0.45
+    }
+  ],
+  "method_scope": "Only positive-area top-floor footprint overlap at z difference <=0.36; line-touch excluded. Stricter than possible true connection; no exhaustive walking claim.",
+  "safety_limits": {
+    "331_993": "NOT_RUN",
+    "G0_S1_G1_G2_G3": "NOT_RUN",
+    "headroom": "NOT_RUN",
+    "swept_body": "NOT_RUN",
+    "stairs": "NOT_RUN",
+    "structures": "NOT_CERTIFIED"
+  },
+  "city_art": "M37D_ART_REJECT_UNCHANGED",
+  "formal_adoption": 0,
+  "Minecraft_writes": 0,
+  "Minecraft_construction": "FORBIDDEN",
+  "next_work": "Author one genuinely contiguous cross-district section in Blender directly; retain citywide bulk, no repeated row generation."
+}
