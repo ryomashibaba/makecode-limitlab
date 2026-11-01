@@ -55,7 +55,7 @@ other.write("M37-L ART REJECT. 9固定視点で遠景・公共・製造・研究
             "このレビュー道具の2メッシュ移動は技術デモであり、"
             "実建築の連続性、安全性、ART採用を意味しない。")
 studio.camera=copies["M37L_CAMERA_RESEARCH_EYE"]
-ui.register()
+# Headless CI must not register viewport UI classes; the embedded Text enables them in interactive Blender.
 ui.validate_scene()
 # Validate preview/edit/revert against REAL Blender vertex data before saving.
 test=ui.apply_preview("RESEARCH",.6)
