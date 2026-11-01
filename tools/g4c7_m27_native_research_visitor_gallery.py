@@ -155,9 +155,9 @@ def run():
       (17.6,y,2.0),.075,"inlay")
   sphere("exhibition_lab_data_model_%d"%i,(17.6,y,2.13),.43,"glass")
  # A specific station for observing research through the retained east glass.
- block("research_observation_ledge",(11.15,1.15,.86),(3.9,1.12,.22),
+ block("research_observation_ledge",(11.15,-2.2,.86),(3.9,1.12,.22),
        "wood",.11)
- for i,y in enumerate((2.0,4.0)):
+ for i,y in enumerate((-4.0,-1.4)):
   block("public_daylight_planter_box_%d"%i,(18.55,y,.32),
         (1.4,1.3,.57),"floor",.10)
   bar("public_atrium_tree_trunk_%d"%i,(18.55,y,.61),
