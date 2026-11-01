@@ -1,0 +1,25 @@
+{
+  "status": "PASS_NATIVE_SOURCE_ISOLATION_AND_SAVED_RENDER_EVIDENCE_ONLY",
+  "reference_meshes_unchanged": 208,
+  "original_editor_meshes_unchanged": 208,
+  "native_study_meshes": 1163,
+  "native_cameras": 9,
+  "saved_render_sha_checks": 9,
+  "reference_max_native_roundtrip_diff": 0.0,
+  "editable_max_native_roundtrip_diff": 0.0,
+  "real_bays": {
+    "habitable_bays": 46,
+    "research_bays": 25,
+    "maker_bays": 19,
+    "culture_bays": 26,
+    "named_door_openings": 113,
+    "stairs_treads": 72,
+    "route_segments": 9,
+    "building_masses": 10,
+    "public_courts": 4
+  },
+  "new_city_ART": "HOLD_UNREVIEWED",
+  "formal_331_993": "NOT_RUN",
+  "route_continuity": "NOT_RUN",
+  "Minecraft": "FORBIDDEN"
+}

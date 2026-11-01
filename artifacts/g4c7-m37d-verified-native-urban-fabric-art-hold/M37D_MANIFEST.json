@@ -1,0 +1,79 @@
+{
+  "study": "M37D_ONE_HAND_AUTHORED_OCCUPIED_CITY_DIRECTION_ART_HOLD",
+  "source_blend_sha256": "be8d6eb0c37f58de4d677c12c4382f4f254ce51fe36e022946d4d9315301dc06",
+  "authoring_method": "Blender bpy native mesh authoring driven by individual room and public-space cross sections; NOT manual GUI edit",
+  "saved_blend": {
+    "name": "M37D_NEW_NATIVE_URBAN_FABRIC_ART_HOLD.blend",
+    "bytes": 9604279,
+    "sha256": "22877ffa19e79e897574d64d897b2f4a4d2efaede1e15c64ae57c7e3dbf8c856"
+  },
+  "source_reference_scene": "M35_REJECTED_REFERENCE_LOCKED",
+  "protected_M36_edit_scene": "M36_AUTHORING_STUDIO_ART_HOLD",
+  "new_art_scene": "M37D_AUTHOR_OCCUPIED_CITY_ART_HOLD",
+  "new_mesh_counts": {
+    "PUBLIC": 6,
+    "FABRICATION": 164,
+    "HABITAT": 437,
+    "RESEARCH": 237,
+    "CULTURE": 245,
+    "VERTICAL": 74,
+    "URBAN_GRAIN": 0
+  },
+  "spatial_components": {
+    "habitable_bays": 46,
+    "research_bays": 25,
+    "maker_bays": 19,
+    "culture_bays": 26,
+    "named_door_openings": 113,
+    "stairs_treads": 72,
+    "route_segments": 9,
+    "building_masses": 10,
+    "public_courts": 4
+  },
+  "rendered_cameras": {
+    "SOUTH": {
+      "file": "M37D_SOUTH.png",
+      "sha256": "130a5f1909ef9c9bb55e639b60b841be474f1eacfc046e5f25426bb23226c95d"
+    },
+    "NORTH": {
+      "file": "M37D_NORTH.png",
+      "sha256": "ffbe37373425c2e62c996b30a949a0a877a2443cb57da4c4259f6a366312337b"
+    },
+    "AERIAL": {
+      "file": "M37D_AERIAL.png",
+      "sha256": "938305e89f21ae9ec58d6bbc26b022ea895d88998328c1366c42fed99d56bae1"
+    },
+    "STREET": {
+      "file": "M37D_STREET.png",
+      "sha256": "ac653b5bcf65ebed67154972a09896ed39b3f11dcd3c218762699eda5e29bb6c"
+    },
+    "YARD": {
+      "file": "M37D_YARD.png",
+      "sha256": "ce71d7ac971767a5aa0c7fd3705a5791a8c1ae4c06b3425f7412e81bb2171d45"
+    },
+    "HAB_EYE": {
+      "file": "M37D_HAB_EYE.png",
+      "sha256": "e7cffe90fff2d23f6786beba31b254f4eff7fa05eceb2074dce7cc6a9f2c0257"
+    },
+    "RESEARCH_EYE": {
+      "file": "M37D_RESEARCH_EYE.png",
+      "sha256": "34467ef91e253470099d46f692e4cb4c4eeb5c665cb5dd4309daba97723397c3"
+    },
+    "CULTURE_EYE": {
+      "file": "M37D_CULTURE_EYE.png",
+      "sha256": "7b0e7c9be8982c716392bdb0bbac77f4afb99d753b0b1eebd42bd26bc233eaeb"
+    },
+    "UPPER_EYE": {
+      "file": "M37D_UPPER_EYE.png",
+      "sha256": "e0915eec3bde5e32863bf580721f10a85dec32ceeb3cd3d40e532b52843d8871"
+    }
+  },
+  "old_9_camera_positions": "PRESERVED_IN_OLD_SCENES",
+  "art": "HOLD_UNREVIEWED",
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "continuous_human_walk": "NOT_RUN",
+  "scale": "ABSTRACT_UNITS_NOT_MINECRAFT_BLOCKS",
+  "minecraft": "FORBIDDEN",
+  "important": "Rooms and doors are modeled; no full route clearance or continuity has been proven."
+}
