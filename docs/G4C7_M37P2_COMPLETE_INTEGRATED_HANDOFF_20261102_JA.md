@@ -174,3 +174,18 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - [最新版専用Actions #41354779183](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41354779183) は初回確認でQUEUED、**SUCCESS未確認**。旧 #41353940198 はconcurrencyによるCANCELLEDであり成功と書かない。
 
 **この方法は必要条件の整備であって、十分条件の達成ではない。** P2の実都市・生活形態の入力には、Blenderで本人/承認された作者が実3Dを直接編集する必要がある。このチャットではBlender GUI・Work・外注・Minecraft操作を実行していない。Workは従前どおり事前明示承認が必要。新3D未制作の段階で安全QA、MakeCode施工コスト、R3〜R5への昇格はしない。
+
+---
+
+## 12. M37-P2直接作者Blender空スタジオの実装・真正保存試験（2026-11-02 JST）
+
+**重大な区別：これは美術作品ではなく新規作者が直接3D編集できる「空」の制作原本用技術。M37-P2新都市の真正メッシュと美術画像は依然NOT CREATEDであり、ART HOLD／正式採用0のまま。**
+
+- [`tools/g4c7_m37p2_direct_author_studio.py`](../tools/g4c7_m37p2_direct_author_studio.py) を新規実装。既存M37-L/N/O1/P1の拒否された造形・コレクション・メッシュをコピーしない。Blenderの空シーンに6つの制作・カメラ用コレクション、全景・公共眼高・住宅眼高の**暫定**3カメラ、ART/Safety/Minecraft固定属性、埋込のBlender操作パネルを持たせる。都市形態のメッシュ生成関数を持たず、初期の本物のメッシュ数は意図的に0。これは品質の達成ではない。
+- 作家本人のGUI直接編集では都市全域粗形と製造・研究・住居・文化を含む代表生活断面を**同時**に同原本で造形する。新規独立原本の実メッシュを5内容別コレクションに置き、人の体験を表現する。カメラを作者が確認するまでレビュー準備を許可しない。レビュー提出に成功しても正式ART PASSには一切ならない。旧形態を換名コピーしてP2にしない。
+- 先の[非生成型真正3視点審査](../tools/g4c7_m37p2_author_native_early_review.py)と連結。新作者の原本だけ受け取るよう、カメラの作者承認・作品制作段階・同一原本内の都市全景／公共製造分離／研究文化／住宅を示す**別々の実メッシュの存在**を必須とする。ただし形状品質、実支持、避難、歩行、独立した制作者履歴をこの属性だけで証明できない。
+- [.github/workflows/g4c7-m37p2-empty-direct-author-studio-native.yml](../.github/workflows/g4c7-m37p2-empty-direct-author-studio-native.yml) で真正bpy4.5を用いた空Blender原本の作成、別bpyでの保存原本再読込、0メッシュ／3カメラ／ART HOLDの独立確認、**ARTとしてでなく空スタジオとしてappend-only保存**を設定した。
+- 初回CI [#41359593395](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41359593395) は空Blender `scene.world=None` の背景色設定が原因で **FAIL**。新規原本は保存前に停止した。ソースに明示的World初期化を加え[再試行 #41359669304](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41359669304) を開始。**追補作成時点ではQUEUEDでありSUCCESSと断定しない**。今回追加のコミット `9716d86f8b72bd4e320544bf3009bdd4b4affbf0`、`f055e739c7226250b1c09e5647c9fca01946f666`、`9534896a59653ea76c7ae0c15f22c4dc3d7dfc0d`、`415efeb049dc26e3fcc7c368be0e3fe4a906547b`。
+- **次工程の正当性**：空原本ではなく、Blender GUI/直接編集による都市粗3D＋実生活断面の作者造形を現物として成立させ、同一保存BLENDから全景／公共／住宅の真正画像を先に批評しなければARTの前進はない。未承認Workは使わない。旧P1自動プリミティブの第三の試案を作らない。
+
+固定安全契約331/993（人体半幅0.65、足元+0.15〜3.25、干渉上限45/331、未支持0）、G0/S1/G1/G2/G3未実施、Minecraft書込み0、MakeCode未評価、main保護、Draft PR #53維持、ART採用0。
