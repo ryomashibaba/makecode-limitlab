@@ -2,6 +2,12 @@
 
 **チャット移行の唯一の入口。2026-11-02 JST更新。GitHub研究ブランチが正本。** 長い引き継ぎ文の再コピー、ZIP再添付、過去の計画の再決定は不要。
 
+## M37-P1 実体制作へ移行（2026-11-02 JST／最新CI要再照合）
+
+- **[M37-P1真正Blender作者原本の制作工程・CI修正履歴・未確認事項](docs/G4C7_M37P1_NATIVE_ART_EVIDENCE_PENDING_20261102_JA.md)**。旧M37-O1の不採用施設とM37-L/Nのチューブ美術を再利用せず、M37-P0の4共有作者判断を実メッシュへ結びつける研究コード・独立再読込監査・7視点レンダリングCIを研究ブランチへコミット。
+- 初回 [#41351611157](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41351611157) はBlenderの`mathutils`読込順で**FAIL**。コード修正済み。再実行 [#41351764632](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41351764632) は**再開時に現在状態を確認**。CI成功とGitHubアーカイブの実在・SHA・真正7視点・厳格な美術批評の完了前に**M37-P1のMETHOD PASSやART改善を主張しない**。
+- **M37-O1 EARLY ART REJECT／全体ART HOLD／正式採用0／正式331/993・G0/S1/G1/G2/G3 NOT RUN／Minecraft施工・統合禁止／main変更禁止／PR #53 Draft／Work事前承認制**をそのまま継承。
+
 ## 最新：M37-O1の美術不採用とM37-P0の作者入力ゲート（2026-11-02 JST）
 
 - **[M37-O1真正5視点によるEARLY ART REJECTと根本原因の固定](research/g4c7-b11-r5-d56/p2/d3s26/M37O1_SAVED_NATIVE_FIVE_VIEW_EARLY_ART_REJECT_AND_AUTHOR_INPUT_RESET_JA.md)**。実BLEND＋5枚のGitHub保存真正画像を確認。俯瞰は独立した低層押出しパビリオン、公共・住宅・高所眼高は暗い/遮蔽された空間で、**都市の美術として明白に不採用**。M37-N旧チューブもART REJECTのまま。M37-O1を拡大・改装・装飾して延命しない。
