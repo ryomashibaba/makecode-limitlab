@@ -146,6 +146,13 @@ def native_review(output_dir):
     if not blend.is_file() or blend.suffix.lower() != ".blend":
         raise RuntimeError("EXISTING_SAVED_NATIVE_BLEND_REQUIRED")
     source_sha_before = sha256(blend)
+    rejected_native_sha256 = {
+        "ca402f8e58269535bd6838cc8e5201000e9bc137dc578f0751f76bcb0d3b262d",
+        "7845343514b79067835ddbbd18aabf93439a391f4a2c0983227475b18331b2f1",
+        "0817bf8a9681e9380b8167e75ddc236dbcab18920b01298c5e405ed46752bdff",
+    }
+    if source_sha_before in rejected_native_sha256:
+        raise RuntimeError("PREVIOUSLY_REJECTED_NATIVE_SOURCE_CANNOT_BE_P2")
     scene = bpy.context.scene
     keys = (
         "P2_SOURCE_KIND", "P2_PARENT_REJECTED_FORM_IMPORTED", "P2_ART",
@@ -163,6 +170,9 @@ def native_review(output_dir):
         raise RuntimeError("P2_REVIEW_INPUT_REJECTED:" + ",".join(errors))
     if "m37p1" in blend.name.lower() or "m37o" in blend.name.lower():
         raise RuntimeError("REJECTED_OLD_ART_NOT_ALLOWED_AS_P2_MASTER")
+    rejected_prefixes = ("M37P1_", "M37O_", "M37L_", "M37N_")
+    if any(ob.name.startswith(rejected_prefixes) for ob in meshes):
+        raise RuntimeError("REJECTED_OLD_MESH_NAMES_PRESENT_IN_AUTHOR_MASTER")
     issues, nonwatertight = embedded_cameras(scene)
     if issues:
         raise RuntimeError("CAMERA_EMBEDDED_IN_CLOSED_MESH:" + json.dumps(issues))
@@ -170,6 +180,8 @@ def native_review(output_dir):
     output = Path(output_dir).resolve()
     if output == blend.parent.resolve() or blend.is_relative_to(output):
         raise RuntimeError("REVIEW_OUTPUT_MUST_NOT_OVERWRITE_AUTHOR_MASTER")
+    if output.exists() and any(output.iterdir()):
+        raise RuntimeError("REVIEW_OUTPUT_MUST_BE_NEW_OR_EMPTY_APPEND_ONLY")
     output.mkdir(parents=True, exist_ok=True)
     # Review camera and render settings are RAM-only: no save_as_mainfile.
     original_camera, original_path = scene.camera, scene.render.filepath
