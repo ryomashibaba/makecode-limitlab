@@ -57,6 +57,8 @@ jobs:
               tr,geoname=s.graph.get(n)
               geom=s.geometry[geoname].copy()
               geom.apply_transform(tr)
+              # GLB/glTF Y-up -> author's native Blender Z-up world axes.
+              geom.apply_transform([[1,0,0,0],[0,0,-1,0],[0,1,0,0],[0,0,0,1]])
               n2m[n]=geom
           assert len(n2m)>160,len(n2m)
           for needed in ['M35_CIVIC_CROSS','M35_EAST_AXIS','M35_WEST_AXIS',
