@@ -4,6 +4,7 @@ on:
     branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
     paths:
       - tools/g4c7_m37p2_native_camera_inside_solid_audit.py
+      - tools/g4c7_m37p2_author_native_early_review.py
       - .github/workflows/g4c7-m37p2-camera-solid-negative-control.yml
   workflow_dispatch:
 permissions:
@@ -25,6 +26,20 @@ jobs:
           set -euo pipefail
           python -m py_compile tools/g4c7_m37p2_native_camera_inside_solid_audit.py
           python tools/g4c7_m37p2_native_camera_inside_solid_audit.py --self-test
+      - name: P2 direct-author native review only accepts saved human-authored original (no art creation)
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_author_native_early_review.py
+          python tools/g4c7_m37p2_author_native_early_review.py --self-test
+          python - <<'PY'
+          from pathlib import Path
+          src=Path("tools/g4c7_m37p2_author_native_early_review.py").read_text()
+          for forbidden in ("bpy.ops.mesh.", "bpy.data.meshes.new(", ".from_pydata(", "bpy.ops.wm.save_as_mainfile("):
+              assert forbidden not in src, "P2_METHOD_MUST_NOT_GENERATE_GEOMETRY_OR_WRITE_SOURCE: " + forbidden
+          for required in ("P2_CAMERA_AERIAL", "P2_CAMERA_PUBLIC_EYE", "P2_CAMERA_HABITAT_EYE"):
+              assert required in src
+          print("AUTHOR_NATIVE_REVIEW_NON_GENERATIVE_METHOD_CONTRACT_PASS_NOT_ART")
+          PY
       - name: Install previously pinned authentic Blender Python
         run: |
           python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
