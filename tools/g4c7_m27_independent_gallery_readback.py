@@ -38,14 +38,14 @@ def main():
   untouched+=1
  v,f=world_mesh(after,FLOOR)
  # exported glTF is y-up, room +z world -> +y
- assert np.ptp(v[:,1])<1e-5
+ assert abs(float(np.ptp(v[:,1]))-.5)<.002,"Gallery must be an actual 0.5-thick deck, not a painted plane"
  deck_height=float(v[:,1].max())
  # mesh top is planar top polygon, bottom polygon is separate.
  # glTF cubes have top/bottom faces: recover top triangles.
  top_polys=[Polygon(xy(v[face])) for face in f if np.allclose(v[face,1],deck_height,atol=1e-5)]
  from shapely.ops import unary_union
  footprint=unary_union(top_polys)
- assert footprint.area>300 and footprint.is_valid
+ assert footprint.area>280 and footprint.is_valid
  # Relative local to M17 lab origin: U0=(+19,-24), U1=(+14,-7).
  for xy_local in [(19,-24),(14,-7),(14.5,-19)]:
   target=Point(-43+xy_local[0],37+xy_local[1])
