@@ -2,6 +2,12 @@
 
 **チャット移行の唯一の入口。2026-11-02 JST更新。GitHub研究ブランチが正本。** 長い引き継ぎ文の再コピー、ZIP再添付、過去の計画の再決定は不要。
 
+## M37-O1追補（2026-11-02 JST／最新状態は常にActionsで再照合）
+
+**[M37-O1作者ソース・CI確認待ち・早期ARTゲートの記録](docs/G4C7_M37O1_AUTHOR_SOURCE_AND_CI_PENDING_20261102_JA.md)**。M37-Nまでの下記完全統合正本は引き続き有効。
+
+M37-Oの新規実験AのBlender作者コード・独立監査コード・[専用Actions #41321512829](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41321512829) を研究ブランチに追加した。初回記載時点はCI QUEUEDで、**真正M37-O BLEND・PNGの完成やMETHOD PASSは未確認**。ランの結果／アーカイブ原本／最新HEADを再取得するまで成功と報告しない。旧チューブ・箱群・独立キャンパスの再発は実画像で即不採用。**全体ART HOLD・正式採用0・正式安全QA NOT RUN・Minecraft施工禁止・main変更禁止・PR #53 Draft・Work事前承認制**を維持。
+
 ## まず読む（この順番）
 
 1. **[M37-Nまでの全計画・全体方針・ユーザー指示・失敗・技術/安全契約・次工程を統合した日本語引き継ぎ](docs/G4C7_M37N_FULL_HANDOFF_20261102_JA.md)**。最初に全文を読む。
