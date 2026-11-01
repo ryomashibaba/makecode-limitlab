@@ -4,7 +4,6 @@ on:
     branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
     paths:
       - 'tools/g4c7_m35_native_four_district_city.py'
-      - '.github/workflows/g4c7-m35-livable-city-preart.yml'
 permissions:
   contents: read
 concurrency:
@@ -65,7 +64,7 @@ jobs:
               'M35_NORTH_AXIS','M35_SOUTH_AXIS','M35_FAB_REAL_FLOOR',
               'M35_RESEARCH_REAL_FLOOR','M35_HABITAT_GROUND',
               'M35_CULTURE_GROUND','M35_UPPER_CITY_PUBLIC_BRIDGE',
-              'M35_HABITAT_GARDEN','M35_RESEARCH_UPPER_GALLERY']:
+              'M35_HAB_GARDEN','M35_RESEARCH_UPPER_GALLERY']:
               assert needed in n2m,needed
           assert len([n for n in n2m if n.startswith('M35_HAB_TREAD_')])==72
           assert len([n for n in n2m if n.startswith('M35_RESEARCH_TREAD_')])==72
