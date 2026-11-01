@@ -1,0 +1,156 @@
+name: G4C7 M35 independently audit saved native original and append-only protect
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - '.github/workflows/g4c7-m35-pinned-native-independent-audit.yml'
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: g4c7-m35-immutable-evidence-audit
+  cancel-in-progress: false
+jobs:
+  saved-original-audit-and-archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover pin by workflow run, never rebuild the rejected geometry
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m35-editable-native-9-eyes-ART-HOLD
+          run-id: 41286872320
+          github-token: ${{ github.token }}
+          path: m35_immutable_original
+      - name: Install independent geometry reader and native Blender reopen
+        run: |
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "numpy==2.3.4"
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+      - name: Verify original SHA, 9 real images, Blender reopen, 4 entrance planes, 144 physical stair treads and known visual defects
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import numpy as np, trimesh, hashlib, json, struct, bpy
+          p=Path('m35_immutable_original')
+          m=json.loads((p/'M35_MANIFEST.json').read_text())
+          assert m['art']=='HOLD_NOT_ADOPTED' and m['minecraft']=='NO_WRITES'
+          assert m['formal_safety']=='331_993_NOT_RUN'
+          assert m['official_adoption']==0
+          def sha(f): return hashlib.sha256(f.read_bytes()).hexdigest()
+          blend=p/m['blend']['file']; glb=p/m['glb']['file']
+          assert blend.read_bytes()[:7]==b'BLENDER'
+          assert glb.read_bytes()[:4]==b'glTF'
+          assert sha(blend)==m['blend']['sha256']
+          assert sha(glb)==m['glb']['sha256']
+          assert len(m['cameras'])==9
+          for k,c in m['cameras'].items():
+              f=p/c['file'];b=f.read_bytes()
+              assert b[:8]==b'\x89PNG\r\n\x1a\n'
+              assert struct.unpack('>II',b[16:24])==(850,510)
+              assert sha(f)==c['sha256'],k
+          scene=trimesh.load(str(glb),force='scene')
+          nodes={}
+          # Convert glTF Y-up to Blender Z-up rather than pretending they match.
+          R=[[1,0,0,0],[0,0,-1,0],[0,1,0,0],[0,0,0,1]]
+          for node in scene.graph.nodes_geometry:
+              tr,key=scene.graph.get(node)
+              geo=scene.geometry[key].copy()
+              geo.apply_transform(tr);geo.apply_transform(R)
+              nodes[node]=geo
+          assert len(nodes)>=200,len(nodes)
+          def support(name,x,y,z):
+              if name not in nodes:return False
+              v=nodes[name].vertices
+              for f in nodes[name].faces:
+                  a,b,c=v[f]
+                  if max(abs(a[2]-z),abs(b[2]-z),abs(c[2]-z))>.025:continue
+                  q,r,t=a[:2],b[:2],c[:2]
+                  den=(r[1]-t[1])*(q[0]-t[0])+(t[0]-r[0])*(q[1]-t[1])
+                  if abs(den)<1e-9:continue
+                  u=((r[1]-t[1])*(x-t[0])+(t[0]-r[0])*(y-t[1]))/den
+                  w=((t[1]-q[1])*(x-t[0])+(q[0]-t[0])*(y-t[1]))/den
+                  if min(u,w,1-u-w)>=-1e-6:return True
+              return False
+          streets=[('M35_CIVIC_CROSS',0,0),('M35_EAST_AXIS',105,0),
+                   ('M35_WEST_AXIS',-105,0),('M35_NORTH_AXIS',0,100),
+                   ('M35_SOUTH_AXIS',0,-100)]
+          assert all(support(n,x,y,.2) for n,x,y in streets)
+          doors=[
+            ('fab','M35_FAB_ENTRANCE_STREET','M35_FAB_REAL_FLOOR',-96,-30,-1),
+            ('research','M35_RESEARCH_ENTRANCE_STREET','M35_RESEARCH_REAL_FLOOR',96,30,1),
+            ('habitat','M35_HABITAT_ENTRANCE_STREET','M35_HABITAT_GROUND',-90,30,1),
+            ('culture','M35_CULTURE_ENTRANCE_STREET','M35_CULTURE_GROUND',90,-30,-1)]
+          door_results={}
+          for name,street,room,x,y,side in doors:
+              outside=support(street,x,y-side*.35,.2)
+              inside=support(room,x,y+side*.35,.2)
+              door_results[name]={'outside':outside,'inside':inside}
+              assert outside and inside,name
+          stairs={}
+          for kind in ('HAB','RESEARCH'):
+              members=[k for k in nodes if k.startswith('M35_'+kind+'_TREAD_')]
+              assert len(members)==72,(kind,len(members))
+              heights=[float(nodes['M35_'+kind+'_TREAD_%03d'%i].vertices[:,2].max()) for i in (1,36,72)]
+              assert max(abs(heights[i]-[.25,9.,18.][i]) for i in range(3))<.03
+              stairs[kind]=heights
+          assert support('M35_UPPER_CITY_PUBLIC_BRIDGE',0,113,18.2)
+          assert support('M35_HAB_ACTUAL_UPPER_LIVING',-110,110,18.2)
+          assert support('M35_RESEARCH_UPPER_GALLERY',100,110,18.2)
+          assert not support('M35_CIVIC_CROSS',300,300,.2)
+          # Culture eye is actually buried inside its tier: record defect, do not 'fix' image.
+          tier=nodes['M35_CULTURE_OCCUPIED_TIER_3']
+          eye=np.array([96,-81,2])
+          culture_eye_buried=bool(np.all(eye>tier.bounds[0]) and np.all(eye<tier.bounds[1]))
+          # Genuine Blender file can be opened, not merely header accepted.
+          bpy.ops.wm.open_mainfile(filepath=str(blend.resolve()))
+          names={o.name for o in bpy.data.objects}
+          assert 'M35_CAMERA_CULTURE_EYE' in names
+          assert 'M35_FAB_ACTIVITY_ROOF' in names and 'M35_HAB_INHABITED_SKYLINE' in names
+          assert len([o for o in bpy.data.objects if o.type=='CAMERA' and o.name.startswith('M35_CAMERA_')])==9
+          assert len([c for c in bpy.data.collections if c.name.startswith('M35_')])==9
+          outcome={'status':'LIMITED_NATIVE_METHOD_AND_LOCAL_FLOOR_PASS_ART_REJECT',
+            'source_run':41286872320,'original_artifact_id':13074969646,
+            'saved_glb_nodes':len(nodes),'native_blend_reopen':True,
+            'public_5_surfaces':True,'door_two_sided_surfaces':door_results,
+            'actual_stair_tread_count':{'HAB':72,'RESEARCH':72},
+            'stair_three_check_heights':stairs,'upper_bridge_support':True,
+            'negative_nonexistent_street_detected':True,
+            'culture_camera_inside_real_tier':culture_eye_buried,
+            'art':'REJECT','adopted':0,'formal_331_993':'NOT_RUN',
+            'continuous_body_clearance':'NOT_RUN','minecraft':'FORBIDDEN',
+            'limitations':'NO ART SUCCESS, NO CERTIFIED HUMAN ROUTE, NO CITY CONSTRUCTION'}
+          (p/'M35_INDEPENDENT_SAVED_GLBS_REVIEW.json').write_text(json.dumps(outcome,indent=2))
+          print('M35_PINNED_NATIVE_AND_LIMITED_SUPPORT_VERIFIED_BUT_ART_REJECT')
+          PY
+      - name: Append-only archive the exact audited original, not a new rendered substitute
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-m35-pinned-native-art-reject
+          test ! -e "$dest"
+          mkdir -p "$dest"
+          cp -p m35_immutable_original/* "$dest/"
+          cat > "$dest/README_ART_HOLD.md" <<'TXT'
+          # M35 genuine Blender city source: ART REJECT, research only
+          Pinned original run: 41286872320; artifact: 13074969646.
+          The original render job produced .blend, .glb and 9 actual images.
+          The first CI stopped on a misnamed Garden expected object; a separate
+          independent audit confirmed actual saved geometry without relaxing safety.
+          Physical 4 entrance halves, 5 street reference points, 144 stair treads,
+          and the upper bridge are *limited* geometry evidence only.
+          Culture eye is inside an actual amphitheater tier, not valid visual evidence.
+          No formally verified continuous human traversal or structural support.
+          ART REJECT, formal 331/993 NOT RUN, official adoption 0.
+          Minecraft Education construction / city integration prohibited.
+          TXT
+      - name: Save only new evidence on existing PR research branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- artifacts/g4c7-m35-pinned-native-art-reject
+          git diff --cached --quiet && { echo 'Missing archive'; exit 1; }
+          git commit -m 'research(g4c7): preserve M35 native geometry and independent ART REJECT proof'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
