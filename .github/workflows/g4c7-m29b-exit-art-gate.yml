@@ -33,7 +33,7 @@ jobs:
         with:
           name: g4c7-m28b-gallery-fixed-camera-sightline-ART-HOLD
           run-id: 41275412167
-          github-token: __TOKEN__
+          github-token: ${{ github.token }}
           path: artifacts/m29b_immutable_m28b
       - name: Reproducible Python preflight and pinned evidence
         run: |
