@@ -137,3 +137,24 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 ## 新チャットへ送る短い引き継ぎ指示
 
 > **MakeCode LimitLab / G4-C7をGitHub研究ブランチのSTART_HERE.mdとリンク先のM37-P2完全統合引き継ぎから再開してください。最新HEAD・Draft PR #53・CI・M37-P1の真正Blender原本/7画像を確認し、全方針と失敗記録を継承してください。M37-O1/P1はEARLY ART REJECT、全体ART HOLD・正式採用0・安全QA未実施です。M37-P2の作者造形方法切替へ進み、旧板/壁/橋の第三案、Minecraft施工、main変更、未承認Work、長文/ZIPの再提出は禁止です。**
+
+---
+
+## 10. 2026-11-02 JST M37-P2 初回実行追補（美術モデル未制作／全体ART HOLD）
+
+**新しいM37-P2真正都市BLENDは依然NOT CREATED。これは美術制作の達成報告ではない。** 旧研究の第三プリミティブ案を生成せず、GitHub正本を読み直し、M37-P1の真正PNGと現行作者ソースを再精査した。
+
+### 新しく実測した負例：研究カメラが既存厚壁の内部にある
+
+- 保存P1真正画像 `M37P1_RESEARCH_EYE.png` はほぼ全面黒。生成コード中、カメラ `RESEARCH_EYE=(40,-3,37)`、閉じた厚壁 `EAST_RESEARCH_MAKER_WING` の中心線 `(54,-69)→(41,0)`、厚さ `3.5`、垂直範囲 `z=3..62`。
+- カメラから壁中心線への水平最短距離は `1.538155688...` 研究単位、半厚 `1.75` より短く、線分への垂線係数 `0.960649...` は0..1以内。z=37も壁内。**保存ソースにおいてカメラが閉じた実壁の体積内部に存在することを幾何で確定**。黒画像の主要原因をこれが説明する可能性は非常に高いが、実レンダ全要因の鑑別は未実施。
+- 直接確認したP1 AERIAL、PUBLIC_EYE、RESEARCH_EYE、HABITAT_EYEは、巨大板壁・開放空白・黒視点を示す。旧EARLY ART REJECTは維持。P1のカメラを修正してP1美術を救済する操作はしない。
+- その根因とは別に、P1作者コードの幾何作成主要API `patch()` / `wall()` / `bridge()` が外形の選択肢を大型平板・厚壁・帯状連結へ縮退させていた。数値連動は作者3D美術の決定権の回復ではない。
+
+### GitHubへ追加した再発防止の実物（**ARTではない**）
+
+- [`tools/g4c7_m37p2_native_camera_inside_solid_audit.py`](../tools/g4c7_m37p2_native_camera_inside_solid_audit.py)：保存Blenderの真正カメラと閉じた実メッシュに対する三方向ray parity検査。純PythonでP1の具体的な既知不良を再現する `--self-test` を実装。非watertightの開いた面は認証対象外と明示。画像美術・実歩行・安全を認証しない。コミット `3981db2306bed2da7df5afa5b4699214feac3eb7`。
+- [`g4c7-m37p2-camera-solid-negative-control.yml`](../.github/workflows/g4c7-m37p2-camera-solid-negative-control.yml)：不変のP1真正BLEND SHA256 `ca402f8e...` を確認し、bpyで原本を再開、既知の壁内カメラを**期待される負例として検出**する独立read-onlyジョブ。原本・main・Minecraftには書き込まない。追加コミット `6d9ca1b122bf1af55ba4a398ceee80df1d0471db`。
+- 専用 [Actions #41353940198](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41353940198) は作成直後の照合で **QUEUED / NOT YET VERIFIED**。成功と断定せず次回再照合する。
+
+**次工程の有効条件は変わらない。** 旧patch/wall/bridgeを少し替えてもう一都市出さず、作者が真正BLEND上で都市全体の粗い姿と代表的な生活・製造断面を同時に編集した原本を必要とする。GUI/Workは明示的事前承認がないので実施していない。未制作のP2を完成やART合格と呼ばない。全体ART HOLD、正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、Minecraft world writes 0、PR #53 Draft維持、main変更禁止。
