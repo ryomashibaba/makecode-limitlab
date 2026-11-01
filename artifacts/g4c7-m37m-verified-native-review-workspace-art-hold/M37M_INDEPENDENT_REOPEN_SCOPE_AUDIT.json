@@ -1,0 +1,27 @@
+{
+  "result": "PASS_BOUNDED_GUI_AUTHORING_REVIEW_METHOD_ONLY",
+  "saved_source_fidelity": "ALL_199_M37L_MESHES_EXACT",
+  "separate_editable_copies": 199,
+  "fixed_native_camera_copy_count": 9,
+  "native_roundtrip_trials": [
+    "RESEARCH",
+    "HABITAT",
+    "MAKER"
+  ],
+  "detected_bad_edits": [
+    "RESEARCH_preview_geometric_drift_rejected",
+    "RESEARCH_edit_and_revert_round_trip",
+    "HABITAT_preview_geometric_drift_rejected",
+    "HABITAT_edit_and_revert_round_trip",
+    "MAKER_preview_geometric_drift_rejected",
+    "MAKER_edit_and_revert_round_trip",
+    "unauthorized_other_mesh_rejected"
+  ],
+  "output_blend_sha256": "8671733deccbeb8ea0e911fc4b8411734df4158c928e1ebe2f5ebf1d0cc1a57c",
+  "art": "REJECTED_MODEL_REVIEW_METHOD_ONLY",
+  "user_art_adoption": 0,
+  "formal_331_993": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "physical_room_route": "NOT_CERTIFIED",
+  "limitation": "Preview edits move room and shell mesh X, do not produce continuous architecture or a safe route. Four SHA-pinned genuine M37-L source photos are references, not new M37-M renders."
+}

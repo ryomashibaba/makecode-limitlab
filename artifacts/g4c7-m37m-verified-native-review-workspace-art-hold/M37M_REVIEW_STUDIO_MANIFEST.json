@@ -1,0 +1,83 @@
+{
+  "schema": "g4c7-m37m-direct-authoring-review-studio-v1",
+  "status": "METHOD_STUDIO_ONLY_ART_REJECT_SOURCE",
+  "source_blend": {
+    "name": "M37L_SINGLE_CITY_AUTHOR_MASTER_ART_HOLD.blend",
+    "sha256": "85397f2ddc41cff6ef53d26813c7c57b1420318de840e78b5f7ec5ec3762bfc4"
+  },
+  "native_blend": {
+    "name": "M37M_DIRECT_AUTHORING_REVIEW_STUDIO_ART_HOLD.blend",
+    "sha256": "8671733deccbeb8ea0e911fc4b8411734df4158c928e1ebe2f5ebf1d0cc1a57c",
+    "bytes": 2832487
+  },
+  "old_source_scene": "M37L_SINGLE_CITY_MASTER_AUTHOR_ART_HOLD",
+  "editable_copy_scene": "M37M_DIRECT_AUTHORING_REVIEW_STUDIO_ART_HOLD",
+  "unchanged_original_meshes": 199,
+  "editable_copy_meshes": 199,
+  "fixed_camera_copies": 9,
+  "issue_targets": {
+    "RESEARCH": [
+      "RESEARCH_EYE",
+      [
+        "M37L_RESEARCH_RESEARCH_FLOOR",
+        "M37L_SHELL_04_06"
+      ],
+      "研究室床と殻の関係。旧チューブ形態は美術不採用。"
+    ],
+    "HABITAT": [
+      "HABITAT_EYE",
+      [
+        "M37L_HABITAT_HABITAT_FLOOR",
+        "M37L_SHELL_05_06"
+      ],
+      "住居のアクセスと実生活の見え方。"
+    ],
+    "MAKER": [
+      "MAKER_EYE",
+      [
+        "M37L_MAKER_VIEW_RESEARCH_FLOOR",
+        "M37L_SHELL_02_06"
+      ],
+      "製造と公衆見学・研究を隔てる境界。"
+    ]
+  },
+  "actual_test": "two real native mesh datablocks moved and rolled back",
+  "negative_controls_rejected": [
+    "unrecognized_issue",
+    "unbounded_delta",
+    "false_art_promotion",
+    "out_of_scope_mesh_edit",
+    "double_preview",
+    "double_rollback"
+  ],
+  "review_renders": {
+    "AERIAL": {
+      "file": "M37M_PINNED_M37L_REFERENCE_AERIAL.png",
+      "sha256": "f1007bfef5dbe3dc3760c8541e902785fa4c899bbd2a5114a0d59fb4ecbaf259",
+      "origin": "M37L_GENUINE_SOURCE_RENDER_REUSED_NO_M37M_RERENDER"
+    },
+    "MAKER_EYE": {
+      "file": "M37M_PINNED_M37L_REFERENCE_MAKER_EYE.png",
+      "sha256": "1d86ca2faa837401d8f6e365bba54e7dd331e5b77a86d0e29df1d218d4ddc95a",
+      "origin": "M37L_GENUINE_SOURCE_RENDER_REUSED_NO_M37M_RERENDER"
+    },
+    "RESEARCH_EYE": {
+      "file": "M37M_PINNED_M37L_REFERENCE_RESEARCH_EYE.png",
+      "sha256": "5fb011a364f3571fe3e740f48589b08813106e61f9a8e72b3ab57e268aacf5f7",
+      "origin": "M37L_GENUINE_SOURCE_RENDER_REUSED_NO_M37M_RERENDER"
+    },
+    "HABITAT_EYE": {
+      "file": "M37M_PINNED_M37L_REFERENCE_HABITAT_EYE.png",
+      "sha256": "526734a118cbb12fb7c76e53e4129a36ba1def074b639088b804af7562cc931a",
+      "origin": "M37L_GENUINE_SOURCE_RENDER_REUSED_NO_M37M_RERENDER"
+    }
+  },
+  "not_proven": {
+    "room_route": "NOT_RUN",
+    "art": "REJECT_UNCHANGED",
+    "formal_331_993": "NOT_RUN",
+    "Minecraft": "FORBIDDEN",
+    "full_sculptor_workflow": "NOT_HAND_GUI_TESTED"
+  },
+  "official_adoption": 0
+}
