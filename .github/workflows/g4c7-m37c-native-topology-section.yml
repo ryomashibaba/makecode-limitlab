@@ -1,0 +1,167 @@
+name: G4C7 M37-C bounded native mesh topology edit (METHOD ONLY / ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37c_native_topology_section_edit.py
+      - .github/workflows/g4c7-m37c-native-topology-section.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37c-verified-direct-edit
+  cancel-in-progress: false
+jobs:
+  native-provenance-edit-reopen-archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Syntax check and verify pinned M36/M35 unchanged
+        run: |
+          python -m py_compile tools/g4c7_m37c_native_topology_section_edit.py
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          a=Path("artifacts/g4c7-m36-verified-native-author-studio")
+          m=json.loads((a/"M36_NATIVE_STUDIO_MANIFEST.json").read_text())
+          p=a/m["saved_blend"]["file"]
+          assert p.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m["saved_blend"]["sha256"]
+          b=Path("artifacts/g4c7-m35-pinned-native-art-reject")
+          n=json.loads((b/"M35_MANIFEST.json").read_text())
+          assert hashlib.sha256((b/"M35_NATIVE_CITY_ART_HOLD.blend").read_bytes()).hexdigest()==n["blend"]["sha256"]
+          assert n["official_adoption"]==0 and n["art"]=="HOLD_NOT_ADOPTED"
+          print("M37C_PINNED_M35_M36_SHA_VERIFIED")
+          PY
+      - name: Install native Blender 4.5 API
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Edit five existing M36 editable meshes; save one actual BLEND and render same-scene cameras
+        run: python tools/g4c7_m37c_native_topology_section_edit.py
+      - name: Independently reopen native output and compare original and unmodified editable topology
+        run: |
+          python - <<'PY'
+          import bpy,hashlib,json
+          from pathlib import Path
+          out=Path("artifacts/g4c7-m37c-native-build")
+          m=json.loads((out/"M37C_NATIVE_AUTHOR_MANIFEST.json").read_text())
+          dest=out/m["saved_blend"]["file"]
+          assert dest.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(dest.read_bytes()).hexdigest()==m["saved_blend"]["sha256"]
+          expected=set(m["actual_modified_meshes"])
+          assert expected=={
+           "M35_CULTURE_STAGE",
+           "M35_CULTURE_OCCUPIED_TIER_0","M35_CULTURE_OCCUPIED_TIER_1",
+           "M35_CULTURE_OCCUPIED_TIER_2","M35_CULTURE_OCCUPIED_TIER_3"}
+          bpy.ops.wm.open_mainfile(filepath=str(dest.resolve()))
+          ref=bpy.data.scenes["M35_REJECTED_REFERENCE_LOCKED"]
+          ed=bpy.data.scenes["M36_AUTHORING_STUDIO_ART_HOLD"]
+          assert ed.get("M37C_FORMAL_QA")=="NOT_RUN"
+          assert ed.get("M37C_MINECRAFT")=="FORBIDDEN"
+          assert ed.get("M37C_USER_ADOPTION")==0
+          assert len([o for o in ref.objects if o.type=="MESH"])==208
+          assert len([o for o in ed.objects if o.type=="MESH"])==208
+          assert len([o for o in ed.objects if o.type=="CAMERA" and
+                     o.name.startswith("M36_EDIT_M35_CAMERA_")])==9
+          assert ref.get("M36_ROLE")=="REJECTED_REFERENCE_DO_NOT_EDIT"
+          assert ed.get("M37C_ART_STATUS")=="ART_HOLD_NO_QUALITY_CLAIM"
+          def snap(scene):
+              result={}
+              for o in scene.objects:
+                  if o.type!="MESH": continue
+                  result[o.name]=(
+                   [tuple(float(x) for x in v.co) for v in o.data.vertices],
+                   [tuple(f.vertices) for f in o.data.polygons],
+                   [tuple(float(x) for row in o.matrix_basis for x in row),
+                   o.parent.name if o.parent else None)
+              return result
+          saved_ref=snap(ref)
+          saved_edit=snap(ed)
+          expected_changed=sorted("M36_EDIT_"+x for x in expected)
+          assert all(len(saved_edit[k][0])==16 and len(saved_edit[k][1])==12 for k in expected_changed)
+          assert len(saved_ref)==208 and len(saved_edit)==208
+          assert all(saved_ref[k][0]!=saved_edit["M36_EDIT_"+k][0] for k in expected)
+          for name in expected:
+              ob=ed.objects["M36_EDIT_"+name]
+              local_x=[v.co.x+ob.location.x for v in ob.data.vertices]
+              assert all(x <=88.5+1e-5 or x>=103.5-1e-5 for x in local_x)
+          # Compare *every* reference and non-target editable mesh against the pinned M36 native source.
+          old=Path("artifacts/g4c7-m36-verified-native-author-studio/M36_NATIVE_DUAL_SCENE_ARTIST_STUDIO.blend")
+          bpy.ops.wm.open_mainfile(filepath=str(old.resolve()))
+          old_ref=snap(bpy.data.scenes["M35_REJECTED_REFERENCE_LOCKED"])
+          old_ed=snap(bpy.data.scenes["M36_AUTHORING_STUDIO_ART_HOLD"])
+          def compare(a,b,k):
+              assert len(a[k][0])==len(b[k][0]),k
+              assert a[k][1]==b[k][1],k
+              assert a[k][3]==b[k][3],k
+              for va,vb in zip(a[k][0],b[k][0]):
+                  assert all(abs(x-y)<1e-5 for x,y in zip(va,vb)),k
+              assert all(abs(x-y)<1e-5 for x,y in zip(a[k][2],b[k][2])),k
+          assert set(saved_ref)==set(old_ref)
+          assert set(saved_edit)==set(old_ed)
+          for k in saved_ref:compare(saved_ref,old_ref,k)
+          for k in saved_edit:
+              if k not in expected_changed:compare(saved_edit,old_ed,k)
+          for key,item in m["fixed_camera_renderings"].items():
+              p=out/item["file"]
+              assert p.exists() and p.stat().st_size>2000
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==item["sha256"]
+          assert m["art"]=="HOLD_NOT_ADOPTED"
+          assert m["formal_331_993"]=="NOT_RUN"
+          assert m["minecraft"]=="FORBIDDEN"
+          report={"test":"M37C_INDEPENDENT_NATIVE_REOPEN",
+            "status":"PASS_METHOD_ONLY",
+            "native_reference_unchanged_meshes":208,
+            "editable_nontarget_unchanged_meshes":203,
+            "edited_existing_meshes":sorted(expected),
+            "retained_cameras":9,
+            "actual_renders":sorted(m["fixed_camera_renderings"]),
+            "formal_safety":"NOT_RUN",
+            "art":"HOLD_NOT_ADOPTED",
+            "minecraft":"FORBIDDEN"}
+          (out/"M37C_INDEPENDENT_REOPEN_REPORT.json").write_text(json.dumps(report,indent=2),encoding="utf8")
+          print(json.dumps(report),flush=True)
+          PY
+      - name: Archive bounded source evidence append-only, not an adopted city
+        run: |
+          set -euo pipefail
+          dst=artifacts/g4c7-m37c-verified-native-direct-edit-art-hold
+          test ! -e "$dst"
+          mkdir -p "$dst"
+          cp -p artifacts/g4c7-m37c-native-build/* "$dst/"
+          cat > "$dst/README_JA.md" <<'TXT'
+          # M37-C 実メッシュ編集方法の限定実証（ART HOLD）
+          
+          これは既存M36の編集シーン上にある文化施設の5メッシュから直接通路を切り出した、Blender-nativeトポロジー編集技術の証拠である。
+          旧M35参照シーンおよびその他203編集メッシュに変更がないことを独立再読込で検証する。
+          4画像は同じ編集シーンの旧固定カメラからのレンダリング。旧9カメラは全て保存、残り5視点は未レンダリング。
+          文化階層の占有メッシュ変更は本当に起きたが、局所床支持の範囲外で自由歩行／避難／安全な階段を認定していない。
+          **全体ART HOLD、M35 ART REJECT、正式採用0、331/993 NOT RUN、G0/S1/G1/G2/G3 NOT RUN**。
+          Blender GUIを人間が手動編集した成果とは主張しない。Python bpy経由の直接ネイティブメッシュ編集である。
+          Minecraft Education新施工・都市統合は禁止。mainを変更しない。
+          TXT
+      - name: Commit only new verified M37-C evidence on research Draft branch
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- artifacts/g4c7-m37c-verified-native-direct-edit-art-hold
+          git diff --cached --quiet && { echo 'Missing native evidence'; exit 1; }
+          git commit -m 'research(g4c7): archive M37-C verified native topology method ART HOLD'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Upload temporary action artifact for failed/archive-incomplete runs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37c-bounded-native-direct-edit-art-hold
+          path: artifacts/g4c7-m37c-native-build/
+          retention-days: 21
+          if-no-files-found: warn
