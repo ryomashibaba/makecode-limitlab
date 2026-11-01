@@ -80,14 +80,25 @@ reject("staff_boundary_removed",
        lambda:bar.__setitem__("M37O_ROLE",old_role))
 door="M37O_HABITAT_WALL_3"
 ref=mesh["M37O_HABITAT_DOOR_HEADER"]
-sealed=ref.copy()
-sealed.data=ref.data.copy()
-sealed.name=door
+# Construct a genuine full-height wall over the residential entry,
+# rather than merely renaming an already present header.
+hab=next(p for p in man["programs"] if p["id"]=="HABITAT")
+a=hab["outline"][hab["door"]]
+b=hab["outline"][(hab["door"]+1)%len(hab["outline"])]
+dx,dy=b[0]-a[0],b[1]-a[1]
+norm=math.hypot(dx,dy);nx=-dy/norm*.4;ny=dx/norm*.4
+foot=[(a[0]+nx,a[1]+ny),(b[0]+nx,b[1]+ny),
+      (b[0]-nx,b[1]-ny),(a[0]-nx,a[1]-ny)]
+vertices=[(x,y,z) for z in (hab["z"],hab["z"]+hab["h"]) for x,y in foot]
+faces=[(3,2,1,0),(4,5,6,7),(0,1,5,6),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
+wallmesh=bpy.data.meshes.new("M37O_NEGATIVE_SOLID_SEAL")
+wallmesh.from_pydata(vertices,[],faces);wallmesh.update()
+sealed=bpy.data.objects.new(door,wallmesh)
 col=sc.collection.children.get("M37O_A_AUTHOR_PROGRAM_AND_CITY_COHERENT")
 assert col is not None
 def seal():col.objects.link(sealed)
 def unseal():col.objects.unlink(sealed);bpy.data.objects.remove(sealed,do_unlink=True)
-reject("habitat_entry_sealed",seal,unseal)
+reject("habitat_entry_physically_sealed",seal,unseal)
 rname=next(n for n in mesh if n.startswith("M37O_ROUTE_"))
 ro=mesh[rname]
 route_col=ro.users_collection[0]
