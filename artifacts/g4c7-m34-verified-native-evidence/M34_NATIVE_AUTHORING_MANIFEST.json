@@ -1,0 +1,59 @@
+{
+  "study": "M34_NATIVE_AUTHORING_METHOD_ONLY",
+  "art": "HOLD_NO_ART_ADOPTION",
+  "city": "NOT_BUILT",
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "minecraft_education": "CONSTRUCTION_FORBIDDEN",
+  "actual_native_reopen_and_existing_mesh_edit": true,
+  "edited_object": "M34_HAND_EDITABLE_SKYLINE_CANOPY",
+  "edited_vertex_indices": [
+    2,
+    6
+  ],
+  "vertex_delta_z": 2.25,
+  "shared_saved_cameras": [
+    "south",
+    "north",
+    "urban_oblique",
+    "public_approach",
+    "maker_eye",
+    "research_eye"
+  ],
+  "native_collections": [
+    "M34_01_PUBLIC_SPINE",
+    "M34_02_MAKER_INTERIOR",
+    "M34_03_RESEARCH_INTERIOR",
+    "M34_04_CIVIC_CANOPY",
+    "M34_05_CAMERAS",
+    "M34_06_VISUAL_CONTEXT"
+  ],
+  "base": {
+    "blend": "M34_NATIVE_BASE.blend",
+    "blend_sha256": "cad3379767dd63b2c325e76184b277564f8276a6691f4a005683d5be3dae7136",
+    "glb": "M34_NATIVE_BASE.glb",
+    "glb_sha256": "868d3597299c9d77e53951f0b655da78955e6aaff4b3c31d979fc1a7ebad2c72",
+    "images": {
+      "south": "0f51414c89a664089ad76f96ba8b7f9a2d135e8129ba65a2831af0c095c407ea",
+      "north": "b1750318386463d7a4380e657a2cdfef118557a5984e551ce03a2474b04162ea",
+      "urban_oblique": "dc2e8cb72b902fc92cc10cfadbe43e67d71565985acacd7d503c46b52ae8ed40",
+      "public_approach": "d66dfbaa2df38fdafffab212680beff02d7236482d93590cc75fbd68f9f49c0f",
+      "maker_eye": "7ecdb108da0b440baa5647f559e666984141741df9950fd7650c8c2b1bbbea49",
+      "research_eye": "cde2bdb93fc2c4d0a6366be7dbc587dcb33eab4c0e93ffe14435c7c2e2855938"
+    }
+  },
+  "direct_edit": {
+    "blend": "M34_NATIVE_DIRECT_EDIT.blend",
+    "blend_sha256": "be9434248b4a30fa69103b0bf7ab380e7b6fce8eaba057c0e7b2b9b0e82e6545",
+    "glb": "M34_NATIVE_DIRECT_EDIT.glb",
+    "glb_sha256": "ce7934f49a0bde73db0229a31a7bfad98cc5bdb1c2d6573aa76e2c4c509c392f",
+    "images": {
+      "south": "7157e1aa11c6ff62284d3551e5599b8aedb560396bfebb4cb8de8e28bcba6842",
+      "north": "56bcc6fc1a44adc30be68774aecedd2fdbdcfd493f23f914c46eeb413c87812c",
+      "urban_oblique": "11405b70e0627039b6aefc347433d24015d39136d9b436849d78f255885226f3",
+      "public_approach": "5545526a7f75d56a46262a9079eeb83c25ae9935545ffd16857570f0a359779c",
+      "maker_eye": "d02c7cfd7c0b45348299572b91555697b9ef58c9b5219324b384488e1bdbe841",
+      "research_eye": "29a2fb5b42f991bb06e017c1e0e9ed63e9a4e5fde91e732b2a9ec466212dffa9"
+    }
+  }
+}
