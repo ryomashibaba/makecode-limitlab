@@ -67,13 +67,17 @@ def choose_issue(key):
     camera,names,_=ISSUES[key]
     dst=bpy.data.scenes[WORK]
     dst.camera=dst.objects[PREFIX+"M37L_CAMERA_"+camera]
-    for ob in dst.objects:ob.select_set(False)
-    ob=editable(names[0]);ob.select_set(True)
-    # Operator context can be a selected scene or any workspace; no
-    # browsing external data, no editing of the locked source scene.
+    # Explicitly target the working view layer, even in background CI.
+    # Never depend on the formerly active M37-L reference scene.
     if bpy.context.window:
         bpy.context.window.scene=dst
-    bpy.context.view_layer.objects.active=ob
+    layer=dst.view_layers[0]
+    for item in dst.objects:
+        try:item.select_set(False,view_layer=layer)
+        except RuntimeError:pass
+    ob=editable(names[0])
+    ob.select_set(True,view_layer=layer)
+    layer.objects.active=ob
     return camera,names
 def apply_preview(key,delta):
     dst=bpy.data.scenes[WORK]
