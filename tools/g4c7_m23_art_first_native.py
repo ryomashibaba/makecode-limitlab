@@ -226,7 +226,7 @@ def run():
   for j,xi in enumerate((1,6,11,16,19)):
    x,y,z=coords[xi]
    if z>20:beam('portal_louver_%d_%d'%(k,j),(x,y,z),
-       (x+2,y+8,z-4),'copper')
+       (x+2,y+8,z-4),.22,'copper')
  # Inhabited human scale: visibly living/walking users not official QA avatars.
  for i,(x,y,z) in enumerate(((-13,-23,0),(-2,3,.25),(7,23,.25),(-28,-14,.5),
                               (24,-45,0),(-27,29,10.2),(3,36,10.2),(43,39,34.4))):
