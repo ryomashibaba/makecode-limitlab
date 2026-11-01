@@ -1,3 +1,7 @@
+> **Latest G4-C7 Orbital Commons handoff:** Read [START_HERE.md](START_HERE.md) first. It links the current M37-N status, full Japanese history, constraints, evidence, and next development stage. The legacy P1.1 documentation below is not the current G4-C7 art-study status.
+
+---
+
 # MakeCode LimitLab
 
 Minecraft Education MakeCodeの施工・複製・更新・ファイルI/Oの限界を実機で調査し、**将来の巨大都市の高速生成に応用する**研究プロジェクトです。
