@@ -127,6 +127,8 @@ def make_empty_studio(filepath):
     scene.render.resolution_y = 600
     scene.render.resolution_percentage = 100
     scene.render.film_transparent = False
+    if scene.world is None:
+        scene.world = bpy.data.worlds.new('M37P2_DIRECT_AUTHOR_STUDIO_WORLD_NOT_ART')
     scene.world.color = (0.18, 0.18, 0.18)
     instruction = bpy.data.texts.new("M37P2_AUTHOR_HERE_FIRST_JA.txt")
     instruction.write(
