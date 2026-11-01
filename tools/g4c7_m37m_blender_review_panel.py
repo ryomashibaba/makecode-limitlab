@@ -69,7 +69,7 @@ def choose_issue(key):
     dst.camera=dst.objects[PREFIX+"M37L_CAMERA_"+camera]
     # Explicitly target the working view layer, even in background CI.
     # Never depend on the formerly active M37-L reference scene.
-    if bpy.context.window:
+    if bpy.context.window and not bpy.app.background:
         bpy.context.window.scene=dst
     layer=dst.view_layers[0]
     for item in dst.objects:
