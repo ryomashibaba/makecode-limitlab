@@ -1,0 +1,344 @@
+{
+  "schema": "g4c7-m37o1-activity-silhouette-author-art-hold-v1",
+  "concept": "A_INHABITED_SHIPYARD_SEAM",
+  "art": "EARLY_REVIEW_REQUIRED",
+  "official_adoption": 0,
+  "formal_331_993": "NOT_RUN",
+  "S1_G1_G2_G3": "NOT_RUN",
+  "Minecraft": "FORBIDDEN",
+  "MakeCode": "NOT_EVALUATED_NO_WRITES",
+  "user_work_approval": "NOT_REQUESTED_NOT_USED",
+  "old_native_parent_sha256": "0817bf8a9681e9380b8167e75ddc236dbcab18920b01298c5e405ed46752bdff",
+  "old_tube_meshes_imported": 0,
+  "scene": "M37O_A_INHABITED_SHIPYARD_SEAM_COARSE_ART_HOLD",
+  "programs": [
+    {
+      "id": "ARRIVAL",
+      "use": "CIVIC",
+      "z": 3,
+      "h": 8,
+      "door": 2,
+      "outline": [
+        [
+          -82,
+          -56
+        ],
+        [
+          -56,
+          -61
+        ],
+        [
+          -47,
+          -42
+        ],
+        [
+          -58,
+          -25
+        ],
+        [
+          -87,
+          -32
+        ]
+      ]
+    },
+    {
+      "id": "COMMONS",
+      "use": "CIVIC",
+      "z": 7,
+      "h": 11,
+      "door": 3,
+      "outline": [
+        [
+          -55,
+          -37
+        ],
+        [
+          -20,
+          -44
+        ],
+        [
+          -8,
+          -25
+        ],
+        [
+          -21,
+          -3
+        ],
+        [
+          -49,
+          -11
+        ],
+        [
+          -65,
+          -24
+        ]
+      ]
+    },
+    {
+      "id": "SHIPYARD",
+      "use": "MAKER",
+      "z": 0,
+      "h": 32,
+      "door": 4,
+      "outline": [
+        [
+          -46,
+          -85
+        ],
+        [
+          1,
+          -96
+        ],
+        [
+          30,
+          -73
+        ],
+        [
+          19,
+          -38
+        ],
+        [
+          -6,
+          -31
+        ],
+        [
+          -45,
+          -49
+        ]
+      ]
+    },
+    {
+      "id": "RESEARCH",
+      "use": "RESEARCH",
+      "z": 18,
+      "h": 23,
+      "door": 4,
+      "outline": [
+        [
+          5,
+          -26
+        ],
+        [
+          36,
+          -38
+        ],
+        [
+          55,
+          -17
+        ],
+        [
+          43,
+          17
+        ],
+        [
+          18,
+          22
+        ],
+        [
+          -2,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "HABITAT",
+      "use": "HABITAT",
+      "z": 33,
+      "h": 19,
+      "door": 3,
+      "outline": [
+        [
+          -33,
+          18
+        ],
+        [
+          -3,
+          8
+        ],
+        [
+          21,
+          25
+        ],
+        [
+          8,
+          58
+        ],
+        [
+          -22,
+          63
+        ],
+        [
+          -44,
+          42
+        ]
+      ]
+    },
+    {
+      "id": "CULTURE",
+      "use": "CULTURE",
+      "z": 44,
+      "h": 15,
+      "door": 0,
+      "outline": [
+        [
+          40,
+          13
+        ],
+        [
+          79,
+          9
+        ],
+        [
+          91,
+          35
+        ],
+        [
+          72,
+          59
+        ],
+        [
+          43,
+          51
+        ],
+        [
+          28,
+          33
+        ]
+      ]
+    },
+    {
+      "id": "SKY",
+      "use": "PUBLIC",
+      "z": 61,
+      "h": 5,
+      "door": 5,
+      "outline": [
+        [
+          70,
+          47
+        ],
+        [
+          98,
+          40
+        ],
+        [
+          115,
+          57
+        ],
+        [
+          103,
+          78
+        ],
+        [
+          75,
+          84
+        ],
+        [
+          62,
+          64
+        ]
+      ]
+    }
+  ],
+  "physical_public_route_stations": [
+    [
+      "ARRIVAL",
+      [
+        -62,
+        -43,
+        4
+      ]
+    ],
+    [
+      "CIVIC",
+      [
+        -42,
+        -24,
+        8
+      ]
+    ],
+    [
+      "VIEW",
+      [
+        -12,
+        -32,
+        12
+      ]
+    ],
+    [
+      "RESEARCH",
+      [
+        16,
+        -8,
+        19
+      ]
+    ],
+    [
+      "HABITAT",
+      [
+        -2,
+        24,
+        34
+      ]
+    ],
+    [
+      "CULTURE",
+      [
+        45,
+        32,
+        45
+      ]
+    ],
+    [
+      "SKY",
+      [
+        80,
+        61,
+        62
+      ]
+    ]
+  ],
+  "path_walkability": "NOT_CERTIFIED",
+  "factory_staff_public_barrier": "GEOMETRY_ONLY_NOT_SAFETY_CERTIFIED",
+  "seven_interiors": "WALL_OPENINGS_PRESENT_BUT_ACCESS_NOT_CERTIFIED",
+  "cameras": [
+    "SOUTH",
+    "NORTH",
+    "AERIAL",
+    "PUBLIC_EYE",
+    "MAKER_EYE",
+    "RESEARCH_EYE",
+    "HABITAT_EYE",
+    "CULTURE_EYE",
+    "UPPER_EYE"
+  ],
+  "native_blend": {
+    "file": "M37O_A_REAL_ACTIVITY_SILHOUETTE_AUTHOR_ART_HOLD.blend",
+    "sha256": "7845343514b79067835ddbbd18aabf93439a391f4a2c0983227475b18331b2f1",
+    "bytes": 1091100
+  },
+  "same_native_blend_renders": {
+    "AERIAL": {
+      "file": "M37O_AERIAL.png",
+      "sha256": "8fe4e34431da8636db35aa56e60611f7bfc7e0d87bf1362f4e2e7f653624b8e1"
+    },
+    "PUBLIC_EYE": {
+      "file": "M37O_PUBLIC_EYE.png",
+      "sha256": "42bca36227673f40423b2e3dfea4e99e34fde108a5a343dcb4f4db70d12355e7"
+    },
+    "MAKER_EYE": {
+      "file": "M37O_MAKER_EYE.png",
+      "sha256": "a1c3c05762071bae2955beaae612ea4f025b47fad6b13631c687d0dbff518d19"
+    },
+    "HABITAT_EYE": {
+      "file": "M37O_HABITAT_EYE.png",
+      "sha256": "58008cd9b1101953f9f95ca75161ceafac0ebf517f22797f8e3bb0a218ecd104"
+    },
+    "UPPER_EYE": {
+      "file": "M37O_UPPER_EYE.png",
+      "sha256": "c2f26a287a5fd52cc562fc340509d3d049b7d0bf4981969ef2e7cb793b58b13e"
+    }
+  },
+  "assessor_instruction": "Review macro, city density, ground eye, factory activity, habitat privacy and upper eye absolutely. If simple disconnected pavilions or elevated road dominate, EARLY ART REJECT, do not extend this A.",
+  "limit": "One authored spatial study; not proven cohesive city, buildability, structure, egress, privacy, pedestrian route, or visual quality."
+}

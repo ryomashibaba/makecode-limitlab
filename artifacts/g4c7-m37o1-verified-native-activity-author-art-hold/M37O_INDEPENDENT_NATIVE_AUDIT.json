@@ -1,0 +1,27 @@
+{
+  "result": "LIMITED_M37O1_SAVED_NATIVE_AUTHOR_METHOD_CONFIRMED",
+  "new_city_art": "EARLY_REVIEW_REQUIRED_NOT_PASSED",
+  "old_art_reused": false,
+  "source_parent_sha256": "0817bf8a9681e9380b8167e75ddc236dbcab18920b01298c5e405ed46752bdff",
+  "source_parent_unchanged": true,
+  "authored_programs": 7,
+  "nine_scene_cameras": 9,
+  "five_real_native_render_files_hash_verified": 5,
+  "genuine_floor_roof_and_open_wall_seam": true,
+  "physical_negative_controls_rejected": [
+    "staff_boundary_removed",
+    "habitat_entry_physically_sealed",
+    "public_link_missing"
+  ],
+  "full_urban_density": "UNREVIEWED",
+  "walkable_331_993": "NOT_RUN",
+  "S1_G1_G2_G3": "NOT_RUN",
+  "human_continuous_sweep": "NOT_CERTIFIED",
+  "maker_public_access_protection": "NOT_CERTIFIED",
+  "private_habitat_security": "NOT_CERTIFIED",
+  "structure_and_egress": "NOT_CERTIFIED",
+  "MakeCode_cost": "NOT_EVALUATED",
+  "Minecraft": "FORBIDDEN",
+  "official_adoption": 0,
+  "native_sha256": "7845343514b79067835ddbbd18aabf93439a391f4a2c0983227475b18331b2f1"
+}
