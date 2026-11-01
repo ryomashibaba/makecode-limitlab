@@ -1,0 +1,51 @@
+name: G4C7 M27 native actual controlled research gallery connection
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m27_native_research_visitor_gallery.py"
+      - "tools/g4c7_m27_independent_gallery_readback.py"
+      - ".github/workflows/g4c7-m27-native-gallery.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m27-native-visitor-gallery
+  cancel-in-progress: false
+jobs:
+  native-edited-M26B-three-eyes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download pinned M26B source, not rejected M25 exterior
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m26b-one-room-same-camera-ART-HOLD
+          run-id: 41272797921
+          github-token: ${{ github.token }}
+          path: artifacts/m27_immutable_m26b
+      - name: Preflight exact source pin and code
+        run: |
+          python -m py_compile tools/g4c7_m27_native_research_visitor_gallery.py tools/g4c7_m27_independent_gallery_readback.py
+          python tools/g4c7_m27_native_research_visitor_gallery.py --preflight
+      - name: Install native Blender plus GLB/shapely independent readers
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "shapely==2.1.2" "numpy==2.3.4"
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Direct Blender edit real east portal, floor, gallery and three eye images
+        run: python tools/g4c7_m27_native_research_visitor_gallery.py
+      - name: Independently reread GLBs, image hashes and floor positive overlap
+        run: python tools/g4c7_m27_independent_gallery_readback.py
+      - name: Preserve original and new artifacts without approving or modifying main
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m27-native-room-visitor-gallery-ART-HOLD
+          path: artifacts/g4c7-m27-visitor-gallery-entry/run_*/
+          retention-days: 21
+          if-no-files-found: warn
