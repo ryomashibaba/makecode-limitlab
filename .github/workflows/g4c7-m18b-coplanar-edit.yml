@@ -1,0 +1,69 @@
+name: G4C7 M18B targeted native coplanar image correction
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_d3s26_m18b_coplanar_native_edit.py"
+      - ".github/workflows/g4c7-m18b-coplanar-edit.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m18b-coplanar-fix
+  cancel-in-progress: false
+jobs:
+  revise:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download exactly pinned native M18 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m18-occupied-native-fabric-ART-HOLD
+          run-id: 41256352448
+          github-token: ${{ github.token }}
+          path: artifacts/m18b_original_native
+      - name: Validate original and script before running
+        run: |
+          python -m py_compile tools/g4c7_d3s26_m18b_coplanar_native_edit.py
+          python tools/g4c7_d3s26_m18b_coplanar_native_edit.py --preflight
+      - name: Install official Blender Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Directly edit M18 saved scene and render eight real views
+        run: python tools/g4c7_d3s26_m18b_coplanar_native_edit.py
+      - name: Verify evidence identities and native source preservation
+        run: |
+          python - <<'PY'
+          import os,hashlib,json,struct
+          from pathlib import Path
+          folder=Path('artifacts/g4c7-m18b-coplanar-qa')/('run_'+os.environ['GITHUB_SHA'][:12])
+          manifest=json.loads((folder/'manifest.json').read_text())
+          assert manifest['art']=='HOLD_NOT_APPROVED' and manifest['minecraft']=='FORBIDDEN'
+          assert len(manifest['views'])==8
+          for filename,key,magic in (
+            ('M18B_EDITED_M18_NATIVE_SCENE.blend','blend_sha256',b'BLENDER'),
+            ('M18B_COPLANAR_CORRECTED_UNAPPROVED.glb','glb_sha256',b'glTF')):
+            data=(folder/filename).read_bytes()
+            assert data.startswith(magic)
+            assert hashlib.sha256(data).hexdigest()==manifest[key]
+          for name,meta in manifest['views'].items():
+            data=(folder/('M18B_'+name+'.png')).read_bytes()
+            assert data[:8]==b'\x89PNG\r\n\x1a\n'
+            assert struct.unpack('>II',data[16:24])==(960,540)
+            assert hashlib.sha256(data).hexdigest()==meta['sha256']
+          print('M18B_NATIVE_EIGHT_VIEW_BINARY_PASS_ART_HOLD')
+          PY
+      - name: Preserve M18B revision without overwriting M18 or main
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m18b-native-coplanar-revision-ART-HOLD
+          path: artifacts/g4c7-m18b-coplanar-qa/run_*/
+          retention-days: 21
+          if-no-files-found: warn
