@@ -81,14 +81,15 @@ jobs:
               snapshot[name]=(
                   [tuple(map(float,v.co)) for v in o.data.vertices],
                   [tuple(face.vertices) for face in o.data.polygons],
-                  [tuple(map(float,row)) for row in o.matrix_world])
+                  [tuple(map(float,row)) for row in o.matrix_basis],
+                  o.parent.name if o.parent else None)
           pinned=Path('artifacts/g4c7-m35-pinned-native-art-reject/M35_NATIVE_CITY_ART_HOLD.blend')
           assert hashlib.sha256(pinned.read_bytes()).hexdigest()==m['reference_original_sha256']
           bpy.ops.wm.open_mainfile(filepath=str(pinned.resolve()))
           original_source={o.name:o for o in bpy.context.scene.objects if o.type=='MESH'}
           assert set(snapshot)==set(original_source)
           max_abs=0.0
-          for name,(verts,faces,mat) in snapshot.items():
+          for name,(verts,faces,mat,parent_name) in snapshot.items():
               o=original_source[name]
               assert len(verts)==len(o.data.vertices)
               assert len(faces)==len(o.data.polygons)
@@ -96,7 +97,8 @@ jobs:
               for i,v in enumerate(o.data.vertices):
                   for x,y in zip(verts[i],v.co):
                       max_abs=max(max_abs,abs(x-float(y)))
-              for a,row in zip(mat,o.matrix_world):
+              assert (o.parent.name if o.parent else None)==parent_name,name
+              for a,row in zip(mat,o.matrix_basis):
                   for x,y in zip(a,row):
                       max_abs=max(max_abs,abs(x-float(y)))
           # Tiny native floating round-trip differences are expected; any material
