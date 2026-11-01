@@ -1,0 +1,100 @@
+name: G4C7 M37-N subtractive maker-view studio and source-protected native review
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37n_native_shipyard_surgical_authoring.py
+      - tools/g4c7_m37n_independent_native_reopen_audit.py
+      - .github/workflows/g4c7-m37n-native-shipyard-view.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37n-real-shipyard-native
+  cancel-in-progress: true
+jobs:
+  create-verify-native-without-world-write:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Syntax, original BLEND hash and ART hold gates
+        run: |
+          python -m py_compile tools/g4c7_m37n_native_shipyard_surgical_authoring.py tools/g4c7_m37n_independent_native_reopen_audit.py
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path("artifacts/g4c7-m37m-verified-native-review-workspace-art-hold")
+          m=json.loads((root/"M37M_REVIEW_STUDIO_MANIFEST.json").read_text())
+          p=root/m["native_blend"]["name"]
+          assert p.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m["native_blend"]["sha256"]
+          assert m["not_proven"]["Minecraft"]=="FORBIDDEN"
+          assert m["not_proven"]["formal_331_993"]=="NOT_RUN"
+          print("M37N_SOURCE_PIN_AND_STOP_GATES_CONFIRMED")
+          PY
+      - name: Install authentic Blender native Python API
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy;assert bpy.app.version[:2]==(4,5)"
+      - name: Author direct native shell cuts and keep intact sealed staff boundary in fresh scene
+        run: |
+          python -u tools/g4c7_m37n_native_shipyard_surgical_authoring.py
+      - name: Independent re-open, original scene proof and injected shell, glazing, deck negative controls
+        run: |
+          python -u tools/g4c7_m37n_independent_native_reopen_audit.py
+      - name: Archive exclusively after independent checks, with ART HOLD and no approval
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("artifacts/g4c7-m37n-shipyard-view-build")
+          m=json.loads((root/"M37N_AUTHOR_MANIFEST.json").read_text())
+          a=json.loads((root/"M37N_INDEPENDENT_NATIVE_REOPEN_AUDIT.json").read_text())
+          assert m["art"]=="HOLD_UNREVIEWED" and m["Minecraft"]=="FORBIDDEN"
+          assert m["formal_331_993"]=="NOT_RUN" and m["official_adoption"]==0
+          assert a["result"]=="LIMITED_NATIVE_SUBTRACTIVE_SHELL_AND_SEALED_VIEW_METHOD_PASS"
+          assert a["direct_modified_shell_patch_meshes"]==10
+          assert a["copied_source_native_meshes"]==199
+          assert a["source_M37L_and_M37M_preserved_meshes_each"]==199
+          assert a["source_barrier_still_exists"]=="YES_FULL_PHYSICAL_MEMBRANE"
+          assert len(a["physical_negative_controls_rejected"])==3
+          assert a["formal_331_993"]=="NOT_RUN"
+          assert a["minecraft"]=="FORBIDDEN" and a["official_adoption"]==0
+          print("M37N_NATIVE_READONLY_SOURCE_AND_NEGATIVE_TEST_PASS")
+          PY
+          target=artifacts/g4c7-m37n-verified-native-maker-exposure-art-hold
+          test ! -e "$target"
+          mkdir -p "$target"
+          cp -p artifacts/g4c7-m37n-shipyard-view-build/* "$target/"
+          cp -p tools/g4c7_m37n_native_shipyard_surgical_authoring.py tools/g4c7_m37n_independent_native_reopen_audit.py "$target/"
+          cat > "$target/README_JA.md" <<'TXT'
+          # M37-N — 製造見学の実外殻切除／隔壁保存のネイティブ編集研究
+          
+          M37-M真正BLENDの旧M37-L/M37-M二シーンを一切変更せず、新しい第三シーンで独立199メッシュを作者編集する。製造区域に関係する10件の既存外殻メッシュを保存実頂点から「両端の薄いアンカーと中央の実空間」に直接分割し、中央76%を切除。既存の製造-公共隔壁は物理メッシュのまま維持し、透過材のみ新シーンで変更。公共側見学床、端部ガード、支持試験材を5つ実設置する。実Blender保存ファイルを再読込し、旧二シーン各199メッシュ不変、固定9カメラと補助2カメラ、透明膜、外殻切除、3負例の拒否を検証した。
+          
+          5枚の新画像は同一保存ネイティブBLEND由来の真正Cycles。古い固定MAKER/AERIAL/PUBLICと、追加した来訪者目線・外景補助の2台を併記し、元の失敗視点を隠していない。
+          
+          **美術未採用・全体ART HOLD・正式採用0。新設床のアクセス・隔壁の防火/耐衝撃・構造強度・居住性・実自由歩行・331/993・G0/S1/G1/G2/G3は未検証。研究単位とMinecraftのブロック換算は行わない。Minecraft施工／都市統合禁止、main不変更、PR #53 Draft維持。** この研究はM37-Lの不採用の全体チューブ都市を完成させたものではない。
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$target"
+          git diff --cached --quiet && { echo "No new evidence";exit 1; }
+          git commit -m "research(g4c7): archive M37-N direct shell aperture, sealed maker view and independent native negatives ART HOLD"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Keep inspectable native files even after verification failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37n-native-shipyard-exposure-ART-HOLD
+          path: artifacts/g4c7-m37n-shipyard-view-build
+          retention-days: 21
+          if-no-files-found: warn
