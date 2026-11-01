@@ -1,0 +1,51 @@
+name: G4C7 M28B direct image-guided gallery obstruction correction
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m28b_fixed_camera_sign_reduction.py"
+      - "tools/g4c7_m28b_independent_readback.py"
+      - ".github/workflows/g4c7-m28b-occlusion-fix.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m28b-eye-correction
+  cancel-in-progress: false
+jobs:
+  true-m28-native-fixed-camera-edit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download immutable M28 native Blender output
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m28-image-guided-orbital-gallery-ART-HOLD
+          run-id: 41275105565
+          github-token: ${{ github.token }}
+          path: artifacts/m28b_pinned_m28
+      - name: Preflight immutable .blend and syntax before Blender install
+        run: |
+          python -m py_compile tools/g4c7_m28b_fixed_camera_sign_reduction.py tools/g4c7_m28b_independent_readback.py
+          python tools/g4c7_m28b_fixed_camera_sign_reduction.py --preflight
+      - name: Official native Blender 4.5.15 and readback libraries
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "shapely==2.1.2" "numpy==2.3.4"
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Adjust only three oversized sign objects and hide three foreground bench objects
+        run: python tools/g4c7_m28b_fixed_camera_sign_reduction.py
+      - name: Independent GLB conservation and two real fixed-image hashes
+        run: python tools/g4c7_m28b_independent_readback.py
+      - name: Preserve original and image-critique revised evidence separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m28b-gallery-fixed-camera-sightline-ART-HOLD
+          path: artifacts/g4c7-m28b-gallery-sign-occlusion-correction/run_*/
+          retention-days: 21
+          if-no-files-found: warn
