@@ -1,0 +1,191 @@
+{
+  "schema": "g4c7-m37p0-artist-owned-source-of-form-contract-v1",
+  "status": "AUTHOR_INPUT_ONLY_NOT_ART",
+  "reference_reject": "M37O1_EARLY_ART_REJECT",
+  "formal_art_adoptions": 0,
+  "formal_331_993": "NOT_RUN",
+  "formal_S1_G1_G2_G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "mode": "ONE_SHARED_PUBLIC_MANUFACTURING_CULTURE_HABITAT_SECTION",
+  "banned_dominant_generators": [
+    "program_footprint_extrusion",
+    "independent_pavilions_then_links",
+    "long_urban_tube",
+    "road_band",
+    "stacked_shelf",
+    "primitive_first_city"
+  ],
+  "route_status": "INTENT_ONLY_NOT_WALKABLE",
+  "nodes": [
+    {
+      "id": "arrival",
+      "realm": "public",
+      "experience": "都市と実機製造を初めて同時に視認する入口"
+    },
+    {
+      "id": "commons",
+      "realm": "public",
+      "experience": "製造・研究・暮らしが同一公共断面で見える立体中心"
+    },
+    {
+      "id": "maker_view",
+      "realm": "public",
+      "experience": "工場と物理隔壁を共有するが安全に分離された実機観察"
+    },
+    {
+      "id": "maker_staff_gate",
+      "realm": "staff",
+      "experience": "公開側から独立した職員専用制御入口"
+    },
+    {
+      "id": "maker_work",
+      "realm": "staff",
+      "experience": "宇宙機の高さと搬送が実際に要求する作業空間"
+    },
+    {
+      "id": "research",
+      "realm": "public",
+      "experience": "製造工程を観察して学ぶ公共研究展示領域"
+    },
+    {
+      "id": "habitat_gate",
+      "realm": "public",
+      "experience": "公共道路から私的領域へ物理的に切り替わる住居前室"
+    },
+    {
+      "id": "habitat_private",
+      "realm": "private",
+      "experience": "騒音と公衆目線から隔てられ採光を持つ居室"
+    },
+    {
+      "id": "culture",
+      "realm": "public",
+      "experience": "学習と文化の公共空間が製造見学の視線と交差する"
+    },
+    {
+      "id": "upper",
+      "realm": "public",
+      "experience": "研究・製造・居住の地区を読み取れる本当の公共高所"
+    }
+  ],
+  "route_edges": [
+    {
+      "from": "arrival",
+      "to": "commons",
+      "access": "public"
+    },
+    {
+      "from": "commons",
+      "to": "maker_view",
+      "access": "public"
+    },
+    {
+      "from": "maker_view",
+      "to": "research",
+      "access": "public"
+    },
+    {
+      "from": "research",
+      "to": "culture",
+      "access": "public"
+    },
+    {
+      "from": "culture",
+      "to": "upper",
+      "access": "public"
+    },
+    {
+      "from": "commons",
+      "to": "habitat_gate",
+      "access": "public"
+    },
+    {
+      "from": "habitat_gate",
+      "to": "habitat_private",
+      "access": "private_controlled"
+    },
+    {
+      "from": "commons",
+      "to": "maker_staff_gate",
+      "access": "staff_controlled"
+    },
+    {
+      "from": "maker_staff_gate",
+      "to": "maker_work",
+      "access": "staff_controlled"
+    }
+  ],
+  "shared_author_decisions": [
+    {
+      "id": "shared_maker_clearance",
+      "affected": [
+        "maker_work",
+        "maker_view",
+        "research",
+        "commons"
+      ],
+      "impacts": [
+        "urban_form",
+        "occupied_space",
+        "public_visibility",
+        "staff_separation"
+      ],
+      "author_why": "宇宙機の実搬送余裕と工場動線が公共見学の高さ・仕切り・中心空間の外形を相互に変更する"
+    },
+    {
+      "id": "research_daylight_transfer",
+      "affected": [
+        "maker_view",
+        "research",
+        "culture"
+      ],
+      "impacts": [
+        "urban_form",
+        "occupied_space",
+        "daylight",
+        "public_visibility"
+      ],
+      "author_why": "製造・研究・文化の視線/採光を成立させる吹抜と外面開口が一つの共有境界を変える"
+    },
+    {
+      "id": "habitat_graded_threshold",
+      "affected": [
+        "commons",
+        "habitat_gate",
+        "habitat_private",
+        "culture"
+      ],
+      "impacts": [
+        "urban_form",
+        "occupied_space",
+        "privacy",
+        "public_access"
+      ],
+      "author_why": "文化中心から私的住居に向かう実隔壁・採光・段階的入口が都市の外形・公共動線を改変する"
+    },
+    {
+      "id": "upper_civic_link",
+      "affected": [
+        "commons",
+        "research",
+        "culture",
+        "upper"
+      ],
+      "impacts": [
+        "urban_form",
+        "occupied_space",
+        "vertical_access",
+        "public_visibility"
+      ],
+      "author_why": "立体的な公共昇降・高所の目的地は単独の橋板ではなく、文化・研究・街の一体ボリュームを相互切除する"
+    }
+  ],
+  "proposed_geometry": "NONE_NOT_GENERATED",
+  "no_proxy_passing": "GRAPH_CONTRACT_PASS_NEVER_IMPLIES_ART_OR_ROUTE_OR_SAFETY_PASS",
+  "critical_next_proof": [
+    "作者が単一真正Blender原本の都市全域粗い形態と実生活断面を同時編集する",
+    "単なる室別押出し・外付け板接続ではない物理共有境界を固定視点で直接示す",
+    "旧9尺度を含む本物の遠景・公共眼高・製造・研究・居住・文化・高所を同一3Dから照合する",
+    "弱い場合は即ART REJECT、数値や工程数で採用しない"
+  ]
+}
