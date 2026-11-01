@@ -1,3 +1,7 @@
+> **G4-C7 Orbital Commonsの最新引き継ぎ**：まず [START_HERE.md](START_HERE.md) を開いてください。M37-Nまでの全計画・固定方針・失敗・原本・次工程への入口です。以下のP1.1記録は別系統の過去資料で、現在のG4-C7研究状態を表しません。
+
+---
+
 # MakeCode LimitLab — Cloud Foundation P1.1
 
 ## 今回完成したこと
