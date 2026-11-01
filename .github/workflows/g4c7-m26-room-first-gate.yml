@@ -1,0 +1,67 @@
+name: G4C7 M26 ART-FIRST one human-room frame native
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m26_room_first_research_atelier.py"
+      - ".github/workflows/g4c7-m26-room-first-gate.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m26-room-first
+  cancel-in-progress: false
+jobs:
+  one-human-eye-room-cycles:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover immutable M22 rather than rejected M23-M25 art
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m22-real-landing-detour-ART-HOLD
+          run-id: 41266602916
+          github-token: ${{ github.token }}
+          path: artifacts/m26_immutable_m22
+      - name: Python syntax and SHA pin gate
+        run: |
+          python -m py_compile tools/g4c7_m26_room_first_research_atelier.py
+          python tools/g4c7_m26_room_first_research_atelier.py --preflight
+      - name: Official native Blender 4.5.15
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build human occupied research atelier and only one real eye view
+        run: python tools/g4c7_m26_room_first_research_atelier.py
+      - name: Check image and native editable file identities
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,hashlib,json,struct
+          p=Path('artifacts/g4c7-m26-inhabited-research-room')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='HOLD_NOT_APPROVED' and m['adopted']==0 and m['minecraft']=='FORBIDDEN'
+          assert m['official_331_993']=='NOT_RUN' and m['source_road_unchanged']
+          assert m['new_mesh_creatives']>85 and len(m['image_anchor_screen_coordinates'])==5
+          for n,k,hdr in (
+            ('M26_EDITABLE_ROOM_FIRST_RESEARCH_ATELIER.blend','blend_sha256',b'BLENDER'),
+            ('M26_INHABITED_ROOM_ART_HOLD.glb','glb_sha256',b'glTF'),
+            ('M26_HUMAN_EYE_ART_GATE.png','one_actual_human_eye_png_sha256',b'\x89PNG\r\n\x1a\n')):
+            data=(p/n).read_bytes()
+            assert data.startswith(hdr) and hashlib.sha256(data).hexdigest()==m[k]
+          im=(p/'M26_HUMAN_EYE_ART_GATE.png').read_bytes()
+          assert struct.unpack('>II',im[16:24])==(1200,760)
+          print('M26_TRUE_NATIVE_ROOM_ONE_VIEW_ART_GATE_TECH_PASS_ART_HOLD')
+          PY
+      - name: Preserve editable non-adopted experiment
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m26-real-room-first-one-image-ART-HOLD
+          path: artifacts/g4c7-m26-inhabited-research-room/run_*/
+          retention-days: 21
+          if-no-files-found: warn
