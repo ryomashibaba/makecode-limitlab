@@ -18,7 +18,8 @@ def original():
  assert sha(a[0])==PIN,"M29 native source mismatch"
  return a[0]
 def preflight():
- assert not OUT.exists()
+ assert not (OUT/"M29B_EDITABLE_HUMAN_EXIT_VIEW_ONLY.blend").exists(), "Never overwrite camera result"
+ assert not (OUT/"M29B_OPEN_AIR_FROM_GALLERY_EXIT.png").exists(), "Never overwrite prior rendered eye"
  return str(original())
 def main():
  import bpy
