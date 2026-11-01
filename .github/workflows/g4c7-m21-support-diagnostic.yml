@@ -1,0 +1,56 @@
+name: G4C7 M21 independent real GLB partial-support diagnostic (NOT formal QA)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_d3s26_m21_actual_mesh_support_diag.py"
+      - ".github/workflows/g4c7-m21-support-diagnostic.yml"
+permissions:
+  contents: read
+  actions: read
+jobs:
+  pinned-m20-source-safety-hold:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Fetch exact real M20 GLB, not a guessed design polygon
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m20-street-union-native-ART-HOLD
+          run-id: 41264846873
+          github-token: ${{ github.token }}
+          path: artifacts/m21_pinned_m20_source
+      - name: Install independent geometry tools only (no Blender rendering)
+        run: |
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "shapely==2.1.2" "numpy==2.3.4"
+          python -m py_compile tools/g4c7_d3s26_m21_actual_mesh_support_diag.py
+      - name: Real GLB 331 point and 993 foot diagnostic, assert HOLD on unsafe footprints
+        run: python tools/g4c7_d3s26_m21_actual_mesh_support_diag.py
+      - name: Do not claim formal pass from partial sample diagnostic
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m21-real-mesh-support-diagnostic')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'M21_independent_real_GLB_diagnostic.json').read_text())
+          assert m['art']=='HOLD' and m['adopted']==0 and m['minecraft']=='FORBIDDEN'
+          assert m['official_body_331_foot_993']=='NOT_RUN'
+          assert m['safety_decision']=='HOLD_NOT_SAFE_TO_CONSTRUCT'
+          assert m['samples']['body_centers']==331 and m['samples']['three_point_foot_samples']==993
+          assert m['samples']['point_foot_unsupported']==0
+          assert m['samples']['disk_not_fully_supported_count']>0
+          assert m['samples']['conservative_near_obstacle_count']>0
+          print('M21_REAL_MESH_LIMITED_SAFETY_DIAGNOSTIC_PASS_AND_FORMAL_SAFETY_HOLD')
+          PY
+      - name: Preserve diagnosis only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m21-real-glb-ground-support-diagnostic-ART-HOLD
+          path: artifacts/g4c7-m21-real-mesh-support-diagnostic/run_*/
+          retention-days: 21
+          if-no-files-found: warn
