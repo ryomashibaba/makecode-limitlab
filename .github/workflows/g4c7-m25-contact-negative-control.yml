@@ -1,0 +1,51 @@
+name: G4C7 M25 bridge connection negative-control audit (ART REJECT)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m25_real_bridge_contact_gate.py"
+      - ".github/workflows/g4c7-m25-contact-negative-control.yml"
+permissions:
+  contents: read
+  actions: read
+jobs:
+  readback-native-bridge-reject:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover pinned M25 native GLB for independent analysis
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m25-section-shell-two-view-ART-HOLD
+          run-id: 41271160564
+          github-token: ${{ github.token }}
+          path: artifacts/m25_immutable_native_for_negative_control
+      - name: Independent projected floor contact check with expected rejection
+        run: |
+          python -m pip install --disable-pip-version-check "numpy==2.3.4" "shapely==2.1.2" "trimesh==4.7.4"
+          python -m py_compile tools/g4c7_m25_real_bridge_contact_gate.py
+          python tools/g4c7_m25_real_bridge_contact_gate.py
+      - name: Assert ART REJECT and all disconnected bridge ends
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m25-bridge-contact-negative-gate')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='REJECT' and m['minecraft']=='FORBIDDEN'
+          assert m['tested_bridge_ends']==m['rejected_ends']==4
+          assert all(x['overlap_area']==0 and not x['validated_as_connected'] for x in m['details'])
+          print("M25_INDEPENDENT_NEGATIVE_CONTACT_GATE_PASS_ART_REJECT")
+          PY
+      - name: Preserve negative-control result only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m25-bridge-negative-control-ART-REJECT
+          path: artifacts/g4c7-m25-bridge-contact-negative-gate/run_*/
+          retention-days: 21
+          if-no-files-found: warn
