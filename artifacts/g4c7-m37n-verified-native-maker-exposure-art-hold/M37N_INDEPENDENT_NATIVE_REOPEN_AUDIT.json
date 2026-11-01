@@ -1,0 +1,27 @@
+{
+  "result": "LIMITED_NATIVE_SUBTRACTIVE_SHELL_AND_SEALED_VIEW_METHOD_PASS",
+  "source_M37L_and_M37M_preserved_meshes_each": 199,
+  "source_scene_count_protected": 2,
+  "copied_source_native_meshes": 199,
+  "direct_modified_shell_patch_meshes": 10,
+  "source_barrier_still_exists": "YES_FULL_PHYSICAL_MEMBRANE",
+  "glazing_optical_quality": "REQUIRES_VISUAL_REVIEW",
+  "added_actual_gallery_or_guards_or_piers": 5,
+  "unmodified_fixed_cameras": 9,
+  "supplemental_cameras": 2,
+  "verified_saved_native_renders": 5,
+  "physical_negative_controls_rejected": [
+    "fill_shell_aperture",
+    "opaque_workzone_glass",
+    "public_gallery_crosses_staff_partition"
+  ],
+  "new_city_art": "NOT_PASSED",
+  "formal_331_993": "NOT_RUN",
+  "interior_freely_walkable": "NOT_CERTIFIED",
+  "workzone_security_and_glass_impact": "NOT_CERTIFIED",
+  "structural_support": "NOT_CERTIFIED",
+  "minecraft": "FORBIDDEN",
+  "official_adoption": 0,
+  "source_sha256": "8671733deccbeb8ea0e911fc4b8411734df4158c928e1ebe2f5ebf1d0cc1a57c",
+  "new_blend_sha256": "0817bf8a9681e9380b8167e75ddc236dbcab18920b01298c5e405ed46752bdff"
+}

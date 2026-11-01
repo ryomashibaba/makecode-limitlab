@@ -1,0 +1,69 @@
+{
+  "schema": "g4c7-m37n-bounded-native-carve-and-controlled-view-study-v1",
+  "art": "HOLD_UNREVIEWED",
+  "official_adoption": 0,
+  "formal_331_993": "NOT_RUN",
+  "Minecraft": "FORBIDDEN",
+  "reference_scenes": [
+    "M37L_SINGLE_CITY_MASTER_AUTHOR_ART_HOLD",
+    "M37M_DIRECT_AUTHORING_REVIEW_STUDIO_ART_HOLD"
+  ],
+  "source_blend_sha256": "8671733deccbeb8ea0e911fc4b8411734df4158c928e1ebe2f5ebf1d0cc1a57c",
+  "new_scene": "M37N_MAKER_PUBLIC_VISTA_DIRECT_AUTHOR_EDIT_ART_HOLD",
+  "copies_of_source_meshes": 199,
+  "source_shell_direct_mesh_cuts": [
+    "M37L_SHELL_03_01",
+    "M37L_SHELL_03_02",
+    "M37L_SHELL_03_03",
+    "M37L_SHELL_03_04",
+    "M37L_SHELL_03_05",
+    "M37L_SHELL_04_01",
+    "M37L_SHELL_04_02",
+    "M37L_SHELL_04_03",
+    "M37L_SHELL_04_04",
+    "M37L_SHELL_04_05"
+  ],
+  "shell_cut_count": 10,
+  "source_mesh_material_only_change": "M37L_MAKER_BOUNDARY_ACTUAL_MEMBRANE",
+  "glazing": {
+    "Transmission_Weight": 0.995,
+    "IOR": 1.07,
+    "transparent_at_final_render": "TO_BE_JUDGED"
+  },
+  "new_visitors_physical_meshes": 5,
+  "new_floor_access": "NOT_CERTIFIED",
+  "new_pier_structure": "NOT_CERTIFIED",
+  "new_cameras": [
+    "VISITOR_GALLERY_EYE",
+    "MAKER_OPEN_FACADE"
+  ],
+  "fixed_cameras_unmodified": 9,
+  "native_blend": {
+    "file": "M37N_MAKER_SHELL_DIRECT_EDIT_ART_HOLD.blend",
+    "sha256": "0817bf8a9681e9380b8167e75ddc236dbcab18920b01298c5e405ed46752bdff",
+    "bytes": 4120845
+  },
+  "same_native_blend_renders": {
+    "MAKER_FIXED": {
+      "file": "M37N_MAKER_FIXED.png",
+      "sha256": "fc9d329d1854d47c98cea9ab264c2501dd301e54a9cc73d7105739207fd1b8db"
+    },
+    "AERIAL_FIXED": {
+      "file": "M37N_AERIAL_FIXED.png",
+      "sha256": "669ee045826fc06f2b290e80dbb175a353cf002905b870fea7e58fade0ba1a26"
+    },
+    "PUBLIC_FIXED": {
+      "file": "M37N_PUBLIC_FIXED.png",
+      "sha256": "fdb0e9041e1a5b076f8eba4cb71dee72532ed02a01142fe0a308651f4074f784"
+    },
+    "VISITOR_SUPPLEMENTAL": {
+      "file": "M37N_VISITOR_SUPPLEMENTAL.png",
+      "sha256": "1f673906a31ebf2949a86c51a3e85a9b2450a8b9eb008f6ad53cc3e166831420"
+    },
+    "EXTERIOR_SUPPLEMENTAL": {
+      "file": "M37N_EXTERIOR_SUPPLEMENTAL.png",
+      "sha256": "0b5ba92eff171b8508dcd22195822aced53c88eaed193f58e10fff6bc673da8d"
+    }
+  },
+  "limits": "Local subtractive editing trial. Retains 199 initial copied meshes and sealed factory divider; does not fix overall tubular city, human walking, privacy, fire or sitewide art quality."
+}
