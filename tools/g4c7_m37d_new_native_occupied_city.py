@@ -84,7 +84,9 @@ def extrude_polygon(name,points,z0,z1,mat,group,tag="PHYSICAL_GEOMETRY_UNVERIFIE
                 (points[k][0]-v.x)**2+(points[k][1]-v.y)**2) for v in t]
     faces=[]
     for t in tri:
-        a,b,c=tri_indices(t)
+        # Blender builds may return triangle indices or Vector vertices.
+        a,b,c=(map(int,t) if isinstance(t[0],int) else tri_indices(t))
+        assert len({a,b,c})==3 and 0<=min(a,b,c) and max(a,b,c)<n
         faces.extend([(c,b,a),(a+n,b+n,c+n)])
     for i in range(n):
         j=(i+1)%n
