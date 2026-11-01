@@ -8,7 +8,7 @@ bl_info={"name":"G4C7 M37-M Bounded Authoring Review","author":"G4C7 research",
          "location":"3D View > Sidebar > M37-M Review","category":"3D View"}
 import bpy
 from bpy.props import EnumProperty,FloatProperty
-BASE="M37L_HOLLOW_OCCUPIED_RIDGE_AUTHOR_MASTER_ART_HOLD"
+BASE="M37L_SINGLE_CITY_MASTER_AUTHOR_ART_HOLD"
 WORK="M37M_DIRECT_AUTHORING_REVIEW_STUDIO_ART_HOLD"
 PREFIX="M37M_EDIT_"
 ISSUES={
