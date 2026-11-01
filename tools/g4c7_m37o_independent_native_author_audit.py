@@ -31,12 +31,12 @@ assert len(man["programs"])==7
 assert len([n for n in mesh if n.startswith("M37O_ROUTE_")])==6
 assert len(man["physical_public_route_stations"])==7
 def validate():
-    assert "M37O_MAKER_PUBLIC_SECURITY_PARTITION" in mesh
+    assert "M37O_MAKER_PUBLIC_SECURITY_PARTITION" in sc.objects
     assert mesh["M37O_MAKER_PUBLIC_SECURITY_PARTITION"]["M37O_ROLE"]=="ACTUAL_IMPASSABLE_STAFF_PUBLIC_BARRIER"
     assert "M37O_SHIPYARD_REAL_VEHICLE_MASS" in mesh
     assert len(mesh["M37O_SHIPYARD_REAL_VEHICLE_MASS"].data.vertices)==96
     assert "M37O_PUBLIC_FABRICATION_VIEW_BAY" in mesh
-    assert len([n for n in mesh if n.startswith("M37O_ROUTE_")])==6
+    assert len([o for o in sc.objects if o.type=="MESH" and o.name.startswith("M37O_ROUTE_")])==6
     assert not any(n.startswith(("M37L_","M37N_","M37M_")) for n in mesh)
     for p in man["programs"]:
         ident=p["id"];poly=p["outline"];z=p["z"]
@@ -49,7 +49,7 @@ def validate():
         assert all(math.dist(a,b)<1e-4 for a,b in zip(actual,poly))
         for a,b in zip(f.data.vertices[:len(poly)],roof.data.vertices[:len(poly)]):
             assert math.dist((a.co.x,a.co.y),(b.co.x,b.co.y))<1e-4
-        assert "M37O_"+ident+"_WALL_"+str(p["door"]) not in mesh
+        assert "M37O_"+ident+"_WALL_"+str(p["door"]) not in sc.objects
         assert "M37O_"+ident+"_DOOR_LEFT" in mesh
         assert "M37O_"+ident+"_DOOR_RIGHT" in mesh
         assert "M37O_"+ident+"_DOOR_HEADER" in mesh
@@ -80,11 +80,20 @@ reject("staff_boundary_removed",
        lambda:bar.__setitem__("M37O_ROLE",old_role))
 door="M37O_HABITAT_WALL_3"
 ref=mesh["M37O_HABITAT_DOOR_HEADER"]
-mesh[door]=ref
-reject("habitat_entry_sealed",lambda:None,lambda:mesh.pop(door))
+sealed=ref.copy()
+sealed.data=ref.data.copy()
+sealed.name=door
+col=sc.collection.children.get("M37O_A_AUTHOR_PROGRAM_AND_CITY_COHERENT")
+assert col is not None
+def seal():col.objects.link(sealed)
+def unseal():col.objects.unlink(sealed);bpy.data.objects.remove(sealed,do_unlink=True)
+reject("habitat_entry_sealed",seal,unseal)
 rname=next(n for n in mesh if n.startswith("M37O_ROUTE_"))
-ro=mesh.pop(rname)
-reject("public_link_missing",lambda:None,lambda:mesh.__setitem__(rname,ro))
+ro=mesh[rname]
+route_col=ro.users_collection[0]
+reject("public_link_missing",
+       lambda:route_col.objects.unlink(ro),
+       lambda:route_col.objects.link(ro))
 assert validate() and len(neg)==3
 assert sha(PARENT)==PIN and sha(native)==man["native_blend"]["sha256"]
 audit={
