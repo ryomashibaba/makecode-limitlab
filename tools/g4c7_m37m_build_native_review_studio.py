@@ -21,9 +21,10 @@ assert old.get("M37L_MINECRAFT")=="FORBIDDEN"
 studio=bpy.data.scenes.new(ui.WORK)
 studio.world=old.world
 studio.render.engine="CYCLES"
-studio.cycles.samples=6
-studio.render.resolution_x=720
-studio.render.resolution_y=450
+studio.cycles.samples=1
+studio.cycles.max_bounces=2
+studio.render.resolution_x=480
+studio.render.resolution_y=300
 studio.render.resolution_percentage=100
 studio.render.image_settings.file_format="PNG"
 col=bpy.data.collections.new("M37M_EDITABLE_REJECTED_SOURCE_COPY")
