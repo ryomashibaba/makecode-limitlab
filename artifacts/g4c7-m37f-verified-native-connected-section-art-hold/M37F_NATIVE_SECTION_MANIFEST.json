@@ -1,0 +1,215 @@
+{
+  "study": "M37F_NATIVELY_EDITED_CIVIC_ROUTE_SECTION_NOT_CITY_ART_PASS",
+  "source_blend_sha256": "22877ffa19e79e897574d64d897b2f4a4d2efaede1e15c64ae57c7e3dbf8c856",
+  "saved_blend": {
+    "file": "M37F_NATIVE_CIVIC_SECTION_ART_HOLD.blend",
+    "sha256": "cb3d82f739a9aa5c4031b5aad66a38cb2d9dee2ea02af4b2c952af8e6f3b748d",
+    "bytes": 16737085
+  },
+  "source_scenes_untouched": [
+    "M35_REJECTED_REFERENCE_LOCKED",
+    "M36_AUTHORING_STUDIO_ART_HOLD",
+    "M37D_AUTHOR_OCCUPIED_CITY_ART_HOLD"
+  ],
+  "new_scene": "M37F_CONNECTED_SECTION_METHOD_ART_HOLD",
+  "source_meshes_cloned": 1163,
+  "new_native_mesh_counts": {
+    "ground_road_segments": 13,
+    "flight_treads": 106,
+    "flight_landings": 2,
+    "ground_landings": 8
+  },
+  "new_native_total_meshes": 129,
+  "planned_ground_route_control_points": {
+    "GATE_TO_YARD": [
+      [
+        -9,
+        -125
+      ],
+      [
+        -9,
+        -88
+      ],
+      [
+        -2,
+        -54
+      ],
+      [
+        42,
+        -51
+      ],
+      [
+        91,
+        -43
+      ]
+    ],
+    "GATE_TO_HABITAT": [
+      [
+        -12,
+        -86
+      ],
+      [
+        -25,
+        -43
+      ],
+      [
+        -62,
+        -20
+      ],
+      [
+        -105,
+        -24
+      ]
+    ],
+    "GATE_TO_CULTURE": [
+      [
+        -9,
+        -130
+      ],
+      [
+        -52,
+        -132
+      ],
+      [
+        -111,
+        -130
+      ]
+    ],
+    "CIVIC_TO_RESEARCH": [
+      [
+        -13,
+        -53
+      ],
+      [
+        -13,
+        20
+      ],
+      [
+        -8,
+        73
+      ],
+      [
+        18,
+        92
+      ],
+      [
+        62,
+        112
+      ]
+    ]
+  },
+  "anchors": {
+    "GATE": [
+      -10,
+      -118
+    ],
+    "CIVIC": [
+      -9,
+      -72
+    ],
+    "DELTA": [
+      -11,
+      20
+    ],
+    "NORTH_HALL": [
+      -4,
+      80
+    ],
+    "SHIPYARD": [
+      95,
+      -42
+    ],
+    "HABITAT": [
+      -103,
+      -24
+    ],
+    "CULTURE": [
+      -108,
+      -128
+    ],
+    "RESEARCH": [
+      61,
+      111
+    ]
+  },
+  "stairs": {
+    "RESEARCH_ACCESS": {
+      "from": [
+        18,
+        92
+      ],
+      "to": [
+        62,
+        112
+      ],
+      "z_top_start": 0.15,
+      "z_top_end": 4.225,
+      "treads": 17,
+      "nominal_rise": 0.23970588235294113,
+      "nominal_run": 2.8430696408457816,
+      "claim": "concept only; support, landing and clearance not certified"
+    },
+    "UPPER_ACCESS": {
+      "from": [
+        -8,
+        73
+      ],
+      "to": [
+        17,
+        124
+      ],
+      "z_top_start": 0.15,
+      "z_top_end": 22.35,
+      "treads": 89,
+      "nominal_rise": 0.24943820224719104,
+      "nominal_run": 0.6381785088163113,
+      "claim": "concept only; support, landing and clearance not certified"
+    }
+  },
+  "cameras": {
+    "SOUTH": {
+      "file": "M37F_SOUTH.png",
+      "sha256": "67a65d24a032a90634316e27e2672d239c51241e5b42721a463732b6c4af630a"
+    },
+    "AERIAL": {
+      "file": "M37F_AERIAL.png",
+      "sha256": "fcf18632f7ea775bcadde0e570815ce7e1700f460237f76387aedfd542f54ca8"
+    },
+    "STREET_OLD": {
+      "file": "M37F_STREET_OLD.png",
+      "sha256": "d6508c9a26cbc8f9e3c02d4c0278791576dae58f8db1d67b8f2b3f7a6d46e7e4"
+    },
+    "CULTURE_EYE_OLD": {
+      "file": "M37F_CULTURE_EYE_OLD.png",
+      "sha256": "b724af1d3aff0a9c2405decc1bdf078472bcb26283ff455ade86bf4549f3fa95"
+    },
+    "GROUND_GATE": {
+      "file": "M37F_GROUND_GATE.png",
+      "sha256": "fa8dbe1c23a8f03b975aa6bf18626f4d0a82c4c40f2253f4cdf1894ca319921e"
+    },
+    "SPINE_CIVIC": {
+      "file": "M37F_SPINE_CIVIC.png",
+      "sha256": "465bf1cd1c05fe9b727c2bfeaec1e5f67ed382fe4628d27c042ef4bc9348c6eb"
+    },
+    "SHIPYARD_APPROACH": {
+      "file": "M37F_SHIPYARD_APPROACH.png",
+      "sha256": "054ccada48442883cd0547d1ad4e1efdf82c14fddbfba4fae6fafe0a62162f5d"
+    },
+    "RESEARCH_STAIR": {
+      "file": "M37F_RESEARCH_STAIR.png",
+      "sha256": "23c2eb0784e8f888bc486fe0e205627933f2f690d6089054608e7246dc70b690"
+    },
+    "HIGH_ROUTE": {
+      "file": "M37F_HIGH_ROUTE.png",
+      "sha256": "21a4ac04fa48f3d1c4d8d8c43072ac71e6c699d6f361fad35787e65276a91f5f"
+    }
+  },
+  "baseline_art": "M37D_ART_REJECT",
+  "new_art": "HOLD_NOT_EVALUATED",
+  "continuous_walkable_route": "NOT_CERTIFIED",
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "construction_writes": 0,
+  "important": "Nominal stairs and real route slabs are not a safe continuous human path. Final ART adoption 0."
+}

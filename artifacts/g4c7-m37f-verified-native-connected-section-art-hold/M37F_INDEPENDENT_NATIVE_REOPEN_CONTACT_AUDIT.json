@@ -1,0 +1,24 @@
+{
+  "schema": "m37f-native-urban-connection-audit-v1",
+  "result": "LIMITED_PHYSICAL_GROUND_ROUTE_METHOD_PASS_ONLY",
+  "original_M35_meshes_protected": 208,
+  "original_M36_meshes_protected": 208,
+  "original_M37D_meshes_protected": 1163,
+  "M37D_clone_meshes_independently_isolated": 1163,
+  "new_physical_meshes": 129,
+  "ground_road_actual_native_floor_meshes": 21,
+  "ground_road_strict_overlap_components": 1,
+  "gate_component_road_meshes": 21,
+  "positive_overlap_edges": 27,
+  "new_stair_treads": {
+    "research": 17,
+    "upper": 89
+  },
+  "swept_body_and_door_clearance": "NOT_RUN",
+  "old_113_doors_citywide_reachability": "NOT_PROVEN",
+  "M37D_art": "REJECT",
+  "M37F_art": "HOLD_UNREVIEWED",
+  "formal_331_993": "NOT_RUN",
+  "construction": "FORBIDDEN",
+  "official_adoption": 0
+}
