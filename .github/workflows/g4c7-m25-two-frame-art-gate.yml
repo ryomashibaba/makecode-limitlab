@@ -1,0 +1,70 @@
+name: G4C7 M25 single-section shell two-view art gate
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m25_inhabited_single_section_gate.py"
+      - ".github/workflows/g4c7-m25-two-frame-art-gate.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m25-early-art-gate
+  cancel-in-progress: false
+jobs:
+  native-two-view-visual-trial:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover protected M22 original (never M23/M24 rejected design)
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m22-real-landing-detour-ART-HOLD
+          run-id: 41266602916
+          github-token: ${{ github.token }}
+          path: artifacts/m25_immutable_m22
+      - name: Preflight provenance and generated-section invariants
+        run: |
+          python -m py_compile tools/g4c7_m25_inhabited_single_section_gate.py
+          python tools/g4c7_m25_inhabited_single_section_gate.py --preflight
+      - name: Official native Blender
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build one generated structural envelope and render only two art-gate views
+        run: python tools/g4c7_m25_inhabited_single_section_gate.py
+      - name: Check real native saved files without claiming art approval
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,json,struct,hashlib
+          p=Path('artifacts/g4c7-m25-shell-first-two-view-gate')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='HOLD_NOT_APPROVED' and m['adopted']==0 and m['minecraft']=='FORBIDDEN'
+          assert m['M22_road_unmodified'] and len(m['occupied_alcoves'])==8
+          assert len(m['aligned_bridge_levels'])==2 and len(m['views'])==2
+          assert m['new_objects']>180 and m['monocoque_window_open_faces']>70
+          for n,k,magic in (
+            ('M25_EDITABLE_SECTION_GENERATED_HERO_ART_HOLD.blend','blend_sha256',b'BLENDER'),
+            ('M25_SECTION_HERO_GEOMETRY_UNAPPROVED.glb','glb_sha256',b'glTF')):
+            raw=(p/n).read_bytes()
+            assert raw.startswith(magic) and hashlib.sha256(raw).hexdigest()==m[k]
+          for name,x in m['views'].items():
+            raw=(p/('M25_'+name+'.png')).read_bytes()
+            assert raw[:8]==b'\x89PNG\r\n\x1a\n'
+            assert struct.unpack('>II',raw[16:24])==(1050,675)
+            assert hashlib.sha256(raw).hexdigest()==x['sha256']
+          print('M25_TWO_VIEW_NATIVE_TECH_PASS_BUT_ART_HOLD')
+          PY
+      - name: Preserve two-frame rejectable prototype, no 8-frame promotion
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m25-section-shell-two-view-ART-HOLD
+          path: artifacts/g4c7-m25-shell-first-two-view-gate/run_*/
+          retention-days: 21
+          if-no-files-found: warn
