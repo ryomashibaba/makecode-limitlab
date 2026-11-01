@@ -78,7 +78,7 @@ jobs:
                   result[o.name]=(
                    [tuple(float(x) for x in v.co) for v in o.data.vertices],
                    [tuple(f.vertices) for f in o.data.polygons],
-                   [tuple(float(x) for row in o.matrix_basis for x in row),
+                   tuple(float(x) for row in o.matrix_basis for x in row),
                    o.parent.name if o.parent else None)
               return result
           saved_ref=snap(ref)
