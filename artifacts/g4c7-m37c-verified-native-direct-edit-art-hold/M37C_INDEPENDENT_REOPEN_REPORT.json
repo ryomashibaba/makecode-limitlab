@@ -1,0 +1,23 @@
+{
+  "test": "M37C_INDEPENDENT_NATIVE_REOPEN",
+  "status": "PASS_METHOD_ONLY",
+  "native_reference_unchanged_meshes": 208,
+  "editable_nontarget_unchanged_meshes": 203,
+  "edited_existing_meshes": [
+    "M35_CULTURE_OCCUPIED_TIER_0",
+    "M35_CULTURE_OCCUPIED_TIER_1",
+    "M35_CULTURE_OCCUPIED_TIER_2",
+    "M35_CULTURE_OCCUPIED_TIER_3",
+    "M35_CULTURE_STAGE"
+  ],
+  "retained_cameras": 9,
+  "actual_renders": [
+    "AERIAL",
+    "CULTURE_EYE",
+    "PUBLIC_EYE",
+    "SOUTH"
+  ],
+  "formal_safety": "NOT_RUN",
+  "art": "HOLD_NOT_ADOPTED",
+  "minecraft": "FORBIDDEN"
+}

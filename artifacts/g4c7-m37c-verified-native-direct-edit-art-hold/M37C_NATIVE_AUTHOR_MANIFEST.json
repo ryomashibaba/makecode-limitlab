@@ -1,0 +1,112 @@
+{
+  "study": "M37C_NATIVE_IN_PLACE_MESH_SURGERY_NOT_ARTWORK",
+  "source_blend_sha256": "be8d6eb0c37f58de4d677c12c4382f4f254ce51fe36e022946d4d9315301dc06",
+  "saved_blend": {
+    "file": "M37C_NATIVE_DIRECT_TOPOLOGY_EDIT_ART_HOLD.blend",
+    "sha256": "93adb8ee2f6dc50d4af262034ac3e4c40838c6139990fd025aedbfb4ec11bc63",
+    "bytes": 3088373
+  },
+  "reference_scene": "M35_REJECTED_REFERENCE_LOCKED",
+  "edited_scene": "M36_AUTHORING_STUDIO_ART_HOLD",
+  "all_editable_meshes": 208,
+  "all_reference_meshes": 208,
+  "actual_modified_meshes": {
+    "M35_CULTURE_STAGE": {
+      "before_verts": 8,
+      "after_verts": 16,
+      "before_faces": 6,
+      "after_faces": 12,
+      "removed_world_x": [
+        88.5,
+        103.5
+      ],
+      "y_range": [
+        -70.5,
+        -45.5
+      ]
+    },
+    "M35_CULTURE_OCCUPIED_TIER_0": {
+      "before_verts": 8,
+      "after_verts": 16,
+      "before_faces": 6,
+      "after_faces": 12,
+      "removed_world_x": [
+        88.5,
+        103.5
+      ],
+      "y_range": [
+        -125.0,
+        -115.0
+      ]
+    },
+    "M35_CULTURE_OCCUPIED_TIER_1": {
+      "before_verts": 8,
+      "after_verts": 16,
+      "before_faces": 6,
+      "after_faces": 12,
+      "removed_world_x": [
+        88.5,
+        103.5
+      ],
+      "y_range": [
+        -113.0,
+        -103.0
+      ]
+    },
+    "M35_CULTURE_OCCUPIED_TIER_2": {
+      "before_verts": 8,
+      "after_verts": 16,
+      "before_faces": 6,
+      "after_faces": 12,
+      "removed_world_x": [
+        88.5,
+        103.5
+      ],
+      "y_range": [
+        -101.0,
+        -91.0
+      ]
+    },
+    "M35_CULTURE_OCCUPIED_TIER_3": {
+      "before_verts": 8,
+      "after_verts": 16,
+      "before_faces": 6,
+      "after_faces": 12,
+      "removed_world_x": [
+        88.5,
+        103.5
+      ],
+      "y_range": [
+        -89.0,
+        -79.0
+      ]
+    }
+  },
+  "fixed_camera_renderings": {
+    "SOUTH": {
+      "file": "M37C_SOUTH.png",
+      "sha256": "727eeb20718c11fffe3a783634eb719b8ecf66aa41b37894288af6c6ce396506"
+    },
+    "AERIAL": {
+      "file": "M37C_AERIAL.png",
+      "sha256": "324bf1c17729db99c2feafdef0132c33ac055a82caedd21cc27eab13f52a8ce7"
+    },
+    "PUBLIC_EYE": {
+      "file": "M37C_PUBLIC_EYE.png",
+      "sha256": "ecfe56c2670de366eaeb60204431275e778af878a264d16aca22464b02e84b70"
+    },
+    "CULTURE_EYE": {
+      "file": "M37C_CULTURE_EYE.png",
+      "sha256": "b90f88f1edd9f2bcce436891fe3168cf27e10b2c06b3e8c0d29098c4720baf04"
+    }
+  },
+  "original_fixed_cameras_retained": 9,
+  "art": "HOLD_NOT_ADOPTED",
+  "original_M35_art": "REJECT",
+  "formal_331_993": "NOT_RUN",
+  "gates_G0_S1_G1_G2_G3": "NOT_RUN",
+  "continuous_full_body_sweep": "NOT_RUN",
+  "structure": "NOT_CERTIFIED",
+  "minecraft": "FORBIDDEN",
+  "scope": "5 existing culture meshes directly edited; no added buildings; no broad city art improvement claim"
+}
