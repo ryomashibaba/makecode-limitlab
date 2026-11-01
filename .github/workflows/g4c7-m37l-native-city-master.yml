@@ -1,0 +1,145 @@
+name: G4C7 M37-L native coupled city master 9-view ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37l_native_whole_city_master.py
+      - .github/workflows/g4c7-m37l-native-city-master.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37l-native-coupled-master
+  cancel-in-progress: false
+jobs:
+  create-and-reopen-real-native-master:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reject uncompiled source or mutated prior native master
+        run: |
+          python -m py_compile tools/g4c7_m37l_native_whole_city_master.py
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          prior=Path('artifacts/g4c7-m37k-verified-native-authoring-method-art-hold/M37K_NATIVE_AUTHORING_METHOD_ONLY_ART_HOLD.blend')
+          assert hashlib.sha256(prior.read_bytes()).hexdigest()=='76af771ae024803198b59ee4ad611858f0e911d0926d3fd33495b395537a407b'
+          assert Path('artifacts/g4c7-m37l-verified-native-city-master-art-hold').exists()==False
+          print('M37L_PREVIOUS_NATIVE_SOURCE_PROTECTED')
+          PY
+      - name: Install Blender 4.5 native API
+        run: |
+          python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c 'import bpy;assert bpy.app.version[:2]==(4,5)'
+      - name: Make actual coupled macro and inhabited geometry in fresh native master; render nine eyes
+        run: python tools/g4c7_m37l_native_whole_city_master.py
+      - name: Independently reopen saved real BLEND and test geometry/9 true images
+        run: |
+          python - <<'PY'
+          import bpy,hashlib,json,math
+          from pathlib import Path
+          root=Path('artifacts/g4c7-m37l-native-master-build')
+          m=json.loads((root/'M37L_NATIVE_MASTER_MANIFEST.json').read_text())
+          p=root/m['native_blend']['file']
+          assert p.read_bytes()[:7]==b'BLENDER'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m['native_blend']['sha256']
+          assert m['art']=='HOLD_UNREVIEWED'
+          assert m['formal_331_993']=='NOT_RUN' and m['minecraft']=='FORBIDDEN' and m['adoption']==0
+          bpy.ops.wm.open_mainfile(filepath=str(p.resolve()))
+          sc=bpy.data.scenes['M37L_SINGLE_CITY_MASTER_AUTHOR_ART_HOLD']
+          assert sc.get('M37L_MINECRAFT')=='FORBIDDEN'
+          assert sc.get('M37L_FORMAL_331_993')=='NOT_RUN'
+          assert sc.get('M37L_ADOPTION')==0
+          ms={o.name:o for o in sc.objects if o.type=='MESH'}
+          assert len(ms)==m['mesh_total']==sum(m['mesh_counts'].values())
+          assert len({o.data.as_pointer() for o in ms.values()})==len(ms)
+          assert len([x for x in ms if x.startswith('M37L_SHELL_')])==120
+          assert len([x for x in ms if x.startswith('M37L_PUBLIC_ROUTE_')])==8
+          assert len([x for x in ms if x.startswith('M37L_CIVIC_TREAD_')])==12
+          assert len(m['actual_rooms'])==13
+          assert len([x for x in ms if x.endswith('_FLOOR')])>=13
+          assert len(m['author_stations'])==9
+          assert len(m['rendered_fixed_cameras'])==9
+          assert 'M37L_SHELL_02_07' not in ms
+          assert 'M37L_SHELL_03_06' not in ms
+          assert 'M37L_SHELL_06_08' not in ms
+          # Check real geometry, not just names, over the full city.
+          all_verts=[tuple(o.matrix_world@v.co) for o in ms.values() for v in o.data.vertices]
+          xx=[v[0] for v in all_verts];yy=[v[1] for v in all_verts];zz=[v[2] for v in all_verts]
+          assert max(yy)-min(yy)>420 and max(zz)-min(zz)>150
+          for record in m['actual_rooms']:
+            o=ms['M37L_'+record['name']+'_FLOOR']
+            top=max((o.matrix_world@v.co).z for v in o.data.vertices)
+            assert abs(top-record['floor_z'])<1e-5,(record,top)
+            for suffix in ('LEFT','RIGHT','HEADER'):
+              assert 'M37L_'+record['name']+'_FRONT_'+suffix in ms
+            left=ms['M37L_'+record['name']+'_FRONT_LEFT']
+            right=ms['M37L_'+record['name']+'_FRONT_RIGHT']
+            left_hi=max((left.matrix_world@v.co).y for v in left.data.vertices)
+            right_lo=min((right.matrix_world@v.co).y for v in right.data.vertices)
+            assert right_lo-left_hi>=4.59,(record['name'],right_lo-left_hi)
+          barrier=ms['M37L_MAKER_BOUNDARY_ACTUAL_MEMBRANE']
+          bmin=min((barrier.matrix_world@v.co).x for v in barrier.data.vertices)
+          ship=m['author_stations'][4]
+          assert ship['x']-.62*ship['void_w']+7<bmin
+          for k in range(3):
+            o=ms['M37L_ACTUAL_WORKPAD_'+str(k)]
+            assert min((o.matrix_world@v.co).x for v in o.data.vertices)>bmin+1
+          cameras=[o for o in sc.objects if o.type=='CAMERA']
+          assert len(cameras)==9
+          assert len({tuple(round(float(v),2) for v in o.location) for o in cameras})==9
+          for k,info in m['rendered_fixed_cameras'].items():
+            f=root/info['name']
+            assert f.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n'
+            assert hashlib.sha256(f.read_bytes()).hexdigest()==info['sha256']
+          report={'status':'PASS_REAL_NATIVE_MULTI_REGION_METHOD_ONLY',
+            'fresh_saved_scene':'M37L_SINGLE_CITY_MASTER_AUTHOR_ART_HOLD',
+            'original_M37K_blend_sha_pinned':True,
+            'same_scene_nine_views':9,'actual_physical_rooms':13,
+            'actual_route_studies':8,'actual_native_meshes':len(ms),
+            'actual_unbuilt_skylight_positions_checked':3,
+            'actual_membrane_between_route_and_workpads':True,
+            'urban_bounding_extent_abstract':{'x':max(xx)-min(xx),'y':max(yy)-min(yy),'z':max(zz)-min(zz)},
+            'evidence_not_claimed':'No formal safety, no complete reachable rooms, no Minecraft construction, no art adoption',
+            'art':'HOLD_UNREVIEWED','formal_331_993':'NOT_RUN','minecraft':'FORBIDDEN','adoption':0}
+          (root/'M37L_INDEPENDENT_NATIVE_REOPEN_AUDIT.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+          print('M37L_INDEPENDENT_REAL_NATIVE',json.dumps(report,ensure_ascii=False),flush=True)
+          PY
+      - name: Append-only protected research evidence and native source
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-m37l-verified-native-city-master-art-hold
+          test ! -e "$dest"
+          mkdir -p "$dest"
+          cp -p artifacts/g4c7-m37l-native-master-build/* "$dest/"
+          cp tools/g4c7_m37l_native_whole_city_master.py "$dest/"
+          cat > "$dest/README_JA.md" <<'TXT'
+          # M37-L 同一作者断面による全市街粗3Dと用途空間：ART HOLD
+          
+          M37-Kの3室モデルを複製しない。独立した9断面の void width、void height、capacity を同じ作者仕様で扱い、用途空洞・実室内床・外側の屋根の稜線が同時に変わる真正Blender新規シーン。既存M35/M36/M37-C/D/F/K原本は読み取り専用SHA検査のみで、一切上書きしない。
+          
+          同一ネイティブモデルから九視点の実PNGを生成。追加された実室床の位置、前壁の欠損開口、屋根の幾何欠損、物理膜、公共スロープ模型、12実階段踏面を独立再読込監査する。
+          
+          重要：公共通路の急勾配・活動区域の防護端部、室から経路への安全なアクセス、居住性・支持構造・避難、MakeCodeコストと実ブロック換算は全て未検証。自動造形がまた巨大な彫刻/板/棚に見えればART REJECT。美術正式採用を数値検査に委ねない。正式331/993、G0/S1/G1/G2/G3全てNOT RUN。Minecraft Education施工・都市統合禁止、main変更禁止、PR#53 Draft維持。
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$dest"
+          git diff --cached --quiet && { echo 'No audited evidence staged';exit 1; }
+          git commit -m 'research(g4c7): archive M37-L native coupled city master and independent nine-view evidence ART HOLD'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Keep temporary evidence even on audit failure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g4c7-m37l-native-city-master-ART-HOLD
+          path: artifacts/g4c7-m37l-native-master-build/
+          retention-days: 21
+          if-no-files-found: warn
