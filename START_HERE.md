@@ -2,6 +2,13 @@
 
 **チャット移行の唯一の入口。2026-11-02 JST更新。GitHub研究ブランチが正本。** 長い引き継ぎ文の再コピー、ZIP再添付、過去の計画の再決定は不要。
 
+## 最新：M37-O1の美術不採用とM37-P0の作者入力ゲート（2026-11-02 JST）
+
+- **[M37-O1真正5視点によるEARLY ART REJECTと根本原因の固定](research/g4c7-b11-r5-d56/p2/d3s26/M37O1_SAVED_NATIVE_FIVE_VIEW_EARLY_ART_REJECT_AND_AUTHOR_INPUT_RESET_JA.md)**。実BLEND＋5枚のGitHub保存真正画像を確認。俯瞰は独立した低層押出しパビリオン、公共・住宅・高所眼高は暗い/遮蔽された空間で、**都市の美術として明白に不採用**。M37-N旧チューブもART REJECTのまま。M37-O1を拡大・改装・装飾して延命しない。
+- **[M37-P0 作者が共同決定する生活断面の新入力正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P0_SHARED_AUTHOR_DECISION_SOURCE_OF_FORM_V1.json)**。各用途の独立した建築輪郭を押し出して接続する入力を禁止し、製造/見学/研究・公共/住宅私界・文化/上層が**都市外形と実床・実境界を一緒に変える**意思決定を定義。これは**形態の意図データのみ、新BLEND・新ART候補ではない**。
+- **[M37-P0入力契約ガード](tools/g4c7_m37p0_author_source_contract_guard.py)**と[専用CI #41350862339](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41350862339) **SUCCESS**。6件の故意不正を拒否し、公開ルートが工場作業域・住居私域を意図の上で横断しないことを検査。ただし**安全な実歩行・本物の共有壁・美しさは未検証**で、入力ガード成功をART PASSへ昇格しない。
+- **次の実体工程**：旧M37-O1の7独立建物を流用せず、共有意思決定が実3Dの都市外観と内部をどう同時変更するかを作家判断で新作者シーンに落とし込み、早期に真正全域/公共/製造/居住/文化/高所の固定視点で厳しく審査。見た目が悪ければ早期停止。**全体ART HOLD・正式採用0・正規331/993とS1/G1/G2/G3 NOT RUN・Minecraft施工禁止・main変更禁止・PR #53 Draft・Workは事前承認制**を絶対維持。
+
 ## M37-O1追補（2026-11-02 JST／最新状態は常にActionsで再照合）
 
 **[M37-O1作者ソース・CI確認待ち・早期ARTゲートの記録](docs/G4C7_M37O1_AUTHOR_SOURCE_AND_CI_PENDING_20261102_JA.md)**。M37-Nまでの下記完全統合正本は引き続き有効。
