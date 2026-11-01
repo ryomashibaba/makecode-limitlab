@@ -1,0 +1,104 @@
+name: G4C7 M22 real Blender maker stair bypass and landing support
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m22_native_arrival_and_maker_detour.py"
+      - ".github/workflows/g4c7-m22-native-arrival-bypass.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m22-native-arrival-bypass
+  cancel-in-progress: false
+jobs:
+  native-saved-scene-and-fixed-eight-views:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover pinned M20 original without modifying its artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m20-street-union-native-ART-HOLD
+          run-id: 41264846873
+          github-token: ${{ github.token }}
+          path: artifacts/m22_pinned_original_m20
+      - name: Geometry preflight and strict original SHA
+        run: |
+          python -m pip install --disable-pip-version-check "shapely==2.1.2" "numpy==2.3.4" "trimesh==4.7.4"
+          python -m py_compile tools/g4c7_m22_native_arrival_and_maker_detour.py
+          python tools/g4c7_m22_native_arrival_and_maker_detour.py --preflight
+      - name: Native official Blender Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Replace road in genuine saved M20 .blend and render identical eight cameras
+        run: python tools/g4c7_m22_native_arrival_and_maker_detour.py
+      - name: Verify unchanged geometry and independent bounded support from saved GLB
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,json,hashlib,struct
+          import numpy as np,trimesh
+          from shapely.geometry import Polygon,Point,LineString
+          from shapely.ops import unary_union
+          p=Path('artifacts/g4c7-m22-real-landing-detour')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='HOLD_NOT_APPROVED' and m['adopted']==0 and m['minecraft']=='FORBIDDEN' and m['formal_331_993']=='NOT_RUN'
+          assert m['cameras_lights_unchanged'] and m['no_micro_step'] and len(m['views'])==8
+          source=next(Path('artifacts/m22_pinned_original_m20').rglob('M20_UNIONED_PUBLIC_FLOOR_ART_HOLD.glb'))
+          output=p/'M22_PUBLIC_ROUTE_UNAPPROVED.glb'
+          assert hashlib.sha256(output.read_bytes()).hexdigest()==m['glb_sha256']
+          old=trimesh.load(source,force='scene')
+          new=trimesh.load(output,force='scene')
+          OLD='M20_ONE_REAL_STREET_HOLE_AWARE';NEW='M22_ONE_CONNECTED_ARRIVAL_STAIR_BYPASS_ROAD'
+          before=set(old.graph.nodes_geometry);after=set(new.graph.nodes_geometry)
+          assert after==(before-{OLD})|{NEW} and len(after)==154
+          def world(scene,n):
+            trans,key=scene.graph.get(n)
+            mesh=scene.geometry[key]
+            return trimesh.transform_points(mesh.vertices,trans),mesh.faces
+          for n in before-{OLD}:
+            a,fa=world(old,n);b,fb=world(new,n)
+            assert a.shape==b.shape and fa.shape==fb.shape and np.allclose(a,b,atol=1e-5),n
+          ground=[]
+          for n in after:
+            v,f=world(new,n)
+            if np.ptp(v[:,1])<1e-5 and 0<=np.mean(v[:,1])<=.09:
+              shape=unary_union([Polygon([(v[j,0],-v[j,2]) for j in face]) for face in f])
+              if shape.area>1:ground.append(shape)
+          floors=unary_union(ground)
+          nodes={'P0_GATE':(0,-85),'P1_MARKET_STREET':(1,-48),'P2_FORUM':(-5,-14),
+           'P3_GARDEN':(8,17),'P4_NORTH_COMMON':(16,55),'P5_MARKET_INTERIOR':(28,-42),
+           'P6_MAKER_HALL':(-38,-16),'P7_STAIR_SOUTH':(-19,-17)}
+          edges=[('P0_GATE','P1_MARKET_STREET'),('P1_MARKET_STREET','P2_FORUM'),
+           ('P2_FORUM','P3_GARDEN'),('P3_GARDEN','P4_NORTH_COMMON'),
+           ('P1_MARKET_STREET','P5_MARKET_INTERIOR'),('P2_FORUM','P6_MAKER_HALL'),('P2_FORUM','P7_STAIR_SOUTH')]
+          sample_count=0;missing=0
+          for i,(a,b) in enumerate(edges):
+            route=LineString(m['route5_waypoints']) if i==5 else LineString((nodes[a],nodes[b]))
+            for j in range(48 if i<2 else 47):
+              c=route.interpolate((j+.5)/(48 if i<2 else 47),normalized=True)
+              sample_count+=1
+              if not floors.covers(c.buffer(.65,resolution=32)):missing+=1
+          assert sample_count==331 and missing==0,('M22 LIMITED_DISK_NOT_SUPPORTED',missing)
+          for name,entry in m['views'].items():
+            b=(p/('M22_'+name+'.png')).read_bytes()
+            assert b.startswith(b'\x89PNG\r\n\x1a\n') and struct.unpack('>II',b[16:24])==(960,540)
+            assert hashlib.sha256(b).hexdigest()==entry['sha256']
+          b=(p/'M22_EDITABLE_REVISED_PUBLIC_ROUTE.blend').read_bytes()
+          assert b.startswith(b'BLENDER') and hashlib.sha256(b).hexdigest()==m['blend_sha256']
+          print('M22_SAVED_REAL_GLB_331_DISK_CONTAINMENT_PASS_FORMAL_SAFETY_NOT_RUN')
+          PY
+      - name: Preserve evidence without adopting or modifying main
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m22-real-landing-detour-ART-HOLD
+          path: artifacts/g4c7-m22-real-landing-detour/run_*/
+          retention-days: 21
+          if-no-files-found: warn
