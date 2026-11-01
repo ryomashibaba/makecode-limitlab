@@ -1,0 +1,98 @@
+name: G4C7 M37-O1 real authored inhabited shipyard section ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37o_activity_silhouette_author.py
+      - tools/g4c7_m37o_independent_native_author_audit.py
+      - .github/workflows/g4c7-m37o-activity-silhouette-native.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37o1-authored-activity-native-archive
+  cancel-in-progress: true
+jobs:
+  native-author-without-world-write:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original native source pin, script compilation and hold contract
+        run: |
+          python -m py_compile tools/g4c7_m37o_activity_silhouette_author.py tools/g4c7_m37o_independent_native_author_audit.py
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path("artifacts/g4c7-m37n-verified-native-maker-exposure-art-hold/M37N_MAKER_SHELL_DIRECT_EDIT_ART_HOLD.blend")
+          m=json.loads(Path("artifacts/g4c7-m37n-verified-native-maker-exposure-art-hold/M37N_AUTHOR_MANIFEST.json").read_text())
+          assert p.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=="0817bf8a9681e9380b8167e75ddc236dbcab18920b01298c5e405ed46752bdff"
+          assert m["Minecraft"]=="FORBIDDEN" and m["official_adoption"]==0 and m["formal_331_993"]=="NOT_RUN"
+          print("M37O_RESEARCH_ONLY_NATIVE_SOURCE_PIN_PASS")
+          PY
+      - name: Install authentic native Blender 4.5 API
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy;assert bpy.app.version[:2]==(4,5)"
+      - name: Create one hand-authored same-scene city silhouette and lived-use cross-section
+        run: |
+          python -u tools/g4c7_m37o_activity_silhouette_author.py
+      - name: Independently reopen native BLEND, trace saved contours, verify real views and three negative controls
+        run: |
+          python -u tools/g4c7_m37o_independent_native_author_audit.py
+      - name: Archive only on independent limited method success and explicit non-adoption
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          root=Path("artifacts/g4c7-m37o-activity-section-build")
+          m=json.loads((root/"M37O_AUTHOR_MANIFEST.json").read_text())
+          a=json.loads((root/"M37O_INDEPENDENT_NATIVE_AUDIT.json").read_text())
+          assert a["result"]=="LIMITED_M37O1_SAVED_NATIVE_AUTHOR_METHOD_CONFIRMED"
+          assert a["new_city_art"]=="EARLY_REVIEW_REQUIRED_NOT_PASSED"
+          assert a["official_adoption"]==m["official_adoption"]==0
+          assert a["Minecraft"]==m["Minecraft"]=="FORBIDDEN"
+          assert m["formal_331_993"]==a["walkable_331_993"]=="NOT_RUN"
+          assert m["S1_G1_G2_G3"]==a["S1_G1_G2_G3"]=="NOT_RUN"
+          assert len(a["physical_negative_controls_rejected"])==3
+          assert m["old_tube_meshes_imported"]==0
+          p=root/m["native_blend"]["file"]
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m["native_blend"]["sha256"]
+          print("M37O_METHOD_ONLY_ARCHIVE_GATE_PASS_NO_ART_ACCEPTANCE")
+          PY
+          target=artifacts/g4c7-m37o1-verified-native-activity-author-art-hold
+          test ! -e "$target"
+          mkdir -p "$target"
+          cp -p artifacts/g4c7-m37o-activity-section-build/* "$target/"
+          cp -p tools/g4c7_m37o_activity_silhouette_author.py tools/g4c7_m37o_independent_native_author_audit.py "$target/"
+          cat > "$target/README_JA.md" <<'TXT'
+          # M37-O1 — 市民活動が都市の外形を同時に決定する原作者シーン（美術未合格）
+          
+          M37-N原本をSHAで再確認した上で、不採用チューブを一切インポートしない新しい単独Blenderシーンを作成。公共入口、コモンズ、宇宙機製造、研究、住居、文化、高所を、それぞれ個別に作者が指定した非一様の平面外形・上下高さ・実床・屋根・壁・実開口として保存。7地点を渡る公開ルートの物理的表面、製造用実機体積、工場/公衆を隔てる実壁も持つ。真正BLEND、5実Cycles画像、9固定カメラ、再読込監査と3件の負例を同じ保存原本に結び付ける。
+          
+          **絶対的な全体美術はまだ採用されていない。** 建造物が独立パビリオンに見える、ルートが長大な道路帯に見える、生活の密度と行き先が伝わらない場合は、即時EARLY ART REJECTとし、同一方法の大型化を行わない。独立監査は作者制作方式の限定TECHであり、美術の良さ・実歩行・プライバシー・構造・支持・避難・MakeCode施工可能性を認証しない。
+          
+          **全体ART HOLD、正式採用0、正式331/993・G0/S1/G1/G2/G3 NOT RUN、Minecraft Education新都市施工・統合禁止、main変更禁止、PR #53 Draft維持、Work未使用。** 研究座標を1blockへ自動換算しない。
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$target"
+          git diff --cached --quiet && { echo "No new archived evidence";exit 1; }
+          git commit -m "research(g4c7): archive M37-O1 genuine native author scene and independent negatives ART HOLD"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Keep inspectable unapproved sources after any failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37o1-activity-authoring-ART-HOLD
+          path: artifacts/g4c7-m37o-activity-section-build
+          retention-days: 21
+          if-no-files-found: warn
