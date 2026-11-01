@@ -88,15 +88,21 @@ studio["M37M_TEST_NEGATIVES"]=json.dumps(bad)
 # Author-review camera is paired to actual unchanged source fixed viewpoints.
 views=("AERIAL","MAKER_EYE","RESEARCH_EYE","HABITAT_EYE")
 photos={}
+# Editing-copy geometry and cameras are identical before any trial.
+# Reuse the original 4 already-verified genuine Cycles frames instead of
+# spending minutes re-rendering an unchanged rejected city. These are
+# explicitly pinned source-reference images, NOT new M37-M renders.
+import shutil
 for key in views:
-    cam=copies["M37L_CAMERA_"+key]
-    studio.camera=cam
-    studio.render.filepath=str((OUT/("M37M_REFERENCE_"+key+".png")).resolve())
-    bpy.ops.render.render(write_still=True,scene=studio.name)
-    img=Path(studio.render.filepath)
-    assert img.stat().st_size>1500
-    photos[key]={"file":img.name,"sha256":sha(img)}
-    print("M37M_REFERENCE_RENDER",key,flush=True)
+    oldshot=pin["rendered_fixed_cameras"][key]
+    frame=ROOT/oldshot["name"]
+    assert sha(frame)==oldshot["sha256"],key
+    dst=OUT/("M37M_PINNED_M37L_REFERENCE_"+key+".png")
+    shutil.copyfile(frame,dst)
+    assert sha(dst)==sha(frame)
+    photos[key]={"file":dst.name,"sha256":sha(dst),
+                 "origin":"M37L_GENUINE_SOURCE_RENDER_REUSED_NO_M37M_RERENDER"}
+    print("M37M_REUSED_PINNED_NATIVE_CAMERA",key,flush=True)
 # Save only a zero-trial state, with source and copy in separate scenes.
 studio.camera=copies["M37L_CAMERA_RESEARCH_EYE"]
 assert not studio["M37M_PREVIEW_ACTIVE"]
