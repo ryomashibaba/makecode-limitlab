@@ -60,3 +60,12 @@
 ### 新しいチャットに送る最短の一文
 
 > MakeCode LimitLab / G4-C7を、GitHub研究ブランチのSTART_HERE.mdとリンク先のM37-P2完全統合引き継ぎから継承してください。最新HEAD・Draft PR #53・CI・真正Blender原本を照合し、M37-O1/P1のEARLY ART REJECTと全固定方針を守って次のM37-P2工程を実際に進めてください。ART HOLD・正式採用0・安全QA未実施・Minecraft施工禁止・main変更禁止・Work事前承認制。過去の失敗形態の第三案やZIP/長文再提出は禁止です。
+
+
+## M37-P2実作業追補（2026-11-02 JST）
+
+- P2の**新しい真正都市3D／Blender原本はまだ未制作**。ART HOLD／正式採用0に変化なし。
+- P1保存ソースと真正画像の再検証で、黒い`RESEARCH_EYE`カメラが厚壁`EAST_RESEARCH_MAKER_WING`内に配置されている幾何欠陥を特定（距離1.538研究単位、壁半厚1.75）。
+- [P2カメラ実メッシュ内埋没診断ツール](tools/g4c7_m37p2_native_camera_inside_solid_audit.py) と[既存P1 BLEND読み取り専用負例CI](.github/workflows/g4c7-m37p2-camera-solid-negative-control.yml)を追加。専用[Actions #41353940198](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41353940198) は初回照合でQUEUED。**技術前提の不良発見であり、都市美術の改善・採用を意味しない。**
+- 続きと固定条件は[現行統合引き継ぎの節10](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。第三の`patch/wall/bridge`都市生成ではなく、作者が同一真正BLENDで都市粗形と生活断面を同時に直接編集する段階へ。Workは明示的事前承認まで使わない。
+
