@@ -1,0 +1,65 @@
+name: G4C7 M37-P2 archived P1 camera embedding negative control (NO ART)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_native_camera_inside_solid_audit.py
+      - .github/workflows/g4c7-m37p2-camera-solid-negative-control.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m37p2-camera-solid-read-only
+  cancel-in-progress: true
+jobs:
+  archived-p1-camera-negative-control-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Pure Python syntax and reproducer (must DETECT old P1 defect)
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_native_camera_inside_solid_audit.py
+          python tools/g4c7_m37p2_native_camera_inside_solid_audit.py --self-test
+      - name: Install previously pinned authentic Blender Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy;assert bpy.app.version[:2]==(4,5)"
+      - name: Inspect immutable saved P1 .blend and require known bad camera to be caught
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path("artifacts/g4c7-m37p1-verified-native-interlocked-urban-author-art-hold/M37P1_ONE_COUPLED_NATIVE_CITY_ART_HOLD.blend")
+          assert p.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=="ca402f8e58269535bd6838cc8e5201000e9bc137dc578f0751f76bcb0d3b262d"
+          PY
+          set +e
+          python - <<'PY' > /tmp/m37p2_camera_negative.json 2>&1
+          import bpy, runpy, sys
+          from pathlib import Path
+          p=Path("artifacts/g4c7-m37p1-verified-native-interlocked-urban-author-art-hold/M37P1_ONE_COUPLED_NATIVE_CITY_ART_HOLD.blend").resolve()
+          bpy.ops.wm.open_mainfile(filepath=str(p))
+          sys.argv=["g4c7_m37p2_native_camera_inside_solid_audit.py","--audit"]
+          runpy.run_path("tools/g4c7_m37p2_native_camera_inside_solid_audit.py",run_name="__main__")
+          PY
+          result=$?
+          set -e
+          cat /tmp/m37p2_camera_negative.json
+          test "$result" -eq 2
+          grep -q "M37P1_CAMERA_RESEARCH_EYE" /tmp/m37p2_camera_negative.json
+          grep -q "M37P1_EAST_RESEARCH_MAKER_WING" /tmp/m37p2_camera_negative.json
+          echo "EXPECTED_OLD_P1_CAMERA_IN_SOLID_DEFECT_DETECTED; ART_HOLD_REMAINS"
+      - name: Preserve diagnosis as read-only evidence, not art
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37p2-p1-camera-negative-only-NO-ART
+          path: /tmp/m37p2_camera_negative.json
+          retention-days: 21
+          if-no-files-found: warn
