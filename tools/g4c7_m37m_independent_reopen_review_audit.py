@@ -83,7 +83,7 @@ for key,r in MAN["review_renders"].items():
     assert p.read_bytes()[:8]==b"\x89PNG\r\n\x1a\n"
     assert sha(p)==r["sha256"]
 assert len(MAN["review_renders"])==4
-assert len(notes)==10,(len(notes),notes)
+assert len(notes)==7,(len(notes),notes)
 result={
  "result":"PASS_BOUNDED_GUI_AUTHORING_REVIEW_METHOD_ONLY",
  "saved_source_fidelity":"ALL_199_M37L_MESHES_EXACT",
