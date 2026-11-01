@@ -11,7 +11,7 @@ permissions:
   contents: write
 concurrency:
   group: g4c7-m37m-native-art-review
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   saved-blend-visual-review-workspace:
     runs-on: ubuntu-24.04
@@ -62,6 +62,7 @@ jobs:
           assert a["formal_331_993"]=="NOT_RUN" and a["minecraft"]=="FORBIDDEN"
           assert a["user_art_adoption"]==0 and m["official_adoption"]==0
           assert len(m["review_renders"])==4 and a["fixed_native_camera_copy_count"]==9
+          assert all(v['origin']=='M37L_GENUINE_SOURCE_RENDER_REUSED_NO_M37M_RERENDER' for v in m['review_renders'].values())
           assert len(a["detected_bad_edits"])==7
           print("M37M_APP_ORIGINAL_AND_NEGATIVE_CONTROLS_PASS")
           PY
