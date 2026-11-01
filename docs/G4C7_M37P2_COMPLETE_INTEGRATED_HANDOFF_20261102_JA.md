@@ -158,3 +158,19 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 専用 [Actions #41353940198](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41353940198) は作成直後の照合で **QUEUED / NOT YET VERIFIED**。成功と断定せず次回再照合する。
 
 **次工程の有効条件は変わらない。** 旧patch/wall/bridgeを少し替えてもう一都市出さず、作者が真正BLEND上で都市全体の粗い姿と代表的な生活・製造断面を同時に編集した原本を必要とする。GUI/Workは明示的事前承認がないので実施していない。未制作のP2を完成やART合格と呼ばない。全体ART HOLD、正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、Minecraft world writes 0、PR #53 Draft維持、main変更禁止。
+
+---
+
+## 11. M37-P2 非生成型Blender作者原本レビュー経路の実装（2026-11-02 JST）
+
+**開発進捗分類：制作方法の実装。新しい造形原本・真正3D美術作品は依然NOT CREATED、ART HOLD／正式採用0。** 旧P1のpatch/wall/bridge補修や第三の自動プリミティブ都市を作らない方針を継続した。
+
+- [`tools/g4c7_m37p2_author_native_early_review.py`](../tools/g4c7_m37p2_author_native_early_review.py) を新規保存。**Blender側にすでに直接編集・保存された新しい作者BLENDを入力**し、同じ保存原本から `P2_CAMERA_AERIAL` / `P2_CAMERA_PUBLIC_EYE` / `P2_CAMERA_HABITAT_EYE` の3真正Cycles画像を生成し、画像SHAと原本SHAを記録する。**このスクリプト自身にはbpyメッシュを作る処理・形を決めるプリミティブ生成処理・.blend保存処理がない。** 同一の作者原本内に市街全域と実生活断面を並行で制作する実作業は今後必要。
+- 実施前提：直接作者入力の宣言、旧不採用造形未流用、ART HOLD、正式採用0、正規331/993 NOT_RUN、MakeCode NOT_EVALUATED、Minecraft FORBIDDENの各シーン属性。宣言は本人の実造形由来の証明ではなく、**実際の原本・画像を人間が検証する必要がある**。入力メッシュ・3カメラ欠落は拒否する。
+- 禁止入力：M37-O1/P1/Nの既知SHA原本、旧M37L/N/O/P1メッシュ命名を含む原本。P1の複製を単に別名にしてP2と称してはならない。既存の非空レビュー出力ディレクトリへの上書きも拒否。
+- 前回実装した閉じた実メッシュへのカメラ埋没検出を**先行ゲートとして再利用**。壁内埋没があれば3視点描画を開始しない。開いたメッシュは陰性証明にならない旨をレポートへ記載。
+- [P2独立負例Workflow](../.github/workflows/g4c7-m37p2-camera-solid-negative-control.yml) に本ツールの純Python self-test（9拒否条件）と非生成ソース静的検査、既存P1の壁内カメラ再読込負例を追加。**このCIはMETHODの回帰検査だけでありARTの採用・新規美術原本制作を行わない**。
+- 主要コミット：`e8d32d61f699e2a3fd0cbdfd449218e802eac0b4`（新審査経路）、`dcd78b3e03b3516d3b3f7230788b780b6c5f4317`（旧原本SHA・メッシュ接頭辞拒否、レビュー上書き防止）、`def0b9efe23324208fc66e6ba8f9352ef72fd284`（CIテスト統合）。
+- [最新版専用Actions #41354779183](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41354779183) は初回確認でQUEUED、**SUCCESS未確認**。旧 #41353940198 はconcurrencyによるCANCELLEDであり成功と書かない。
+
+**この方法は必要条件の整備であって、十分条件の達成ではない。** P2の実都市・生活形態の入力には、Blenderで本人/承認された作者が実3Dを直接編集する必要がある。このチャットではBlender GUI・Work・外注・Minecraft操作を実行していない。Workは従前どおり事前明示承認が必要。新3D未制作の段階で安全QA、MakeCode施工コスト、R3〜R5への昇格はしない。
