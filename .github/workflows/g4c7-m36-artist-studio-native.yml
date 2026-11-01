@@ -1,0 +1,143 @@
+name: G4C7 M36 native dual-scene artist-authoring studio (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_m36_dual_scene_artist_studio.py'
+      - '.github/workflows/g4c7-m36-artist-studio-native.yml'
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m36-artist-studio-append-only
+  cancel-in-progress: false
+jobs:
+  author-verify-and-archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax check and pin verified M35 source without modification
+        run: |
+          python -m py_compile tools/g4c7_m36_dual_scene_artist_studio.py
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m35-pinned-native-art-reject')
+          m=json.loads((p/'M35_MANIFEST.json').read_text())
+          assert hashlib.sha256((p/'M35_NATIVE_CITY_ART_HOLD.blend').read_bytes()).hexdigest()==m['blend']['sha256']
+          assert m['art']=='HOLD_NOT_ADOPTED' and m['official_adoption']==0
+          print('M35_PINNED_NATIVE_SOURCE_SHA_OK')
+          PY
+      - name: Install Blender native API
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build directly editable dual scene without generating any new city geometry
+        run: python tools/g4c7_m36_dual_scene_artist_studio.py
+      - name: Independently reopen native file, compare all original/edit meshes, fail on any reference damage
+        run: |
+          python - <<'PY'
+          import bpy,hashlib,json,struct,math
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m36-artist-editable-studio')
+          m=json.loads((p/'M36_NATIVE_STUDIO_MANIFEST.json').read_text())
+          target=p/m['saved_blend']['file']
+          assert target.read_bytes()[:7]==b'BLENDER'
+          assert hashlib.sha256(target.read_bytes()).hexdigest()==m['saved_blend']['sha256']
+          bpy.ops.wm.open_mainfile(filepath=str(target.resolve()))
+          ref=bpy.data.scenes['M35_REJECTED_REFERENCE_LOCKED']
+          edit=bpy.data.scenes['M36_AUTHORING_STUDIO_ART_HOLD']
+          assert ref.get('M36_ROLE')=='REJECTED_REFERENCE_DO_NOT_EDIT'
+          assert edit.get('M36_FORMAL_QA')=='NOT_RUN'
+          assert edit.get('M36_MINECRAFT')=='FORBIDDEN'
+          assert edit.get('M36_USER_ADOPTION')==0
+          original={o.name:o for o in ref.objects if o.type=='MESH'}
+          edited={o.get('m36_source_object'):o for o in edit.objects if o.type=='MESH'}
+          assert len(original)==len(edited)==m['protected_reference_mesh_count']
+          assert set(original)==set(edited)
+          def refhash(os):
+              h=hashlib.sha256()
+              for o in sorted(os,key=lambda x:x.name):
+                  h.update(o.name.encode('utf-8'))
+                  for v in o.data.vertices:h.update(struct.pack('<ddd',*list(map(float,v.co))))
+                  for f in o.data.polygons:
+                      h.update(struct.pack('<I',len(f.vertices)))
+                      for idx in f.vertices:h.update(struct.pack('<I',idx))
+                  for row in o.matrix_world:
+                      h.update(struct.pack('<dddd',*list(map(float,row))))
+              return h.hexdigest()
+          assert refhash(list(original.values()))==m['reference_mesh_sha256']
+          diffs=[]
+          for name,o in original.items():
+              e=edited[name]
+              assert o.data.as_pointer()!=e.data.as_pointer(),name
+              assert len(o.data.vertices)==len(e.data.vertices)
+              assert len(o.data.polygons)==len(e.data.polygons)
+              for j,(a,b) in enumerate(zip(o.data.vertices,e.data.vertices)):
+                  if any(abs(x-y)>1e-6 for x,y in zip(a.co,b.co)):
+                      diffs.append((name,j,float(b.co.z-a.co.z)))
+          assert len(diffs)==1,diffs
+          assert diffs[0][0]=='M35_FAB_ACTIVITY_ROOF' and diffs[0][1]==0
+          assert abs(diffs[0][2]-.005)<1e-5,diffs
+          goals=[o for o in edit.objects if o.name.startswith('M36_GOAL_')]
+          assert len(goals)==8,len(goals)
+          assert all(o.type=='EMPTY' and o.get('m36_evidence')=='NOT_PROVEN' for o in goals)
+          review_cams=[o for o in edit.objects if o.type=='CAMERA' and o.name.startswith('M36_EDIT_M35_CAMERA_')]
+          assert len(review_cams)==9,len(review_cams)
+          assert 'M36_ARTIST_EDITABLE_EXPERIENCE_PATH_GUIDE' in edit.objects
+          assert edit.objects['M36_ARTIST_EDITABLE_EXPERIENCE_PATH_GUIDE'].get('route_safety')=='NOT_VERIFIED'
+          assert all(o.name.startswith('M35_') for o in ref.objects)
+          assert not any(o.name.startswith('M36_') for o in ref.objects)
+          assert ref.get('M36_SOURCE_SHA256')==m['reference_original_sha256']
+          assert m['whole_city_art']=='HOLD_NOT_PASSED'
+          assert m['formal_331_993']=='NOT_RUN'
+          assert m['construction']=='FORBIDDEN'
+          assert m['deliberate_proof_edit']['reference_unchanged']
+          print('M36_PASS_REAL_NATIVE_DUAL_SCENE_MESH_DATA_ISOLATION',len(original),'goals',len(goals),'cameras',len(review_cams))
+          print('M36_NO_ART_PASS_NO_SAFETY_PASS_NO_CONSTRUCTION')
+          PY
+      - name: Save directly editable native original as append-only nonadopted reference
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-m36-verified-native-author-studio
+          test ! -e "$dest"
+          mkdir -p "$dest"
+          cp -p artifacts/g4c7-m36-artist-editable-studio/* "$dest/"
+          cat > "$dest/README_JA.md" <<'TXT'
+          # M36 Blender ネイティブ作者ワークスペース — 美術採用禁止
+          
+          2つの独立したシーンを持つ実BLEND。
+          M35_REJECTED_REFERENCE_LOCKED = 過去の美術REJECT原本メッシュを保持する参照シーン。
+          M36_AUTHORING_STUDIO_ART_HOLD = 全メッシュを別データブロックで独立複製した編集用シーン。
+          9つの定点カメラ、8つの実生活デザイン課題マーカー、手編集できる体験導線ガイドを含む。
+          複製後のメッシュ1頂点に+0.005研究単位の微小変更を加え、元データと共有していないと独立検査で証明。
+          この微小変更は美術作品の改善ではない。
+          SceneでM36_AUTHORING_STUDIO_ART_HOLDを選択してオブジェクトを手動編集する。
+          元のM35_REJECTED_REFERENCE_LOCKEDは参照用で編集しない。
+          アート合格と居住・移動安全・Minecraft施工の許可ではない。
+          FORMAL 331/993 NOT RUN; ART HOLD; adoption 0; Minecraft construction FORBIDDEN.
+          TXT
+      - name: Commit only new research data on Draft branch; never main
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- artifacts/g4c7-m36-verified-native-author-studio
+          git diff --cached --quiet && { echo 'missing M36 native files'; exit 1; }
+          git commit -m 'research(g4c7): archive M36 isolated dual-scene Blender artist studio ART HOLD'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Retain workflow evidence even if commit fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m36-dual-scene-native-author-studio-ART-HOLD
+          path: artifacts/g4c7-m36-artist-editable-studio/
+          retention-days: 21
+          if-no-files-found: warn
