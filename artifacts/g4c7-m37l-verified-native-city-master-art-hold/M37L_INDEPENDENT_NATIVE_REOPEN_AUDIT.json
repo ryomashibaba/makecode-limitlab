@@ -1,0 +1,21 @@
+{
+  "status": "PASS_REAL_NATIVE_MULTI_REGION_METHOD_ONLY",
+  "fresh_saved_scene": "M37L_SINGLE_CITY_MASTER_AUTHOR_ART_HOLD",
+  "original_M37K_blend_sha_pinned": true,
+  "same_scene_nine_views": 9,
+  "actual_physical_rooms": 13,
+  "actual_route_studies": 8,
+  "actual_native_meshes": 199,
+  "actual_unbuilt_skylight_positions_checked": 3,
+  "actual_membrane_between_route_and_workpads": true,
+  "urban_bounding_extent_abstract": {
+    "x": 268.71812438964844,
+    "y": 470.8553161621094,
+    "z": 225.5500030517578
+  },
+  "evidence_not_claimed": "No formal safety, no complete reachable rooms, no Minecraft construction, no art adoption",
+  "art": "HOLD_UNREVIEWED",
+  "formal_331_993": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "adoption": 0
+}

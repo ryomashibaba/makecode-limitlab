@@ -1,0 +1,260 @@
+{
+  "schema": "g4c7-m37l-native-whole-city-coupled-section-v1",
+  "art": "HOLD_UNREVIEWED",
+  "formal_331_993": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "adoption": 0,
+  "scope": "COARSE_WHOLE_CITY_AND_REAL_LIVED_SECTION_IN_ONE_NATIVE_SCENE_NOT_ADOPTED",
+  "units": "ABSTRACT_RESEARCH_NOT_BLOCKS",
+  "blender_gui": "NOT_USED",
+  "author_stations": [
+    {
+      "name": "GATE",
+      "role": "PUBLIC",
+      "x": -7,
+      "y": -210,
+      "z": 0,
+      "void_w": 19,
+      "void_h": 22,
+      "capacity": 9,
+      "outer_w": 36.72,
+      "outer_h": 41.55
+    },
+    {
+      "name": "COMMONS",
+      "role": "CIVIC",
+      "x": 11,
+      "y": -161,
+      "z": 4,
+      "void_w": 34,
+      "void_h": 44,
+      "capacity": 22,
+      "outer_w": 59.26,
+      "outer_h": 75.9
+    },
+    {
+      "name": "CULTURE",
+      "role": "CULTURE",
+      "x": -24,
+      "y": -108,
+      "z": 13,
+      "void_w": 39,
+      "void_h": 66,
+      "capacity": 30,
+      "outer_w": 68.9,
+      "outer_h": 105.5
+    },
+    {
+      "name": "MAKER_VIEW",
+      "role": "PUBLIC_MAKER",
+      "x": 9,
+      "y": -59,
+      "z": 15,
+      "void_w": 51,
+      "void_h": 79,
+      "capacity": 29,
+      "outer_w": 80.32,
+      "outer_h": 117.55
+    },
+    {
+      "name": "ASSEMBLY",
+      "role": "STAFF_ONLY",
+      "x": 48,
+      "y": -9,
+      "z": 17,
+      "void_w": 63,
+      "void_h": 92,
+      "capacity": 39,
+      "outer_w": 98.12,
+      "outer_h": 140.05
+    },
+    {
+      "name": "RESEARCH",
+      "role": "RESEARCH",
+      "x": 11,
+      "y": 47,
+      "z": 34,
+      "void_w": 46,
+      "void_h": 103,
+      "capacity": 36,
+      "outer_w": 79.38,
+      "outer_h": 148.2
+    },
+    {
+      "name": "HABITAT",
+      "role": "HABITAT",
+      "x": -38,
+      "y": 104,
+      "z": 54,
+      "void_w": 52,
+      "void_h": 114,
+      "capacity": 49,
+      "outer_w": 92.92,
+      "outer_h": 171.55
+    },
+    {
+      "name": "UPPER_CULTURE",
+      "role": "CULTURE",
+      "x": -43,
+      "y": 166,
+      "z": 68,
+      "void_w": 42,
+      "void_h": 98,
+      "capacity": 43,
+      "outer_w": 79.44,
+      "outer_h": 149.85
+    },
+    {
+      "name": "BELVEDERE",
+      "role": "PUBLIC",
+      "x": -9,
+      "y": 224,
+      "z": 81,
+      "void_w": 22,
+      "void_h": 69,
+      "capacity": 23,
+      "outer_w": 47.84,
+      "outer_h": 101.85
+    }
+  ],
+  "actual_rooms": [
+    {
+      "name": "COMMONS_CIVIC",
+      "role": "CIVIC",
+      "station": "COMMONS",
+      "floor_z": 11
+    },
+    {
+      "name": "CULTURE_CULTURE",
+      "role": "CULTURE",
+      "station": "CULTURE",
+      "floor_z": 30
+    },
+    {
+      "name": "CULTURE_PUBLIC",
+      "role": "PUBLIC",
+      "station": "CULTURE",
+      "floor_z": 47
+    },
+    {
+      "name": "MAKER_VIEW_RESEARCH",
+      "role": "RESEARCH",
+      "station": "MAKER_VIEW",
+      "floor_z": 33
+    },
+    {
+      "name": "MAKER_VIEW_PUBLIC",
+      "role": "PUBLIC",
+      "station": "MAKER_VIEW",
+      "floor_z": 52
+    },
+    {
+      "name": "ASSEMBLY_FABRICATION",
+      "role": "FABRICATION",
+      "station": "ASSEMBLY",
+      "floor_z": 24
+    },
+    {
+      "name": "ASSEMBLY_PUBLIC",
+      "role": "PUBLIC",
+      "station": "ASSEMBLY",
+      "floor_z": 52
+    },
+    {
+      "name": "RESEARCH_RESEARCH",
+      "role": "RESEARCH",
+      "station": "RESEARCH",
+      "floor_z": 74
+    },
+    {
+      "name": "RESEARCH_FABRICATION",
+      "role": "FABRICATION",
+      "station": "RESEARCH",
+      "floor_z": 57
+    },
+    {
+      "name": "HABITAT_HABITAT",
+      "role": "HABITAT",
+      "station": "HABITAT",
+      "floor_z": 87
+    },
+    {
+      "name": "HABITAT_RESEARCH",
+      "role": "RESEARCH",
+      "station": "HABITAT",
+      "floor_z": 111
+    },
+    {
+      "name": "UPPER_CULTURE_HABITAT",
+      "role": "HABITAT",
+      "station": "UPPER_CULTURE",
+      "floor_z": 103
+    },
+    {
+      "name": "UPPER_CULTURE_CULTURE",
+      "role": "CULTURE",
+      "station": "UPPER_CULTURE",
+      "floor_z": 130
+    }
+  ],
+  "mesh_counts": {
+    "SHELL": 120,
+    "ROOMS": 52,
+    "ROUTE": 20,
+    "MAKER": 6,
+    "BARRIER": 1,
+    "CAMERAS": 0,
+    "LIGHTS": 0
+  },
+  "mesh_total": 199,
+  "rendered_fixed_cameras": {
+    "SOUTH": {
+      "name": "M37L_SOUTH.png",
+      "sha256": "fa06f9f8c109768a1d1b00af79156f8c7c3466a93758b4e9e182670ab09a902d"
+    },
+    "NORTH": {
+      "name": "M37L_NORTH.png",
+      "sha256": "e3b12e1deddf21f9a4a1e7ed232112f1086aee5f4685b2c792888dc6958ed11c"
+    },
+    "AERIAL": {
+      "name": "M37L_AERIAL.png",
+      "sha256": "f1007bfef5dbe3dc3760c8541e902785fa4c899bbd2a5114a0d59fb4ecbaf259"
+    },
+    "PUBLIC_EYE": {
+      "name": "M37L_PUBLIC_EYE.png",
+      "sha256": "d6aef0237bc0371f2f5c38ddab21bbea245d71ed08979e0e2bf5dbd49d762738"
+    },
+    "MAKER_EYE": {
+      "name": "M37L_MAKER_EYE.png",
+      "sha256": "1d86ca2faa837401d8f6e365bba54e7dd331e5b77a86d0e29df1d218d4ddc95a"
+    },
+    "RESEARCH_EYE": {
+      "name": "M37L_RESEARCH_EYE.png",
+      "sha256": "5fb011a364f3571fe3e740f48589b08813106e61f9a8e72b3ab57e268aacf5f7"
+    },
+    "HABITAT_EYE": {
+      "name": "M37L_HABITAT_EYE.png",
+      "sha256": "526734a118cbb12fb7c76e53e4129a36ba1def074b639088b804af7562cc931a"
+    },
+    "UPPER_EYE": {
+      "name": "M37L_UPPER_EYE.png",
+      "sha256": "7c91dd4c30b9344b976318475c6721d932713c1c991548d455bde41259707462"
+    },
+    "SKYLINE_SIDE": {
+      "name": "M37L_SKYLINE_SIDE.png",
+      "sha256": "8f96b5a3e20a0d654104c844efe64e0ff1b9bd51db140016cc1c99b7abbdb872"
+    }
+  },
+  "native_blend": {
+    "file": "M37L_SINGLE_CITY_AUTHOR_MASTER_ART_HOLD.blend",
+    "bytes": 1632009,
+    "sha256": "85397f2ddc41cff6ef53d26813c7c57b1420318de840e78b5f7ec5ec3762bfc4"
+  },
+  "limitations": {
+    "complete_human_walk": "NOT_RUN",
+    "room_to_route_reachability": "NOT_RUN",
+    "fabrication_access_control": "NOT_CERTIFIED",
+    "roof_support": "NOT_TESTED",
+    "authoring": "bpy real native loft geometry; exterior and interior derived from one station dataset; not manually hand-sculpted"
+  }
+}
