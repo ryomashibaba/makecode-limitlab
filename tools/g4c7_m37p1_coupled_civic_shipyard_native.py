@@ -5,8 +5,8 @@ decisions produce ACTUAL coupled vertices in exterior and occupied-use meshes.
 NO reuse of M37-L/N tube or M37-O1 pavilions. NO Minecraft writes or ART PASS.
 """
 from pathlib import Path
-from mathutils import Vector
 import bpy,math,hashlib,json
+from mathutils import Vector
 
 ROOT=Path("artifacts/g4c7-m37p1-shared-section-build")
 ROOT.mkdir(parents=True,exist_ok=True)
