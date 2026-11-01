@@ -52,7 +52,7 @@ def main():
  scene["M29B"]="DIAGNOSTIC_ONLY_SAME_MODEL_NEW_EXIT_EYE_ART_HOLD"
  scene["ART"]="HOLD_NOT_APPROVED";scene["ADOPTED"]=0
  scene["OFFICIAL_331_993"]="NOT_RUN";scene["MINECRAFT_EDUCATION_WRITES"]=0
- OUT.mkdir(parents=True)
+ OUT.mkdir(parents=True,exist_ok=True)
  blend=OUT/"M29B_EDITABLE_HUMAN_EXIT_VIEW_ONLY.blend"
  bpy.ops.wm.save_as_mainfile(filepath=str(blend),check_existing=False)
  png=OUT/"M29B_OPEN_AIR_FROM_GALLERY_EXIT.png"
