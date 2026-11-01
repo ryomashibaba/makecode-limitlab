@@ -217,10 +217,10 @@ def district(name,group,center,ang,bays,level_z,depth):
             midpoint=(u0+u1)/2
             panel(name+"_L%d_B%d_FACADE_LEFT"%(level,j),
                   xy(u0,v0),xy(midpoint-2.1,v0),
-                  base+.25,base+3,"stone",group)
+                  base+.25,base+3,.4,"stone",group)
             panel(name+"_L%d_B%d_FACADE_RIGHT"%(level,j),
                   xy(midpoint+2.1,v0),xy(u1,v0),
-                  base+.25,base+3,"stone",group)
+                  base+.25,base+3,.4,"stone",group)
             panel(name+"_L%d_B%d_DOOR_LINTEL"%(level,j),
                   xy(midpoint-2.1,v0),xy(midpoint+2.1,v0),
                   base+3.8,base+h,.38,"copper",group)
