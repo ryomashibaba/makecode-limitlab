@@ -1,0 +1,101 @@
+name: G4C7 M37-K joint room-envelope author method native proof ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - research/g4c7-b11-r5-d56/p2/d3s26/M37K_NATIVE_METHOD_SOURCE_TAR_GZIP_BASE64.txt
+      - .github/workflows/g4c7-m37k-authoring-method-native.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37k-authoring-method-fixture
+  cancel-in-progress: false
+jobs:
+  native-method-fixture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify source archive SHA, recover original readable author scripts, compile
+        run: |
+          set -euo pipefail
+          mkdir -p tools
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,base64
+          p=Path('research/g4c7-b11-r5-d56/p2/d3s26/M37K_NATIVE_METHOD_SOURCE_TAR_GZIP_BASE64.txt')
+          content=base64.b64decode(p.read_text().strip(),validate=True)
+          assert hashlib.sha256(content).hexdigest()=='8888b7d5936a4f4b54765054cb18fc432f8b86e37a0110ab8f39dfe2389b0462'
+          Path('/tmp/m37k_source.tar.gz').write_bytes(content)
+          print('M37K_SOURCE_PIN_VALID')
+          PY
+          tar -xzf /tmp/m37k_source.tar.gz -C tools --no-same-owner
+          python -m py_compile tools/g4c7_m37k_author_kernel.py tools/g4c7_m37k_native_method_fixture.py tools/g4c7_m37k_independent_native_audit.py
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          pins={
+           'g4c7_m37k_author_kernel.py':'8e9575bda89b5138e7c9e324d06a796d77a857d9fd3b98e5e021ab9a92616f18',
+           'g4c7_m37k_native_method_fixture.py':'1c34e53f78a7cf9a290424328667aae0092074208e2a945790bfc4de4f6abf0d',
+           'g4c7_m37k_independent_native_audit.py':'8bd883a8bc40ee2f5594eccb153b694853614a9fc1fb90606f938f911f68e185'}
+          for name,value in pins.items():
+            assert hashlib.sha256((Path('tools')/name).read_bytes()).hexdigest()==value,name
+          print('M37K_THREE_ORIGINAL_AUTHOR_SOURCE_FILES_SHA_VALID')
+          PY
+      - name: Run 13 fail-closed semantic negative controls and reciprocal author edit
+        run: |
+          python tools/g4c7_m37k_author_kernel.py > /tmp/M37K_AUTHOR_TRANSACTION_UNIT_REPORT.json
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/M37K_AUTHOR_TRANSACTION_UNIT_REPORT.json'))
+          assert data['negative_controls_rejected']==13 and data['transaction_changed_derived_city_outline']
+          assert data['art']=='HOLD' and data['formal_331_993']=='NOT_RUN'
+          print('M37K_ATOMIC_AUTHOR_SCHEMA_GATE_PASS_METHOD_ONLY')
+          PY
+      - name: Install Blender 4.5 actual Python native API
+        run: |
+          python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy;assert bpy.app.version[:2]==(4,5)"
+      - name: Create tiny shared-boundary + upper-floor aperture in real native Blender
+        run: python tools/g4c7_m37k_native_method_fixture.py
+      - name: Independently reopen native save and test 4 physical negative controls
+        run: python tools/g4c7_m37k_independent_native_audit.py
+      - name: Archive append-only proof, explicit non-city limitation and readable author source
+        run: |
+          set -euo pipefail
+          out=artifacts/g4c7-m37k-verified-native-authoring-method-art-hold
+          test ! -e "$out"
+          mkdir -p "$out"
+          cp -p artifacts/g4c7-m37k-native-method-fixture/* "$out/"
+          cp /tmp/M37K_AUTHOR_TRANSACTION_UNIT_REPORT.json "$out/"
+          cp -p tools/g4c7_m37k_author_kernel.py tools/g4c7_m37k_native_method_fixture.py tools/g4c7_m37k_independent_native_audit.py "$out/"
+          cat > "$out/README_JA.md" <<'TXT'
+          # M37-K: 作者の同一編集で室と外形が変わるネイティブ方式の最小検証
+          
+          これは新しい未来都市案、ART候補、完成した公共動線、Minecraft施工ではない。3つの検証用室だけで仕組みを検証した。作者のひとつの西側境界移動が上下の室と外壁の実メッシュに共通適用される。公共→製造の壁は通り抜けではなく、ガラス実メッシュで密封。外部入口の壁は実際に抜く。階段の上階スラブは最初から実3Dで穴を空けた3固体に分割。16踏面は実メッシュ。
+          
+          原文の13意図的な誤入力を拒否。別プロセスBlenderで保存済みBLEND再読込後、ガラス削除相当、上階スラブ穴埋め、西外壁を室から切り離す、外部入口閉塞の4実メッシュ欠陥を意図的に注入し、全件検出することを検査する。
+          
+          **この局所的な面幾何チェックは正式331/993・全身歩行・構造耐荷重/避難・ARTの代用ではない。全市の粗い巨大造形も今回未制作。** 旧M35〜M37-J不採用原本を変更せず、PR #53 Draft維持、main未変更、Minecraft Education施工禁止。
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$out" tools/g4c7_m37k_author_kernel.py tools/g4c7_m37k_native_method_fixture.py tools/g4c7_m37k_independent_native_audit.py
+          git diff --cached --quiet && { echo 'No archive staged';exit 1; }
+          git commit -m 'research(g4c7): archive M37-K native reciprocal authoring fixture and independent negative controls ART HOLD'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Preserve logs and fixture even if full audit fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37k-native-room-envelope-proof-ART-HOLD
+          path: artifacts/g4c7-m37k-native-method-fixture/
+          retention-days: 21
+          if-no-files-found: warn
