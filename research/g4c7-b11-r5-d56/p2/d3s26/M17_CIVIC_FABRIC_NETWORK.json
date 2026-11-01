@@ -1,0 +1,357 @@
+{
+  "schema": "g4c7.m17.design_reference.v1",
+  "status": "RESEARCH_GUIDE_ONLY_NOT_ART_OR_CONSTRUCTION",
+  "project": "MakeCode LimitLab G4-C7 / D3S26",
+  "concept": "CIVIC FABRIC — nested public street and inhabited skyward neighborhood",
+  "unit": "design-study unit; Minecraft scale unapproved",
+  "inspired_by_principles_not_copied": [
+    "Street roof garden vertical circulation integrated into residential fabric",
+    "Daylight-first civic rooms, not sculpture outer shells",
+    "Asymmetrical inhabitable tiers with distinct maker, research and residential use"
+  ],
+  "level_heights": [
+    0,
+    9.6,
+    18
+  ],
+  "district_roles": [
+    "public_market",
+    "visible_manufacturing",
+    "civic_learning",
+    "housing_threshold",
+    "garden_and_air"
+  ],
+  "nodes": [
+    {
+      "id": "P0_GATE",
+      "xyz": [
+        0,
+        -85,
+        0
+      ],
+      "access": "public",
+      "role": "south city entrance"
+    },
+    {
+      "id": "P1_MARKET_STREET",
+      "xyz": [
+        1,
+        -48,
+        0
+      ],
+      "access": "public",
+      "role": "open market street"
+    },
+    {
+      "id": "P2_FORUM",
+      "xyz": [
+        -5,
+        -14,
+        0
+      ],
+      "access": "public",
+      "role": "public forum with visible manufacture"
+    },
+    {
+      "id": "P3_GARDEN",
+      "xyz": [
+        8,
+        17,
+        0
+      ],
+      "access": "public",
+      "role": "sunlit shared garden"
+    },
+    {
+      "id": "P4_NORTH_COMMON",
+      "xyz": [
+        16,
+        55,
+        0
+      ],
+      "access": "public",
+      "role": "northern public commons"
+    },
+    {
+      "id": "P5_MARKET_INTERIOR",
+      "xyz": [
+        28,
+        -42,
+        0
+      ],
+      "access": "public",
+      "role": "market usable floor and entry"
+    },
+    {
+      "id": "P6_MAKER_HALL",
+      "xyz": [
+        -38,
+        -16,
+        0
+      ],
+      "access": "public",
+      "role": "visible manufacturing floor"
+    },
+    {
+      "id": "P7_STAIR_SOUTH",
+      "xyz": [
+        -19,
+        -17,
+        0
+      ],
+      "access": "public",
+      "role": "south vertical route foot"
+    },
+    {
+      "id": "P8_STAIR_NORTH",
+      "xyz": [
+        23,
+        56,
+        0
+      ],
+      "access": "public",
+      "role": "north vertical route foot"
+    },
+    {
+      "id": "U0_SOUTH_GALLERY",
+      "xyz": [
+        -24,
+        13,
+        9.6
+      ],
+      "access": "public",
+      "role": "public maker overlook"
+    },
+    {
+      "id": "U1_RESEARCH_OBSERVATORY",
+      "xyz": [
+        -29,
+        30,
+        9.6
+      ],
+      "access": "public",
+      "role": "research visitor gallery"
+    },
+    {
+      "id": "U2_SKY_GARDEN",
+      "xyz": [
+        2,
+        39,
+        9.6
+      ],
+      "access": "public",
+      "role": "inhabited roof garden"
+    },
+    {
+      "id": "U3_NORTH_GALLERY",
+      "xyz": [
+        7,
+        31,
+        9.6
+      ],
+      "access": "public",
+      "role": "second elevated public street"
+    },
+    {
+      "id": "U4_RESIDENTIAL_RECEPTION",
+      "xyz": [
+        32,
+        42,
+        9.6
+      ],
+      "access": "semiprivate",
+      "role": "residential controlled threshold"
+    },
+    {
+      "id": "R0_RESEARCH_LAB",
+      "xyz": [
+        -43,
+        37,
+        9.6
+      ],
+      "access": "restricted",
+      "role": "occupied research workroom"
+    },
+    {
+      "id": "R1_HOME",
+      "xyz": [
+        48,
+        46,
+        9.6
+      ],
+      "access": "private",
+      "role": "occupied dwelling and terrace"
+    },
+    {
+      "id": "G0_UPPER_GREENHOUSE",
+      "xyz": [
+        8,
+        65,
+        18
+      ],
+      "access": "public",
+      "role": "skyward food garden"
+    },
+    {
+      "id": "S0_SERVICE",
+      "xyz": [
+        -58,
+        -21,
+        0
+      ],
+      "access": "service",
+      "role": "maker back-of-house"
+    }
+  ],
+  "edges": [
+    {
+      "from": "P0_GATE",
+      "to": "P1_MARKET_STREET",
+      "kind": "street",
+      "width": 13,
+      "access": "public"
+    },
+    {
+      "from": "P1_MARKET_STREET",
+      "to": "P2_FORUM",
+      "kind": "street",
+      "width": 15,
+      "access": "public"
+    },
+    {
+      "from": "P2_FORUM",
+      "to": "P3_GARDEN",
+      "kind": "street",
+      "width": 17,
+      "access": "public"
+    },
+    {
+      "from": "P3_GARDEN",
+      "to": "P4_NORTH_COMMON",
+      "kind": "street",
+      "width": 14,
+      "access": "public"
+    },
+    {
+      "from": "P1_MARKET_STREET",
+      "to": "P5_MARKET_INTERIOR",
+      "kind": "entry",
+      "width": 7,
+      "access": "public"
+    },
+    {
+      "from": "P2_FORUM",
+      "to": "P6_MAKER_HALL",
+      "kind": "entry",
+      "width": 9,
+      "access": "public"
+    },
+    {
+      "from": "P2_FORUM",
+      "to": "P7_STAIR_SOUTH",
+      "kind": "street",
+      "width": 9,
+      "access": "public"
+    },
+    {
+      "from": "P7_STAIR_SOUTH",
+      "to": "U0_SOUTH_GALLERY",
+      "kind": "stair_design_only",
+      "width": 6,
+      "access": "public"
+    },
+    {
+      "from": "U0_SOUTH_GALLERY",
+      "to": "U1_RESEARCH_OBSERVATORY",
+      "kind": "sky_street",
+      "width": 8,
+      "access": "public"
+    },
+    {
+      "from": "U1_RESEARCH_OBSERVATORY",
+      "to": "U2_SKY_GARDEN",
+      "kind": "sky_street",
+      "width": 8,
+      "access": "public"
+    },
+    {
+      "from": "U2_SKY_GARDEN",
+      "to": "U3_NORTH_GALLERY",
+      "kind": "sky_street",
+      "width": 8,
+      "access": "public"
+    },
+    {
+      "from": "U3_NORTH_GALLERY",
+      "to": "P8_STAIR_NORTH",
+      "kind": "stair_design_only",
+      "width": 6,
+      "access": "public"
+    },
+    {
+      "from": "P8_STAIR_NORTH",
+      "to": "P4_NORTH_COMMON",
+      "kind": "street",
+      "width": 9,
+      "access": "public"
+    },
+    {
+      "from": "U3_NORTH_GALLERY",
+      "to": "U4_RESIDENTIAL_RECEPTION",
+      "kind": "controlled_entry",
+      "width": 5.5,
+      "access": "semiprivate"
+    },
+    {
+      "from": "U1_RESEARCH_OBSERVATORY",
+      "to": "R0_RESEARCH_LAB",
+      "kind": "controlled_entry",
+      "width": 5.5,
+      "access": "restricted"
+    },
+    {
+      "from": "U4_RESIDENTIAL_RECEPTION",
+      "to": "R1_HOME",
+      "kind": "home_entry",
+      "width": 3,
+      "access": "private"
+    },
+    {
+      "from": "U2_SKY_GARDEN",
+      "to": "G0_UPPER_GREENHOUSE",
+      "kind": "stair_design_only",
+      "width": 6,
+      "access": "public"
+    },
+    {
+      "from": "P6_MAKER_HALL",
+      "to": "S0_SERVICE",
+      "kind": "service_only",
+      "width": 7,
+      "access": "service"
+    }
+  ],
+  "anti_patterns": [
+    "unconnected tower islands",
+    "uninhabited sculpture shells",
+    "repeated terraces without usable rooms",
+    "anchors without floors",
+    "rendered openness mislabeled safety pass"
+  ],
+  "mandatory_visual_stories": [
+    "street to market",
+    "public can see maker activities",
+    "daylit central garden",
+    "public upper research overlook",
+    "inhabited sky garden",
+    "controlled residential threshold",
+    "distinct skyline from human activity, not a shell"
+  ],
+  "gates": {
+    "art": "HOLD",
+    "adopted": 0,
+    "minecraft_education": "NO_WRITE",
+    "safety_331_body_993_feet": "NOT_RUN",
+    "G0_S1_G1_G2_G3": "NOT_RUN"
+  }
+}

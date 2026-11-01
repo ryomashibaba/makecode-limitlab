@@ -1,0 +1,56 @@
+name: G4C7 M17 inhabited city topology authoring guide (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "research/g4c7-b11-r5-d56/p2/d3s26/M17_CIVIC_FABRIC_NETWORK.json"
+      - "tools/g4c7_m17_native_guide.py"
+      - ".github/workflows/g4c7-m17-native-guide.yml"
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m17-native-guide
+  cancel-in-progress: false
+jobs:
+  native-authoring-guide:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check city relationships before any 3-D
+        run: |
+          python -m py_compile tools/g4c7_m17_native_guide.py
+          python tools/g4c7_m17_native_guide.py --preflight
+      - name: Official Blender Python 4.5.15
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Save native editable guide and preview, not buildings
+        run: python tools/g4c7_m17_native_guide.py
+      - name: Independently verify saved guide binary, provenance and restrictions
+        run: |
+          python - <<'PY'
+          import json,hashlib,os
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m17-authoring-guide')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['status']['art']=='HOLD' and m['status']['minecraft']=='FORBIDDEN'
+          assert m['status']['nodes']==18 and m['status']['edges']==18
+          b=(p/'M17_EDITABLE_TOPOLOGY_GUIDE_NOT_CITY.blend').read_bytes()
+          im=(p/'M17_NATIVE_TOPOLOGY_PREVIEW.png').read_bytes()
+          assert b[:7]==b'BLENDER' and im[:8]==b'\x89PNG\r\n\x1a\n'
+          assert hashlib.sha256(b).hexdigest()==m['native_sha256']
+          assert hashlib.sha256(im).hexdigest()==m['png_sha256']
+          print('M17_NATIVE_AUTHORING_GUIDE_AND_PREVIEW_VERIFIED_ART_HOLD')
+          PY
+      - name: Preserve isolated research-only visual authoring evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m17-native-topology-guide-NOT-CITY-ART-HOLD
+          path: artifacts/g4c7-m17-authoring-guide/run_*/
+          retention-days: 21
+          if-no-files-found: warn
