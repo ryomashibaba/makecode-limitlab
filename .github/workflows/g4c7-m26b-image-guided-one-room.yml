@@ -1,0 +1,67 @@
+name: G4C7 M26B native same-camera room visual correction
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m26b_image_guided_research_room.py"
+      - ".github/workflows/g4c7-m26b-image-guided-one-room.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m26b-room-refinement
+  cancel-in-progress: false
+jobs:
+  native-room-edit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover immutable M26 research room editable original
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m26-real-room-first-one-image-ART-HOLD
+          run-id: 41272433400
+          github-token: ${{ github.token }}
+          path: artifacts/m26b_pinned_M26_original
+      - name: SHA256 pin and code syntax
+        run: |
+          python -m py_compile tools/g4c7_m26b_image_guided_research_room.py
+          python tools/g4c7_m26b_image_guided_research_room.py --preflight
+      - name: Install official Blender 4.5.15
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Direct edit existing real editable M26 room and render same camera
+        run: python tools/g4c7_m26b_image_guided_research_room.py
+      - name: Independent saved file hashes and research restrictions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,json,hashlib,struct
+          p=Path('artifacts/g4c7-m26b-occupied-work-visual-refinement')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='HOLD_NOT_APPROVED' and m['adopted']==0 and m['minecraft']=='FORBIDDEN'
+          assert m['formal_331_993']=='NOT_RUN' and m['road_unchanged']
+          assert m['camera_frozen'] and m['source_objects_untouched'] and m['new_detail_objects']>=30
+          for n,k,header in (
+           ('M26B_EDITED_HUMAN_RESEARCH_ROOM.blend','blend_sha256',b'BLENDER'),
+           ('M26B_INTERIOR_ART_REVIEW_UNAPPROVED.glb','glb_sha256',b'glTF'),
+           ('M26B_SAME_HUMAN_EYE.png','png_sha256',b'\x89PNG\r\n\x1a\n')):
+            raw=(p/n).read_bytes()
+            assert raw.startswith(header) and hashlib.sha256(raw).hexdigest()==m[k]
+          png=(p/'M26B_SAME_HUMAN_EYE.png').read_bytes()
+          assert struct.unpack('>II',png[16:24])==(1200,760)
+          print('M26B_NATIVE_SAME_CAMERA_ONE_ROOM_TECH_PASS_ART_HOLD')
+          PY
+      - name: Preserve actual revised room separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m26b-one-room-same-camera-ART-HOLD
+          path: artifacts/g4c7-m26b-occupied-work-visual-refinement/run_*/
+          retention-days: 21
+          if-no-files-found: warn
