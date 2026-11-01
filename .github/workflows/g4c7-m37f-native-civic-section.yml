@@ -1,0 +1,221 @@
+name: G4C7 M37-F actual civic route mesh and independent contact audit (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'research/g4c7-b11-r5-d56/p2/d3s26/M37F_NATIVE_SOURCE_PY_GZIP_BASE64.txt'
+      - '.github/workflows/g4c7-m37f-native-civic-section.yml'
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37f-native-civic-section
+  cancel-in-progress: false
+jobs:
+  author-reopen-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 38
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover UTF-8 authoring source from lossless pinned staging; validate syntax and source
+        run: |
+          python - <<'PY'
+          import gzip,base64,hashlib,json
+          from pathlib import Path
+          packed=Path('research/g4c7-b11-r5-d56/p2/d3s26/M37F_NATIVE_SOURCE_PY_GZIP_BASE64.txt').read_text().strip()
+          script=gzip.decompress(base64.b64decode(packed))
+          expected='b9de4bde574697de6712e7ed27ae45e615f88ed23319373f9aedcef57c4d872c'
+          assert hashlib.sha256(script).hexdigest()==expected,'Refuse altered source'
+          dst=Path('tools/g4c7_m37f_native_civic_route_sculpt.py')
+          assert not dst.exists(),'Never overwrite existing author source'
+          dst.write_bytes(script)
+          compile(script, str(dst), 'exec')
+          m=json.loads(Path('artifacts/g4c7-m37d-verified-native-urban-fabric-art-hold/M37D_MANIFEST.json').read_text())
+          blob=Path('artifacts/g4c7-m37d-verified-native-urban-fabric-art-hold')/m['saved_blend']['name']
+          assert hashlib.sha256(blob.read_bytes()).hexdigest()==m['saved_blend']['sha256']
+          assert m['art']=='HOLD_UNREVIEWED' and m['minecraft']=='FORBIDDEN'
+          print('M37F_SOURCE_SHA_MATCH_AND_M37D_PIN_MATCH_NO_CONSTRUCTION')
+          PY
+      - name: Install verified Blender native API and footprint graph dependencies
+        run: |
+          python -m pip install --disable-pip-version-check 'bpy==4.5.15' 'shapely==2.1.2' 'networkx==3.4.2' --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c 'import bpy,shapely,networkx;assert bpy.app.version[:2]==(4,5)'
+      - name: Duplicate rejected native original and produce physical civic section in separate scene
+        run: |
+          python tools/g4c7_m37f_native_civic_route_sculpt.py
+      - name: Independently reopen and compare every old mesh; prove real ground physical contact
+        run: |
+          python - <<'PY'
+          import bpy,hashlib,json,math,networkx as nx
+          from pathlib import Path
+          from shapely.geometry import Polygon
+          root=Path('artifacts/g4c7-m37f-native-section-output')
+          manifest=json.loads((root/'M37F_NATIVE_SECTION_MANIFEST.json').read_text())
+          p=root/manifest['saved_blend']['file']
+          assert p.read_bytes()[:7]==b'BLENDER'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==manifest['saved_blend']['sha256']
+          assert manifest['minecraft']=='FORBIDDEN' and manifest['formal_331_993']=='NOT_RUN'
+          assert manifest['continuous_walkable_route']=='NOT_CERTIFIED'
+          assert manifest['new_art']=='HOLD_NOT_EVALUATED'
+          assert manifest['source_meshes_cloned']==1163
+          assert manifest['new_native_mesh_counts']=={
+            'ground_road_segments':13,'flight_treads':106,
+            'flight_landings':2,'ground_landings':8}
+          def snap(scene):
+              result={}
+              for o in scene.objects:
+                  if o.type!='MESH':continue
+                  result[o.name]=(
+                   [tuple(float(v) for v in x.co) for x in o.data.vertices],
+                   [tuple(x.vertices) for x in o.data.polygons],
+                   tuple(float(v) for row in o.matrix_basis for v in row),
+                   o.parent.name if o.parent else None)
+              return result
+          bpy.ops.wm.open_mainfile(filepath=str(p.resolve()))
+          originals={}
+          for name,n in (
+              ('M35_REJECTED_REFERENCE_LOCKED',208),
+              ('M36_AUTHORING_STUDIO_ART_HOLD',208),
+              ('M37D_AUTHOR_OCCUPIED_CITY_ART_HOLD',1163)):
+              scene=bpy.data.scenes[name]
+              originals[name]=snap(scene)
+              assert len(originals[name])==n
+          study=bpy.data.scenes['M37F_CONNECTED_SECTION_METHOD_ART_HOLD']
+          assert study['M37F_ART']=='M37D_ART_REJECT_UNCHANGED_M37F_ART_HOLD'
+          assert study['M37F_MINECRAFT']=='FORBIDDEN'
+          assert study['M37F_FORMAL_331_993']=='NOT_RUN'
+          assert study['M37F_OFFICIAL_ADOPTION']==0
+          base=[o for o in study.objects if o.type=='MESH' and o.name.startswith('M37F_BASE_M37D_')]
+          extra=[o for o in study.objects if o.type=='MESH' and o.name.startswith('M37F_') and not o.name.startswith('M37F_BASE_')]
+          assert len(base)==1163 and len(extra)==129,(len(base),len(extra))
+          assert len({o.data.as_pointer() for o in base+extra})==len(base)+len(extra)
+          for o in base:
+              original_name=o.name.replace('M37F_BASE_','',1)
+              original=bpy.data.scenes['M37D_AUTHOR_OCCUPIED_CITY_ART_HOLD'].objects[original_name]
+              assert o.data.as_pointer()!=original.data.as_pointer()
+          edited_scene_old=study
+          new_mesh_snapshot=snap(study)
+          source=Path('artifacts/g4c7-m37d-verified-native-urban-fabric-art-hold/M37D_NEW_NATIVE_URBAN_FABRIC_ART_HOLD.blend')
+          assert hashlib.sha256(source.read_bytes()).hexdigest()==manifest['source_blend_sha256']
+          bpy.ops.wm.open_mainfile(filepath=str(source.resolve()))
+          def close_mesh(a,b,label):
+              assert set(a)==set(b),(label,'object names')
+              for key in a:
+                  x,y=a[key],b[key]
+                  assert x[1]==y[1],(label,key,'topology')
+                  assert x[3]==y[3],(label,key,'parent')
+                  assert len(x[0])==len(y[0]),(label,key,'vertex count')
+                  for va,vb in zip(x[0],y[0]):
+                      assert all(abs(i-j)<1e-5 for i,j in zip(va,vb)),(label,key,'vertex')
+                  assert all(abs(i-j)<1e-5 for i,j in zip(x[2],y[2])),(label,key,'transform')
+          for name,meshes in originals.items():
+              close_mesh(meshes,snap(bpy.data.scenes[name]),name)
+          source_d=snap(bpy.data.scenes['M37D_AUTHOR_OCCUPIED_CITY_ART_HOLD'])
+          compare={name.replace('M37F_BASE_','',1):v
+                   for name,v in new_mesh_snapshot.items() if name.startswith('M37F_BASE_')}
+          close_mesh(compare,source_d,'ALL_1163_SOURCE_MESH_COPIES')
+          # Actual saved mesh geometry, not original authoring route point list.
+          roads={}
+          for name,items in new_mesh_snapshot.items():
+              if not name.startswith('M37F_') or name.startswith('M37F_BASE_'):continue
+              if 'SEG_' not in name and '_PUBLIC_PAVED_ARRIVAL' not in name:continue
+              verts=items[0]
+              assert len(verts)==8,name
+              poly=Polygon([(p[0],p[1]) for p in verts[:4]])
+              assert poly.is_valid and poly.area>10,name
+              top=max(v[2] for v in verts)
+              assert abs(top-.15)<1e-4,(name,top)
+              roads[name]=poly
+          assert len(roads)==21,len(roads)
+          graph=nx.Graph()
+          graph.add_nodes_from(roads)
+          vals=list(roads.items())
+          for i,(name,p) in enumerate(vals):
+              for other,q in vals[i+1:]:
+                  if p.intersection(q).area>=.20:graph.add_edge(name,other)
+          components=list(nx.connected_components(graph))
+          assert len(components)==1, [len(x) for x in components]
+          gate='M37F_GATE_PUBLIC_PAVED_ARRIVAL'
+          assert gate in graph and len(nx.node_connected_component(graph,gate))==21
+          for key in ('GATE','CIVIC','DELTA','NORTH','YARD','HAB','CULTURE','RESEARCH'):
+              assert f'M37F_{key}_PUBLIC_PAVED_ARRIVAL' in graph,key
+          # Independent negative controls: equality along mere edge and z mismatch
+          a=Polygon([(0,0),(4,0),(4,4),(0,4)])
+          b=Polygon([(4,0),(8,0),(8,4),(4,4)])
+          assert a.intersection(b).area==0
+          assert abs(.15-1.15)>.36
+          # Actual stair treads exist and their world z coordinates rise, but no safety pass.
+          treads=[name for name in new_mesh_snapshot if name.startswith('M37F_RESEARCH_ACCESS_TREAD_')]
+          upper=[name for name in new_mesh_snapshot if name.startswith('M37F_UPPER_ACCESS_TREAD_')]
+          assert len(treads)==17 and len(upper)==89
+          for keys in (sorted(treads),sorted(upper)):
+              zs=[max(x[2] for x in new_mesh_snapshot[k][0]) for k in keys]
+              assert all(zs[i+1]>zs[i] for i in range(len(zs)-1))
+          for key,it in manifest['cameras'].items():
+              im=root/it['file']
+              assert im.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n'
+              assert hashlib.sha256(im.read_bytes()).hexdigest()==it['sha256']
+          assert len(manifest['cameras'])==9
+          report={
+            'schema':'m37f-native-urban-connection-audit-v1',
+            'result':'LIMITED_PHYSICAL_GROUND_ROUTE_METHOD_PASS_ONLY',
+            'original_M35_meshes_protected':208,
+            'original_M36_meshes_protected':208,
+            'original_M37D_meshes_protected':1163,
+            'M37D_clone_meshes_independently_isolated':1163,
+            'new_physical_meshes':129,
+            'ground_road_actual_native_floor_meshes':len(roads),
+            'ground_road_strict_overlap_components':len(components),
+            'gate_component_road_meshes':21,
+            'positive_overlap_edges':graph.number_of_edges(),
+            'new_stair_treads':{'research':17,'upper':89},
+            'swept_body_and_door_clearance':'NOT_RUN',
+            'old_113_doors_citywide_reachability':'NOT_PROVEN',
+            'M37D_art':'REJECT',
+            'M37F_art':'HOLD_UNREVIEWED',
+            'formal_331_993':'NOT_RUN',
+            'construction':'FORBIDDEN',
+            'official_adoption':0}
+          (root/'M37F_INDEPENDENT_NATIVE_REOPEN_CONTACT_AUDIT.json').write_text(
+            json.dumps(report,indent=2,ensure_ascii=False),encoding='utf8')
+          print('M37F_INDEPENDENT_AUDIT',json.dumps(report,ensure_ascii=False),flush=True)
+          PY
+      - name: Archive source, native BLEND, nine fixed-camera images and audit (no adoption)
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-m37f-verified-native-connected-section-art-hold
+          test ! -e "$dest"
+          mkdir -p "$dest"
+          cp artifacts/g4c7-m37f-native-section-output/* "$dest/"
+          cp tools/g4c7_m37f_native_civic_route_sculpt.py "$dest/"
+          cat > "$dest/README_JA.md" <<'TXT'
+          # M37-F 実ネイティブ地上公共動線の限定接続テスト ART HOLD
+          
+          SHAで保護したM37-Dを開き、旧3シーン全てを不変にし、新しい独立Blenderシーンで旧M37-Dの全1163メッシュを別データブロック複製。4方面の地上公共動線13区間と8接続床、研究/上階向け106段の実踏面と2つの踊場を別途追加した。
+          原本を保存し別Blenderプロセスで再読込。全旧メッシュを再照合し、21枚の地上実床が同じ接続成分を形成することを幾何で検査。**これは上面水平投影の正面積接触の検査に限る**。踏面の実在と昇順は確認できても、壁・頭上・幅・支持・入口の安全な連続歩行は全く合格していない。旧113入口への経路成立も未確認。
+          
+          **M37-D ART REJECT、M37-F ART HOLD、正式採用0、331/993 NOT RUN、G0/S1/G1/G2/G3 NOT RUN、Minecraft施工禁止、main変更禁止。** 旧棚状都市の外観を改善したとの主張はしない。
+          TXT
+      - name: Commit append-only verified evidence and recovered readable source on research branch
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- tools/g4c7_m37f_native_civic_route_sculpt.py artifacts/g4c7-m37f-verified-native-connected-section-art-hold
+          git diff --cached --quiet && { echo 'Missing evidence'; exit 1; }
+          git commit -m 'research(g4c7): M37-F verified native civic section contact method ART HOLD'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Retain artifact even when audit or commit fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37f-native-civic-section-ART-HOLD
+          path: artifacts/g4c7-m37f-native-section-output
+          retention-days: 21
+          if-no-files-found: warn
