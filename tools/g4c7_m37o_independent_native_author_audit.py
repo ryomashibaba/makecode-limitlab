@@ -90,7 +90,7 @@ norm=math.hypot(dx,dy);nx=-dy/norm*.4;ny=dx/norm*.4
 foot=[(a[0]+nx,a[1]+ny),(b[0]+nx,b[1]+ny),
       (b[0]-nx,b[1]-ny),(a[0]-nx,a[1]-ny)]
 vertices=[(x,y,z) for z in (hab["z"],hab["z"]+hab["h"]) for x,y in foot]
-faces=[(3,2,1,0),(4,5,6,7),(0,1,5,6),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
+faces=[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
 wallmesh=bpy.data.meshes.new("M37O_NEGATIVE_SOLID_SEAL")
 wallmesh.from_pydata(vertices,[],faces);wallmesh.update()
 sealed=bpy.data.objects.new(door,wallmesh)
