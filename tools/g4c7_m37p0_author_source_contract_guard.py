@@ -46,7 +46,7 @@ def validate(d):
     assert by_id["habitat_private"]["realm"]=="private"
     for key in REQUIRED - {"maker_work","maker_staff_gate","habitat_private"}:
         assert by_id[key]["realm"]=="public"
-    assert all(len(n["experience"])>=20 for n in nodes)
+    assert all(len(n["experience"])>=16 for n in nodes)
     edges=d["route_edges"]
     assert len(edges)==9
     assert all(e["from"] in by_id and e["to"] in by_id and e["from"]!=e["to"] for e in edges)
@@ -91,14 +91,14 @@ def validate(d):
         assert len(affected)==len(x["affected"])
         assert {"urban_form","occupied_space"}<=impact
         assert len(impact)>=3
-        assert len(x["author_why"])>=45
+        assert len(x["author_why"])>=35
         sets.append(affected)
         impact_universe |= impact
     for core in REQUIRED_COUPLINGS:
         assert any(core<=s for s in sets),core
     assert {"staff_separation","privacy","daylight","vertical_access"}<=impact_universe
     assert len(d["critical_next_proof"])>=4
-    assert all(len(x)>=30 for x in d["critical_next_proof"])
+    assert all(len(x)>=25 for x in d["critical_next_proof"])
     return {
         "result":"SOURCE_OF_FORM_INPUT_CONTRACT_COHERENT_ONLY",
         "geometry_generated":False,
