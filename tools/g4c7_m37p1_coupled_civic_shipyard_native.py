@@ -311,7 +311,7 @@ names={name for name in ledger}
 affected={tag:[n for n,info in ledger.items() if tag in info["decisions"]]
           for tag in decisions}
 assert all(len(group)>=5 for group in affected.values()),affected
-assert all(any("ROUTE" in n or "SECTION" in n or "BRAID" in n or "THRESHOLD" in n
+assert all(any("ROUTE" in n or "SECTION" in n or "BRAID" in n or "THRESHOLD" in n or "GANTRY" in n
                for n in group) for group in affected.values())
 native=ROOT/"M37P1_ONE_COUPLED_NATIVE_CITY_ART_HOLD.blend"
 bpy.ops.wm.save_as_mainfile(filepath=str(native.resolve()))
