@@ -1,0 +1,89 @@
+name: G4C7 M34 native editability medium gate (no art adoption)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m34_blender_native_authoring_gate.py"
+      - ".github/workflows/g4c7-m34-native-editability-gate.yml"
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m34-editable-blender-proof
+  cancel-in-progress: false
+jobs:
+  native-authoring-method:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify input script syntax before installation
+        run: python -m py_compile tools/g4c7_m34_blender_native_authoring_gate.py
+      - name: Install actual native Blender Python 4.5.15 and independent GLB reader
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "numpy==2.3.4"
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Produce saved real Blender scene and edit same reopened mesh
+        run: python tools/g4c7_m34_blender_native_authoring_gate.py
+      - name: Independently reopen both native scene versions and audit actual geometry
+        run: |
+          python - <<'PY'
+          import bpy, json, hashlib, struct
+          from pathlib import Path
+          import trimesh
+          p=Path("artifacts/g4c7-m34-native-authoring")
+          m=json.loads((p/"M34_NATIVE_AUTHORING_MANIFEST.json").read_text())
+          assert m["art"]=="HOLD_NO_ART_ADOPTION"
+          assert m["formal_331_993"]=="NOT_RUN"
+          assert m["minecraft_education"]=="CONSTRUCTION_FORBIDDEN"
+          def sh(f):return hashlib.sha256(f.read_bytes()).hexdigest()
+          expected=set(m["shared_saved_cameras"])
+          assert expected=={"south","north","urban_oblique","public_approach","maker_eye","research_eye"}
+          for label,meta in [("BASE",m["base"]),("DIRECT_EDIT",m["direct_edit"])]:
+            f=p/meta["blend"];g=p/meta["glb"]
+            assert f.read_bytes()[:7]==b"BLENDER" and sh(f)==meta["blend_sha256"]
+            assert g.read_bytes()[:4]==b"glTF" and sh(g)==meta["glb_sha256"]
+            scene=trimesh.load(str(g),force="scene")
+            assert len(scene.geometry)>25,(label,len(scene.geometry))
+            for key,digest in meta["images"].items():
+              png=p/("M34_"+label+"_"+key+".png")
+              data=png.read_bytes()
+              assert data[:8]==b"\x89PNG\r\n\x1a\n"
+              assert struct.unpack(">II",data[16:24])==(760,460)
+              assert sh(png)==digest
+          def inspect(label):
+            bpy.ops.wm.open_mainfile(filepath=str((p/("M34_NATIVE_"+label+".blend")).resolve()))
+            names=set(o.name for o in bpy.data.objects)
+            required=["M34_NATIVE_EDITABLE_CIVIC_SPINE","M34_HAND_EDITABLE_SKYLINE_CANOPY",
+              "M34_MAKER_FLOOR","M34_PUBLIC_REAL_RISE","M34_PUBLIC_UPPER_LANDING",
+              "M34_RESEARCH_ACTUAL_FLOOR","M34_MAKER_DOOR_HEAD","M34_RESEARCH_DOOR_HEAD"]
+            assert all(x in names for x in required)
+            for cam in expected:
+              assert "M34_CAMERA_"+cam.upper() in names
+            assert len([c for c in bpy.data.collections if c.name.startswith("M34_")])==6
+            o=bpy.data.objects["M34_HAND_EDITABLE_SKYLINE_CANOPY"]
+            return [tuple(v.co) for v in o.data.vertices]
+          old=inspect("BASE");new=inspect("DIRECT_EDIT")
+          assert len(old)==len(new)==8
+          changed=[i for i,(a,b) in enumerate(zip(old,new)) if any(abs(x-y)>1e-5 for x,y in zip(a,b))]
+          assert changed==[2,6],changed
+          for i in changed:
+            assert abs(new[i][2]-old[i][2]-2.25)<1e-4
+            assert abs(new[i][0]-old[i][0])<1e-5
+            assert abs(new[i][1]-old[i][1])<1e-5
+          # A deliberately incorrect digest must be rejected by the independent check.
+          assert sh(p/m["base"]["blend"])!="0"*64
+          print("M34_NATIVE_REAL_SAVED_REOPENED_DIRECT_EDIT_AND_6_SHARED_VIEWS_PASS")
+          print("NO_ART_PASS_NO_SAFETY_PASS_NO_MINECRAFT_CONSTRUCTION")
+          PY
+      - name: Archive complete editable originals even on audit failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m34-native-blender-editability-ART-HOLD
+          path: artifacts/g4c7-m34-native-authoring/
+          retention-days: 21
+          if-no-files-found: warn
