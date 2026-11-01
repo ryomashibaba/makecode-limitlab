@@ -69,3 +69,11 @@
 - [P2カメラ実メッシュ内埋没診断ツール](tools/g4c7_m37p2_native_camera_inside_solid_audit.py) と[既存P1 BLEND読み取り専用負例CI](.github/workflows/g4c7-m37p2-camera-solid-negative-control.yml)を追加。専用[Actions #41353940198](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41353940198) は初回照合でQUEUED。**技術前提の不良発見であり、都市美術の改善・採用を意味しない。**
 - 続きと固定条件は[現行統合引き継ぎの節10](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。第三の`patch/wall/bridge`都市生成ではなく、作者が同一真正BLENDで都市粗形と生活断面を同時に直接編集する段階へ。Workは明示的事前承認まで使わない。
 
+
+
+## M37-P2 直接作者原本レビュー経路（2026-11-02 JST追補）
+
+- [非生成型Blender作者原本・全景/公共眼高/住宅眼高の真正3視点レビュー](tools/g4c7_m37p2_author_native_early_review.py)を研究ブランチへ実装。旧P1の`patch/wall/bridge`自動造形の第三案を作る仕組みではない。**新P2真正BLENDはまだNOT CREATED、ART HOLD・正式採用0**。
+- 新しい作者編集済み保存BLENDが入力になった場合のみ、旧不採用原本を拒否し、原本SHA不変とカメラ実壁埋没負例を確認して、3枚の真正画像へ進む。シーンの作者宣言は美術品質・製作者の独立証明ではない。
+- [専用P2の限定METHOD/負例Actions](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41354779183) は最新照合時QUEUEDでPASS未確認。詳細は[統合引き継ぎ節11](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+- 次の美術制作は「全都市粗3Dと実生活・製造断面を一つの新しい直接作者原本で同時編集し、3視点を早期ART審査」。原本未制作なのに工程完了やART合格を宣言しない。main・Draft PR #53・Minecraft禁止・Work事前承認は不変。
