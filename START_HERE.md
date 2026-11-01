@@ -2,6 +2,13 @@
 
 **チャット移行の唯一の入口。2026-11-02 JST更新。GitHub研究ブランチが正本。** 長い引き継ぎ文の再コピー、ZIP再添付、過去の計画の再決定は不要。
 
+## 最新：M37-P1 7視点ART REJECT／P2は制作方法の切替（2026-11-02 JST）
+
+- **[M37-P1真正7視点による厳格ART REJECT・P2方法再設計の正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P1_NATIVE_SEVEN_VIEW_EARLY_ART_REJECT_AND_P2_AUTHOR_METHOD_RESET_JA.md)**。修正後の専用[Actions #41351764632](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41351764632)は**SUCCESS**。BLEND、7真正Cycles画像、manifest、独立再読込監査・6負例が[アーカイブ](artifacts/g4c7-m37p1-verified-native-interlocked-urban-author-art-hold/)に実在。4作者判断と実メッシュ頂点の限定TECH検証は成立。
+- **都市美術はEARLY ART REJECT**。俯瞰に巨大板・壁・細帯が再発し、公共/文化/上層/住居の生活空間が伝わらず、研究眼高はほぼ黒。単純ロケット形状だけで本当の宇宙機製造の街並みになっていない。M37-O1のART REJECTも維持。**正式ユーザー採用0件、全体ART HOLD**。
+- 2つの真正不合格案（M37-O1独立パビリオン、M37-P1共同決定はあるが板/壁/帯優位）を踏まえ固定R1-R2方針の**2案失敗時の制作方法切替**を適用。**M37-P1の追加装飾/壁切除/階段追加/単純プリミティブ第三案は禁止**。P2は作家の手編集3D造形判断と居住・製造・研究の実体験を一次ソースに戻す研究（新BLENDの存在を捏造しない）。原本が本当に高品質になるまで機能/施工ゲートに進めない。
+- **正規331人体/993足元・G0/S1/G1/G2/G3 NOT RUN、Minecraft施工/都市統合禁止、main変更禁止、PR #53 Draft・未merge、Workは事前明示承認制**。この後の作業では最新ブランチHEADとCIを再取得する。
+
 ## M37-P1 実体制作へ移行（2026-11-02 JST／最新CI要再照合）
 
 - **[M37-P1真正Blender作者原本の制作工程・CI修正履歴・未確認事項](docs/G4C7_M37P1_NATIVE_ART_EVIDENCE_PENDING_20261102_JA.md)**。旧M37-O1の不採用施設とM37-L/Nのチューブ美術を再利用せず、M37-P0の4共有作者判断を実メッシュへ結びつける研究コード・独立再読込監査・7視点レンダリングCIを研究ブランチへコミット。
