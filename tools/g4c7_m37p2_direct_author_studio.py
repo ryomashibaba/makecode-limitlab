@@ -147,7 +147,7 @@ def make_empty_studio(filepath):
     report = scan(scene)
     if report["errors"] or report["real_mesh_objects"] != 0:
         raise RuntimeError("EMPTY_STUDIO_NOT_CLEAN:" + str(report))
-    bpy.ops.wm.save_as_mainfile(filepath=str(filepath), compress=True)
+    bpy.ops.wm.save_as_mainfile(filepath=str(filepath), compress=False)
     return str(filepath)
 
 
