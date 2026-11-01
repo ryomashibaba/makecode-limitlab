@@ -12,7 +12,7 @@
 - **M37-P1は限定METHOD TECH PASS／絶対美術 EARLY ART REJECT**。巨大な板・壁・帯、ほぼ黒い研究視点、実生活の不在。前段のM37-O1もEARLY ART REJECT。**方向が異なる2つの真正3D不合格により、同種の自動プリミティブの第三案は禁止**。
 - **次工程＝M37-P2、都市3Dを作る際の作者の形態決定権の再設計**。P1案の修繕・拡大は禁止。M37-P2の新しい真3D成果は本書作成時点で **NOT CREATED**。恣意的に「M37-P2完成」と記載しない。
 - **全体ART HOLD／正式ユーザーART採用0件／正式331人体・993足元およびG0/S1/G1/G2/G3 NOT RUN／自由歩行・支持・構造・避難 NOT CERTIFIED／新都市Minecraft Education施工・都市統合は禁止／main不変更／Draft PR #53 Open・未merge／Workは事前明示承認制**。
-- 最終照合した研究HEAD（新引き継ぎコミットより前）：\`50285ae9b7948d2404b223437c73efe88b4b8cab\`。**保存後HEADは必ず変わる。作業時はGitHub PR headとCIを読み直し、旧SHAへのリセット禁止。** この旧HEAD時点で通常 Verify #41352198482 はQUEUED。後でSUCCESSと決めつけない。
+- 最終照合した研究HEAD（新引き継ぎコミットより前）：\`50285ae9b7948d2404b223437c73efe88b4b8cab\`。**保存後HEADは必ず変わる。作業時はGitHub PR headとCIを読み直し、旧SHAへのリセット禁止。** この旧HEADの通常 Verify [#41352198482](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41352198482) は最初の調査時はQUEUED、その後の再照合で **completed/SUCCESS** を確認した。最新引き継ぎコミットのVerifyは別実行なので、次チャットで状態を再確認する。
 
 ## 1. 最終目的 — 何を作るプロジェクトか
 
