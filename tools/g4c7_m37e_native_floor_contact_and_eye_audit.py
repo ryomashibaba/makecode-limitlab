@@ -117,11 +117,17 @@ def analyze():
     cams=sorted([o for o in scene.objects if o.type=="CAMERA"
                  and o.name.startswith("M37D_CAM_")],key=lambda o:o.name)
     assert len(cams)==9
+    # In non-active scenes matrix_world may be unevaluated identity.
+    # These authored cameras are unparented: use actual saved transforms.
+    assert all(c.parent is None for c in cams)
+    origins={tuple(round(float(v),3) for v in c.location) for c in cams}
+    assert len(origins)==9,("collapsed camera origins",origins)
     rays=[]
     for cam in cams:
-        pos=cam.matrix_world.translation
-        direction=cam.matrix_world.to_quaternion()@Vector((0,0,-1))
+        pos=cam.location.copy()
+        direction=cam.rotation_euler.to_quaternion()@Vector((0,0,-1))
         direction.normalize()
+        assert pos.length>10,("unexpected camera origin",cam.name,tuple(pos))
         best=None
         for name,tree in bvh:
             hit,normal,index,distance=tree.ray_cast(pos,direction,120)
