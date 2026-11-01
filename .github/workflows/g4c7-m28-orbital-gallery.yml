@@ -1,0 +1,51 @@
+name: G4C7 M28 image-guided real orbital visitor gallery edit
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m28_fixed_camera_orbital_gallery.py"
+      - "tools/g4c7_m28_independent_glb_art_audit.py"
+      - ".github/workflows/g4c7-m28-orbital-gallery.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m28-gallery-art
+  cancel-in-progress: false
+jobs:
+  fixed-two-view-real-native-edit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download source actual editable M27 native Blender artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m27-native-room-visitor-gallery-ART-HOLD
+          run-id: 41274393708
+          github-token: ${{ github.token }}
+          path: artifacts/m28_immutable_m27
+      - name: SHA-provenance and syntax before Blender
+        run: |
+          python -m py_compile tools/g4c7_m28_fixed_camera_orbital_gallery.py tools/g4c7_m28_independent_glb_art_audit.py
+          python tools/g4c7_m28_fixed_camera_orbital_gallery.py --preflight
+      - name: Install real native Blender and independent GLB readers
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "shapely==2.1.2" "numpy==2.3.4" "pillow>=10,<13"
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Author original M27 file directly and render same two M27 cameras
+        run: python tools/g4c7_m28_fixed_camera_orbital_gallery.py
+      - name: Independent native GLB readback and protected-public-floor assertions
+        run: python tools/g4c7_m28_independent_glb_art_audit.py
+      - name: Archive editable native art evidence (ART HOLD)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m28-image-guided-orbital-gallery-ART-HOLD
+          path: artifacts/g4c7-m28-gallery-visual-art-edit/run_*/
+          retention-days: 21
+          if-no-files-found: warn
