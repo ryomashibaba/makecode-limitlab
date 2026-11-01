@@ -96,7 +96,7 @@ result={
  "user_art_adoption":0,
  "formal_331_993":"NOT_RUN","minecraft":"FORBIDDEN",
  "physical_room_route":"NOT_CERTIFIED",
- "limitation":"Preview edits move both room and shell mesh X, do not produce continuous architecture or a safe route. 4 same-scene photographs are for judging visibility, not art pass.",
+ "limitation":"Preview edits move room and shell mesh X, do not produce continuous architecture or a safe route. Four SHA-pinned genuine M37-L source photos are references, not new M37-M renders.",
 }
 (OUT/"M37M_INDEPENDENT_REOPEN_SCOPE_AUDIT.json").write_text(json.dumps(result,indent=2,ensure_ascii=False))
 print("M37M_INDEPENDENT_NATIVE_AUDIT",json.dumps(result,ensure_ascii=False),flush=True)
