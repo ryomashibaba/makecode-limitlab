@@ -1,0 +1,89 @@
+name: G4C7 M34 preserve verified native Blender originals (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - ".github/workflows/g4c7-m34-verified-native-evidence-archive.yml"
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: g4c7-m34-archive-protected
+  cancel-in-progress: false
+jobs:
+  append-only-native-archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Recover original audited Blender run
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m34-native-blender-editability-ART-HOLD
+          run-id: 41285017950
+          github-token: ${{ github.token }}
+          path: m34_verified_download
+      - name: Independently validate 17 actual native files before copying
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib,struct
+          root=Path('m34_verified_download')
+          m=json.loads((root/'M34_NATIVE_AUTHORING_MANIFEST.json').read_text())
+          assert m['art']=='HOLD_NO_ART_ADOPTION'
+          assert m['minecraft_education']=='CONSTRUCTION_FORBIDDEN'
+          assert m['actual_native_reopen_and_existing_mesh_edit'] is True
+          assert m['formal_331_993']=='NOT_RUN'
+          assert len(m['shared_saved_cameras'])==6
+          def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+          for section in ('base','direct_edit'):
+              d=m[section]
+              for k,header in (('blend',b'BLENDER'),('glb',b'glTF')):
+                  p=root/d[k]
+                  assert p.is_file() and p.stat().st_size>10000,p
+                  assert p.read_bytes().startswith(header)
+                  assert sha(p)==d[k+'_sha256'],p
+              assert len(d['images'])==6
+              label=section.upper()
+              for view,expected in d['images'].items():
+                  p=root/('M34_'+label+'_'+view+'.png')
+                  data=p.read_bytes()
+                  assert data[:8]==b'\x89PNG\r\n\x1a\n'
+                  assert struct.unpack('>II',data[16:24])==(760,460)
+                  assert sha(p)==expected,p
+          files={x.name for x in root.iterdir() if x.is_file()}
+          assert len(files)==17,files
+          print('M34_17_PINNED_EVIDENCE_FILES_VERIFIED_NO_ART_PASS')
+          PY
+      - name: Copy as new appendix without overwriting any old evidence
+        run: |
+          set -euo pipefail
+          dest=artifacts/g4c7-m34-verified-native-evidence
+          test ! -e "$dest"
+          mkdir -p "$dest"
+          cp -p m34_verified_download/* "$dest/"
+          cat > "$dest/README_EVIDENCE_ONLY.md" <<'TXT'
+          # M34 editable native Blender research evidence — NOT ADOPTED
+
+          All 17 original files are from workflow run 41285017950, artifact 13075335068.
+          Origin source commit: ce2dfcd6d8baf88c0605c5aed2b76c033d357b03
+          These are genuine .blend, GLB, same-camera native renders and SHA256 manifest.
+          The authoring method succeeded; ART is HOLD / not a successful giant city.
+          Research access, habitation, whole-body clearance and formal 331/993 not proven.
+          One research-room floor threshold is physically unsupported at a tested point.
+          No Minecraft Education construction or city integration.
+          This is an append-only evidence archive, never final design approval.
+          TXT
+      - name: Commit only new artifact files to existing Draft PR branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- artifacts/g4c7-m34-verified-native-evidence
+          git diff --cached --quiet && { echo "No evidence to commit"; exit 1; }
+          git commit -m "research(g4c7): preserve M34 native BLEND evidence ART HOLD"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
