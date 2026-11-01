@@ -1,0 +1,51 @@
+{
+  "status": "LIMITED_NATIVE_METHOD_AND_LOCAL_FLOOR_PASS_ART_REJECT",
+  "source_run": 41286872320,
+  "original_artifact_id": 13074969646,
+  "saved_glb_nodes": 208,
+  "native_blend_reopen": true,
+  "public_5_surfaces": true,
+  "door_two_sided_surfaces": {
+    "fab": {
+      "outside": true,
+      "inside": true
+    },
+    "research": {
+      "outside": true,
+      "inside": true
+    },
+    "habitat": {
+      "outside": true,
+      "inside": true
+    },
+    "culture": {
+      "outside": true,
+      "inside": true
+    }
+  },
+  "actual_stair_tread_count": {
+    "HAB": 72,
+    "RESEARCH": 72
+  },
+  "stair_three_check_heights": {
+    "HAB": [
+      0.2500000074505806,
+      8.99999962002039,
+      17.99999962002039
+    ],
+    "RESEARCH": [
+      0.2500000074505806,
+      8.99999962002039,
+      17.99999962002039
+    ]
+  },
+  "upper_bridge_support": true,
+  "negative_nonexistent_street_detected": true,
+  "culture_camera_inside_real_tier": true,
+  "art": "REJECT",
+  "adopted": 0,
+  "formal_331_993": "NOT_RUN",
+  "continuous_body_clearance": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "limitations": "NO ART SUCCESS, NO CERTIFIED HUMAN ROUTE, NO CITY CONSTRUCTION"
+}

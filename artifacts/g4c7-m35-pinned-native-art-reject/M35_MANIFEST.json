@@ -1,0 +1,81 @@
+{
+  "study": "M35_FOUR_INHABITED_DISTRICTS_AND_TWO_PUBLIC_AXES",
+  "art": "HOLD_NOT_ADOPTED",
+  "minecraft": "NO_WRITES",
+  "formal_safety": "331_993_NOT_RUN",
+  "full_body_sweep": "NOT_RUN",
+  "structure": "NOT_CERTIFIED",
+  "scale": "ABSTRACT_RESEARCH_UNITS_NOT_MINECRAFT_METERS",
+  "street_floor_z": 0.2,
+  "upper_stair_z": 18.2,
+  "doors": {
+    "fabrication": [
+      -96,
+      -30,
+      0.2
+    ],
+    "research": [
+      96,
+      30,
+      0.2
+    ],
+    "habitat": [
+      -90,
+      30,
+      0.2
+    ],
+    "culture": [
+      90,
+      -30,
+      0.2
+    ]
+  },
+  "cameras": {
+    "SOUTH": {
+      "file": "M35_SOUTH.png",
+      "sha256": "077038bc82e279d042231d89f22ea49565ea682e3aa418ccc54d45ed3805e713"
+    },
+    "NORTH": {
+      "file": "M35_NORTH.png",
+      "sha256": "332b3dba19f95ec4c9347e7ed560b7026e8526191a735efd95a5caaf6f1fdd6e"
+    },
+    "AERIAL": {
+      "file": "M35_AERIAL.png",
+      "sha256": "cdc3d200e859704d29ff9be10570295e99014cfabe97514a1ecacb93f4abee25"
+    },
+    "PUBLIC_EYE": {
+      "file": "M35_PUBLIC_EYE.png",
+      "sha256": "5fd61891ee241d16da363ee9a739684056edb5e7fbf8494cd0bab43b44019c55"
+    },
+    "FAB_EYE": {
+      "file": "M35_FAB_EYE.png",
+      "sha256": "2d3a1ea049650e18fc7a59af7b13b46fabec169770814c50ebc95b21f49f037d"
+    },
+    "RESEARCH_EYE": {
+      "file": "M35_RESEARCH_EYE.png",
+      "sha256": "38a97aa89d15d527d0a7e5d9f7e2bd527ec18aa1f14d821455b0df9895e510b5"
+    },
+    "HAB_EYE": {
+      "file": "M35_HAB_EYE.png",
+      "sha256": "c7445ae157c3d6eed062987f4d0364869c9702045af1937a218ec4886d9baba9"
+    },
+    "CULTURE_EYE": {
+      "file": "M35_CULTURE_EYE.png",
+      "sha256": "9909401b1fc3d789d13fb37f87f207970cfa85f8ce12b6796133b64fc9e14d0a"
+    },
+    "UPPER_BRIDGE_EYE": {
+      "file": "M35_UPPER_BRIDGE_EYE.png",
+      "sha256": "6f222e32653c6dfe7b899d26ba667d02f92c3845b1a584c6eaa00d43fa49c6cb"
+    }
+  },
+  "blend": {
+    "file": "M35_NATIVE_CITY_ART_HOLD.blend",
+    "sha256": "2cb51ded85bb5f541fd56058f14e639098e6592e7082e41c417083a16d55dce4"
+  },
+  "glb": {
+    "file": "M35_SAVED_CITY_ART_HOLD.glb",
+    "sha256": "45c7bd89e0047dffaedd7ee121e9cfb1d540e58a8b3dc9ec99e22db5f56a77ca"
+  },
+  "full_city_art": "NOT_EVALUATED_BY_AUTOMATION",
+  "official_adoption": 0
+}
