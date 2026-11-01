@@ -37,7 +37,7 @@
 | Work | **ユーザー事前明示承認制、Chat中心** |
 
 研究ブランチ：**\`dev/g4c7-a17-monolithic-rift-fold-art-study\`**。
-新統合文書作成前に照合したHEAD：\`50285ae9b7948d2404b223437c73efe88b4b8cab\`。**引き継ぎ保存でHEADは変わった。決してこのSHAにリセットせず、毎回現在のPR headを確認する。** 前HEADの通常 Verify #41352198482 は調査時QUEUED（新チャットで要再確認）。専用P1成功は確定。
+新統合文書作成前に照合したHEAD：\`50285ae9b7948d2404b223437c73efe88b4b8cab\`。**引き継ぎ保存でHEADは変わった。決してこのSHAにリセットせず、毎回現在のPR headを確認する。** 前HEADの通常 Verify [#41352198482](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41352198482) は再照合で**SUCCESS**。本引き継ぎコミットのVerifyは別実行なので次チャットで再照合。専用P1成功は確定。
 
 ## 変更禁止の重要な方針
 
