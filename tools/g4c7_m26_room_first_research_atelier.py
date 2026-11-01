@@ -136,7 +136,7 @@ def make():
  # Right wall deliberately opalescent glass between slender masonry piers,
  # so the room reads as inhabitable light rather than a monolithic curtain.
  for y in (-9.0,-4.5,0,4.5,9.0):
-  link("east_stone_mullion_%d"%int((y+10)*10),(8.6,y,.0),(8.6,y,loft_arch(8.3))-.0 if False else (8.6,y,4.9),.21,"dark")
+  link("east_stone_mullion_%d"%int((y+10)*10),(8.6,y,.0),(8.6,y,4.9),.21,"dark")
  for y in (-6.75,-2.25,2.25,6.75):
   cube("east_large_daylight_glazing_%d"%int((y+10)*10),(8.64,y,2.8),(.07,4.3,4.6),"glass")
  # The back wall is OPEN at the central panoramic garden frame (no fake opaque backdrop).
@@ -184,8 +184,8 @@ def make():
  cube("research_primary_studio_desk",(-4.3,-1.7,.93),(4.4,2.0,.18),"slate",.10)
  for x in (-5.9,-3.1):
   cylinder("research_primary_desk_leg_%d"%int(x*10),(x,-1.7,.47),.09,.91,"dark")
- cube("interactive_instrument_display",(-4.65,-1.2,1.68),(2.7,.17,1.35),"screen",.07)
- cube("instrument_display_back",(-4.65,-1.3,1.70),(2.95,.23,1.55),"dark",.07)
+ cube("interactive_instrument_display",(-4.65,-1.44,1.68),(2.7,.17,1.35),"screen",.07)
+ cube("instrument_display_back",(-4.65,-1.08,1.70),(2.95,.23,1.55),"dark",.07)
  for i,x in enumerate((-5.7,-5.25,-4.8,-4.35,-3.9)):
   cube("scientist_instrument_control_%d"%i,(x,-1.8,1.05),(.19,.47,.14),"brass",.04)
  cylinder("research_operator_chair",(-4.1,-4.03,.61),.65,.19,"fabric")
@@ -216,7 +216,7 @@ def make():
   link("outdoor_stem_%d"%j,(x,y,-.1),(x,y,3.1+j*.55),.16,"dark")
   bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2,radius=1.6+j*.18,
       location=world((x,y,3.15+j*.55)))
-  take(bpy.context,"outdoor_sapling_%d"%j,"leaf2") if False else take(bpy.context.object,"outdoor_sapling_%d"%j,"leaf2")
+  take(bpy.context.object,"outdoor_sapling_%d"%j,"leaf2")
  # Handcrafted hanging task lights with actual lights at eye-scaled positions.
  for j,(x,y,z) in enumerate(((-5,-.65,5.8),(5.2,1.3,5.7),(0,2.15,6.3))):
   cylinder("pendant_luminous_diffuser_%d"%j,(x,y,z),.45,.13,"light")
@@ -263,6 +263,9 @@ def make():
   "outdoor_atrium":(0,13.1,2.7)
  }
  frame={}
+ # bpy camera transform is lazy: force dependency-graph update before
+ # world_to_camera_view to prevent stale view matrices and false negatives.
+ bpy.context.view_layer.update()
  for n,p in anchors.items():
   q=world_to_camera_view(scene,camera,Vector(world(p)))
   frame[n]={"nx":round(float(q.x),4),"ny":round(float(q.y),4),"depth":round(float(q.z),4)}
