@@ -1,0 +1,24 @@
+name: G4C7 M37-P0 source-of-form intent and isolation gates (NO ART PASS)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p0_author_source_contract_guard.py
+      - research/g4c7-b11-r5-d56/p2/d3s26/M37P0_SHARED_AUTHOR_DECISION_SOURCE_OF_FORM_V1.json
+      - .github/workflows/g4c7-m37p0-author-input-contract.yml
+permissions:
+  contents: read
+jobs:
+  source-input-only-never-art-or-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Static source, six deliberate negative cases, and immutable nonapproval
+        run: |
+          python -m py_compile tools/g4c7_m37p0_author_source_contract_guard.py
+          python tools/g4c7_m37p0_author_source_contract_guard.py
+          echo "M37P0_ONLY_INTENT_GUARD; NO ART, NATIVE BUILD, 331/993 OR MINECRAFT CHECK."
