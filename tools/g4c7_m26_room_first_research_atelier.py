@@ -248,7 +248,7 @@ def make():
  camera.location=world((.8,-10.7,1.78))
  aim=Vector(world((0,2.1,2.45)))
  camera.rotation_euler=(aim-camera.location).to_track_quat("-Z","Y").to_euler()
- camera_data.lens=26.5;scene.camera=camera
+ camera_data.lens=23.5;scene.camera=camera
  scene.render.engine="CYCLES";scene.cycles.samples=22
  scene.render.resolution_x=1200;scene.render.resolution_y=760
  scene.render.resolution_percentage=100
