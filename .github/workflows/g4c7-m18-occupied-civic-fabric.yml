@@ -1,0 +1,101 @@
+name: G4C7 M18 M17 seed to occupied civic precinct native Blender
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "research/g4c7-b11-r5-d56/p2/d3s26/M18_SOURCE_BZIP2_BASE64.txt"
+      - ".github/workflows/g4c7-m18-occupied-civic-fabric.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m18-native-precinct
+  cancel-in-progress: false
+jobs:
+  real-native-architecture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover original M17 native Blender guide
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m17-native-topology-guide-NOT-CITY-ART-HOLD
+          run-id: 41255531505
+          github-token: ${{ github.token }}
+          path: artifacts/m18_immutable_m17_seed
+      - name: Verify M18 source exactly and the original M17 scene before Blender
+        run: |
+          python - <<'PY'
+          import base64,bz2,hashlib,pathlib
+          p=pathlib.Path("research/g4c7-b11-r5-d56/p2/d3s26/M18_SOURCE_BZIP2_BASE64.txt")
+          src=bz2.decompress(base64.b64decode(p.read_text().strip()))
+          assert len(src)==21209,len(src)
+          assert hashlib.sha256(src).hexdigest()=="eccdce1d7c2f78074eee16fcfecabcf4f4c26ff8b0d900ae8df7ce409ce58e47"
+          dst=pathlib.Path("tools/g4c7_d3s26_m18_occupied_fabric.py")
+          assert not dst.exists()
+          dst.write_bytes(src)
+          print("M18_FULL_READABLE_SOURCE_DECODED_AND_SHA256_PASS")
+          PY
+          python -m py_compile tools/g4c7_d3s26_m18_occupied_fabric.py
+          python tools/g4c7_d3s26_m18_occupied_fabric.py --preflight
+      - name: Install official native Blender Python 4.5.15
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build genuine M18 architecture on M17 native editable scene
+        run: python tools/g4c7_d3s26_m18_occupied_fabric.py
+      - name: Check real saved BLEND and actual 48 treads, 7 street meshes, 8 images
+        run: |
+          python - <<'PY'
+          import bpy,os,hashlib,json,struct
+          from pathlib import Path
+          from mathutils import Vector
+          p=Path("artifacts/g4c7-m18-occupied-civic-fabric")/("run_"+os.environ["GITHUB_SHA"][:12])
+          m=json.loads((p/"manifest.json").read_text())
+          assert m["art"]=="HOLD_NOT_APPROVED" and m["adopted"]==0 and m["minecraft"]=="FORBIDDEN"
+          assert m["actual_stair_treads"]==48 and len(m["views"])==8
+          for name,key,header in (("M18_EDITABLE_OCCUPIED_CIVIC_FABRIC.blend","blend_sha256",b"BLENDER"),
+                                  ("M18_ARCHITECTURE_UNAPPROVED.glb","glb_sha256",b"glTF")):
+            raw=(p/name).read_bytes()
+            assert raw.startswith(header)
+            assert hashlib.sha256(raw).hexdigest()==m[key]
+          for name,v in m["views"].items():
+            raw=(p/("M18_"+name+".png")).read_bytes()
+            assert raw[:8]==b'\x89PNG\r\n\x1a\n'
+            assert struct.unpack(">II",raw[16:24])==(960,540)
+            assert hashlib.sha256(raw).hexdigest()==v["sha256"]
+          bpy.ops.wm.open_mainfile(filepath=str((p/"M18_EDITABLE_OCCUPIED_CIVIC_FABRIC.blend").resolve()))
+          guide=bpy.data.collections.get("M17_TOPOLOGY_AUTHORING_GUIDE_NOT_CITY")
+          assert guide and guide.hide_render
+          for must in ("M18_MAKER_TRUE_INTERIOR_FLOOR","M18_MARKET_TRUE_OCCUPIED_FLOOR",
+                       "M18_RESEARCH_OBSERVER_INHABITED_PLATFORM","M18_MAKER_PUBLIC_ENTRY_LEFT",
+                       "M18_TRUE_MIDLEVEL_LANDING","M18_TRUE_UPPER_STAIR_LANDING",
+                       "M18_RESIDENTIAL_THRESHOLD_REAL_FLOOR"):
+            assert bpy.data.objects.get(must),must
+          def maxz(ob):
+            return max((ob.matrix_world@Vector(v)).z for v in ob.bound_box)
+          for fl in (1,2):
+            for k in range(1,25):
+              o=bpy.data.objects.get("M18_TRUE_VISITOR_STAIR%d_TREAD_%02d"%(fl,k))
+              assert o and o.type=="MESH"
+              want=(fl-1)*4.8+k*.2
+              assert abs(maxz(o)-want)<.001,(fl,k,maxz(o),want)
+              assert o.dimensions.x>5.99 and o.dimensions.y>.59
+          assert sum(n.startswith("M18_TRUE_STREET_") for n in bpy.data.objects.keys())==7
+          assert sum(n.startswith("M18_CAMERA_") for n in bpy.data.objects.keys())==8
+          print("M18_SAVED_NATIVE_REOPEN_48_STAIRS_7_FLOORS_EIGHT_RENDERS_PASS_NOT_SAFETY_OR_ART_PASS")
+          PY
+      - name: Preserve native scene, images, GLB and readable source even if QA fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m18-occupied-native-fabric-ART-HOLD
+          path: |
+            artifacts/g4c7-m18-occupied-civic-fabric/run_*/
+            tools/g4c7_d3s26_m18_occupied_fabric.py
+          retention-days: 21
+          if-no-files-found: warn
