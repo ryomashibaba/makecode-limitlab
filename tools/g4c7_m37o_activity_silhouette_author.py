@@ -17,8 +17,12 @@ def sha(p):
         for b in iter(lambda:f.read(1024*1024),b""):h.update(b)
     return h.hexdigest()
 assert SOURCE.is_file() and sha(SOURCE)==PIN,"M37-N native parent not pinned"
-bpy.ops.wm.read_factory_settings(use_empty=True)
+bpy.ops.wm.read_factory_settings(use_empty=False)
+# Remove all startup meshes, lights and cameras; this is not a relabelled default scene.
+for old in list(bpy.data.objects):
+    bpy.data.objects.remove(old,do_unlink=True)
 sc=bpy.context.scene
+assert sc is not None
 sc.name="M37O_A_INHABITED_SHIPYARD_SEAM_COARSE_ART_HOLD"
 for k,v in {
  "M37O_ART":"EARLY_REVIEW_REQUIRED_NOT_PASSED",
