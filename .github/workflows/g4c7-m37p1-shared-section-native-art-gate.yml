@@ -1,0 +1,102 @@
+name: G4C7 M37-P1 real native coupled civic-shipyard visual gate ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p1_coupled_civic_shipyard_native.py
+      - tools/g4c7_m37p1_independent_native_section_audit.py
+      - .github/workflows/g4c7-m37p1-shared-section-native-art-gate.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37p1-native-author-single-writer
+  cancel-in-progress: true
+jobs:
+  native-model-and-independent-art-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile and source-pin old rejected native source
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p1_coupled_civic_shipyard_native.py tools/g4c7_m37p1_independent_native_section_audit.py
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path("artifacts/g4c7-m37o1-verified-native-activity-author-art-hold/M37O_A_REAL_ACTIVITY_SILHOUETTE_AUTHOR_ART_HOLD.blend")
+          d=json.loads(Path("research/g4c7-b11-r5-d56/p2/d3s26/M37P0_SHARED_AUTHOR_DECISION_SOURCE_OF_FORM_V1.json").read_text())
+          assert p.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=="7845343514b79067835ddbbd18aabf93439a391f4a2c0983227475b18331b2f1"
+          assert d["status"]=="AUTHOR_INPUT_ONLY_NOT_ART" and d["formal_art_adoptions"]==0
+          assert d["minecraft"]=="FORBIDDEN" and d["proposed_geometry"]=="NONE_NOT_GENERATED"
+          print("M37P1_REJECTED_SOURCE_IMMUTABLE_AND_AUTHOR_INPUT_PINNED")
+          PY
+      - name: Install authentic Blender native Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy;assert bpy.app.version[:2]==(4,5)"
+      - name: Generate single same-author urban macro and inhabited cross-section
+        run: |
+          python -u tools/g4c7_m37p1_coupled_civic_shipyard_native.py
+      - name: Independent fresh Blender reopen, true vertex dependencies, 7 image hashes, 6 native negative controls
+        run: |
+          python -u tools/g4c7_m37p1_independent_native_section_audit.py
+      - name: Archive only after independent limited-method success (NO ART ADOPTION)
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          r=Path("artifacts/g4c7-m37p1-shared-section-build")
+          m=json.loads((r/"M37P1_AUTHOR_MANIFEST.json").read_text())
+          a=json.loads((r/"M37P1_INDEPENDENT_NATIVE_AUDIT.json").read_text())
+          assert a["result"]=="LIMITED_M37P1_NATIVE_SHARED_AUTHOR_METHOD_REOPEN_PASS"
+          assert len(a["physical_negative_controls_rejected"])==6
+          assert len(m["same_saved_native_renders"])==7
+          assert m["art"]=="EARLY_REVIEW_REQUIRED_UNAPPROVED"
+          assert a["new_city_art"]=="UNREVIEWED_NEVER_AUTOMATIC_PASS"
+          assert a["official_adoption"]==m["formal_adoption"]==0
+          assert a["Minecraft"]==m["Minecraft"]=="FORBIDDEN"
+          assert a["human_walking_331_993"]==m["formal_331_993"]=="NOT_RUN"
+          assert a["S1_G1_G2_G3"]==m["S1_G1_G2_G3"]=="NOT_RUN"
+          assert m["old_pavilions_and_tubes_imported"]==0
+          native=r/m["native_blend"]["name"]
+          assert hashlib.sha256(native.read_bytes()).hexdigest()==m["native_blend"]["sha256"]
+          print("M37P1_SAVE_AND_LIMITED_TECH_GATE_PASS; ART_UNJUDGED")
+          PY
+          target=artifacts/g4c7-m37p1-verified-native-interlocked-urban-author-art-hold
+          test ! -e "$target"
+          mkdir -p "$target"
+          cp -p artifacts/g4c7-m37p1-shared-section-build/* "$target/"
+          cp -p tools/g4c7_m37p1_coupled_civic_shipyard_native.py tools/g4c7_m37p1_independent_native_section_audit.py "$target/"
+          cat > "$target/README_JA.md" <<'TXT'
+          # M37-P1：共有作者判断による市民生活・宇宙機製造・研究・居住・文化の一体3D断面
+          
+          不採用M37-O1の独立した7棟をコピーせず、M37-P0入力契約の4つの共同意思決定を、実際のBlenderメッシュの床・街路・開放造船所・研究採光・居住の私的境界・文化高所に同時反映する別作者原本。保存済み真正BLEND・同じシーンの7画像・SHA manifest・独立再読込と6故意不正を照合。
+          
+          **重要：CI SUCCESSは限定TECHのみ。真正7視点を目視するまで新都市の美術は未審査であり、ART PASSと書いてはいけない。** 高密度で独創的な巨大未来都市と読めなければEARLY ART REJECTとし、形態の追加装飾で延命しない。床・歩行・工場隔壁・住宅プライバシー・構造・避難・安全・MakeCodeの品質は一切認証していない。
+          
+          **全体ART HOLD・正式採用0・正規331/993とS1/G1/G2/G3 NOT RUN・Minecraft Education施工/都市統合禁止・main変更禁止・PR #53 Draft・Work事前承認制を維持。**
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$target"
+          git diff --cached --quiet && { echo "No verified new artifacts"; exit 1; }
+          git commit -m "research(g4c7): archive M37-P1 pinned true native city-section and negative audits ART HOLD"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Keep unapproved native candidates inspectable on failed run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37p1-coupled-native-unapproved-ART-HOLD
+          path: artifacts/g4c7-m37p1-shared-section-build
+          retention-days: 21
+          if-no-files-found: warn
