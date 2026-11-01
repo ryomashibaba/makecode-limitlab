@@ -1,0 +1,61 @@
+name: G4C7 M29B real M29 source readback + single exit eye art diagnostic
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m29b_exit_eye_native.py"
+      - "tools/g4c7_m29b_source_and_exit_readback.py"
+      - ".github/workflows/g4c7-m29b-exit-art-gate.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m29b-early-exit-eye
+  cancel-in-progress: false
+jobs:
+  pinned-source-and-one-native-camera:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover original native M29 evidence even if its old audit had a key typo
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m29-gallery-to-actual-outdoor-court-ART-HOLD
+          run-id: 41276327772
+          github-token: ${{ github.token }}
+          path: artifacts/m29b_immutable_m29
+      - name: Recover original M28B comparison GLB
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m28b-gallery-fixed-camera-sightline-ART-HOLD
+          run-id: 41275412167
+          github-token: __TOKEN__
+          path: artifacts/m29b_immutable_m28b
+      - name: Reproducible Python preflight and pinned evidence
+        run: |
+          python -m py_compile tools/g4c7_m29b_exit_eye_native.py tools/g4c7_m29b_source_and_exit_readback.py
+          python tools/g4c7_m29b_exit_eye_native.py --preflight
+      - name: Read original saved GLBs BEFORE rendering, fix prior metadata key mismatch
+        run: |
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "shapely==2.1.2" "numpy==2.3.4"
+          python tools/g4c7_m29b_source_and_exit_readback.py --original
+      - name: Install actual Blender 4.5.15
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Change only M29 outdoor camera viewpoint and render ONE scene image
+        run: python tools/g4c7_m29b_exit_eye_native.py
+      - name: Verify actual native saved camera and exact image identity
+        run: python tools/g4c7_m29b_source_and_exit_readback.py --camera
+      - name: Archive full independent audit and camera-only experiment
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m29b-camera-only-true-outdoor-court-ART-HOLD
+          path: artifacts/g4c7-m29b-exit-human-eye/run_*/
+          retention-days: 21
+          if-no-files-found: warn
