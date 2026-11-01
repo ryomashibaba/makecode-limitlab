@@ -1,0 +1,51 @@
+name: G4C7 M29 true open-air visitor science garden native + local contact gate
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_m29_native_open_air_science_garden.py"
+      - "tools/g4c7_m29_independent_glb_audit.py"
+      - ".github/workflows/g4c7-m29-open-air-art-gate.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m29-real-open-air-science-art
+  cancel-in-progress: false
+jobs:
+  native-edit-and-fixed-eyes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recover pinned original M28B editable source
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m28b-gallery-fixed-camera-sightline-ART-HOLD
+          run-id: 41275412167
+          github-token: ${{ github.token }}
+          path: artifacts/m29_pinned_m28b
+      - name: Source SHA256 and syntax
+        run: |
+          python -m py_compile tools/g4c7_m29_native_open_air_science_garden.py tools/g4c7_m29_independent_glb_audit.py
+          python tools/g4c7_m29_native_open_air_science_garden.py --preflight
+      - name: Install genuine Blender and independent GLB testing
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -m pip install --disable-pip-version-check "trimesh==4.7.4" "shapely==2.1.2" "numpy==2.3.4"
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Extend occupied M28B gallery with true open-air court and 3 Cycles eyes
+        run: python tools/g4c7_m29_native_open_air_science_garden.py
+      - name: Independent saved geometry and SHA validation with formal QA explicitly held
+        run: python tools/g4c7_m29_independent_glb_audit.py
+      - name: Archive all true native artifacts without city/build approval
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m29-gallery-to-actual-outdoor-court-ART-HOLD
+          path: artifacts/g4c7-m29-open-air-experience/run_*/
+          retention-days: 21
+          if-no-files-found: warn
