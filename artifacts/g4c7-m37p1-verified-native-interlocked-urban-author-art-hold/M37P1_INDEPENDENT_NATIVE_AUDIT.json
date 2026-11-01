@@ -1,0 +1,32 @@
+{
+  "result": "LIMITED_M37P1_NATIVE_SHARED_AUTHOR_METHOD_REOPEN_PASS",
+  "parent_source_original_unchanged": true,
+  "new_native_saved_sha256": "ca402f8e58269535bd6838cc8e5201000e9bc137dc578f0751f76bcb0d3b262d",
+  "shared_intent_mesh_dependency_tags_verified": [
+    "shared_maker_clearance",
+    "research_daylight_transfer",
+    "habitat_graded_threshold",
+    "upper_civic_link"
+  ],
+  "coupled_real_geometry_coefficient_checks": 9,
+  "same_native_fixed_cameras": 9,
+  "same_native_render_sha_verified": 7,
+  "physical_negative_controls_rejected": [
+    "maker_clearance_uncoupled",
+    "research_daylight_uncoupled",
+    "habitat_threshold_uncoupled",
+    "upper_civic_uncoupled",
+    "factory_public_seal_removed",
+    "private_habitat_threshold_erased"
+  ],
+  "new_city_art": "UNREVIEWED_NEVER_AUTOMATIC_PASS",
+  "full_city_density": "NOT_CERTIFIED",
+  "human_walking_331_993": "NOT_RUN",
+  "S1_G1_G2_G3": "NOT_RUN",
+  "public_private_worker_separation": "GEOMETRY_ONLY_NOT_CERTIFIED",
+  "human_path_sweep": "NOT_RUN",
+  "structural_support": "NOT_CERTIFIED",
+  "MakeCode_cost": "NOT_RUN",
+  "Minecraft": "FORBIDDEN",
+  "official_adoption": 0
+}

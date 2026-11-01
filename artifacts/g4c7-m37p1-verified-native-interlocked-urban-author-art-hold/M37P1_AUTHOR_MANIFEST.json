@@ -1,0 +1,116 @@
+{
+  "schema": "g4c7-m37p1-native-shared-author-section-v1",
+  "art": "EARLY_REVIEW_REQUIRED_UNAPPROVED",
+  "formal_adoption": 0,
+  "formal_331_993": "NOT_RUN",
+  "S1_G1_G2_G3": "NOT_RUN",
+  "Minecraft": "FORBIDDEN",
+  "MakeCode_estimate": "NOT_EVALUATED",
+  "previous_M37O1_art": "EARLY_REJECT_NOT_REUSED",
+  "old_pavilions_and_tubes_imported": 0,
+  "source_contract_sha256": "9fa63ba16d17d7e01a9e82f771f0d2374e174396898e2f4e95c56b79b3a1474f",
+  "old_M37O1_blend_pin": "7845343514b79067835ddbbd18aabf93439a391f4a2c0983227475b18331b2f1",
+  "shared_author_decisions": {
+    "shared_maker_clearance": 54.0,
+    "research_daylight_transfer": 12.0,
+    "habitat_graded_threshold": 11.0,
+    "upper_civic_link": 17.0
+  },
+  "actual_native_meshes_tied_to_author_decisions": {
+    "shared_maker_clearance": [
+      "M37P1_MAKER_OBSERVATION_LEDGE",
+      "M37P1_WEST_TECTONIC_MAKER_WING",
+      "M37P1_EAST_RESEARCH_MAKER_WING",
+      "M37P1_GANTRY_OCCUPIED_LOFT",
+      "M37P1_SHIPYARD_ACTUAL_PUBLIC_STAFF_SEAL",
+      "M37P1_ASSEMBLY_GANTRY_ARM_00",
+      "M37P1_ASSEMBLY_GANTRY_ARM_01",
+      "M37P1_ASSEMBLY_GANTRY_ARM_02",
+      "M37P1_LOAD_PATH_RIB_02",
+      "M37P1_LOAD_PATH_RIB_03"
+    ],
+    "research_daylight_transfer": [
+      "M37P1_MAKER_OBSERVATION_LEDGE",
+      "M37P1_RESEARCH_SHARED_PLAZA",
+      "M37P1_COMMONS_TO_MAKER_SECTION",
+      "M37P1_RESEARCH_TO_CULTURE_BRAID",
+      "M37P1_SHIPYARD_ACTUAL_PUBLIC_STAFF_SEAL",
+      "M37P1_RESEARCH_SUN_SHELF_LEFT",
+      "M37P1_RESEARCH_SUN_SHELF_RIGHT"
+    ],
+    "habitat_graded_threshold": [
+      "M37P1_HABITAT_PRIVATE_COURT",
+      "M37P1_PRIVATE_THRESHOLD",
+      "M37P1_HABITAT_PRIVATE_VIEW_BREAK",
+      "M37P1_HABITAT_LIGHT_EDGE_00",
+      "M37P1_HABITAT_BAY_DIVIDER_00",
+      "M37P1_HABITAT_PRIVATE_BALCONY_00",
+      "M37P1_HABITAT_LIGHT_EDGE_01",
+      "M37P1_HABITAT_BAY_DIVIDER_01",
+      "M37P1_HABITAT_PRIVATE_BALCONY_01",
+      "M37P1_HABITAT_LIGHT_EDGE_02",
+      "M37P1_HABITAT_BAY_DIVIDER_02",
+      "M37P1_HABITAT_PRIVATE_BALCONY_02"
+    ],
+    "upper_civic_link": [
+      "M37P1_CULTURE_CIVIC_FORUM",
+      "M37P1_UPPER_OPEN_SKY_DECK",
+      "M37P1_RESEARCH_TO_CULTURE_BRAID",
+      "M37P1_CULTURE_HANGING_LOGGIA",
+      "M37P1_LOAD_PATH_RIB_04"
+    ]
+  },
+  "native_scene": "M37P1_CIVIC_SHIPYARD_SHARED_AUTHOR_SECTION_ART_HOLD",
+  "native_blend": {
+    "name": "M37P1_ONE_COUPLED_NATIVE_CITY_ART_HOLD.blend",
+    "sha256": "ca402f8e58269535bd6838cc8e5201000e9bc137dc578f0751f76bcb0d3b262d",
+    "bytes": 1005323
+  },
+  "cameras": [
+    "SOUTH",
+    "NORTH",
+    "AERIAL",
+    "PUBLIC_EYE",
+    "MAKER_EYE",
+    "RESEARCH_EYE",
+    "HABITAT_EYE",
+    "CULTURE_EYE",
+    "UPPER_EYE"
+  ],
+  "same_saved_native_renders": {
+    "AERIAL": {
+      "name": "M37P1_AERIAL.png",
+      "sha256": "b21034cdd20b7af2496a458f2d6d29de974a594ea38e52fb1736538eb65e1299"
+    },
+    "PUBLIC_EYE": {
+      "name": "M37P1_PUBLIC_EYE.png",
+      "sha256": "daf885250290b3e168195b7ebfa1a8c314aa119fa386d816f5cbc236bb61a487"
+    },
+    "MAKER_EYE": {
+      "name": "M37P1_MAKER_EYE.png",
+      "sha256": "950285062223c89c97eed78dc31b3806630cba5aae2a6a5801129d5878e60f51"
+    },
+    "RESEARCH_EYE": {
+      "name": "M37P1_RESEARCH_EYE.png",
+      "sha256": "102e6c4b3167af073cc6cad12095cb0f88099a51387900a884a8e51f3f0b3a7b"
+    },
+    "HABITAT_EYE": {
+      "name": "M37P1_HABITAT_EYE.png",
+      "sha256": "bb1bedca0168059cba4eac1c2c89f5d12b2db41bc31693c456e83d16aca5d7e7"
+    },
+    "CULTURE_EYE": {
+      "name": "M37P1_CULTURE_EYE.png",
+      "sha256": "2277d1b3cbee29e54bf7954b597686700fa02a468a17779c8d706ef88082a67f"
+    },
+    "UPPER_EYE": {
+      "name": "M37P1_UPPER_EYE.png",
+      "sha256": "47c2fbf701962fd27548e9c88f23817111f92ee75026c746b16924e19309bebc"
+    }
+  },
+  "physical_habitat_privacy": "WALL_PRESENT_NOT_CERTIFIED",
+  "physical_factory_public_separation": "MESH_PRESENT_NOT_CERTIFIED",
+  "walkable_full_route": "NOT_CERTIFIED",
+  "connected_multiprogram_architecture": "EARLY_VISUAL_REVIEW_REQUIRED",
+  "construction_material_structure": "NOT_CERTIFIED",
+  "declaration": "One deliberately authored integrated rough city plus representative inhabited section, not a valid beautiful city, safety clearance or construction plan."
+}
