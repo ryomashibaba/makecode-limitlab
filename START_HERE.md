@@ -1,76 +1,62 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
-**チャット移行の唯一の入口。2026-11-02 JST更新。GitHub研究ブランチが正本。** 長い引き継ぎ文の再コピー、ZIP再添付、過去の計画の再決定は不要。
+**チャットを移ってもここから再開する。GitHubの現在の研究ブランチが正本。2026-11-02 JST更新。**
+旧チャット全文・古いZIP・長い引き継ぎ文をユーザーへ要求しない。前工程をやり直さず、前の方針や不採用を再決定しない。
 
-## 最新：M37-P1 7視点ART REJECT／P2は制作方法の切替（2026-11-02 JST）
+## 最優先で読む新しい統合引き継ぎ
 
-- **[M37-P1真正7視点による厳格ART REJECT・P2方法再設計の正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P1_NATIVE_SEVEN_VIEW_EARLY_ART_REJECT_AND_P2_AUTHOR_METHOD_RESET_JA.md)**。修正後の専用[Actions #41351764632](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41351764632)は**SUCCESS**。BLEND、7真正Cycles画像、manifest、独立再読込監査・6負例が[アーカイブ](artifacts/g4c7-m37p1-verified-native-interlocked-urban-author-art-hold/)に実在。4作者判断と実メッシュ頂点の限定TECH検証は成立。
-- **都市美術はEARLY ART REJECT**。俯瞰に巨大板・壁・細帯が再発し、公共/文化/上層/住居の生活空間が伝わらず、研究眼高はほぼ黒。単純ロケット形状だけで本当の宇宙機製造の街並みになっていない。M37-O1のART REJECTも維持。**正式ユーザー採用0件、全体ART HOLD**。
-- 2つの真正不合格案（M37-O1独立パビリオン、M37-P1共同決定はあるが板/壁/帯優位）を踏まえ固定R1-R2方針の**2案失敗時の制作方法切替**を適用。**M37-P1の追加装飾/壁切除/階段追加/単純プリミティブ第三案は禁止**。P2は作家の手編集3D造形判断と居住・製造・研究の実体験を一次ソースに戻す研究（新BLENDの存在を捏造しない）。原本が本当に高品質になるまで機能/施工ゲートに進めない。
-- **正規331人体/993足元・G0/S1/G1/G2/G3 NOT RUN、Minecraft施工/都市統合禁止、main変更禁止、PR #53 Draft・未merge、Workは事前明示承認制**。この後の作業では最新ブランチHEADとCIを再取得する。
+**[M37-P1完了／M37-P2継続の完全統合引き継ぎ](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)**
 
-## M37-P1 実体制作へ移行（2026-11-02 JST／最新CI要再照合）
+これはM37-Nまでの全履歴を引き継いだうえで、最新M37-O1／P0／P1、2つの絶対美術REJECT、反省点、R0〜R5固定戦略、QA/施工禁止と正当な次工程を統合した**現行の第一正本**。必ず最初に確認する。
 
-- **[M37-P1真正Blender作者原本の制作工程・CI修正履歴・未確認事項](docs/G4C7_M37P1_NATIVE_ART_EVIDENCE_PENDING_20261102_JA.md)**。旧M37-O1の不採用施設とM37-L/Nのチューブ美術を再利用せず、M37-P0の4共有作者判断を実メッシュへ結びつける研究コード・独立再読込監査・7視点レンダリングCIを研究ブランチへコミット。
-- 初回 [#41351611157](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41351611157) はBlenderの`mathutils`読込順で**FAIL**。コード修正済み。再実行 [#41351764632](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41351764632) は**再開時に現在状態を確認**。CI成功とGitHubアーカイブの実在・SHA・真正7視点・厳格な美術批評の完了前に**M37-P1のMETHOD PASSやART改善を主張しない**。
-- **M37-O1 EARLY ART REJECT／全体ART HOLD／正式採用0／正式331/993・G0/S1/G1/G2/G3 NOT RUN／Minecraft施工・統合禁止／main変更禁止／PR #53 Draft／Work事前承認制**をそのまま継承。
+併せて以下を必要に応じて参照する：
+- [2026-10-28確定R0〜R5制作戦略](docs/G4C7_POST_B10_CRITICAL_STRATEGY_REVISION_JA.md)
+- [M37-P1 7真正視点の絶対ART不採用審査](research/g4c7-b11-r5-d56/p2/d3s26/M37P1_NATIVE_SEVEN_VIEW_EARLY_ART_REJECT_AND_P2_AUTHOR_METHOD_RESET_JA.md)
+- [M37-P1真正BLEND／7 PNG／manifest／独立監査／コード](artifacts/g4c7-m37p1-verified-native-interlocked-urban-author-art-hold/)
+- [M37-O1真正BLEND／5 PNG／独立監査](artifacts/g4c7-m37o1-verified-native-activity-author-art-hold/)と[EARLY ART REJECT](research/g4c7-b11-r5-d56/p2/d3s26/M37O1_SAVED_NATIVE_FIVE_VIEW_EARLY_ART_REJECT_AND_AUTHOR_INPUT_RESET_JA.md)
+- [M37-P0共有作者判断の入力原本](research/g4c7-b11-r5-d56/p2/d3s26/M37P0_SHARED_AUTHOR_DECISION_SOURCE_OF_FORM_V1.json)、[M37-K](artifacts/g4c7-m37k-verified-native-authoring-method-art-hold/)、[M37-M](artifacts/g4c7-m37m-verified-native-review-workspace-art-hold/)、[M37-N](artifacts/g4c7-m37n-verified-native-maker-exposure-art-hold/)の技術資産
+- [M37-N時点の以前の統合引き継ぎ](docs/G4C7_M37N_FULL_HANDOFF_20261102_JA.md)と[過去の長期研究履歴](docs/G4C7_LIVE_HANDOFF.md)。**これらの古い書類の「次工程M37-O」や履歴先頭D3S20は現在の次工程ではない。**
 
-## 最新：M37-O1の美術不採用とM37-P0の作者入力ゲート（2026-11-02 JST）
+## 現在の確定状態：正本は M37-P1 完了 → M37-P2
 
-- **[M37-O1真正5視点によるEARLY ART REJECTと根本原因の固定](research/g4c7-b11-r5-d56/p2/d3s26/M37O1_SAVED_NATIVE_FIVE_VIEW_EARLY_ART_REJECT_AND_AUTHOR_INPUT_RESET_JA.md)**。実BLEND＋5枚のGitHub保存真正画像を確認。俯瞰は独立した低層押出しパビリオン、公共・住宅・高所眼高は暗い/遮蔽された空間で、**都市の美術として明白に不採用**。M37-N旧チューブもART REJECTのまま。M37-O1を拡大・改装・装飾して延命しない。
-- **[M37-P0 作者が共同決定する生活断面の新入力正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P0_SHARED_AUTHOR_DECISION_SOURCE_OF_FORM_V1.json)**。各用途の独立した建築輪郭を押し出して接続する入力を禁止し、製造/見学/研究・公共/住宅私界・文化/上層が**都市外形と実床・実境界を一緒に変える**意思決定を定義。これは**形態の意図データのみ、新BLEND・新ART候補ではない**。
-- **[M37-P0入力契約ガード](tools/g4c7_m37p0_author_source_contract_guard.py)**と[専用CI #41350862339](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41350862339) **SUCCESS**。6件の故意不正を拒否し、公開ルートが工場作業域・住居私域を意図の上で横断しないことを検査。ただし**安全な実歩行・本物の共有壁・美しさは未検証**で、入力ガード成功をART PASSへ昇格しない。
-- **次の実体工程**：旧M37-O1の7独立建物を流用せず、共有意思決定が実3Dの都市外観と内部をどう同時変更するかを作家判断で新作者シーンに落とし込み、早期に真正全域/公共/製造/居住/文化/高所の固定視点で厳しく審査。見た目が悪ければ早期停止。**全体ART HOLD・正式採用0・正規331/993とS1/G1/G2/G3 NOT RUN・Minecraft施工禁止・main変更禁止・PR #53 Draft・Workは事前承認制**を絶対維持。
-
-## M37-O1追補（2026-11-02 JST／最新状態は常にActionsで再照合）
-
-**[M37-O1作者ソース・CI確認待ち・早期ARTゲートの記録](docs/G4C7_M37O1_AUTHOR_SOURCE_AND_CI_PENDING_20261102_JA.md)**。M37-Nまでの下記完全統合正本は引き続き有効。
-
-M37-Oの新規実験AのBlender作者コード・独立監査コード・[専用Actions #41321512829](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41321512829) を研究ブランチに追加した。初回記載時点はCI QUEUEDで、**真正M37-O BLEND・PNGの完成やMETHOD PASSは未確認**。ランの結果／アーカイブ原本／最新HEADを再取得するまで成功と報告しない。旧チューブ・箱群・独立キャンパスの再発は実画像で即不採用。**全体ART HOLD・正式採用0・正式安全QA NOT RUN・Minecraft施工禁止・main変更禁止・PR #53 Draft・Work事前承認制**を維持。
-
-## まず読む（この順番）
-
-1. **[M37-Nまでの全計画・全体方針・ユーザー指示・失敗・技術/安全契約・次工程を統合した日本語引き継ぎ](docs/G4C7_M37N_FULL_HANDOFF_20261102_JA.md)**。最初に全文を読む。
-2. **[2026-10-28制定のR0〜R5固定戦略](docs/G4C7_POST_B10_CRITICAL_STRATEGY_REVISION_JA.md)**。同時に全市街の粗い3Dと代表生活断面を作ること、ART-FIRST/QUALITY-FIRST、2案失敗時の方法変更は絶対方針。
-3. **[M37-Nの最新絶対美術不採用・独立安全未確認報告](research/g4c7-b11-r5-d56/p2/d3s26/M37N_REAL_NATIVE_SHIPYARD_CARVE_FIXED_VIEW_ART_REJECT_JA.md)**。
-4. **[M37-Nの真正Blender原本・5新画像・manifest・独立監査・制作コード](artifacts/g4c7-m37n-verified-native-maker-exposure-art-hold/)**、[M37-M編集ワークスペース](artifacts/g4c7-m37m-verified-native-review-workspace-art-hold/)、[M37-K室⇄外形連動技術](artifacts/g4c7-m37k-verified-native-authoring-method-art-hold/) を必要な範囲で照合する。
-5. 必要な場合に限り **[昔からの大規模研究履歴](docs/G4C7_LIVE_HANDOFF.md)** を辿る（ファイルの先頭は旧D3S20であり、現在の最新ではない）。
-
-## いま最も重要な確定状態
-
-| 区分 | 状態 |
+| 項目 | 状態 |
 |---|---|
-| G4-C7全体美術 | **ART HOLD** |
-| 正式ユーザーART採用 | **0件** |
-| 直近M37-N | 既存外殻10メッシュを真正BLENDで直接切除した**限定METHOD TECH PASS**、都市美術は**ART REJECT** |
-| 現行正式331人体/993足元QAとS1/G1/G2/G3 | **NOT RUN** |
-| 新都市Minecraft Education施工・既存都市統合 | **禁止／今回までworld writes 0** |
-| mainへの変更 | **禁止** |
-| Draft PR [#53](https://github.com/ryomashibaba/makecode-limitlab/pull/53) | **Open/Draft/未merge**（再開時に再確認） |
-| 継続ブランチ | **dev/g4c7-a17-monolithic-rift-fold-art-study** |
-| 直近専用CI | [M37-N #41318630617 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41318630617) |
-| 引き継ぎ前HEAD | **42b38673acf43de4016a26241d1d66d5d567449d**（この引き継ぎコミットより前。**固定せず現在HEADを読め**） |
+| 最終制作目標 | Minecraft Educationで最終MakeCode施工する、居住・研究・文化・宇宙機製造が一体化した巨大未来都市 |
+| **全体ART** | **HOLD** |
+| **正式ユーザー美術採用** | **0件** |
+| **M37-O1** | 5真正視点、限定METHOD成立だが分離低層パビリオン・暗い公共/住居で **EARLY ART REJECT** |
+| **M37-P0** | 作者の4共有判断のソース意図契約、[CI #41350862339 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41350862339)。真3D ART成果ではない |
+| **M37-P1最新** | 4共有決定→実メッシュ、真正BLEND・7画像・独立再読込・6負例 [CI #41351764632 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41351764632)。**限定TECH PASS／EARLY ART REJECT** |
+| 次工程 | **M37-P2：形態生成の決定権を単純プリミティブから作者の3D造形・人の体験へ戻す制作方法変更**。新BLEND未制作 |
+| 331人体／993足元、正式G0/S1/G1/G2/G3 | **NOT RUN** |
+| 自由歩行・工場隔壁/住宅私界の安全・構造・避難 | **NOT CERTIFIED** |
+| 新都市Minecraft Education施工・都市統合 | **禁止、world writes 0** |
+| MakeCodeの新都市施工時間/Fill/Clone/Place | **NOT EVALUATED** |
+| main | **変更禁止** |
+| [PR #53](https://github.com/ryomashibaba/makecode-limitlab/pull/53) | **Open／Draft／未mergeを維持**（次のChatでは再照合） |
+| Work | **ユーザー事前明示承認制、Chat中心** |
 
-**絶対安全契約**：331人体、993足元、人体半幅0.65m、足元+0.15〜+3.25m、旧干渉上限45/331、未支持0/993、負の対照。条件を緩めず、局所レイ・面重複・実メッシュ数・CI SUCCESSから正式安全を認定しない。Blender/GLBは研究表現であり、最終施工手段は**MakeCodeのみ**。
+研究ブランチ：**\`dev/g4c7-a17-monolithic-rift-fold-art-study\`**。
+新統合文書作成前に照合したHEAD：\`50285ae9b7948d2404b223437c73efe88b4b8cab\`。**引き継ぎ保存でHEADは変わった。決してこのSHAにリセットせず、毎回現在のPR headを確認する。** 前HEADの通常 Verify #41352198482 は調査時QUEUED（新チャットで要再確認）。専用P1成功は確定。
 
-**根本的反省**：何度も制作方法を変えても、箱・棚・低層キャンパス・巨殻・チューブ・巨大な空白という「簡単に自動生成できる形」が美術を支配してしまった。M37-Hの2案A/Bはいずれも美術失格。M37-Kの室/外形連動・M37-Mの直接編集環境・M37-Nの外殻切除は技術の実証であり、**新しい美しい都市を完成させたわけではない**。M37-L/Nのチューブをさらに切る/飾ることを**停止**。詳細は上記全文。
+## 変更禁止の重要な方針
 
-## 次工程 — M37-Oの方向（方針再決定はしない）
+- **ART-FIRST／QUALITY-FIRST**：遠景の地区密度・実生活・公共入口眼高・製造・研究・住宅・文化・代表室内・高所を同一真正3Dで作る。全都市粗3Dと代表の実生活断面は**同じ作者原本で同時制作**。一方だけ先行完成しない。
+- **繰り返し禁止**：箱、棚板、巨壁、アーチだけの彫刻、長いチューブ、独立キャンパス、巨大テント、道路帯、空洞模型。形状自体を一般的に禁止するのではなく、これらが都市を支配する**安易な反復・第三案生成**を禁止する。
+- **直近の2つの本物の失敗**：M37-O1は7独立多角形用途押出し＋板橋、M37-P1は共有判断を実メッシュへ伝播させても\`patch/wall/bridge\`を反復し巨大板・壁・帯へ。**同じ方式で第三の試案を作らず、P2の作者方法からやり直す。**
+- **安全契約厳守**：人体331・足元993・人体半幅0.65m・足元+0.15〜+3.25m・干渉上限45/331・未支持0/993。負例検査を伴う独立監査。局所TECH PASSからARTやS1の合格を推定しない。Blender研究単位をMinecraft 1block=1mに勝手に対応させない。
+- **禁止**：main更新、PR #53 Ready化/merge、旧BLEND/ZIP/CSV/USEDラッチ/世界の上書き、未承認のWork・外注・Minecraft world write。本人が正式ART採用を宣言するまでアシスタントは正式採用扱いしない。
 
-- 「市民が何を見る／どこへ行く」「宇宙機の実製造」「研究観察」「住宅の私的境界」「文化と高所の公共空間」が、**都市の全域立体造形と同じ作者決定で互いに形を変える**制作手順へ移る。遠景だけ/小部屋だけを先に完成させない。
-- 旧技術ライブラリK/M/Nは保持し、旧チューブ美術は流用しない。単純な第三の自動プリミティブの生成やテスト件数だけの前進は禁止。**品質に明確な価値がある真正3D**を少数・厳格に審査し、弱ければ早期停止して制作の根本原因を訂正。
-- 正式美術採用0、全体ART HOLD、正式安全QA未実施、Minecraft施工禁止・都市統合禁止、main保護、PR Draft、Work事前許可という固定条件は**新チャットでもそのまま継承**。
+## 新しいチャットの再開手順
 
-## これからの各チャットの必須操作
-
-1. このSTART_HERE、詳細ハンドオフ、根本戦略、最新M37-N原本を**GitHubから直接取得**する。ユーザーへZIP/長文資料の再提出を求めない。
-2. 同時並行開発との競合回避のためPR #53 **現在のHEAD**、最新専用Actions・通常Verify、必要な実ファイルとSHAを照合。古い引き継ぎSHAから開発しない。
-3. ユーザーが「次の工程」と指示したら、R0〜R5の正当な次工程を**実際に**進め、見た目が悪ければREJECT。計画書/メッシュ/CIの数を成果と呼ばない。Chat中心、Workは事前明示許可のみ。
-4. 毎回報告は **(a)ART絶対評価 (b)実生活・経路・支持 (c)MakeCodeコスト/未確認 (d)GitHub原本・CI (e)続行/停止**。美術結果とTECH/S1/施工を混同しない。
-5. 新しい根拠と工程の進歩が確定したらGitHubの詳細ハンドオフに日付付き補遺を追加し、この入口の現行状態・次工程を更新。**旧長大LIVE_HANDOFF、過去成果、main、旧世界は保護**。
+1. GitHub Connectorでこの入口と**上の完全統合引き継ぎ**を読み、現行ブランチHEAD、PR #53のDraft状態、最新CIと真正BLEND・manifest・画像を確認。
+2. M37-O1/P1のART REJECTを固定。原本の保存/ハッシュ・技術PASSと美術失格を区別。安全331/993・G0/S1/G1/G2/G3は全て未実施。
+3. **次にM37-P2の正当な制作方法切替を実際に進める**。出来ることはGitHubとChatで実行し、Blender GUI等Workが必要なら事前にユーザーの明示承認を得る。旧チューブ・巨大壁・板/帯・第三の自動プリミティブの延命をしない。
+4. 真正3Dの全景・公共・住宅の早期美術審査を最優先。価値がなければ早期にART REJECTし、メッシュ数やCIを品質と誤認しない。美術候補になってから機能/安全/MakeCodeへ。
+5. 結果を新統合引き継ぎへ追補し、このSTART_HEREを最新に保つ。ユーザーに長文やZIPの再提出を求めない。
 
 ---
 
-### 新しいChatGPTチャットに送る一文
+### 新しいチャットに送る最短の一文
 
-> **MakeCode LimitLab / G4-C7を、GitHubの研究ブランチにあるSTART_HERE.mdとリンク先の完全引き継ぎから継承してください。最新HEAD・PR #53・CI・実Blender原本を自分で照合し、これまでの固定方針と反省を一切変えず、M37-Nから次の正当な開発工程へ進めてください。旧チューブ案の延命、Minecraft施工・都市統合、main変更、無断Workはしないでください。**
+> MakeCode LimitLab / G4-C7を、GitHub研究ブランチのSTART_HERE.mdとリンク先のM37-P2完全統合引き継ぎから継承してください。最新HEAD・Draft PR #53・CI・真正Blender原本を照合し、M37-O1/P1のEARLY ART REJECTと全固定方針を守って次のM37-P2工程を実際に進めてください。ART HOLD・正式採用0・安全QA未実施・Minecraft施工禁止・main変更禁止・Work事前承認制。過去の失敗形態の第三案やZIP/長文再提出は禁止です。
