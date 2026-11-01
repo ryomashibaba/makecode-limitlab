@@ -1,0 +1,73 @@
+name: G4C7 M20 replace seven overlapping street meshes with one constrained union
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_d3s26_m20_unioned_street.py"
+      - "tools/g4c7_d3s26_m20_readback.py"
+      - ".github/workflows/g4c7-m20-street-union.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m20-street-union
+  cancel-in-progress: false
+jobs:
+  real-2d-union-to-native-blend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Retrieve original M19A without diagnostic M19B Z offsets
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m19a-floor-normal-isolation-ART-HOLD
+          run-id: 41262949996
+          github-token: ${{ github.token }}
+          path: artifacts/m20_pinned_original
+      - name: Install Shapely 2.1 constrained triangulation and GLB readback
+        run: |
+          python -m pip install --disable-pip-version-check "shapely==2.1.2" "trimesh==4.7.4"
+          python -m py_compile tools/g4c7_d3s26_m20_unioned_street.py tools/g4c7_d3s26_m20_readback.py
+          python tools/g4c7_d3s26_m20_unioned_street.py --preflight
+      - name: Install official Blender Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Real single-mesh street from true 2D union and eight native Cycles images
+        run: python tools/g4c7_d3s26_m20_unioned_street.py
+      - name: Independent original and output GLB coverage audit
+        run: python tools/g4c7_d3s26_m20_readback.py
+      - name: Verify native blend and all eight images without declaring ART pass
+        run: |
+          python - <<'PY'
+          import hashlib,json,os,struct
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m20-continuous-street')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='HOLD_NOT_APPROVED' and m['minecraft']=='FORBIDDEN'
+          assert m['adopted']==0 and m['no_micro_step'] and m['cameras_lights_fixed']
+          assert len(m['views'])==8 and m['coverage']['overlap_removed']>200
+          for n,key,magic in (
+           ('M20_EDITABLE_CONTINUOUS_STREET.blend','blend_sha256',b'BLENDER'),
+           ('M20_UNIONED_PUBLIC_FLOOR_ART_HOLD.glb','glb_sha256',b'glTF')):
+            d=(p/n).read_bytes()
+            assert d.startswith(magic) and hashlib.sha256(d).hexdigest()==m[key]
+          for k,v in m['views'].items():
+            d=(p/('M20_'+k+'.png')).read_bytes()
+            assert d[:8]==b'\x89PNG\r\n\x1a\n'
+            assert struct.unpack('>II',d[16:24])==(960,540)
+            assert hashlib.sha256(d).hexdigest()==v['sha256']
+          print('M20_REAL_UNION_NATIVE_8_VIEWS_AND_GLTF_AUDIT_PASS_ART_HOLD')
+          PY
+      - name: Archive all source-derived evidence without changing main or PR state
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m20-street-union-native-ART-HOLD
+          path: artifacts/g4c7-m20-continuous-street/run_*/
+          retention-days: 21
+          if-no-files-found: warn
