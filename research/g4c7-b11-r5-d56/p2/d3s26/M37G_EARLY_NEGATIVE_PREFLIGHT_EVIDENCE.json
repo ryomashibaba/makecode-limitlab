@@ -1,0 +1,46 @@
+{
+  "study": "M37G_HUMAN_ART_REJECT_AND_NEGATIVE_PREFLIGHT",
+  "source_script_sha256": "39a03405a7e98433d200ef0f66eaa232cab34ec5c6bf756f02de036cb9ea8fca",
+  "glb": {
+    "file": "M37G_DENSE_INHABITED_CANYON_PREVIS_NOT_NATIVE.glb",
+    "sha256": "a45695ff678882b34ee66ed6ce3069dccdcde576f53f7e5904a25fa7861d81f4",
+    "bytes": 262724,
+    "geometry_nodes": 467,
+    "location": "local ZIP only; NOT stored as GitHub file"
+  },
+  "four_glb_views": {
+    "AERIAL": "8a15bc6c921e0bec17d31eaaf749b7e63893b3171006af9201a23f1f602edf80",
+    "SOUTH": "aa9351cdd4f429edb0cad0358389cb3727e398cfb918265c5a0d942d024207d9",
+    "NORTH": "9a6256960d7ab0f2242aa351601b865bba0d3c2488fa23aa9a99422fb5e28e08",
+    "STREET": "61ff3bb90e8f2eb637915348299f165fe8f999c805760b869af746d370ea0c4c"
+  },
+  "massing_proxies": 24,
+  "facade_only_panels_not_actual_windows": 374,
+  "verified_real_room_floors": 0,
+  "verified_real_openings": 0,
+  "stair_treads_not_safety_certified": 36,
+  "eye_height_research_units": 2.1,
+  "eye_level_2D_plan_samples": 492,
+  "samples_with_solid_massing_overlap": 43,
+  "fraction": 0.0874,
+  "overlap_mass_proxies": [
+    "hab_west_lower",
+    "hab_west_north"
+  ],
+  "negative_control_cases": [
+    "remote footprint nonblock",
+    "solid footprint block",
+    "overhead footprint nonblock"
+  ],
+  "negative_control_result": "PASS",
+  "evidence_bundle_sha256": "5ac33ac832a717a58e4ef6a8e1e9acc1d60bfde0d486fb1e807bd6517c23666d",
+  "preflight": "BLOCK_NATIVE_ART_CI",
+  "human_art_judgment": "EARLY_ART_REJECT",
+  "original_art": "HOLD_M35_M37D_M37F_REJECTED",
+  "original_preservation": "NO_EXISTING_GITHUB_FILES_MODIFIED_BY_THIS_PROBE",
+  "native_blend": "NOT_CREATED",
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "limits": "Footprint overlap is not formal swept-body QA. Aesthetics judged from genuine GLB previews, not numeric scores."
+}
