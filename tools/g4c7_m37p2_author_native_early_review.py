@@ -35,6 +35,8 @@ def check_review_contract(meta, camera_names, mesh_count):
         "P2_MINECRAFT": "FORBIDDEN",
         "P2_FORMAL_331_993": "NOT_RUN",
         "P2_MAKECODE_COST": "NOT_EVALUATED",
+        "P2_CAMERA_VIEWS_AUTHOR_APPROVED": True,
+        "P2_STUDIO_STAGE": "DIRECT_AUTHOR_SUBMITTED_FOR_EARLY_ART_REVIEW_NOT_PASSED",
     }
     for key, value in required.items():
         if meta.get(key) != value:
@@ -56,6 +58,8 @@ def self_test():
         "P2_MINECRAFT": "FORBIDDEN",
         "P2_FORMAL_331_993": "NOT_RUN",
         "P2_MAKECODE_COST": "NOT_EVALUATED",
+        "P2_CAMERA_VIEWS_AUTHOR_APPROVED": True,
+        "P2_STUDIO_STAGE": "DIRECT_AUTHOR_SUBMITTED_FOR_EARLY_ART_REVIEW_NOT_PASSED",
     }
     assert not check_review_contract(meta, tuple(CAMERAS.values()), 1)
     negatives = [
@@ -157,7 +161,8 @@ def native_review(output_dir):
     keys = (
         "P2_SOURCE_KIND", "P2_PARENT_REJECTED_FORM_IMPORTED", "P2_ART",
         "P2_OFFICIAL_ADOPTIONS", "P2_MINECRAFT", "P2_FORMAL_331_993",
-        "P2_MAKECODE_COST",
+        "P2_MAKECODE_COST", "P2_CAMERA_VIEWS_AUTHOR_APPROVED",
+        "P2_STUDIO_STAGE",
     )
     metadata = {key: scene.get(key) for key in keys}
     meshes = [
@@ -168,6 +173,23 @@ def native_review(output_dir):
     errors = check_review_contract(metadata, cams, len(meshes))
     if errors:
         raise RuntimeError("P2_REVIEW_INPUT_REJECTED:" + ",".join(errors))
+    required_collections = (
+        "P2_CITY_MACRO_DIRECT_AUTHOR",
+        "P2_INHABITED_SECTION_DIRECT_AUTHOR",
+        "P2_PUBLIC_FACTORY_BOUNDARY_DIRECT_AUTHOR",
+        "P2_RESEARCH_CULTURE_DIRECT_AUTHOR",
+        "P2_HABITAT_PRIVATE_DIRECT_AUTHOR",
+    )
+    for name in required_collections:
+        coll = bpy.data.collections.get(name)
+        if coll is None or not any(ob in coll.all_objects and ob in meshes for ob in scene.objects):
+            raise RuntimeError("NO_ACTUAL_DIRECT_AUTHOR_MESH_IN_AREA:" + name)
+    all_names = {
+        ob.name for name in required_collections
+        for ob in bpy.data.collections[name].all_objects if ob.type == "MESH"
+    }
+    if len(all_names) < 5:
+        raise RuntimeError("ONLY_TRIVIAL_OR_DUPLICATE_AUTHOR_CONTENT")
     if "m37p1" in blend.name.lower() or "m37o" in blend.name.lower():
         raise RuntimeError("REJECTED_OLD_ART_NOT_ALLOWED_AS_P2_MASTER")
     rejected_prefixes = ("M37P1_", "M37O_", "M37L_", "M37N_")
