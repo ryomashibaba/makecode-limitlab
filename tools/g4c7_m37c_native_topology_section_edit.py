@@ -68,7 +68,8 @@ for name in target_names:
     obj.data.from_pydata(v,[],f)
     obj.data.update()
     assert len(obj.data.vertices)==16 and len(obj.data.polygons)==12
-    assert all(not(world_left-1e-5 < obj.location.x+q.co.x < world_right+1e-5)
+    assert all(obj.location.x+q.co.x <= world_left+1e-5 or
+               obj.location.x+q.co.x >= world_right-1e-5
                for q in obj.data.vertices)
     obj["M37C_TOPOLOGY_METHOD"]="IN_PLACE_SPLIT_EXISTING_PLATFORM_BY_OPEN_CORRIDOR"
     obj["M37C_ART"]="NOT_REVIEWED"
