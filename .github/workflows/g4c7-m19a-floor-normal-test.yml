@@ -1,0 +1,70 @@
+name: G4C7 M19A isolate flipped public-floor normals (ART HOLD)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - "tools/g4c7_d3s26_m19a_floor_normals.py"
+      - ".github/workflows/g4c7-m19a-floor-normal-test.yml"
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: g4c7-m19a-normal-test
+  cancel-in-progress: false
+jobs:
+  independently-test-12-downward-faces:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Fetch immutable M18B original evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: g4c7-m18b-native-coplanar-revision-ART-HOLD
+          run-id: 41256574491
+          github-token: ${{ github.token }}
+          path: artifacts/m19a_immutable_m18b_seed
+      - name: Preflight exact original and format
+        run: |
+          python -m py_compile tools/g4c7_d3s26_m19a_floor_normals.py
+          python tools/g4c7_d3s26_m19a_floor_normals.py --preflight
+      - name: Official Blender Foundation Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Reverse only 12 confirmed downward floor normals and render unchanged cameras
+        run: python tools/g4c7_d3s26_m19a_floor_normals.py
+      - name: Independent saved-file and 8-camera evidence checks
+        run: |
+          python - <<'PY'
+          import hashlib,json,os,struct
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m19a-floor-normal-test')/('run_'+os.environ['GITHUB_SHA'][:12])
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['art']=='HOLD_NOT_APPROVED' and m['minecraft']=='FORBIDDEN'
+          assert m['same_cameras'] and m['same_lights'] and m['same_materials']
+          assert len(m['views'])==8 and len(m['flipped'])==12
+          assert all(v['normal_z_before']<-0.98 and v['normal_z_after']>.98 for v in m['flipped'])
+          for filename,key,magic in (
+            ('M19A_REVERSED_FLOOR_NORMALS_NATIVE.blend','blend_sha256',b'BLENDER'),
+            ('M19A_REVISED_NORMALS_ART_HOLD.glb','glb_sha256',b'glTF')):
+            raw=(p/filename).read_bytes()
+            assert raw.startswith(magic) and hashlib.sha256(raw).hexdigest()==m[key]
+          for name,meta in m['views'].items():
+            raw=(p/('M19A_'+name+'.png')).read_bytes()
+            assert raw[:8]==b'\x89PNG\r\n\x1a\n'
+            assert struct.unpack('>II',raw[16:24])==(960,540)
+            assert hashlib.sha256(raw).hexdigest()==meta['sha256']
+          print('M19A_NATIVE_REVERSED_NORMALS_8_CAMERA_TECH_PASS_ART_HOLD')
+          PY
+      - name: Save immutable evidence even on later CI failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m19a-floor-normal-isolation-ART-HOLD
+          path: artifacts/g4c7-m19a-floor-normal-test/run_*/
+          retention-days: 21
+          if-no-files-found: warn
