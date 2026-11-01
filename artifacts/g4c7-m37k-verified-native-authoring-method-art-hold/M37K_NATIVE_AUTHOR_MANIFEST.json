@@ -1,0 +1,240 @@
+{
+  "schema": "g4c7-m37k-native-authoring-fixture-v1",
+  "native_blend": {
+    "name": "M37K_NATIVE_AUTHORING_METHOD_ONLY_ART_HOLD.blend",
+    "bytes": 780412,
+    "sha256": "76af771ae024803198b59ee4ad611858f0e911d0926d3fd33495b395537a407b"
+  },
+  "baseline_exterior": {
+    "south": [
+      [
+        -8.0,
+        -6.0
+      ],
+      [
+        14.0,
+        -6.0
+      ]
+    ],
+    "east": [
+      [
+        14.0,
+        -6.0
+      ],
+      [
+        14.0,
+        6.0
+      ]
+    ],
+    "north": [
+      [
+        14.0,
+        6.0
+      ],
+      [
+        -8.0,
+        6.0
+      ]
+    ],
+    "west": [
+      [
+        -8.0,
+        6.0
+      ],
+      [
+        -8.0,
+        -6.0
+      ]
+    ],
+    "outer_x_extent": [
+      -8.0,
+      14.0
+    ],
+    "floor_occupied_area": 264.0
+  },
+  "edited_exterior": {
+    "south": [
+      [
+        -10.0,
+        -6.0
+      ],
+      [
+        14.0,
+        -6.0
+      ]
+    ],
+    "east": [
+      [
+        14.0,
+        -6.0
+      ],
+      [
+        14.0,
+        6.0
+      ]
+    ],
+    "north": [
+      [
+        14.0,
+        6.0
+      ],
+      [
+        -10.0,
+        6.0
+      ]
+    ],
+    "west": [
+      [
+        -10.0,
+        6.0
+      ],
+      [
+        -10.0,
+        -6.0
+      ]
+    ],
+    "outer_x_extent": [
+      -10.0,
+      14.0
+    ],
+    "floor_occupied_area": 288.0
+  },
+  "canonical_author_state": {
+    "schema": "g4c7-m37k-space-envelope-joint-authoring-v1",
+    "status": {
+      "art": "ART_HOLD",
+      "formal_331_993": "NOT_RUN",
+      "minecraft": "FORBIDDEN",
+      "adoption": 0
+    },
+    "units": "ABSTRACT_RESEARCH_UNITS_NOT_METERS_OR_BLOCKS",
+    "rooms": {
+      "CIVIC": {
+        "bounds": [
+          -10.0,
+          -6.0,
+          0.0,
+          6.0
+        ],
+        "z": 0.0,
+        "height": 8.0,
+        "use": "PUBLIC"
+      },
+      "MAKER": {
+        "bounds": [
+          0.0,
+          -6.0,
+          14.0,
+          6.0
+        ],
+        "z": 0.0,
+        "height": 12.0,
+        "use": "STAFF_ONLY"
+      },
+      "GALLERY": {
+        "bounds": [
+          -10.0,
+          -6.0,
+          0.0,
+          6.0
+        ],
+        "z": 8.0,
+        "height": 8.0,
+        "use": "PUBLIC"
+      }
+    },
+    "ports": [
+      {
+        "id": "P_VISITOR_GATE",
+        "a": "CIVIC",
+        "b": "EXTERIOR",
+        "kind": "WALK_THROUGH",
+        "wall": "SOUTH",
+        "interval": [
+          -5.8,
+          -3.0
+        ],
+        "z": [
+          0.0,
+          3.7
+        ],
+        "access": "PUBLIC"
+      },
+      {
+        "id": "P_MAKER_VIEW",
+        "a": "CIVIC",
+        "b": "MAKER",
+        "kind": "SEALED_VIEW_WINDOW",
+        "wall": "EAST",
+        "interval": [
+          -2.0,
+          2.0
+        ],
+        "z": [
+          1.5,
+          4.8
+        ],
+        "access": "VIEW_ONLY",
+        "membrane": "SOLID_GLASS_MESH"
+      }
+    ],
+    "stairs": {
+      "id": "CIVIC_TO_GALLERY",
+      "from": "CIVIC",
+      "to": "GALLERY",
+      "center_x": -4.5,
+      "width": 3.0,
+      "y0": -5.0,
+      "y1": 5.0,
+      "z0": 0.0,
+      "z1": 8.0,
+      "treads": 16,
+      "headroom_target_abstract": 3.25
+    },
+    "upper_slot": {
+      "level": "GALLERY",
+      "x": [
+        -6.5,
+        -2.5
+      ],
+      "y": [
+        -6.0,
+        5.25
+      ],
+      "requires_actual_floor_removal": true
+    },
+    "exterior_control": {
+      "paired_west_edge_of": "CIVIC_AND_GALLERY",
+      "editable": true
+    }
+  },
+  "native_room_floors": 2,
+  "upper_floor_actual_solid_pieces": 3,
+  "physical_glazing_barriers": 1,
+  "public_real_wall_openings": 1,
+  "native_stair_treads": 16,
+  "renders": {
+    "SECTION_AERIAL": {
+      "file": "M37K_SECTION_AERIAL.png",
+      "sha256": "216f7cea4bc93661d14725468a6168d6ee5c65b9f69465aed6fe8ae259fe397c"
+    },
+    "PUBLIC_GATE_EYE": {
+      "file": "M37K_PUBLIC_GATE_EYE.png",
+      "sha256": "385a30fb733a46a7b0d8cde5cbc4bbbac0c1824dd916b8a8063f0a024446e274"
+    },
+    "SEALED_VIEW_EYE": {
+      "file": "M37K_SEALED_VIEW_EYE.png",
+      "sha256": "8eb9fbf94811d810f65e21689eef593d4623bead2ba5b3a4f478c4a99bf582f4"
+    },
+    "UPPER_SLOT": {
+      "file": "M37K_UPPER_SLOT.png",
+      "sha256": "25e9f0ac2b837b2d9ac00b7ee773ceef064094ea9a5481ab95db992aa766156c"
+    }
+  },
+  "art": "ART_HOLD_NOT_A_CITY",
+  "formal_331_993": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "adoption": 0,
+  "blender_method": "AUTHOR_DIRECTED_SEMANTIC_TRANSACTION_TO_NATIVE_GEOMETRY",
+  "is_manual_GUI_edit": false
+}

@@ -1,0 +1,25 @@
+{
+  "status": "PASS_SCHEMA_TRANSACTION_NEGATIVE_CONTROLS_ONLY",
+  "negative_controls_rejected": 13,
+  "control_failures": {
+    "unsealed_production_crossing": "public_fabrication_boundary_must_be_physically_sealed",
+    "missing_actual_glass_membrane": "public_fabrication_boundary_must_be_physically_sealed",
+    "no_full_floor_cutout": "stairs_require_full_footprint_cutout_at_upper_floor",
+    "undersized_stair_aperture": "stairs_require_full_footprint_cutout_at_upper_floor",
+    "wrong_stair_destination": "stair_outside_actual_room_or_wrong_level",
+    "missing_external_actual_gate": "external_gate_not_verified_as_opening",
+    "disconnected_city_envelope": "civic_gallery_must_share_edited_envelope_footprint",
+    "art_false_pass": "status_promotion_forbidden",
+    "formal_QA_false_pass": "status_promotion_forbidden",
+    "world_build_false_permission": "status_promotion_forbidden",
+    "stair_no_space_for_body": "stair_outside_actual_room_or_wrong_level;stairs_require_full_footprint_cutout_at_upper_floor",
+    "public_factory_wall_shift": "lost_public_maker_shared_wall",
+    "atomic_reject_stair_footprint": "room_minimal_extent:CIVIC;room_minimal_extent:GALLERY;external_gate_not_verified_as_opening;stair_outside_actual_room_or_wrong_level"
+  },
+  "transaction_changed_derived_city_outline": true,
+  "single_source_internal_and_exterior": true,
+  "actual_blender_meshes": "NOT_YET_TESTED",
+  "art": "HOLD",
+  "formal_331_993": "NOT_RUN",
+  "Minecraft": "FORBIDDEN"
+}
