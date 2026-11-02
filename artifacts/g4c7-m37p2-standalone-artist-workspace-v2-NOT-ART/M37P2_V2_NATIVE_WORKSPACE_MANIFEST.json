@@ -1,0 +1,21 @@
+{
+  "schema": "g4c7-m37p2-self-contained-native-artist-workspace-v2",
+  "result": "GENUINE_EMPTY_BLENDER_SOURCE_AND_GUI_RENDER_CONTROL_NOT_ART",
+  "parent_sha256": "6ca727def08cce9220dbde59f5836248cb5d0def39c7f375c9308af1461ee904",
+  "output": "artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART/M37P2_SINGLE_FILE_DIRECT_AUTHOR_AND_REVIEW_NOT_ART.blend",
+  "output_sha256": "a772fc0bc1d1d2b23a33a14154ca5bcd08fcb1ced05ea5c9eb009aa02b19f99e",
+  "bytes": 526911,
+  "embedded_sources_sha256": {
+    "M37P2_NATIVE_THREE_CAMERA_EARLY_REVIEW_NOT_ART.py": "42a276a8649935345079e863468d9247c121352e308906c7bb7ed885df056fe1",
+    "M37P2_CAMERA_INSIDE_SOLID_AUDIT.py": "c1f2f5b810757faaff5170ba6199ee6a60eb44b893384be94e5258625135857f",
+    "M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py": "155eba516ba888f52787ec49fe4a41e0c09c9a6a6a8a3a77470df77d2b711fc0"
+  },
+  "city_art": "NOT_CREATED",
+  "real_city_meshes": 0,
+  "review_images": "NOT_RENDERED_NO_ART",
+  "manual_blender_gui": "NOT_TESTED",
+  "official_art_adoptions": 0,
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G2_G3": "NOT_RUN",
+  "Minecraft": "FORBIDDEN"
+}
