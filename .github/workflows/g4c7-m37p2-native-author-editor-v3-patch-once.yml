@@ -1,0 +1,113 @@
+name: G4C7 M37-P2 append only native Blender reviewer fixes v3 NO ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_patch_artist_native_review_v3.py
+      - .github/workflows/g4c7-m37p2-native-author-editor-v3-patch-once.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37p2-patch-native-artist-editor-once-v3
+  cancel-in-progress: true
+jobs:
+  archive-one-corrected-verified-native-blend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate no city-generated-geometry in editor patch and fixture proof is successful
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_patch_artist_native_review_v3.py
+          python - <<'PY'
+          from pathlib import Path
+          src=Path('tools/g4c7_m37p2_patch_artist_native_review_v3.py').read_text()
+          for forbidden in ('bpy.ops.mesh.', 'bpy.data.meshes.new(', '.from_pydata(', 'bpy.ops.render.render('):
+              assert forbidden not in src
+          assert not Path('artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART').exists()
+          assert '41428422529_SUCCESS_EPHEMERAL' in src
+          print('ARCHIVE_ONCE_NO_CITY_ART_PATCH_CONTRACT_PASS')
+          PY
+      - name: Install real Blender bpy 4.5
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build immutable source preserving v3 Blender .blend with tested reviewer code
+        run: |
+          python -u tools/g4c7_m37p2_patch_artist_native_review_v3.py
+      - name: Independent reopen new native .blend verify code SHA no art immutable ancestors
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 100s python -u - <<'PY'
+          from pathlib import Path
+          import bpy,hashlib,json
+          d=Path('artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART')
+          m=json.loads((d/'M37P2_V3_PATCH_MANIFEST.json').read_text(encoding='utf-8'))
+          p=d/'M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend'
+          assert p.read_bytes()[:7]==b'BLENDER'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m['output_sha256']
+          bpy.ops.wm.read_factory_settings(use_empty=True)
+          bpy.ops.wm.open_mainfile(filepath=str(p.resolve()))
+          scene=bpy.context.scene
+          assert scene['P2_ART']=='HOLD' and scene['P2_OFFICIAL_ADOPTIONS']==0
+          assert scene['P2_MINECRAFT']=='FORBIDDEN' and scene['P2_FORMAL_331_993']=='NOT_RUN'
+          assert scene['P2_STUDIO_STAGE']=='EMPTY_NO_ART_CREATED'
+          assert len([ob for ob in scene.objects if ob.type=='MESH'])==0
+          assert len([ob for ob in scene.objects if ob.type=='CAMERA'])==3
+          assert scene['P2_V3_EDITOR_FIX']=='BLENDER_45_COLLECTION_AND_HEADLESS_DIRTY_GUARD'
+          for key,val in m['embedded_patched_source_sha256'].items():
+              assert hashlib.sha256(bpy.data.texts[key].as_string().encode()).hexdigest()==val
+          src=bpy.data.texts['M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py'].as_string()
+          scope={'__name__':'native_blender_gui_reviewer_check','__file__':'EMBEDDED_ONLY'}
+          exec(compile(src,'M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py','exec'),scope)
+          scope['register']()
+          try:
+              scope['run_review'](str(d/'INVALID_ART'))
+          except RuntimeError as exc:
+              assert 'ARCHIVED_EMPTY_TEMPLATE_CANNOT_BE_ART_REVIEWED' in str(exc),str(exc)
+          else:
+              raise AssertionError('FAIL_OPEN_EMPTY_EDITOR_ART_GUARD')
+          assert not (d/'INVALID_ART').exists()
+          scope['unregister']()
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m['output_sha256']
+          old=Path('artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART/M37P2_SINGLE_FILE_DIRECT_AUTHOR_AND_REVIEW_NOT_ART.blend')
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==m['source_v2_sha256']
+          print('P2_V3_INDEPENDENT_NATIVE_REOPEN_SHA_AND_EMPTY_ART_NEGATIVE_PASS')
+          print('GUARANTEE: CITY_ART_NOT_CREATED, 331_993_NOT_RUN, WORLD_WRITES_0')
+          PY
+      - name: Append-only GitHub archiving of corrected single-file author studio
+        run: |
+          set -euo pipefail
+          d=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART
+          cat > "$d/README_JA.md" <<'TXT'
+          # M37-P2 Blender真正作者原本v3：3視点レビュー経路の実行欠陥を修正（新しい都市美術ではない）
+
+          v2空原本の真正Blender編集・GUIを保持し、**作者の実メッシュがある場合だけ**正しいBlender 4.5 collectionメンバー検査に進めるよう修正。保存/再読込したテンポラリテスト原本に5つの単純四面体テスト用メッシュを付け、3真正Cycles PNGの生成とSHA、不変原本を検証した Actions #41428422529 の修正ソースを内蔵した。同時にbpyヘッドレス特有のis_dirty判定を、実GUI上の未保存変更拒否とは区別した。
+
+          これは**空の編集原本**であって、都市美術作品・ART PASS・正式採用ではない。実都市メッシュ0、ART HOLD、採用0。保護された旧v1/v2/O1/P1原本は不変。Blender GUIでマクロ都市と居住・研究・製造・文化の生活断面を同じ原本に直接造形することが、次の唯一の美術制作工程。
+
+          直接編集はこのBLENDを開いてText Editor内の作者パネル・二画面編集スクリプトを必要に応じ手動登録する。実3視点のレビューには3カメラの位置を適切に移動し、5コレクションの実メッシュを配置、審査マーク後に**新しい別名の.blendへ保存・再読込**して、内蔵3視点GUIレビューボタンを用いる。正式美術の採否は実画像の絶対審査が必要。GUI実画面の操作は未試験。
+
+          331人体/993足元・G0/S1/G1/G2/G3はNOT RUN、MakeCode未評価、Minecraft施工禁止、main未変更、PR #53 Draft維持、Work事前明示承認。
+          TXT
+          cp -p tools/g4c7_m37p2_patch_artist_native_review_v3.py "$d/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$d"
+          git diff --cached --quiet && exit 1
+          git commit -m "research(g4c7): archive verified native P2 v3 fixed GUI reviewer studio ART NOT CREATED"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Preserve diagnostics if branch archive fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37p2-v3-verified-native-editor-patch-NOT-ART
+          path: artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART
+          retention-days: 21
+          if-no-files-found: warn
