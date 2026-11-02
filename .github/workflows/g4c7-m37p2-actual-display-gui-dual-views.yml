@@ -1,0 +1,82 @@
+name: G4C7 M37-P2 actual Blender DISPLAY GUI dual edit smoke - no art
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_real_gui_dual_editor_smoke.py
+      - .github/workflows/g4c7-m37p2-actual-display-gui-dual-views.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-p2-actual-blender-gui-no-art
+  cancel-in-progress: true
+jobs:
+  test-real-headful-blender-window-with-two-3d-editors:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject world writes or city geometry in GUI test
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/g4c7_m37p2_real_gui_dual_editor_smoke.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path("artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend")
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=="536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249"
+          src=Path("tools/g4c7_m37p2_real_gui_dual_editor_smoke.py").read_text()
+          for forbidden in ("bpy.ops.mesh.", "bpy.data.meshes.new(", ".from_pydata(", "bpy.ops.wm.save_as_mainfile(", "bpy.ops.render.render("):
+              assert forbidden not in src, forbidden
+          assert "MUST_RUN_ONLY_IN_DISPLAY_BACKED_CI" in src
+          assert "PASS_ACTUAL_DISPLAY_SPLIT" in src
+          print("PINNED_REAL_GUI_SMOKE_NO_ART_AND_SHA_PASS")
+          PY
+      - name: Install actual display server and OpenGL userspace
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1
+      - name: Fetch exact official Blender 4.5.15 Linux GUI binary and verify upstream sha256
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-p2-blender
+          cd /tmp/g4c7-p2-blender
+          curl -fsSL --retry 3 --max-time 240 -o blender-4.5.15.sha256 https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -o blender-4.5.15-linux-x64.tar.xz https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          grep -F 'blender-4.5.15-linux-x64.tar.xz' blender-4.5.15.sha256 | sha256sum -c -
+          tar -xf blender-4.5.15-linux-x64.tar.xz
+          test -x blender-4.5.15-linux-x64/blender
+          blender-4.5.15-linux-x64/blender --version | head -n 2
+      - name: REAL Blender full GUI under X display, 3D View split and focus switching
+        env:
+          CI: "true"
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          P2_GUI_EVIDENCE: /tmp/g4c7-p2-actual-gui-evidence.json
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=12s 175s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' \
+            /tmp/g4c7-p2-blender/blender-4.5.15-linux-x64/blender --noaudio -t 2 \
+            --python-exit-code 9 --python tools/g4c7_m37p2_real_gui_dual_editor_smoke.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("/tmp/g4c7-p2-actual-gui-evidence.json")
+          assert p.is_file(), "GUI_EVIDENCE_MISSING"
+          m=json.loads(p.read_text())
+          assert m["outcome"]=="PASS_ACTUAL_DISPLAY_SPLIT",m
+          assert m["headless"] is False
+          assert m["native_viewport_split"] is True
+          assert m["real_3d_view_area_count"] >= 2
+          assert all(m["camera_focus_cycle"].values())
+          assert m["art"]=="HOLD" and m["official_adoptions"]==0
+          assert m["Minecraft"]=="FORBIDDEN"
+          print("P2_TRUE_HEADFUL_BLENDER_GUI_NATIVE_SPLIT_AND_FOCUS_PASS",m)
+          PY
+      - name: Preserve diagnostic evidence without any city art
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-p2-real-gui-dual-view-smoke-no-art
+          path: /tmp/g4c7-p2-actual-gui-evidence.json
+          if-no-files-found: warn
+          retention-days: 21
