@@ -178,3 +178,11 @@
 - [Windows起動PowerShell](tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1)はPython固定HEAD `13193a41b99e59c87a9475024d4340becb74833d` を参照し、3枚の画像生成後に比較HTMLも自動起動。[1クリックCMD](tools/G4C7_P2_AI_Trial_Start.cmd)は固定PowerShell `f7feec03dfb8a2214ea11d4c9c7be8c212878851` を参照。コードの固定参照はGitHubコネクタで実物確認した。
 - **専用Blender CI・Windows CIはこの追加時点でqueued／pending。技術成功と称さない。** 実モデルからの新都市BLEND・3真正ART画像は未制作、正式ART採用0／全体ART HOLD／331人体・993足元＆G0/S1/G1/G2/G3 NOT RUN／MakeCode未測定／Minecraft施工禁止／main保護／PR #53 Draft／Workなしを維持。
 - [正本追補節24](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+
+
+## M37-P2 2026-11-02：初回Qwen3:14b実機試行をART REJECT
+
+- ユーザー実機で**OllamaのQwen3:14bが1回応答**したが、都市形状の明示頂点JSONは形式検証で**安全に拒否**。11メッシュ・297頂点・12面、**有効面0/12**、他メッシュの頂点配列をそのまま使い回した5件、残り10/11メッシュで面数1件しか宣言されていなかった。新しい都市`.blend`も真正Cycles3視点も生成されず、正式ART採用0、全体HOLD。
+- [実測失敗監査](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_QWEN14B_FIRST_LOCAL_VERTEX_ART_REJECT_20261102_JA.md)。**同条件でのQwen14B全市一括頂点生成を繰り返さない。** 不正な超巨大N-gonを自動修復して実都市成功と見せかけず、第三の箱・板・橋量産も禁止。
+- [バリデータ](tools/g4c7_m37p2_local_vertex_author.py)を更新し、不正面数のメッシュでも完全同一の頂点データの使い回しを検出。[回帰テスト](tests/test_g4c7_m37p2_vertex_first_art_reject.py)を追加。添付の実不採用データで重複5件が追加検出された。正常構造のフィクスチャは引き続きPASS（フィクスチャはARTではない）。
+- [引き継ぎ正本の節25](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。ART-FIRSTの次の実制作は真の都市全景と生活断面の同一Blender原本への直接作者造形を目指す。ユーザーに手造形を要求しない。Work使用なし、main変更なし、PR #53 Draft、331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止を固定。
