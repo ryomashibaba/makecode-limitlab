@@ -121,3 +121,11 @@
 - 最初の[#41422123251](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422123251) は真正BLEND生成工程まではPASS、独立再読込実行中に診断付き新ワークフローへ切り替え **CANCELLED**（全体SUCCESSではない）。
 - [新版 #41422705862](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422705862) は150秒の実行上限・診断出力を追加し、最後の照合で**QUEUED**。真正v2 `.blend` のGitHub追記保存は結果とmanifest実在を確認するまで未確定。全詳細は[統合引き継ぎ節17と補足](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
 - 終始、P2新都市実造形0・ART HOLD・正式採用0、331/993・G0/S1/G1/G2/G3未実施、Minecraft施工禁止、main不変更、PR #53 Draft/未merge、Work明示承認制。
+
+
+## M37-P2 2026-11-02：単一BLEND作者直接造形＋3視点審査v2成功（ART未制作）
+
+- [新規真正Blender原本v2](artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART/M37P2_SINGLE_FILE_DIRECT_AUTHOR_AND_REVIEW_NOT_ART.blend) を保存済み。526,911 bytes／SHA256 `a772fc0bc1d1d2b23a33a14154ca5bcd08fcb1ced05ea5c9eb009aa02b19f99e`。新原本内に二画面作者編集・3真正視点のGUIレビューとカメラ埋没監査ソースを内蔵。旧真正原本・不採用ARTを変更しない。
+- [専用Actions #41423413754](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41423413754) は **SUCCESS**：本物のBlenderで保存→別プロセスで再読込、埋込Text SHA一致、GUIアドオン登録・解除、空テンプレートのARTレビューボタン誤起動拒否、GitHub追記保存を確認。初回CANCELLEDと後の誤検証assertによるFAILは[統合引き継ぎ節18](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)に明記。
+- **重要：これは空の作者編集スタジオであって、新しい都市造形ではない。都市実メッシュ0・真正美術3画像なし・BlenderデスクトップGUI実操作未確認。** ART HOLD／正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main不変更、Draft PR #53維持。
+- 次工程はエディタ増設ではなく、**実際の都市マクロ＋居住・見学/製造・研究/文化の実生活断面を同じ作者BLENDで直接造形すること**。未承認Work禁止、旧P1のpatch/wall/bridge型第三生成案禁止。
