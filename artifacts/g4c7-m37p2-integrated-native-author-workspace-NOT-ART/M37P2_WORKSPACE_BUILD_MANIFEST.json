@@ -1,0 +1,22 @@
+{
+  "schema": "g4c7-m37p2-integrated-empty-artist-native-workspace-v1",
+  "result": "SAVED_NATIVE_EMPTY_EDITOR_STUDIO_NOT_ART",
+  "source": "artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED/M37P2_EMPTY_DIRECT_AUTHOR_MASTER_NOT_ART.blend",
+  "source_sha256": "d13e17fb59763a0719b5a91ed80043dade0f40ea65b7a29eba4e5bbfb9545041",
+  "output": "artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART/M37P2_INTEGRATED_EMPTY_ARTIST_WORKSPACE_NOT_ART.blend",
+  "output_sha256": "6ca727def08cce9220dbde59f5836248cb5d0def39c7f375c9308af1461ee904",
+  "output_bytes": 491214,
+  "embedded_source_sha256": {
+    "M37P2_RUN_ONCE_PARALLEL_MACRO_LIVED_GUI.py": "361650eb3fc7cd9a0bfd1092e412fb98b505065f75832c4e40aca1a66c7a0690",
+    "M37P2_NATIVE_THREE_CAMERA_EARLY_REVIEW_NOT_ART.py": "864c04c4f411bdfc2be7222fc9829ad061cc7e5df655fe4249e1db3b67b476ea"
+  },
+  "real_city_meshes": 0,
+  "cameras": 3,
+  "city_art": "NOT_CREATED",
+  "official_adoptions": 0,
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "MakeCode": "NOT_EVALUATED",
+  "Minecraft": "FORBIDDEN",
+  "gui_dual_view_in_real_desktop": "NOT_TESTED"
+}
