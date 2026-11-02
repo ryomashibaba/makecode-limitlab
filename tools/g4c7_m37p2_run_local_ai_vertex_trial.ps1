@@ -128,11 +128,32 @@ try {
         return
     }
 
-    # Abort early if Ollama isn't running / required model is unavailable.
+    # Check the user's existing local Ollama; start it without installing any
+    # packages when available. This is a foreground user-invoked local trial,
+    # not a ChatGPT background task or Work usage.
+    $tags = $null
     try {
-        $tags = Invoke-RestMethod -Uri "http://127.0.0.1:11434/api/tags" -Method Get -TimeoutSec 5
+        $tags = Invoke-RestMethod -Uri "http://127.0.0.1:11434/api/tags" -Method Get -TimeoutSec 4
     } catch {
-        throw "OLLAMA_NOT_RUNNING. Start Ollama locally first; no models downloaded or installed by this script."
+        $ollama = Get-Command ollama.exe -ErrorAction SilentlyContinue
+        $ollamaPath = if ($ollama -and $ollama.Source) { $ollama.Source } else {
+            Join-Path $env:LOCALAPPDATA "Programs\Ollama\ollama.exe"
+        }
+        if (-not (Test-Path -LiteralPath $ollamaPath -PathType Leaf)) {
+            throw "OLLAMA_NOT_RUNNING_AND_EXECUTABLE_NOT_FOUND. This trial never installs models."
+        }
+        Write-Host "Starting already-installed local Ollama server..."
+        Start-Process -FilePath $ollamaPath -ArgumentList "serve" -WindowStyle Hidden | Out-Null
+        for ($attempt=0; $attempt -lt 12; $attempt++) {
+            Start-Sleep -Seconds 2
+            try {
+                $tags = Invoke-RestMethod -Uri "http://127.0.0.1:11434/api/tags" -Method Get -TimeoutSec 3
+                break
+            } catch {}
+        }
+        if ($null -eq $tags) {
+            throw "LOCAL_OLLAMA_COULD_NOT_BE_STARTED. No Blender source changed."
+        }
     }
     $modelNames = @($tags.models | ForEach-Object { $_.name })
     if (-not (($modelNames -contains $Model) -or
