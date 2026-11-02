@@ -161,3 +161,12 @@
 - [Windows実検証 #41447267350 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41447267350)：本物のWindows PowerShell構文・原本SHA・コピー・セッションmanifest・GUI用Python構文チェック成功。[GitクローンがないWindowsでもrawから単一スクリプトで原本を取得した検証 #41447810957 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41447810957)。両者は`-PrepareOnly`での**準備**テスト、ユーザーWindows実Blender GUIの起動・3D作者制作とは区別。
 - Work使用量のためWorkは使用しない。現在のChatから6 Luna/6.1 Terraへ実行モデル切替・ローカルデスクトップ直接操作はできない。Luna/Terraを利用できるユーザー側のローカル環境があって初めて実作者操作が可能。
 - 新Blender都市実メッシュ0、実3視点ART未取得、全体ART HOLD／正式採用0、331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、PR #53 Draft未merge、main変更禁止。これは**都市美術の完成ではなく、実造形に着手できるWindows側入口の実装**。詳しくは[統合引き継ぎ節22](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+
+
+## M37-P2 2026-11-02：Blender実起動後、WorkなしでローカルAIが明示的頂点を編集する限定実験を準備
+
+- Windows Blender **5.2.1 LTS**がユーザーPC上で実際に起動し、既存v3原本と左右2画面・5コレクションが表示されたことをユーザーの真正スクリーンショットから確認。ただし都市メッシュは0件。ChatからユーザーWindows/Blenderを直接編集する機能はない。
+- [技術詳細・制約・未検証事項](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_LOCAL_LLM_VERTEX_AUTHOR_BRIDGE_NOT_ART_20261102_JA.md)、[ローカルAI明示的頂点データの検査・実Blender書出しコード](tools/g4c7_m37p2_local_vertex_author.py)、[省操作Windows PowerShell](tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1)、[1ファイルだけダウンロードして起動できるWindows CMD](tools/G4C7_P2_AI_Trial_Start.cmd) を追加。
+- 旧P1/O1の`patch/wall/bridge`や固定箱形状生成器の第三都市は作らない。**LLMが各ポリゴンの本物の頂点面を直接JSONとして作者提案し、5用途や非退化形・キューブ多用を検査**する試験。任意のLLM生成Pythonコードは実行しない。成功候補は元のBlenderとは別の`.blend`＋真正3Cycles画像を自動生成し、必ず**「LOCAL_LLM」作者・非GUI手作業・未承認のART HOLD**と区別する。不合格なら即停止。作品の良否を形状数やテストPASSで代替しない。
+- [専用Blenderテストワークフロー](.github/workflows/g4c7-m37p2-local-llm-explicit-vertex-first-art-tech-smoke.yml) と [Windows準備ワークフロー](.github/workflows/g4c7-m37p2-windows-local-vertex-ai-first-art-prepare.yml) を新設。ただしGitHub Actionsが**実際にcompleted/successと確認されるまでは当工程の技術PASSは未確認**。このチャットからローカルモデル実行はできず、実都市のAI造形・作者3D制作・正式3視点ART審査は未実施。
+- 全体ART HOLD／正式採用0／331人体993足元とG0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft world writes 0／main保護／PR #53 Open/Draft未merge／Work使用なしを固定。
