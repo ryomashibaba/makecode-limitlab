@@ -30,7 +30,7 @@ def run_review(output_path=None):
     # Do not run reviewer as __main__ (CLI flags would be required).
     # Execute as a named module in memory, with no writing to script files.
     scope={"__name__":"m37p2_gui_review_module",
-           "__file__":str(Path(__file__).with_name("g4c7_m37p2_author_native_early_review.py"))}
+           "__file__":str(master.parent/"g4c7_m37p2_author_native_early_review.py")}
     exec(compile(reviewer.as_string(),REVIEW_SCRIPT,"exec"),scope)
     destination=Path(output_path) if output_path else master.parent/(master.stem+"_UNAPPROVED_ART_REVIEW")
     if destination.resolve()==master.parent.resolve() or master.resolve().is_relative_to(destination.resolve()):
