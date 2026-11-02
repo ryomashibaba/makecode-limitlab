@@ -1,0 +1,116 @@
+name: G4C7 M37-P2 genuine single-file Blender GUI review v2 NOT ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py
+      - tools/g4c7_m37p2_one_file_early_art_review_gui.py
+      - tools/g4c7_m37p2_author_native_early_review.py
+      - .github/workflows/g4c7-m37p2-single-file-gui-review-native-v2.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37p2-genuine-one-file-editor-review-v2
+  cancel-in-progress: true
+jobs:
+  independently-test-and-archive-v2-empty-native-studio:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Prove no procedural city authoring slipped into v2 author method
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py tools/g4c7_m37p2_one_file_early_art_review_gui.py tools/g4c7_m37p2_author_native_early_review.py
+          python - <<'PY'
+          from pathlib import Path
+          for name in (
+              'tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py',
+              'tools/g4c7_m37p2_one_file_early_art_review_gui.py'):
+              s=Path(name).read_text()
+              for forbidden in ("bpy.ops.mesh.", "bpy.data.meshes.new(", ".from_pydata(", "bpy.ops.render.render("):
+                  assert forbidden not in s, (name,forbidden)
+          print("AUTHOR_V2_BUNDLE_NO_CITY_GEOMETRY_AND_NO_RENDER_PASS_NOT_ART")
+          PY
+      - name: Install authentic Blender bpy 4.5
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build one NEW native source with embedded audit and actual GUI control
+        run: |
+          python -u tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py
+      - name: Independent reopen and test full dependencies plus negative render gate
+        run: |
+          python - <<'PY'
+          import bpy,hashlib,importlib.util,json
+          from pathlib import Path
+          d=Path("artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART")
+          m=json.loads((d/"M37P2_V2_NATIVE_WORKSPACE_MANIFEST.json").read_text())
+          p=d/"M37P2_SINGLE_FILE_DIRECT_AUTHOR_AND_REVIEW_NOT_ART.blend"
+          assert p.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m["output_sha256"]
+          bpy.ops.wm.read_factory_settings(use_empty=True)
+          bpy.ops.wm.open_mainfile(filepath=str(p.resolve()))
+          scene=bpy.context.scene
+          assert scene["P2_ART"]=="HOLD" and scene["P2_OFFICIAL_ADOPTIONS"]==0
+          assert scene["P2_MINECRAFT"]=="FORBIDDEN" and scene["P2_FORMAL_331_993"]=="NOT_RUN"
+          assert len([o for o in scene.objects if o.type=="MESH"])==0
+          assert len([o for o in scene.objects if o.type=="CAMERA"])==3
+          assert scene["P2_V2_STANDALONE_GUI_EARLY_REVIEW"]=="EMBEDDED_NOT_RUN_ART_HOLD"
+          for name,expected in m["embedded_sources_sha256"].items():
+              assert hashlib.sha256(bpy.data.texts[name].as_string().encode()).hexdigest()==expected
+          src=bpy.data.texts["M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py"].as_string()
+          scope={"__name__":"embedded_gui_test","__file__":"IN_MEMORY_BLENDER_TEXT_ONLY"}
+          exec(compile(src,"M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py","exec"),scope)
+          scope["register"]()
+          assert hasattr(bpy.types,"G4C7_OT_P2_native_gui_review")
+          try:
+              scope["run_review"](str(d/"FORBIDDEN_EMPTY_REVIEW"))
+          except RuntimeError as exc:
+              assert "ARCHIVED_EMPTY_TEMPLATE_CANNOT_BE_ART_REVIEWED" in str(exc),str(exc)
+          else:
+              raise AssertionError("FAIL_OPEN_EMPTY_STUDIO_WAS_RENDERED")
+          assert not (d/"FORBIDDEN_EMPTY_REVIEW").exists()
+          scope["unregister"]()
+          assert not hasattr(bpy.types,"G4C7_OT_P2_native_gui_review")
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==m["output_sha256"]
+          print("INDEPENDENT_SAVED_BLEND_REOPEN_NATIVE_GUI_REGISTER_PASS")
+          print("EMPTY_REAL_CITY_MESHES_0; REVIEW_REFUSED; NO_ART_IMAGES; MINECRAFT_FORBIDDEN")
+          PY
+      - name: Commit append-only ART-NOT-CREATED single-file v2 workspace to research branch
+        run: |
+          set -euo pipefail
+          d=artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART
+          cp tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py "$d/"
+          cat > "$d/README_JA.md" <<'TXT'
+          # M37-P2 真正Blender単一ファイル直接編集スタジオ v2（美術未制作）
+
+          旧M37-P2統合空原本から作った新しい真正BLENDで、元原本と不採用美術を変更しない。マクロと生活断面を同時に作者が直接Blender GUI編集する準備・3真正視点レビューをGUIから起動する機能を、依存するカメラ埋没監査も含めてBLEND内へ埋め込んだ。
+
+          **都市実メッシュ0、ART HOLD、正式採用0。この作業原本自体は都市作品ではない。**
+
+          制作する作者はBlender Text Editorから `M37P2_RUN_ONCE_ENABLE_AUTHOR_REVIEW_PANEL.py`、`M37P2_RUN_ONCE_PARALLEL_MACRO_LIVED_GUI.py`、`M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py` を必要に応じて手動実行する。旧P1/O1/L/Nの不採用形状を流用せず、市街粗3Dと製造・見学者・研究・文化・住宅の実生活断面を一つの原本で直接造形。五つの制作コレクションに実メッシュを置く。カメラを全3台手動で検証・再配置したうえで、作者パネルで審査提出段階にする。
+
+          元の空原本を上書きせず新しいBLEND名へ別名保存後、再読込・GUIボタン再登録する。P2 Early Art Reviewパネルから3真正視点を審査用に描画する。旧テンプレート／メッシュなし／未承認視点／カメラ厚壁内は拒否。埋込CLIレビュー源コードをText Editorから直接実行しない。
+
+          **ヘッドレスCIではGUIの実画面分割や、美術レンダ・人間の生活構造は検証できない。** 331人体・993足元とG0/S1/G1/G2/G3未実施。MakeCode費用未評価。Minecraft施工禁止、main変更禁止、PR #53 Draft、Work事前明示承認制。
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$d"
+          git diff --cached --quiet && exit 1
+          git commit -m "research(g4c7): archive real standalone P2 author GUI and early-review native v2 EMPTY ART HOLD"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Preserve v2 empty source on GitHub as workflow artifact if branch write fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37p2-NATIVE-SINGLE-FILE-GUI-v2-NOT-ART
+          path: artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART
+          retention-days: 21
+          if-no-files-found: warn
