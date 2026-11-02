@@ -129,3 +129,12 @@
 - [専用Actions #41423413754](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41423413754) は **SUCCESS**：本物のBlenderで保存→別プロセスで再読込、埋込Text SHA一致、GUIアドオン登録・解除、空テンプレートのARTレビューボタン誤起動拒否、GitHub追記保存を確認。初回CANCELLEDと後の誤検証assertによるFAILは[統合引き継ぎ節18](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)に明記。
 - **重要：これは空の作者編集スタジオであって、新しい都市造形ではない。都市実メッシュ0・真正美術3画像なし・BlenderデスクトップGUI実操作未確認。** ART HOLD／正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main不変更、Draft PR #53維持。
 - 次工程はエディタ増設ではなく、**実際の都市マクロ＋居住・見学/製造・研究/文化の実生活断面を同じ作者BLENDで直接造形すること**。未承認Work禁止、旧P1のpatch/wall/bridge型第三生成案禁止。
+
+
+## M37-P2 2026-11-02：真正3視点正常系PASS／修正済み作者原本v3
+
+- **v3を現在の作者編集入口にする**：[真正Blender v3原本（修正済み、ART未制作）](artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend)。528,408 bytes、SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249`。旧v1/v2/不採用原本は上書きせず保護。
+- [一時技術メッシュを用いた正常系3真正Cycles PNG CI #41428422529 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41428422529) でAERIAL/PUBLIC_EYE/HABITAT_EYEを実描画、保存原本不変とPNG/SHAを確認。一時メッシュ・画像は破棄し、**都市美術・正式ARTではない**。
+- 実際の不具合は `bpy_prop_collection.__contains__` にObjectを渡す誤りと、ヘッドレス特有の`bpy.data.is_dirty`誤判定。[修正済みv3 native BLEND独立再読込/追記保存 CI #41428982047 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41428982047)。
+- 実都市原本の直接3D造形とデスクトップGUI実操作はまだ未実施。**ART HOLD・正式採用0、331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode未測定、Minecraft施工禁止、main変更禁止、Draft PR #53未merge、Work事前明示承認**を維持。
+- 次は新しい空テンプレートを増やさず、作者がこのv3同一原本で全市街粗3Dと居住・造船/見学・研究・文化の実生活断面を同時造形し、3実視点の絶対美術審査。全文は[統合引き継ぎ節19](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
