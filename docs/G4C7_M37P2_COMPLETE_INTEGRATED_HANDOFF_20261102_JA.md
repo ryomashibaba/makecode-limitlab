@@ -403,3 +403,17 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - **本質的な制約を残す：** 本研究はGUIを操作して作者が美術の質を作った証明ではない。実都市全景・実工場と見学者の物理隔壁・研究文化・玄関から内室の奥行の5領域・3真正ART画像は未完成。これらがART絶対評価に出るまでは第三自動プリミティブ都市を増産せず、安全QA（331/993・G0/S1/G1/G2/G3）、MakeCode評価、Minecraft施工を行わない。PR #53 Draft、main保護、正式採用0を維持。
 
 **後工程は本物のペア都市・住居造形、実工場／研究文化の実在と、3視点の早期ART判定。** 技術CIや資料作成だけでは完成数を増やさない。
+
+---
+
+## 27. M37-P2：実Blender 3視点技術画像とWindows省操作起動（2026-11-03）
+
+**ネイティブ編集保存・再読込はCI #41467002875 実測SUCCESS。3視点追加CIおよび新Windows統合CIは本追記時点ではqueued、結果が出るまでPASSと称さない。正式都市ARTは未制作、ART HOLD・正式採用0。**
+
+- [新研究正本](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_PAIRED_THREE_VIEW_LOCAL_ENTRY_20261103_JA.md)
+- [真正同一BLENDの3視点Cyclesレンダ＋SHA検証](../tools/g4c7_m37p2_paired_operator_three_view_evidence.py)を実装。2役割の実際の編集済みメッシュのみを読み込み、別のメモリ上のカメラ仮配置で撮影。保存済み原本を書き換えず、PNG 3枚とレポート、オフライン閲覧HTMLを生成。公式作者カメラ審査・都市美術とは完全に区別。
+- [真正Blender CI #41471988900](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41471988900)：実画像・同一BLEND SHA・3 PNG・ART HOLD・原本不変を確認し、撮影成果物をGitHub Actionsにアップロードする新工程を追加。**この新CIの結果は確認待ち**。
+- [Windows向け統合PowerShell](../tools/g4c7_m37p2_run_native_operator_first_pair.ps1)は固定コミットから3つのPythonのみ取得し、ユーザーが既に持つSHA固定v3コピーと既存Ollamaモデル・Blender5.2を利用する。1回の型付きOllama Tool Callで小さい2領域の編集命令を取り、別名Blender試作`.blend`と3真正画像を作り、HTMLと保存フォルダを開く。元のBlender GUIを直接操作せず、main／Minecraftは不変更。失敗したらHOLD。
+- [1ダブルクリックCMD](../tools/G4C7_P2_Native_Operator_Trial_Start.cmd)を追加。ZIP不要、通常利用者はコード編集・PowerShell入力不要。ただし**実ローカルOllama＋Blender統合テストは未実施**。[新Windows検証CI #41472380173](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41472380173)でWindows PowerShell構文、固定PS1と3Pythonの取得、SHA、PrepareOnly安全停止、元のBLEND不変を確認するまでユーザーに実行させない。
+- **実作品の認定ではない**：二つの仮Edit Mode形状は学習用フィクスチャ。都市全体の密度、工場・見学区切り、研究文化、室内住居の実物、本当の3視点ART提出は未完成。旧Qwen一括JSON・固定巨大板、Box群ジェネレータへ戻らない。旧ランチャーはRETIREDを維持。
+- 固定規約：main変更禁止、Draft PR #53未merge、Work不使用・事前許可、正式331人体/993足元＆G0/S1/G1/G2/G3未実施、MakeCode未測定、Minecraft施工禁止、正式採用0。
