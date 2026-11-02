@@ -1,0 +1,83 @@
+name: G4C7 M37-P2 native editor paired operations REAL Blender tech NO ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_native_operator_author.py
+      - tests/test_g4c7_m37p2_paired_operator_native.py
+      - .github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m37p2-paired-operator-native
+  cancel-in-progress: true
+jobs:
+  replay-two-paired-native-artist-actions-on-immutable-v3:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Strict structured actions, no arbitrary code execution
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_native_operator_author.py
+          python -m unittest discover -s tests -p 'test_g4c7_m37p2_paired_operator_native.py' -v
+      - name: Install real bpy 4.5 native runtime (source v3)
+        run: |
+          python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2] == (4,5)"
+      - name: Generate ephemeral paired non-art author actions for actual Blender operators
+        run: |
+          python - <<'PY'
+          import importlib.util, json
+          from pathlib import Path
+          t=Path('tests/test_g4c7_m37p2_paired_operator_native.py')
+          spec=importlib.util.spec_from_file_location('study_fixture',t)
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          target=Path('/tmp/G4C7_PAIR_NON_ART_FIXTURE.json')
+          target.write_text(json.dumps(module.technical_fixture_not_art()))
+          print('ONE_PAIR_ONLY_TECH_FIXTURE_NON_ART')
+          PY
+      - name: Replay native Blender operators on separate saved test study (not city art)
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 360s python -u tools/g4c7_m37p2_native_operator_author.py \
+             --source artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend \
+             --actions /tmp/G4C7_PAIR_NON_ART_FIXTURE.json \
+             --out /tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          d=Path('/tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY')
+          report=json.loads((d/'P2_OPERATOR_STUDY_HOLD_EVIDENCE.json').read_text())
+          assert report['art']=='HOLD' and report['official_adoptions']==0
+          assert report['minecraft']=='FORBIDDEN' and report['formal_331_993']=='NOT_RUN'
+          assert report['action_count']==8 and report['roles']=={'city_macro':4,'habitat':4}
+          n=d/report['native_file']
+          assert n.is_file() and n.stat().st_size>500
+          assert hashlib.sha256(n.read_bytes()).hexdigest()==report['native_sha256']
+          src=Path('artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend')
+          assert hashlib.sha256(src.read_bytes()).hexdigest()==report['original_sha256']
+          print('NATIVE_EDIT_OPERATOR_PAIRED_MACRO_HABITAT_TECH_ONLY_ART_HOLD_PASS')
+          PY
+          test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+      - name: Verify truly native saved scene has both edited meshes in same Blender scene
+        run: |
+          python - <<'PY'
+          import bpy
+          p='/tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY/P2_NATIVE_EDITOR_PAIRED_STUDY_UNAPPROVED.blend'
+          bpy.ops.wm.open_mainfile(filepath=p)
+          sc=bpy.context.scene
+          assert sc.get('P2_SOURCE_KIND')=='LOCAL_LLM_NATIVE_EDIT_OPERATOR_TRIAL_NOT_GUI_HUMAN'
+          assert sc.get('P2_ART')=='HOLD' and sc.get('P2_OFFICIAL_ADOPTIONS')==0
+          for name in ('P2_CITY_MACRO_DIRECT_AUTHOR','P2_HABITAT_PRIVATE_DIRECT_AUTHOR'):
+              objs=[o for o in bpy.data.collections[name].objects if o.type=='MESH']
+              assert len(objs)==1,(name,objs)
+              assert len(objs[0].data.polygons)>1,name
+          assert sc.get('P2_MINECRAFT')=='FORBIDDEN'
+          print('TRUE_SAVED_NATIVE_BLENDER_TWO_ROLES_ONE_SCENE_ART_HOLD_TECH_ONLY')
+          PY
