@@ -145,3 +145,11 @@
 - [本物のBlender 4.5.15 GUIでの2画面分割／視点切替CI #41431524480 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41431524480) を確認。Xvfb実ディスプレイ、`bpy.app.background=False`、v3原本の`VIEW_3D`実エリア2つ、公共→住宅の編集視点切替、元SHA不変を実測。[詳しい実行証拠と限界](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ACTUAL_DISPLAY_GUI_DUAL_AUTHOR_EDITOR_PASS_20261102_JA.md)／[統合引き継ぎ節20](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
 - [v3真正作者原本](artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend) は528,408バイト・SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249` のまま不変。実GUIで都市造形を行ったわけではない。ART HOLD、正式採用0、正式331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止。
 - **次工程は唯一、GUIで都市マクロと製造・見学・研究・文化・住居を同時に実造形すること。** 旧不採用案の自動生成への復帰、空スタジオの追加、main変更、PR #53のmerge、未承認Workは禁止。
+
+
+## M37-P2 2026-11-02：空スタジオ整備終了 → 直接作者都市美術の内容を具体化
+
+- [作者主導の初回未採用構想「街を織り込む造船都市」](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_FIRST_DIRECT_AUTHOR_ART_DIRECTION_CITY_AND_LIVED_SECTION_20261102_JA.md)を保存。旧P1/O1形式の同型自動第三案ではない。都市全体の密度と、実設備ある造船・隔てられた見学室・研究文化の採光中庭・私界のある住居を**同じ直接作者3D**に最初から組み込む方針の具体的な未採用ART方向。これは完成模型・美術採用・新Blenderメッシュではない。
+- [統合引き継ぎ節21](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)に実行可否を追加。現真正編集入口は[v3空BLEND](artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend)であり、SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249`。その都市メッシュは0。実GUI二画面TECH PASSと都市造形ART未着手を区別する。
+- 新しい空テンプレート・CIを繰り返すより、作者による都市マクロ＋実居室＋製造研究文化の直接Blender 3D制作と真正3視点レビューを次工程の唯一の美術要件とする。Chatで直接Blender GUIの作者操作ができず、Workはユーザー事前明示承認制、未承認のまま代行・外注しない。
+- **ART HOLD／正式採用0、331人体/993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未測定、Minecraft world writes 0、main変更禁止、Draft PR #53未merge**を維持。
