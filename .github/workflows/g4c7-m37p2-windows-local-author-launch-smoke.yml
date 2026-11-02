@@ -63,6 +63,29 @@ jobs:
             throw 'IMMUTABLE_GITHUB_NATIVE_ORIGINAL_CHANGED'
           }
           Write-Host 'WINDOWS_NATIVE_AUTHOR_LAUNCH_PACKAGE_PASS_REAL_POWERSHELL_PARSER_SOURCE_SHA_MANIFEST_PYTHON_NO_GUI_ART'
+      - name: Exercise one-file download-only Windows user path without any local clone
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $cleanDir = Join-Path $env:RUNNER_TEMP 'P2_LAUNCH_DOWNLOAD_ONLY'
+          New-Item -ItemType Directory -Path $cleanDir -Force | Out-Null
+          $scriptFile = Join-Path $cleanDir 'g4c7_m37p2_launch_local_author.ps1'
+          Copy-Item -LiteralPath 'tools/g4c7_m37p2_launch_local_author.ps1' -Destination $scriptFile
+          $cwd = Get-Location
+          try {
+            Set-Location $cleanDir
+            & $scriptFile -BlenderExe (Join-Path $env:WINDIR 'System32/cmd.exe') -WorkspaceRoot (Join-Path $cleanDir 'SESSION_TEST') -PrepareOnly
+          } finally {
+            Set-Location $cwd
+          }
+          $work = @(Get-ChildItem (Join-Path $cleanDir 'SESSION_TEST') -Directory)
+          if ($work.Count -ne 1) { throw 'REMOTE_SOURCE_WORK_SESSION_NOT_PREPARED' }
+          $original = '536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249'
+          $sessionBlend = Join-Path $work[0].FullName 'P2_DIRECT_AUTHOR_UNAPPROVED.blend'
+          if ((Get-FileHash $sessionBlend -Algorithm SHA256).Hash.ToLowerInvariant() -ne $original) {
+            throw 'DOWNLOAD_ONLY_SHA_VALIDATION_FAILED'
+          }
+          Write-Host 'ONE_SCRIPT_DOWNLOAD_ONLY_PATH_SOURCE_SHA256_PASS_NO_REPO_NEEDED'
       - name: Verify immutable repo source remains untouched
         shell: bash
         run: |
