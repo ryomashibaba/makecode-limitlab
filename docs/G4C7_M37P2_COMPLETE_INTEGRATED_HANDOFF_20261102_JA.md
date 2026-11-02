@@ -218,3 +218,16 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 最新作業コミット：`50a82c89ac32d2ead8cc70e60c66b7a5613b0d4c`（GUIアドオン）と`6062ca0ddb37628072901d1548f326c6cd0e302c`（専用検証）。原本・main・PRのDraft状態を変更しない。
 
 **直近の制作ブロッカー：** GitHub ActionsのBlenderはヘッドレスで、作者が3Dを視覚的に直接造形するBlender GUIをChatの現行環境では操作できない。Workは事前明示承認制であり未承認のまま使わない。「Pythonで生成しやすい都市」を第三案として作らず、本人または承認された実GUI作者編集を待つ。これまでの同型案を増やすのでなく、次に必要なのは一つの新規真正BLENDの**美術そのもの**である。
+
+---
+
+## 15. M37-P2：空作者スタジオを「単一真正BLEND GUI作業原本」に統合（2026-11-02 JST）
+
+**成果分類：作者作業環境。都市美術そのものではない。ART HOLD／正式採用0、正規331/993・G0/S1/G1/G2/G3未実施、Minecraft施工禁止。**
+
+- [`tools/g4c7_m37p2_bundle_direct_author_workspace.py`](../tools/g4c7_m37p2_bundle_direct_author_workspace.py)：固定SHA `d13e17fb59763a0719b5a91ed80043dade0f40ea65b7a29eba4e5bbfb9545041` の真正空作者BLENDを読み取る。既存原本を上書きせず、GUI二画面編集用Pythonと3視点レビュー用PythonをBlender Textとして埋込んだ別の**新しい保存BLEND**を作る。全新規都市メッシュ数は0のまま。
+- [専用CI](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/g4c7-m37p2-integrated-native-editor-workspace.yml)：Blender 4.5で新たな原本を保存し、別プロセスで読み直して埋込Text原文SHA、空の実メッシュ、固定3カメラ、原BLEND不変、ART/安全/施工禁止を検査。成功した場合に限り `artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART/` へ追記保存する。**初回調査時はActions #41390131345 QUEUED、技術完了と誤報しない**。
+- GUI自動起動・GUIでの真正立体造形・人間の活動の美術的完成・レンダリングは一切実施しない。この統合原本は「同じ作品を全景と人間眼高で直接編集する作者の作業効率を高める器」であって、実際の高密度都市そのものではない。
+- 主コードコミット `3a6557f7f67a014006286ea3705e760cbdce4aad`、CIコミット `3ce8b21439f3dca1ca2c845b8e96252061ec9143`。GUI/Work使用事前明示承認制、main禁止、PR #53 Draft・未merge、ART FIRSTを維持。
+
+**次のブロッカー／実制作：** 作者が直接Blender GUIで市街マクロ・造船活動/見学と職員隔壁・研究文化共有断面・生活室を一体原本に並行編集する。現環境でGUI操作が未許可のため、勝手に旧`patch/wall/bridge`主導の第三作品を生成して代行しない。真正3画像が揃うまでは美術候補へ昇格させない。
