@@ -114,3 +114,10 @@
 - 既存の統合空原本で、内蔵3視点審査が外部.pyに依存しText Editorからそのまま実行できない欠陥を修正。[自己完結GUIレビューボタン](tools/g4c7_m37p2_one_file_early_art_review_gui.py)／[同梱カメラ監査を読める改修版](tools/g4c7_m37p2_author_native_early_review.py)／[真正BLEND新v2原本作成](tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py)。
 - [専用native Actions #41422123251](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422123251)：真正Blenderでの**新v2生成工程はSUCCESS**、独立再読込・「空原本をARTレビューできない」負例検証は直近で**IN_PROGRESS、全体SUCCESS未確定**。アーカイブが実際にGitHubへ現れるまでは保存済みと称さない。詳細は[現行統合引き継ぎ節17](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
 - これは新市街美術ではない。P2新真正都市メッシュ0、ART HOLD、正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未測定、Minecraft施工禁止、main変更禁止、PR #53 Draft維持。作者による全景と生活断面の同一BLEND直接3D造形が次の美術制作。Workは事前明示承認制、未承認利用禁止。
+
+
+### 2026-11-02 M37-P2 v2 native Actions訂正
+
+- 最初の[#41422123251](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422123251) は真正BLEND生成工程まではPASS、独立再読込実行中に診断付き新ワークフローへ切り替え **CANCELLED**（全体SUCCESSではない）。
+- [新版 #41422705862](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422705862) は150秒の実行上限・診断出力を追加し、最後の照合で**QUEUED**。真正v2 `.blend` のGitHub追記保存は結果とmanifest実在を確認するまで未確定。全詳細は[統合引き継ぎ節17と補足](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+- 終始、P2新都市実造形0・ART HOLD・正式採用0、331/993・G0/S1/G1/G2/G3未実施、Minecraft施工禁止、main不変更、PR #53 Draft/未merge、Work明示承認制。
