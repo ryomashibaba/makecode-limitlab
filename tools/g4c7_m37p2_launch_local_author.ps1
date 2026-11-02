@@ -5,7 +5,9 @@
 [CmdletBinding()]
 param(
     [string]$BlenderExe = "",
-    [string]$WorkspaceRoot = ""
+    [string]$WorkspaceRoot = "",
+    # For independent Windows packaging verification; never opens Blender or Explorer.
+    [switch]$PrepareOnly
 )
 
 Set-StrictMode -Version Latest
@@ -221,6 +223,10 @@ Workspace: local only. Do not merge, publish, or build in Minecraft.
     Write-Host "Verified source SHA-256: $expectedSourceSha256"
     Write-Host "Opening directly editable Blender copy: $workBlend"
     Write-Host "No meshes generated; ART HOLD; Minecraft untouched."
+    if ($PrepareOnly) {
+        Write-Host ("PREPARE_ONLY_NO_BLENDER_LAUNCH: " + $sessionDir)
+        return
+    }
     $args = ('"{0}" --python "{1}"' -f $workBlend, $bootstrapPath)
     $process = Start-Process -FilePath $blender -ArgumentList $args -PassThru
     Write-Host ("Blender started. PID: " + $process.Id)
