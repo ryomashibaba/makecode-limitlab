@@ -9,6 +9,15 @@ param(
     [string]$BlenderExe = "",
     [switch]$PrepareOnly
 )
+
+# Explicitly retired after the real 2026-11-02 Qwen vertex trial ART REJECT.
+# Preserve historical code and all outputs in the research branch, but prevent
+# further expensive blind local-model trials. No writes or model calls occur.
+Write-Host "G4C7_P2_RETIRED_ART_FIRST_HOLD: One-shot full-city vertex generation was rejected."
+Write-Host "11 meshes, 12 total polygon faces, 0 valid faces, 5 reused mesh vertex sets."
+Write-Host "This is not permission to generate a third primitive city."
+Write-Host "No Ollama, Blender, Minecraft, or source files were touched."
+exit 2
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
