@@ -1,0 +1,107 @@
+name: G4C7 M37-P2 integrate real empty Blender artist editing studio NOT ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_bundle_direct_author_workspace.py
+      - .github/workflows/g4c7-m37p2-integrated-native-editor-workspace.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-m37p2-integrated-empty-author-editor-once
+  cancel-in-progress: true
+jobs:
+  package-authentic-empty-native-workspace:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check no generated geometry and source unchanged
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_bundle_direct_author_workspace.py tools/g4c7_m37p2_parallel_author_view.py
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("tools/g4c7_m37p2_bundle_direct_author_workspace.py").read_text()
+          for forbidden in ("bpy.ops.mesh.", "bpy.data.meshes.new(", ".from_pydata(", "bpy.ops.render.render("):
+              assert forbidden not in s, "NO_PROCEDURAL_CITY_AND_NO_FAKE_IMAGE: "+forbidden
+          p=Path("artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED/M37P2_EMPTY_DIRECT_AUTHOR_MASTER_NOT_ART.blend")
+          import hashlib
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=="d13e17fb59763a0719b5a91ed80043dade0f40ea65b7a29eba4e5bbfb9545041"
+          assert not Path("artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART").exists()
+          print("PINNED_SOURCE_NO_CITY_FORM_VERIFIED")
+          PY
+      - name: Install native bpy 4.5
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Build NEW authentic Blender native asset with embedded GUI scripts
+        run: |
+          python -u tools/g4c7_m37p2_bundle_direct_author_workspace.py --build
+      - name: Independent reopen and verify genuine Blender content, unchanged source, and no art
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import bpy,hashlib,json,importlib.util
+          d=Path("artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART")
+          manifest=json.loads((d/"M37P2_WORKSPACE_BUILD_MANIFEST.json").read_text())
+          p=d/"M37P2_INTEGRATED_EMPTY_ARTIST_WORKSPACE_NOT_ART.blend"
+          assert p.read_bytes()[:7]==b"BLENDER"
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==manifest["output_sha256"]
+          bpy.ops.wm.read_factory_settings(use_empty=True)
+          bpy.ops.wm.open_mainfile(filepath=str(p.resolve()))
+          s=bpy.context.scene
+          assert s["P2_GUI_PACKAGE_STATUS"]=="EMPTY_DIRECT_AUTHOR_READY_NOT_ART"
+          assert s["P2_ART"]=="HOLD" and s["P2_OFFICIAL_ADOPTIONS"]==0
+          assert s["P2_FORMAL_331_993"]=="NOT_RUN" and s["P2_MINECRAFT"]=="FORBIDDEN"
+          assert s["P2_STUDIO_STAGE"]=="EMPTY_NO_ART_CREATED"
+          assert len([x for x in s.objects if x.type=="MESH"])==0
+          assert len([x for x in s.objects if x.type=="CAMERA"])==3
+          assert len([t for t in bpy.data.texts if t.name.startswith("M37P2_RUN_ONCE")])>=2
+          for name,expected in manifest["embedded_source_sha256"].items():
+              assert hashlib.sha256(bpy.data.texts[name].as_string().encode()).hexdigest()==expected, name
+          spec=importlib.util.spec_from_file_location("g4c7_p2_gui", "tools/g4c7_m37p2_parallel_author_view.py")
+          mod=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+          assert mod.validate(s)==[]
+          mod.register()
+          assert hasattr(bpy.types.Scene,"p2_parallel_human_focus")
+          mod.unregister()
+          assert not hasattr(bpy.types.Scene,"p2_parallel_human_focus")
+          orig=Path("artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED/M37P2_EMPTY_DIRECT_AUTHOR_MASTER_NOT_ART.blend")
+          assert hashlib.sha256(orig.read_bytes()).hexdigest()==manifest["source_sha256"]
+          print("INDEPENDENT_NATIVE_REOPEN_EDITOR_BUNDLE_PASS; 0_REAL_MESH; ART_NOT_CREATED; GUI_ACTUAL_EDIT_UNTESTED")
+          PY
+      - name: Archive new integrated EMPTY editor asset append-only, NEVER as artwork
+        run: |
+          set -euo pipefail
+          d=artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART
+          cp -p tools/g4c7_m37p2_bundle_direct_author_workspace.py "$d/"
+          cat > "$d/README_JA.md" <<'TXT'
+          # M37-P2：統合された真正Blender作者編集スタジオ（空原本・美術未制作）
+
+          既存の真正空原本を不変として、新規BlenderファイルにGUI二画面編集アドオンと3視点審査スクリプトを**テキストとして埋め込んだだけ**の作業入口。真正BLENDだが都市3Dメッシュは0であり、新しいART作品や美術改善ではない。旧L/N/O1/P1造形は一切移植しない。
+
+          BlenderをGUIで開き、Text Editorの `M37P2_RUN_ONCE_ENABLE_AUTHOR_REVIEW_PANEL.py` と `M37P2_RUN_ONCE_PARALLEL_MACRO_LIVED_GUI.py` を作者が明示的に実行。3D ViewのP2 Author Viewsで都市全景と人間視点の二画面を作る。手作業で市街全景粗3Dと製造・研究・住宅・文化の実生活断面を同じ新しい原本で並行造形し、**別名保存**する。3視点カメラ初期位置は暫定で、すべて作者確認・位置調整が必要。ヘッドレスCIはGUI二画面の実操作そのものは試験していない。
+
+          安全QA331人体／993足元とG0/S1/G1/G2/G3はNOT RUN、ART HOLD、正式採用0、MakeCode実施工費未測定、Minecraft Education施工禁止、main変更禁止、PR #53 Draft、Work事前承認制。
+          TXT
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$d"
+          git diff --cached --quiet && exit 1
+          git commit -m "research(g4c7): archive single-file M37-P2 GUI-ready genuine empty Blender artist studio NOT ART"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Preserve artifact if branch write fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-m37p2-ONE-FILE-EMPTY-GUI-STUDIO-NOT-ART
+          path: artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART
+          retention-days: 21
+          if-no-files-found: warn
