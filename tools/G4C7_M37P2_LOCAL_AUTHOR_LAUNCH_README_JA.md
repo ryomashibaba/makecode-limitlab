@@ -25,7 +25,7 @@ GitHubには真正Blender 4.5.15ベースの **v3空編集原本** があるが�
 
 - [Windowsランチャー基礎検証CI #41447267350](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41447267350) は SUCCESS：Windows PowerShell構文、原本コピーSHA一致、一時作業フォルダ、JSON固定属性、起動用Python構文を確認。**PrepareOnlyモードで実行したためWindowsのBlender GUI自体は起動していない。**
 - [Blender 4.5.15実GUI二画面CI #41431524480](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41431524480) と [真正3視点の技術CI #41428422529](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41428422529) は先行して成功。ただしWindowsのBlender 5.2.xでの実操作・本物の美術完成はまだ未検証。
-- 「手元のPCにローカルGitHubクローンがない場合のダウンロード」については、別のWindowsジョブで確認を進める。GitHub非公開やネットワーク制限で失敗する場合は、正本ファイルをGitHubから直接ダウンロードしたうえで、正しいSHAのコピーをローカルリポジトリへ配置して再実行する。
+- [Windowsダウンロード専用経路CI #41447810957 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41447810957)：GitHubのローカルクローンが**一切ない別フォルダ**へスクリプト1本だけを置き、raw.githubusercontent.comからSHA固定の真正v3原本をダウンロード、保存コピーのSHA・セッションを検証した。ZIPやGitクローン不要。ただし実際のユーザーPC固有のネットワーク制限・WindowsのBlender起動可否までは保証しない。
 - Run後の実セッション、見栄え、居住・製造機能、331人体・993足元とG0/S1/G1/G2/G3は未実施。MakeCode費用未測定。Minecraft施工禁止、PR #53 Draft、main変更禁止、Work事前許可を維持。
 
 **ランチャーで準備できても、本当の次工程は本人または許可済みのローカル作家エージェントがGUIで造形した保存BLENDを提示すること。** 空の編集機能を作品完成と混同しない。
