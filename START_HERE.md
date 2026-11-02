@@ -138,3 +138,10 @@
 - 実際の不具合は `bpy_prop_collection.__contains__` にObjectを渡す誤りと、ヘッドレス特有の`bpy.data.is_dirty`誤判定。[修正済みv3 native BLEND独立再読込/追記保存 CI #41428982047 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41428982047)。
 - 実都市原本の直接3D造形とデスクトップGUI実操作はまだ未実施。**ART HOLD・正式採用0、331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode未測定、Minecraft施工禁止、main変更禁止、Draft PR #53未merge、Work事前明示承認**を維持。
 - 次は新しい空テンプレートを増やさず、作者がこのv3同一原本で全市街粗3Dと居住・造船/見学・研究・文化の実生活断面を同時造形し、3実視点の絶対美術審査。全文は[統合引き継ぎ節19](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+
+
+## M37-P2 2026-11-02：Blender実GUIで全景／公共・住宅の2編集画面 PASS
+
+- [本物のBlender 4.5.15 GUIでの2画面分割／視点切替CI #41431524480 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41431524480) を確認。Xvfb実ディスプレイ、`bpy.app.background=False`、v3原本の`VIEW_3D`実エリア2つ、公共→住宅の編集視点切替、元SHA不変を実測。[詳しい実行証拠と限界](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ACTUAL_DISPLAY_GUI_DUAL_AUTHOR_EDITOR_PASS_20261102_JA.md)／[統合引き継ぎ節20](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+- [v3真正作者原本](artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend) は528,408バイト・SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249` のまま不変。実GUIで都市造形を行ったわけではない。ART HOLD、正式採用0、正式331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止。
+- **次工程は唯一、GUIで都市マクロと製造・見学・研究・文化・住居を同時に実造形すること。** 旧不採用案の自動生成への復帰、空スタジオの追加、main変更、PR #53のmerge、未承認Workは禁止。
