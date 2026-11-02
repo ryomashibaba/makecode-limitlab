@@ -1,0 +1,71 @@
+name: G4C7 M37-P2 Windows local native art editor launcher packaging NO ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_launch_local_author.ps1
+      - .github/workflows/g4c7-m37p2-windows-local-author-launch-smoke.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-p2-windows-local-launcher-verify
+  cancel-in-progress: true
+jobs:
+  verify-real-windows-powershell-packaging-without-gui-or-city-geometry:
+    runs-on: windows-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Parse PowerShell and prepare local author session from immutable native source
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $scriptPath = Join-Path $PWD 'tools/g4c7_m37p2_launch_local_author.ps1'
+          $errors = $null
+          $tokens = $null
+          [void][System.Management.Automation.Language.Parser]::ParseFile($scriptPath, [ref]$tokens, [ref]$errors)
+          if ($errors.Count -ne 0) { throw ("POWERSHELL_PARSE_ERRORS: " + ($errors | Out-String)) }
+          $expected = '536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249'
+          $src = Join-Path $PWD 'artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend'
+          if ((Get-FileHash $src -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expected) {
+            throw 'PINNED_V3_SOURCE_SHA_MISMATCH'
+          }
+          $target = Join-Path $env:RUNNER_TEMP 'G4C7_AUTHOR_LOCAL_PREPARE_ONLY'
+          $fakeBlenderExe = Join-Path $env:WINDIR 'System32/cmd.exe'
+          & $scriptPath -BlenderExe $fakeBlenderExe -WorkspaceRoot $target -PrepareOnly
+          if ($LASTEXITCODE -ne 0 -and $null -ne $LASTEXITCODE) {
+            throw "PREPARE_ONLY_FAILED: $LASTEXITCODE"
+          }
+          $dirs = @(Get-ChildItem -LiteralPath $target -Directory)
+          if ($dirs.Count -ne 1) { throw 'EXPECTED_EXACTLY_ONE_NEW_LOCAL_SESSION' }
+          $dir = $dirs[0].FullName
+          $copy = Join-Path $dir 'P2_DIRECT_AUTHOR_UNAPPROVED.blend'
+          if ((Get-FileHash $copy -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expected) {
+            throw 'LOCAL_AUTHOR_SESSION_COPY_SHA_FAILED'
+          }
+          $bootstrap = Join-Path $dir 'P2_GUI_BOOTSTRAP_NO_GEOMETRY.py'
+          $source = Get-Content -LiteralPath $bootstrap -Raw
+          foreach ($needle in @('M37P2_RUN_ONCE_PARALLEL_MACRO_LIVED_GUI.py','M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py','M37P2_RUN_ONCE_ENABLE_AUTHOR_REVIEW_PANEL.py','g4c7.p2_parallel_split','G4C7_DIRECT_AUTHOR_READY_NO_MESHES_CREATED_ART_HOLD')) {
+            if (-not $source.Contains($needle)) { throw "BOOTSTRAP_MISSING: $needle" }
+          }
+          python -m py_compile $bootstrap
+          $m = Get-Content (Join-Path $dir 'P2_SESSION_MANIFEST.json') -Raw | ConvertFrom-Json
+          if ($m.art -ne 'HOLD' -or $m.official_art_adoptions -ne 0 -or $m.minecraft -ne 'FORBIDDEN') {
+            throw 'SAFETY_AND_ART_CHARTER_INVALID'
+          }
+          if ($m.source_sha256 -ne $expected -or $m.status -ne 'UNAUTHORED_COPY_NOT_ART') {
+            throw 'PROVENANCE_DECLARATION_INVALID'
+          }
+          if ((Get-FileHash $src -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expected) {
+            throw 'IMMUTABLE_GITHUB_NATIVE_ORIGINAL_CHANGED'
+          }
+          Write-Host 'WINDOWS_NATIVE_AUTHOR_LAUNCH_PACKAGE_PASS_REAL_POWERSHELL_PARSER_SOURCE_SHA_MANIFEST_PYTHON_NO_GUI_ART'
+      - name: Verify immutable repo source remains untouched
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+          echo 'NO_GITHUB_ARTIFACT_MODIFICATIONS_NO_CITY_ART_NO_MINECRAFT'
