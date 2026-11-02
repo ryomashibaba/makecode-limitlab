@@ -31,13 +31,19 @@ jobs:
               $script,[ref]$tok,[ref]$errors)
           if ($errors.Count -ne 0) { throw ($errors | Out-String) }
           $cmd=Get-Content 'tools/G4C7_P2_Native_Operator_Trial_Start.cmd' -Raw
-          if (-not $cmd.Contains('99065244c6d5cc099f3383a9e9e36762cbcee74b')) {
+          if (-not $cmd.Contains('0483de79e4e31a2dcef9c18dc37dd22608cc55bc')) {
               throw 'CMD_PINS_WRONG_POWERSHELL_COMMIT'
           }
           $src=Join-Path $PWD 'artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend'
           $sha='536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249'
           if ((Get-FileHash $src -Algorithm SHA256).Hash.ToLowerInvariant() -ne $sha) {
               throw 'IMMUTABLE_V3_MASTER_MISMATCH'
+          }
+          # Normal user invocation must fail closed without Ollama or Blender.
+          $result=Start-Process -FilePath 'powershell.exe' -NoNewWindow -Wait -PassThru `
+              -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File',$script)
+          if ($result.ExitCode -ne 2) {
+              throw "ART_REJECT_DEFAULT_LAUNCH_MUST_STOP_WITH_CODE_2: $($result.ExitCode)"
           }
           $root=Join-Path $env:RUNNER_TEMP 'M37P2_LOCAL_NATIVE_EDITOR_SESSION'
           $studio=Join-Path $root 'P2_TEST_AUTHOR_FIXED_NO_ART'
