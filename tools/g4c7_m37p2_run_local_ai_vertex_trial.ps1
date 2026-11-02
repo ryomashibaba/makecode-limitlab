@@ -141,7 +141,8 @@ try {
     }
 
     Write-Host "LOCAL_AI_STAGE_1: Ollama creates explicit vertex/face author proposal (no executable generated code)."
-    & $python.File @($python.Args) $runner --mode propose --model $Model --out $plan
+    $pythonArgs = @($python.Args) + @($runner, "--mode", "propose", "--model", $Model, "--out", $plan)
+    & $python.File @pythonArgs
     if ($LASTEXITCODE -ne 0) {
         Write-Warning ("ART_HOLD: candidate rejected before any Blender geometry. Evidence folder: " + $trial)
         Start-Process -FilePath explorer.exe -ArgumentList ('"{0}"' -f $trial) | Out-Null
