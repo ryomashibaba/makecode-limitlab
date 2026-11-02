@@ -23,8 +23,8 @@ jobs:
           [void][System.Management.Automation.Language.Parser]::ParseFile(
             (Resolve-Path $script).Path, [ref]$tokens, [ref]$errors)
           if ($errors.Count -ne 0) { throw ($errors | Out-String) }
-          $home = Join-Path $env:RUNNER_TEMP 'P2_WIN_AUTHOR_LOCAL_BASE'
-          $s = Join-Path $home 'P2_DIRECT_ART_MOCK_EXISTING_USER_SESSION'
+          $sessionBase = Join-Path $env:RUNNER_TEMP 'P2_WIN_AUTHOR_LOCAL_BASE'
+          $s = Join-Path $sessionBase 'P2_DIRECT_ART_MOCK_EXISTING_USER_SESSION'
           New-Item -ItemType Directory -Path $s -Force | Out-Null
           $source = 'artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend'
           $original = '536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249'
@@ -32,7 +32,7 @@ jobs:
           if ((Get-FileHash $from -Algorithm SHA256).Hash.ToLowerInvariant() -ne $original) { throw 'PINNED_SOURCE_CHANGED' }
           Copy-Item -LiteralPath $from -Destination (Join-Path $s 'P2_DIRECT_AUTHOR_UNAPPROVED.blend')
           $scriptFull = (Resolve-Path $script).Path
-          & $scriptFull -SessionRoot $home -BlenderExe (Join-Path $env:WINDIR 'System32/cmd.exe') -PrepareOnly
+          & $scriptFull -SessionRoot $sessionBase -BlenderExe (Join-Path $env:WINDIR 'System32/cmd.exe') -PrepareOnly
           $trials = @(Get-ChildItem -LiteralPath $s -Directory |
             Where-Object { $_.Name -like 'LOCAL_AI_EXPLICIT_VERTEX_TRIAL_*' })
           if ($trials.Count -ne 1) { throw 'EXPECTED_ONE_PREPARE_ONLY_AI_TRIAL' }
