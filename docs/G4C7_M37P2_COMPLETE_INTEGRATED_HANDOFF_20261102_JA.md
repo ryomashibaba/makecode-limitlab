@@ -374,3 +374,17 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 正規安全331人体・993足元、G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未測定、Minecraft施工禁止、main保護、PR #53 Open/Draft/未merge、Work無しの方針は不変。従来O1/P1の大量プリミティブ生成や旧形状流用に戻ることは禁止。
 
 **次の必要な証拠：** 新Python専用CIとWindows専用CIの実行結果をまず確認する。技術経路の検証成功後、ユーザー既存ローカルOllamaで**1つだけ**候補試験を行い、真正3D／3枚の実レンダを早期絶対評価する。複数案を機械的に量産せず、失格なら拒否・診断する。実行していないローカルモデル試験を実行済みとして報告しない。
+
+---
+
+## 25. M37-P2：初回実ローカルQwen頂点試作の厳格ART REJECT（2026-11-02）
+
+ユーザーのWindowsから`qwen3:14b`による**1回の実Ollama試行**が成立し、旧PowerShell起動エラーを越えてJSON出力された。ただし厳格な形式検査で `P2_AUTHOR_ART_FIRST_PLAN_REJECT` / `SAFE_STOP_ART_HOLD`。実3Dモデル／真正3視点画像の制作成功ではない。
+
+[実測のART REJECT証拠](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_QWEN14B_FIRST_LOCAL_VERTEX_ART_REJECT_20261102_JA.md)：提出11メッシュ、頂点総数297、面配列総数12、**正しい面0/12**（18/25/56頂点の巨大N-gon）、頂点配列が同一の再使用メッシュ5件、10/11メッシュの面数1件、面インデックス範囲外5件。実都市の新しいCycles画像0枚。ログと付属検証レポートでは正式ART HOLD、採用0、Minecraft FORBIDDEN、安全QA NOT RUN。
+
+同じ不正面が繰り返されたのは**一括で全市の明示頂点・面をQwen14Bに要求する方法が本試験では実用に達していない**ことの証拠。全LLM不可とは断定しない。第三の固定プリミティブ自動都市を再作成して置換しない。ユーザーに同じワンクリックファイルの再試行やBlender手作業を強制しない。
+
+検証器`tools/g4c7_m37p2_local_vertex_author.py`は、形状を変更せず、**不正な面数で早期除外されるメッシュにも完全同一の頂点配列がないか調べる**よう修正した。対応する`tests/test_g4c7_m37p2_vertex_first_art_reject.py`を追加。添付された本物の不採用JSONへの再評価は、従来14種類の不採用理由に加えて5件の頂点複製を独立検出した（計19種類のエラー）。正しい構造の非美術QAフィクスチャは引き続き受理。専用CIでの結果は**成功を確認するまでPASSとしない**。
+
+R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main不変更、PR #53 Draft、Work事前明示許可を維持。
