@@ -283,3 +283,24 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 先行v1空原本SHAは `6ca727def08cce9220dbde59f5836248cb5d0def39c7f375c9308af1461ee904` のまま不変。旧M37-L/N/O1/P1不採用BLENDも一切変更していない。
 - **絶対的制限：** CIで真正BLENDのテキスト登録・空原本拒否を確認しただけで、実BlenderデスクトップGUI上の二画面操作、制作途中の作者実3D、3枚の実シーンCycles画像・住居/製造断面の美術的価値はNOT TESTED。都市アート自体は**NOT CREATED**。ART HOLD／正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止。manifest内の`G0_S1_G2_G3`という項目名にはG1表記漏れがあるが、G1を含む正式審査の実施・合格の意味ではなく、すべてNOT RUN。
 - 次工程はこれ以上の空エディタ生成ではない。**新しい作者が同一保存真正BLENDで都市粗3Dと来訪者・工場職員・研究・文化・住宅の生活断面を直接造形し、早期3視点を画像として絶対ART評価**。未許可Workは使わず、旧プリミティブの第三作を禁止。main変更・Draft PR #53状態維持。
+
+---
+
+## 19. M37-P2：実メッシュ正常系3視点・v3修正原本検証（2026-11-02 JST）
+
+**工程判定：研究用技術レビュー経路は前進。ただし「都市美術」はNOT CREATED、ART HOLD、正式採用0件。** v2までのCIでは「空スタジオから誤ART出力できない」という負例は成立していたが、実際に非空の真正BLENDを再読込し、3枚のCycles画像を生成できるという**正常系は未検証**だった。今回の工程で初めて実試験し、2件の実不具合を修正した。
+
+### 実際に検出した不良
+
+1. Blender 4.5 の `bpy_prop_collection.__contains__` はObjectオブジェクトではなく名前文字列を要求するため、元の `ob in coll.all_objects` 判定は、実メッシュを入れたとき `TypeError` を発生させた。実ログは[初回正常系CI #41428130552 FAIL](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41428130552)。[修正ソース](../tools/g4c7_m37p2_author_native_early_review.py)で `ob.name in coll.all_objects` へ修正。
+2. Blender wheelのヘッドレス実行では `open_mainfile` 後の `bpy.data.is_dirty` がTrueとなり、直前のファイルが保存・再読込済みでもレビュー入口で誤停止した。[初回正常系CI #41427642212 FAIL](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41427642212)。[GUI入口修正](../tools/g4c7_m37p2_one_file_early_art_review_gui.py)では、**実GUI内の未保存原本は従来どおり拒否**し、CIのヘッドレスでのみこの誤検出を除外する。
+
+### 真正Blenderでの技術正常系PASS
+
+- [CI #41428422529 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41428422529)：保護済み元v2をハッシュ照合し、**CI専用の一時ディレクトリ内だけに**修正済みPythonを組み込んだBlenderコピーと5つの単純四面体試験メッシュを作成。保存・別プロセス相当の再読込後、GUI入口と同じ`run_review`関数経路から、AERIAL・PUBLIC_EYE・HABITAT_EYEの**3真正Cycles PNG**を生成。PNG署名・画像SHA・保存マスターハッシュ不変、ART HOLD／施工禁止を確認。試験用3D・画像は一時ディレクトリから削除。**これは新しい都市案ではないし、公開・Minecraft施工・正式美術合格を意味しない**。
+- 技術テストソース [`g4c7_m37p2_ephemeral_positive_native_review_smoke.py`](../tools/g4c7_m37p2_ephemeral_positive_native_review_smoke.py) はCI環境かつBlenderバックグラウンド時だけ動作し、CITY ARTへ一切昇格しない。
+- 従来v2は古い埋込コードを含むため、固定の原本上書き禁止を守って、新しく[真正v3作者スタジオ（修正済み）](../artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend)を追記保存。**528,408 bytes、SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249`**。[保存監査manifest](../artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_V3_PATCH_MANIFEST.json)、[CI #41428982047 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41428982047) は独立再読込、2埋込スクリプトSHA、空原本の拒否、旧v2 SHA不変、GitHub追記保存まで成立。旧原本v1/v2/O1/P1は未変更。
+- 注意：旧v2のアーカイブ作成専用CIはコード改修後の再実行で失敗する場合がある。v2を上書き・再生成して整合を偽装せず、修正済みの**v3を唯一の次回作者編集入口**として指定する。
+- CIはBlenderの**デスクトップGUIでの実操作・本当の都市全景と居住/製造/文化/研究断面・人間視点の美術的評価**を行っていない。空v3の実都市メッシュ数0。正式331人体／993足元、G0/S1/G1/G2/G3 NOT RUN、MakeCode実費未測定、Minecraft施工禁止、正式採用0、main変更禁止、Draft PR #53未merge。
+
+**次の制作工程はこれ以上の空エディタ開発ではない。** v3真正BLENDをBlenderで直接編集し、都市全体の異なる密度と、来訪者／製造職員・研究・文化・居住の本当の生活断面を同時に造形すること。それを同じ保存原本で3視点から絶対ART批評する。旧P1の`patch/wall/bridge`を用いた第三の擬似美術は禁止。未承認のWorkは使用しない。
