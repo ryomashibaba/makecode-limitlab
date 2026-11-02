@@ -5,6 +5,8 @@ on:
     paths:
       - tools/g4c7_m37p2_native_operator_author.py
       - tests/test_g4c7_m37p2_paired_operator_native.py
+      - tools/g4c7_m37p2_ollama_paired_native_action_proposal.py
+      - tests/test_g4c7_m37p2_ollama_paired_operator_proposal.py
       - .github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml
 permissions:
   contents: read
@@ -23,8 +25,9 @@ jobs:
       - name: Strict structured actions, no arbitrary code execution
         run: |
           set -euo pipefail
-          python -m py_compile tools/g4c7_m37p2_native_operator_author.py
+          python -m py_compile tools/g4c7_m37p2_native_operator_author.py tools/g4c7_m37p2_ollama_paired_native_action_proposal.py
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_paired_operator_native.py' -v
+          python -m unittest discover -s tests -p 'test_g4c7_m37p2_ollama_paired_operator_proposal.py' -v
       - name: Install real bpy 4.5 native runtime (source v3)
         run: |
           python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
