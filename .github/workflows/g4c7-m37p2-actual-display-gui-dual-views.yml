@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=12s 175s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' \
-            /tmp/g4c7-p2-blender/blender-4.5.15-linux-x64/blender --noaudio -t 2 \
+            /tmp/g4c7-p2-blender/blender-4.5.15-linux-x64/blender -t 2 \
             --python-exit-code 9 --python tools/g4c7_m37p2_real_gui_dual_editor_smoke.py
           python3 - <<'PY'
           from pathlib import Path
