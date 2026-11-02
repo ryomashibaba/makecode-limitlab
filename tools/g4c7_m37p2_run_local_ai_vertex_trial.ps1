@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 
 $expectedSha = "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249"
 # Pin code at a concrete commit; no remote unreviewed branch execution.
-$codeCommit = "d09a243fa3c741299443a578e4a974a3b5f391d4"
+$codeCommit = "13193a41b99e59c87a9475024d4340becb74833d"
 $sourceName = "P2_DIRECT_AUTHOR_UNAPPROVED.blend"
 $scriptFile = "g4c7_m37p2_local_vertex_author.py"
 
@@ -184,6 +184,16 @@ try {
     }
     if ((Get-FileHash -LiteralPath $base.Native -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expectedSha) {
         throw "LOCAL_EMPTY_SOURCE_WAS_CHANGED"
+    }
+    # Open all three native images together in the browser when Windows
+    # allows it. Still open the evidence folder for the original PNG files.
+    $reviewPage = Join-Path $native "OPEN_THREE_REAL_BLENDER_VIEWS_ART_HOLD.html"
+    if (Test-Path -LiteralPath $reviewPage -PathType Leaf) {
+        try {
+            Start-Process -FilePath $reviewPage | Out-Null
+        } catch {
+            Write-Warning ("Could not auto-open three-view review page: " + $_.Exception.Message)
+        }
     }
     Start-Process -FilePath explorer.exe -ArgumentList ('"{0}"' -f $native) | Out-Null
     Write-Host ("LOCAL_AI_NATIVE_THREE_EYE_TRIAL_READY_FOR_STRICT_ART_CRITIQUE: " + $native)
