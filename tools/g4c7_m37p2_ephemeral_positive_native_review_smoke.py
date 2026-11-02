@@ -93,12 +93,14 @@ def main():
 
         bpy.ops.wm.read_factory_settings(use_empty=True)
         bpy.ops.wm.open_mainfile(filepath=str(master.resolve()))
+        print("P2_CI_DIRTY_AFTER_NATIVE_REOPEN", bpy.data.is_dirty, flush=True)
         if any(o.type == "MESH" for o in bpy.context.scene.objects) is False:
             raise RuntimeError("TEMP_FIXTURE_DID_NOT_SURVIVE_REOPEN")
         source = bpy.data.texts["M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py"].as_string()
         scope = {"__name__": "g4c7_p2_test_ui_module",
                  "__file__": str(tmp / "EMBEDDED_ONLY_NO_DISK_SCRIPT.py")}
         exec(compile(source, "M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py", "exec"), scope)
+        print("P2_CI_DIRTY_AFTER_EMBEDDED_PYTHON_LOAD", bpy.data.is_dirty, flush=True)
         # Test the same entrypoint as the GUI button, without fake GUI clicks.
         output_dir = tmp / "REAL_THREE_IMAGE_SMOKE_NOT_ART"
         print("P2_EPHEMERAL_POSITIVE_REVIEW_START", flush=True)
