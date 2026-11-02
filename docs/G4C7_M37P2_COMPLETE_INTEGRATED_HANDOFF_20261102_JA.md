@@ -388,3 +388,18 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 検証器`tools/g4c7_m37p2_local_vertex_author.py`は、形状を変更せず、**不正な面数で早期除外されるメッシュにも完全同一の頂点配列がないか調べる**よう修正した。対応する`tests/test_g4c7_m37p2_vertex_first_art_reject.py`を追加。添付された本物の不採用JSONへの再評価は、従来14種類の不採用理由に加えて5件の頂点複製を独立検出した（計19種類のエラー）。正しい構造の非美術QAフィクスチャは引き続き受理。専用CIでの結果は**成功を確認するまでPASSとしない**。
 
 R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main不変更、PR #53 Draft、Work事前明示許可を維持。
+
+---
+
+## 26. M37-P2：一括頂点方式をRETIRED、制限付きBlenderネイティブ編集Operator研究へ
+
+**2026-11-02 JST。** 実験コード追加／正式ART採用0／都市美術未完成／ART HOLD。
+
+- 先のユーザー実機Qwen3:14B全市一括頂点試作は、有効面0/12・同一頂点配列5件の厳格ART REJECT。これをさらにローカル実行させるのはユーザー負担・ART-FIRST両方に反するので、`tools/G4C7_P2_AI_Trial_Start.cmd`と`tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1`を**通常実行の入口として廃止し、安全STOP**する。旧コミットのファイルはGitHub履歴に残るので、ユーザーには旧ダウンロードを再実行させない。
+- [M37-P2新研究方式とMCP安全監査](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_EDITOR_ACTION_BRIDGE_STUDY_20261102_JA.md)を作成。Blender開発元の公式Lab MCP、Blender 5.2サードパーティ型付きMCP、LM Studio MCP、Ollama Qwenツール呼出し機能を現行情報として調べた。**公式Blender Lab MCPでLLM生成コード実行に保護がないという警告を確認したため、ユーザーWindowsに無制限のMCPをインストールしない。** Workも使用しない。
+- `tools/g4c7_m37p2_native_operator_author.py`を新規実装。AIの任意コードや全市頂点データを処理せず、小さな2役割（都市マクロ＋住居）の`begin_surface/extrude_face/inset_face/translate_selection`に限定し、実BlenderネイティブEdit Modeオペレータを**元v3とは別の技術研究BLEND**に適用する。コード内で建物配置や完成した都市の姿を固定生成しない。試験の最小面は一回の編集起点に過ぎず、都市美術として認めない。
+- `tools/g4c7_m37p2_ollama_paired_native_action_proposal.py`はOllama `/api/chat` tool callingで**短い操作データのみ**1回提案させる。tool呼出し失敗や未承認パラメータ、API応答異常を全て安全HOLD。今回この新方式でのローカル実モデル呼出しは**未実施**。
+- `tests/test_g4c7_m37p2_paired_operator_native.py`、`tests/test_g4c7_m37p2_ollama_paired_operator_proposal.py`、`.github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml`で、正規の2役割ネイティブ編集、未許可コード拒否、実Blender別名保存を技術検証する。**当該新HEADのCI結果がcompleted/successと確認されない限り新ルートの技術PASSは未確認。**
+- **本質的な制約を残す：** 本研究はGUIを操作して作者が美術の質を作った証明ではない。実都市全景・実工場と見学者の物理隔壁・研究文化・玄関から内室の奥行の5領域・3真正ART画像は未完成。これらがART絶対評価に出るまでは第三自動プリミティブ都市を増産せず、安全QA（331/993・G0/S1/G1/G2/G3）、MakeCode評価、Minecraft施工を行わない。PR #53 Draft、main保護、正式採用0を維持。
+
+**後工程は本物のペア都市・住居造形、実工場／研究文化の実在と、3視点の早期ART判定。** 技術CIや資料作成だけでは完成数を増やさない。
