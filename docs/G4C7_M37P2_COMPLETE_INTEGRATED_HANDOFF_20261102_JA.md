@@ -189,3 +189,18 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - **次工程の正当性**：空原本ではなく、Blender GUI/直接編集による都市粗3D＋実生活断面の作者造形を現物として成立させ、同一保存BLENDから全景／公共／住宅の真正画像を先に批評しなければARTの前進はない。未承認Workは使わない。旧P1自動プリミティブの第三の試案を作らない。
 
 固定安全契約331/993（人体半幅0.65、足元+0.15〜3.25、干渉上限45/331、未支持0）、G0/S1/G1/G2/G3未実施、Minecraft書込み0、MakeCode未評価、main保護、Draft PR #53維持、ART採用0。
+
+---
+
+## 13. M37-P2 直接作者スタジオの視点証明抜け道を修正（2026-11-02 JST）
+
+**美術成果：未制作、ART HOLD、正式採用0。** 保存空スタジオ（真正BLEND 429,824 bytes／0実メッシュ）は[専用CI #41359859014](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41359859014)でSUCCESS。M37-P2の既存負例CI [#41354779183](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41354779183)もSUCCESS。これは前段の正確な再照合であり、都市ARTの前進と同一視しない。
+
+### 修正したレビュー入力不正
+
+- 空スタジオに保存されている3つのカメラは **PROVISIONAL（位置暫定）** で、デザインした市街と住宅・公共入口に対応する保証がない。一方、前版の真正早期レビューは `P2_CAMERA_VIEWS_AUTHOR_APPROVED=true` という宣言を受け取るだけで、初期位置のままでも審査へ進める危険があった。
+- [`tools/g4c7_m37p2_author_native_early_review.py`](../tools/g4c7_m37p2_author_native_early_review.py) に、初期全景・公共・住宅のカメラ位置と保存された実位置を比較するゲートを実装した。**各カメラが空スタジオの暫定位置から少なくとも1抽象研究単位移動していなければ拒否**。カメラ位置だけを変更したことが良質な視点・美術や直接作者編集の証明になるわけではなく、正式ART判定は必ず真正画像で行う。
+- Pure Python self-testで、全カメラ暫定位置・公共カメラだけ暫定位置の負例と3カメラ移動例を検証。GitHubコミット `cfe8a8ba548c8bfd1c349203d6a5b792628f20b6`。
+- [専用CI #41374480855](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41374480855) **completed/success**。通常Verifyも [#41374480896](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41374480896) **completed/success**。これらは限定METHODの検査に過ぎない。
+
+**次に必要な工程は新しいGUI直接編集の作者原本で都市粗形と代表生活断面を並行制作し、実際のAERIAL／PUBLIC_EYE／HABITAT_EYEの絶対美術を審査すること。** 本チャットではBlender GUIもWorkも実行していない。新しい第三の自動プリミティブ都市は作らず、M37-O1/P1のEARLY ART REJECT固定。331人体／993足元、正式G0/S1/G1/G2/G3未実施。MakeCodeコスト未測定、Minecraft施工禁止、main変更禁止、PR #53 Draft/未merge、Work事前承認制は不変。
