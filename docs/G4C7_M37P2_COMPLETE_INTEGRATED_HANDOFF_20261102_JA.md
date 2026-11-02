@@ -270,3 +270,16 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 処理が長引いたため、別プロセス再読込ゲートに150秒の子プロセス実行上限・80秒経過時のfaulthandlerダンプ・段階進捗出力を追加した。ワークフロー更新コミット `46a1d98f4824bc128a732a596f037b4943059f2b`。新版 [#41422705862](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422705862) は最後の確認で **QUEUED、全体未検証**。新v2 `.blend` のGitHubアーカイブ確定は、CIが実際にファイルをpushし、改めて存在・manifest SHAを確認するまで保留。
 
 本工程は空の編集器の整備であり、ART HOLD/正式採用0、331/993 NOT RUN、Minecraft施工禁止の固定判定は不変。
+
+---
+
+## 18. M37-P2：単一ファイル直接造形・3真正視点レビュー可能な空Blender原本v2の保存確認（2026-11-02 JST）
+
+**専用Actions [#41423413754](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41423413754) はcompleted/SUCCESS**。真正Blender bpy4.5での別保存、新規の独立再読込、埋込3Python原文SHA照合、実メッシュ0・暫定3カメラ、ART/正式採用/安全/施工の不変、GUIアドオンregister/unregister、**空の原本からARTレビューを試みると正しく拒否する負例**が成立。追記GitHub commit `5eefbe16210faee1bbd22516625b6daa8ecdf28d` で真原本一式を保存。
+
+- [真正保存済みの単一BLEND v2](../artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART/M37P2_SINGLE_FILE_DIRECT_AUTHOR_AND_REVIEW_NOT_ART.blend)：**526,911 bytes**、SHA256 `a772fc0bc1d1d2b23a33a14154ca5bcd08fcb1ced05ea5c9eb009aa02b19f99e`。
+- [manifest](../artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART/M37P2_V2_NATIVE_WORKSPACE_MANIFEST.json) と [直接造形／審査の操作説明](../artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART/README_JA.md) を同じ保存フォルダに保管。
+- 最初の[#41422123251](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422123251) は新版への入替でCANCELLED。診断付き[#41422705862](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422705862) は**FAIL**。ログではnativeBLEND再読込と GUI登録自体は成功したが、CI側で登録済みOperatorを `hasattr(bpy.types, ...)` で判定した誤ったassertに失敗したことを確認。更新コミット `264733ea43c8e2acbb07d7409550c8241582f493` でクラス同一性の確認に変更し、[#41423413754](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41423413754) で再読込・実登録／解除・負例／追記保存まで確認。失敗を成果と混同しない。
+- 先行v1空原本SHAは `6ca727def08cce9220dbde59f5836248cb5d0def39c7f375c9308af1461ee904` のまま不変。旧M37-L/N/O1/P1不採用BLENDも一切変更していない。
+- **絶対的制限：** CIで真正BLENDのテキスト登録・空原本拒否を確認しただけで、実BlenderデスクトップGUI上の二画面操作、制作途中の作者実3D、3枚の実シーンCycles画像・住居/製造断面の美術的価値はNOT TESTED。都市アート自体は**NOT CREATED**。ART HOLD／正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止。manifest内の`G0_S1_G2_G3`という項目名にはG1表記漏れがあるが、G1を含む正式審査の実施・合格の意味ではなく、すべてNOT RUN。
+- 次工程はこれ以上の空エディタ生成ではない。**新しい作者が同一保存真正BLENDで都市粗3Dと来訪者・工場職員・研究・文化・住宅の生活断面を直接造形し、早期3視点を画像として絶対ART評価**。未許可Workは使わず、旧プリミティブの第三作を禁止。main変更・Draft PR #53状態維持。
