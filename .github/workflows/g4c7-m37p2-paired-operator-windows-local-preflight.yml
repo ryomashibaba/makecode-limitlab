@@ -1,0 +1,75 @@
+name: G4C7 M37-P2 Windows local paired native operator launcher prepare ONLY
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_run_native_operator_first_pair.ps1
+      - tools/G4C7_P2_Native_Operator_Trial_Start.cmd
+      - .github/workflows/g4c7-m37p2-paired-operator-windows-local-preflight.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m37p2-windows-local-native-paired
+  cancel-in-progress: true
+jobs:
+  isolated-real-windows-one-script-preflight-without-ollama:
+    runs-on: windows-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Parse Windows PowerShell and verify fixed double-click loader and immutable source copy
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $script=Join-Path $PWD 'tools/g4c7_m37p2_run_native_operator_first_pair.ps1'
+          $tok=$null
+          $errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile(
+              $script,[ref]$tok,[ref]$errors)
+          if ($errors.Count -ne 0) { throw ($errors | Out-String) }
+          $cmd=Get-Content 'tools/G4C7_P2_Native_Operator_Trial_Start.cmd' -Raw
+          if (-not $cmd.Contains('99065244c6d5cc099f3383a9e9e36762cbcee74b')) {
+              throw 'CMD_PINS_WRONG_POWERSHELL_COMMIT'
+          }
+          $src=Join-Path $PWD 'artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend'
+          $sha='536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249'
+          if ((Get-FileHash $src -Algorithm SHA256).Hash.ToLowerInvariant() -ne $sha) {
+              throw 'IMMUTABLE_V3_MASTER_MISMATCH'
+          }
+          $root=Join-Path $env:RUNNER_TEMP 'M37P2_LOCAL_NATIVE_EDITOR_SESSION'
+          $studio=Join-Path $root 'P2_TEST_AUTHOR_FIXED_NO_ART'
+          New-Item -ItemType Directory -Path $studio -Force | Out-Null
+          Copy-Item $src -Destination (Join-Path $studio 'P2_DIRECT_AUTHOR_UNAPPROVED.blend')
+          & $script -SessionRoot $root -BlenderExe (Join-Path $env:WINDIR 'System32/cmd.exe') -PrepareOnly
+          $trials=@(Get-ChildItem $studio -Directory | Where-Object {
+              $_.Name -like 'LOCAL_AI_NATIVE_PAIRED_OPERATOR_*'
+          })
+          if ($trials.Count -ne 1) {throw 'EXPECTED_EXACTLY_ONE_LOCAL_TRIAL_PREP_FOLDER'}
+          $trial=$trials[0].FullName
+          $manifest=Get-Content (Join-Path $trial 'P2_SAFE_PREPARE.json') -Raw | ConvertFrom-Json
+          if ($manifest.state -ne 'PREPARED_NOT_ART' -or $manifest.art -ne 'HOLD' -or
+              $manifest.model_requests -ne 0 -or $manifest.official_adoptions -ne 0 -or
+              $manifest.minecraft -ne 'FORBIDDEN') {
+              throw 'PREPARE_ONLY_MUST_STOP_BEFORE_MODEL_AND_PROTECT_ART'
+          }
+          foreach ($name in @(
+              'g4c7_m37p2_native_operator_author.py',
+              'g4c7_m37p2_ollama_paired_native_action_proposal.py',
+              'g4c7_m37p2_paired_operator_three_view_evidence.py')) {
+              $file=Join-Path $trial $name
+              if (-not (Test-Path $file)) {throw "EXPECTED_FIXED_PYTHON_NOT_DOWNLOADED: $name"}
+              python -m py_compile $file
+              if ($LASTEXITCODE -ne 0) {throw "DOWNLOADED_PYTHON_PARSE_FAILED: $name"}
+          }
+          if ((Get-FileHash (Join-Path $studio 'P2_DIRECT_AUTHOR_UNAPPROVED.blend') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $sha) {
+              throw 'REAL_LOCAL_WORKING_STUDIO_CHANGED_BY_PREPARE_ONLY'
+          }
+          Write-Host 'WINDOWS_NATIVE_OPERATOR_PAIRED_ONE_SCRIPT_PREPARE_PASS_NO_OLLAMA_NO_RENDER_NO_ART'
+      - name: No changes to protected original
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
