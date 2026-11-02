@@ -202,3 +202,12 @@
 - [同一保存済みBlenderの真正Cycles 3視点証拠生成](tools/g4c7_m37p2_paired_operator_three_view_evidence.py)を追加。独立3 PNG／SHA／報告JSON／オフライン3画面HTMLで3D視覚監査の材料を残し、同一原本の不変SHAを検査。[本新Blender CI #41471988900](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41471988900)は**最新状態のSUCCESSをまだ確認していない**。試験形状はARTではない。
 - [Windows1回PowerShell実行器](tools/g4c7_m37p2_run_native_operator_first_pair.ps1)／[ダブルクリック起動ファイル](tools/G4C7_P2_Native_Operator_Trial_Start.cmd)：既存Ollama Qwen3:14bが許可済み編集操作のJSONだけを1回提案し、隔離Blenderに渡し、真正3 PNGが生成できた場合にまとめて表示する。**この新方式の実モデル実行・実Windows5.2.1 GUI相互運用はまだ未検証**。前回多発した起動障害を避けるため[Windows事前確認CI #41472380173](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41472380173)成功前にユーザーへ配布・実行依頼しない。
 - [統合引き継ぎ節27](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。先の一括頂点Qwen試験は正式RETIRED、旧ダウンロードを使わせない。ART HOLD／公式採用0／331人体993足元＆G0/S1/G1/G2/G3 NOT RUN／MakeCode費用未評価／Minecraft施工禁止／main変更なし／PR #53 Draft／Work不使用を維持。
+
+
+## M37-P2 2026-11-03：保存済みBlenderの3真正Cycles画像を実見しART REJECT
+
+- [本当の3視点Blender技術CI #41471988900 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41471988900)。GitHub Actions artifactからPNG3枚を実際に取得・閲覧した。**画面は2本の無地直方体だけ、各8頂点6面**。`city_macro`と`habitat`編集・保存・再読込・Cycles実撮影は技術PASS。しかし街並み・造船設備・研究文化・生活室は皆無、**美術ART REJECT**。実画面観察に基づく報告は[こちら](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_OPERATOR_3REAL_CYCLES_VISUAL_ART_REJECT_20261103_JA.md)。
+- 試験形状を美術として採用しない。4種類の基本編集オペレーターだけを無限反復して第三の箱都市を作ることも禁止。新しい本質的課題は**AI作者がBlender実画面を見て直接造形・修正する閉ループ**の確立である。
+- [Windows PowerShell起動器](tools/g4c7_m37p2_run_native_operator_first_pair.ps1)は通常ユーザー起動を**モデル呼出し前にART-FIRST停止**、`-PrepareOnly`の安全確認のみ許し、研究テストには明示`-ExplicitTechOnly`が必要。[新CMD](tools/G4C7_P2_Native_Operator_Trial_Start.cmd)も停止版を固定参照。**ユーザーに旧ZIP/CMDや新型のローカルモデル実行を要求しない**。
+- [新Windowsガード検証CI #41473665867](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41473665867)は結果確認まで未検証。先行Windowsのガードなし準備検証 #41472380173 はSUCCESSであり、別件として扱う。
+- [統合引き継ぎ正本節28](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。ART HOLD、正式採用0件、331人体/993足元＆G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main保護、PR #53 Draft、Work不使用・事前承認制は不変。
