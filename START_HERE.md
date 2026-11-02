@@ -153,3 +153,11 @@
 - [統合引き継ぎ節21](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)に実行可否を追加。現真正編集入口は[v3空BLEND](artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend)であり、SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249`。その都市メッシュは0。実GUI二画面TECH PASSと都市造形ART未着手を区別する。
 - 新しい空テンプレート・CIを繰り返すより、作者による都市マクロ＋実居室＋製造研究文化の直接Blender 3D制作と真正3視点レビューを次工程の唯一の美術要件とする。Chatで直接Blender GUIの作者操作ができず、Workはユーザー事前明示承認制、未承認のまま代行・外注しない。
 - **ART HOLD／正式採用0、331人体/993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未測定、Minecraft world writes 0、main変更禁止、Draft PR #53未merge**を維持。
+
+
+## M37-P2 2026-11-02｜Workなし・ZIPなしのWindows直接作者編集起動を整備
+
+- [作者用PowerShell単一ファイル](tools/g4c7_m37p2_launch_local_author.ps1)／[日本語手順](tools/G4C7_M37P2_LOCAL_AUTHOR_LAUNCH_README_JA.md)：v3真正BLEND固定SHA `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249` から保護原本を変えず、Windows文書フォルダへ**個別の編集用コピー**を作成し、既存の二画面・作者パネル・3視点レビューのGUI登録を行い、Blender・エクスプローラーを起動する。コードは都市メッシュを自動生成しない。
+- [Windows実検証 #41447267350 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41447267350)：本物のWindows PowerShell構文・原本SHA・コピー・セッションmanifest・GUI用Python構文チェック成功。[GitクローンがないWindowsでもrawから単一スクリプトで原本を取得した検証 #41447810957 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41447810957)。両者は`-PrepareOnly`での**準備**テスト、ユーザーWindows実Blender GUIの起動・3D作者制作とは区別。
+- Work使用量のためWorkは使用しない。現在のChatから6 Luna/6.1 Terraへ実行モデル切替・ローカルデスクトップ直接操作はできない。Luna/Terraを利用できるユーザー側のローカル環境があって初めて実作者操作が可能。
+- 新Blender都市実メッシュ0、実3視点ART未取得、全体ART HOLD／正式採用0、331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、PR #53 Draft未merge、main変更禁止。これは**都市美術の完成ではなく、実造形に着手できるWindows側入口の実装**。詳しくは[統合引き継ぎ節22](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
