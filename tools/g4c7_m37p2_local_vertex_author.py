@@ -134,7 +134,7 @@ def validate(plan):
         else: present[role]+=1
         if not isinstance(m.get("why"),str) or len(m["why"].strip())<12:
             problems.append(f"MESH_{i}_MISSING_LIVED_INTENT")
-        if not isinstance(verts,list) or not 4<=len(verts)<=1600 or not isinstance(faces,list) or not 2<=len(faces)<=3000:
+        if not isinstance(verts,list) or not 4<=len(verts)<=1600 or not isinstance(faces,list):
             problems.append(f"MESH_{i}_BAD_TOPOLOGY_SIZE");continue
         vout=[]
         for j,v in enumerate(verts):
@@ -148,6 +148,11 @@ def validate(plan):
             problems.append(f"MESH_{i}_DUPLICATED_VERTEX_GEOMETRY_OF_{geometry_origins[signature]}")
         else:
             geometry_origins[signature]=i
+        # Report duplicated author coordinates even if the face list is
+        # too short to be a valid Blender mesh; keep the object rejected.
+        if not 2<=len(faces)<=3000:
+            problems.append(f"MESH_{i}_BAD_TOPOLOGY_SIZE")
+            continue
         total+=len(verts)
         all_vertices.extend(vout)
         valid_faces=0
