@@ -326,7 +326,7 @@ def render(args):
         raise FileExistsError("APPEND_ONLY_REVIEW_ALREADY_EXISTS")
     views=(("AERIAL","都市全景"),("PUBLIC_EYE","公共・製造の人間視点"),
            ("HABITAT_EYE","居住の人間視点"))
-    cards="\\n".join(
+    cards="".join(
         '<section><h2>'+title+'</h2><img src="'+photos[key]["file"]+
         '" alt="'+title+'：実Blender出力・未採用"><p><code>'+photos[key]["sha256"]+
         '</code></p></section>' for key,title in views
