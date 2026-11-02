@@ -346,3 +346,17 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 固定R0〜R5、正式331人体／993足元＋G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未評価、Minecraft施工禁止、PR #53 Open/Draft/未merge、main保護、Work事前明示承認制を再確認した。
 
 **本当の次工程**：ユーザーのローカルBlender、またはデスクトップGUIを本当に操作できるローカル作者エージェントが、既存v3コピーを元に「都市全域粗形状」と「工場・見学・研究・文化・住宅生活断面」を**直接同時造形**して保存する。3保存実視点をART-firstで審査し、低品質ならすぐREJECT。その作者操作が実施されるまではモデル、CI、計画書の完了を作品の完成と表現しない。
+
+---
+
+## 23. M37-P2：Work無しのローカルモデル直接頂点造形（未採用METHOD実験／2026-11-02 JST）
+
+**実験コードをGitHubへ実装。ただし生成された新たな真正都市BLEND／美術3画像の実作者成果はまだゼロ。ART HOLD／正式採用0件。**
+
+- スクリーンショットでBlender **5.2.1 LTSの実起動**、左右2つの編集ViewとP2用5コレクションがユーザーWindows上に実在することを確認。初回Windows起動障害は解消したが、Chatから直接Blender GUIを操作する権限はない。Work使用量枯渇のためWorkは使用しない。モデル切替はユーザー側設定の範囲。
+- [詳しい実験の根拠と否認事項](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_LOCAL_LLM_VERTEX_AUTHOR_BRIDGE_NOT_ART_20261102_JA.md)。新しいPythonはローカルOllama/Qwen等から、実メッシュの**明示的な頂点＋面JSON**を受け取る。モデル生成の任意Pythonコードは実行しない。5用途、非退化面、3軸の空間的厚み、単純8頂点6面キューブの多用を拒否して、危険な旧`patch/wall/bridge`第三自動プリミティブ都市として扱わない。品質保証ではなく、**不適切なAI出力を初期に捨てるための経路**。
+- JSONが形式検証を通ったときだけ、**v3不変空原本から分岐した新しい未採用ローカルBLEND**と真正Blender3視点PNGを生成する。元のGUIを編集せず、ローカルAIは人間のGUI作者編集と異なると記録。正式ARTの昇格禁止、偽のカメラ作者承認禁止、原本SHAを必ず再確認。合格が得られない場合は**新都市に正式採用しない**。
+- [実装コード](../tools/g4c7_m37p2_local_vertex_author.py)、[Windows省操作PowerShell](../tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1)、[真正Blender非都市一時検証CI](../.github/workflows/g4c7-m37p2-local-llm-explicit-vertex-first-art-tech-smoke.yml)、[Windows準備検証CI](../.github/workflows/g4c7-m37p2-windows-local-vertex-ai-first-art-prepare.yml) を追加。**専用CIが成功するまでは実運用PASSとは呼ばない**。
+- 全体のR0〜R5とART-FIRST、美術の最終採否はユーザー本人、331人体・993足元/正式G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main無変更、PR #53 Open/Draft未merge、Work事前承認制は不変。
+
+**引き継ぎの重要な停止条件**：このLLM JSON試作を第三の箱／板／橋量産都市に変質させない。スクリーンショット実絶対審査で薄壁・黒画面・空白や用途の断絶が見えたらEARLY ART REJECTを維持し、都市全景と本当の製造／研究／住居生活断面を同時制作する直接作者法へ戻す。
