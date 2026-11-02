@@ -417,3 +417,17 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [1ダブルクリックCMD](../tools/G4C7_P2_Native_Operator_Trial_Start.cmd)を追加。ZIP不要、通常利用者はコード編集・PowerShell入力不要。ただし**実ローカルOllama＋Blender統合テストは未実施**。[新Windows検証CI #41472380173](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41472380173)でWindows PowerShell構文、固定PS1と3Pythonの取得、SHA、PrepareOnly安全停止、元のBLEND不変を確認するまでユーザーに実行させない。
 - **実作品の認定ではない**：二つの仮Edit Mode形状は学習用フィクスチャ。都市全体の密度、工場・見学区切り、研究文化、室内住居の実物、本当の3視点ART提出は未完成。旧Qwen一括JSON・固定巨大板、Box群ジェネレータへ戻らない。旧ランチャーはRETIREDを維持。
 - 固定規約：main変更禁止、Draft PR #53未merge、Work不使用・事前許可、正式331人体/993足元＆G0/S1/G1/G2/G3未実施、MakeCode未測定、Minecraft施工禁止、正式採用0。
+
+---
+
+## 28. M37-P2：3真正Cyclesの実画像評価で技術PASS・ART REJECT（2026-11-03）
+
+[実画像による独立ART REJECT正本](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_OPERATOR_3REAL_CYCLES_VISUAL_ART_REJECT_20261103_JA.md)。
+
+[本物のBlender3視点撮影CI #41471988900](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41471988900)で`SUCCESS`。実artifact `g4c7-p2-paired-native-true-three-views-tech-only-not-art`に保存済みのCycles3 PNG／JSON／HTMLをこのチャットで取得・**3枚すべて直接目視**。同じ保存済みBlenderのSHA256 `2ee1f2592084e75b041c8e1bc36fb9fd5e73581b1959caf42f8658d759f8a456`、`city_macro`と`habitat`の実メッシュはそれぞれ**8頂点6面**。画面は互いに離れた無装飾の灰色直方体2つのみ。
+
+**ART REJECT**：街並み・造船設備・研究文化・住居の実在が確認できず、全景／人間目線すべてで美術の絶対基準未達。これはアートを作ったという報告ではない。前回Qwen3:14b一括頂点失敗とは別に、単純なネイティブ編集操作の技術経路の限界が視覚的に判明。旧P1/O1と同じ仮都市を無限に増産しない。
+
+- [新Windows PowerShell](../tools/g4c7_m37p2_run_native_operator_first_pair.ps1)は通常起動時の新たな`VISUAL_ART_REJECT`停止ガードを持つ。`-PrepareOnly`でのチェックだけ可能であり、本体のAIモデル呼出しを行いたい研究者のみ別途明示的`-ExplicitTechOnly`が必要。初心者用CMDも停止版の固定コミットを参照し、**ユーザーへ無駄なモデル再実行を指示しない**。
+- **新ガードのWindows CI #41473665867は実行結果確認まで未検証**。先行ガードなしWindows準備CI #41472380173はSUCCESSだが、安全停止の最新版の成功と混同しない。
+- 本物の次の制作要件は「同一Blender原本を実画面で見ながら作者が直接造形・修正する閉ループ」。技術フィクスチャや少数オペレータの追加ではART PASSにできない。公式ART採用0、ART HOLD、正式331人体993足元/G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draft未merge、Work不使用を継承。
