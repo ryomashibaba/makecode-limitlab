@@ -23,6 +23,29 @@ CAMERAS = {
     "HABITAT_EYE": "P2_CAMERA_HABITAT_EYE",
 }
 
+# Original empty studio camera positions; these are provisional, NOT proof of
+# actual city viewpoints. Reject a click-through approval on an unedited rig.
+PROVISIONAL_CAMERA_LOCATIONS = {
+    "P2_CAMERA_AERIAL": (190.0, -165.0, 132.0),
+    "P2_CAMERA_PUBLIC_EYE": (-84.0, -78.0, 12.0),
+    "P2_CAMERA_HABITAT_EYE": (-62.0, 50.0, 22.0),
+}
+
+
+def unchanged_template_viewpoints(poses, minimum_move=1.0):
+    """Pure geometric preflight; does not decide artistic quality."""
+    stale = []
+    for name, initial in PROVISIONAL_CAMERA_LOCATIONS.items():
+        point = poses.get(name)
+        if point is None or len(point) != 3:
+            stale.append(name)
+            continue
+        move_squared = sum((float(a) - b) ** 2 for a, b in zip(point, initial))
+        if move_squared < minimum_move ** 2:
+            stale.append(name)
+    return sorted(stale)
+
+
 
 def check_review_contract(meta, camera_names, mesh_count):
     """Fail closed: metadata is a declaration, NOT proof of author provenance."""
@@ -75,9 +98,16 @@ def self_test():
         assert check_review_contract(dict(meta, **change), tuple(CAMERAS.values()), 1), label
     assert check_review_contract(meta, (), 1)
     assert check_review_contract(meta, tuple(CAMERAS.values()), 0)
+    assert unchanged_template_viewpoints(PROVISIONAL_CAMERA_LOCATIONS) == sorted(CAMERAS.values())
+    moved = {name: (p[0] + 5.0, p[1] + 2.0, p[2] + 1.0)
+             for name, p in PROVISIONAL_CAMERA_LOCATIONS.items()}
+    assert unchanged_template_viewpoints(moved) == []
+    moved["P2_CAMERA_PUBLIC_EYE"] = PROVISIONAL_CAMERA_LOCATIONS["P2_CAMERA_PUBLIC_EYE"]
+    assert unchanged_template_viewpoints(moved) == ["P2_CAMERA_PUBLIC_EYE"]
     return {
         "result": "PASS_INVARIANT_AND_NEGATIVE_TESTS_ONLY",
-        "negative_controls": len(negatives) + 2,
+        "negative_controls": len(negatives) + 3,
+        "camera_template_pose_negative": "EXPECTED_UNEDITED_VIEWPOINTS_REJECTED",
         "new_blend_art": "NOT_CREATED_BY_THIS_TOOL",
         "absolute_art": "HUMAN_REVIEW_REQUIRED",
         "Minecraft": "FORBIDDEN",
@@ -195,6 +225,14 @@ def native_review(output_dir):
     rejected_prefixes = ("M37P1_", "M37O_", "M37L_", "M37N_")
     if any(ob.name.startswith(rejected_prefixes) for ob in meshes):
         raise RuntimeError("REJECTED_OLD_MESH_NAMES_PRESENT_IN_AUTHOR_MASTER")
+    camera_positions = {
+        name: tuple(scene.objects[name].matrix_world.translation)
+        for name in CAMERAS.values()
+    }
+    unchanged = unchanged_template_viewpoints(camera_positions)
+    if unchanged:
+        raise RuntimeError("CAMERA_APPROVAL_WITH_UNEDITED_TEMPLATE_RIG:" +
+                           ",".join(unchanged))
     issues, nonwatertight = embedded_cameras(scene)
     if issues:
         raise RuntimeError("CAMERA_EMBEDDED_IN_CLOSED_MESH:" + json.dumps(issues))
