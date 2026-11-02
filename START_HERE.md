@@ -99,3 +99,11 @@
 - [真正Blender GUI用並行編集アドオン](tools/g4c7_m37p2_parallel_author_view.py)を研究ブランチへ追加。都市全景＋公共または住宅の人間視点を2画面にし、**同じ作者原本の直接造形**を可能にする。新都市のメッシュは自動生成しない。
 - [Blender実原本を使う登録・負例の独立CI](.github/workflows/g4c7-m37p2-parallel-native-author-ui.yml) を追加。GUI二画面の実操作自体はヘッドレスでは未確認。詳細は[統合引き継ぎ節14](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
 - **ARTではない**。新P2都市美術未制作、ART HOLD／正式採用0、正式331/993・G0/S1/G1/G2/G3未実施、MakeCodeコスト未評価、Minecraft施工禁止、main変更禁止、PR Draft維持。次は直接3D造形の現物が必要。Workは事前明示承認なしでは使用不可。
+
+
+## M37-P2 2026-11-02：真正Blender統合作者作業原本の保存成功（ART未制作）
+
+- [新規保存した真正Blender作業原本](artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART/M37P2_INTEGRATED_EMPTY_ARTIST_WORKSPACE_NOT_ART.blend) は独立再読込に成功。491,214 bytes、SHA256 `6ca727def08cce9220dbde59f5836248cb5d0def39c7f375c9308af1461ee904`。作者の全景＋人間視点GUI編集支援と真正3視点レビュー用Pythonを同一BLENDへ埋込んだ。元の空原本・旧拒否モデルは不変。
+- [専用Actions #41390131345](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41390131345) completed/SUCCESS。[マニフェスト](artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART/M37P2_WORKSPACE_BUILD_MANIFEST.json)が保存済み。
+- **これは美術ではなく実メッシュ0の空編集スタジオ。** GUI実操作、都市全景・生活室の直接造形・美術3視点は未実施。ART HOLD／正式採用0、正式331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main不変更、Draft PR #53維持、Work事前承認不変。
+- 次の正当工程は都市粗3Dと居住・文化・研究・実造船の生活断面を**同じBlender原本で実造形**すること。旧P1のプリミティブ同型第三案を生成しない。全文は[統合引き継ぎ節16](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
