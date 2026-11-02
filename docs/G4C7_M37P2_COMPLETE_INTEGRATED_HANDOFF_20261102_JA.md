@@ -304,3 +304,15 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - CIはBlenderの**デスクトップGUIでの実操作・本当の都市全景と居住/製造/文化/研究断面・人間視点の美術的評価**を行っていない。空v3の実都市メッシュ数0。正式331人体／993足元、G0/S1/G1/G2/G3 NOT RUN、MakeCode実費未測定、Minecraft施工禁止、正式採用0、main変更禁止、Draft PR #53未merge。
 
 **次の制作工程はこれ以上の空エディタ開発ではない。** v3真正BLENDをBlenderで直接編集し、都市全体の異なる密度と、来訪者／製造職員・研究・文化・居住の本当の生活断面を同時に造形すること。それを同じ保存原本で3視点から絶対ART批評する。旧P1の`patch/wall/bridge`を用いた第三の擬似美術は禁止。未承認のWorkは使用しない。
+
+---
+
+## 20. M37-P2：真正BlenderデスクトップGUI二画面編集・実視点切替の初PASS（2026-11-02 JST）
+
+**研究進捗は編集GUIの限定TECH PASSであり、作品制作ARTは未着手。全体ART HOLD／正式採用0件不変。**
+
+- [正式検証レポート](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ACTUAL_DISPLAY_GUI_DUAL_AUTHOR_EDITOR_PASS_20261102_JA.md) と [成功した真正GUI Actions #41431524480](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41431524480)。Blender公式GUI実行ファイル4.5.15を上流SHA256で照合し、Xvfb実ディスプレイで`bpy.app.background=False`の**非ヘッドレス**状態を確認。v3真正原本を読み込んでGUIコマンド`g4c7.p2_parallel_split`を発行し、`VIEW_3D`の2編集エリアを実測。公共視点／住宅視点を切替・`g4c7.p2_parallel_refresh`が`FINISHED`。保存元SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249`は前後不変。新メッシュ0。
+- [新GUI実測コード](../tools/g4c7_m37p2_real_gui_dual_editor_smoke.py)／[専用read-onlyワークフロー](../.github/workflows/g4c7-m37p2-actual-display-gui-dual-views.yml) を研究ブランチへ保存。JSON証拠はActions artifact（保持21日）に記録、原本やMinecraftワールドへ書込みなし。
+- 初回の [#41431366117 FAIL](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41431366117) はBlender 4.5.15で無効な`--noaudio`オプションが原因。commit `6a634ebc2c02ac7404fb1619d69c3ce7ecac68e5`で削除し、上記成功CIを確認。原因を造形ARTやBlender製品不良と誤分類しない。
+- **実都市の3D作者造形や真の居住・製造・研究・文化の生活断面は依然ゼロ、3視点ART画像を作る工程は未実施。** GUIの2編集エリアが正しく動く技術成功を、完成した都市美術や正式採用へ格上げしない。ART HOLD／正式採用0件。331人体・993足元、G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main変更禁止、PR #53 Open/Draft/未merge、Work事前明示承認制。
+- **次の工程は実際の新都市作品を、v3原本で人の営みを含めて作者が3D直接造形すること。** 旧P1の自動プリミティブ第三作、空原本追加、未許可Workは避ける。
