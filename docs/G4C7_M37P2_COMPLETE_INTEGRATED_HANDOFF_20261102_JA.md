@@ -204,3 +204,17 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - [専用CI #41374480855](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41374480855) **completed/success**。通常Verifyも [#41374480896](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41374480896) **completed/success**。これらは限定METHODの検査に過ぎない。
 
 **次に必要な工程は新しいGUI直接編集の作者原本で都市粗形と代表生活断面を並行制作し、実際のAERIAL／PUBLIC_EYE／HABITAT_EYEの絶対美術を審査すること。** 本チャットではBlender GUIもWorkも実行していない。新しい第三の自動プリミティブ都市は作らず、M37-O1/P1のEARLY ART REJECT固定。331人体／993足元、正式G0/S1/G1/G2/G3未実施。MakeCodeコスト未測定、Minecraft施工禁止、main変更禁止、PR #53 Draft/未merge、Work事前承認制は不変。
+
+---
+
+## 14. M37-P2：都市全景と生活断面の「同時直接編集」GUI（2026-11-02 JST）
+
+**分類：作者編集環境の機能実装。新しい真正3D都市美術の制作ではない。ART HOLD／正式採用0件は不変。**
+
+- [`tools/g4c7_m37p2_parallel_author_view.py`](../tools/g4c7_m37p2_parallel_author_view.py) を保存。真正BlenderのGUI 3D View内で、同一シーンを都市全景（AERIAL）と人間視点（PUBLIC_EYEまたはHABITAT_EYE）の2つの編集ペインに分割し、保存カメラを参照して編集ビューだけを並行設定できる。両ペインは同じ編集可能な真正Blender原本を参照する。カメラ・メッシュ自体の自動変更はしない。
+- この機能は旧P1の`patch/wall/bridge`生成コードを延命せず、P2の核心「外観を先行完成させる／内部を後詰めするのではなく、全市街と生活断面を同じ原本で同時に作者造形」の作業方法を直接支援する。使う側が本物の3Dを制作しない限り作品はゼロである。
+- 固定ART HOLD／正式採用0／正式QA未実施／Minecraft禁止のシーン属性、真正P2保存カメラの存在をGUI操作の前提条件として検査。空スタジオ原本を変更しない。GUI操作の成功はヘッドレスでは検証できないため、**実際の編集二画面挙動・美術はNOT TESTED**と分離する。
+- [専用Actions](https://github.com/ryomashibaba/makecode-limitlab/actions/workflows/g4c7-m37p2-parallel-native-author-ui.yml) は保存済み空真正BLEND SHAを確認したうえで、Blender Python 4.5でアドオンの登録・解除、固定条件の故意改変検出、メッシュ0／原本不変を独立確認する読取り専用ジョブ。作成時は**未完了**、後続で結果を確認する。
+- 最新作業コミット：`50a82c89ac32d2ead8cc70e60c66b7a5613b0d4c`（GUIアドオン）と`6062ca0ddb37628072901d1548f326c6cd0e302c`（専用検証）。原本・main・PRのDraft状態を変更しない。
+
+**直近の制作ブロッカー：** GitHub ActionsのBlenderはヘッドレスで、作者が3Dを視覚的に直接造形するBlender GUIをChatの現行環境では操作できない。Workは事前明示承認制であり未承認のまま使わない。「Pythonで生成しやすい都市」を第三案として作らず、本人または承認された実GUI作者編集を待つ。これまでの同型案を増やすのでなく、次に必要なのは一つの新規真正BLENDの**美術そのもの**である。
