@@ -124,14 +124,29 @@ def sha256(path):
 
 def embedded_cameras(scene):
     """Reuse prior P2 closed-solid negative-control implementation."""
-    spec = importlib.util.spec_from_file_location(
-        "p2_camera_audit",
-        Path(__file__).with_name("g4c7_m37p2_native_camera_inside_solid_audit.py"),
-    )
-    assert spec and spec.loader
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
     import bpy
+    from types import SimpleNamespace
+
+    source = Path(__file__).with_name("g4c7_m37p2_native_camera_inside_solid_audit.py")
+    if source.is_file():
+        spec = importlib.util.spec_from_file_location("p2_camera_audit", source)
+        if not spec or not spec.loader:
+            raise RuntimeError("CAMERA_AUDIT_SOURCE_LOAD_FAILED")
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    else:
+        # The entire master must work in Blender GUI with no external scripts.
+        # Embedded source is bundled from the canonical guard and hash-audited.
+        embedded_name = "M37P2_CAMERA_INSIDE_SOLID_AUDIT.py"
+        embedded = bpy.data.texts.get(embedded_name)
+        if embedded is None:
+            raise RuntimeError("MISSING_EMBEDDED_NATIVE_CAMERA_AUDIT")
+        scope = {"__name__": "p2_embedded_camera_audit", "__file__": embedded_name}
+        exec(compile(embedded.as_string(), embedded_name, "exec"), scope)
+        mod = SimpleNamespace(
+            closed_faces=scope["closed_faces"],
+            point_inside_closed_mesh=scope["point_inside_closed_mesh"],
+        )
 
     depsgraph = bpy.context.evaluated_depsgraph_get()
     targets = [scene.objects[name] for name in CAMERAS.values()]
