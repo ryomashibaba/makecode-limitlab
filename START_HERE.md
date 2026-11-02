@@ -92,3 +92,10 @@
 - 最新の作者レビュー入力では**全景・公共・住宅の各カメラが初期空スタジオの暫定位置から最低1抽象研究単位移動**していなければ拒否する。[ソース](tools/g4c7_m37p2_author_native_early_review.py)、[専用CI #41374480855 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41374480855)、[統合引き継ぎ節13](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
 - **限界**：カメラ移動だけでは良質な視点・造形を証明しない。P2新真正都市美術は未制作。空真正BLEND・0実メッシュのまま、全体ART HOLD／正式採用0、331/993・G0/S1/G1/G2/G3未実施、MakeCode未測定、Minecraft施工禁止、main保護・Draft PR #53維持。
 - **次工程**：新しい同型の自動生成を繰り返さず、同一作者編集Blender原本に全市街粗3Dと代表製造・研究・住宅・文化の生活断面を実造形し、3真正視点を絶対美術審査。Work/GUIの承認制は不変。
+
+
+## M37-P2 同一Blender原本の全景＋人間視点・並行直接編集機能
+
+- [真正Blender GUI用並行編集アドオン](tools/g4c7_m37p2_parallel_author_view.py)を研究ブランチへ追加。都市全景＋公共または住宅の人間視点を2画面にし、**同じ作者原本の直接造形**を可能にする。新都市のメッシュは自動生成しない。
+- [Blender実原本を使う登録・負例の独立CI](.github/workflows/g4c7-m37p2-parallel-native-author-ui.yml) を追加。GUI二画面の実操作自体はヘッドレスでは未確認。詳細は[統合引き継ぎ節14](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+- **ARTではない**。新P2都市美術未制作、ART HOLD／正式採用0、正式331/993・G0/S1/G1/G2/G3未実施、MakeCodeコスト未評価、Minecraft施工禁止、main変更禁止、PR Draft維持。次は直接3D造形の現物が必要。Workは事前明示承認なしでは使用不可。
