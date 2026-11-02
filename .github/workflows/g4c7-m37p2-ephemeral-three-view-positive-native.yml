@@ -1,0 +1,50 @@
+name: G4C7 M37-P2 real saved .blend three-view positive technical smoke NO ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_ephemeral_positive_native_review_smoke.py
+      - .github/workflows/g4c7-m37p2-ephemeral-three-view-positive-native.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m37p2-ephemeral-native-positive-3view-readonly
+  cancel-in-progress: true
+jobs:
+  real-native-positive-review-from-ephemeral-non-art-meshes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify strictly ephemeral non-art fixture
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_ephemeral_positive_native_review_smoke.py
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('tools/g4c7_m37p2_ephemeral_positive_native_review_smoke.py').read_text()
+          assert "TemporaryDirectory" in source
+          assert "EPHEMERAL_FIXTURE_MAY_RUN_ONLY_IN_HEADLESS_GITHUB_CI" in source
+          assert "CI_ONLY_EPHEMERAL_NOT_CITY_" in source
+          assert "PASS_EPHEMERAL_TECH_POSITIVE_REVIEW_ONLY" in source
+          assert "bpy.ops.wm.save_as_mainfile(filepath=str(master)" in source
+          assert "bpy.ops.wm.open_mainfile(filepath=str(master.resolve()))" in source
+          assert "run_review" in source
+          assert "Minecraft" in source
+          print('EPHEMERAL_NON_ART_SMOKE_CONTRACT_OK')
+          PY
+      - name: Install real Blender Python native bpy 4.5
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2] == (4, 5)"
+      - name: REAL reloaded Blender three camera positive rendering from deleted test-only tetra
+        env:
+          CI: "true"
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 420s python -u tools/g4c7_m37p2_ephemeral_positive_native_review_smoke.py
+          test ! -e M37P2_POSITIVE_CI_TEST_FIXTURE_NEVER_ART.blend
+          echo "NO_FIXTURE_COPIED_TO_REPOSITORY_ART_NOT_CREATED"
