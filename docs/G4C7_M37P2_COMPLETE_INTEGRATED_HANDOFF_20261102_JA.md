@@ -330,3 +330,19 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - R0〜R5、美術第一・正式採用本人限定、正式331人体／993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode未測定、Minecraft施工禁止、旧真正原本不変、main未変更、PR #53 Draft、Work事前許可を維持。
 
 **次の実美術制作に必要なもの：** 新しい直接造形の作業権限・アクセスと、その実体としてのBLENDメッシュ＋同一シーンの都市全景/公共眼高/住宅内観。次回「工程番号」だけを進めたり、空の編集用ファイル・QAツールを再生成して実際の美術制作に替えたりしない。
+
+---
+
+## 22. M37-P2：Work無し／ローカルBlenderを直接作者編集するためのWindows起動経路（2026-11-02 JST）
+
+**工程分類：真の作者3Dへのローカル到達経路。作品自体は依然NOT CREATED。ART HOLD、正式採用0を維持。**
+
+ユーザーからWorkの使用量枯渇、できればGPT-6 Lunaまたは6.1 Terraで継続希望があった。現在のChatにはローカルWindowsデスクトップを対話的に操作する権限・接続がなく、モデルの実行選択やTerraへの直接委譲も不可能。**Workは起動せず、Luna/Terraが自動で制作したとは報告しない**。
+
+- [Windows単一PowerShell起動スクリプト](../tools/g4c7_m37p2_launch_local_author.ps1) と [日本語使い方](../tools/G4C7_M37P2_LOCAL_AUTHOR_LAUNCH_README_JA.md) を研究ブランチに実際に保存。GitHub ZIPや過去チャットのZIPは不要。正本v3の固定コミット `3c05ba86814443bb3b6d44718dae50a855fea083` から、元SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249` を保持する編集用別ファイルをWindowsのユーザー文書セッションフォルダに置く。もとのGitHub保護原本は絶対上書きしない。
+- Blenderの既設二画面/直接作者監査/真正3視点レビューをセッション起動時に読み込むGUI初期化スクリプトを生成し、インストール済みBlenderを起動し、作業フォルダをExplorerで開く。**幾何形状の自動生成、元Blenderの保存変更、Minecraft world write、main変更はしない**。これで、本当に作者が立体編集を始める最後のWindowsローカル起動操作が短縮できた。
+- [Windows実検証CI #41447267350 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41447267350) はPowerShellの真正Windows解析、v3 SHA固定原本のローカル複写、フォルダ・manifest・埋込GUIブートストラップPython構文、世界・GitHub原本変更0を検証。テストは`-PrepareOnly`で実行したため、Windowsデスクトップ上のBlender実モデル編集・Windows 5.2 GUI表示は**未検証**。[既存の実GUI CI #41431524480](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41431524480)はLinux Xvfb/Blender 4.5.15による限定的な非ヘッドレスGUI操作の証拠であって、Windows実作者造形の代用にはしない。
+- **アート前進の計数を虚偽にしない：** M37-P2都市メッシュ0、実住宅室0、実製造工程0、3真正都市ART画像0、技術GUIの操作だけPASS。旧P1/O1の不採用形状を流用した第三自動プリミティブ案は禁止。新しい空BLENDをGitHubへ作り増したわけではない。
+- 固定R0〜R5、正式331人体／993足元＋G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未評価、Minecraft施工禁止、PR #53 Open/Draft/未merge、main保護、Work事前明示承認制を再確認した。
+
+**本当の次工程**：ユーザーのローカルBlender、またはデスクトップGUIを本当に操作できるローカル作者エージェントが、既存v3コピーを元に「都市全域粗形状」と「工場・見学・研究・文化・住宅生活断面」を**直接同時造形**して保存する。3保存実視点をART-firstで審査し、低品質ならすぐREJECT。その作者操作が実施されるまではモデル、CI、計画書の完了を作品の完成と表現しない。
