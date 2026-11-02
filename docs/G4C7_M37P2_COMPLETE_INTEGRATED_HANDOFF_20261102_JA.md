@@ -360,3 +360,17 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 全体のR0〜R5とART-FIRST、美術の最終採否はユーザー本人、331人体・993足元/正式G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main無変更、PR #53 Open/Draft未merge、Work事前承認制は不変。
 
 **引き継ぎの重要な停止条件**：このLLM JSON試作を第三の箱／板／橋量産都市に変質させない。スクリーンショット実絶対審査で薄壁・黒画面・空白や用途の断絶が見えたらEARLY ART REJECTを維持し、都市全景と本当の製造／研究／住居生活断面を同時制作する直接作者法へ戻す。
+
+---
+
+## 24. M37-P2：Ollama出力検証と3真正ビューの自動レビュー（2026-11-02 JST）
+
+**作業実装済み、専用CI未実行／ART HOLD／正式採用0。新都市の真正3Dはまだ作成・美術審査していない。**
+
+- 現研究HEADは作業中の最新ブランチ参照とPR #53を再確認する。前工程で確認済みの通常Verify `2dee1cc...` はSUCCESS。ただし**現在のローカルLLM用PythonとWindows起動器の専用CIはGitHub APIで長くqueued／pendingとなっており、成功扱い禁止**。後続更新でconcurrencyによって前の同名ジョブがcancelledされたものもある。原因を根拠なくGitHub障害と断定しない（GitHub公開Statusの2026-11-02月間履歴にはこの時点で現行障害の情報が無い）。
+- [ローカルLLMの3D明示的頂点検査と真正Blenderレンダ](../tools/g4c7_m37p2_local_vertex_author.py)に、Ollama公式`/api/generate`の`think=false`、応答バイト上限、`done`および`done_reason=length/error`の拒否、モデルJSONが配列など異常でも記録して停止する保護を追加。設計意図の文字数不足も拒否。不採用候補は`.validation.json`と`.REJECTED_NEVER_ART.json`（上限内）の診断用ファイルとして残し、**不適合メッシュをBlenderへ渡さない**。
+- 5用途に関する明示的頂点案が形式検査を通り、**実際にBlenderで3枚のPNG生成に成功した場合だけ**、`OPEN_THREE_REAL_BLENDER_VIEWS_ART_HOLD.html`をローカル生成するよう改修。全景、公共・製造、住居の**同じ真正Blender 3Dから撮影した3枚**を並べ、旧不合格の板・壁・空白・黒画像、実製造・境界・採光・住居の不在をART-FIRSTで見て判断できる。HTMLも未審査、採用0、安全未実施を明示。これは画像を人工的に生成・修正する機能でもなく、正式美術認定機能でもない。
+- [Windows PowerShellワンコマンド本体](../tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1)は最新固定Python `13193a41b99e59c87a9475024d4340becb74833d` を参照し、成功後は評価HTMLを自動で開く。[WindowsワンクリックCMD](../tools/G4C7_P2_AI_Trial_Start.cmd)は固定PS1 `f7feec03dfb8a2214ea11d4c9c7be8c212878851` を参照。GitHubから**固定の正しい版を実際に取得できることはコネクタの参照照合で確認したが、Windows 5.2.1／Ollama実機での統合成功は未確認**。
+- 正規安全331人体・993足元、G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未測定、Minecraft施工禁止、main保護、PR #53 Open/Draft/未merge、Work無しの方針は不変。従来O1/P1の大量プリミティブ生成や旧形状流用に戻ることは禁止。
+
+**次の必要な証拠：** 新Python専用CIとWindows専用CIの実行結果をまず確認する。技術経路の検証成功後、ユーザー既存ローカルOllamaで**1つだけ**候補試験を行い、真正3D／3枚の実レンダを早期絶対評価する。複数案を機械的に量産せず、失格なら拒否・診断する。実行していないローカルモデル試験を実行済みとして報告しない。
