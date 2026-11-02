@@ -261,3 +261,12 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 保存コミット `0b92cc487ff35746cadf1398fee69069f33b675b`、`c04878dd4064817afaa126ba4b371ff977833b45`、`f35fa37d77f750a8e0f8064a9170036bc497e08d`、`a7d6f60e0127f9df423a12d18d8845aa09af2140`。
 
 **重要な未達：** このCIは実際の新しい都市形態が存在しないため、GUIの真正3視点ART画像、住居・公共入口・工場の実空間、331/993安全QA、MakeCode費用を評価していない。P2の本当の進展には作者が同一Blender原本上で市街粗3Dと実生活断面を並行して直接編集する必要がある。Workは事前明示承認制。第三のプログラム生成プリミティブ都市は作らない。main変更禁止、PR #53 Draft/未merge、Minecraft施工禁止。
+
+
+### 節17補足 — native検証のやり直し（正確なCI状態）
+
+最初の専用CI [#41422123251](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422123251) は、新v2真正BLENDの作成までは成功したが、独立再読込ゲート実行中に診断改訂を行ったため **CANCELLED**。**独立再読込とアーカイブのSUCCESSとは扱わない**。
+
+処理が長引いたため、別プロセス再読込ゲートに150秒の子プロセス実行上限・80秒経過時のfaulthandlerダンプ・段階進捗出力を追加した。ワークフロー更新コミット `46a1d98f4824bc128a732a596f037b4943059f2b`。新版 [#41422705862](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422705862) は最後の確認で **QUEUED、全体未検証**。新v2 `.blend` のGitHubアーカイブ確定は、CIが実際にファイルをpushし、改めて存在・manifest SHAを確認するまで保留。
+
+本工程は空の編集器の整備であり、ART HOLD/正式採用0、331/993 NOT RUN、Minecraft施工禁止の固定判定は不変。
