@@ -6,8 +6,17 @@ param(
     [string]$Model = "qwen3:14b",
     [string]$SessionRoot = "",
     [string]$BlenderExe = "",
-    [switch]$PrepareOnly
+    [switch]$PrepareOnly,
+    [switch]$ExplicitTechOnly
 )
+# First real native Cycles visual inspection showed two unadorned cubes,
+# no city / factory / lived interiors. Default user execution must STOP.
+if (-not $PrepareOnly -and -not $ExplicitTechOnly) {
+    Write-Host "G4C7_P2_VISUAL_ART_REJECT: 3 real Cycles views contained only 2 cubes."
+    Write-Host "The model-assisted operator loop is TECH ONLY; user art launch is disabled."
+    Write-Host "No Ollama request was made; no Blender files or Minecraft were changed."
+    exit 2
+}
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 $sha = "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249"
