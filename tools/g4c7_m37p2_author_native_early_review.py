@@ -227,7 +227,9 @@ def native_review(output_dir):
     )
     for name in required_collections:
         coll = bpy.data.collections.get(name)
-        if coll is None or not any(ob in coll.all_objects and ob in meshes for ob in scene.objects):
+        # bpy_prop_collection.__contains__ accepts a NAME, not a bpy Object.
+        # A previous untested positive-path gate crashed with TypeError here.
+        if coll is None or not any(ob.name in coll.all_objects for ob in meshes):
             raise RuntimeError("NO_ACTUAL_DIRECT_AUTHOR_MESH_IN_AREA:" + name)
     all_names = {
         ob.name for name in required_collections
