@@ -112,6 +112,9 @@ def validate(plan):
         problems.append("OBJECT_COUNT_OUTSIDE_10_TO_65")
     present=Counter()
     names=set()
+    # Different roles must not be fabricated using exactly the same vertex
+    # coordinates: the first real Qwen3:14b trial repeated entire meshes.
+    geometry_origins={}
     complex_count=0
     cuboid=0
     all_vertices=[]
@@ -140,6 +143,11 @@ def validate(plan):
                 problems.append(f"MESH_{i}_INVALID_VERTEX_{j}");break
             vout.append(tuple(float(n) for n in v))
         if len(vout)!=len(verts):continue
+        signature=tuple(vout)
+        if signature in geometry_origins:
+            problems.append(f"MESH_{i}_DUPLICATED_VERTEX_GEOMETRY_OF_{geometry_origins[signature]}")
+        else:
+            geometry_origins[signature]=i
         total+=len(verts)
         all_vertices.extend(vout)
         valid_faces=0
