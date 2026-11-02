@@ -1,0 +1,73 @@
+name: G4C7 M37-P2 dual native GUI authoring check NOT ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_parallel_author_view.py
+      - .github/workflows/g4c7-m37p2-parallel-native-author-ui.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-m37p2-parallel-author-native-read-only
+  cancel-in-progress: true
+jobs:
+  validate-editor-addon-with-authentic-blender:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate syntax and forbid auto-geometry
+        run: |
+          set -euo pipefail
+          python -m py_compile tools/g4c7_m37p2_parallel_author_view.py
+          python - <<'PY'
+          from pathlib import Path
+          src=Path("tools/g4c7_m37p2_parallel_author_view.py").read_text()
+          for banned in ("bpy.ops.mesh.", "bpy.data.meshes.new(", ".from_pydata(", "bpy.ops.wm.save_as_mainfile(", "bpy.ops.render.render("):
+              assert banned not in src, "P2_EDITOR_MUST_NOT_GENERATE_ART_OR_WRITE_SOURCE:" + banned
+          assert "p2_parallel_split" in src and "p2_parallel_refresh" in src
+          print("P2_PARALLEL_AUTHOR_EDITOR_NON_GENERATIVE_SOURCE_PASS")
+          PY
+      - name: Install real Blender 4.5 Python
+        run: |
+          python -m pip install --disable-pip-version-check "bpy==4.5.15" --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c "import bpy; assert bpy.app.version[:2]==(4,5)"
+      - name: Open immutable P2 native empty studio and test register, charter failure controls
+        run: |
+          python - <<'PY'
+          import bpy, hashlib, importlib.util
+          from pathlib import Path
+          source=Path("artifacts/g4c7-m37p2-empty-direct-author-studio-ART-NOT-CREATED/M37P2_EMPTY_DIRECT_AUTHOR_MASTER_NOT_ART.blend")
+          before=hashlib.sha256(source.read_bytes()).hexdigest()
+          assert before=="d13e17fb59763a0719b5a91ed80043dade0f40ea65b7a29eba4e5bbfb9545041"
+          assert source.read_bytes()[:7]==b"BLENDER"
+          bpy.ops.wm.open_mainfile(filepath=str(source.resolve()))
+          scene=bpy.context.scene
+          spec=importlib.util.spec_from_file_location("g4c7_m37p2_parallel", "tools/g4c7_m37p2_parallel_author_view.py")
+          assert spec and spec.loader
+          mod=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+          assert mod.validate(scene)==[]
+          assert len([o for o in scene.objects if o.type=="MESH"])==0
+          mod.register()
+          assert hasattr(bpy.types.Scene, "p2_parallel_human_focus")
+          scene.p2_parallel_human_focus="HABITAT_EYE"
+          assert scene.p2_parallel_human_focus=="HABITAT_EYE"
+          orig=scene["P2_ART"]
+          scene["P2_ART"]="PASS"
+          assert any("P2_ART" in e for e in mod.validate(scene))
+          scene["P2_ART"]=orig
+          camera=scene.objects["P2_CAMERA_PUBLIC_EYE"]
+          camera.name="TEMP_NEGATIVE_CONTROL"
+          assert any("PUBLIC_EYE" in e for e in mod.validate(scene))
+          camera.name="P2_CAMERA_PUBLIC_EYE"
+          assert mod.validate(scene)==[]
+          mod.unregister()
+          assert not hasattr(bpy.types.Scene, "p2_parallel_human_focus")
+          assert before==hashlib.sha256(source.read_bytes()).hexdigest()
+          print("P2_NATIVE_GUI_ADDON_REGISTRATION_NEGATIVE_CONTROLS_PASS_NOT_ART")
+          print("GUI_SPLIT_NOT_TESTED_HEADLESS; 0_REAL_MESH; ART_HOLD; SAFETY_NOT_RUN; MINECRAFT_FORBIDDEN")
+          PY
