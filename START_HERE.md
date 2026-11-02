@@ -186,3 +186,11 @@
 - [実測失敗監査](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_QWEN14B_FIRST_LOCAL_VERTEX_ART_REJECT_20261102_JA.md)。**同条件でのQwen14B全市一括頂点生成を繰り返さない。** 不正な超巨大N-gonを自動修復して実都市成功と見せかけず、第三の箱・板・橋量産も禁止。
 - [バリデータ](tools/g4c7_m37p2_local_vertex_author.py)を更新し、不正面数のメッシュでも完全同一の頂点データの使い回しを検出。[回帰テスト](tests/test_g4c7_m37p2_vertex_first_art_reject.py)を追加。添付の実不採用データで重複5件が追加検出された。正常構造のフィクスチャは引き続きPASS（フィクスチャはARTではない）。
 - [引き継ぎ正本の節25](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。ART-FIRSTの次の実制作は真の都市全景と生活断面の同一Blender原本への直接作者造形を目指す。ユーザーに手造形を要求しない。Work使用なし、main変更なし、PR #53 Draft、331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止を固定。
+
+
+## M37-P2 2026-11-02：旧Qwen頂点一括方式の廃止とBlenderネイティブ編集操作研究
+
+- **旧全市一括Qwen3:14B頂点JSON方式をRETIRED**：実試作は有効面0/12、完全重複メッシュ5件、ART REJECT。[`G4C7_P2_AI_Trial_Start.cmd`](tools/G4C7_P2_AI_Trial_Start.cmd)、[`g4c7_m37p2_run_local_ai_vertex_trial.ps1`](tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1)は安全STOPへ変更。以前配布した旧バイナリ/旧コミットを再実行させない。
+- **次の方法**：[`g4c7_m37p2_native_operator_author.py`](tools/g4c7_m37p2_native_operator_author.py)で小規模の`city_macro`＋`habitat`を**同じBlender原本から分岐した編集用別名`.blend`**で、ネイティブの編集オペレーター（直接押し出し・インセット・移動）として再生。`bpy`や任意PythonコードをLLMに自由出力させず、建物配置を固定関数で自動生成しない。[`g4c7_m37p2_ollama_paired_native_action_proposal.py`](tools/g4c7_m37p2_ollama_paired_native_action_proposal.py)はモデルから小さな許可済み操作だけをtool callingで受け取る。**この方式の実AI試行はまだ未実施**。
+- [安全調査・継続判断](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_EDITOR_ACTION_BRIDGE_STUDY_20261102_JA.md)：公式Blender Lab MCPとLM StudioのMCP対応を確認。ただし外部MCPでAIコードを無防備に実行するとデータ危険があるため、ユーザーのWindowsに無条件導入はしない。外部Workも使用せず。
+- [正本節26](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)／[新ネイティブBlender技術CI](.github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml)。CI SUCCESSを確認するまでは新経路をPASSと呼ばない。新技術成果は都市ART作品そのものではなく、**作品メッシュの正式採用0、ART HOLD**。331人体/993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draftを固定。
