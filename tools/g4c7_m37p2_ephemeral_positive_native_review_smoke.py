@@ -64,6 +64,19 @@ def main():
         scene = bpy.context.scene
         if any(obj.type == "MESH" for obj in scene.objects):
             raise RuntimeError("IMMUTABLE_ORIGINAL_MUST_BE_EMPTY")
+        # Test NEW source fixes in a TEMPORARY copied .blend, never rewrite the
+        # old archived v2. The copy is saved/reopened with corrected Text data.
+        for embedded, current in (
+            ("M37P2_NATIVE_THREE_CAMERA_EARLY_REVIEW_NOT_ART.py",
+             "tools/g4c7_m37p2_author_native_early_review.py"),
+            ("M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py",
+             "tools/g4c7_m37p2_one_file_early_art_review_gui.py"),
+        ):
+            original = bpy.data.texts.get(embedded)
+            if original is None:
+                raise RuntimeError("ARCHIVED_TEXT_DEPENDENCY_MISSING:" + embedded)
+            original.clear()
+            original.write(Path(current).read_text(encoding="utf-8"))
         for idx, name in enumerate(GROUPS):
             make_test_tetra(bpy, bpy.data.collections[name], idx)
         for name, (position, target) in CAMERAS.items():
