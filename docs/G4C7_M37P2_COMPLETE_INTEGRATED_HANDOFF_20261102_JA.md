@@ -231,3 +231,15 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - 主コードコミット `3a6557f7f67a014006286ea3705e760cbdce4aad`、CIコミット `3ce8b21439f3dca1ca2c845b8e96252061ec9143`。GUI/Work使用事前明示承認制、main禁止、PR #53 Draft・未merge、ART FIRSTを維持。
 
 **次のブロッカー／実制作：** 作者が直接Blender GUIで市街マクロ・造船活動/見学と職員隔壁・研究文化共有断面・生活室を一体原本に並行編集する。現環境でGUI操作が未許可のため、勝手に旧`patch/wall/bridge`主導の第三作品を生成して代行しない。真正3画像が揃うまでは美術候補へ昇格させない。
+
+---
+
+## 16. M37-P2 統合真正Blender GUI作者作業原本を保存済み（2026-11-02 JST）
+
+前節15のQUEUED段階から更新：**専用GitHub Actions [#41390131345](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41390131345) はcompleted/SUCCESS**。実保存と別Blenderプロセスによる再読込、埋込ソースSHA、原本不変、ART HOLD、都市メッシュ0、カメラ3、負例検査を満たした。CIが追記コミットした真正原本は以下のとおり。
+
+- [新しい統合空作者原本](../artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART/M37P2_INTEGRATED_EMPTY_ARTIST_WORKSPACE_NOT_ART.blend)：491,214 bytes、manifest SHA256 `6ca727def08cce9220dbde59f5836248cb5d0def39c7f375c9308af1461ee904`。
+- [manifest](../artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART/M37P2_WORKSPACE_BUILD_MANIFEST.json)：元の空原本 `d13e17fb59763a0719b5a91ed80043dade0f40ea65b7a29eba4e5bbfb9545041` の不変を保存。GUI二画面用Textと作者3視点レビュー用Textを別の真正BLENDに埋め込んだ。
+- **作品としての成功ではない**。新原本の実都市メッシュは0、実公共入口・実居室・実工場設備・同一城市の生活活動・美術画像は未制作。元のテンプレートも書き換えていない。**GUI上の実2画面操作・直接モデリングはまだNOT TESTED**。
+
+今後の正当な次工程は、作者がその同じ真正BLENDを直接編集し、都市マクロと代表生活断面の美術実体を同時に制作し、3真正視点で絶対品質を評価すること。コードによる第三の旧`patch/wall/bridge`美術を作って代行しない。Workは事前明示承認、main変更禁止、PR #53 Draft/未merge、ART HOLD、正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、Minecraft world writes 0を維持。
