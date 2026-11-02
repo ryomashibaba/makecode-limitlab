@@ -105,6 +105,8 @@ def validate(plan):
     problems=[]
     if not isinstance(plan,dict) or not isinstance(plan.get("meshes"),list):
         return ["MISSING_MESH_LIST"]
+    if not isinstance(plan.get("design_intent"),str) or len(plan["design_intent"].strip())<24:
+        problems.append("MISSING_CONCRETE_AUTHOR_DESIGN_INTENT")
     meshes=plan["meshes"]
     if len(meshes)<10 or len(meshes)>65:
         problems.append("OBJECT_COUNT_OUTSIDE_10_TO_65")
@@ -121,7 +123,8 @@ def validate(plan):
         role=m.get("role","")
         verts=m.get("vertices",[])
         faces=m.get("faces",[])
-        if not isinstance(name,str) or not name.strip() or name in names or len(name)>75:
+        if (not isinstance(name,str) or not name.strip() or name in names or
+                len(name)>75 or any(ord(char)<32 for char in name)):
             problems.append(f"MESH_{i}_BAD_NAME")
         else: names.add(name)
         if role not in ROLE_NAMES: problems.append(f"MESH_{i}_BAD_ROLE")
@@ -171,7 +174,11 @@ def propose(args):
     if args.model is None:raise ValueError("LOCAL_MODEL_REQUIRED")
     body={
         "model":args.model, "prompt":BRIEF, "format":SCHEMA,
-        "stream":False, "options":{"temperature":0.75,"num_predict":14500}
+        # Ollama's documented structured-output field and non-thinking mode.
+        # Disable thinking to reserve the entire output budget for explicit
+        # vertices instead of hidden reasoning; do not use generated code.
+        "stream":False, "think":False,
+        "options":{"temperature":0.6,"num_predict":14500}
     }
     request=urllib.request.Request(
         "http://127.0.0.1:11434/api/generate",
@@ -179,7 +186,15 @@ def propose(args):
         method="POST")
     try:
         with urllib.request.urlopen(request,timeout=1200) as resp:
-            output=json.loads(resp.read().decode("utf-8"))
+            # The local model is untrusted: cap bytes to avoid memory spikes.
+            raw=resp.read(3_000_001)
+        if len(raw)>3_000_000:
+            raise ValueError("LOCAL_MODEL_RESPONSE_TOO_LARGE")
+        output=json.loads(raw.decode("utf-8"))
+        if output.get("done") is not True or output.get("done_reason") in ("length", "error"):
+            raise ValueError("OLLAMA_INCOMPLETE_OR_FAILED_GENERATION")
+        if len(output.get("response",""))>2_600_000:
+            raise ValueError("MODEL_JSON_CONTENT_TOO_LARGE")
         plan=json.loads(output["response"])
     except Exception as ex:
         atomic_json(args.out+".FAIL.json",{
@@ -197,6 +212,11 @@ def propose(args):
     }
     atomic_json(args.out+".validation.json",report)
     if problems:
+        # Preserve bounded model data for diagnosis, explicitly never as ART
+        # or as a Blender input. This allows a single failed local attempt
+        # to be reviewed without generating further rejected primitive cities.
+        if len(json.dumps(plan,ensure_ascii=False))<=2_600_000:
+            atomic_json(args.out+".REJECTED_NEVER_ART.json",plan)
         print("P2_AUTHOR_ART_FIRST_PLAN_REJECT",problems,flush=True)
         return 2
     atomic_json(args.out,plan)
