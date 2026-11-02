@@ -243,3 +243,21 @@ Minecraft Education内で**最終的にはMakeCodeだけ**を施工経路とし�
 - **作品としての成功ではない**。新原本の実都市メッシュは0、実公共入口・実居室・実工場設備・同一城市の生活活動・美術画像は未制作。元のテンプレートも書き換えていない。**GUI上の実2画面操作・直接モデリングはまだNOT TESTED**。
 
 今後の正当な次工程は、作者がその同じ真正BLENDを直接編集し、都市マクロと代表生活断面の美術実体を同時に制作し、3真正視点で絶対品質を評価すること。コードによる第三の旧`patch/wall/bridge`美術を作って代行しない。Workは事前明示承認、main変更禁止、PR #53 Draft/未merge、ART HOLD、正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、Minecraft world writes 0を維持。
+
+---
+
+## 17. M37-P2 単一BLENDでの真正3視点レビュー実行経路を修正（2026-11-02 JST）
+
+**現時点の美術判定：ART HOLD、正式採用0。新市街の直接造形未実施、都市メッシュ0の空編集スタジオである。**
+
+前節16で保存した単一真正BLENDは二画面GUI用Pythonと3視点レビュースクリプトを内蔵していたが、**内蔵レビューのCLIソースは原則として隣接Pythonファイルを検索し、Blender Text Editorから直接起動することも不適切**という実操作上の欠陥があった。
+
+修正・実装は以下。
+
+- [`g4c7_m37p2_author_native_early_review.py`](../tools/g4c7_m37p2_author_native_early_review.py)を変更。サイドカーの監査.pyが存在しない場合、BLEND内の`M37P2_CAMERA_INSIDE_SOLID_AUDIT.py` Blender Textから同じカメラ実メッシュ埋没判定をロードできる。
+- [`g4c7_m37p2_one_file_early_art_review_gui.py`](../tools/g4c7_m37p2_one_file_early_art_review_gui.py)を新規作成。作者が別名保存・再読込済みの真正BLENDから、GUI専用ボタンで3枚のCycles真正画像を審査用に描画し、独立ART判定に提出可能にする。旧空原本・元メッシュの上書きは行わない。保存されていない編集、空テンプレート、レビュー用コード欠落、元ソース改変は明示拒否。
+- [`g4c7_m37p2_integrate_standalone_review_workspace_v2.py`](../tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py)：v1真BLEND SHA `6ca727def08cce9220dbde59f5836248cb5d0def39c7f375c9308af1461ee904` を固定し、新たなv2真正BLENDに旧コード修正版・監査・GUIボタンを全て同梱する。旧原本は保存・再読込のための入力のみで、一切上書きしない。都市造形・ART画像・世界書込みは行わない。
+- [専用native CI #41422123251](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422123251) は真正Blender v2**生成工程はSUCCESS**、追補確認時は独立再読込と空原本からのレンダ誤実行拒否検査が**IN_PROGRESS**であり、全体成功はまだ未確定。完了が確認できた場合にのみ `artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART/` をGitHub原本として扱う。
+- 保存コミット `0b92cc487ff35746cadf1398fee69069f33b675b`、`c04878dd4064817afaa126ba4b371ff977833b45`、`f35fa37d77f750a8e0f8064a9170036bc497e08d`、`a7d6f60e0127f9df423a12d18d8845aa09af2140`。
+
+**重要な未達：** このCIは実際の新しい都市形態が存在しないため、GUIの真正3視点ART画像、住居・公共入口・工場の実空間、331/993安全QA、MakeCode費用を評価していない。P2の本当の進展には作者が同一Blender原本上で市街粗3Dと実生活断面を並行して直接編集する必要がある。Workは事前明示承認制。第三のプログラム生成プリミティブ都市は作らない。main変更禁止、PR #53 Draft/未merge、Minecraft施工禁止。
