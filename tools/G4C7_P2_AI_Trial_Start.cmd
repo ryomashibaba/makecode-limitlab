@@ -5,7 +5,7 @@ title G4C7 P2 Local AI Vertex Trial - ART HOLD
 set "DEST=%TEMP%\G4C7_P2_AUDITED_AI_TRIAL_%RANDOM%.ps1"
 echo G4-C7 M37-P2: Local Ollama trial (no Work, no Minecraft writes)
 echo Downloading the project script pinned to a fixed GitHub commit...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ryomashibaba/makecode-limitlab/cb63156aa8b977c9e7fea64fdafa43d4ea778171/tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1' -OutFile '%DEST%' -UseBasicParsing; if ((Get-Item -LiteralPath '%DEST%').Length -lt 4000) { throw 'Incomplete file' }"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ryomashibaba/makecode-limitlab/11a55e339894b8680c3239cadfa9c835ce73ea25/tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1' -OutFile '%DEST%' -UseBasicParsing; if ((Get-Item -LiteralPath '%DEST%').Length -lt 4000) { throw 'Incomplete file' }"
 if errorlevel 1 (
   echo Could not download the pinned script. No Blender data changed.
   pause
