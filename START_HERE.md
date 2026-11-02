@@ -170,3 +170,11 @@
 - 旧P1/O1の`patch/wall/bridge`や固定箱形状生成器の第三都市は作らない。**LLMが各ポリゴンの本物の頂点面を直接JSONとして作者提案し、5用途や非退化形・キューブ多用を検査**する試験。任意のLLM生成Pythonコードは実行しない。成功候補は元のBlenderとは別の`.blend`＋真正3Cycles画像を自動生成し、必ず**「LOCAL_LLM」作者・非GUI手作業・未承認のART HOLD**と区別する。不合格なら即停止。作品の良否を形状数やテストPASSで代替しない。
 - [専用Blenderテストワークフロー](.github/workflows/g4c7-m37p2-local-llm-explicit-vertex-first-art-tech-smoke.yml) と [Windows準備ワークフロー](.github/workflows/g4c7-m37p2-windows-local-vertex-ai-first-art-prepare.yml) を新設。ただしGitHub Actionsが**実際にcompleted/successと確認されるまでは当工程の技術PASSは未確認**。このチャットからローカルモデル実行はできず、実都市のAI造形・作者3D制作・正式3視点ART審査は未実施。
 - 全体ART HOLD／正式採用0／331人体993足元とG0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft world writes 0／main保護／PR #53 Open/Draft未merge／Work使用なしを固定。
+
+
+## M37-P2 2026-11-02：ローカルOllama出力防護と3真正視点レビュー強化
+
+- [Python形式検証＋Blender出力](tools/g4c7_m37p2_local_vertex_author.py)：生成途中で途切れたOllama応答、異常JSON、過大出力、都市設計意図なしを拒否し、診断ファイルを残す。不採用形状はBlenderへ流さない。真正の3枚が完成した場合だけ、**読み取り専用のローカルHTML** `OPEN_THREE_REAL_BLENDER_VIEWS_ART_HOLD.html` に全景／公共・製造／住居を並べ、過去の不採用理由を直接検証できる。HTMLは画像加工でもART審査合格でもない。
+- [Windows起動PowerShell](tools/g4c7_m37p2_run_local_ai_vertex_trial.ps1)はPython固定HEAD `13193a41b99e59c87a9475024d4340becb74833d` を参照し、3枚の画像生成後に比較HTMLも自動起動。[1クリックCMD](tools/G4C7_P2_AI_Trial_Start.cmd)は固定PowerShell `f7feec03dfb8a2214ea11d4c9c7be8c212878851` を参照。コードの固定参照はGitHubコネクタで実物確認した。
+- **専用Blender CI・Windows CIはこの追加時点でqueued／pending。技術成功と称さない。** 実モデルからの新都市BLEND・3真正ART画像は未制作、正式ART採用0／全体ART HOLD／331人体・993足元＆G0/S1/G1/G2/G3 NOT RUN／MakeCode未測定／Minecraft施工禁止／main保護／PR #53 Draft／Workなしを維持。
+- [正本追補節24](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
