@@ -317,6 +317,42 @@ def render(args):
         "makecode_cost":"NOT_EVALUATED","art_gates":"NOT_PASSED",
     }
     atomic_json(target/"P2_LOCAL_AI_NATIVE_ART_HOLD_REPORT.json",output)
+
+    # ART-FIRST: present the THREE *actual native Blender render files* on one
+    # offline, read-only inspection page. Never represent this as a final city.
+    # No remote service, image generator, or user tracking is involved.
+    review=target/"OPEN_THREE_REAL_BLENDER_VIEWS_ART_HOLD.html"
+    if review.exists():
+        raise FileExistsError("APPEND_ONLY_REVIEW_ALREADY_EXISTS")
+    views=(("AERIAL","都市全景"),("PUBLIC_EYE","公共・製造の人間視点"),
+           ("HABITAT_EYE","居住の人間視点"))
+    cards="\\n".join(
+        '<section><h2>'+title+'</h2><img src="'+photos[key]["file"]+
+        '" alt="'+title+'：実Blender出力・未採用"><p><code>'+photos[key]["sha256"]+
+        '</code></p></section>' for key,title in views
+    )
+    review.write_text(
+        '<!doctype html><html lang="ja"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>G4C7 P2 真正Blender 3視点・絶対美術審査 未採用</title>'
+        '<style>body{font-family:system-ui,sans-serif;background:#151a22;'
+        'color:#e9edf2;margin:2rem auto;max-width:1550px;padding:0 1rem}'
+        'h1{font-size:1.6rem}p{line-height:1.7}section{margin:2rem 0;'
+        'padding:1rem;background:#222935;border-radius:12px}'
+        'img{display:block;width:100%;height:auto;border-radius:8px}'
+        'code{font-size:.74rem;overflow-wrap:anywhere;color:#aebcd0}'
+        '</style></head><body><h1>G4-C7 M37-P2 / 真正Blender 3視点</h1>'
+        '<p><strong>ART HOLD／正式採用0件／未審査のローカルAI試作。</strong>'
+        'この3枚は同じ保存済み3Dからの実レンダ画像であり、'
+        '美術的な合格や安全認証を意味しません。</p>'
+        '<p>全景が巨大な板・箱・空白なら即不採用。公共視点で'
+        '工場見学と職員境界・研究文化の活動が分からなければ不採用。'
+        '住居視点で玄関・奥行・窓・街並みが分からなければ不採用。</p>'
+        +cards+
+        '<p>331人体／993足元 NOT RUN・Minecraft施工禁止・'
+        'MakeCode未評価・main未変更。正式ART採用は本人だけが決定します。</p>'
+        '</body></html>',encoding="utf-8"
+    )
     print("P2_LOCAL_AI_EXPLICIT_VERTEX_NATIVE_RENDER_SUCCESS_ART_HOLD",json.dumps(output),flush=True)
     return 0
 
