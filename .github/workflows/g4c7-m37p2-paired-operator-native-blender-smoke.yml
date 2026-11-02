@@ -5,6 +5,7 @@ on:
     paths:
       - tools/g4c7_m37p2_native_operator_author.py
       - tests/test_g4c7_m37p2_paired_operator_native.py
+      - tools/g4c7_m37p2_paired_operator_three_view_evidence.py
       - tools/g4c7_m37p2_ollama_paired_native_action_proposal.py
       - tests/test_g4c7_m37p2_ollama_paired_operator_proposal.py
       - .github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml
@@ -68,6 +69,38 @@ jobs:
           print('NATIVE_EDIT_OPERATOR_PAIRED_MACRO_HABITAT_TECH_ONLY_ART_HOLD_PASS')
           PY
           test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+      - name: Capture exactly three true Cycles evidence PNGs from the SAME saved non-art native file
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 360s python -u tools/g4c7_m37p2_paired_operator_three_view_evidence.py \
+             --source /tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY/P2_NATIVE_EDITOR_PAIRED_STUDY_UNAPPROVED.blend \
+             --out /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('/tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART')
+          r=json.loads((p/'P2_NATIVE_PAIRED_THREE_VIEW_REPORT.json').read_text())
+          assert r['art']=='HOLD' and r['official_adoptions']==0
+          assert r['true_city'] is False and r['human_gui_authorship']=='NOT_PERFORMED'
+          assert r['camera_positions_author_approved'] is False
+          assert set(r['views'])=={'AERIAL','PUBLIC_EYE','HABITAT_EYE'}
+          for name,im in r['views'].items():
+              raw=(p/im['filename']).read_bytes()
+              assert raw[:8]==bytes.fromhex('89504e470d0a1a0a')
+              assert hashlib.sha256(raw).hexdigest()==im['sha256'],name
+          original=Path('/tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY/P2_NATIVE_EDITOR_PAIRED_STUDY_UNAPPROVED.blend')
+          assert hashlib.sha256(original.read_bytes()).hexdigest()==r['original_stored_blend_sha256']
+          assert (p/'OPEN_REAL_THREE_VIEW_NON_ART.html').is_file()
+          print('PAIRED_NATIVE_ONE_SAVED_BLEND_THREE_REAL_CYCLES_PNG_TECH_PASS_NOT_ART')
+          PY
+      - name: Upload THREE TRUE Blender renders strictly labeled NOT ART
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g4c7-p2-paired-native-true-three-views-tech-only-not-art
+          path: /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/
+          if-no-files-found: warn
+          retention-days: 7
       - name: Verify truly native saved scene has both edited meshes in same Blender scene
         run: |
           python - <<'PY'
