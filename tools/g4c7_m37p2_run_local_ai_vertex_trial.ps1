@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 
 $expectedSha = "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249"
 # Pin code at a concrete commit; no remote unreviewed branch execution.
-$codeCommit = "784ed3c8eb8d326c10293e6bb49a669e084ba90f"
+$codeCommit = "d09a243fa3c741299443a578e4a974a3b5f391d4"
 $sourceName = "P2_DIRECT_AUTHOR_UNAPPROVED.blend"
 $scriptFile = "g4c7_m37p2_local_vertex_author.py"
 
