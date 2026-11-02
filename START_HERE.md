@@ -194,3 +194,11 @@
 - **次の方法**：[`g4c7_m37p2_native_operator_author.py`](tools/g4c7_m37p2_native_operator_author.py)で小規模の`city_macro`＋`habitat`を**同じBlender原本から分岐した編集用別名`.blend`**で、ネイティブの編集オペレーター（直接押し出し・インセット・移動）として再生。`bpy`や任意PythonコードをLLMに自由出力させず、建物配置を固定関数で自動生成しない。[`g4c7_m37p2_ollama_paired_native_action_proposal.py`](tools/g4c7_m37p2_ollama_paired_native_action_proposal.py)はモデルから小さな許可済み操作だけをtool callingで受け取る。**この方式の実AI試行はまだ未実施**。
 - [安全調査・継続判断](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_EDITOR_ACTION_BRIDGE_STUDY_20261102_JA.md)：公式Blender Lab MCPとLM StudioのMCP対応を確認。ただし外部MCPでAIコードを無防備に実行するとデータ危険があるため、ユーザーのWindowsに無条件導入はしない。外部Workも使用せず。
 - [正本節26](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)／[新ネイティブBlender技術CI](.github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml)。CI SUCCESSを確認するまでは新経路をPASSと呼ばない。新技術成果は都市ART作品そのものではなく、**作品メッシュの正式採用0、ART HOLD**。331人体/993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draftを固定。
+
+
+## M37-P2 2026-11-03：本物のBlender編集メッシュと3視点Cycles技術評価、Windows省操作統合
+
+- [M37-P2現工程の研究正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_PAIRED_THREE_VIEW_LOCAL_ENTRY_20261103_JA.md)。ネイティブEdit Modeで都市外形・住居の2メッシュを同じ`.blend`に別名保存して再読込する**実Blender技術CI #41467002875 SUCCESS**を確認した。これは試験の2形状であり、都市美術0件。
+- [同一保存済みBlenderの真正Cycles 3視点証拠生成](tools/g4c7_m37p2_paired_operator_three_view_evidence.py)を追加。独立3 PNG／SHA／報告JSON／オフライン3画面HTMLで3D視覚監査の材料を残し、同一原本の不変SHAを検査。[本新Blender CI #41471988900](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41471988900)は**最新状態のSUCCESSをまだ確認していない**。試験形状はARTではない。
+- [Windows1回PowerShell実行器](tools/g4c7_m37p2_run_native_operator_first_pair.ps1)／[ダブルクリック起動ファイル](tools/G4C7_P2_Native_Operator_Trial_Start.cmd)：既存Ollama Qwen3:14bが許可済み編集操作のJSONだけを1回提案し、隔離Blenderに渡し、真正3 PNGが生成できた場合にまとめて表示する。**この新方式の実モデル実行・実Windows5.2.1 GUI相互運用はまだ未検証**。前回多発した起動障害を避けるため[Windows事前確認CI #41472380173](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41472380173)成功前にユーザーへ配布・実行依頼しない。
+- [統合引き継ぎ節27](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。先の一括頂点Qwen試験は正式RETIRED、旧ダウンロードを使わせない。ART HOLD／公式採用0／331人体993足元＆G0/S1/G1/G2/G3 NOT RUN／MakeCode費用未評価／Minecraft施工禁止／main変更なし／PR #53 Draft／Work不使用を維持。
