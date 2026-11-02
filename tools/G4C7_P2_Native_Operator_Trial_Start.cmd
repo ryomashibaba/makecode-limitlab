@@ -2,9 +2,9 @@
 setlocal
 title G4C7 P2 - Native Blender Operator One-Shot LOCAL AI Trial - ART HOLD
 echo G4C7 P2: ONE local AI native operator study; NO Work, NO Minecraft.
-echo No install or Git clone is required. The verified v3 file remains untouched.
+echo Current artist-quality gate is ART REJECT: do NOT repeat the two-cube model trial.\necho The pinned tool will safely STOP before any local model call.
 set "SCRIPT=%TEMP%\G4C7_P2_NATIVE_OPERATOR_%RANDOM%_%RANDOM%.ps1"
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ryomashibaba/makecode-limitlab/99065244c6d5cc099f3383a9e9e36762cbcee74b/tools/g4c7_m37p2_run_native_operator_first_pair.ps1' -OutFile '%SCRIPT%' -UseBasicParsing; if ((Get-Item -LiteralPath '%SCRIPT%').Length -lt 4000) {throw 'Incomplete authoring script'}"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ryomashibaba/makecode-limitlab/0483de79e4e31a2dcef9c18dc37dd22608cc55bc/tools/g4c7_m37p2_run_native_operator_first_pair.ps1' -OutFile '%SCRIPT%' -UseBasicParsing; if ((Get-Item -LiteralPath '%SCRIPT%').Length -lt 4000) {throw 'Incomplete authoring script'}"
 if errorlevel 1 (
   echo STOP: Could not fetch fixed audited script. No original Blender files changed.
   pause
