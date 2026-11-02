@@ -115,7 +115,7 @@ def main():
         image_sha = {}
         for key, info in manifest["early_native_three_view_renders"].items():
             image_path = output_dir / info["name"]
-            if not image_path.read_bytes().startswith(b"\\x89PNG\\r\\n\\x1a\\n"):
+            if not image_path.read_bytes().startswith(bytes((137, 80, 78, 71, 13, 10, 26, 10))):
                 raise RuntimeError("INVALID_REAL_PNG:" + key)
             if sha256(image_path) != info["sha256"]:
                 raise RuntimeError("RENDER_SHA_MISMATCH:" + key)
