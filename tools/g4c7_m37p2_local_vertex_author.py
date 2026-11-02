@@ -206,7 +206,8 @@ def propose(args):
     report={
         "schema":"p2-local-llm-native-vertex-attempt-v1",
         "outcome":"PLAN_REJECTED_HOLD" if problems else "PLAN_VALID_FOR_NATIVE_RENDER_NOT_ART",
-        "model":args.model,"errors":problems,"objects":len(plan.get("meshes",[])),
+        "model":args.model,"errors":problems,
+        "objects":len(plan.get("meshes",[])) if isinstance(plan,dict) and isinstance(plan.get("meshes"),list) else 0,
         "art":"HOLD","official_adoptions":0,"formal_331_993":"NOT_RUN",
         "minecraft":"FORBIDDEN","method":"LLM_AUTHORED_EXPLICIT_VERTICES_NOT_DIRECT_GUI_AUTHOR"
     }
