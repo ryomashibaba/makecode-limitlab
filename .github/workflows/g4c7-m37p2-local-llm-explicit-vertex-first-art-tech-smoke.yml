@@ -1,0 +1,109 @@
+name: G4C7 M37-P2 local AI explicit-vertex author trial Blender technical test NO ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_local_vertex_author.py
+      - .github/workflows/g4c7-m37p2-local-llm-explicit-vertex-first-art-tech-smoke.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-p2-local-ai-explicit-vertex-smoke
+  cancel-in-progress: true
+jobs:
+  test-blender-native-model-authorship-transport-with-only-ephemeral-fixture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Make temporary vertex authored non-city fixture; exercise strict rejection
+        env:
+          CI: "true"
+        run: |
+          python -m py_compile tools/g4c7_m37p2_local_vertex_author.py
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          from tools.g4c7_m37p2_local_vertex_author import validate
+          base=Path('/tmp/g4c7-p2-vertex-test')
+          base.mkdir(exist_ok=True)
+          assert 'MISSING_MESH_LIST' in validate({})
+          assert validate({'meshes':[]})
+          names=('city_macro','inhabited','factory_boundary','research_culture','habitat')
+          meshes=[]
+          # TEMPORARY NON-CITY test geometry; never use as a city art asset.
+          # Twisted closed non-axis-aligned triangular test surfaces, 18 vertices
+          # each, no box / wall / bridge / art city recipes.
+          for i in range(10):
+              vx=[]; faces=[]
+              for layer in range(3):
+                  for k in range(6):
+                      angle=math.pi*k/3 + layer*0.15 + i*.05
+                      cx=((i%5)-2)*28 + layer*1.4
+                      cy=((i//5)-0.5)*45 + layer*2.5
+                      vx.append([round(cx+(3.5+layer*.5)*math.cos(angle),4),
+                        round(cy+(4.1-layer*.3)*math.sin(angle),4),
+                        round(3+layer*7+(i%3)*2+math.sin(angle)*2,4)])
+              for layer in range(2):
+                  for k in range(6):
+                      a=layer*6+k
+                      c=layer*6+(k+1)%6
+                      d=(layer+1)*6+(k+1)%6
+                      e=(layer+1)*6+k
+                      faces.extend([[a,c,d],[a,d,e]])
+              meshes.append({'name':'CI_ONLY_EPHEMERAL_NOT_CITY_'+str(i),
+                 'role':names[i%5], 'why':'Test-only native Blender vertex mesh; no art or urban quality evidence',
+                 'vertices':vx,'faces':faces})
+          obj={'title':'CI_ONLY_NOT_ART','design_intent':'Technical explicit vertex data transport test only',
+               'meshes':meshes}
+          errors=validate(obj)
+          assert not errors,errors
+          p=base/'CI_EPHEMERAL_FIXTURE_NEVER_ART.json'
+          p.write_text(json.dumps(obj))
+          print('MODEL_FREE_VERTEX_VALIDATOR_NEGATIVE_AND_POSITIVE_PASS')
+          PY
+      - name: Install genuine native bpy
+        run: |
+          python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
+          python -c 'import bpy; assert bpy.app.version[:2] == (4,5)'
+      - name: Real Blender native .blend + same saved scene three Cycles views from ephemeral non-art fixture
+        env:
+          CI: "true"
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 450s python -u tools/g4c7_m37p2_local_vertex_author.py \
+            --mode render \
+            --source 'artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend' \
+            --plan /tmp/g4c7-p2-vertex-test/CI_EPHEMERAL_FIXTURE_NEVER_ART.json \
+            --out /tmp/g4c7-p2-vertex-test/CI_NATIVE_NON_ART_RENDER
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          d=Path('/tmp/g4c7-p2-vertex-test/CI_NATIVE_NON_ART_RENDER')
+          report=json.loads((d/'P2_LOCAL_AI_NATIVE_ART_HOLD_REPORT.json').read_text())
+          assert report['outcome']=='NATIVE_TRIAL_RENDERED_ART_UNREVIEWED',report
+          assert report['art']=='HOLD' and report['official_adoptions']==0
+          assert report['Minecraft']=='FORBIDDEN'
+          assert report['model_authorship']=='LOCAL_LLM_VERTEX_DATA_NOT_DIRECT_GUI'
+          assert report['object_count']==10
+          assert len(report['camera_review'])==3
+          for v in report['camera_review'].values():
+              f=d/v['file']
+              assert f.read_bytes()[:8]==bytes.fromhex('89504e470d0a1a0a')
+              assert hashlib.sha256(f.read_bytes()).hexdigest()==v['sha256']
+          p=Path('artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==report['original_v3_sha256']
+          print('G4C7_P2_LOCAL_AI_EXPLICIT_VERTEX_REAL_BLENDER_GENUINE_THREE_RENDER_TECH_PASS_ART_HOLD_NOT_CITY')
+          PY
+          test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+      - name: Preserve test evidence only in temporary CI artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-p2-temporary-native-vertex-test-never-art
+          path: /tmp/g4c7-p2-vertex-test/CI_NATIVE_NON_ART_RENDER/P2_LOCAL_AI_NATIVE_ART_HOLD_REPORT.json
+          if-no-files-found: warn
+          retention-days: 14
