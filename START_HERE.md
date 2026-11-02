@@ -107,3 +107,10 @@
 - [専用Actions #41390131345](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41390131345) completed/SUCCESS。[マニフェスト](artifacts/g4c7-m37p2-integrated-native-author-workspace-NOT-ART/M37P2_WORKSPACE_BUILD_MANIFEST.json)が保存済み。
 - **これは美術ではなく実メッシュ0の空編集スタジオ。** GUI実操作、都市全景・生活室の直接造形・美術3視点は未実施。ART HOLD／正式採用0、正式331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main不変更、Draft PR #53維持、Work事前承認不変。
 - 次の正当工程は都市粗3Dと居住・文化・研究・実造船の生活断面を**同じBlender原本で実造形**すること。旧P1のプリミティブ同型第三案を生成しない。全文は[統合引き継ぎ節16](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+
+
+## M37-P2 2026-11-02：単一真正BLENDの早期美術レビュー実行経路（節17）
+
+- 既存の統合空原本で、内蔵3視点審査が外部.pyに依存しText Editorからそのまま実行できない欠陥を修正。[自己完結GUIレビューボタン](tools/g4c7_m37p2_one_file_early_art_review_gui.py)／[同梱カメラ監査を読める改修版](tools/g4c7_m37p2_author_native_early_review.py)／[真正BLEND新v2原本作成](tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py)。
+- [専用native Actions #41422123251](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41422123251)：真正Blenderでの**新v2生成工程はSUCCESS**、独立再読込・「空原本をARTレビューできない」負例検証は直近で**IN_PROGRESS、全体SUCCESS未確定**。アーカイブが実際にGitHubへ現れるまでは保存済みと称さない。詳細は[現行統合引き継ぎ節17](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+- これは新市街美術ではない。P2新真正都市メッシュ0、ART HOLD、正式採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未測定、Minecraft施工禁止、main変更禁止、PR #53 Draft維持。作者による全景と生活断面の同一BLEND直接3D造形が次の美術制作。Workは事前明示承認制、未承認利用禁止。
