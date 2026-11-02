@@ -85,3 +85,10 @@
 - 3真正早期レビューも[作者が編集したマクロ／製造公私境界／研究文化／住宅の実メッシュ](tools/g4c7_m37p2_author_native_early_review.py)と作者確認済み3視点を必須に強化。虚偽のP2美術認定禁止。
 - 初回空スタジオCI [#41359593395](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41359593395) はWorld欠落でFAIL、次の[#41359669304](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41359669304) は圧縮形式ヘッダーの独立監査でFAIL。原因を修正し、再試行[#41359859014](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41359859014) は本追補時点で**QUEUED／未確定**。SUCCESSと断定しない。
 - 以前からの固定条件は[最新統合引き継ぎの節12](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)参照。次は**空のテンプレートではなく、同一保存原本に都市と人の生活が実際に見える真正3D美術の制作**。Workには事前明示承認が必要。main変更、Minecraft施工、正式ART採用は禁止のまま。
+
+
+## M37-P2 2026-11-02：暫定カメラの虚偽承認を検出（限定METHOD）
+
+- 最新の作者レビュー入力では**全景・公共・住宅の各カメラが初期空スタジオの暫定位置から最低1抽象研究単位移動**していなければ拒否する。[ソース](tools/g4c7_m37p2_author_native_early_review.py)、[専用CI #41374480855 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41374480855)、[統合引き継ぎ節13](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。
+- **限界**：カメラ移動だけでは良質な視点・造形を証明しない。P2新真正都市美術は未制作。空真正BLEND・0実メッシュのまま、全体ART HOLD／正式採用0、331/993・G0/S1/G1/G2/G3未実施、MakeCode未測定、Minecraft施工禁止、main保護・Draft PR #53維持。
+- **次工程**：新しい同型の自動生成を繰り返さず、同一作者編集Blender原本に全市街粗3Dと代表製造・研究・住宅・文化の生活断面を実造形し、3真正視点を絶対美術審査。Work/GUIの承認制は不変。
