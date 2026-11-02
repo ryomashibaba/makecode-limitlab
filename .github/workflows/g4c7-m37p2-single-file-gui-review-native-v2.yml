@@ -44,8 +44,11 @@ jobs:
           python -u tools/g4c7_m37p2_integrate_standalone_review_workspace_v2.py
       - name: Independent reopen and test full dependencies plus negative render gate
         run: |
-          python - <<'PY'
+          timeout --signal=TERM --kill-after=10s 150s python -u - <<'PY'
+          import faulthandler
+          faulthandler.dump_traceback_later(80,repeat=False)
           import bpy,hashlib,importlib.util,json
+          print("P2_V2_REOPEN_BEGIN",flush=True)
           from pathlib import Path
           d=Path("artifacts/g4c7-m37p2-standalone-artist-workspace-v2-NOT-ART")
           m=json.loads((d/"M37P2_V2_NATIVE_WORKSPACE_MANIFEST.json").read_text())
@@ -54,6 +57,7 @@ jobs:
           assert hashlib.sha256(p.read_bytes()).hexdigest()==m["output_sha256"]
           bpy.ops.wm.read_factory_settings(use_empty=True)
           bpy.ops.wm.open_mainfile(filepath=str(p.resolve()))
+          print("P2_V2_REOPEN_DONE",flush=True)
           scene=bpy.context.scene
           assert scene["P2_ART"]=="HOLD" and scene["P2_OFFICIAL_ADOPTIONS"]==0
           assert scene["P2_MINECRAFT"]=="FORBIDDEN" and scene["P2_FORMAL_331_993"]=="NOT_RUN"
@@ -66,6 +70,7 @@ jobs:
           scope={"__name__":"embedded_gui_test","__file__":"IN_MEMORY_BLENDER_TEXT_ONLY"}
           exec(compile(src,"M37P2_RUN_ONCE_NATIVE_REVIEW_BUTTON.py","exec"),scope)
           scope["register"]()
+          print("P2_V2_GUI_REGISTER_DONE",flush=True)
           assert hasattr(bpy.types,"G4C7_OT_P2_native_gui_review")
           try:
               scope["run_review"](str(d/"FORBIDDEN_EMPTY_REVIEW"))
@@ -75,6 +80,7 @@ jobs:
               raise AssertionError("FAIL_OPEN_EMPTY_STUDIO_WAS_RENDERED")
           assert not (d/"FORBIDDEN_EMPTY_REVIEW").exists()
           scope["unregister"]()
+          print("P2_V2_GUI_REGISTER_REMOVED",flush=True)
           assert not hasattr(bpy.types,"G4C7_OT_P2_native_gui_review")
           assert hashlib.sha256(p.read_bytes()).hexdigest()==m["output_sha256"]
           print("INDEPENDENT_SAVED_BLEND_REOPEN_NATIVE_GUI_REGISTER_PASS")
