@@ -1,0 +1,24 @@
+{
+  "result": "SINGLE_VISIBLE_GUI_ARCHITECTURAL_BOUNDARY_INPUT_SAVED_REOPENED",
+  "scope": "ISOLATED_REJECTED_CITY_METHOD_NOT_NEW_ART",
+  "new_native_sha256": "8a2ab7052050913a78161a12b744ad2658aca454b2fdcfee728a5f6b52d2b431",
+  "original_source_sha256": "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06",
+  "unchanged_mesh_count": 1113,
+  "only_changed_mesh": "HABITAT: private vestibule divider",
+  "new_target_location": [
+    -27.8,
+    35.5,
+    11.5
+  ],
+  "previous_art": "EARLY_ART_REJECT",
+  "new_art": "NONE",
+  "art": "HOLD",
+  "adoptions": 0,
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "MakeCode": "NOT_EVALUATED",
+  "minecraft": "FORBIDDEN",
+  "world_writes": 0,
+  "work": "NOT_USED",
+  "sol": "NOT_USED"
+}

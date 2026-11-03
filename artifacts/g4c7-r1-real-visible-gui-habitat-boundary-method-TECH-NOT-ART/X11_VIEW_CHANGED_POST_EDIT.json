@@ -1,0 +1,30 @@
+{
+  "before": {
+    "filename": "ACTUAL_R1_GUI_BEFORE_ARCHITECTURE_INPUT.png",
+    "sha256": "e8161aedf2bddf4ead35ceeafc49fd9c17405a3d982a926ff93fb980a0655f81",
+    "unique_viewport_colors": 387,
+    "max_viewport_stdev": 3.459,
+    "selected_orange_contour_pixels": 693,
+    "dimensions": [
+      1600,
+      900
+    ]
+  },
+  "art": "HOLD",
+  "official_adoptions": 0,
+  "source_rejected": "EARLY_ART_REJECT",
+  "method_only": true,
+  "after": {
+    "filename": "ACTUAL_R1_GUI_AFTER_ARCHITECTURE_INPUT.png",
+    "sha256": "2bcf56d99b2b1cc2833e748e2c2be4b8cf7dd6660c5383f5b25c7327c531a9aa",
+    "unique_viewport_colors": 371,
+    "max_viewport_stdev": 8.027,
+    "selected_orange_contour_pixels": 260,
+    "dimensions": [
+      1600,
+      900
+    ]
+  },
+  "changed_pixel_samples": 104,
+  "status": "REAL_VIEWPORT_VISUALLY_DIFFERENT_AFTER_GUI_KEY_EDIT_NOT_ART"
+}

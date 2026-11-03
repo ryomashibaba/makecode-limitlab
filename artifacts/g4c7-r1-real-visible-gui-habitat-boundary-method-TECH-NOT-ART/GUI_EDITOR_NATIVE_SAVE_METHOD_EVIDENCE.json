@@ -1,0 +1,15 @@
+{
+  "mode": "GUI_TRANSFORM_OBSERVED_SAVED_NEW_COPY",
+  "gui_action": "G X 2 in VIEW_3D",
+  "target": "HABITAT: private vestibule divider",
+  "old_x": -29.8,
+  "new_x": -27.799999237060547,
+  "prepared_source_sha256": "f31424c2857f69c7be24d6b42fbc8b4a23bb1e28f8d8c5a7f9eae8065c9e5d60",
+  "new_native_sha256": "8a2ab7052050913a78161a12b744ad2658aca454b2fdcfee728a5f6b52d2b431",
+  "original_sha256": "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06",
+  "decision": "METHOD_TECH_ONLY_NOT_ART_OR_ARCHITECTURAL_ACCEPTANCE",
+  "original_art": "EARLY_ART_REJECT",
+  "art": "HOLD",
+  "adoptions": 0,
+  "construction": "FORBIDDEN"
+}
