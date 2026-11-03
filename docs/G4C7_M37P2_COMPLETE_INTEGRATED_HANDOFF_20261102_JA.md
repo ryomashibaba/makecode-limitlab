@@ -489,3 +489,13 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [ローカルGUI2画像→任意Gemma4画像入力](../tools/g4c7_m37p2_local_gui_vision_review.py)と[8件回帰テスト](../tests/test_g4c7_m37p2_local_gui_vision_review.py)を実装。**2画像と元BLEND/PNGのSHA、実GUIであること、5コレクション状態、実ピクセル可視ゲート**を照合。不正/黒画像ならモデルに送らず止まる。原本がメッシュ0件の場合も`EMPTY_STUDIO_DIRECT_ART_REQUIRED`で**モデル呼出し0**。メッシュが存在し、ユーザーが明示指定した場合のみローカル`http://127.0.0.1:11434/api/chat`へ画像を渡し、造船都市の必要要素のうち**確認できるもの・欠けるもの**を短いJSONで返す。任意のコードやBlender操作は実行しない。
 - 任意Ollamaの実GPU画像推論・視覚認識精度・Windows Blender 5.2との相互運用は**未実施**。今回の画像モデルコードは美術を制作するものではない。GUIスクリーンショット取得が実際に成功するまでAIへの画像転送は正当化されない。
 - 旧2箱修正・旧一括頂点JSONなど不採用路線はRETIREDのまま。ART HOLD、正式採用0、正式331人体993足元/G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、保護v3・main変更禁止、PR #53 Draft未merge、Work不使用を固定。
+
+---
+
+## 34. M37-P2：実GUI黒画面の根本原因切分け — Blender画面と独立X11比較（2026-11-03）
+
+- **出典**：[実測と新診断](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)。先行Blender 2画面PNGの実画像を確認すると左右双方が全黒。従来のPNG署名・SHA技術PASSを、視覚的な画像取得PASSと誤認した点は訂正済み。
+- [キャプチャ本体](../tools/g4c7_m37p2_live_gui_context_capture.py)の実画素検査で黒なら拒否。さらに**CI限定**でX11の表示画面をImageMagickで独立診断撮影し、Blender内のscreenshot_areaとは別系統の証拠と比較する。X11 root画像は各VIEW_3Dの代替・正式美術画像には絶対使わない。
+- [新GUI CI #41562899937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41562899937)：Blender実GUI＋独立X11フレームの画像をPillowで別途計測し、黒画像とX11描画不良を切り分ける。**本文書編集時点はqueued。原因・技術合格は未確定**。画像を実際に目視してから正当な結果を認定する。
+- [ローカル画像入力](../tools/g4c7_m37p2_local_gui_vision_review.py)は黒画像および空の保護v3を拒否する。モデルの実画像自律造形は未成立で、今回PC操作をユーザーに要求しない。
+- ART HOLD／正式採用0／331人体・993足元およびG0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／保護v3・main変更なし／Draft PR #53／Work無しを維持。
