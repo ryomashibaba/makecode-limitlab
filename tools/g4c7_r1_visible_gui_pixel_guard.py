@@ -21,11 +21,20 @@ def inspect(p):
         small=center.resize((160,110))
         colors=len(set(small.getdata()))
         variation=max(ImageStat.Stat(small).stddev)
-        if colors<48 or variation<5:
-            raise ValueError("BLENDER_VIEWPORT_EMPTY_OR_SINGLE_COLOR")
+        # Real Blender object selection is a hairline orange contour over a
+        # flat gray edit viewport. A broad 5-point variance gate incorrectly
+        # rejects actual visible geometry; use pixel-level selected topology
+        # instead, while still failing closed on blank/black/root-only images.
+        selected_outline_pixels=sum(
+            1 for r,g,b in center.getdata()
+            if r >= g*1.30 and r >= b*1.55 and r>85 and g>45
+        )
+        if colors<100 or variation<2.5 or selected_outline_pixels<200:
+            raise ValueError("BLENDER_VIEWPORT_NO_VISIBLE_SELECTED_MESH")
         return {"filename":p.name,"sha256":sha(p),
                 "unique_viewport_colors":colors,
                 "max_viewport_stdev":round(float(variation),3),
+                "selected_orange_contour_pixels":selected_outline_pixels,
                 "dimensions":list(im.size)}
 
 def main():
