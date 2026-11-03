@@ -5,6 +5,8 @@ on:
     paths:
       - tools/g4c7_m37p2_live_gui_context_capture.py
       - tools/g4c7_m37p2_local_gui_vision_review.py
+      - tools/g4c7_m37p2_x11_window_probe.py
+      - tests/test_g4c7_m37p2_x11_window_probe.py
       - tests/test_g4c7_m37p2_local_gui_vision_review.py
       - .github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml
 permissions:
@@ -42,10 +44,16 @@ jobs:
           python3 -m py_compile tools/g4c7_m37p2_local_gui_vision_review.py
           python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_local_gui_vision_review.py' -v
           echo 'PASS_STDLIB_REAL_PNG_CRC_AND_BLACK_PIXEL_VETO_BEFORE_BLENDER'
+      - name: Test X11 window identification and fail-closed diagnostic before Blender
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/g4c7_m37p2_x11_window_probe.py
+          python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_x11_window_probe.py' -v
+          echo 'PASS_X11_DIAGNOSTIC_ONLY_NEVER_ART_GATE'
       - name: Install actual X display and OpenGL software drivers
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1 imagemagick python3-pil
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1 imagemagick python3-pil x11-utils scrot
       - name: Fetch real official Blender 4.5.15 GUI and verify official release SHA
         run: |
           set -euo pipefail
@@ -111,6 +119,7 @@ jobs:
               ('MACRO_EDITOR','P2_ACTUAL_GUI_MACRO_EDITOR.png'),
               ('LIVED_EDITOR','P2_ACTUAL_GUI_LIVED_EDITOR.png'),
               ('X11_ROOT_DIAGNOSTIC','P2_X11_ROOT_DIAGNOSTIC_ONLY.png'),
+              ('X11_BLENDER_WINDOW_DIAGNOSTIC','P2_X11_BLENDER_FULL_WINDOW_DIAGNOSTIC_ONLY.png'),
           ):
               fn=base/name
               if not fn.is_file():

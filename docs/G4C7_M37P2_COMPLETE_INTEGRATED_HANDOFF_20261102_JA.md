@@ -529,3 +529,12 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - 追補時点の新[GUI Actions #41567620889](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41567620889)は `pending`、通常Verify #41567620627 は `queued`。実行成功も画像有用性も未認定。先行の真っ黒な2 PNG・失格判定は不変。
 - 結果が得られたら、同一artifactの`MACRO_EDITOR`、`LIVED_EDITOR`、`X11_ROOT_DIAGNOSTIC`の独立画素分布・実画面を比較する。X11 rootは診断材料のみでネイティブGUI3D編集ビューを代替しない。黒画像の根本原因はなお**不明**。
 - 都市作品の美術・正式採用0、全体ART HOLD、正式331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draft未merge、Work事前承認制。単純な3D形状生成へ後退しない。
+
+
+
+## 38. M37-P2：X11上のBlenderウィンドウを独立撮影する黒GUI原因切分け（2026-11-03 JST）
+
+- 黒画面（旧2 VIEW_3D PNGは全画素黒）問題の原因分離として、新`tools/g4c7_m37p2_x11_window_probe.py`を追加。X11上の名前付きBlenderウィンドウを`xwininfo`で同定し、一意な場合のみ`scrot`で全ウィンドウPNGを撮る。旧`screenshot_area`の同じ失敗経路に依存しない。X11 rootとは別の診断ソースとし、X11ウィンドウ画像は**Blenderの真正VIEW_3D単位のART証拠ではない**。
+- Blender GUI専用Actionsへ追加し、4対象（Blender2 VIEW_3D・X11 root・X11 Blender window）の実画素統計を残す。新Python負例5件を導入。隔離Xvfb＋xtermを用いたローカルの代替ウィンドウ撮影と5件の回帰は成功。ただし真正Blender on CIでの成功は**まだ確認できていない**。
+- 新画像が黒/不在/エラーなら直ちに有用視覚情報と認定しない。新GUI Actionsの completed/success とartifact画素を両方確認する。前回のCI待機結果や黒画像原因は未確定。Work未承認、ローカルユーザー操作なし。
+- R0〜R5と既存安全・美術ルール不変。真の都市メッシュ造形0、ART HOLD／公式採用0、331/993とG0/S1/G1/G2/G3未実施、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draft。

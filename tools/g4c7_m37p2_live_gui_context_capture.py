@@ -365,6 +365,22 @@ def _start():
             # An independent X11 root snapshot, strictly diagnostic and NEVER
             # accepted as a substitute for valid native VIEW_3D screenshots.
             _ci_x11_root_diagnostic(ns.gui_ci_capture)
+            # Independent X11 full-window diagnostic. This is NEVER a VIEW_3D
+            # screenshot or city ART, and cannot make a black native capture PASS.
+            try:
+                script = Path(__file__).with_name("g4c7_m37p2_x11_window_probe.py")
+                if script.is_file():
+                    diag = subprocess.run(
+                        ["python3", str(script), "--out", ns.gui_ci_capture],
+                        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                        timeout=30, check=False)
+                    print("P2_INDEPENDENT_X11_BLENDER_WINDOW",
+                          diag.returncode, diag.stdout.decode("utf-8", "replace")[:500],
+                          diag.stderr.decode("utf-8", "replace")[:300], flush=True)
+                else:
+                    print("P2_X11_BLENDER_PROBE_SCRIPT_MISSING", flush=True)
+            except Exception as exc:
+                print("P2_X11_WINDOW_PROBE_DIAGNOSTIC_ERROR", repr(exc)[:300], flush=True)
             # Blender will exit its native GUI event loop; do not touch .blend.
             marker=Path(ns.gui_ci_capture).parent/"G4C7_GUI_SMOKE_STATUS.txt"
             marker.write_text(str(code),encoding="utf-8")

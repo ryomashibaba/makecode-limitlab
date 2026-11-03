@@ -285,3 +285,13 @@
 - 直近の旧[#41562899937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41562899937)は **CANCELLED**。新[#41567620889](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41567620889) は追補時点で **PENDING**。新CI成功・GUI黒画面根本原因の特定・視覚モデルへの実入力は**未確認**。結果が completed になるまで判定しない。
 - 真正BLENDの新都市美術造形はまだ0、ART HOLD・正式採用0。旧2箱の追加自動修正や旧Qwen頂点一括方式は再開しない。331人体/993足元・正式QA NOT RUN、MakeCode未評価、Minecraft施工禁止、main変更禁止、PR #53 Draft、Work事前承認制を維持。
 - 次は、確定したGUI診断artifactで独立X11ルート画面とBlender2VIEW_3D画像の**実画素**を比較し、未確定の原因を特定する。正常な真正GUIが得られない限り「AIによる直接3D作者制作」を達成したとは報告しない。
+
+
+
+## M37-P2 2026-11-03：黒VIEW_3Dと独立X11 Blenderウィンドウの差分診断（ART HOLD）
+
+- [X11ウィンドウ同定・独立撮影](tools/g4c7_m37p2_x11_window_probe.py)と[5件の負例回帰](tests/test_g4c7_m37p2_x11_window_probe.py)を追加。GUI CIのタイマー中、従来の`screen.screenshot_area`とX11 rootに加えて、`xwininfo -root -tree`で一意なBlenderウィンドウを確認し、`scrot --window`で**ウィンドウ全体の診断専用**PNGを取得する。複数/不存在/破損を失敗とし、VIEW_3D画像やARTの代替とは絶対に認めない。
+- 隔離Xvfb＋xtermで独立ウィンドウPNG取得を**ローカル実測成功**。Python負例5/5 PASS。**Blenderの真正GUIが映った証明ではない**。この結果を作品進捗と誤認しない。
+- [.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)に`x11-utils/scrot`と新5テスト、X11全ウィンドウの独立画素診断を追加。CIのcompleted/success、真正VIEW_3Dの実画素は**新しいrunを実確認するまで未認定**。
+- 次はBlender内部2編集画像・X11 root・X11 Blenderフルウィンドウの**実画素**を比較。X11の実ウィンドウが見えても内部2 VIEW_3D が黒なら、Blender screenshot_area/region/swapの経路へ原因を絞る。全て黒ならXvfbやウィンドウ描画を優先調査。いずれも未実証の段階で断定しない。
+- 全体ART HOLD／正式採用0／331人体・993足元とG0/S1/G1/G2/G3 NOT RUN／Minecraft施工禁止／MakeCode未評価／main不変更／PR #53 Draft／Work不使用を維持。旧単純形状へ戻らない。
