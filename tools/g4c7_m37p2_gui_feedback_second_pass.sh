@@ -3,7 +3,7 @@
 set -euo pipefail
 test "$#" -eq 3
 blender="$1"; source="$2"; folder="$3"
-expected=3279d909da13e5b09660dc170e8bb79b51a733611e4d1d1c02ea97f4f920ded8
+expected="$G4C7_PREPARED_GUI_SHA"
 test -x "$blender" && test -f "$source" && test ! -e "$folder"
 test "$(sha256sum "$source" | cut -d' ' -f1)" = "$expected"
 test -n "$DISPLAY"
@@ -11,7 +11,7 @@ command -v xdotool >/dev/null
 command -v scrot >/dev/null
 mkdir -p "$folder"
 next="$folder/M37P2_SECOND_REAL_GUI_NOT_ART.blend"
-G4C7_GUI_READY_MARKER="$folder/GUI_READY.json" "$blender" -t 2 "$source" --python tools/g4c7_m37p2_gui_feedback_restore_view3d.py >"$folder/BLENDER_GUI_LOG.txt" 2>&1 &
+"$blender" -t 2 "$source" >"$folder/BLENDER_GUI_LOG.txt" 2>&1 &
 pid=$!
 trap 'kill -TERM "$pid" 2>/dev/null || true; wait "$pid" 2>/dev/null || true' EXIT
 window=""
@@ -28,13 +28,8 @@ if test -z "$window"; then
 fi
 xdotool windowfocus --sync "$window"
 xdotool mousemove --window "$window" 460 300
-# The saved source had the native Python Console open: return to View3D.
-for n in $(seq 1 60); do
-  test ! -s "$folder/GUI_READY.json" || break
-  sleep .25
-done
-test -s "$folder/GUI_READY.json" || { echo VIEW3D_BOOTSTRAP_NOT_CONFIRMED; exit 8; }
-sleep 1
+# A separate native View3D-prepared COPY is opened, not the console-saved input.
+sleep 2
 scrot --window "$window" --file "$folder/GUI_BEFORE_SECOND_PASS.png"
 # Human-reviewed prior screenshot showed oversized Suzanne. Actually edit
 # its persistent native data via Blender GUI keys, never bpy mesh methods.
