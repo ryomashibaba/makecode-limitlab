@@ -191,6 +191,28 @@ def capture_gui_context(directory):
                  for o in scene.objects if o.type=="MESH"}
     groups=_actual_meshes()
     dest.mkdir(parents=True,exist_ok=False)
+    # Record Blender's native window-relative region coordinates BEFORE the
+    # screenshot API can fail with a valid-but-completely-black PNG.
+    # This is geometry provenance for an independent X11 pixel diagnostic,
+    # not a model screenshot, ART evidence or source .blend mutation.
+    main_window=views[0][0]
+    geometry={
+        "schema":"g4c7-p2-native-gui-window-regions-v1",
+        "same_window":views[0][0] is views[1][0],
+        "window_dimensions":[int(main_window.width),int(main_window.height)],
+        "source_blend_sha256":before,
+        "art":"HOLD","official_adoptions":0,"minecraft":"FORBIDDEN",
+        "regions":{
+            name:{
+                "x":int(region.x),"y":int(region.y),
+                "width":int(region.width),"height":int(region.height)}
+            for name,(_,area,region) in zip(
+                ("MACRO_EDITOR","LIVED_EDITOR"),views)
+        },
+        "x11_region_crop_is_art":False,
+    }
+    (dest/"P2_GUI_NATIVE_REGION_GEOMETRY_DIAGNOSTIC_ONLY.json").write_text(
+        json.dumps(geometry,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     imgs={}
     for idx,(win,area,region) in enumerate(views):
         name=("MACRO_EDITOR","LIVED_EDITOR")[idx]

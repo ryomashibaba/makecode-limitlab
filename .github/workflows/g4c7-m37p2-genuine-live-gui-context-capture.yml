@@ -7,6 +7,8 @@ on:
       - tools/g4c7_m37p2_local_gui_vision_review.py
       - tools/g4c7_m37p2_x11_window_probe.py
       - tools/g4c7_m37p2_x11_differential_diagnosis.py
+      - tools/g4c7_m37p2_x11_native_region_crop.py
+      - tests/test_g4c7_m37p2_x11_native_region_crop.py
       - tests/test_g4c7_m37p2_x11_differential_diagnosis.py
       - tests/test_g4c7_m37p2_x11_window_probe.py
       - tests/test_g4c7_m37p2_local_gui_vision_review.py
@@ -62,6 +64,12 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1 imagemagick python3-pil x11-utils scrot
+      - name: Test X11 native-window-region conservative crop before Blender fetch
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 -m py_compile tools/g4c7_m37p2_x11_native_region_crop.py
+          /usr/bin/python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_x11_native_region_crop.py' -v
+          echo 'PASS_X11_REGION_GEOMETRY_CROP_NOT_EDITOR_OR_ART'
       - name: Fetch real official Blender 4.5.15 GUI and verify official release SHA
         run: |
           set -euo pipefail
@@ -149,6 +157,23 @@ jobs:
                   }
           print('G4C7_INDEPENDENT_REAL_GUI_PIXEL_DIAGNOSTIC:',json.dumps(stats,sort_keys=True),flush=True)
           (base/'P2_INDEPENDENT_PIXEL_DIAGNOSTIC.json').write_text(json.dumps(stats,indent=2)+'\n')
+          PY
+      - name: Extract conservative Blender-window VIEW_3D region diagnostic if X11 image survived
+        if: always()
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 tools/g4c7_m37p2_x11_native_region_crop.py \
+            --folder /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART
+          /usr/bin/python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('/tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_X11_NATIVE_REGION_CROP_DIAGNOSTIC_ONLY.json')
+          r=json.loads(p.read_text())
+          assert r['art']=='HOLD' and r['official_adoptions']==0
+          assert r['x11_crop_is_verified_blender_editor'] is False
+          assert r['accepted_as_art'] is False and r['model_calls']==0
+          assert r['minecraft']=='FORBIDDEN'
+          print('P2_X11_CROPPED_REGIONS_DIAGNOSTIC_ONLY',r['status'])
           PY
       - name: Always classify actual independent pixel evidence conservatively (NEVER ART PASS)
         if: always()

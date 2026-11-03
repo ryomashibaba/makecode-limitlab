@@ -304,3 +304,13 @@
 - [10件の異常・正常比較回帰](tests/test_g4c7_m37p2_x11_differential_diagnosis.py)は隔離Python3.13環境で10/10 PASS（モデル/Blender本体未使用）。矛盾画素レポート、欠落、全黒、左右非対称、二次診断、保存ファイルの上書きを負例検査。
 - [GUI診断ワークフロー](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)はBlenderダウンロード前に10テストを実施し、実診断が失敗した場合でも `P2_X11_NATIVE_GUI_DIFFERENTIAL_HOLD.json` をartifactに保存する構成へ。実Blender CI結果とPNG現物はGitHub Actionsの実行完了まで**未検証**。
 - 次工程はartifactの4系統実画素と新診断コードを対照して、画面取得方法を具体的に修正すること。GUI実画像がなお未成立なので、自律ART制作成功とは呼ばない。ART HOLD/採用0、正式331人体993足元及びG0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main変更禁止、PR #53 Draft、Work事前承認制を維持。
+
+
+
+## M37-P2 2026-11-03：黒GUI対策の独立X11「実領域」画像取得（未認定・ART HOLD）
+
+- 既存の`screen.screenshot_area`が黒PNGを返しても、**先に**Blenderの`Window.width/height`・2つの`Region.x/y/width/height`をJSONへ保存するよう[本物のGUIキャプチャコード](tools/g4c7_m37p2_live_gui_context_capture.py)を改修。正式なBlender Region.x/yはウィンドウ相対座標であるため、別X11の真正ウィンドウPNGから厳密な領域を切り出せる可能性がある。
+- [X11真正ウィンドウの実領域切り出し候補](tools/g4c7_m37p2_x11_native_region_crop.py)と[8件の回帰](tests/test_g4c7_m37p2_x11_native_region_crop.py)を実装。隔離Python/Pillowで8/8 PASS。ソースのPNG SHA、X11ウィンドウ一致、画像サイズ完全一致、領域境界・非重複、元ファイル不変を確認。不整合は**推測で補正せずHOLD**。透明な成果認定は発行しない。
+- [GUI CI](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)はその8件をBlender取得前に試験し、真正GUI取得失敗時にも候補PNG・診断JSONをartifactへ残す。X11画像が見えても**正式なBlender VIEW_3Dキャプチャ、AI入力、都市ARTとは認定しない**。真正Blender CI自体の完了・画素の有用性は別途確認が必要。
+- この方法が成功したときのみ次に実画面を独立目視し、本当のBlender 3D作者フィードバック閉ループへ昇格するか厳格審査する。黒・不在・寸法ズレなら次のコード変更前に診断を見直す。**今後は診断単位の細かいコミットを増殖しない**。
+- ART HOLD、正式採用0件、331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main/保存v3原本不変更、Draft PR #53未merge、Work未承認不使用を維持。
