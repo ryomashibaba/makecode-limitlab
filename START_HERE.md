@@ -358,3 +358,9 @@
 
 - [真正原本の独立形状審査](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_TRUE_NATIVE_GEOMETRY_EARLY_ART_REJECT_20261103_JA.md)：Actions 13208845765のBlender原本（SHA256 `ac6c322e1f4a957281ca5a7f2d9633ce4d602b7254cb1717735feb6ed02e9bd6`）から実メッシュを抽出、227メッシュ、2,576頂点、4,244三角形、204/227が8頂点、12塔は全て45頂点・86三角形。形状代理7視点を実目視し都市・公共・製造・研究・住戸の造形密度が根本不足と判定。**本研究案に限ってEARLY ART REJECT（GEOMETRY）**。全体ART HOLD／正式採用0。
 - 画像は真正BLENDのメッシュの独立VTK描画で、元Blenderの材質やCycles画像ではない。色彩品質は未確認。旧run `abba4c0`と修正版`6077fc4`のBUILD構築コードは逐字同一。既存4視点Cloud CIは技術証拠であり美術候補への自動昇格禁止。類似生成器の追加・薄いパラメータ調整は止め、真の直接作者造形と現物レビューへ進む。Work/Solは事前承認、R0–R5・安全QA未実施・Minecraft禁止・main/保護v3・Draft PR #53は維持。
+
+## 2026-11-03 M37-P2 — 真正Blender/Cycles4視点を実物審査し、本クラウドbpy案をEARLY ART REJECT（最終確認）
+
+- [真正Cycles画像4枚と独立美術批評](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_20261103_TRUE_CYCLES_FOUR_VIEW_FINAL_EARLY_ART_REJECT_JA.md)を保存。Blender 4.5.15のクラウド実run [#41577471323](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41577471323)は **SUCCESS**、Artifact 13210103003。実保存BLEND SHA256 `7b4fb821e75946ad763692d3887fb9f8e5d63dda61221c18c2def160f1e3bc71`、AERIAL/PUBLIC_EYE/HABITAT_EYE/CULTURE_EYEの真正Cycles 960×600 PNG 4枚のSHAを全件独立一致確認。Actionsが研究ブランチへ画像・原本・manifestを**append-only保存**（コミット `238ff83`）。
+- **直接目視で本クラウドbpy案をEARLY ART REJECT**。一様な同型塔・単純な海峡と平板地盤、研究室の机/棚、住戸のパネルと箱家具、工場の素朴な機体・ガントリーが中心で、街の密度・公共生活・製造・居住建築として不足。色調・照明も低密度な形態を救わない。旧案のパラメータ修正・類似プリミティブの再生成禁止。真正Blender bpy保存→再読込→Cycles→画像批評という**非GUIの限定閉ループTECH**は証明、クラウドGUIのAI直接操作・真正R1作者作品の品質は未成立。
+- Verify LimitLab #41584052963、および#41590756605が**SUCCESS**（既存テスト回帰）。この2系統のTECH成果を美術採用へ昇格しない。**全体ART HOLD／正式採用0、R0〜R5固定、331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main・保護v3変更禁止、PR #53 Draft維持、Work事前承認・Sol事前許可**は不変。次工程は真の同一3D都市・局所生活を同時制作できる作者経路を確立してR1の質的に異なる二方向へ進む。
