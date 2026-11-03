@@ -1,0 +1,89 @@
+name: G4C7 P2 cloud native direct authored integrated scene ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'tools/g4c7_m37p2_cloud_bpy_integrated_author_study.py'
+      - '.github/workflows/g4c7-m37p2-cloud-native-integrated-art-study.yml'
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-p2-cloud-native-author-study
+  cancel-in-progress: false
+jobs:
+  real-native-blender-art-hold:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Offline Python source validation and immutable native v3 verification
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/g4c7_m37p2_cloud_bpy_integrated_author_study.py
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path('artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend')
+          assert p.read_bytes()[:7]==b'BLENDER'
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249'
+          code=Path('tools/g4c7_m37p2_cloud_bpy_integrated_author_study.py').read_text()
+          assert 'CLOUD_AI_BPY_NATIVE_DIRECT_EDIT_NOT_GUI_NOT_ART' in code
+          assert 's["P2_CAMERA_VIEWS_AUTHOR_APPROVED"]=False' in code
+          assert 's["P2_ART"]="HOLD"' in code
+          print('PROTECTED_V3_AND_NO_FALSE_GUI_CERTIFICATION')
+          PY
+      - name: Get official real Blender 4.5.15, check published SHA-256
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-blender; cd /tmp/g4c7-blender
+          curl -fsSL --retry 3 --max-time 240 -O https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -O https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          grep -F blender-4.5.15-linux-x64.tar.xz blender-4.5.15.sha256 | sha256sum -c -
+          tar -xf blender-4.5.15-linux-x64.tar.xz
+          test -x blender-4.5.15-linux-x64/blender
+      - name: Run cloud AI-authored direct real Blender bpy scene edits, save separate native copy
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-real-city
+          timeout --signal=TERM --kill-after=10s 1200s \
+            /tmp/g4c7-blender/blender-4.5.15-linux-x64/blender -b -t 2 --python-exit-code 9 \
+            --python tools/g4c7_m37p2_cloud_bpy_integrated_author_study.py -- \
+            --build /tmp/g4c7-real-city/M37P2_CLOUD_AI_NATIVE_INTEGRATED_STUDY_ART_HOLD.blend
+      - name: Independent Blender reload and actual 4 Cycles views including residential and research
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-pil
+          timeout --signal=TERM --kill-after=10s 2400s \
+            /tmp/g4c7-blender/blender-4.5.15-linux-x64/blender -b \
+            /tmp/g4c7-real-city/M37P2_CLOUD_AI_NATIVE_INTEGRATED_STUDY_ART_HOLD.blend \
+            -t 2 --python-exit-code 9 \
+            --python tools/g4c7_m37p2_cloud_bpy_integrated_author_study.py -- \
+            --review /tmp/g4c7-real-city/genuine-four-view-review
+      - name: Check physical output and append-only archive to research branch
+        run: |
+          set -euo pipefail
+          branch=dev/g4c7-a17-monolithic-rift-fold-art-study
+          target="artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/$GITHUB_SHA"
+          test -f /tmp/g4c7-real-city/genuine-four-view-review/M37P2_CLOUD_AUTHOR_EVIDENCE_ART_HOLD.json
+          git fetch --no-tags origin "$branch"
+          git switch -C cloud-native-art-hold-archive FETCH_HEAD
+          test ! -e "$target" || { echo APPEND_ONLY_COLLISION; exit 8; }
+          mkdir -p "$target"
+          cp /tmp/g4c7-real-city/M37P2_CLOUD_AI_NATIVE_INTEGRATED_STUDY_ART_HOLD.blend "$target/"
+          cp /tmp/g4c7-real-city/genuine-four-view-review/* "$target/"
+          git add -- "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'G4C7 P2: archive real cloud-native integrated Blender study ART HOLD'
+          git push origin "HEAD:$branch"
+      - name: Preserve technical and art HOLD evidence even if GitHub archive fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-p2-cloud-native-real-integrated-study-art-hold
+          path: /tmp/g4c7-real-city/
+          retention-days: 21
+          if-no-files-found: warn
