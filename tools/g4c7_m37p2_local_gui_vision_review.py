@@ -14,6 +14,8 @@ import base64
 import hashlib
 import json
 import math
+import struct
+import zlib
 from pathlib import Path
 import urllib.request
 
@@ -34,6 +36,103 @@ def sha(path):
         for buf in iter(lambda:stream.read(1024*1024),b""):
             h.update(buf)
     return h.hexdigest()
+
+def independently_verify_png_pixels(path, expected_width, expected_height):
+    """Decode actual PNG pixels using Python stdlib, NOT self-reported metadata.
+
+    Allow only non-interlaced 8-bit gray/RGB/RGBA images. Unknown formats
+    fail closed before localhost Ollama. Limit inflated bytes against bombs.
+    PNG filters 0..4 are reversed per the PNG specification.
+    """
+    raw=Path(path).read_bytes()
+    if raw[:8]!=PNG_SIGNATURE or len(raw)>MAX_PNG_BYTES:
+        raise ValueError("REAL_GUI_INVALID_PNG_STREAM")
+    cursor=8
+    dimensions=None
+    compressed=bytearray()
+    done=False
+    while cursor+12<=len(raw):
+        length=struct.unpack(">I",raw[cursor:cursor+4])[0]
+        kind=raw[cursor+4:cursor+8]
+        end=cursor+12+length
+        if length>MAX_PNG_BYTES or end>len(raw):
+            raise ValueError("REAL_GUI_PNG_CHUNK_BOUNDS")
+        chunk=raw[cursor+8:cursor+8+length]
+        crc=struct.unpack(">I",raw[cursor+8+length:end])[0]
+        if zlib.crc32(kind+chunk)&0xffffffff!=crc:
+            raise ValueError("REAL_GUI_PNG_CRC_MISMATCH")
+        cursor=end
+        if kind==b"IHDR":
+            if dimensions is not None or len(chunk)!=13:
+                raise ValueError("REAL_GUI_PNG_IHDR_BAD")
+            width,height,depth,color,comp,fil,interlace=struct.unpack(">IIBBBBB",chunk)
+            if (width!=expected_width or height!=expected_height or
+                depth!=8 or color not in (0,2,6) or comp!=0 or fil!=0
+                or interlace!=0 or width*height>8000000):
+                raise ValueError("REAL_GUI_PNG_UNSUPPORTED_OR_BAD_DIMENSIONS")
+            channels={0:1,2:3,6:4}[color]
+            dimensions=(width,height,channels)
+        elif kind==b"IDAT":
+            if dimensions is None:
+                raise ValueError("REAL_GUI_PNG_MISSING_IHDR")
+            compressed.extend(chunk)
+            if len(compressed)>MAX_PNG_BYTES:
+                raise ValueError("REAL_GUI_PNG_COMPRESSED_TOO_LARGE")
+        elif kind==b"IEND":
+            done=True
+            break
+        elif kind[:1].isupper() and kind not in (b"PLTE",):
+            raise ValueError("REAL_GUI_PNG_UNKNOWN_CRITICAL_CHUNK")
+    if not done or dimensions is None or not compressed:
+        raise ValueError("REAL_GUI_PNG_INCOMPLETE")
+    width,height,channels=dimensions
+    row_bytes=width*channels
+    max_plain=(row_bytes+1)*height
+    if max_plain>32000000:
+        raise ValueError("REAL_GUI_PNG_TOO_LARGE_IN_MEMORY")
+    decoder=zlib.decompressobj()
+    plain=decoder.decompress(bytes(compressed),max_plain+1)
+    if len(plain)!=max_plain or not decoder.eof or decoder.unconsumed_tail:
+        raise ValueError("REAL_GUI_PNG_DECOMPRESSION_BAD")
+    prev=bytearray(row_bytes)
+    bright=0
+    count=width*height
+    position=0
+    for _ in range(height):
+        method=plain[position]
+        position+=1
+        cur=bytearray(plain[position:position+row_bytes])
+        position+=row_bytes
+        if method not in (0,1,2,3,4):
+            raise ValueError("REAL_GUI_PNG_FILTER_UNSUPPORTED")
+        for i in range(row_bytes):
+            left=cur[i-channels] if i>=channels else 0
+            up=prev[i]
+            upper_left=prev[i-channels] if i>=channels else 0
+            if method==1:
+                cur[i]=(cur[i]+left)&255
+            elif method==2:
+                cur[i]=(cur[i]+up)&255
+            elif method==3:
+                cur[i]=(cur[i]+(left+up)//2)&255
+            elif method==4:
+                predictor=left+up-upper_left
+                pa,pb,pc=(abs(predictor-left),abs(predictor-up),
+                          abs(predictor-upper_left))
+                chosen=left if pa<=pb and pa<=pc else (up if pb<=pc else upper_left)
+                cur[i]=(cur[i]+chosen)&255
+        for i in range(0,row_bytes,channels):
+            visible=cur[i] if channels==1 else max(cur[i],cur[i+1],cur[i+2])
+            if channels==4 and cur[i+3]<20:
+                continue
+            if visible>20:
+                bright+=1
+        prev=cur
+    fraction=bright/count
+    if fraction<0.035:
+        raise ValueError("REAL_GUI_PNG_ACTUAL_PIXELS_BLACK_OR_UNDRAWN")
+    return round(fraction,6)
+
 
 def source_gate(manifest):
     """Perform cheap, deterministic, source-linked geometry gate FIRST."""
@@ -74,6 +173,7 @@ def source_gate(manifest):
                 raise ValueError("REAL_GUI_IMAGE_MAGIC_INVALID_"+key)
         if sha(fn)!=v.get("sha256"):
             raise ValueError("REAL_GUI_IMAGE_CHANGED_"+key)
+        independently_verify_png_pixels(fn,v["width_px"],v["height_px"])
         if not (isinstance(v.get("width_px"),int) and v["width_px"]>=100 and
                 isinstance(v.get("height_px"),int) and v["height_px"]>=100):
             raise ValueError("REAL_GUI_SCREEN_DIMENSIONS_INVALID_"+key)
