@@ -468,3 +468,14 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - CI artifact `g4c7-p2-one-true-feedback-native-revision-before-after-not-art` ID `13195277229`に旧2箱BLEND、前後のPNG、編集結果、前後の停止判断JSONを保存した。**技術PASSは美術作成成功ではない。**
 - **次工程は既存の「街を織り込む造船都市」美術方針どおり作者が同一Blender原本へ都市マクロ＋工場／厚い見学隔壁＋研究文化＋玄関・前室・居間・窓の実居住断面を直接造形することのみ**。現ChatはWindows Blender GUIにアクセスできずWork不使用のため、今時点でその制作自体を実行したとは報告できない。コード生成の第三箱都市／同じ薄い板やブロックの自動形状増殖へ戻らない。
 - R0〜R5、ART HOLD・正式採用0、331人体／993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode未測定、Minecraft施工禁止、main保護、PR #53 Draft・未merge、Work事前承認制の方針は維持。
+
+---
+
+## 32. M37-P2：真正Blenderの左右GUI編集画面を取得する作者コンテキスト経路
+
+2026-11-03 JST。**本工程は新都市ARTではなく実Blender画面をAI作者が把握するための基本経路。ART HOLD／正式採用0。**
+
+- [真正VIEW_3D GUIコンテキスト撮影実装](../tools/g4c7_m37p2_live_gui_context_capture.py)を追加。Blender公式Python APIの`bpy.ops.screen.screenshot_area`により、左右の実際の編集画面を**2つの独立PNG**に保存し、各画像SHA・投影・視点位置・5コレクションの実メッシュ/面/頂点数・実BLEND SHAを一つのJSONに記録。**Cycles撮影・別原本・画像生成による偽装ではない**。スクリプトはメッシュを生成/削除/編集せず`.blend`を再保存しない。AIモデルや外部サービスへの画像送信もこの実装では行わない。
+- [正式GUI技術CI](../.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)で、Xvfb＋Blender 4.5.15の実GUI、2つの真VIEW_3Dを照合。原本とPNG SHA及び安全チャーター不変を検証。**初回CI #41558995077はFAIL：原本ファイル単独オープンではUI split未実行のため一画面のみ**。本体の旧実績済みネイティブ`P2 parallel split`を正規のSHA固定v3から登録・実行する新コードで修正。修正版 #41559389596 のSUCCESS確認までは新GUIスクリーンショット技術PASSを認めない。
+- [原因と境界](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_GUI_VIEWPORT_CONTEXT_BRIDGE_20261103_JA.md)。実行経路は**Blender GUIが現在表示しているものを読取る**だけで、AIがその画面を見て自由形状を彫刻し都市・住居/工場/研究/文化を実造形する閉ループは**まだ未確立**。ここを完成と報告しない。次の作品候補は必ず同一真正Blender原本に都市全景＋実居室＋工場＋見学隔壁＋研究文化を本当に作者造形する。
+- Workを起動しない、旧箱2体やO1/P1形状を無意味に繰り返さない。main・保護v3原本・Minecraft変更なし、PR #53 Draft未merge、正式331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、正式ART採用0。
