@@ -62,6 +62,10 @@ def source_gate(manifest):
             raise ValueError("UNSAFE_REAL_GUI_PNG_NAME_"+key)
         if v.get("source")!="ACTUAL_BLENDER_GUI_VIEW_3D_NOT_CYCLES_RENDER":
             raise ValueError("NOT_A_REAL_GUI_EDITOR_SCREENSHOT_"+key)
+        if (v.get("content_not_blank_black") is not True or
+                type(v.get("visible_bright_pixel_ratio")) not in (int,float) or
+                not 0.035 <= v["visible_bright_pixel_ratio"] <= 1.0):
+            raise ValueError("GUI_BLACK_SCREENSHOT_REJECT_UNREADABLE_"+key)
         fn=folder/name
         if not fn.is_file() or not 128<=fn.stat().st_size<=MAX_PNG_BYTES:
             raise ValueError("REAL_GUI_PNG_NOT_PRESENT_OR_TOO_LARGE_"+key)
