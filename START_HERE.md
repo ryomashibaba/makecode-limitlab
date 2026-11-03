@@ -1,5 +1,8 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 最新R1実制作試案の絶対判定：EARLY ART REJECT。** [本物Blender/Cyclesの全景・公共・居住3画像とGUI画面失格を含む独立報告](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_CIVIC_ESTUARY_20261103_TRUE_3_VIEW_EARLY_ART_REJECT_JA.md)、[恒久保存した別名BLEND＋真正PNG＋不正GUI PNG＋SHA256](artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/)、[保存完了CI #41610501123](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41610501123)。コード補助の多角柱同型塔、巨大青緑の工場隔壁、空白街路、空洞住宅が再発したため**不採用・装飾延命禁止**。Blender GUIの入力変換/別名保存は確認したが、**前後X11スクショが双方RGB(24,24,24)単色で視覚フィードバック失敗**。それらをGUI画像PASSと呼ばない。これは真の高度な作者GUI都市制作能力の未成立を示す。R0〜R5固定、全体ART HOLD／正式採用0、正式331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main・保護v3原本不変更、PR #53 Draftを維持。Work/Sol/有料サービス事前明示承認、ローカル品質妥協禁止。**このコード式塔都市の第三案を作らず、制作能力と視覚フィードバックが本当に成立するかを判断する。**
+
+
 > **2026-11-03 最新・最優先・新チャット用完全引き継ぎ：** [M37-P2 GUI二回継続編集実証後の2026-11-03完全統合正本](docs/G4C7_20261103_M37P2_GUI_TWO_PASS_COMPLETE_HANDOFF_JA.md)。本書の昔の「M37-P1完了→P2」「GUI未実証」「CI queued」は**書かれた当時の歴史**。現在は真正X11 GUI取得、2回目GUI編集、ネイティブ保存、別Blender再読込を限定TECH PASS。保存済みの[実GUI第二編集BLEND/実前後画像/独立JSON](artifacts/g4c7-m37p2-gui-feedback-second-pass-TECH-NOT-ART/)、[成功CI #41605230460](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41605230460)。SuzanneはCITY ARTではない。**正式R1都市新作0・全体ART HOLD・正式採用0・正式安全331/993未実施・MakeCode未評価・Minecraft施工禁止・main/保護v3保全・PR #53 Draft・Work/Sol事前許可**を維持。今後は空GUI/Suzanne試験を増やさず、都市全景と居住/工場/研究文化の同一ネイティブ3D直接作者制作に集中。
 
 > **2026-11-03 新チャット向けの最新正本**：[クラウド中心・Terra/Luna通常・Sol要事前承認の完全統合引き継ぎ](docs/G4C7_20261103_CLOUD_FIRST_MODEL_COST_COMPLETE_HANDOFF_JA.md)。R0〜R5の固定方針、ART-FIRST、正式採用0、Minecraft施工禁止、main・PR #53 Draftの保護は不変です。
