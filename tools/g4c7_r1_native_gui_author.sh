@@ -24,6 +24,9 @@ fi
 test -n "$win" || { echo "NO_VISIBLE_BLENDER_WINDOW"; exit 22; }
 xdotool windowfocus --sync "$win"
 xdotool mousemove --window "$win" 710 410
+# The initial city-wide viewport can hide the selected small architectural part.
+# Genuine GUI Frame Selected makes the edited part visible BEFORE both captures.
+xdotool key --clearmodifiers KP_Decimal
 sleep 2
 scrot --window "$win" --file "$out/R1_REAL_GUI_BEFORE.png"
 # The artist-chosen civic threshold roof was preselected in the native source.
