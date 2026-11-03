@@ -88,3 +88,9 @@ Blenderの3D作者作品は重要な研究原本だが最終目標ではない�
 ## 9. 新しいチャットへ貼る短い開始メッセージ
 
 MakeCode LimitLab / G4-C7 Orbital Commonsを最新GitHub正本から完全に引き継いで開発を再開してください。リポジトリ ryomashibaba/makecode-limitlab、研究ブランチ dev/g4c7-a17-monolithic-rift-fold-art-study。まずSTART_HERE.md、リンク先の2026-11-03最新版統合引き継ぎ、既存M37-P2完全引き継ぎ、R0〜R5固定方針を読み、最新HEAD・Draft PR #53・CIとArtifactsを照合。ART-FIRST・正式採用0・ART HOLD・正式安全QA未実施・Minecraft施工禁止・main保護・Work事前承認を厳守。品質優先・全クラウドを第1候補とし、GPT-6.1 TerraとGPT-6 Lunaを通常使用、GPT-6.1 Solは理由を示し本人が明示承認した時だけ。ローカルAIへ低品質置換しない。旧箱/板/橋/チューブを作り直さず、クラウドで本当に保存Blender原本を直接作者編集できるかを厳しく実証し、真の都市全景＋生活断面の同一3D・真正3視点へ効率よく進めてください。実操作ができないときは未達と明記し、成果だけをGitHubへ保存してください。
+
+## 10. 2026-11-03 追加記録：cloud bpy真正作者実験（ART HOLD）
+
+GitHubの研究ブランチに実装コミット 6077fc44 を保存。SOURCE: tools/g4c7_m37p2_cloud_bpy_integrated_author_study.py、CI: .github/workflows/g4c7-m37p2-cloud-native-integrated-art-study.yml、研究記録: research/g4c7-b11-r5-d56/p2/d3s26/M37P2_CLOUD_NATIVE_BPY_AUTHOR_ART_HOLD_20261103.md。保護v3をSHA-256で照合してCOPYを真正Blenderのbpyから直接編集・別名保存し、同一シーンに都市全景／宇宙機製造と見学境界／研究文化／住戸生活を記述し、別プロセスで4つの本物のCycles視点を撮る新経路。これはAIがGUIを直接操作した証明ではなく、既存GUI作者申告を偽装しない。
+
+https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41577471323 は2026-11-03 13:19 JST照合時PENDING、Artifact 0。したがって現時点では新保存BLEND・真正レンダ・視覚品質が成立したか未確認。実行完了と保存現物を見て厳格な早期美術判定を行い、旧形態再発なら即不採用。正式採用0、ART HOLD、331/993・G0/S1/G1/G2/G3 NOT RUN、Minecraft禁止、MakeCode未評価、main/旧原本不変更、Draft PR #53、Work事前承認とSol事前許可は不変。
