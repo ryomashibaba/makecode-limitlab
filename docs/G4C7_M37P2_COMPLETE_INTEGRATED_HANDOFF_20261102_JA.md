@@ -442,3 +442,17 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - 追加の`--vision-model gemma4:26b`は**ユーザーが明示的に選んだ場合だけ**ローカルOllamaの画像入力へ3枚を送る。モデルはインストールしない／画像解析は推奨コメントに限定／任意Pythonコードや形状を生成・実行しない。ユーザー実機でのGemma画像評価は**未実施**。ビジュアルAIが不足を見逃しても正式美術を承認できない。
 - **本質的なARTの未解決点**：作者が実Blender画面を見て3D形状を継続修正する閉ループはまだ未成立。直方体2つの再実行・無制限プリミティブ生成・旧Qwen全市一括頂点の再試行は禁止。現状の技術PASSは作品採用とは無関係。
 - 固定：全体ART HOLD、正式採用0、正式331人体・993足元／G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main保護、Draft PR #53未merge、Work不使用と事前承認制維持。
+
+---
+
+## 30. M37-P2：実Cycles不採用フィードバックから同一Blenderメッシュの修正→再撮影まで1往復の技術検証（2026-11-03）
+
+[実証と厳密な美術REJECTの研究正本](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_TRUE_FEEDBACK_NATIVE_REVISION01_20261103_JA.md)へ記録。
+
+- [Blender実CI #41554510076 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41554510076)で、実Cycles3視点→EARLY_ART_REJECT→そのレポートと保存済みBLEND両方のSHA256に結びつく**1回の安全な修正アクション**→本物のbmesh選択面編集→別名`.blend`→実Cycles3視点を再撮影→EARLY_ART_REJECT、という技術ループ全体を証明した。**ローカルOllama/Gemma/Qwenが実画像から自分で修正案を生成したわけではない**（CI上は明示的な2操作の技術フィクスチャ）。
+- 元実測：`city_macro` 8頂点6面→12頂点10面、`habitat` 8頂点6面→12頂点11面。元の保存済みBLEND SHA `5f9e9b82eb952cdb4b32bab03e59dbe973c90ab80e5c9598750ea134a9d396ab`、修正後別名BLEND SHA `6edc310147b35e2acaac4f5b7928eda577f1d50053a532dfe3c7f9694994cd78`、実画像のフィードバックSHA `0471ac6632485cdcc1fa7299d191f358489d0903f645ea01158bc093de84a2af`。原本上書き0・新オブジェクト0・正式作品採用0。
+- 修正後の3 PNGも**実際に画面確認済み**。依然として離れた箱状2形状で、街並み・造船設備・研究文化・住居内部が存在しない。黒い面が見えるが、その技術原因は未調査なので憶測で断定しない。**芸術的改善なし／EARLY ART REJECT維持**。面数の増加を美術の採用に使わない。
+- [実装](../tools/g4c7_m37p2_feedback_to_native_revision.py)は既存の2つのメッシュの正しい向きの1面を選択し、boundedな`bmesh.ops.inset_region` / `bmesh.ops.extrude_face_region` / `bmesh.ops.translate`のみ許可。モデル生成コードや新規箱の作成・Minecraftの書き込み禁止。元`.blend`と実際の3PNG・JSONのSHAを変更直前に再照合し、**1回の研究修正だけ**許可し、`ART HOLD`のまま別名保存。[回帰テスト](../tests/test_g4c7_m37p2_feedback_to_native_revision.py)にはSHA改変・画像改変・無許可Python・world write・二役割欠落等の拒否を含む。
+- [CI保存物](../.github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml)に、本物の修正済み別名`.blend`もartifactへ含める変更を実施。**新しい3PNG SHA再検証・BLEND保存版の最終CIがcompleted/successと確認されるまでは追加ガードのPASS未確認**と明示。前回の全ループCI成功とは区別。
+- **本来のアート制作の欠落は解消していない**。モデルが見栄えを自ら判断して形を作り込む能力・実Blender GUIを見て作者操作する経路・5用途を伴う巨大街並みの独創的造形は未成立。第三の単純箱都市を反復しない。Work使用量枯渇・事前許可制を守り、ユーザーに新たなローカル試行を求めない。
+- 固定：全体ART HOLD、正式採用0、331人体/993足元・正式G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main保護、PR #53 Draft未merge。
