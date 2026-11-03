@@ -375,3 +375,9 @@
 - [実証レポート](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_X11_GUI_PIXEL_RECOVERY_20261103_JA.md)：CI #41572794264 / Artifact 13209321279のBlender 4.5.15実画像を目視。初回Quick Setupなし、左右VIEW_3D描画あり。native screenshot_areaは1×1黒のまま。一方 X11 1600×900からLIVED 661×783、MACRO 657×783の**実ピクセルを検査・一致**。
 - 新規[読み取り専用X11 pixel bridge](tools/g4c7_m37p2_x11_visual_context_bridge.py)、[11件の改ざんテスト](tests/test_g4c7_m37p2_x11_visual_context_bridge.py)は隔離実行11/11 PASS。新GUI CI [#41597467506](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41597467506)は照合時Queued。新しい取得コードとCIを保存したがクラウド実行PASSは未確認。
 - **実証はBlender画面の読み取りだけ**で、GUI自律作者操作・新都市美術ではない。今後は既存低品質プリミティブ生成の追加を止め、直接編集→保存差分→実Cycles→視覚批評を行える作者経路の成立に進む。全体ART HOLD・採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft禁止、main/保護v3・PR #53 Draft、Work/Sol事前承認、R0〜R5を維持。
+
+## 2026-11-03 M37-P2 — 真正GUI操作での追加・移動・拡大・別名保存と再読込が実証成立
+
+- [実Blender GUI編集・ネイティブ別名保存・別プロセス再読込の一次証拠](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_SHORTCUT_EDIT_NATIVE_SAVE_INDEPENDENT_PASS_20261103_JA.md)。[Actions #41599291594](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41599291594) **SUCCESS**、Artifacts ID **13213069325**（14日保存）。Blender 4.5.15のX11実画面にF3 Add Monkey、`G X 8`、`S 2`のキーボード入力で実メッシュ作成・移動・拡大。GUI内Python Consoleは**assertとsave_as_mainfileの保存のみに使用**、メッシュをbpyで生成していない。
+- GUI AFTER実画像で**Suzanne 507頂点、Location X=8、Scale XYZ=2**が見え、別プロセスが別名BLEND（139,802 bytes、SHA256 `3279d909da13e5b09660dc170e8bb79b51a733611e4d1d1c02ea97f4f920ded8`）を再読込して実値を確認。親保護v3 SHA256 `536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249` を再検証。**真GUI入力＋保存＋再読込限定TECH PASS**。証拠バイナリはActions Artifactにあり、GitHub研究ブランチへ永久保存したと偽らない。
+- **未証明：** AIが画面を理解して編集を反復できること、GUIで直接都市を高品質に作者造形したこと、R1美術採用。Suzanneは能力確認用の技術試験で都市ARTではない。次は**現物画像を見る→同一ネイティブBLENDへ作者GUI編集→新画像→絶対批評**の閉ループを確立。以前の箱・壁・同型塔・低層キャンパス再発は拒否。R0〜R5／全体ART HOLD・正式採用0／安全331/993及びG0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／main・保護v3不変更／PR #53 Draft／Work・Sol事前承認を維持。
