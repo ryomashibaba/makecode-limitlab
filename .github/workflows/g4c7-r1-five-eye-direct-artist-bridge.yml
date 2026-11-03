@@ -1,0 +1,29 @@
+name: G4C7 R1 five-eye direct artist UI source guards (no artwork, no world)
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_r1_five_eye_direct_artist_bridge.py
+      - tests/test_g4c7_r1_five_eye_direct_artist_bridge.py
+      - .github/workflows/g4c7-r1-five-eye-direct-artist-bridge.yml
+permissions:
+  contents: read
+jobs:
+  artist-bridge-source-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static syntax and no-Blender negative controls
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          python3 -m py_compile tools/g4c7_r1_five_eye_direct_artist_bridge.py
+          python3 -m unittest discover -s tests -p 'test_g4c7_r1_five_eye_direct_artist_bridge.py' -v
+      - name: Explicitly distinguish source test from real Blender artistic authoring
+        run: |
+          printf '%s\n' \
+            'SOURCE_ONLY_PYTHON_TEST_PASS_NOT_GUI_RENDER_NOT_ART_PASS' \
+            'NO_CITY_MESH_CREATED_NO_MINECRAFT_WORLD_WRITE' \
+            'BLENDER_MANUAL_FIVE_EYE_INTERFACE_REQUIRES_ACTUAL_REAL_GUI_USER_SESSION' \
+            'R1_METHOD_HOLD_ART_HOLD_OFFICIAL_ART_ADOPTIONS_ZERO'

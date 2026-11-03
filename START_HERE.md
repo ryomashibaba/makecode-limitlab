@@ -1,5 +1,9 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 R1実作者Blender GUIの3→5視点不整合へ、非造形の直接作者ブリッジを研究実装。** [新作者向け5視点GUIと保存BLEND独立再読込ツール](tools/g4c7_r1_five_eye_direct_artist_bridge.py)、[ソースの負例テスト](tests/test_g4c7_r1_five_eye_direct_artist_bridge.py)、[実施範囲・残る限界](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_DIRECT_ARTIST_FIVE_EYE_GUI_BRIDGE_JA.md)。旧直接作者スタジオは3カメラのみで、現行R1はAERIAL/PUBLIC/HABITAT/FACTORY/RESEARCHの5視点が必須だった。新規別名作者コピーに限り不足2カメラを準備し、作者が実VIEW_3Dを5役割へ割当→構図確認→保存した本物BLENDを**別Blenderプロセスから5真正Cycles画像にする**経路を追加。都市メッシュ・箱・壁の自動生成なし、保護v3/不採用原本/既存GUIの上書きなし。**現在はコード実装とsource-only検証の段階。実GUIでの高品質建築作者制作・5真正画像が成功したとは主張しない**。R1 METHOD HOLD/ART HOLD/正式採用0、331人体993足元と安全ゲートNOT RUN、MakeCode未評価、Minecraft施工禁止、main・PR #53 Draft保護、Work/Sol事前承認は不変。
+
+
+
 > **2026-11-03 R1「2方向不採用後」の固定戦略どおりに建築作者ブリーフを再構築。** [実際の2作品・各視点の失格原因を反映した直接制作ブリーフ](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_POST_TWO_REJECTS_DIRECT_ARTIST_BRIEF_RESET_JA.md)と[次の真正Blender作者作業の機械可読な入力契約](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_DIRECT_ARTIST_INTAKE_CONTRACT.json)を保存。**これは新たな3D美術作品ではなく、2案とも美術不合格なら第三の簡易都市を生成せずR1ブリーフへ戻るR0〜R5工程の実行結果。** 旧Civic Estuary/Civic Braid両方EARLY ART REJECT・METHOD HOLD、正式採用0・全体ART HOLD。高品質な真正Blender直接作者能力はChat＋GitHub経路で未成立、Blender専用の直接編集コネクタも未確認。Work/クラウドPC/Sol/新規有料サービスには本人の事前明示承認が必要。未承認状態で勝手に制作したと言わない。R0〜R5・331人体993足元正式QA未実施・MakeCode未評価・Minecraft施工禁止・main/保護原本変更禁止・Draft PR #53維持。
 
 
