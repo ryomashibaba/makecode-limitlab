@@ -10,8 +10,11 @@ on:
 permissions:
   contents: read
 concurrency:
+  # Preserve a running native-GUI diagnosis even when later documentation or
+  # source fixes are pushed. GitHub may replace an older PENDING run, but
+  # cancelling the RUNNING frame capture discards the diagnostic evidence.
   group: g4c7-p2-genuine-live-context
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   capture-two-real-native-viewports:
     runs-on: ubuntu-24.04
