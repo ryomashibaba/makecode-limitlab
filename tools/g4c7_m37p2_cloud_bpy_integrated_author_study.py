@@ -278,7 +278,6 @@ def build(dest):
     print("GENUINE_CLOUD_BPY_EDIT_SAVED_NOT_ART",sha(dest),flush=True)
 def review(path):
     import bpy
-    from PIL import Image
     output=Path(path)
     if output.exists():raise RuntimeError("APPEND_ONLY_REVIEW_EXISTS")
     output.mkdir(parents=True)
@@ -317,10 +316,21 @@ def review(path):
         s.render.filepath=str(img)
         bpy.ops.render.render(write_still=True)
         if not img.exists() or img.stat().st_size<5000:raise RuntimeError("RENDER_FAILED_"+name)
-        with Image.open(img) as p:
-            if p.size!=(960,600):raise RuntimeError("RENDER_RESOLUTION_MISMATCH_"+name)
-            small=p.convert("RGB").resize((80,50))
-            visible=sum(max(px)>25 for px in small.getdata())/4000
+        # Blender ships its own Python: do not assume system python3-pil is
+        # installed inside the official Blender interpreter.
+        from array import array
+        picture=bpy.data.images.load(str(img),check_existing=False)
+        try:
+            if tuple(picture.size)!=(960,600):
+                raise RuntimeError("RENDER_RESOLUTION_MISMATCH_"+name)
+            channels=picture.channels
+            raw=array("f",[0.0])*len(picture.pixels)
+            picture.pixels.foreach_get(raw)
+            stride=channels*16
+            samples=range(0,len(raw)-channels+1,stride)
+            visible=sum(max(raw[i:i+3])>.08 for i in samples)/len(samples)
+        finally:
+            bpy.data.images.remove(picture)
         if visible<.04:raise RuntimeError("TRUE_RENDER_BLACK_"+name)
         images[name]={"sha256":sha(img),"visible_fraction":round(visible,4),"bytes":img.stat().st_size}
     if sha(native)!=before or sha(PARENT)!=PARENT_SHA:
