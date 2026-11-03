@@ -1,0 +1,28 @@
+{
+  "status": "SECOND_REAL_GUI_SAME_NATIVE_EDIT_FRESH_RELOAD_TECH_PASS",
+  "previous_blend_sha256": "3279d909da13e5b09660dc170e8bb79b51a733611e4d1d1c02ea97f4f920ded8",
+  "new_blend_sha256": "d0bf2c38bffd9684fe64aeb7890b37c29738610049212448738e67939a967472",
+  "parent_blend_sha256": "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249",
+  "previous_reviewed_gui_image_sha256": "f1b9d8edcf5fbc385f0cc9bf220fd999ba5be7c6308b307bc81397c3916ef71d",
+  "object": "Suzanne",
+  "vertices": 507,
+  "location": [
+    8.0,
+    5.0,
+    0.0
+  ],
+  "scale": [
+    1.2999999523162842,
+    1.2999999523162842,
+    1.2999999523162842
+  ],
+  "rotation_degrees_z": 30.000000834826057,
+  "geometry_created_this_pass": false,
+  "not_city_art": true,
+  "not_autonomous_visual_ai": true,
+  "art": "HOLD",
+  "official_adoptions": 0,
+  "safety": "NOT_RUN",
+  "makecode": "NOT_EVALUATED",
+  "minecraft": "FORBIDDEN"
+}
