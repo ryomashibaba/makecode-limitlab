@@ -499,3 +499,12 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [新GUI CI #41562899937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41562899937)：Blender実GUI＋独立X11フレームの画像をPillowで別途計測し、黒画像とX11描画不良を切り分ける。**本文書編集時点はqueued。原因・技術合格は未確定**。画像を実際に目視してから正当な結果を認定する。
 - [ローカル画像入力](../tools/g4c7_m37p2_local_gui_vision_review.py)は黒画像および空の保護v3を拒否する。モデルの実画像自律造形は未成立で、今回PC操作をユーザーに要求しない。
 - ART HOLD／正式採用0／331人体・993足元およびG0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／保護v3・main変更なし／Draft PR #53／Work無しを維持。
+
+---
+
+## 35. M37-P2：独立PNG実デコードで黒画像レポート偽陽性を完全拒否する入力ゲート（2026-11-03）
+
+- [最新黒画面実測・技術監査](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)に追補。X11とBlenderスクリーンショットの根本原因はまだ診断CI待ちで未確定。
+- [ローカル画像認識ゲート](../tools/g4c7_m37p2_local_gui_vision_review.py)を修正。元の検証レポートが「非黒画素あり」と報告していても、**PNG本体を別のPython stdlibデコーダで実際に復元**し、CRC／実寸／圧縮列／8bit PNGフィルタ／可視画素率を検査。**CRC破損・黒画像・改ざんレポートを独立拒否し、Gemmaへ転送しない**。意図的にRGB・RGBA・グレースケールの非インターレース8bitに対応を限定。非対応形式は失敗として明示。
+- [新回帰11件](../tests/test_g4c7_m37p2_local_gui_vision_review.py)は実バイトのPNGを構築して検査。黒いPNGに正しいSHAと偽りの明るい画素率を付けたケースも拒否。CIはこれをBlenderダウンロードより前に実行するよう変更。**最新版のCI結果がSUCCESSになるまでは新安全ゲートの実機検証成功は未確認**。
+- **作品の進捗ではない**：一体型都市・造船工場・見学隔壁・研究文化・住居内部の真正3Dは依然未制作、ART HOLD採用0。以前の旧2箱修正・一括頂点生成へ戻らない。main保護、Minecraft施工禁止、Work不使用。
