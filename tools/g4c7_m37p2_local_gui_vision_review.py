@@ -54,6 +54,8 @@ def independently_verify_png_pixels(path, expected_width, expected_height):
     while cursor+12<=len(raw):
         length=struct.unpack(">I",raw[cursor:cursor+4])[0]
         kind=raw[cursor+4:cursor+8]
+        if cursor==8 and kind!=b"IHDR":
+            raise ValueError("REAL_GUI_PNG_IHDR_MUST_BE_FIRST")
         end=cursor+12+length
         if length>MAX_PNG_BYTES or end>len(raw):
             raise ValueError("REAL_GUI_PNG_CHUNK_BOUNDS")
@@ -79,12 +81,20 @@ def independently_verify_png_pixels(path, expected_width, expected_height):
             if len(compressed)>MAX_PNG_BYTES:
                 raise ValueError("REAL_GUI_PNG_COMPRESSED_TOO_LARGE")
         elif kind==b"IEND":
+            if chunk or not compressed:
+                raise ValueError("REAL_GUI_PNG_BAD_IEND")
             done=True
             break
+        elif kind==b"tRNS":
+            # Bright RGB/gray pixels may be fully transparent in a real viewer.
+            # This restricted decoder cannot interpret tRNS, so reject it.
+            raise ValueError("REAL_GUI_PNG_TRANSPARENCY_UNSUPPORTED")
         elif kind[:1].isupper() and kind not in (b"PLTE",):
             raise ValueError("REAL_GUI_PNG_UNKNOWN_CRITICAL_CHUNK")
     if not done or dimensions is None or not compressed:
         raise ValueError("REAL_GUI_PNG_INCOMPLETE")
+    if cursor!=len(raw):
+        raise ValueError("REAL_GUI_PNG_TRAILING_DATA_AFTER_IEND")
     width,height,channels=dimensions
     row_bytes=width*channels
     max_plain=(row_bytes+1)*height
@@ -92,7 +102,7 @@ def independently_verify_png_pixels(path, expected_width, expected_height):
         raise ValueError("REAL_GUI_PNG_TOO_LARGE_IN_MEMORY")
     decoder=zlib.decompressobj()
     plain=decoder.decompress(bytes(compressed),max_plain+1)
-    if len(plain)!=max_plain or not decoder.eof or decoder.unconsumed_tail:
+    if len(plain)!=max_plain or not decoder.eof or decoder.unconsumed_tail or decoder.unused_data:
         raise ValueError("REAL_GUI_PNG_DECOMPRESSION_BAD")
     prev=bytearray(row_bytes)
     bright=0
@@ -123,8 +133,10 @@ def independently_verify_png_pixels(path, expected_width, expected_height):
                 cur[i]=(cur[i]+chosen)&255
         for i in range(0,row_bytes,channels):
             visible=cur[i] if channels==1 else max(cur[i],cur[i+1],cur[i+2])
-            if channels==4 and cur[i+3]<20:
-                continue
+            # Count what the eye can see over a black backing, not hidden
+            # RGB under a nearly transparent alpha channel.
+            if channels==4:
+                visible=(visible*cur[i+3])//255
             if visible>20:
                 bright+=1
         prev=cur

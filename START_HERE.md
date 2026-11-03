@@ -267,3 +267,12 @@
 - 先行検証はGUI 2 PNGの**両方が完全黒**だった。実画像の有用性が成立していない事実は変更なし。調査CIではBlender native 2視点と独立X11 rootを同時に画像取得し、原因を分ける。結果確認前に「GUI正常」と称さない。
 - [安全入力ゲート](tools/g4c7_m37p2_local_gui_vision_review.py)はレポートの可視画素率／画像SHAだけを盲信せず、**PNGの実バイトを標準ライブラリで独立デコード**。CRC、サイズ、8bit RGB/RGBA/Gray、PNGフィルタ、輝度を実確認し、黒画像、CRC破損、偽陽性レポートならローカルAIへ画像を送る前に拒否する。[実PNG回帰11件](tests/test_g4c7_m37p2_local_gui_vision_review.py)。Blender / Xvfbダウンロードより前にチェックできるようCIも更新。
 - [検証正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)／[統合引き継ぎ節35](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。最新版GUI CIは**完了判定まで未検証**。都市ART未制作、ART HOLD正式採用0、正式安全QA 331/993等未実施、Minecraft施工禁止、main保護、Draft PR #53、Workなし。
+
+---
+
+## M37-P2 2026-11-03：GUI画像AI入力の透明PNG／アルファ偽陽性を安全拒否（限定SOURCE改善）
+
+- `tools/g4c7_m37p2_local_gui_vision_review.py` の**PNG実バイト独立検査**に、`tRNS`透明指定の拒否、RGBAを黒背景上へアルファ合成した可視度計算、`IEND`後の余計なデータ拒否、zlib余剰データ拒否、IHDR先頭チェックを追加。非黒RGBが隠れているPNGを「見えるBlender GUI」と偽認定せず、Ollama/Gemma入力前に失敗させる。
+- `tests/test_g4c7_m37p2_local_gui_vision_review.py` を11件から**15件**へ拡張：tRNS、ほぼ透明なRGBA、十分可視のRGBA、IEND末尾不正を追加。**GitHub保存とCI起動は試験合格を意味しない。CI実行完了を別途確認する。**
+- 既存Xvfbの本物のBlender GUIスクリーンショットが黒画像だった根本原因は未確定。外部の類似事例からフロントバッファ／表示サーバ問題が候補だが、今回の現物CI結果が出るまで断定しない。X11 rootは**原因切分け専用**で、正式なVIEW_3D画像に置換しない。
+- 新都市の直接Blender造形は未完成。旧2箱パッチ／旧単純生成へ戻らない。正式ART採用0・ART HOLD、331/993とG0/S1/G1/G2/G3未実施、MakeCode未評価、Minecraft施工禁止、main変更禁止、Draft PR #53、Work事前承認制を維持。

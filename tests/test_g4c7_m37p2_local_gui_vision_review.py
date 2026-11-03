@@ -15,13 +15,15 @@ spec=importlib.util.spec_from_file_location("p2_native_gui_local_vision",p)
 m=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
-def actual_test_png(rgb=(110,125,130),width=440,height=370):
+def actual_test_png(rgb=(110,125,130),width=440,height=370,alpha=None):
     """Valid 8-bit RGB PNG with real decodable pixels; QA only, never artwork."""
     def part(kind,content):
         return struct.pack(">I",len(content))+kind+content+struct.pack(
             ">I",zlib.crc32(kind+content)&0xffffffff)
-    ihdr=struct.pack(">IIBBBBB",width,height,8,2,0,0,0)
-    rows=(b"\x00"+bytes(rgb)*width)*height
+    kind=6 if alpha is not None else 2
+    ihdr=struct.pack(">IIBBBBB",width,height,8,kind,0,0,0)
+    px=bytes(rgb)+(bytes((alpha,)) if alpha is not None else b"")
+    rows=(b"\x00"+px*width)*height
     return (m.PNG_SIGNATURE+part(b"IHDR",ihdr)+
             part(b"IDAT",zlib.compress(rows))+part(b"IEND",b""))
 
@@ -115,6 +117,35 @@ class GenuineSceneGate(unittest.TestCase):
         p=self.root/"P2_ACTUAL_GUI_MACRO_EDITOR.png"
         ratio=m.independently_verify_png_pixels(p,440,370)
         self.assertGreater(ratio,0.9)
+
+    def test_reject_transparent_rgb_png_even_if_underlying_rgb_is_bright(self):
+        # In RGB PNG, a tRNS chunk can hide an otherwise entirely bright image.
+        p=self.root/"TRANSPARENT_RGB.png"
+        raw=actual_test_png()
+        name=b"tRNS"
+        payload=bytes((110,125,130))
+        chunk=struct.pack(">I",len(payload))+name+payload+struct.pack(
+            ">I",zlib.crc32(name+payload)&0xffffffff)
+        p.write_bytes(raw[:33]+chunk+raw[33:])
+        with self.assertRaisesRegex(ValueError,"PNG_TRANSPARENCY_UNSUPPORTED"):
+            m.independently_verify_png_pixels(p,440,370)
+
+    def test_reject_bright_rgb_with_effectively_invisible_rgba_alpha(self):
+        p=self.root/"NEAR_TRANSPARENT.png"
+        p.write_bytes(actual_test_png(rgb=(255,255,255),alpha=20))
+        with self.assertRaisesRegex(ValueError,"ACTUAL_PIXELS_BLACK_OR_UNDRAWN"):
+            m.independently_verify_png_pixels(p,440,370)
+
+    def test_allow_substantially_visible_rgba_after_alpha_compositing(self):
+        p=self.root/"VISIBLE_RGBA.png"
+        p.write_bytes(actual_test_png(rgb=(160,170,180),alpha=190))
+        self.assertGreater(m.independently_verify_png_pixels(p,440,370),0.9)
+
+    def test_reject_trailing_bytes_after_iend(self):
+        p=self.root/"EXTRA_DATA.png"
+        p.write_bytes(actual_test_png()+b"unverified-after-IEND")
+        with self.assertRaisesRegex(ValueError,"PNG_TRAILING_DATA_AFTER_IEND"):
+            m.independently_verify_png_pixels(p,440,370)
 
     def test_invalid_not_real_gui_source_rejected(self):
         self.data["views"]["LIVED_EDITOR"]["source"]="CYCLES_RENDER"
