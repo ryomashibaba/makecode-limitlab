@@ -431,3 +431,14 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [新Windows PowerShell](../tools/g4c7_m37p2_run_native_operator_first_pair.ps1)は通常起動時の新たな`VISUAL_ART_REJECT`停止ガードを持つ。`-PrepareOnly`でのチェックだけ可能であり、本体のAIモデル呼出しを行いたい研究者のみ別途明示的`-ExplicitTechOnly`が必要。初心者用CMDも停止版の固定コミットを参照し、**ユーザーへ無駄なモデル再実行を指示しない**。
 - **新ガードのWindows CI #41473665867は実行結果確認まで未検証**。先行ガードなしWindows準備CI #41472380173はSUCCESSだが、安全停止の最新版の成功と混同しない。
 - 本物の次の制作要件は「同一Blender原本を実画面で見ながら作者が直接造形・修正する閉ループ」。技術フィクスチャや少数オペレータの追加ではART PASSにできない。公式ART採用0、ART HOLD、正式331人体993足元/G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draft未merge、Work不使用を継承。
+
+---
+
+## 29. M37-P2：実Cycles 3視点のART-FIRSTフィードバックゲート成立（2026-11-03）
+
+- [新しい実画像フィードバック報告](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_VISUAL_FEEDBACK_GATE_20261103_JA.md)を保存。
+- [CI #41552562056 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41552562056)：実際に保存した同じネイティブBlenderから3枚の真正Cycles PNGを撮影し、PNGのSHA256／原本メタデータから**EARLY_ART_REJECT**と明示的に判定した。都市・工場・研究文化・住居内観が未実体、2メッシュは各8頂点6面であるため。**技術CI成功と美術REJECTは同時成立**。新ゲート回帰テスト5件成功。
+- [実装](../tools/g4c7_m37p2_visual_feedback_gate.py)は検証済み3枚と参照JSONを読み取るだけでBlender原本・Minecraft・GitHub mainに書き込まない。フィードバックJSON、携帯可能な同一3画像HTMLを出力。[同一CI](../.github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml)のartifactに含めて保存。**ART PASSを自動発行するコードは存在しない**。構造上明らかに不足ならEARLY_ART_REJECT、それ以外はART HOLD（作者・ユーザーの実画面審査必須）。
+- 追加の`--vision-model gemma4:26b`は**ユーザーが明示的に選んだ場合だけ**ローカルOllamaの画像入力へ3枚を送る。モデルはインストールしない／画像解析は推奨コメントに限定／任意Pythonコードや形状を生成・実行しない。ユーザー実機でのGemma画像評価は**未実施**。ビジュアルAIが不足を見逃しても正式美術を承認できない。
+- **本質的なARTの未解決点**：作者が実Blender画面を見て3D形状を継続修正する閉ループはまだ未成立。直方体2つの再実行・無制限プリミティブ生成・旧Qwen全市一括頂点の再試行は禁止。現状の技術PASSは作品採用とは無関係。
+- 固定：全体ART HOLD、正式採用0、正式331人体・993足元／G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main保護、Draft PR #53未merge、Work不使用と事前承認制維持。
