@@ -219,3 +219,12 @@
 - [回帰テスト](tests/test_g4c7_m37p2_visual_feedback_gate.py)5件成功。検証器は画像だけでは正式ART PASSを出せない設計で、**EARLY_ART_REJECT／ART_HOLD_VISUAL_JUDGMENT_REQUIREDしか返さない**。Model Visionを使う場合のみ既存Ollama `gemma4:26b`で3画像の可視的不足を任意評価し、正式採用の代替にしない。Gemmaの実PC評価はまだ未実施。
 - [今回の研究・実証報告](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_VISUAL_FEEDBACK_GATE_20261103_JA.md)／[統合引き継ぎ節29](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。**これまでの試験形状を都市作品に昇格させない。** 次の実美術には3Dを直接修正できる作者操作のフィードバック閉ループが依然必要。ユーザーへ旧ランチャー再実行、手モデリング、Work使用を無断要求しない。
 - ART HOLD・正式採用0・331人体993足元/G0/S1/G1/G2/G3 NOT RUN・MakeCode未評価・Minecraft施工禁止・main変更禁止・PR #53 Draftを維持。
+
+
+## M37-P2 2026-11-03：実画像→既存Blenderメッシュの1回修正→3真正視点再撮影→EARLY ART REJECT
+
+- [本物のBlenderを使った全1往復CI #41554510076 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41554510076)を実際に確認。SHA検証済みの**真のCycles3視点による不採用評価**が、元の保存済みBlenderシーンに紐付く1件の修正計画を起動し、既存の2役割の面をbmeshネイティブに変形、元ファイルを上書きせず別名`.blend`に保存した。**修正後の同じ3視点を再撮影してまたEARLY ART REJECTまで確認**。修正操作はCI作成者が指定した仮テストであり、LLMによる自律的建築設計ではない。
+- 実測：`city_macro`は**8頂点6面→12頂点10面**、`habitat`は**8頂点6面→12頂点11面**。新画像は離れた箱状2形状のままで都市全景・工場・研究文化・生活住戸の実体0。**美術採用0／ART REJECT／全体ART HOLD**。面数増加＝都市美術改善ではない。
+- [実装](tools/g4c7_m37p2_feedback_to_native_revision.py)と[回帰試験](tests/test_g4c7_m37p2_feedback_to_native_revision.py)で、元`.blend`と実3枚のPNG＋不採用フィードバックJSONの各SHAを編集前に再照合し、変更対象は既存メッシュ2領域だけ、無制限実行・任意Python・新規キューブの追加を禁止。**1つの研究シーンにつき1回の修正だけ**。失格の理由コードなしでは受け付けない。
+- [新研究正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_TRUE_FEEDBACK_NATIVE_REVISION01_20261103_JA.md)／[統合引き継ぎ節30](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。GitHub Actions artifactには真正3視点・レポートと別名BLENDの保存を追加。新しいPNG改変ガードの最終CI実測まで追加ガードのPASSは未確認とする。
+- 次の本質課題は、AIが自ら**実際の建築美術のアイデアを持ってBlenderシーンへ直接造形**すること。現在の2箱テストの改善ループを増殖させたり、旧Qwen全市一括頂点JSONへ戻ったりはしない。ユーザーに追加ローカル操作は求めない。Work不使用、main無変更、PR #53 Draft、331人体・993足元＆G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止。
