@@ -1,7 +1,9 @@
 """Hash-bound, one-revision-only native Blender ART HOLD gate tests."""
 import copy
 import importlib.util
+import hashlib
 from pathlib import Path
+import tempfile
 import unittest
 
 PATH=Path(__file__).resolve().parents[1]/"tools"/"g4c7_m37p2_feedback_to_native_revision.py"
@@ -101,6 +103,30 @@ class NativeFeedbackPlanSafety(unittest.TestCase):
         p["promote_art"]=True
         self.assertIn("UNKNOWN_TOP_LEVEL_CONTROL",
                       m.validate(p,fixture_feedback(),SRC,FEED))
+
+    def test_real_three_image_digest_binding_and_tamper_rejection(self):
+        with tempfile.TemporaryDirectory() as d:
+            directory=Path(d)
+            report=fixture_feedback()
+            report["verified_images_sha256"]={}
+            magic=bytes.fromhex("89504e470d0a1a0a")
+            for view in ("AERIAL","PUBLIC_EYE","HABITAT_EYE"):
+                name="P2_PAIRED_NATIVE_"+view+"_NO_ART.png"
+                raw=magic+b"QA_IMAGE_PAYLOAD_NOT_ART"*6
+                (directory/name).write_bytes(raw)
+                report["verified_images_sha256"][view]=hashlib.sha256(raw).hexdigest()
+            self.assertTrue(m.verify_visual_evidence_files(directory/"feedback.json",report))
+            (directory/"HABITAT_EYE.png").write_bytes(b"unused")
+            changed=directory/"P2_PAIRED_NATIVE_HABITAT_EYE_NO_ART.png"
+            changed.write_bytes(magic+b"TAMPERED_DIFFERENT_PIXELS"*6)
+            with self.assertRaisesRegex(ValueError,"VISUAL_SOURCE_CHANGED"):
+                m.verify_visual_evidence_files(directory/"feedback.json",report)
+
+    def test_missing_image_set_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            with self.assertRaisesRegex(ValueError,"THREE_VERIFIED_REAL_IMAGE"):
+                m.verify_visual_evidence_files(Path(d)/"f.json",fixture_feedback())
+
 
 if __name__=="__main__":
     unittest.main()
