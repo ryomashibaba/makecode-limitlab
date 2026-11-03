@@ -1,0 +1,99 @@
+name: G4C7 R1 archive actual rejected native scene and 3 Cycles views ONLY
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - .github/workflows/g4c7-r1-archive-rejected-visual-evidence.yml
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: g4c7-r1-rejected-evidence-archive-once
+  cancel-in-progress: false
+jobs:
+  append-only-rejected-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch PINNED prior independently rendered evidence; never rerun or regenerate art
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          p=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $p" | sha256sum -c -
+          mkdir -p /tmp/g4c7-r1-rejected
+          gh run download 41609556650 -R "$GITHUB_REPOSITORY" -n g4c7-r1-first-real-city-author-source-and-three-eyes-NOT-ART-PASS -D /tmp/g4c7-r1-rejected
+          src=/tmp/g4c7-r1-rejected
+          (cd "$src"; sha256sum -c <<'MANIFEST'
+          747d4b760319ba135becef7e3ef0e20ee5a8e2c7c703a5cc68dd189993444a52  R1_CIVIC_ESTUARY_CODE_ASSISTED_INITIAL_NOT_ART.blend
+          cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06  R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend
+          8b7796a89f48f8de0972f2d78f3eeefd7a35a3c2ffaa3592bad039c619532faa  AERIAL_TRUE_BLENDER_CYCLES.png
+          117cefbbca07e69b565bfa1ba1e4d226532fc5021caaab374b759e076cfa1d5a  PUBLIC_EYE_TRUE_BLENDER_CYCLES.png
+          e21b02d4180514271afadd5a94c012425bfc445eda6a690ed9f783a5a8683754  HABITAT_EYE_TRUE_BLENDER_CYCLES.png
+          036ce110e3ae4b1614ce46858262ac3d8624eec11bbdc295a024be8cdbc8540b  R1_REAL_GUI_BEFORE.png
+          036ce110e3ae4b1614ce46858262ac3d8624eec11bbdc295a024be8cdbc8540b  R1_REAL_GUI_AFTER.png
+          0852513eb493e06caa921605042b992cf9863fbf6d575a0c87bf868c853d7fca  R1_GUI_REAL_INPUT_OBSERVED.json
+          0027cd753441eb242a389d88d7593c689b7290cb07c2ac601807ccfe52c78495  R1_INDEPENDENT_NATIVE_AND_RENDER_AUDIT.json
+          MANIFEST
+          )
+      - name: Independently verify byte-accurate FAILED GUI visual and REJECT status
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-pil
+          /usr/bin/python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageStat
+          import json,hashlib
+          p=Path('/tmp/g4c7-r1-rejected')
+          for fname in ('R1_REAL_GUI_BEFORE.png','R1_REAL_GUI_AFTER.png'):
+              i=Image.open(p/fname).convert('RGB')
+              assert i.size==(1600,900)
+              assert i.getpixel((0,0))==(24,24,24) and i.getextrema()==((24,24),(24,24),(24,24))
+          x=json.loads((p/'R1_INDEPENDENT_NATIVE_AND_RENDER_AUDIT.json').read_text())
+          assert x["r1_art"]=="HOLD" and x["user_adoptions"]==0
+          assert x["formal_331_993"]=="NOT_RUN" and x["world_writes"]==0
+          assert x["saved_native_sha256"]=="cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06"
+          for c in ('AERIAL','PUBLIC_EYE','HABITAT_EYE'):
+              i=Image.open(p/(c+'_TRUE_BLENDER_CYCLES.png')).convert('RGB')
+              assert i.size==(840,560)
+              assert max(ImageStat.Stat(i).stddev)>8
+          p.joinpath('R1_INDEPENDENT_ART_REJECT_EVIDENCE.json').write_text(json.dumps({
+              "source":"GitHub Actions run 41609556650 / artifact 13218551487",
+              "absolute_visual_verdict":"EARLY_ART_REJECT",
+              "causes":["repeated near-identical vertically striped towers","empty public walkway and dominant flat industrial partition","opaque glazing and box-like uninhabitable apartment","no true continuous inhabited urban fabric"],
+              "live_gui_screenshot":"INVALID_FLAT_RGB_24_24_24_BOTH_FRAMES",
+              "real_gui_transform":"observed in new native Blender saved scene, not visible in GUI screenshots",
+              "native_3_views":"true Blender Cycles from same independently reopened saved file",
+              "art":"HOLD","official_adoptions":0,
+              "formal_331_993":"NOT_RUN","gates":"NOT_RUN",
+              "minecraft":"FORBIDDEN","world_writes":0,
+              "revise_this_model":"FORBIDDEN_NO_DECORATIVE_PATCH",
+              "recovery":"true visually accessible professional GUI city authoring required, otherwise capability HOLD"
+          },indent=2)+"\n")
+          print("NEGATIVE_GUI_EVIDENCE_AND_3_RENDER_ART_REJECT_INDEPENDENTLY_CONFIRMED")
+          PY
+      - name: Persist original evidence append-only into research branch, NEVER main
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          remote="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | awk '{print $1}')"
+          if test "$remote" != "$GITHUB_SHA"; then
+              echo "BRANCH_HEAD_CHANGED_SAFE_STOP_NO_FORCE"; exit 21
+          fi
+          src=/tmp/g4c7-r1-rejected
+          dst=artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT
+          test ! -e "$dst"
+          mkdir -p "$dst"
+          cp "$src"/*.blend "$dst"/
+          cp "$src"/*.png "$dst"/
+          cp "$src"/*.json "$dst"/
+          (cd "$dst"; sha256sum *.blend *.png *.json > SHA256_EVIDENCE_MANIFEST.txt)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$dst"
+          git commit -m "G4C7 R1: retain rejected real Cycles and invalid GUI frames as permanent negative evidence"
+          git push origin "HEAD:$GITHUB_REF_NAME"
