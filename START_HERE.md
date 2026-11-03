@@ -251,3 +251,11 @@
 - [黒画像の全画素監査](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)を作成。[GUIキャプチャ](tools/g4c7_m37p2_live_gui_context_capture.py)でdraw/swap後に**実PNGをBlenderで読み、明るい画素の存在割合が足りなければ失格**。[GUI CI](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)も単なるPNG署名/shaではPASSしない。
 - [ローカルのGUI→画像AI分析](tools/g4c7_m37p2_local_gui_vision_review.py)と[8件の回帰](tests/test_g4c7_m37p2_local_gui_vision_review.py)を追加。黒PNG、SHA不一致、元ファイル不明、ART状態違反を**AI呼出し前に拒否**。空の保護v3（0メッシュ）ではGemma4へ無駄なモデル呼出し0。実メッシュがある場合のみ、ユーザー明示指定で**localhost Ollama**の2画像分析結果を参考情報として取得。モデル生成コード、Blenderメッシュ変更、ART PASS、Minecraft施工なし。実Qwen/Gemmaへの新GUI画像呼出しは未実施。
 - [統合引き継ぎ節33](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)参照。**修正版の成功・本物の表示画像を実見するまでGUI Visual Context技術PASS未認定。** これまでの旧2箱ART REJECT・旧Qwen全市一括頂点RETIREDもそのまま。ART HOLD・正式採用0／331人体993足元＆G0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／main・v3保護／PR #53 Draft／Work不使用維持。
+
+---
+
+## M37-P2 2026-11-03：GUI偽陽性の黒PNGを独立X11フレームバッファ診断で切り分ける
+
+- **実画素確認**：旧[GUI #41559389596](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41559389596)の2 VIEW_3D PNGは**657×783と661×783の全画素が黒**で、画像AI入力としては**失敗**。旧「GUI capture PASS」はBlender GUIウィンドウ・PNGの存在のみの技術結果だった。[訂正・調査正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)。
+- [Blender GUI capture](tools/g4c7_m37p2_live_gui_context_capture.py)は描画を再試行し、黒PNGは失格にする。追加でCIのX11画面全体を独立撮影して診断用に保存。**X11 root画像を美術またはBlenderの2実編集画面の代用にはしない**。[実診断CI #41562899937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41562899937)は本追補時点でqueued。画像実内容を確かめるまでGUI可視コンテキスト技術PASSは未認定。
+- [ローカルAI入力ゲート](tools/g4c7_m37p2_local_gui_vision_review.py)は真っ黒な画像・不正署名・SHA不一致・空スタジオを拒否し、Ollamaモデルは明示依頼時以外呼ばない。本物の複雑な都市・居住断面の造形はまだ**0件**。WORK不使用／ART HOLD／採用0／正式安全QA未実施／Minecraft施工禁止／main・v3保護／PR #53 Draftを固定。
