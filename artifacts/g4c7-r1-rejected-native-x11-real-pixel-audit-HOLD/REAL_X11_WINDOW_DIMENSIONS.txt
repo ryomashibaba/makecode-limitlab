@@ -1,0 +1,24 @@
+
+xwininfo: Window id: 0x200002 "R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART [/home/runner/work/makecode-limitlab/makecode-limitlab/artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend] - Blender 4.5.15 LTS"
+
+  Absolute upper-left X:  0
+  Absolute upper-left Y:  0
+  Relative upper-left X:  0
+  Relative upper-left Y:  0
+  Width: 1600
+  Height: 900
+  Depth: 24
+  Visual: 0x21
+  Visual Class: TrueColor
+  Border width: 0
+  Class: InputOutput
+  Colormap: 0x200001 (not installed)
+  Bit Gravity State: ForgetGravity
+  Window Gravity State: NorthWestGravity
+  Backing Store State: NotUseful
+  Save Under State: no
+  Map State: IsViewable
+  Override Redirect State: no
+  Corners:  +0+0  -0+0  -0-0  +0-0
+  -geometry 1600x900+0+0
+

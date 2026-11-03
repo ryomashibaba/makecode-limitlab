@@ -1,0 +1,128 @@
+{
+  "schema": "g4c7-r1-rejected-saved-native-x11-readonly-v1",
+  "result": "WINDOW_AND_ROOT_VISIBLE_CANDIDATE_NEEDS_MANUAL_NATIVE_VIEW_INSPECTION",
+  "previous_r1_civic_estuary_art": "EARLY_ART_REJECT",
+  "new_r1_artwork_generated": false,
+  "new_blender_meshes_generated": false,
+  "read_only_source_sha256": "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06",
+  "x11_window_title": "WM_NAME(STRING) = \"R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART [/home/runner/work/makecode-limitlab/makecode-limitlab/artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend] - Blender 4.5.15 LTS\"\n_NET_WM_NAME(UTF8_STRING) = \"R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART [/home/runner/work/makecode-limitlab/makecode-limitlab/artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIR",
+  "images": {
+    "BEFORE_ROOT": {
+      "file": "X11_REJECTED_R1_BEFORE_ROOT.png",
+      "sha256": "e38e9980819067972994ad8e3f8203ea922f419b8a9c493a646298af10b388a2",
+      "size": [
+        1600,
+        900
+      ],
+      "minmax": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "sample_unique_colors": 1261,
+      "sample_max_channel_stdev": 14.4001,
+      "is_flat": false,
+      "plausibly_visible": true
+    },
+    "AFTER_ROOT": {
+      "file": "X11_REJECTED_R1_AFTER_ROOT.png",
+      "sha256": "77e69709e3c32eec40375091a4ddba7a3466f2a8c3475d6230c093a5fdd8d456",
+      "size": [
+        1600,
+        900
+      ],
+      "minmax": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "sample_unique_colors": 859,
+      "sample_max_channel_stdev": 14.21,
+      "is_flat": false,
+      "plausibly_visible": true
+    },
+    "BEFORE_WINDOW": {
+      "file": "X11_REJECTED_R1_BEFORE_WINDOW.png",
+      "sha256": "e38e9980819067972994ad8e3f8203ea922f419b8a9c493a646298af10b388a2",
+      "size": [
+        1600,
+        900
+      ],
+      "minmax": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "sample_unique_colors": 1261,
+      "sample_max_channel_stdev": 14.4001,
+      "is_flat": false,
+      "plausibly_visible": true
+    },
+    "AFTER_WINDOW": {
+      "file": "X11_REJECTED_R1_AFTER_WINDOW.png",
+      "sha256": "77e69709e3c32eec40375091a4ddba7a3466f2a8c3475d6230c093a5fdd8d456",
+      "size": [
+        1600,
+        900
+      ],
+      "minmax": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "sample_unique_colors": 859,
+      "sample_max_channel_stdev": 14.21,
+      "is_flat": false,
+      "plausibly_visible": true
+    }
+  },
+  "window_significant_changed_samples": 918,
+  "root_significant_changed_samples": 918,
+  "x11_potentially_readable": true,
+  "independent_human_or_model_visual_inspection_done": false,
+  "art": "HOLD",
+  "official_adoptions": 0,
+  "formal_331_993": "NOT_RUN",
+  "gates_G0_S1_G1_G2_G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "world_writes": 0,
+  "work": "NOT_USED",
+  "sol": "NOT_USED",
+  "observation_only": "This cannot prove autonomous artist GUI editing or ART eligibility."
+}
