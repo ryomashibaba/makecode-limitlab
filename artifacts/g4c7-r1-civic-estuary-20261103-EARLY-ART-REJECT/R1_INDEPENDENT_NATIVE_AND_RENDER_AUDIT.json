@@ -1,0 +1,22 @@
+{
+  "verdict": "NATIVE_TECH_EVIDENCE_ONLY_ART_JUDGEMENT_REQUIRED",
+  "r1_art": "HOLD",
+  "user_adoptions": 0,
+  "saved_native_sha256": "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06",
+  "protected_original_sha256_expected": "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249",
+  "object_count": 1120,
+  "mesh_count": 1114,
+  "public_eye_from_same_saved_native": true,
+  "habitat_eye_from_same_saved_native": true,
+  "aerial_from_same_saved_native": true,
+  "actual_gui_input_evidence_sha256": "0852513eb493e06caa921605042b992cf9863fbf6d575a0c87bf868c853d7fca",
+  "formal_331_993": "NOT_RUN",
+  "gates_G0_S1_G1_G2_G3": "NOT_RUN",
+  "world_writes": 0,
+  "minecraft": "FORBIDDEN",
+  "actual_functional_walk_safety": "NOT_TESTED",
+  "structural_egress_fire_safety": "NOT_TESTED",
+  "production_equipment_realworld_operability": "NOT_CERTIFIED",
+  "method_disclosure": "code-assisted authored mesh source, then one demonstrable real GUI transform; not autonomous sophisticated GUI sculpting",
+  "visual_acceptance": "USER_ONLY"
+}

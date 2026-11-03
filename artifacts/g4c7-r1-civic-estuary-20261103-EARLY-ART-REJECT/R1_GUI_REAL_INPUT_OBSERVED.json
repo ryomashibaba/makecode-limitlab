@@ -1,0 +1,13 @@
+{
+  "stage": "ACTUAL_X11_GUI_GZ_1_OBSERVED_BEFORE_NATIVE_SAVE",
+  "note": "Only small canopy elevation GUI edit. City geometry elsewhere is code assisted; no expert autonomous GUI modelling claim.",
+  "source_sha256": "747d4b760319ba135becef7e3ef0e20ee5a8e2c7c703a5cc68dd189993444a52",
+  "gui_saved_sha256": "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06",
+  "object": "R1_PUBLIC_LANTERN",
+  "observed_location_z": 1.0,
+  "art": "HOLD",
+  "official_adoptions": 0,
+  "formal_safety": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "human_artist_approval": false
+}

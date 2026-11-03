@@ -1,0 +1,21 @@
+{
+  "source": "GitHub Actions run 41609556650 / artifact 13218551487",
+  "absolute_visual_verdict": "EARLY_ART_REJECT",
+  "causes": [
+    "repeated near-identical vertically striped towers",
+    "empty public walkway and dominant flat industrial partition",
+    "opaque glazing and box-like uninhabitable apartment",
+    "no true continuous inhabited urban fabric"
+  ],
+  "live_gui_screenshot": "INVALID_FLAT_RGB_24_24_24_BOTH_FRAMES",
+  "real_gui_transform": "observed in new native Blender saved scene, not visible in GUI screenshots",
+  "native_3_views": "true Blender Cycles from same independently reopened saved file",
+  "art": "HOLD",
+  "official_adoptions": 0,
+  "formal_331_993": "NOT_RUN",
+  "gates": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "world_writes": 0,
+  "revise_this_model": "FORBIDDEN_NO_DECORATIVE_PATCH",
+  "recovery": "true visually accessible professional GUI city authoring required, otherwise capability HOLD"
+}
