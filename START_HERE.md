@@ -353,3 +353,8 @@
 
 - [独立バイナリ検査と厳格な限界](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ACTUAL_NATIVE_ARTIFACT_INDEPENDENT_AUDIT_20261103_JA.md)。失敗した旧run #41577380073のArtifact ID 13208845765から**本物のBlender原本**（198,887 bytes、SHA256 `ac6c322e1f4a957281ca5a7f2d9633ce4d602b7254cb1717735feb6ed02e9bd6`）を取得。zstd展開後 `BLENDER-v405`、データブロック終端整合、OB=235／ME=227。別Blenderプロセスによる再読込もCIログ上で確認。SOURCE TECH限定。
 - 失敗原因はBlender Pythonが旧reviewのPILをimportできなかったこと。修正済みcloud run #41577471323はqueuedで、**真Cycles画像はまだ未取得**。METHOD HOLD、ART HOLD／正式採用0を維持し、画像を見るまで美術評価を宣言しない。Work未承認不使用・Sol事前承認・main/保護v3/Minecraft/PR #53の固定方針は不変。
+
+## 2026-11-03 M37-P2 — 真正BLENDの実メッシュ可視化から本クラウドbpy案EARLY ART REJECT
+
+- [真正原本の独立形状審査](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_TRUE_NATIVE_GEOMETRY_EARLY_ART_REJECT_20261103_JA.md)：Actions 13208845765のBlender原本（SHA256 `ac6c322e1f4a957281ca5a7f2d9633ce4d602b7254cb1717735feb6ed02e9bd6`）から実メッシュを抽出、227メッシュ、2,576頂点、4,244三角形、204/227が8頂点、12塔は全て45頂点・86三角形。形状代理7視点を実目視し都市・公共・製造・研究・住戸の造形密度が根本不足と判定。**本研究案に限ってEARLY ART REJECT（GEOMETRY）**。全体ART HOLD／正式採用0。
+- 画像は真正BLENDのメッシュの独立VTK描画で、元Blenderの材質やCycles画像ではない。色彩品質は未確認。旧run `abba4c0`と修正版`6077fc4`のBUILD構築コードは逐字同一。既存4視点Cloud CIは技術証拠であり美術候補への自動昇格禁止。類似生成器の追加・薄いパラメータ調整は止め、真の直接作者造形と現物レビューへ進む。Work/Solは事前承認、R0–R5・安全QA未実施・Minecraft禁止・main/保護v3・Draft PR #53は維持。
