@@ -1,5 +1,9 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 R1 Civic Braidの新3D＋真正Cycles5視点は、画像現物を確認して全視点 EARLY ART REJECT。** [不採用の完全判断・保存証拠・停止指示](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_CIVIC_BRAID_20261103_FIVE_TRUE_CYCLES_EARLY_ART_REJECT_METHOD_HOLD_JA.md)、[新ネイティブBLENDとAERIAL/PUBLIC/HABITAT/FACTORY/RESEARCHの5真正PNG＋SHA256](artifacts/g4c7-r1-civic-braid-authorial-section-ART-UNREVIEWED/)、[制作・独立再読込・保存の成功CI #41616663811](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41616663811)。新規3Dにはメッシュ469個の実体があるが、**俯瞰で低密度キャンパス、公共と工場・研究は巨大板に遮蔽、住宅眼高はほぼ黒**。ART-UNREVIEWEDは保存時名のみで、**作品は正式不採用**。この方式を色やメッシュ数で延命せず、**コードで安易な形を並べるR1制作方法はMETHOD HOLD・高品質自律GUI作者能力未成立**とする。今後同型の生成案を繰り返さず、真の3D高度建築美術制作能力が成立するまでは正式R1新美術認定不可。従来のR0〜R5・ART-FIRST・全体ART HOLD/正式採用0・正式331人体993足元とG0/S1/G1/G2/G3未実施・MakeCode未評価・Minecraft施工禁止・main/保護原本維持・PR #53 Draft・Work/Sol事前許可は不変。
+
+
+
 > **2026-11-03 R1複雑都市で「実GUI可視画像→建築対象のGUI編集→別名真正BLEND保存→独立再読込」限定METHOD TECH PASS。** [独立検証・失敗修正・恒久原本の詳細報告](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_VISIBLE_GUI_TARGETED_ARCHITECTURE_METHOD_PASS_NOT_ART_JA.md)、[実GUI前後画像2枚と別名BLEND/独立JSON](artifacts/g4c7-r1-real-visible-gui-habitat-boundary-method-TECH-NOT-ART/)、[成功CI #41614724400](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41614724400)。一時技術試作では不採用作品の隔離研究コピーのみ扱い、前室仕切り1枚を実GUIでX=-29.8→-27.8に変更。**残り1113メッシュ不変**を別Blenderで検証。元の不採用都市は引き続き EARLY ART REJECT、全体ART HOLD／正式採用0。2単位の移動の美術・機能は未認証。これ以上同じ不採用都市で技術試験を増やさず、次は**真の高品質R1都市作者美術**を新しい同一Blender原本で全景・公共・工場・研究文化・住居並行制作する工程。ただし高度な自律建築美術能力は未実証。R0〜R5固定、安全331/993未実施、Minecraft施工禁止、main/保護原本不変更、PR #53 Draft、Work/Sol事前承認制を維持。
 
 
