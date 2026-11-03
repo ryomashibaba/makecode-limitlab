@@ -2,6 +2,8 @@
 import hashlib
 import importlib.util
 import json
+import struct
+import zlib
 from pathlib import Path
 import tempfile
 import unittest
@@ -12,6 +14,17 @@ p=ROOT/"tools"/"g4c7_m37p2_local_gui_vision_review.py"
 spec=importlib.util.spec_from_file_location("p2_native_gui_local_vision",p)
 m=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
+
+def actual_test_png(rgb=(110,125,130),width=440,height=370):
+    """Valid 8-bit RGB PNG with real decodable pixels; QA only, never artwork."""
+    def part(kind,content):
+        return struct.pack(">I",len(content))+kind+content+struct.pack(
+            ">I",zlib.crc32(kind+content)&0xffffffff)
+    ihdr=struct.pack(">IIBBBBB",width,height,8,2,0,0,0)
+    rows=(b"\x00"+bytes(rgb)*width)*height
+    return (m.PNG_SIGNATURE+part(b"IHDR",ihdr)+
+            part(b"IDAT",zlib.compress(rows))+part(b"IEND",b""))
+
 
 class Reply:
     def __init__(self,data):
@@ -37,7 +50,7 @@ class GenuineSceneGate(unittest.TestCase):
             "views":{},
         }
         for key in m.NAMES:
-            raw=m.PNG_SIGNATURE+b"P2_OFFLINE_TEST_FIXTURE_NOT_REAL_PNG_PIXELS"*5
+            raw=actual_test_png()
             name="P2_ACTUAL_GUI_"+key+".png"
             (self.root/name).write_bytes(raw)
             self.data["views"][key]={
@@ -63,7 +76,7 @@ class GenuineSceneGate(unittest.TestCase):
 
     def test_one_png_tamper_causes_rejection_before_model(self):
         fn=self.root/"P2_ACTUAL_GUI_MACRO_EDITOR.png"
-        fn.write_bytes(m.PNG_SIGNATURE+b"TAMPERED"*55)
+        fn.write_bytes(actual_test_png(rgb=(20,95,60)))
         with self.assertRaisesRegex(ValueError,"REAL_GUI_IMAGE_CHANGED_MACRO_EDITOR"):
             m.source_gate(self.manifest)
 
@@ -73,6 +86,35 @@ class GenuineSceneGate(unittest.TestCase):
         self.rewrite()
         with self.assertRaisesRegex(ValueError,"GUI_BLACK_SCREENSHOT_REJECT"):
             m.source_gate(self.manifest)
+
+    def test_manifest_can_lie_about_black_png_but_actual_bytes_refused(self):
+        file=self.root/"P2_ACTUAL_GUI_LIVED_EDITOR.png"
+        black=actual_test_png(rgb=(0,0,0))
+        file.write_bytes(black)
+        # The malicious/buggy manifest claims the frame is bright and gives
+        # a matching SHA; the *actual image pixel decoder* must veto this.
+        self.data["views"]["LIVED_EDITOR"]["sha256"]=hashlib.sha256(black).hexdigest()
+        self.data["views"]["LIVED_EDITOR"]["visible_bright_pixel_ratio"]=0.6
+        self.data["views"]["LIVED_EDITOR"]["content_not_blank_black"]=True
+        self.rewrite()
+        with self.assertRaisesRegex(ValueError,"ACTUAL_PIXELS_BLACK_OR_UNDRAWN"):
+            m.source_gate(self.manifest)
+
+    def test_png_crc_corruption_refused_even_if_manifest_sha_is_updated(self):
+        file=self.root/"P2_ACTUAL_GUI_MACRO_EDITOR.png"
+        raw=bytearray(file.read_bytes())
+        # IHDR data pixel width byte modification without CRC update.
+        raw[19] ^= 1
+        file.write_bytes(raw)
+        self.data["views"]["MACRO_EDITOR"]["sha256"]=hashlib.sha256(raw).hexdigest()
+        self.rewrite()
+        with self.assertRaisesRegex(ValueError,"PNG_CRC_MISMATCH"):
+            m.source_gate(self.manifest)
+
+    def test_independent_real_pixel_ratio_on_valid_png(self):
+        p=self.root/"P2_ACTUAL_GUI_MACRO_EDITOR.png"
+        ratio=m.independently_verify_png_pixels(p,440,370)
+        self.assertGreater(ratio,0.9)
 
     def test_invalid_not_real_gui_source_rejected(self):
         self.data["views"]["LIVED_EDITOR"]["source"]="CYCLES_RENDER"
