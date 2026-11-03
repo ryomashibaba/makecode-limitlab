@@ -143,6 +143,38 @@ def _prepare_two_viewports_for_pinned_ci_only():
     print("G4C7_CI_ONLY_NATIVE_GUI_SPLIT_REQUESTED",flush=True)
 
 
+def _prove_actual_visible_pixels(image_file):
+    """Native Blender image decoder checks content; PNG magic alone is not art.
+
+    Earlier CI #41559389596 returned SUCCESS but both 657x783 editor images
+    were 100% black. Such fake-positive captures are NOT useful for vision.
+    This raises before the saved source and screenshots can be called valid.
+    """
+    im=bpy.data.images.load(str(image_file),check_existing=False)
+    try:
+        count=im.size[0]*im.size[1]
+        if count<10000:
+            raise ValueError("REAL_GUI_IMAGE_TOO_SMALL")
+        pixels=im.pixels
+        stride=max(1,count//4096)
+        bright=0
+        total=0
+        for i in range(0,count,stride):
+            k=4*i
+            r,g,b=float(pixels[k]),float(pixels[k+1]),float(pixels[k+2])
+            if max(r,g,b)>0.08:
+                bright+=1
+            total+=1
+        ratio=bright/max(total,1)
+        # A real empty Blender viewport is dark gray with visible grid,
+        # headings and controls. A 100%-black Xvfb texture is not.
+        if ratio<0.035:
+            raise RuntimeError("REAL_GUI_SCREENSHOT_BLACK_OR_UNDRAWN_REJECT")
+        return round(ratio,6)
+    finally:
+        bpy.data.images.remove(im)
+
+
 def capture_gui_context(directory):
     scene,source=_verify_scene()
     views=_viewport_areas()
@@ -161,7 +193,11 @@ def capture_gui_context(directory):
     for idx,(win,area,region) in enumerate(views):
         name=("MACRO_EDITOR","LIVED_EDITOR")[idx]
         screenshot=dest/("P2_ACTUAL_GUI_"+name+".png")
+        area.tag_redraw()
         with bpy.context.temp_override(window=win,screen=win.screen,area=area,region=region):
+            # Force a full displayed-window draw and actual framebuffer swap.
+            # The previous timer capture returned valid but entirely BLACK PNG.
+            bpy.ops.wm.redraw_timer(type="DRAW_WIN_SWAP",iterations=4)
             rv=bpy.ops.screen.screenshot_area(
                 filepath=str(screenshot),check_existing=False)
         if "FINISHED" not in rv or not screenshot.is_file():
@@ -170,6 +206,7 @@ def capture_gui_context(directory):
             raise ValueError("REAL_VIEW_SCREENSHOT_FILE_SIZE_INVALID_"+name)
         if screenshot.open("rb").read(8)!=PNG_MAGIC:
             raise RuntimeError("REAL_VIEW_PNG_SIGNATURE_MISSING_"+name)
+        visible_ratio=_prove_actual_visible_pixels(screenshot)
         view3d=area.spaces.active
         region3d=view3d.region_3d
         imgs[name]={
@@ -180,6 +217,8 @@ def capture_gui_context(directory):
             "look_at":[round(float(v),4) for v in region3d.view_location],
             "view_distance":round(float(region3d.view_distance),4),
             "source":"ACTUAL_BLENDER_GUI_VIEW_3D_NOT_CYCLES_RENDER",
+            "visible_bright_pixel_ratio":visible_ratio,
+            "content_not_blank_black":True,
         }
     if sha(source)!=before:
         raise RuntimeError("OPEN_SOURCE_BLEND_BYTES_CHANGED_DURING_GUI_CAPTURE")
