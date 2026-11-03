@@ -10,25 +10,25 @@
 
 ## 真正Cycles4枚と絶対美術評価
 ### AERIAL
-![AERIAL TRUE CYCLES ART HOLD](../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_AERIAL.png)
+![AERIAL TRUE CYCLES ART HOLD](../../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_AERIAL.png)
 - [GitHubの本物のPNGを見る](https://github.com/ryomashibaba/makecode-limitlab/blob/dev/g4c7-a17-monolithic-rift-fold-art-study/artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_AERIAL.png)
 - 960×600、711751 bytes、SHA256 `a5888a85217ea512738085467603a78bb453a358013a36d80b3a271fa9cbc08b`。
 - **目視評価：** 真の街区・異なる建築構成・公共街路の細部が見えない。ほぼ同一の低分割灰白色塔、2枚の平板状の土地と細長い水路が大部分を占める。
 
 ### PUBLIC_EYE
-![PUBLIC_EYE TRUE CYCLES ART HOLD](../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_PUBLIC_EYE.png)
+![PUBLIC_EYE TRUE CYCLES ART HOLD](../../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_PUBLIC_EYE.png)
 - [GitHubの本物のPNGを見る](https://github.com/ryomashibaba/makecode-limitlab/blob/dev/g4c7-a17-monolithic-rift-fold-art-study/artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_PUBLIC_EYE.png)
 - 960×600、695825 bytes、SHA256 `fd1df875e40a0bb522a252032adc1352477d8c12163b2522fb364229da10d9d6`。
 - **目視評価：** 隔壁・ガントリー・筒状船体は見えるが、来訪者の滞留・都市の公共顔・実製造設備の細部が不足。
 
 ### HABITAT_EYE
-![HABITAT_EYE TRUE CYCLES ART HOLD](../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_HABITAT_EYE.png)
+![HABITAT_EYE TRUE CYCLES ART HOLD](../../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_HABITAT_EYE.png)
 - [GitHubの本物のPNGを見る](https://github.com/ryomashibaba/makecode-limitlab/blob/dev/g4c7-a17-monolithic-rift-fold-art-study/artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_HABITAT_EYE.png)
 - 960×600、608965 bytes、SHA256 `706edbc85226050896887bfa11da0e6dd65a1e9cdc1df69db221d10dc3033dac`。
 - **目視評価：** 直方体家具、大板天井、窓パネルのみが支配的で、住戸の開口・外壁・通行・居住の建築統合が成立していない。
 
 ### CULTURE_EYE
-![CULTURE_EYE TRUE CYCLES ART HOLD](../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_CULTURE_EYE.png)
+![CULTURE_EYE TRUE CYCLES ART HOLD](../../../../artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_CULTURE_EYE.png)
 - [GitHubの本物のPNGを見る](https://github.com/ryomashibaba/makecode-limitlab/blob/dev/g4c7-a17-monolithic-rift-fold-art-study/artifacts/g4c7-m37p2-cloud-native-integrated-art-hold/6077fc44b78a7cacc94c68a67a7ebe2d3baebcb0/M37P2_CULTURE_EYE.png)
 - 960×600、659487 bytes、SHA256 `1a97b1b841d4214db13e6ba8b51ae6fc75cb68d0d50ebc6516d5d470899a456c`。
 - **目視評価：** 裸の平台・机・パネル・棚が中心で、文化/研究施設ならではの屋内空間、立体的活動、採光の構成が欠ける。
