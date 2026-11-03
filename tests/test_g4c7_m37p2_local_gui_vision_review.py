@@ -44,6 +44,8 @@ class GenuineSceneGate(unittest.TestCase):
                 "file":name, "sha256":hashlib.sha256(raw).hexdigest(),
                 "width_px":440,"height_px":370,
                 "source":"ACTUAL_BLENDER_GUI_VIEW_3D_NOT_CYCLES_RENDER",
+                "content_not_blank_black":True,
+                "visible_bright_pixel_ratio":0.5,
             }
         self.manifest=self.root/"P2_ACTUAL_GUI_CONTEXT_HOLD.json"
         self.rewrite()
@@ -63,6 +65,13 @@ class GenuineSceneGate(unittest.TestCase):
         fn=self.root/"P2_ACTUAL_GUI_MACRO_EDITOR.png"
         fn.write_bytes(m.PNG_SIGNATURE+b"TAMPERED"*55)
         with self.assertRaisesRegex(ValueError,"REAL_GUI_IMAGE_CHANGED_MACRO_EDITOR"):
+            m.source_gate(self.manifest)
+
+    def test_black_screenshot_even_with_correct_png_hash_is_blocked(self):
+        self.data["views"]["MACRO_EDITOR"]["content_not_blank_black"]=False
+        self.data["views"]["MACRO_EDITOR"]["visible_bright_pixel_ratio"]=0.0
+        self.rewrite()
+        with self.assertRaisesRegex(ValueError,"GUI_BLACK_SCREENSHOT_REJECT"):
             m.source_gate(self.manifest)
 
     def test_invalid_not_real_gui_source_rejected(self):
