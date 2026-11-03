@@ -1,0 +1,80 @@
+name: G4C7 R1 actual Blender image negative-only observability regression ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_r1_negative_only_vision_gate.py
+      - tests/test_g4c7_r1_negative_only_vision_gate.py
+      - .github/workflows/g4c7-r1-negative-only-visibility-regression.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-r1-real-visibility-negative-controls
+  cancel-in-progress: false
+jobs:
+  historical-source-visibility-negative-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pin original Blender sources and research branch
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = 'dev/g4c7-a17-monolithic-rift-fold-art-study'
+          src=artifacts/g4c7-r1-civic-braid-authorial-section-ART-UNREVIEWED/R1_CIVIC_BRAID_AUTHORIAL_SECTION_ART_UNREVIEWED.blend
+          original=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          echo "002618e89a93d28cab309392011e69b729d9cfefc469258e4d2a72177910e95b  $src" | sha256sum -c -
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $original" | sha256sum -c -
+          python3 -m py_compile tools/g4c7_r1_negative_only_vision_gate.py
+      - name: Install only local open-source PNG decoder; no Blender or models
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-pil
+      - name: Run positive and negative structural controls against real saved source
+        run: |
+          /usr/bin/python3 -m unittest discover -s tests -p test_g4c7_r1_negative_only_vision_gate.py -v
+      - name: The old real Habitat eye must be blocked, never promoted to ART
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-r1-negative-art-evidence
+          /usr/bin/python3 tools/g4c7_r1_negative_only_vision_gate.py \
+            --folder artifacts/g4c7-r1-civic-braid-authorial-section-ART-UNREVIEWED \
+            --out /tmp/g4c7-r1-negative-art-evidence/R1_HISTORIC_HABITAT_VISIBILITY_BLOCK.json \
+            --expect-blocked
+          /usr/bin/python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/g4c7-r1-negative-art-evidence/R1_HISTORIC_HABITAT_VISIBILITY_BLOCK.json')
+          j=json.loads(p.read_text())
+          assert j['result']=='BLOCK_VISUAL_OBSERVABILITY'
+          assert j['views']['HABITAT_EYE']['center_dark_ratio']>=.93
+          assert any(x['view']=='HABITAT_EYE' for x in j['blocking_evidence'])
+          assert j['never_proves_visual_art_acceptance'] is True
+          assert j['art']=='HOLD' and j['official_adoptions']==0
+          assert j['minecraft']=='FORBIDDEN' and j['formal_331_993']=='NOT_RUN'
+          print('TRUE_NATIVE_HABITAT_NEGATIVE_CONTROL_BLOCKED_AND_NOT_ART_PASS')
+          PY
+      - name: Preserve independent negative control even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-r1-authentic-native-habitat-negative-only-NOT-ART
+          path: /tmp/g4c7-r1-negative-art-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Append-only permanently preserve actual failure evidence
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = 'dev/g4c7-a17-monolithic-rift-fold-art-study'
+          remote="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)"
+          test "$remote" = "$GITHUB_SHA" || { echo 'BRANCH_ADVANCED_SAFE_STOP'; exit 71; }
+          dest=artifacts/g4c7-r1-true-native-negative-only-visibility-20261103-NOT-ART
+          test ! -e "$dest"
+          mkdir -p "$dest"
+          cp /tmp/g4c7-r1-negative-art-evidence/*.json "$dest/"
+          (cd "$dest" && sha256sum *.json > SHA256_REAL_VISIBILITY_NEGATIVE.txt)
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$dest"
+          git commit -m 'G4C7: permanently archive native habitat eye visibility negative without ART promotion'
+          git push origin "HEAD:$GITHUB_REF_NAME"
