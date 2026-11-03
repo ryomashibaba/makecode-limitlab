@@ -4,6 +4,8 @@ on:
     branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
     paths:
       - tools/g4c7_m37p2_live_gui_context_capture.py
+      - tools/g4c7_m37p2_local_gui_vision_review.py
+      - tests/test_g4c7_m37p2_local_gui_vision_review.py
       - .github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml
 permissions:
   contents: read
@@ -79,6 +81,28 @@ jobs:
           print('PASS_TWO_AUTHENTIC_NATIVE_GUI_3D_EDITOR_SCREENSHOTS_NOT_CYCLES_ART_HOLD')
           PY
           test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+      - name: Prove genuine GUI context to AI advisory safety gate (empty studio MUST SKIP Ollama)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/g4c7_m37p2_local_gui_vision_review.py
+          python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_local_gui_vision_review.py' -v
+          python3 -u tools/g4c7_m37p2_local_gui_vision_review.py \
+            --manifest /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_ACTUAL_GUI_CONTEXT_HOLD.json \
+            --out /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_LOCAL_VISION_GATE_ART_HOLD.json \
+            --vision-model gemma4:26b
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path('/tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART')
+          r=json.loads((d/'P2_LOCAL_VISION_GATE_ART_HOLD.json').read_text())
+          assert r['decision']=='EMPTY_STUDIO_DIRECT_ART_REQUIRED',r
+          assert r['vision_review']['status']=='SKIPPED_EMPTY_STUDIO_NO_IMAGE_MODEL_CALL'
+          assert r['new_geometry_produced'] is False
+          assert r['image_model_sent_outside_localhost'] is False
+          assert r['art']=='HOLD' and r['official_adoptions']==0
+          assert r['minecraft']=='FORBIDDEN'
+          print('REAL_NATIVE_GUI_TO_IMAGE_MODEL_GATE_EMPTY_ART_FAIL_CLOSED_NO_OLLAMA_NO_ART')
+          PY
       - name: Preserve actual viewport PNGs and native scene JSON, not art
         if: always()
         uses: actions/upload-artifact@v4
