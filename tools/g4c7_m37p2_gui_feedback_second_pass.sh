@@ -11,7 +11,7 @@ command -v xdotool >/dev/null
 command -v scrot >/dev/null
 mkdir -p "$folder"
 next="$folder/M37P2_SECOND_REAL_GUI_NOT_ART.blend"
-"$blender" -t 2 "$source" >"$folder/BLENDER_GUI_LOG.txt" 2>&1 &
+G4C7_NATIVE_SAVE_AS="$next" "$blender" -t 2 "$source" --python tools/g4c7_m37p2_save_native_after_real_gui_edit.py >"$folder/BLENDER_GUI_LOG.txt" 2>&1 &
 pid=$!
 trap 'kill -TERM "$pid" 2>/dev/null || true; wait "$pid" 2>/dev/null || true' EXIT
 window=""
@@ -46,18 +46,12 @@ sleep .4
 xdotool key --clearmodifiers KP_Decimal
 sleep 1
 scrot --window "$window" --file "$folder/GUI_AFTER_SECOND_PASS.png"
-xdotool mousemove --window "$window" 460 300
-xdotool key --clearmodifiers shift+F4
-sleep 1
-# GUI Console ONLY checks and saves. Geometry MUST come from the key events.
-code="import bpy,math; a=[x for x in bpy.data.objects if x.type=='MESH']; assert len(a)==1 and a[0].name=='Suzanne' and abs(a[0].location.x-8)<.02 and abs(a[0].location.y-5)<.02 and abs(a[0].scale.x-1.3)<.02 and abs(a[0].rotation_euler.z-math.radians(30))<.02,'GUI_CHANGE_NOT_PROVEN'; bpy.ops.wm.save_as_mainfile(filepath='$next',compress=True)"
-xdotool type --clearmodifiers --delay 2 "$code"
-xdotool key --clearmodifiers Return
+# No Console keyboard SAVE: a GUI timer only saves after observing exact real-key transforms.
 for n in $(seq 1 80); do
   test ! -s "$next" || break
   kill -0 "$pid" 2>/dev/null || { echo BLENDER_CLOSED_BEFORE_SAVE; exit 8; }
   sleep .35
 done
-test -s "$next" || { echo SECOND_NATIVE_BLEND_MISSING; exit 8; }
+test -s "$next" && test -s "$folder/GUI_POST_INPUT_SAVE_EVIDENCE.json" || { echo SECOND_NATIVE_BLEND_NOT_VERIFIED_SAVED; exit 8; }
 test "$(sha256sum "$source" | cut -d' ' -f1)" = "$expected"
 echo "SECOND_REAL_X11_GUI_EDIT_SAVED_NATIVE_TECH_NOT_ART"
