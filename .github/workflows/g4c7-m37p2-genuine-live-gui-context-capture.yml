@@ -25,6 +25,9 @@ jobs:
   capture-two-real-native-viewports:
     runs-on: ubuntu-24.04
     timeout-minutes: 18
+    # Isolated, ephemeral Blender preferences. No change to .blend or user machines.
+    env:
+      XDG_CONFIG_HOME: /tmp/g4c7-p2-isolated-xdg-config
     steps:
       - uses: actions/checkout@v4
       - name: Reject geometry mutation scripts and source tampering at the first gate
@@ -80,6 +83,26 @@ jobs:
           grep -F 'blender-4.5.15-linux-x64.tar.xz' blender-4.5.15.sha256 | sha256sum -c -
           tar -xf blender-4.5.15-linux-x64.tar.xz
           test -x blender-4.5.15-linux-x64/blender
+      - name: Seed isolated Blender preferences to avoid first-run Quick Setup obstructing the real VIEW_3D
+        run: |
+          set -euo pipefail
+          # The prior real X11 root capture showed the Blender 4.5 "Quick Setup"
+          # modal still open over BOTH live editors, while screenshot_area gave
+          # a 1x1 black frame. Do not reuse the GitHub runner user preference.
+          mkdir -p "$XDG_CONFIG_HOME"
+          blender=/tmp/g4c7-p2-live-gui-bin/blender-4.5.15-linux-x64/blender
+          timeout --signal=TERM --kill-after=5s 75s "$blender" -b -t 2             --python-exit-code 9 --python-expr             "import bpy; r=bpy.ops.wm.save_userpref(); print('P2_SAVE_USERPREF', sorted(r)); assert 'FINISHED' in r"
+          config="$XDG_CONFIG_HOME/blender/4.5/config/userpref.blend"
+          test -s "$config"
+          python3 - <<'PY'
+          import hashlib,os
+          from pathlib import Path
+          p=Path(os.environ["XDG_CONFIG_HOME"])/"blender"/"4.5"/"config"/"userpref.blend"
+          assert p.is_file() and p.stat().st_size>100
+          with p.open("rb") as f: assert f.read(7)==b"BLENDER"
+          print("P2_ISOLATED_REAL_BLENDER_USERPREF_READY",
+                p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
       - name: Run REAL GUI with two VIEW_3D areas and capture each native editor as PNG
         env:
           LIBGL_ALWAYS_SOFTWARE: "1"

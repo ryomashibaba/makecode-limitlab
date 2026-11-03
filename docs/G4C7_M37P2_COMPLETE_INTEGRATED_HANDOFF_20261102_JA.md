@@ -567,3 +567,10 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - `tests/test_g4c7_m37p2_author_candidate_gallery.py`6/6はPython/Pillow隔離テストPASS。GitHub blob SHAはローカル検証コードと完全一致。これは真正Blender CI成功や新都市の完成と全く異なる。
 - 新ワークフロー`.github/workflows/g4c7-m37p2-new-authored-blend-three-views.yml`は、研究ブランチ`artifacts/g4c7-m37p2-direct-authored-candidates/**/*.blend`へ新規作者原本が追加されたときのみBlender 4.5.15真正レンダ・元原本不変・3画像と審査資料の追加保存を試みる。画像のRepo内保存先は`artifacts/g4c7-m37p2-saved-native-author-reviews/<原本SHA256>/`。競合や不正時は非強制pushを拒否しActions側に保存する。mainは触れない。
 - 現状では**新しい実作者モデル0、実都市3ビュー0、正式ART採用0、全体ART HOLD**。新workflowは真正BLEND入力が無いため発火しておらず、実Blender完走未確認。次の真の工程は人の体験を反映した同一BLEND直接造形。その作者操作を本Chatの権限だけでは行えないため、GUI・Workアクセスを無断で偽装しない。第三の簡単な箱/板/橋自動造形は作らない。331人体993足元／G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、PR #53 Draft、main保護、Workは事前承認。
+
+
+## 42. 2026-11-03 M37-P2：実X11 artifact監査でQuick Setupの初回設定障害を特定
+
+- [完成CI #41566892238](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41566892238)はFAIL。artifact #13202040183をダウンロードし、実X11 PNGを人間目視で監査した。Blender4.5.15の左右3D編集画面は描画されているが中央に**Quick Setup（Continue付き）初回起動ダイアログ**が覆いかぶさった状態。`MACRO_EDITOR`1×1黒、`LIVED_EDITOR`欠落、独立X11 root1600×900可視率0.971222。CIログは`REAL_VIEW_SCREENSHOT_FILE_SIZE_INVALID_MACRO_EDITOR`。このスクリーンショットの現象はXvfb全体黒ではない。
+- [今回の実測詳細](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_X11_QUICK_SETUP_BLOCKING_EDITOR_20261103_JA.md)。新たに`XDG_CONFIG_HOME`をCI専用一時場所へ切り、同じBlender4.5.15の背景実行によって`bpy.ops.wm.save_userpref()`し、`userpref.blend`実在・BLENDERマジック・SHAを検査してからGUIを起動するようworkflowを変更。対象は**GitHub Actionsの一時設定のみ**。原本・メッシュ・ローカルBlenderの設定は変えない。
+- 新CIでの実画素成果までは`Quick Setup`が1×1失敗の唯一原因だと断言しない。ART HOLD／新作者都市メッシュ0／採用0・正式331/993・G0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／main変更禁止・PR #53 Draft／Work事前許可を維持。次工程はCI結果と真の作品造形であり、旧自動箱生成へ戻らない。

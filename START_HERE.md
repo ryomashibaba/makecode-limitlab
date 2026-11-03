@@ -324,3 +324,10 @@
 - [新候補の真正3視点Actions](.github/workflows/g4c7-m37p2-new-authored-blend-three-views.yml)を追加。**新規直接作者BLENDが** `artifacts/g4c7-m37p2-direct-authored-candidates/` **に追加されたときだけ** GitHub上で3真正Cyclesビュー、Markdown閲覧、manifestを作成し、研究ブランチの別名SHAフォルダへappend-only保存を試みる。保存が失敗してもActions artifactへ証拠保持する。main／旧原本変更、Work・Minecraft操作なし。
 - **制限**：新しい作者制作BLENDがまだ存在しないため、この新Actionsを実行して作品の成功を確認したわけではない。黒GUI CI [#41570166875](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41570166875) は直近照合でpendingであり、根本原因不明。GUI診断を今後の作品制作のブロッカーにはしないが、GUIが直ったと主張もしない。
 - **次の本来の作業**：同じv3から派生した新保存原本を、AI作者/GUI作者が都市全景と実住宅・実製造・研究文化の本物のメッシュとして同時編集すること。現在のChatからユーザーWindows Blender GUIに直接アクセスできず、Workの事前承認もないため**本物の作者造形は未実施**。ART HOLD／採用0・331人体993足元・G0/S1/G1/G2/G3 NOT RUN・MakeCode未評価・Minecraft施工禁止・PR #53 Draft／main保護は不変。
+
+
+## M37-P2 2026-11-03：完了した失敗CIの真正X11画像からQuick Setupを発見、初回設定を隔離事前保存
+
+- [実画面の根拠と限定修正](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_X11_QUICK_SETUP_BLOCKING_EDITOR_20261103_JA.md)。[CI #41566892238](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41566892238)はcompleted/failure。artifact 13202040183の**1600×900の実X11画像を取得して直接目視**し、左右2つのBlender VIEW_3Dが描かれている一方、初回`Quick Setup`ダイアログが中央に残っていることを確認した。Blender`screenshot_area`は**1×1黒PNG**、第2領域は未生成、X11 rootは非黒割合0.971222。描画サーバ全体が黒いわけではない。
+- [GUIワークフロー](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)に**隔離XDG設定での`bpy.ops.wm.save_userpref()`事前実行**と実`userpref.blend`のマジック／SHA照合を追加。ユーザー設定・保護v3・Minecraftは不変更。新実行でQuick Setupが消え、真正VIEW_3D非黒画像が取れるかを実証するまではGUI TECH PASS未認定。
+- ユーザーの最終目標は新しい真正都市造形であり、さらに空検査を増やすのは不可。ART HOLD／正式採用0件／331/993・G0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／Draft PR #53／main保護／Work事前承認制を維持。
