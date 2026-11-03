@@ -349,3 +349,7 @@
 - [原本ソース監査：METHOD HOLD（実画像未取得）](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_CLOUD_BPY_AUTHOR_METHOD_INDEPENDENT_REVIEW_20261103_JA.md)。前工程のクラウドbpy研究コードは12棟が共通`tower()`から生成され、通路・大地・家具が定型関数で形成されるため、**旧不採用形態を克服した真のR1作者作品とは認定しない**。ソース検査の結果であり、実画像未確認の美術REJECTとは区別。
 - 既存クラウドCI #41577471323は実測時 PENDING／Artifacts 0。たとえ将来TECH PASSでも本命美術候補へ自動昇格させず、真Cycles画像を審査し、同型反復なら早期REJECT。追加の同型生成器や診断CIは増やさない。
 - 直接GUIを見て編集するクラウドAIの能力は**未実証**、Workは事前承認なしに使用しない。R0〜R5／ART HOLD正式採用0／安全QA未実施／Minecraft施工禁止／main・保護v3不変更／Draft PR #53／Terra・Luna優先／Sol事前承認は不変。
+## 2026-11-03 M37-P2 — 真正Cloud Blender原本をActions Artifactから独立取得
+
+- [独立バイナリ検査と厳格な限界](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ACTUAL_NATIVE_ARTIFACT_INDEPENDENT_AUDIT_20261103_JA.md)。失敗した旧run #41577380073のArtifact ID 13208845765から**本物のBlender原本**（198,887 bytes、SHA256 `ac6c322e1f4a957281ca5a7f2d9633ce4d602b7254cb1717735feb6ed02e9bd6`）を取得。zstd展開後 `BLENDER-v405`、データブロック終端整合、OB=235／ME=227。別Blenderプロセスによる再読込もCIログ上で確認。SOURCE TECH限定。
+- 失敗原因はBlender Pythonが旧reviewのPILをimportできなかったこと。修正済みcloud run #41577471323はqueuedで、**真Cycles画像はまだ未取得**。METHOD HOLD、ART HOLD／正式採用0を維持し、画像を見るまで美術評価を宣言しない。Work未承認不使用・Sol事前承認・main/保護v3/Minecraft/PR #53の固定方針は不変。
