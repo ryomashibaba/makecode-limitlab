@@ -456,3 +456,15 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [CI保存物](../.github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml)に、本物の修正済み別名`.blend`もartifactへ含める変更を実施。[追加ガードの最終CI #41555143899 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41555143899) は3枚のPNGバイト列SHA改変拒否と修正後BLENDのartifact保存まで実証と明示。前回の全ループCI成功とは区別。
 - **本来のアート制作の欠落は解消していない**。モデルが見栄えを自ら判断して形を作り込む能力・実Blender GUIを見て作者操作する経路・5用途を伴う巨大街並みの独創的造形は未成立。第三の単純箱都市を反復しない。Work使用量枯渇・事前許可制を守り、ユーザーに新たなローカル試行を求めない。
 - 固定：全体ART HOLD、正式採用0、331人体/993足元・正式G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main保護、PR #53 Draft未merge。
+
+---
+
+## 31. M37-P2：実Cycles前後比較で自動箱編集を停止し、直接作者造形へ戻す品質ゲート（2026-11-03）
+
+[実施した根拠と固定判断](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ART_GAP_AUTHOR_CAPABILITY_GATE_20261103_JA.md)。
+
+- [技術CI #41556855447 completed/SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41556855447)：**本物の保存Blender→真正Cycles3画像→EARLY ART REJECT**の元・1回修正後それぞれに新ゲートを実行し、両方`REQUIRE_NEW_DIRECT_AUTHOR_3D_CONTENT`、モデル追加実行0を確認。修正前にあった2直方体8頂点6面という失格要素は、面を増やしても本当の都市全景・工場・住居内部等の欠落を解消しない。新ゲート回帰7件PASS。
+- [実装](../tools/g4c7_m37p2_art_gap_authoring_gate.py)と[検査7件](../tests/test_g4c7_m37p2_art_gap_authoring_gate.py)。実BLEND SHA・3 PNG SHA・不採用フィードバックの一致確認、`true_city=false`・工場見学隔壁／研究文化／住居の`NOT_AUTHORED`など根本的な不足を確認した時点で`REQUIRE_NEW_DIRECT_AUTHOR_3D_CONTENT`を出し、旧2箱の自動補修とモデル呼出しを許可しない。正式美術を自動PASSする分岐は存在しない。
+- CI artifact `g4c7-p2-one-true-feedback-native-revision-before-after-not-art` ID `13195277229`に旧2箱BLEND、前後のPNG、編集結果、前後の停止判断JSONを保存した。**技術PASSは美術作成成功ではない。**
+- **次工程は既存の「街を織り込む造船都市」美術方針どおり作者が同一Blender原本へ都市マクロ＋工場／厚い見学隔壁＋研究文化＋玄関・前室・居間・窓の実居住断面を直接造形することのみ**。現ChatはWindows Blender GUIにアクセスできずWork不使用のため、今時点でその制作自体を実行したとは報告できない。コード生成の第三箱都市／同じ薄い板やブロックの自動形状増殖へ戻らない。
+- R0〜R5、ART HOLD・正式採用0、331人体／993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode未測定、Minecraft施工禁止、main保護、PR #53 Draft・未merge、Work事前承認制の方針は維持。
