@@ -259,3 +259,11 @@
 - **実画素確認**：旧[GUI #41559389596](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41559389596)の2 VIEW_3D PNGは**657×783と661×783の全画素が黒**で、画像AI入力としては**失敗**。旧「GUI capture PASS」はBlender GUIウィンドウ・PNGの存在のみの技術結果だった。[訂正・調査正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)。
 - [Blender GUI capture](tools/g4c7_m37p2_live_gui_context_capture.py)は描画を再試行し、黒PNGは失格にする。追加でCIのX11画面全体を独立撮影して診断用に保存。**X11 root画像を美術またはBlenderの2実編集画面の代用にはしない**。[実診断CI #41562899937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41562899937)は本追補時点でqueued。画像実内容を確かめるまでGUI可視コンテキスト技術PASSは未認定。
 - [ローカルAI入力ゲート](tools/g4c7_m37p2_local_gui_vision_review.py)は真っ黒な画像・不正署名・SHA不一致・空スタジオを拒否し、Ollamaモデルは明示依頼時以外呼ばない。本物の複雑な都市・居住断面の造形はまだ**0件**。WORK不使用／ART HOLD／採用0／正式安全QA未実施／Minecraft施工禁止／main・v3保護／PR #53 Draftを固定。
+
+---
+
+## M37-P2 2026-11-03：AIへの黒GUI画像混入をPNGバイト独立復元で防止
+
+- 先行検証はGUI 2 PNGの**両方が完全黒**だった。実画像の有用性が成立していない事実は変更なし。調査CIではBlender native 2視点と独立X11 rootを同時に画像取得し、原因を分ける。結果確認前に「GUI正常」と称さない。
+- [安全入力ゲート](tools/g4c7_m37p2_local_gui_vision_review.py)はレポートの可視画素率／画像SHAだけを盲信せず、**PNGの実バイトを標準ライブラリで独立デコード**。CRC、サイズ、8bit RGB/RGBA/Gray、PNGフィルタ、輝度を実確認し、黒画像、CRC破損、偽陽性レポートならローカルAIへ画像を送る前に拒否する。[実PNG回帰11件](tests/test_g4c7_m37p2_local_gui_vision_review.py)。Blender / Xvfbダウンロードより前にチェックできるようCIも更新。
+- [検証正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)／[統合引き継ぎ節35](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。最新版GUI CIは**完了判定まで未検証**。都市ART未制作、ART HOLD正式採用0、正式安全QA 331/993等未実施、Minecraft施工禁止、main保護、Draft PR #53、Workなし。
