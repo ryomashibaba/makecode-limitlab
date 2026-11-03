@@ -479,3 +479,13 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [正式GUI技術CI](../.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)で、Xvfb＋Blender 4.5.15の実GUI、2つの真VIEW_3Dを照合。原本とPNG SHA及び安全チャーター不変を検証。**初回CI #41558995077はFAIL：原本ファイル単独オープンではUI split未実行のため一画面のみ**。本体の旧実績済みネイティブ`P2 parallel split`を正規のSHA固定v3から登録・実行する新コードで修正。修正版 #41559389596 のSUCCESS確認までは新GUIスクリーンショット技術PASSを認めない。
 - [原因と境界](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_GUI_VIEWPORT_CONTEXT_BRIDGE_20261103_JA.md)。実行経路は**Blender GUIが現在表示しているものを読取る**だけで、AIがその画面を見て自由形状を彫刻し都市・住居/工場/研究/文化を実造形する閉ループは**まだ未確立**。ここを完成と報告しない。次の作品候補は必ず同一真正Blender原本に都市全景＋実居室＋工場＋見学隔壁＋研究文化を本当に作者造形する。
 - Workを起動しない、旧箱2体やO1/P1形状を無意味に繰り返さない。main・保護v3原本・Minecraft変更なし、PR #53 Draft未merge、正式331人体/993足元とG0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、正式ART採用0。
+
+---
+
+## 33. M37-P2：GUI2画面のPNG黒画像偽陽性発見と安全なローカル視覚AI入力（2026-11-03）
+
+- [実PNGを直接確認した訂正報告](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)。[旧GUI #41559389596](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41559389596) はcompleted/SUCCESSだったが、GitHub artifact ID`13196718022`を実ダウンロードして**左右2 PNGを本人のモデルが全画素解析・目視したところ真っ黒**だった。都市側657×783=514,431画素すべてRGB(0,0,0)、居住側661×783=517,563画素すべてRGB(0,0,0)。**旧CI SUCCESSを「本当の画面を視覚的に読めた」と認定してはならない**。初期の画像PNG署名・SHAテストではこの欠落を見逃した。
+- [実GUIキャプチャ修正](../tools/g4c7_m37p2_live_gui_context_capture.py)でBlenderのフレーム描画/Swapを実行後、Blender自身で保存PNGの**実画素明るさを再読込・検査**する。非黒画素が不足なら`REAL_GUI_SCREENSHOT_BLACK_OR_UNDRAWN_REJECT`でFAIL。結果には可視ピクセル比率を残す。[CI](../.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)もピクセル可視情報を検査する。**有効な実画面の成功は修正版CIが実測で成功し、さらにPNGを目視するまで未認定**。
+- [ローカルGUI2画像→任意Gemma4画像入力](../tools/g4c7_m37p2_local_gui_vision_review.py)と[8件回帰テスト](../tests/test_g4c7_m37p2_local_gui_vision_review.py)を実装。**2画像と元BLEND/PNGのSHA、実GUIであること、5コレクション状態、実ピクセル可視ゲート**を照合。不正/黒画像ならモデルに送らず止まる。原本がメッシュ0件の場合も`EMPTY_STUDIO_DIRECT_ART_REQUIRED`で**モデル呼出し0**。メッシュが存在し、ユーザーが明示指定した場合のみローカル`http://127.0.0.1:11434/api/chat`へ画像を渡し、造船都市の必要要素のうち**確認できるもの・欠けるもの**を短いJSONで返す。任意のコードやBlender操作は実行しない。
+- 任意Ollamaの実GPU画像推論・視覚認識精度・Windows Blender 5.2との相互運用は**未実施**。今回の画像モデルコードは美術を制作するものではない。GUIスクリーンショット取得が実際に成功するまでAIへの画像転送は正当化されない。
+- 旧2箱修正・旧一括頂点JSONなど不採用路線はRETIREDのまま。ART HOLD、正式採用0、正式331人体993足元/G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、保護v3・main変更禁止、PR #53 Draft未merge、Work不使用を固定。
