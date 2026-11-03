@@ -8,6 +8,8 @@ on:
       - tools/g4c7_m37p2_paired_operator_three_view_evidence.py
       - tools/g4c7_m37p2_visual_feedback_gate.py
       - tests/test_g4c7_m37p2_visual_feedback_gate.py
+      - tools/g4c7_m37p2_feedback_to_native_revision.py
+      - tests/test_g4c7_m37p2_feedback_to_native_revision.py
       - tools/g4c7_m37p2_ollama_paired_native_action_proposal.py
       - tests/test_g4c7_m37p2_ollama_paired_operator_proposal.py
       - .github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml
@@ -32,6 +34,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_paired_operator_native.py' -v
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_ollama_paired_operator_proposal.py' -v
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_visual_feedback_gate.py' -v
+          python -m unittest discover -s tests -p 'test_g4c7_m37p2_feedback_to_native_revision.py' -v
       - name: Install real bpy 4.5 native runtime (source v3)
         run: |
           python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
@@ -118,6 +121,93 @@ jobs:
           PY
           cp /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/
           cp /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/OPEN_THREE_VIEW_VISUAL_FEEDBACK.html /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/
+      - name: Create ONE feedback-hash-bound native FACE edit action study, never new primitive objects
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          source=Path('/tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY/P2_NATIVE_EDITOR_PAIRED_STUDY_UNAPPROVED.blend')
+          review=Path('/tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json')
+          r=json.loads(review.read_text(encoding='utf-8'))
+          assert r['outcome']=='EARLY_ART_REJECT'
+          p={
+            'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
+            'feedback_sha256':hashlib.sha256(review.read_bytes()).hexdigest(),
+            'purpose':'SINGLE_TECH_REVISION_NOT_ART',
+            'responds_to':['TWO_CUBOIDS_8_VERTICES_6_FACES_EACH'],
+            'art_intent':'One reversible non-art Blender face-topology change linked to actual true three-view rejection; no city quality claim.',
+            'actions':[
+              {'role':'city_macro','op':'inset_facing_face','face':'TOP','inset':0.15,
+               'why':'Edit selected top surface only and show native mesh face-level editing.'},
+              {'role':'habitat','op':'extrude_facing_face','face':'FRONT','delta':[0.0,0.5,0.0],
+               'why':'Edit selected habitat front face for a bounded new depth profile.'}
+            ]
+          }
+          dest=Path('/tmp/G4C7_REVIEW_HASH_BOUND_NATIVE_ACTIONS_NON_ART.json')
+          dest.write_text(json.dumps(p))
+          print('HASH_BOUND_ONE_REVISION_ACTIONS_PREPARED_NO_ART')
+          PY
+      - name: Apply ONE actual native Blender feedback revision to a SEPARATE file and verify real topology differences
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 360s python -u tools/g4c7_m37p2_feedback_to_native_revision.py \
+            --source /tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY/P2_NATIVE_EDITOR_PAIRED_STUDY_UNAPPROVED.blend \
+            --feedback /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json \
+            --actions /tmp/G4C7_REVIEW_HASH_BOUND_NATIVE_ACTIONS_NON_ART.json \
+            --out /tmp/G4C7_NATIVE_FEEDBACK_REVISION_01_TECH_ONLY
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('/tmp/G4C7_NATIVE_FEEDBACK_REVISION_01_TECH_ONLY')
+          r=json.loads((d/'P2_NATIVE_REVISION_01_EVIDENCE.json').read_text())
+          assert r['art']=='HOLD' and r['official_adoptions']==0
+          assert r['original_native_scene_modified'] is False
+          assert r['minecraft']=='FORBIDDEN' and r['human_gui_authorship']=='NOT_PERFORMED'
+          assert r['action_count']==2 and r['visual_critique_after_revision']=='NOT_YET_PERFORMED'
+          assert set(r['roles_before'])=={'city_macro','habitat'}
+          for role in ('city_macro','habitat'):
+              assert r['roles_after'][role]['faces']>r['roles_before'][role]['faces']
+              assert r['roles_after'][role]['vertices']>r['roles_before'][role]['vertices']
+          out=d/r['new_blend_filename']
+          assert out.is_file()
+          assert hashlib.sha256(out.read_bytes()).hexdigest()==r['new_blend_sha256']
+          old=Path('/tmp/G4C7_PAIRED_NATIVE_OPERATOR_TECH_ONLY/P2_NATIVE_EDITOR_PAIRED_STUDY_UNAPPROVED.blend')
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==r['source_blend_sha256']
+          print('TRUE_BLENDER_FEEDBACK_TO_NEW_NATIVE_MESH_REVISION_TECH_PASS_ART_HOLD')
+          PY
+      - name: Re-render revised SAVED scene through exact SAME real three Cycles cameras
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 360s python -u tools/g4c7_m37p2_paired_operator_three_view_evidence.py \
+            --source /tmp/G4C7_NATIVE_FEEDBACK_REVISION_01_TECH_ONLY/P2_NATIVE_EDITOR_FEEDBACK_REVISION_01_UNAPPROVED.blend \
+            --out /tmp/G4C7_REVISION_01_THREE_REAL_CYCLES_NON_ART
+          python -u tools/g4c7_m37p2_visual_feedback_gate.py \
+            --report /tmp/G4C7_REVISION_01_THREE_REAL_CYCLES_NON_ART/P2_NATIVE_PAIRED_THREE_VIEW_REPORT.json \
+            --out /tmp/G4C7_REVISION_01_VISUAL_FEEDBACK_ART_REJECT
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=Path('/tmp/G4C7_REVISION_01_VISUAL_FEEDBACK_ART_REJECT')
+          r=json.loads((a/'P2_REAL_IMAGE_ART_FEEDBACK.json').read_text())
+          assert r['outcome']=='EARLY_ART_REJECT',r
+          assert r['official_adoptions']==0
+          assert 'MISSING_HABITAT_LIVING_INTERIOR' in r['reasons']
+          assert r['new_city_art_generated'] is False
+          assert len(list(a.glob('*.png')))==3
+          print('ONE_FEEDBACK_EDIT_RENDER_CRITIQUE_LOOP_TECH_PASS_CITY_ART_STILL_REJECT')
+          PY
+      - name: Keep both before and after genuine Cycles review evidence (NOT ART)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g4c7-p2-one-true-feedback-native-revision-before-after-not-art
+          path: |
+            /tmp/G4C7_NATIVE_FEEDBACK_REVISION_01_TECH_ONLY/P2_NATIVE_REVISION_01_EVIDENCE.json
+            /tmp/G4C7_REVISION_01_VISUAL_FEEDBACK_ART_REJECT/
+            /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json
+          if-no-files-found: warn
+          retention-days: 7
       - name: Upload THREE TRUE Blender renders strictly labeled NOT ART
         uses: actions/upload-artifact@v4
         if: always()
