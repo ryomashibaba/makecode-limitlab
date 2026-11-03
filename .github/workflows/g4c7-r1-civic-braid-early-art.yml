@@ -1,0 +1,119 @@
+name: G4C7 R1 authorial Civic Braid section 5 true Cycles EARLY ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_r1_civic_braid_authorial_section.py
+      - tools/g4c7_r1_civic_braid_native_render_verify.py
+      - .github/workflows/g4c7-r1-civic-braid-early-art.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-r1-one-distinct-authorial-section-early-art
+  cancel-in-progress: false
+jobs:
+  one-authorial-city-native-early-art-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 32
+    env:
+      G4C7_BRAID_DIR: /tmp/g4c7-r1-civic-braid-distinct-art-trial
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify current original assets, do not modify prior art
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          protected=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          rejected=artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $protected" | sha256sum -c -
+          echo "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06  $rejected" | sha256sum -c -
+          python3 -m py_compile tools/g4c7_r1_civic_braid_authorial_section.py tools/g4c7_r1_civic_braid_native_render_verify.py
+          mkdir -p "$G4C7_BRAID_DIR"
+      - name: Download official Blender 4.5.15 + official checksum
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-r1-blender-authorial
+          cd /tmp/g4c7-r1-blender-authorial
+          curl -fsSL --retry 3 --max-time 240 -o sha256sum.txt https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -o blender.tar.xz https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          sha="$(grep -F blender-4.5.15-linux-x64.tar.xz sha256sum.txt | awk '{print $1}')"
+          echo "$sha  blender.tar.xz" | sha256sum -c -
+          tar -xf blender.tar.xz
+          test -x blender-4.5.15-linux-x64/blender
+      - name: Author one integrated district native scene (NOT repeated skyline generator)
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-r1-blender-authorial/blender-4.5.15-linux-x64/blender
+          timeout --signal=TERM --kill-after=10s 180s "$blender" -b -t 2 --python-exit-code 51 --python tools/g4c7_r1_civic_braid_authorial_section.py 2>&1 | tee "$G4C7_BRAID_DIR/BLENDER_AUTHORIAL_SOURCE_LOG.txt"
+          test -s "$G4C7_BRAID_DIR/R1_CIVIC_BRAID_AUTHORIAL_SECTION_ART_UNREVIEWED.blend"
+      - name: Independently reopen same saved Blender source and render five real Cycles views
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-r1-blender-authorial/blender-4.5.15-linux-x64/blender
+          native="$G4C7_BRAID_DIR/R1_CIVIC_BRAID_AUTHORIAL_SECTION_ART_UNREVIEWED.blend"
+          timeout --signal=TERM --kill-after=15s 1100s "$blender" -b "$native" -t 3 --python-exit-code 52 --python tools/g4c7_r1_civic_braid_native_render_verify.py 2>&1 | tee "$G4C7_BRAID_DIR/BLENDER_INDEPENDENT_FIVE_RENDER_LOG.txt"
+          test -s "$G4C7_BRAID_DIR/INDEPENDENT_SAME_NATIVE_FIVE_TRUE_CYCLES_AUDIT.json"
+      - name: Verify actual non-identical visual pixels and create review thumbnails
+        run: |
+          set -euo pipefail
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-pil
+          /usr/bin/python3 - <<'PY'
+          from PIL import Image, ImageStat
+          from pathlib import Path
+          import json
+          p=Path('/tmp/g4c7-r1-civic-braid-distinct-art-trial')
+          files=list(p.glob('*_CYCLES_TRUE_NATIVE.png'))
+          assert len(files)==5, [x.name for x in files]
+          hashes=set()
+          for f in files:
+              with Image.open(f) as im:
+                  assert im.format=='PNG' and im.size==(960,600)
+                  s=im.convert('RGB')
+                  small=s.resize((192,120))
+                  colors=len(set(small.getdata()))
+                  std=max(ImageStat.Stat(small).stddev)
+                  assert colors>=100 and std>=8,(f.name,colors,std)
+                  hashes.add(small.tobytes())
+                  s.resize((576,360)).save(p/(f.stem+'_REVIEW.jpg'),quality=79)
+          assert len(hashes)==5,"FIVE_VIEWS_NOT_DISTINCT"
+          report=json.loads((p/'INDEPENDENT_SAME_NATIVE_FIVE_TRUE_CYCLES_AUDIT.json').read_text())
+          assert report['art']=='HOLD' and report['official_art_adoptions']==0
+          assert report['formal_331_body_993_foot']=='NOT_RUN'
+          print('FIVE_TRUE_BLENDER_VIEWS_DISTINCT_IMAGES_TECH_ONLY_NOT_ART_PASS')
+          PY
+          protected=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          rejected=artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $protected" | sha256sum -c -
+          echo "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06  $rejected" | sha256sum -c -
+      - name: ALWAYS retain actual source, images and failed creation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-r1-authored-civic-braid-single-native-5-cycles-ART-HOLD
+          path: /tmp/g4c7-r1-civic-braid-distinct-art-trial/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Permanently archive NEW unreviewed native and images append-only
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          remote="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | awk '{print $1}')"
+          if test "$remote" != "$GITHUB_SHA"; then
+              echo "HEAD_CHANGED_NO_FORCE_NO_OVERWRITE";exit 65
+          fi
+          src="$G4C7_BRAID_DIR"
+          test -s "$src/INDEPENDENT_SAME_NATIVE_FIVE_TRUE_CYCLES_AUDIT.json"
+          dst=artifacts/g4c7-r1-civic-braid-authorial-section-ART-UNREVIEWED
+          test ! -e "$dst"
+          mkdir -p "$dst"
+          cp "$src"/*.blend "$dst/"
+          cp "$src"/*.png "$dst/"
+          cp "$src"/*.json "$dst/"
+          cp "$src"/*.jpg "$dst/"
+          (cd "$dst"; sha256sum *.blend *.png *.jpg *.json > SHA256_FIVE_VIEW_NATIVE_EVIDENCE.txt)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$dst"
+          git commit -m "G4C7 R1: archive one integrated authored civic section and 5 true Blender images, ART HOLD"
+          git push origin "HEAD:$GITHUB_REF_NAME"
