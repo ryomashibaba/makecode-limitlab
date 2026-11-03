@@ -1,0 +1,91 @@
+name: G4C7 M37-P2 real two Blender GUI screenshot context NO CITY ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_live_gui_context_capture.py
+      - .github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml
+permissions:
+  contents: read
+concurrency:
+  group: g4c7-p2-genuine-live-context
+  cancel-in-progress: true
+jobs:
+  capture-two-real-native-viewports:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject geometry mutation scripts and source tampering at the first gate
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/g4c7_m37p2_live_gui_context_capture.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          src=Path('artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend')
+          assert src.is_file()
+          assert hashlib.sha256(src.read_bytes()).hexdigest()=='536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249'
+          code=Path('tools/g4c7_m37p2_live_gui_context_capture.py').read_text()
+          for forbidden in ('bpy.ops.mesh.', 'bpy.data.meshes.new(', '.from_pydata(', 'bpy.ops.wm.save_as_mainfile(', 'bpy.ops.render.render(', 'urllib.request', 'requests.post('):
+              assert forbidden not in code,forbidden
+          print('P2_GUI_CONTEXT_READ_ONLY_SOURCE_GUARD_PASS')
+          PY
+      - name: Install actual X display and OpenGL software drivers
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1
+      - name: Fetch real official Blender 4.5.15 GUI and verify official release SHA
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-p2-live-gui-bin
+          cd /tmp/g4c7-p2-live-gui-bin
+          curl -fsSL --retry 3 --max-time 240 -o blender-4.5.15.sha256 https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -o blender-4.5.15-linux-x64.tar.xz https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          grep -F 'blender-4.5.15-linux-x64.tar.xz' blender-4.5.15.sha256 | sha256sum -c -
+          tar -xf blender-4.5.15-linux-x64.tar.xz
+          test -x blender-4.5.15-linux-x64/blender
+      - name: Run REAL GUI with two VIEW_3D areas and capture each native editor as PNG
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 185s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' \
+            /tmp/g4c7-p2-live-gui-bin/blender-4.5.15-linux-x64/blender -t 2 \
+            artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend \
+            --python-exit-code 9 --python tools/g4c7_m37p2_live_gui_context_capture.py -- \
+            --gui-ci-capture /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          d=Path('/tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART')
+          r=json.loads((d/'P2_ACTUAL_GUI_CONTEXT_HOLD.json').read_text())
+          assert r['result']=='TRUE_GUI_VIEWPORTS_AND_NATIVE_SCENE_DATA_CAPTURED'
+          assert r['source_is_protected_empty_v3'] is True
+          assert r['bpy_background'] is False
+          assert r['all_scene_mesh_count']==0
+          assert r['no_model_calls'] is True
+          assert r['human_gui_edited_by_this_script'] is False
+          assert r['art']=='HOLD' and r['official_adoptions']==0
+          assert r['minecraft']=='FORBIDDEN' and r['formal_331_993']=='NOT_RUN'
+          assert set(r['views'])=={'MACRO_EDITOR','LIVED_EDITOR'}
+          for name,v in r['views'].items():
+              assert v['source']=='ACTUAL_BLENDER_GUI_VIEW_3D_NOT_CYCLES_RENDER'
+              p=d/v['file']
+              assert p.is_file() and p.read_bytes()[:8]==bytes.fromhex('89504e470d0a1a0a')
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==v['sha256']
+              assert v['width_px']>=100 and v['height_px']>=100
+          assert Path('/tmp/G4C7_GUI_SMOKE_STATUS.txt').read_text().strip()=='0'
+          print('PASS_TWO_AUTHENTIC_NATIVE_GUI_3D_EDITOR_SCREENSHOTS_NOT_CYCLES_ART_HOLD')
+          PY
+          test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+      - name: Preserve actual viewport PNGs and native scene JSON, not art
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-p2-actual-dual-live-gui-editor-context-no-art
+          path: |
+            /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/
+            /tmp/G4C7_GUI_SMOKE_STATUS.txt
+          if-no-files-found: warn
+          retention-days: 14
