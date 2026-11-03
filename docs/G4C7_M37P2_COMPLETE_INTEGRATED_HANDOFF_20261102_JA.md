@@ -574,3 +574,15 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [完成CI #41566892238](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41566892238)はFAIL。artifact #13202040183をダウンロードし、実X11 PNGを人間目視で監査した。Blender4.5.15の左右3D編集画面は描画されているが中央に**Quick Setup（Continue付き）初回起動ダイアログ**が覆いかぶさった状態。`MACRO_EDITOR`1×1黒、`LIVED_EDITOR`欠落、独立X11 root1600×900可視率0.971222。CIログは`REAL_VIEW_SCREENSHOT_FILE_SIZE_INVALID_MACRO_EDITOR`。このスクリーンショットの現象はXvfb全体黒ではない。
 - [今回の実測詳細](../research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_X11_QUICK_SETUP_BLOCKING_EDITOR_20261103_JA.md)。新たに`XDG_CONFIG_HOME`をCI専用一時場所へ切り、同じBlender4.5.15の背景実行によって`bpy.ops.wm.save_userpref()`し、`userpref.blend`実在・BLENDERマジック・SHAを検査してからGUIを起動するようworkflowを変更。対象は**GitHub Actionsの一時設定のみ**。原本・メッシュ・ローカルBlenderの設定は変えない。
 - 新CIでの実画素成果までは`Quick Setup`が1×1失敗の唯一原因だと断言しない。ART HOLD／新作者都市メッシュ0／採用0・正式331/993・G0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／main変更禁止・PR #53 Draft／Work事前許可を維持。次工程はCI結果と真の作品造形であり、旧自動箱生成へ戻らない。
+
+
+---
+
+## 43. 2026-11-03 最終モデル・品質・コスト方針と新チャット向け正本
+
+- 最新入口は [2026-11-03クラウド中心・モデル費用方針・完全統合引き継ぎ](G4C7_20261103_CLOUD_FIRST_MODEL_COST_COMPLETE_HANDOFF_JA.md)。本書42節までのR0〜R5、安全QA、ART HOLD、旧不採用路線、原本保護、Work事前承認を全て継承する。旧ルールの無断撤回ではない。
+- **品質を最優先**。わずかな節約のためローカルLLMへ切り替えて作品品質を落とさない。**全クラウド第一候補**（創作・真正Blender作者編集・撮影・審査）だが、実際にクラウドAIが保存BLENDの都市を直接作者編集できる技術経路は未証明。できたふりをせず、まず操作能力を実証する。
+- **GPT-6.1 TerraとGPT-6 Lunaを常用**。Lunaは都市美術構想と真画像批評、Terraは通常のBlender/CI/GitHub実装を基本とするが、モデルの品質や具体的費用は実測前に断言しない。**GPT-6.1 Solは高額なため例外のみ**：必要性・期待効果・追加コストを説明し本人が事前明示承認した場合に限る。モデルをChatから無断切替できると主張しない。
+- Work・有料クラウドPC・外部GPU・API従量課金・Solは本人の承認なく利用しない。クラウド制作が実行不能なら、AI設計品質を保ち、レンダリング/Blender実行先だけローカルへ変更する案を費用・品質・操作負担で比較する。以前の30%節約目安は提案段階で固定ルールではない。
+- 2026-11-03文書更新開始時点の研究HEADは adee7afc51e4672d373f17787b07354562e04290、GUI設定修正CI #41572794264 pending・通常Verify #41572794076 queued。文書コミット後は必ず最新HEADとCIを再照合。
+- 新都市作者メッシュ0・新3視点真正都市作品0、ART HOLD/正式採用0、331人体・993足元/G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main変更禁止、PR #53 Draftを固定。今後も空のGUI診断だけを無限に増やすことは禁止。

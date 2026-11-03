@@ -1,5 +1,8 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 新チャット向けの最新正本**：[クラウド中心・Terra/Luna通常・Sol要事前承認の完全統合引き継ぎ](docs/G4C7_20261103_CLOUD_FIRST_MODEL_COST_COMPLETE_HANDOFF_JA.md)。R0〜R5の固定方針、ART-FIRST、正式採用0、Minecraft施工禁止、main・PR #53 Draftの保護は不変です。
+
+
 **チャットを移ってもここから再開する。GitHubの現在の研究ブランチが正本。2026-11-02 JST更新。**
 旧チャット全文・古いZIP・長い引き継ぎ文をユーザーへ要求しない。前工程をやり直さず、前の方針や不採用を再決定しない。
 
