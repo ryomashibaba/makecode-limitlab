@@ -369,3 +369,9 @@
 
 - [隔離Chatの新GLB＋8視点VTK実画像による反証](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_OFFLINE_CLOUD_3D_AUTHOR_METHOD_REJECT_20261103_JA.md)。1,562メッシュ/55,526三角面に拡張しても、**巨大彫刻と工場屋根中心**、住戸・研究カメラは外殻に遮られ、都市としての建築・生活が読めない。**試作METHOD REJECT、EARLY ART REJECT。正式R1の2候補には数えない**。GLB/VTKでありBlender/Cyclesではない。旧Blender実Cycles4枚の技術実証は維持。
 - これ以上自動プリミティブ生成器を増やして延命しない。真の同一ネイティブ3DでGUI視覚フィードバックを伴う作者編集経路が必要。ただしChat側のBlender GUI操作経路は未確立、Work・Solは事前承認がないため不使用。**R0〜R5・全体ART HOLD・正式採用0・安全331/993 NOT RUN・MakeCode未評価・Minecraft施工禁止・main/保護原本・Draft PR #53**不変。
+
+## 2026-11-03 M37-P2 X11二画面の実ピクセル復旧
+
+- [実証レポート](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_X11_GUI_PIXEL_RECOVERY_20261103_JA.md)：CI #41572794264 / Artifact 13209321279のBlender 4.5.15実画像を目視。初回Quick Setupなし、左右VIEW_3D描画あり。native screenshot_areaは1×1黒のまま。一方 X11 1600×900からLIVED 661×783、MACRO 657×783の**実ピクセルを検査・一致**。
+- 新規[読み取り専用X11 pixel bridge](tools/g4c7_m37p2_x11_visual_context_bridge.py)、[11件の改ざんテスト](tests/test_g4c7_m37p2_x11_visual_context_bridge.py)は隔離実行11/11 PASS。新GUI CI [#41597467506](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41597467506)は照合時Queued。新しい取得コードとCIを保存したがクラウド実行PASSは未確認。
+- **実証はBlender画面の読み取りだけ**で、GUI自律作者操作・新都市美術ではない。今後は既存低品質プリミティブ生成の追加を止め、直接編集→保存差分→実Cycles→視覚批評を行える作者経路の成立に進む。全体ART HOLD・採用0、331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft禁止、main/保護v3・PR #53 Draft、Work/Sol事前承認、R0〜R5を維持。
