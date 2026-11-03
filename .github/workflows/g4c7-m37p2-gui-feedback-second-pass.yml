@@ -1,0 +1,115 @@
+name: G4C7 P2 persistent same-BLEND screenshot-guided real GUI pass2 TECH
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_m37p2_gui_feedback_second_pass.sh
+      - tools/g4c7_m37p2_gui_feedback_second_pass_verify.py
+      - .github/workflows/g4c7-m37p2-gui-feedback-second-pass.yml
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: g4c7-p2-second-real-gui-feedback
+  cancel-in-progress: false
+jobs:
+  actual-second-gui-edit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      XDG_CONFIG_HOME: /tmp/g4c7-second-native-gui-pref
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pin prior REAL screenshot and saved native .blend (no re-generation)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-prior-native
+          gh run download 41599291594 -R "$GITHUB_REPOSITORY" -n g4c7-p2-real-gui-shortcut-native-edit-tech-not-art -D /tmp/g4c7-prior-native
+          source=/tmp/g4c7-prior-native
+          echo "3279d909da13e5b09660dc170e8bb79b51a733611e4d1d1c02ea97f4f920ded8  $source/M37P2_X11_GUI_SHORTCUT_TECH_NOT_ART.blend" | sha256sum -c -
+          echo "f1b9d8edcf5fbc385f0cc9bf220fd999ba5be7c6308b307bc81397c3916ef71d  $source/GUI_AFTER_INPUT_NOT_ART.png" | sha256sum -c -
+          parent=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $parent" | sha256sum -c -
+          bash -n tools/g4c7_m37p2_gui_feedback_second_pass.sh
+          python3 -m py_compile tools/g4c7_m37p2_gui_feedback_second_pass_verify.py
+      - name: Real X11 and software OpenGL
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth xdotool scrot python3-pil libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1
+      - name: Real official Blender 4.5.15 with official checksum
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-gui-blender
+          cd /tmp/g4c7-gui-blender
+          curl -fsSL --retry 3 --max-time 240 -o blender.sha256 https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -o blender.tar.xz https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          sha="$(grep -F blender-4.5.15-linux-x64.tar.xz blender.sha256 | awk '{print $1}')"
+          echo "$sha  blender.tar.xz" | sha256sum -c -
+          tar -xf blender.tar.xz
+          test -x blender-4.5.15-linux-x64/blender
+      - name: Isolated Blender GUI prefs, no Quick Setup
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-gui-blender/blender-4.5.15-linux-x64/blender
+          timeout 75s "$blender" -b -t 2 --python-exit-code 9 --python-expr "import bpy; assert 'FINISHED' in bpy.ops.wm.save_userpref()"
+          test -s "$XDG_CONFIG_HOME/blender/4.5/config/userpref.blend"
+      - name: Independently reopen PREVIOUS actual GUI-authored source
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-gui-blender/blender-4.5.15-linux-x64/blender
+          parent=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          source=/tmp/g4c7-prior-native/M37P2_X11_GUI_SHORTCUT_TECH_NOT_ART.blend
+          timeout 75s "$blender" -b "$source" -t 2 --python-exit-code 9 --python tools/g4c7_m37p2_real_x11_gui_control_verify.py -- "$parent" /tmp/g4c7-prior-native/PREVIOUS_NATIVE_REOPEN.json
+      - name: Real Blender GUI second edit and distinct native save
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-gui-blender/blender-4.5.15-linux-x64/blender
+          source=/tmp/g4c7-prior-native/M37P2_X11_GUI_SHORTCUT_TECH_NOT_ART.blend
+          out=/tmp/g4c7-real-gui-second-checkpoint-NOT-ART
+          timeout --signal=TERM --kill-after=10s 150s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' bash tools/g4c7_m37p2_gui_feedback_second_pass.sh "$blender" "$source" "$out"
+          parent=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          timeout 75s "$blender" -b "$out/M37P2_SECOND_REAL_GUI_NOT_ART.blend" -t 2 --python-exit-code 9 --python tools/g4c7_m37p2_gui_feedback_second_pass_verify.py -- "$source" "$parent" "$out/INDEPENDENT_GUI_STAGE2_RELOAD.json"
+          /usr/bin/python3 - <<'PY'
+          from PIL import Image,ImageChops
+          from pathlib import Path
+          d=Path('/tmp/g4c7-real-gui-second-checkpoint-NOT-ART')
+          with Image.open(d/'GUI_BEFORE_SECOND_PASS.png') as before,Image.open(d/'GUI_AFTER_SECOND_PASS.png') as after:
+              before=before.convert('RGB'); after=after.convert('RGB')
+              assert before.size==after.size==(1600,900)
+              assert ImageChops.difference(before,after).getbbox() is not None
+          print("EXACT_TWO_REAL_BLENDER_GUI_SCREENSHOTS_DIFFER")
+          PY
+          test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+      - name: Always upload native source and actual X11 evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-p2-second-gui-real-same-native-TECH-NOT-ART
+          path: /tmp/g4c7-real-gui-second-checkpoint-NOT-ART/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Append-only archive proven native checkpoint into research branch, never main
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          remote="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | awk '{print $1}')"
+          if test "$remote" != "$GITHUB_SHA"; then
+            echo "HEAD_CHANGED_SAFE_STOP_NO_FORCE_NO_OVERWRITE"; exit 8
+          fi
+          src=/tmp/g4c7-real-gui-second-checkpoint-NOT-ART
+          dst=artifacts/g4c7-m37p2-gui-feedback-second-pass-TECH-NOT-ART
+          test ! -e "$dst" && test -s "$src/INDEPENDENT_GUI_STAGE2_RELOAD.json"
+          mkdir -p "$dst"
+          cp "$src/M37P2_SECOND_REAL_GUI_NOT_ART.blend" "$dst/"
+          cp "$src/GUI_BEFORE_SECOND_PASS.png" "$dst/"
+          cp "$src/GUI_AFTER_SECOND_PASS.png" "$dst/"
+          cp "$src/INDEPENDENT_GUI_STAGE2_RELOAD.json" "$dst/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$dst"
+          git commit -m "G4C7: archive actual second screenshot-guided native GUI edit, TECH not ART"
+          git push origin "HEAD:$GITHUB_REF_NAME"
