@@ -34,3 +34,14 @@
 - [.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml](../../../../.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml) にImageMagick/Pillowを導入。実GUI試験がFAILでも`if: always()`で双方のネイティブGUI PNGとX11 root画像の**非黒画素率・全黒フラグ・サイズ・色数**を独立取得する。証拠は`P2_INDEPENDENT_PIXEL_DIAGNOSTIC.json`へ保存し、Actions artifactへ同梱。GUI実キャプチャ自体は画素条件を満たさなければFAILのまま。
 - 新CI **#41562899937** はこの文章の時点でqueued。原因判定は**未確定**であり「再描画が直った」「X11側が直った」「AIがBlender画面を認識できる」いずれも未確認。成功した場合もartifactの画像自体を見てから認定する。
 - GUIは空のv3のまま。ローカルGemmaは呼ばない。作品の直接造形・密度・生活断面・製造と公開境界・研究文化については**未制作**。ART HOLD／正式採用0／正式安全QA NOT RUN、Minecraft施工禁止、main変更なし、Work不使用を維持。
+
+---
+
+## 2026-11-03：ローカル画像AI入力側でPNG自体を独立デコードして検査
+
+- 前工程の画素可視率`content_not_blank_black`と`visible_bright_pixel_ratio`は、Blenderが書き込んだ**レポートの数値**であり、画像ファイル本体の独立検証ではなかった。これをAIの唯一の入力ゲートとして信頼すると、古い誤ったレポートや改ざんされたメタデータで**黒いPNGをモデルへ渡す可能性**が残る。
+- [ローカルモデル入力ゲート](../../../../tools/g4c7_m37p2_local_gui_vision_review.py)に`independently_verify_png_pixels`を実装。**Python標準ライブラリのみ**でPNGのチャンクCRC、IHDRの実寸、8bitグレースケール/RGB/RGBAの非インターレース画像を読み、PNGフィルタ0〜4を逆変換して全画素の可視輝度を再計算する。明るい画素が3.5%未満なら`REAL_GUI_PNG_ACTUAL_PIXELS_BLACK_OR_UNDRAWN`でAI画像入力前に拒否。CRC不正／実PNG寸法不一致／壊れた圧縮列／未知の形式も安全拒否。標準ライブラリ以外のPython環境インストールは不要。対応しないPNG形式は**正常扱いせずHOLD**。
+- [回帰テスト](../../../../tests/test_g4c7_m37p2_local_gui_vision_review.py)を**11件**に拡張。署名だけの偽PNGではなく、テスト内で本物の8bit PNGとCRCを標準ライブラリで組み立てる。特に、黒PNGのSHAまで一致させ、レポートでは`content_not_blank_black=true`／明るさ60%と偽ったケースを拒否する。PNG CRC破損も別途拒否。正常PNGの実輝度を認識するケースも検査。
+- [GUI CI](../../../../.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)は、11件のPNG安全テストを**GUI/Blenderダウンロード前**に実行する順序へ変更した。コードの実装・GitHub保存は完了。ただし**最新版のCI成功は未確認**であり、表示内容のあるBlender GUI取得成功と混同しない。
+- さらにX11 rootとBlender native 2VIEW_3D双方のPNG画像を独立診断する経路は維持。**X11 root画像は証拠の切り分けのみで、本物の編集領域キャプチャ・都市ARTの代わりではない。**
+- 本工程はユーザーのPCやOllamaへアクセスしておらず、Blenderで街を作成していない。ART HOLD／正式採用0／331人体993足元とG0/S1/G1/G2/G3 NOT RUN、Minecraft施工禁止、main保護、Draft PR #53未merge、Work不使用を維持。
