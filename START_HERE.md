@@ -1,5 +1,9 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 R1複雑都市で「実GUI可視画像→建築対象のGUI編集→別名真正BLEND保存→独立再読込」限定METHOD TECH PASS。** [独立検証・失敗修正・恒久原本の詳細報告](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_VISIBLE_GUI_TARGETED_ARCHITECTURE_METHOD_PASS_NOT_ART_JA.md)、[実GUI前後画像2枚と別名BLEND/独立JSON](artifacts/g4c7-r1-real-visible-gui-habitat-boundary-method-TECH-NOT-ART/)、[成功CI #41614724400](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41614724400)。一時技術試作では不採用作品の隔離研究コピーのみ扱い、前室仕切り1枚を実GUIでX=-29.8→-27.8に変更。**残り1113メッシュ不変**を別Blenderで検証。元の不採用都市は引き続き EARLY ART REJECT、全体ART HOLD／正式採用0。2単位の移動の美術・機能は未認証。これ以上同じ不採用都市で技術試験を増やさず、次は**真の高品質R1都市作者美術**を新しい同一Blender原本で全景・公共・工場・研究文化・住居並行制作する工程。ただし高度な自律建築美術能力は未実証。R0〜R5固定、安全331/993未実施、Minecraft施工禁止、main/保護原本不変更、PR #53 Draft、Work/Sol事前承認制を維持。
+
+
+
 > **2026-11-03 R1の実GUI表示が複雑な不採用都市で復旧（限定TECHのみ）。** [真正Blender画面の斜め全景／正面ビュー・SHA検証・実画像と詳細報告](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_NATIVE_X11_VISIBLE_COMPLEX_CITY_READONLY_20261103_JA.md)、[4枚のBlender X11原本・監査JSONの恒久保存](artifacts/g4c7-r1-rejected-native-x11-real-pixel-audit-HOLD/)、[成功CI #41611672731](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41611672731)。先行R1 GUI前後の単色RGB(24,24,24)と異なり、**実際の1,114メッシュ不採用R1都市のBlender UIが1600×900で映り、実キーボードHome→KP_1による3D視点変更も画像現物で確認**。保存された不採用BLEND・保護v3を変更しない**読み取り専用・視点ナビゲーション限定TECH**であり、AIによる高品質GUI作者編集・新R1 ART作品・元の黒スクショ原因の特定ではない。前回R1 EARLY ART REJECT撤回禁止。真正高品質作者能力は未成立、PR #53 Draft、ART HOLD採用0、安全331/993・G0/S1/G1/G2/G3未実施、MakeCode未評価、Minecraft施工禁止、main/旧原本保護、Work/Sol事前明示承認を維持。箱・板・同型塔の第三案禁止。
 
 
