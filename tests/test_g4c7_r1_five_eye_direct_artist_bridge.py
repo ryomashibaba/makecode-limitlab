@@ -16,7 +16,9 @@ class FakeCamera:
  def __init__(self,name):
   self.name=name
   self.type="CAMERA"
- def get(self,key,default=None):return default
+  self.props={}
+ def get(self,key,default=None):return self.props.get(key,default)
+ def __setitem__(self,key,value):self.props[key]=value
 
 class ObjectCollection(list):
  def __contains__(self, value):
@@ -82,6 +84,33 @@ class FiveEyeIntake(unittest.TestCase):
                                                   type="MESH"))
   self.assertIn("REJECTED_FORM_MESH:M37P1_REJECTED_FACADE",
                 b.source_issues(self.scene))
+
+ def test_prepare_five_eyes_is_idempotent_and_preserves_confirmed_frames(self):
+  fake_coll=types.SimpleNamespace(name="P2_CAMERA_RIG_NOT_ART")
+  self.source.collections={"P2_CAMERA_RIG_NOT_ART":fake_coll}
+  self.fake.context=types.SimpleNamespace(scene=self.scene)
+  self.scene.collection=types.SimpleNamespace(children={"P2_CAMERA_RIG_NOT_ART":fake_coll})
+  for camera in self.cameras.values():
+   camera["G4C7_R1_EYE_COMPOSITION_EDITOR_CONFIRMED"]=True
+  eyes=b.new_cameras_only()
+  self.assertEqual(eyes,[eye for eye,name in b.EYES])
+  self.assertTrue(all(camera.get("G4C7_R1_EYE_COMPOSITION_EDITOR_CONFIRMED")
+                      for camera in self.cameras.values()))
+  # A repeated click must not erase the editor's work either.
+  self.assertEqual(b.new_cameras_only(),eyes)
+  self.assertTrue(all(camera.get("G4C7_R1_EYE_COMPOSITION_EDITOR_CONFIRMED")
+                      for camera in self.cameras.values()))
+
+ def test_five_view_review_is_nonblocking_to_blender_ui(self):
+  text=S.read_text(encoding="utf8")
+  self.assertIn("subprocess.Popen(",text)
+  self.assertIn("def modal(self,context,event):",text)
+  self.assertIn("event_timer_add(",text)
+  self.assertNotIn("subprocess.run(",text)
+  self.assertIn('g4c7_r1_render_status="RUNNING"',text)
+  self.assertIn("file_hash(self._original)!=self._source_hash",text)
+  self.assertIn("item.get(\"sha256\")!=file_hash(p)",text)
+  self.assertIn("class R1_OT_RENDER_SAVED(",text)
 
  def test_saved_source_render_cannot_run_in_foreground(self):
   self.fake.app=types.SimpleNamespace(background=False)

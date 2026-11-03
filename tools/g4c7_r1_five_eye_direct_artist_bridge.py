@@ -122,9 +122,8 @@ def new_cameras_only():
   ob.location=(0,0,40)
   ob["G4C7_R1_EYE_COMPOSITION_EDITOR_CONFIRMED"]=False
   ob["G4C7_R1_PROVISIONAL_NO_GEOMETRY"]=True
- for eye,name in EYES:
-  ob=bpy.data.objects[name]
-  ob["G4C7_R1_EYE_COMPOSITION_EDITOR_CONFIRMED"]=False
+ # Existing camera framing/attestations must NOT be reset on re-entry.
+ # Newly created cameras already start unconfirmed.
  s["G4C7_R1_FIVE_EYE_NO_MESH_CREATED"]=True
  return [a for a,_ in EYES]
 
@@ -214,7 +213,7 @@ def render_saved_native(output):
 
 def register():
  bpy=_bpy()
- from bpy.props import EnumProperty,BoolProperty
+ from bpy.props import EnumProperty,BoolProperty,StringProperty
  class R1_OT_PREPARE(bpy.types.Operator):
   bl_idname="g4c7.r1_prepare_five_eyes"
   bl_label="Prepare missing 2 eyes in NEW author source"
@@ -260,10 +259,27 @@ def register():
    return {"FINISHED"}
  class R1_OT_RENDER_SAVED(bpy.types.Operator):
   bl_idname="g4c7.r1_review_render_saved_five"
-  bl_label="Reopen saved native; render all 5 eyes"
-  bl_description="Runs another Blender process on the saved source. Produces 5 genuine review PNGs only. ART HOLD."
-  def execute(self,context):
-   import subprocess
+  bl_label="Render saved 5-eye source in background"
+  bl_description="Start independent Blender subprocess and monitor asynchronously; ART HOLD"
+  _process=None
+  _timer=None
+  _log_file=None
+  _target=None
+  _original=None
+  _source_hash=None
+  _started=0
+
+  @classmethod
+  def poll(cls,context):
+   return context.window_manager.g4c7_r1_render_status!="RUNNING"
+
+  def _release(self,context):
+   if self._timer:
+    context.window_manager.event_timer_remove(self._timer)
+    self._timer=None
+
+  def invoke(self,context,event):
+   import subprocess,tempfile,time
    bpy=_bpy()
    if bpy.data.is_dirty:
     self.report({"ERROR"},"SAVE NEW ARTIST .blend BEFORE FIVE-VIEW REVIEW")
@@ -274,26 +290,80 @@ def register():
     return {"CANCELLED"}
    script=Path(__file__).resolve() if "__file__" in globals() else None
    if not script or not script.is_file():
-    self.report({"ERROR"},"INSTALL THIS .py AS A FILE ADD-ON TO ENABLE ONE-CLICK REVIEW")
+    self.report({"ERROR"},"INSTALL THIS .py AS FILE ADD-ON BEFORE ONE-CLICK REVIEW")
     return {"CANCELLED"}
    current=Path(bpy.data.filepath).resolve()
    target=current.parent/(current.stem+"_FIVE_EYE_DIRECT_ARTIST_REVIEW_NOT_ART")
    if target.exists():
-    self.report({"ERROR"},"REVIEW FOLDER EXISTS: APPEND-ONLY; USE DISTINCT NEW .blend")
+    self.report({"ERROR"},"REVIEW FOLDER EXISTS: APPEND-ONLY; SAVE NEW .blend")
     return {"CANCELLED"}
+   self._original=current
+   self._source_hash=file_hash(current)
+   self._target=target
    cmd=[bpy.app.binary_path,"-b",str(current),"--python",str(script),
         "--","--render",str(target)]
+   log=tempfile.NamedTemporaryFile(mode="w+b",prefix="g4c7_r1_native_5eye_",suffix=".log",delete=False)
+   self._log_file=Path(log.name)
    try:
-    result=subprocess.run(cmd,check=False,capture_output=True,text=True,
-                          timeout=1200)
+    self._process=subprocess.Popen(cmd,stdout=log,stderr=subprocess.STDOUT,
+                                  cwd=str(current.parent))
    except Exception as exc:
+    context.window_manager.g4c7_r1_render_status="FAILED_TO_START"
     self.report({"ERROR"},"INDEPENDENT_BLENDER_ERROR:"+str(exc)[:170])
     return {"CANCELLED"}
-   if result.returncode:
-    self.report({"ERROR"},"REVIEW_REFUSED: "+result.stderr[-175:])
+   finally:log.close()
+   self._started=time.monotonic()
+   context.window_manager.g4c7_r1_render_status="RUNNING"
+   self._timer=context.window_manager.event_timer_add(0.8,window=context.window)
+   context.window_manager.modal_handler_add(self)
+   self.report({"INFO"},"Background Blender rendering 5 TRUE views; GUI responsive, ART HOLD")
+   return {"RUNNING_MODAL"}
+
+  def modal(self,context,event):
+   import time
+   if event.type!="TIMER" or event.timer!=self._timer:
+    return {"PASS_THROUGH"}
+   status=self._process.poll()
+   if status is None:
+    if time.monotonic()-self._started>1200:
+     self._process.kill()
+     self._process.wait(timeout=15)
+     status=124
+    else:
+     return {"RUNNING_MODAL"}
+   self._release(context)
+   if status!=0:
+    tail=self._log_file.read_text(encoding="utf-8",errors="replace")[-350:]
+    context.window_manager.g4c7_r1_render_status="FAILED"
+    self.report({"ERROR"},"BLENDER "+str(status)+": "+tail[-195:])
     return {"CANCELLED"}
-   self.report({"INFO"},"5 REAL NATIVE VIEWS SAVED (NOT ART PASS): "+str(target)[-125:])
+   try:
+    manifest=self._target/"R1_DIRECT_ARTIST_FIVE_VIEW_REVIEW_NOT_ART.json"
+    meta=json.loads(manifest.read_text(encoding="utf8"))
+    if (meta.get("automatic_art_pass") is not False or meta.get("art")!="HOLD"
+        or meta.get("official_adoptions")!=0 or meta.get("source_sha256")!=self._source_hash
+        or file_hash(self._original)!=self._source_hash):
+     raise ValueError("REVIEW_OR_SOURCE_CONTRACT_CHANGED")
+    views=meta.get("five_true_cycles_from_same_independent_blender")
+    if not isinstance(views,list) or len(views)!=5:
+     raise ValueError("FIVE_ACTUAL_VIEWS_REQUIRED")
+    for eye,item in zip((e for e,_ in EYES),views):
+     p=self._target/(eye+"_ACTUAL_SAVED_NATIVE.png")
+     if item.get("eye")!=eye or item.get("sha256")!=file_hash(p):
+      raise ValueError("REVIEW_IMAGE_TAMPERED:"+eye)
+   except Exception as exc:
+    context.window_manager.g4c7_r1_render_status="FAILED_AUDIT"
+    self.report({"ERROR"},"REVIEW EVIDENCE INCOMPLETE:"+str(exc)[:160])
+    return {"CANCELLED"}
+   context.window_manager.g4c7_r1_render_status="FIVE_TRUE_NATIVE_IMAGES_NOT_ART"
+   self.report({"INFO"},"5 genuine saved-native views + hashes verified; HUMAN ART REVIEW REQUIRED")
    return {"FINISHED"}
+
+  def cancel(self,context):
+   if self._process and self._process.poll() is None:
+    self._process.kill()
+   self._release(context)
+   context.window_manager.g4c7_r1_render_status="CANCELLED"
  class R1_PT_PANEL(bpy.types.Panel):
   bl_label="G4-C7 R1 5-Eye Direct Artist"
   bl_idname="G4C7_PT_R1_FIVE_EYE_ARTIST"
@@ -312,11 +382,13 @@ def register():
    col.operator("g4c7.r1_submit_direct_artist_source")
    col.label(text="Save a NEW native .blend after manual editing")
    col.operator("g4c7.r1_review_render_saved_five")
+   col.label(text="5-view status: " + context.window_manager.g4c7_r1_render_status)
    col.label(text="Actual image quality is NEVER auto-approved")
  classes=(R1_OT_PREPARE,R1_OT_SNAP,R1_OT_CONFIRM,R1_OT_DECL,R1_OT_RENDER_SAVED,R1_PT_PANEL)
  for cls in classes:bpy.utils.register_class(cls)
  bpy.types.Scene.g4c7_r1_eye=EnumProperty(name="Eye",items=[(a,a,"") for a,_ in EYES])
  bpy.types.Scene.g4c7_r1_coauthored=BoolProperty(name="Actual coupled author meshes",default=False)
+ bpy.types.WindowManager.g4c7_r1_render_status=StringProperty(default="NOT_STARTED")
  return classes
 
 if __name__=="__main__":

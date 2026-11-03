@@ -1,5 +1,9 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 R1五視点直接作者GUIの実使用障害を2件修正（SOURCE/GUI CODEのみ）。** [更新された非造形5視点作者ツール](tools/g4c7_r1_five_eye_direct_artist_bridge.py)と[ブリッジ報告への修正追補](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_DIRECT_ARTIST_FIVE_EYE_GUI_BRIDGE_JA.md)。既存5視点準備再クリックで作者承認済みカメラ状態を消す不具合を修正し、5視点Cycles一括撮影ボタンの同期20分GUIブロックを、子Blenderプロセス起動＋非同期監視・結果SHA再照合へ変更。過去不採用美術は不変更。**実GUIでの操作と新しい高品質3Dの作者制作は未実証。** R1 METHOD HOLD、全体ART HOLD／正式採用0、331/993と正式ゲート未実施、Minecraft施工禁止、Work/Sol事前許可、main・保護v3/PR Draft維持。
+
+
+
 > **2026-11-03 R1実作者Blender GUIの3→5視点不整合へ、非造形の直接作者ブリッジを研究実装。** [新作者向け5視点GUIと保存BLEND独立再読込ツール](tools/g4c7_r1_five_eye_direct_artist_bridge.py)、[ソースの負例テスト](tests/test_g4c7_r1_five_eye_direct_artist_bridge.py)、[実施範囲・残る限界](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_DIRECT_ARTIST_FIVE_EYE_GUI_BRIDGE_JA.md)。旧直接作者スタジオは3カメラのみで、現行R1はAERIAL/PUBLIC/HABITAT/FACTORY/RESEARCHの5視点が必須だった。新規別名作者コピーに限り不足2カメラを準備し、作者が実VIEW_3Dを5役割へ割当→構図確認→保存した本物BLENDを**別Blenderプロセスから5真正Cycles画像にする**経路を追加。都市メッシュ・箱・壁の自動生成なし、保護v3/不採用原本/既存GUIの上書きなし。**現在はコード実装とsource-only検証の段階。実GUIでの高品質建築作者制作・5真正画像が成功したとは主張しない**。R1 METHOD HOLD/ART HOLD/正式採用0、331人体993足元と安全ゲートNOT RUN、MakeCode未評価、Minecraft施工禁止、main・PR #53 Draft保護、Work/Sol事前承認は不変。
 
 
