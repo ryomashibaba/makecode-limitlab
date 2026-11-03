@@ -36,7 +36,7 @@ jobs:
       - name: Install actual X display and OpenGL software drivers
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1 imagemagick python3-pil
       - name: Fetch real official Blender 4.5.15 GUI and verify official release SHA
         run: |
           set -euo pipefail
@@ -83,6 +83,47 @@ jobs:
           print('PASS_TWO_AUTHENTIC_NATIVE_GUI_3D_EDITOR_SCREENSHOTS_NOT_CYCLES_ART_HOLD')
           PY
           test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+      - name: Always diagnose X11 root and each viewport actual pixel content, even if Blender capture fails
+        if: always()
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 - <<'PY'
+          from pathlib import Path
+          import json
+          try:
+              from PIL import Image, ImageStat
+          except ImportError:
+              print('DIAGNOSTIC_PIL_UNAVAILABLE_NOT_ART_VERIFIED')
+              raise
+          base=Path('/tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART')
+          base.mkdir(parents=True,exist_ok=True)
+          stats={}
+          for label,name in (
+              ('MACRO_EDITOR','P2_ACTUAL_GUI_MACRO_EDITOR.png'),
+              ('LIVED_EDITOR','P2_ACTUAL_GUI_LIVED_EDITOR.png'),
+              ('X11_ROOT_DIAGNOSTIC','P2_X11_ROOT_DIAGNOSTIC_ONLY.png'),
+          ):
+              fn=base/name
+              if not fn.is_file():
+                  stats[label]={'exists':False}
+                  continue
+              with Image.open(fn) as im:
+                  rgb=im.convert('RGB')
+                  im.thumbnail((512,512))
+                  colors=rgb.getcolors(rgb.width*rgb.height)
+                  sample=rgb.resize((min(256,rgb.width),min(256,rgb.height)))
+                  bright=sum(1 for p in sample.getdata() if max(p)>20)
+                  ratio=bright/(sample.width*sample.height)
+                  stats[label]={
+                      'exists':True,
+                      'size':[rgb.width,rgb.height],
+                      'visible_bright_fraction':round(ratio,6),
+                      'all_black':not bool(rgb.getbbox()),
+                      'distinct_colors':len(colors) if colors is not None else 'more_than_count_limit'
+                  }
+          print('G4C7_INDEPENDENT_REAL_GUI_PIXEL_DIAGNOSTIC:',json.dumps(stats,sort_keys=True),flush=True)
+          (base/'P2_INDEPENDENT_PIXEL_DIAGNOSTIC.json').write_text(json.dumps(stats,indent=2)+'\n')
+          PY
       - name: Prove genuine GUI context to AI advisory safety gate (empty studio MUST SKIP Ollama)
         run: |
           set -euo pipefail
