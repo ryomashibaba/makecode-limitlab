@@ -1,5 +1,7 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 最新・最優先・新チャット用完全引き継ぎ：** [M37-P2 GUI二回継続編集実証後の2026-11-03完全統合正本](docs/G4C7_20261103_M37P2_GUI_TWO_PASS_COMPLETE_HANDOFF_JA.md)。本書の昔の「M37-P1完了→P2」「GUI未実証」「CI queued」は**書かれた当時の歴史**。現在は真正X11 GUI取得、2回目GUI編集、ネイティブ保存、別Blender再読込を限定TECH PASS。保存済みの[実GUI第二編集BLEND/実前後画像/独立JSON](artifacts/g4c7-m37p2-gui-feedback-second-pass-TECH-NOT-ART/)、[成功CI #41605230460](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41605230460)。SuzanneはCITY ARTではない。**正式R1都市新作0・全体ART HOLD・正式採用0・正式安全331/993未実施・MakeCode未評価・Minecraft施工禁止・main/保護v3保全・PR #53 Draft・Work/Sol事前許可**を維持。今後は空GUI/Suzanne試験を増やさず、都市全景と居住/工場/研究文化の同一ネイティブ3D直接作者制作に集中。
+
 > **2026-11-03 新チャット向けの最新正本**：[クラウド中心・Terra/Luna通常・Sol要事前承認の完全統合引き継ぎ](docs/G4C7_20261103_CLOUD_FIRST_MODEL_COST_COMPLETE_HANDOFF_JA.md)。R0〜R5の固定方針、ART-FIRST、正式採用0、Minecraft施工禁止、main・PR #53 Draftの保護は不変です。
 
 
