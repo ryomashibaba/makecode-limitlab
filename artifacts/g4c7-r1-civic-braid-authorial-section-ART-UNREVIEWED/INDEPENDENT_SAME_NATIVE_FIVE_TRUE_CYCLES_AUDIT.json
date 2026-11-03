@@ -1,0 +1,84 @@
+{
+  "schema": "g4c7-r1-civic-braid-single-native-reopen-art-review-v1",
+  "native_file": "R1_CIVIC_BRAID_AUTHORIAL_SECTION_ART_UNREVIEWED.blend",
+  "native_sha256": "002618e89a93d28cab309392011e69b729d9cfefc469258e4d2a72177910e95b",
+  "source": "EXPLICIT_AUTHORIAL_CONTROL_POINTS_WITH_PROGRAMMATIC_MESH_ENCODING",
+  "scope": "ONE_INTEGRATED_CITY_SECTION_NOT_A_COMPLETE_GIANT_CITY",
+  "main_city_programs": [
+    "inhabited streets",
+    "real interior",
+    "spaceship factory equipment and gallery partition",
+    "public research and culture"
+  ],
+  "five_true_cycles_from_one_native": [
+    {
+      "view": "AERIAL",
+      "file": "AERIAL_CYCLES_TRUE_NATIVE.png",
+      "sha256": "60ee0d1a83e11d5a1b3248a87856e608343fc6801b2aaae97d13dd25bb8a3e17",
+      "size_bytes": 616778,
+      "camera_location": [
+        270.0,
+        -345.0,
+        240.0
+      ]
+    },
+    {
+      "view": "PUBLIC_EYE",
+      "file": "PUBLIC_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "8eb4ca0eb07ad94f2bcd1aa347c8a0ea08c14cea3988554c2b6dc52b77d40a60",
+      "size_bytes": 646218,
+      "camera_location": [
+        4.0,
+        -52.0,
+        6.599999904632568
+      ]
+    },
+    {
+      "view": "HABITAT_EYE",
+      "file": "HABITAT_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "37091786e85896c2b60082af8d2a6827824b6f217d8a4cfdd3755e6b6927b7d7",
+      "size_bytes": 510838,
+      "camera_location": [
+        -134.0,
+        17.0,
+        11.600000381469727
+      ]
+    },
+    {
+      "view": "FACTORY_EYE",
+      "file": "FACTORY_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "adcb866ace6dfac51f70ae23b2f4af52c3f29a2657cbdd01250466d288993185",
+      "size_bytes": 594042,
+      "camera_location": [
+        107.0,
+        -47.0,
+        8.0
+      ]
+    },
+    {
+      "view": "RESEARCH_EYE",
+      "file": "RESEARCH_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "8c42964aad7fe3d439164f931c50ee6d152639b14a88243ed65e9c0bfb6a54bf",
+      "size_bytes": 618492,
+      "camera_location": [
+        -30.0,
+        -41.0,
+        6.0
+      ]
+    }
+  ],
+  "mesh_objects": 469,
+  "art": "HOLD",
+  "official_art_adoptions": 0,
+  "visual_quality": "NOT_YET_HUMAN_OR_VISION_REVIEWED",
+  "R1_art_pass": false,
+  "R1_safety_pass": false,
+  "formal_331_body_993_foot": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "world_writes": 0,
+  "minecraft": "FORBIDDEN",
+  "work": "NOT_USED",
+  "sol": "NOT_USED",
+  "protected_v3_expected_sha256": "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249",
+  "rejected_civic_estuary_expected_sha256": "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06"
+}
