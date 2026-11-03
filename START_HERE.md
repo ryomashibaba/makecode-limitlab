@@ -211,3 +211,11 @@
 - [Windows PowerShell起動器](tools/g4c7_m37p2_run_native_operator_first_pair.ps1)は通常ユーザー起動を**モデル呼出し前にART-FIRST停止**、`-PrepareOnly`の安全確認のみ許し、研究テストには明示`-ExplicitTechOnly`が必要。[新CMD](tools/G4C7_P2_Native_Operator_Trial_Start.cmd)も停止版を固定参照。**ユーザーに旧ZIP/CMDや新型のローカルモデル実行を要求しない**。
 - [新Windowsガード検証CI #41473665867](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41473665867)は結果確認まで未検証。先行Windowsのガードなし準備検証 #41472380173 はSUCCESSであり、別件として扱う。
 - [統合引き継ぎ正本節28](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。ART HOLD、正式採用0件、331人体/993足元＆G0/S1/G1/G2/G3 NOT RUN、MakeCode費用未評価、Minecraft施工禁止、main保護、PR #53 Draft、Work不使用・事前承認制は不変。
+
+
+## M37-P2 2026-11-03：実画像から自動ART REJECTと次の造形修正へのフィードバックを取得
+
+- [3真正Cycles画像の検証済みフィードバックゲート](tools/g4c7_m37p2_visual_feedback_gate.py)を実装し、[実技術CI #41552562056 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41552562056)で**実際の3画像のSHAと保存BLEND属性からEARLY_ART_REJECT判定が出ることを確認**。既存2つの8頂点・6面メッシュ、都市・工場・研究文化・居住内部未制作を根拠に失格。GitHub artifactに3PNG・レポート・携帯用HTMLを残す。モデル生成画像や別原本の写真ではない。
+- [回帰テスト](tests/test_g4c7_m37p2_visual_feedback_gate.py)5件成功。検証器は画像だけでは正式ART PASSを出せない設計で、**EARLY_ART_REJECT／ART_HOLD_VISUAL_JUDGMENT_REQUIREDしか返さない**。Model Visionを使う場合のみ既存Ollama `gemma4:26b`で3画像の可視的不足を任意評価し、正式採用の代替にしない。Gemmaの実PC評価はまだ未実施。
+- [今回の研究・実証報告](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_VISUAL_FEEDBACK_GATE_20261103_JA.md)／[統合引き継ぎ節29](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。**これまでの試験形状を都市作品に昇格させない。** 次の実美術には3Dを直接修正できる作者操作のフィードバック閉ループが依然必要。ユーザーへ旧ランチャー再実行、手モデリング、Work使用を無断要求しない。
+- ART HOLD・正式採用0・331人体993足元/G0/S1/G1/G2/G3 NOT RUN・MakeCode未評価・Minecraft施工禁止・main変更禁止・PR #53 Draftを維持。
