@@ -30,6 +30,10 @@ xdotool windowfocus --sync "$window"
 xdotool mousemove --window "$window" 460 300
 # A separate native View3D-prepared COPY is opened, not the console-saved input.
 sleep 2
+# Actual X11 click on Suzanne head in the pinned 1600x900 real viewport.
+# Loading an earlier Console-saved .blend does not guarantee active VIEW_3D selection.
+xdotool mousemove --window "$window" 700 410 click 1
+sleep .6
 scrot --window "$window" --file "$folder/GUI_BEFORE_SECOND_PASS.png"
 # Human-reviewed prior screenshot showed oversized Suzanne. Actually edit
 # its persistent native data via Blender GUI keys, never bpy mesh methods.
