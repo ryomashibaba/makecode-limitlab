@@ -1,0 +1,103 @@
+name: G4C7 R1 rejected-native real X11 VISUAL feedback gate NO ART
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_r1_rejected_native_x11_readonly_capture.sh
+      - tools/g4c7_r1_x11_readonly_visual_gate.py
+      - .github/workflows/g4c7-r1-rejected-native-x11-visual-gate.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-r1-rejected-native-x11-visual-ability-once
+  cancel-in-progress: false
+jobs:
+  inspect-actual-rejected-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    env:
+      G4C7_X11_DIR: /tmp/g4c7-r1-readonly-real-gui-vis
+      XDG_CONFIG_HOME: /tmp/g4c7-r1-readonly-xdg
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify source pin, protected original, and scripts before any download
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          source=artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend
+          orig=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          echo "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06  $source" | sha256sum -c -
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $orig" | sha256sum -c -
+          bash -n tools/g4c7_r1_rejected_native_x11_readonly_capture.sh
+          python3 -m py_compile tools/g4c7_r1_x11_readonly_visual_gate.py
+          mkdir -p "$G4C7_X11_DIR"
+      - name: Install X11 screenshot and independent PNG inspection dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth xdotool x11-utils scrot python3-pil libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1
+      - name: Official pinned Blender 4.5.15 SHA-256
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-r1-readonly-bin
+          cd /tmp/g4c7-r1-readonly-bin
+          curl -fsSL --retry 3 --max-time 240 -o SHA256 https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -o blender.tar.xz https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          official="$(grep -F 'blender-4.5.15-linux-x64.tar.xz' SHA256 | awk '{print $1}')"
+          echo "$official  blender.tar.xz" | sha256sum -c -
+          tar -xf blender.tar.xz
+      - name: Prepare isolated genuine Blender GUI preferences, not geometry
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-r1-readonly-bin/blender-4.5.15-linux-x64/blender
+          timeout 75s "$blender" -b -t 2 --python-exit-code 9 --python-expr "import bpy; assert 'FINISHED' in bpy.ops.wm.save_userpref()"
+      - name: ONLY existing rejected R1 native open; inspect independent window and root X11 pixels
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-r1-readonly-bin/blender-4.5.15-linux-x64/blender
+          source=artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend
+          timeout --signal=TERM --kill-after=10s 150s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' \
+            bash tools/g4c7_r1_rejected_native_x11_readonly_capture.sh "$blender" "$source" "$G4C7_X11_DIR"
+      - name: Independent X11 content, provenance, movement pixel check; FAIL CLOSED
+        run: |
+          set -euo pipefail
+          source=artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend
+          /usr/bin/python3 tools/g4c7_r1_x11_readonly_visual_gate.py --folder "$G4C7_X11_DIR" --source "$source"
+      - name: Preserve raw real screenshot evidence even when inspection FAILS
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-r1-rejected-real-x11-readonly-visual-evidence-HOLD
+          path: /tmp/g4c7-r1-readonly-real-gui-vis/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Append-only retain actual X11 failure or candidate with pinned provenance
+        if: always()
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          source=artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend
+          protected=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          echo "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06  $source" | sha256sum -c -
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $protected" | sha256sum -c -
+          test -s "$G4C7_X11_DIR/R1_X11_REJECTED_NATIVE_VISUAL_FEEDBACK_AUDIT.json"
+          for f in BEFORE_ROOT AFTER_ROOT BEFORE_WINDOW AFTER_WINDOW; do
+              test -s "$G4C7_X11_DIR/X11_REJECTED_R1_$f.png"
+          done
+          remote="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | awk '{print $1}')"
+          if test "$remote" != "$GITHUB_SHA"; then
+             echo "REMOTE_HEAD_CHANGED_SAFE_STOP"; exit 12
+          fi
+          dst=artifacts/g4c7-r1-rejected-native-x11-real-pixel-audit-HOLD
+          test ! -e "$dst"
+          mkdir -p "$dst"
+          cp "$G4C7_X11_DIR"/*.png "$dst/"
+          cp "$G4C7_X11_DIR"/*.json "$dst/"
+          cp "$G4C7_X11_DIR"/*.txt "$dst/"
+          (cd "$dst"; sha256sum *.png *.json *.txt > SHA256_X11_CAPTURE_MANIFEST.txt)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$dst"
+          git commit -m "G4C7: preserve readonly true-R1 native X11 pixel gate evidence; ART HOLD"
+          git push origin "HEAD:$GITHUB_REF_NAME"
