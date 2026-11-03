@@ -1,0 +1,166 @@
+{
+  "schema": "g4c7-r1-after-two-rejects-authoring-intake-v1",
+  "date_jst": "2026-11-03",
+  "type": "ARTIST_DIRECT_AUTHOR_PRODUCTION_TASK_NOT_NEW_CITY_MODEL",
+  "state": "AUTHOR_ACCESS_HOLD",
+  "does_not_authorize_work_or_paid_models": true,
+  "project": "MakeCode LimitLab / G4-C7 Orbital Commons",
+  "branch": "dev/g4c7-a17-monolithic-rift-fold-art-study",
+  "pull_request": {
+    "number": 53,
+    "draft": true,
+    "merge_forbidden": true,
+    "main_changes_forbidden": true
+  },
+  "status": {
+    "art": "HOLD",
+    "official_adoptions": 0,
+    "formal_331_993": "NOT_RUN",
+    "gates_G0_S1_G1_G2_G3": "NOT_RUN",
+    "makecode": "NOT_EVALUATED",
+    "minecraft": "FORBIDDEN",
+    "world_writes": 0
+  },
+  "frozen_strategy": "R0-R5_ART_FIRST_20261028",
+  "next_action": "Only after a genuine image-aware direct Blender artist is available: design one cohesive new native city integrating the full skyline and one lived route in the same blend; do not regenerate the two rejected cities.",
+  "artist_available_now": false,
+  "existing_methods_not_art_creation": [
+    "github-actions-bpy-geometry-generation",
+    "xdotool-single-object-gui-transform",
+    "native-blend-independent-reopen",
+    "render-five-cycles"
+  ],
+  "rejection_history": [
+    {
+      "name": "R1 Civic Estuary",
+      "decision": "EARLY_ART_REJECT",
+      "source_sha256": "cadf0678f7a57636dbebe7432e95d4aae98a2a0cc57215652177d9cbd6ef0e06",
+      "dominant_failures": [
+        "repeated polygonal towers",
+        "giant industrial partitions",
+        "empty street level",
+        "unconvincing inhabited interiors"
+      ],
+      "source_folder": "artifacts/g4c7-r1-civic-estuary-20261103-EARLY-ART-REJECT"
+    },
+    {
+      "name": "R1 Civic Braid",
+      "decision": "EARLY_ART_REJECT",
+      "source_sha256": "002618e89a93d28cab309392011e69b729d9cfefc469258e4d2a72177910e95b",
+      "dominant_failures": [
+        "sparse low-rise campus",
+        "giant walls and plates blocking public and industrial views",
+        "habitat center 100 percent dark",
+        "lab activity hidden"
+      ],
+      "source_folder": "artifacts/g4c7-r1-civic-braid-authorial-section-ART-UNREVIEWED"
+    }
+  ],
+  "spatial_author_decisions": [
+    {
+      "id": "URBAN_CONTINUITY",
+      "brief": "Design actual contiguous metropolitan fabric with inhabited storefronts, meaningful entrances, intersecting pedestrian passages, varied floor-height and district density; no scattered objects on a plane",
+      "proof_eyes": [
+        "AERIAL",
+        "PUBLIC_EYE"
+      ],
+      "not_a_generator_rule": true
+    },
+    {
+      "id": "FABRICATION_WITNESSED",
+      "brief": "Show actual space hardware under assembly, service gantries, machinery and worker route from a visually open visitor gallery with physical protection",
+      "proof_eyes": [
+        "FACTORY_EYE",
+        "PUBLIC_EYE"
+      ],
+      "not_a_generator_rule": true
+    },
+    {
+      "id": "LIVE_FROM_DOOR_TO_CITY",
+      "brief": "Actual dwelling entry -> vestibule -> occupied living room -> usable window opening onto same outside urban fabric, with daylight and privacy",
+      "proof_eyes": [
+        "HABITAT_EYE",
+        "AERIAL"
+      ],
+      "not_a_generator_rule": true
+    },
+    {
+      "id": "RESEARCH_IN_PUBLIC_CITY",
+      "brief": "Research workers, instruments, real traversable laboratory, cultural visitor interface and connections to public ground",
+      "proof_eyes": [
+        "RESEARCH_EYE",
+        "PUBLIC_EYE"
+      ],
+      "not_a_generator_rule": true
+    },
+    {
+      "id": "DISTINCTIVE_WORLD_CLASS_VISUAL_LANGUAGE",
+      "brief": "Author varied intricate and coherent architectural sections and facades, human scale material joints, dense lived metropolitan depth; never make primitive shapes, mono-color towers or sculpture the whole visual",
+      "proof_eyes": [
+        "AERIAL",
+        "PUBLIC_EYE",
+        "HABITAT_EYE",
+        "FACTORY_EYE",
+        "RESEARCH_EYE"
+      ],
+      "not_a_generator_rule": true
+    }
+  ],
+  "single_native_submission": {
+    "minimum_eyes": [
+      "AERIAL",
+      "PUBLIC_EYE",
+      "HABITAT_EYE",
+      "FACTORY_EYE",
+      "RESEARCH_EYE"
+    ],
+    "must_have": [
+      "new_editor_sculpted_blend",
+      "five_true_cycles_from_same_independently_reopened_native",
+      "original_blend_sha256_and_image_hashes",
+      "evidence_of_actual_gui_image_read_and_meaningful_mesh_edit",
+      "explicit_rejection_comparison",
+      "early_absolute_art_review"
+    ],
+    "must_not_use": [
+      "previous_rejected_art_as_starting_model",
+      "primitive_batch_city_generator",
+      "different_generated_city_for_each_view",
+      "synthetic_pictures_as_native_blender_evidence"
+    ]
+  },
+  "real_blender_authority": {
+    "chat_github_only": "NOT_ESTABLISHED",
+    "work_status": "NOT_AUTHORIZED",
+    "cloud_direct_gui_author": "NOT_PROVEN",
+    "allowed_workflow": "Only if user explicitly approves Work; verify actual ability and cost before using it, and stop without art claims if no real Blender art editing",
+    "no_workaround": "Do not substitute image generation, more tech tests, or weak local LLM art for actual native model authoring",
+    "approval_required": [
+      "Work",
+      "Sol",
+      "new_paid_service",
+      "outsourcing",
+      "new_account"
+    ]
+  },
+  "source_references": [
+    {
+      "topic": "stacking-real-mixed-uses-not-geometry-copy",
+      "url": "https://woha.net/project/kampung-admiralty/"
+    },
+    {
+      "topic": "public-program-over-real-industrial-operations-not-shape-copy",
+      "url": "https://professionals.muuto.com/projects/cases/copenhill/"
+    },
+    {
+      "topic": "ground-floor-metropolitan-street-depth-and-human-scale",
+      "url": "https://commons.wikimedia.org/wiki/File:Marunouchi_Nakadori_Street_at_night_201912.jpg"
+    }
+  ],
+  "next_stage_when_authorized": {
+    "stage_1": "Genuine cloud GUI ability probe should be through meaningful urban mass plus interior author edit, not Suzanne or G X 2 test; if not possible, stop immediately.",
+    "stage_2": "Directly author one coherent skyline/street/inhabited interior/factory/research scene in new blend. Reviewer must inspect the same scene from all five eyes.",
+    "stage_3": "If image evidence fails visually: EARLY_ART_REJECT, stop; if promising: continue research under ART HOLD without user auto-adoption.",
+    "no_automatic_adoption": true
+  }
+}

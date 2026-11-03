@@ -1,5 +1,9 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 R1「2方向不採用後」の固定戦略どおりに建築作者ブリーフを再構築。** [実際の2作品・各視点の失格原因を反映した直接制作ブリーフ](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_POST_TWO_REJECTS_DIRECT_ARTIST_BRIEF_RESET_JA.md)と[次の真正Blender作者作業の機械可読な入力契約](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_DIRECT_ARTIST_INTAKE_CONTRACT.json)を保存。**これは新たな3D美術作品ではなく、2案とも美術不合格なら第三の簡易都市を生成せずR1ブリーフへ戻るR0〜R5工程の実行結果。** 旧Civic Estuary/Civic Braid両方EARLY ART REJECT・METHOD HOLD、正式採用0・全体ART HOLD。高品質な真正Blender直接作者能力はChat＋GitHub経路で未成立、Blender専用の直接編集コネクタも未確認。Work/クラウドPC/Sol/新規有料サービスには本人の事前明示承認が必要。未承認状態で勝手に制作したと言わない。R0〜R5・331人体993足元正式QA未実施・MakeCode未評価・Minecraft施工禁止・main/保護原本変更禁止・Draft PR #53維持。
+
+
+
 > **2026-11-03 R1真正画像の負例検査を実装・実画像で確認（限定TECH、ART不変）。** [独立GitHub CI #41624336875 completed/SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41624336875)、[監査JSONとSHA256の恒久保存](artifacts/g4c7-r1-true-native-negative-only-visibility-20261103-NOT-ART/)、[実証内容と禁止事項](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_NATIVE_NEGATIVE_ONLY_VISIBILITY_GATE_JA.md)。既存の不採用Civic Braid真正保存BLEND＋同一原本Cycles5枚を照合した結果、**住宅眼高の全画面暗部98.7938%、中央領域暗部100%**を検出してBLOCK_VISUAL_OBSERVABILITYを再現。検査本体・5負例テスト・CIを研究ブランチへ保存。**検査に通ってもART PASSではない。** コード式の街区自動生成はMETHOD HOLD、不採用候補の再生産/修復/採用は禁止。実際の高品質建築美術自律作者能力は依然未成立、次は作者制作体制そのものを成立させることが本筋。R0〜R5/ART-FIRST/全体ART HOLD正式採用0/331人体993足元とG0/S1/G1/G2/G3未実施/MakeCode未評価/Minecraft施工禁止/main・原本保護/PR #53 Draft/Work・Sol事前許可、全て不変。
 
 
