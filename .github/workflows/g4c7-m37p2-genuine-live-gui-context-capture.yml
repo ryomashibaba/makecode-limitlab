@@ -73,6 +73,8 @@ jobs:
           assert set(r['views'])=={'MACRO_EDITOR','LIVED_EDITOR'}
           for name,v in r['views'].items():
               assert v['source']=='ACTUAL_BLENDER_GUI_VIEW_3D_NOT_CYCLES_RENDER'
+              assert v['content_not_blank_black'] is True,name
+              assert v['visible_bright_pixel_ratio']>=0.035,(name,v['visible_bright_pixel_ratio'])
               p=d/v['file']
               assert p.is_file() and p.read_bytes()[:8]==bytes.fromhex('89504e470d0a1a0a')
               assert hashlib.sha256(p.read_bytes()).hexdigest()==v['sha256']
