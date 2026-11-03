@@ -203,6 +203,7 @@ jobs:
         with:
           name: g4c7-p2-one-true-feedback-native-revision-before-after-not-art
           path: |
+            /tmp/G4C7_NATIVE_FEEDBACK_REVISION_01_TECH_ONLY/P2_NATIVE_EDITOR_FEEDBACK_REVISION_01_UNAPPROVED.blend
             /tmp/G4C7_NATIVE_FEEDBACK_REVISION_01_TECH_ONLY/P2_NATIVE_REVISION_01_EVIDENCE.json
             /tmp/G4C7_REVISION_01_VISUAL_FEEDBACK_ART_REJECT/
             /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json
