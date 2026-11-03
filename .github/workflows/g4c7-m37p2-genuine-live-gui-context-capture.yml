@@ -33,6 +33,12 @@ jobs:
               assert forbidden not in code,forbidden
           print('P2_GUI_CONTEXT_READ_ONLY_SOURCE_GUARD_PASS')
           PY
+      - name: Test genuine PNG pixel decoder and local vision safety BEFORE GUI download
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/g4c7_m37p2_local_gui_vision_review.py
+          python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_local_gui_vision_review.py' -v
+          echo 'PASS_STDLIB_REAL_PNG_CRC_AND_BLACK_PIXEL_VETO_BEFORE_BLENDER'
       - name: Install actual X display and OpenGL software drivers
         run: |
           sudo apt-get update -qq
@@ -127,8 +133,6 @@ jobs:
       - name: Prove genuine GUI context to AI advisory safety gate (empty studio MUST SKIP Ollama)
         run: |
           set -euo pipefail
-          python3 -m py_compile tools/g4c7_m37p2_local_gui_vision_review.py
-          python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_local_gui_vision_review.py' -v
           python3 -u tools/g4c7_m37p2_local_gui_vision_review.py \
             --manifest /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_ACTUAL_GUI_CONTEXT_HOLD.json \
             --out /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_LOCAL_VISION_GATE_ART_HOLD.json \
