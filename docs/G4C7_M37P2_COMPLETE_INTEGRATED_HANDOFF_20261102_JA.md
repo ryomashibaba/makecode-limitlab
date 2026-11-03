@@ -557,3 +557,13 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - [GUI CI](../.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)はその8件をBlender取得前に試験し、真正GUI取得失敗時にも候補PNG・診断JSONをartifactへ残す。X11画像が見えても**正式なBlender VIEW_3Dキャプチャ、AI入力、都市ARTとは認定しない**。真正Blender CI自体の完了・画素の有用性は別途確認が必要。
 - この方法が成功したときのみ次に実画面を独立目視し、本当のBlender 3D作者フィードバック閉ループへ昇格するか厳格審査する。黒・不在・寸法ズレなら次のコード変更前に診断を見直す。**今後は診断単位の細かいコミットを増殖しない**。
 - ART HOLD、正式採用0件、331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main/保存v3原本不変更、Draft PR #53未merge、Work未承認不使用を維持。
+
+
+
+## 41. M37-P2：制作向け、保存作者BLENDの3真正Cycles画像をGitHubにappend-only公開する経路（2026-11-03 JST）
+
+- 黒GUI画像問題は根本原因未確定で、専用run #41570166875 は本作業開始時点 `pending`。**新美術制作をGUI画素テスト待ちにしない**。既存の同一真正Blender原本を使う`tools/g4c7_m37p2_author_native_early_review.py`から早期ARTレビューを作る設計へ移した。
+- 新`tools/g4c7_m37p2_author_candidate_gallery.py`は、3つの本物Cycles画像と既存manifest、保存BLEND SHAが一致することを確認し、GitHubブラウザ上でそのまま見られる`README_ART_HOLD.md`／オフライン一体型HTML／負例と原本SHA付きJSONを作る。1枚でも黒なら `EARLY_ART_REJECT_BLACK_VIEW`。3枚明るくても`ART_HOLD_HUMAN_CRITIQUE_REQUIRED`であり、美術認定しない。
+- `tests/test_g4c7_m37p2_author_candidate_gallery.py`6/6はPython/Pillow隔離テストPASS。GitHub blob SHAはローカル検証コードと完全一致。これは真正Blender CI成功や新都市の完成と全く異なる。
+- 新ワークフロー`.github/workflows/g4c7-m37p2-new-authored-blend-three-views.yml`は、研究ブランチ`artifacts/g4c7-m37p2-direct-authored-candidates/**/*.blend`へ新規作者原本が追加されたときのみBlender 4.5.15真正レンダ・元原本不変・3画像と審査資料の追加保存を試みる。画像のRepo内保存先は`artifacts/g4c7-m37p2-saved-native-author-reviews/<原本SHA256>/`。競合や不正時は非強制pushを拒否しActions側に保存する。mainは触れない。
+- 現状では**新しい実作者モデル0、実都市3ビュー0、正式ART採用0、全体ART HOLD**。新workflowは真正BLEND入力が無いため発火しておらず、実Blender完走未確認。次の真の工程は人の体験を反映した同一BLEND直接造形。その作者操作を本Chatの権限だけでは行えないため、GUI・Workアクセスを無断で偽装しない。第三の簡単な箱/板/橋自動造形は作らない。331人体993足元／G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、PR #53 Draft、main保護、Workは事前承認。

@@ -1,0 +1,109 @@
+name: G4C7 P2 direct-authored native candidate three Cycles views ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - 'artifacts/g4c7-m37p2-direct-authored-candidates/**/*.blend'
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-p2-native-author-candidate-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  early-author-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Select exactly one newly committed direct-author candidate
+        id: select
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import subprocess, hashlib, os
+          prefix='artifacts/g4c7-m37p2-direct-authored-candidates/'
+          changes=subprocess.check_output(['git','diff','--name-only','--diff-filter=A','HEAD^','HEAD'],text=True).splitlines()
+          selected=[f for f in changes if f.startswith(prefix) and f.endswith('.blend')]
+          if len(selected)!=1:
+              raise SystemExit('EXACTLY_ONE_NEW_AUTHOR_BLENDER_SOURCE_REQUIRED')
+          name=selected[0]
+          if '..' in PurePosixPath(name).parts or '\\' in name:
+              raise SystemExit('UNSAFE_AUTHOR_SOURCE_NAME')
+          f=Path(name)
+          if not f.is_file() or not 100000 <= f.stat().st_size <= 30000000 or f.read_bytes()[:7]!=b'BLENDER':
+              raise SystemExit('INVALID_NATIVE_AUTHOR_SOURCE')
+          sha=hashlib.sha256(f.read_bytes()).hexdigest()
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write('candidate='+name+'\nsha='+sha+'\n')
+          print('REAL_SOURCE_SELECTED_NOT_ART',sha)
+          PY
+      - name: Pillow + 6 offline negative controls
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-pil
+          /usr/bin/python3 -m unittest discover -s tests -p test_g4c7_m37p2_author_candidate_gallery.py -v
+      - name: Fetch official Blender 4.5.15 and verify upstream SHA-256
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-art-blender
+          cd /tmp/g4c7-art-blender
+          curl -fsSL --retry 3 --max-time 240 -O https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -O https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          grep -F 'blender-4.5.15-linux-x64.tar.xz' blender-4.5.15.sha256 | sha256sum -c -
+          tar -xf blender-4.5.15-linux-x64.tar.xz
+          test -x blender-4.5.15-linux-x64/blender
+      - name: Review SAME native .blend in three genuine Cycles views and create Markdown gallery
+        env:
+          ORIGINAL: ${{ steps.select.outputs.candidate }}
+          SOURCE_SHA: ${{ steps.select.outputs.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-author-output
+          timeout --signal=TERM --kill-after=10s 1800s \
+            /tmp/g4c7-art-blender/blender-4.5.15-linux-x64/blender -b "$ORIGINAL" -t 2 --python-exit-code 9 \
+            --python tools/g4c7_m37p2_author_native_early_review.py -- --out /tmp/g4c7-author-output/review
+          test "$(sha256sum "$ORIGINAL" | cut -d' ' -f1)" = "$SOURCE_SHA"
+          /usr/bin/python3 tools/g4c7_m37p2_author_candidate_gallery.py \
+            --review-dir /tmp/g4c7-author-output/review --blend "$ORIGINAL"
+          /usr/bin/python3 - <<'PY'
+          import json
+          from pathlib import Path
+          o=json.loads(Path('/tmp/g4c7-author-output/review/M37P2_CANDIDATE_GALLERY_AUDIT.json').read_text())
+          assert o['art']=='HOLD' and o['official_adoptions']==0
+          assert o['minecraft']=='FORBIDDEN' and o['geometry_generated'] is False
+          assert set(o['images'])=={'AERIAL','PUBLIC_EYE','HABITAT_EYE'}
+          print('REVIEW_READY_HUMAN_ART_HOLD',o['result'])
+          PY
+      - name: Archive authentic 3-view review on research branch only, append-only
+        env:
+          ORIGINAL: ${{ steps.select.outputs.candidate }}
+          SOURCE_SHA: ${{ steps.select.outputs.sha }}
+        run: |
+          set -euo pipefail
+          branch=dev/g4c7-a17-monolithic-rift-fold-art-study
+          target="artifacts/g4c7-m37p2-saved-native-author-reviews/$SOURCE_SHA"
+          git fetch --no-tags origin "$branch"
+          git switch -C p2-art-review-archive FETCH_HEAD
+          test -f "$ORIGINAL" || { echo ORIGINAL_MISSING_ON_HEAD; exit 9; }
+          test "$(sha256sum "$ORIGINAL" | cut -d' ' -f1)" = "$SOURCE_SHA"
+          test ! -e "$target" || { echo APPEND_ONLY_PATH_EXISTS; exit 10; }
+          mkdir -p "$target"
+          cp /tmp/g4c7-author-output/review/* "$target/"
+          git add -- "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'G4C7 P2: archive real author Cycles 3-view evidence ART HOLD'
+          git push origin "HEAD:$branch"
+          echo "Native art review saved under $target; ART HOLD / adoption 0." >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep evidence even if branch archival fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-p2-native-author-review-not-art-${{ github.run_id }}
+          path: /tmp/g4c7-author-output/review/
+          if-no-files-found: warn
+          retention-days: 21

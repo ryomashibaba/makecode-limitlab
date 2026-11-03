@@ -314,3 +314,13 @@
 - [GUI CI](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)はその8件をBlender取得前に試験し、真正GUI取得失敗時にも候補PNG・診断JSONをartifactへ残す。X11画像が見えても**正式なBlender VIEW_3Dキャプチャ、AI入力、都市ARTとは認定しない**。真正Blender CI自体の完了・画素の有用性は別途確認が必要。
 - この方法が成功したときのみ次に実画面を独立目視し、本当のBlender 3D作者フィードバック閉ループへ昇格するか厳格審査する。黒・不在・寸法ズレなら次のコード変更前に診断を見直す。**今後は診断単位の細かいコミットを増殖しない**。
 - ART HOLD、正式採用0件、331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main/保存v3原本不変更、Draft PR #53未merge、Work未承認不使用を維持。
+
+
+
+## M37-P2 2026-11-03：黒GUI依存を外し、真の作者BLENDの3視点をGitHubで直接確認する経路
+
+- **方向転換**：新作品のART審査をX11のスクリーンショット成功待ちにしない。既に技術成立済みの[真正Blender/Cycles作者レビュー](tools/g4c7_m37p2_author_native_early_review.py)を正規入口とし、保存済みの**新しい直接作者BLEND**のみ対象とする。以前の2箱・O1/P1・生成器へ戻らない。
+- [新しい3視点閲覧・SHA監査ツール](tools/g4c7_m37p2_author_candidate_gallery.py) と[負例6件](tests/test_g4c7_m37p2_author_candidate_gallery.py)を実装。Python/Pillowの隔離実行で**6/6 PASS**、GitHub保存物のblob SHAと実測済みローカル原本が一致した。画像・source BLEND SHAの再照合、黒ビュー早期REJECT、HTML1ファイル・GitHub README内3画像を生成する。正式美術PASSは絶対に発行しない。
+- [新候補の真正3視点Actions](.github/workflows/g4c7-m37p2-new-authored-blend-three-views.yml)を追加。**新規直接作者BLENDが** `artifacts/g4c7-m37p2-direct-authored-candidates/` **に追加されたときだけ** GitHub上で3真正Cyclesビュー、Markdown閲覧、manifestを作成し、研究ブランチの別名SHAフォルダへappend-only保存を試みる。保存が失敗してもActions artifactへ証拠保持する。main／旧原本変更、Work・Minecraft操作なし。
+- **制限**：新しい作者制作BLENDがまだ存在しないため、この新Actionsを実行して作品の成功を確認したわけではない。黒GUI CI [#41570166875](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41570166875) は直近照合でpendingであり、根本原因不明。GUI診断を今後の作品制作のブロッカーにはしないが、GUIが直ったと主張もしない。
+- **次の本来の作業**：同じv3から派生した新保存原本を、AI作者/GUI作者が都市全景と実住宅・実製造・研究文化の本物のメッシュとして同時編集すること。現在のChatからユーザーWindows Blender GUIに直接アクセスできず、Workの事前承認もないため**本物の作者造形は未実施**。ART HOLD／採用0・331人体993足元・G0/S1/G1/G2/G3 NOT RUN・MakeCode未評価・Minecraft施工禁止・PR #53 Draft／main保護は不変。
