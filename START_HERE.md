@@ -228,3 +228,11 @@
 - [実装](tools/g4c7_m37p2_feedback_to_native_revision.py)と[回帰試験](tests/test_g4c7_m37p2_feedback_to_native_revision.py)で、元`.blend`と実3枚のPNG＋不採用フィードバックJSONの各SHAを編集前に再照合し、変更対象は既存メッシュ2領域だけ、無制限実行・任意Python・新規キューブの追加を禁止。**1つの研究シーンにつき1回の修正だけ**。失格の理由コードなしでは受け付けない。
 - [新研究正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_TRUE_FEEDBACK_NATIVE_REVISION01_20261103_JA.md)／[統合引き継ぎ節30](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。GitHub Actions artifactには真正3視点・レポートと別名BLENDの保存を追加。[追加PNG改変保護＋別名BLEND保存CI #41555143899 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41555143899) を実測。3 PNGのSHA改変を拒否するテストもPASS。
 - 次の本質課題は、AIが自ら**実際の建築美術のアイデアを持ってBlenderシーンへ直接造形**すること。現在の2箱テストの改善ループを増殖させたり、旧Qwen全市一括頂点JSONへ戻ったりはしない。ユーザーに追加ローカル操作は求めない。Work不使用、main無変更、PR #53 Draft、331人体・993足元＆G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止。
+
+
+## M37-P2 2026-11-03：真正Cycles画像を使って無意味な二箱修正を中止する美術能力ゲートを成立
+
+- [実Blenderの品質ゲートCI #41556855447 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41556855447)。3視点Cyclesの実画像と保存BLEND/画像SHAの整合から、**元の2直方体**と**頂点・面だけを増やした修正版**の双方に`REQUIRE_NEW_DIRECT_AUTHOR_3D_CONTENT`を発行。真正な都市や工場・居住・研究文化が無いまま自動Extrude/Insettingを繰り返さない。新7回帰テストPASS・新モデル呼出し0。
+- [作者造形能力ゲート](tools/g4c7_m37p2_art_gap_authoring_gate.py)／[7テスト](tests/test_g4c7_m37p2_art_gap_authoring_gate.py)／[実測報告](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ART_GAP_AUTHOR_CAPABILITY_GATE_20261103_JA.md)／[統合引き継ぎ節31](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)を正本へ追記。ART PASSを自動発行しない。ソース・画像・フィードバックのSHA不一致なら安全STOP。
+- 真の次工程は新しい第三箱都市のプログラム生成ではなく、作者が**同じ真正Blender原本に連続高密度な街区＋玄関から居間の実断面＋製造設備と見学隔壁＋研究文化**を同時造形すること。現ChatからローカルBlender GUIへ直接操作できず、Workは使用しないため、**この本当の美術造形は未実施**。本工程はその不足に反するモデル呼出しと旧方式の繰り返しを止める守りの実装である。
+- ART HOLD／正式採用0、331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未評価、Minecraft施工禁止、保護v3不変、main変更禁止、PR #53 Draft未merge、Work事前承認制（今回不使用）を固定。
