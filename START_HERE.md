@@ -243,3 +243,11 @@
 - [新GUI Context Capture](tools/g4c7_m37p2_live_gui_context_capture.py)を研究ブランチに実装。Blenderの**実GUI**の2つのVIEW_3Dを別々のPNGでキャプチャし、投影状態・5コレクションの実頂点/面数/位置・元BLEND SHAをJSONと共に保存する。**保存済みCycles画像の再利用ではない。** このスクリプトはメッシュを作成せず、Blender原本を上書きせず、AIネットワーク呼出しも行わない。
 - [本物GUI CI](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)：初回実行 [#41558995077](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41558995077) は**FAIL**。原因は原本を開いた状態では左右2画面へ分割がまだ実行されていなかったこと。以前の真正BlenderでSUCCESSしたP2正規画面分割処理をSHA固定v3から起動してからPNG撮影する修正版へ変更。[修正CI #41559389596](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41559389596)は**実際の結果確認まで未認定**。
 - [技術・美術境界の研究正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_GUI_VIEWPORT_CONTEXT_BRIDGE_20261103_JA.md)／[統合引き継ぎ節32](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。**この進捗は本人による都市造形ではない**。AIが実画面を見て本物の密集都市・造船設備・居住内部等を作者として編集する段階はまだ未実施。Work・main・Minecraft・保護原本は変更しない。ART HOLD正式採用0、331/993＆G0/S1/G1/G2/G3 NOT RUN、PR #53 Draftを維持。
+
+
+## M37-P2 2026-11-03：旧GUIスクリーンショットCIの黒画面偽陽性を発見、真の画素検査を導入
+
+- **重大な訂正**：[旧GUI #41559389596 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41559389596) のartifactを現物取得して検査した結果、**左右2画像とも全画素RGB(0,0,0)で、実際には画面を読めていない**。画像1=657×783、画像2=661×783。PNG署名・SHA一致・Blender GUI2面存在は証明したが、**視覚AIに渡せるBlender画面という主張は未成立**。実原因は未特定、無根拠にGPU/Xvfb原因と決めつけない。
+- [黒画像の全画素監査](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_REAL_GUI_BLACK_FRAME_FALSE_PASS_20261103_JA.md)を作成。[GUIキャプチャ](tools/g4c7_m37p2_live_gui_context_capture.py)でdraw/swap後に**実PNGをBlenderで読み、明るい画素の存在割合が足りなければ失格**。[GUI CI](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)も単なるPNG署名/shaではPASSしない。
+- [ローカルのGUI→画像AI分析](tools/g4c7_m37p2_local_gui_vision_review.py)と[8件の回帰](tests/test_g4c7_m37p2_local_gui_vision_review.py)を追加。黒PNG、SHA不一致、元ファイル不明、ART状態違反を**AI呼出し前に拒否**。空の保護v3（0メッシュ）ではGemma4へ無駄なモデル呼出し0。実メッシュがある場合のみ、ユーザー明示指定で**localhost Ollama**の2画像分析結果を参考情報として取得。モデル生成コード、Blenderメッシュ変更、ART PASS、Minecraft施工なし。実Qwen/Gemmaへの新GUI画像呼出しは未実施。
+- [統合引き継ぎ節33](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)参照。**修正版の成功・本物の表示画像を実見するまでGUI Visual Context技術PASS未認定。** これまでの旧2箱ART REJECT・旧Qwen全市一括頂点RETIREDもそのまま。ART HOLD・正式採用0／331人体993足元＆G0/S1/G1/G2/G3 NOT RUN／MakeCode未評価／Minecraft施工禁止／main・v3保護／PR #53 Draft／Work不使用維持。
