@@ -10,6 +10,8 @@ on:
       - tests/test_g4c7_m37p2_visual_feedback_gate.py
       - tools/g4c7_m37p2_feedback_to_native_revision.py
       - tests/test_g4c7_m37p2_feedback_to_native_revision.py
+      - tools/g4c7_m37p2_art_gap_authoring_gate.py
+      - tests/test_g4c7_m37p2_art_gap_authoring_gate.py
       - tools/g4c7_m37p2_ollama_paired_native_action_proposal.py
       - tests/test_g4c7_m37p2_ollama_paired_operator_proposal.py
       - .github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml
@@ -35,6 +37,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_ollama_paired_operator_proposal.py' -v
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_visual_feedback_gate.py' -v
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_feedback_to_native_revision.py' -v
+          python -m unittest discover -s tests -p 'test_g4c7_m37p2_art_gap_authoring_gate.py' -v
       - name: Install real bpy 4.5 native runtime (source v3)
         run: |
           python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
@@ -121,6 +124,23 @@ jobs:
           PY
           cp /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/
           cp /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/OPEN_THREE_VIEW_VISUAL_FEEDBACK.html /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/
+      - name: Determine if genuine 3-view evidence authorizes further blind technical box edits (MUST BLOCK)
+        run: |
+          set -euo pipefail
+          python -u tools/g4c7_m37p2_art_gap_authoring_gate.py \
+            --native-report /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/P2_NATIVE_PAIRED_THREE_VIEW_REPORT.json \
+            --feedback /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json \
+            --out /tmp/G4C7_ART_CAPABILITY_PRE_REPAIR_DECISION.json
+          python - <<'PY'
+          import json
+          r=json.load(open('/tmp/G4C7_ART_CAPABILITY_PRE_REPAIR_DECISION.json'))
+          assert r['decision']=='REQUIRE_NEW_DIRECT_AUTHOR_3D_CONTENT',r
+          assert not r['automatic_geometry_repair_allowed']
+          assert r['permitted_model_calls']==0
+          assert 'ONLY_TWO_TECHNICAL_CUBOIDS' in r['reason_codes']
+          assert 'UNAUTHORED_HABITAT_LIVING_INTERIOR' in r['reason_codes']
+          print('ART_FIRST_AUTHOR_DIRECT_CONTENT_REQUIRED_NO_ANOTHER_TWO_BOX_AUTO_GENERATION')
+          PY
       - name: Create ONE feedback-hash-bound native FACE edit action study, never new primitive objects
         run: |
           set -euo pipefail
@@ -197,6 +217,23 @@ jobs:
           assert len(list(a.glob('*.png')))==3
           print('ONE_FEEDBACK_EDIT_RENDER_CRITIQUE_LOOP_TECH_PASS_CITY_ART_STILL_REJECT')
           PY
+      - name: After controlled technical regression, forbid another art repair without genuine authored city
+        run: |
+          set -euo pipefail
+          python -u tools/g4c7_m37p2_art_gap_authoring_gate.py \
+            --native-report /tmp/G4C7_REVISION_01_THREE_REAL_CYCLES_NON_ART/P2_NATIVE_PAIRED_THREE_VIEW_REPORT.json \
+            --feedback /tmp/G4C7_REVISION_01_VISUAL_FEEDBACK_ART_REJECT/P2_REAL_IMAGE_ART_FEEDBACK.json \
+            --out /tmp/G4C7_ART_CAPABILITY_AFTER_REPAIR_DECISION.json
+          python - <<'PY'
+          import json
+          p='/tmp/G4C7_ART_CAPABILITY_AFTER_REPAIR_DECISION.json'
+          r=json.load(open(p))
+          assert r['decision']=='REQUIRE_NEW_DIRECT_AUTHOR_3D_CONTENT',r
+          assert not r['automatic_geometry_repair_allowed']
+          assert r['permitted_model_calls']==0
+          assert 'WHOLE_DENSE_CITY_NOT_AUTHORED' in r['reason_codes']
+          print('AFTER_EXTRA_FACES_ART_STILL_REJECT_MUST_CHANGE_AUTHORING_METHOD')
+          PY
       - name: Keep both before and after genuine Cycles review evidence (NOT ART)
         uses: actions/upload-artifact@v4
         if: always()
@@ -207,6 +244,8 @@ jobs:
             /tmp/G4C7_NATIVE_FEEDBACK_REVISION_01_TECH_ONLY/P2_NATIVE_REVISION_01_EVIDENCE.json
             /tmp/G4C7_REVISION_01_VISUAL_FEEDBACK_ART_REJECT/
             /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json
+            /tmp/G4C7_ART_CAPABILITY_PRE_REPAIR_DECISION.json
+            /tmp/G4C7_ART_CAPABILITY_AFTER_REPAIR_DECISION.json
           if-no-files-found: warn
           retention-days: 7
       - name: Upload THREE TRUE Blender renders strictly labeled NOT ART
