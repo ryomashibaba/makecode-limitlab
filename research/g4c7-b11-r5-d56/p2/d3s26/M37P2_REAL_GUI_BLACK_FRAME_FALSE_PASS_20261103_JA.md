@@ -24,3 +24,13 @@
 ## 変わらない基準
 
 都市全体と生活断面、造船設備、厚い公共・職員境界、研究文化を同一Blender原本へ作者が実造形する。本工程は新都市や新しい仮モデリングを生成していない。今あるのは空スタジオと旧不採用2箱試験だけ。Work未使用、main変更禁止、PR #53 Draft、Minecraft施工禁止、正式331人体/993足元・G0/S1/G1/G2/G3未実施、正式ART採用0。
+
+---
+
+## 2026-11-03 JST：独立X11フレームバッファ診断を追加
+
+- 旧CI #41559389596 のPNGを改めて現物確認し、`MACRO_EDITOR` 657×783、`LIVED_EDITOR` 661×783 は両方とも全画素RGB=(0,0,0)だった。PNGとSHAが正常でも視覚的な有用性は**0**。
+- `tools/g4c7_m37p2_live_gui_context_capture.py`の**CI専用**実GUIタイマーで、`bpy.ops.wm.redraw_timer`によるBlender内部の再描画・実PNGの明るさ検査に加え、XvfbのX11 root framebufferをImageMagick `import -window root`で**別経路**から撮影する診断処理を追加。X11側の画像は **`P2_X11_ROOT_DIAGNOSTIC_ONLY.png`**。これは表示障害の切り分け専用で、Blenderの各VIEW_3D画像への置換やART証拠としての採用は**絶対にしない**。
+- [.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml](../../../../.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml) にImageMagick/Pillowを導入。実GUI試験がFAILでも`if: always()`で双方のネイティブGUI PNGとX11 root画像の**非黒画素率・全黒フラグ・サイズ・色数**を独立取得する。証拠は`P2_INDEPENDENT_PIXEL_DIAGNOSTIC.json`へ保存し、Actions artifactへ同梱。GUI実キャプチャ自体は画素条件を満たさなければFAILのまま。
+- 新CI **#41562899937** はこの文章の時点でqueued。原因判定は**未確定**であり「再描画が直った」「X11側が直った」「AIがBlender画面を認識できる」いずれも未確認。成功した場合もartifactの画像自体を見てから認定する。
+- GUIは空のv3のまま。ローカルGemmaは呼ばない。作品の直接造形・密度・生活断面・製造と公開境界・研究文化については**未制作**。ART HOLD／正式採用0／正式安全QA NOT RUN、Minecraft施工禁止、main変更なし、Work不使用を維持。
