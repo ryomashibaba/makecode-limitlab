@@ -1,0 +1,57 @@
+{
+  "schema": "g4c7-cloud-bpy-art-hold-v1",
+  "technical_status": "REAL_BLENDER_REOPEN_AND_RENDER_EVIDENCE",
+  "absolute_art": "HOLD_HUMAN_CRITIQUE_REQUIRED",
+  "adoptions": 0,
+  "provenance": "CLOUD_AI_SCRIPTED_NATIVE_BPY_DIRECT_EDIT_NOT_INTERACTIVE_GUI",
+  "native_blend_sha256": "7b4fb821e75946ad763692d3887fb9f8e5d63dda61221c18c2def160f1e3bc71",
+  "v3_protected_sha256": "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249",
+  "native_collections": {
+    "urban": {
+      "meshes": 125,
+      "vertices": 1500
+    },
+    "public": {
+      "meshes": 5,
+      "vertices": 68
+    },
+    "factory": {
+      "meshes": 49,
+      "vertices": 624
+    },
+    "culture": {
+      "meshes": 30,
+      "vertices": 240
+    },
+    "home": {
+      "meshes": 18,
+      "vertices": 144
+    }
+  },
+  "four_genuine_cycles_views": {
+    "AERIAL": {
+      "sha256": "a5888a85217ea512738085467603a78bb453a358013a36d80b3a271fa9cbc08b",
+      "visible_fraction": 1.0,
+      "bytes": 711751
+    },
+    "PUBLIC_EYE": {
+      "sha256": "fd1df875e40a0bb522a252032adc1352477d8c12163b2522fb364229da10d9d6",
+      "visible_fraction": 1.0,
+      "bytes": 695825
+    },
+    "HABITAT_EYE": {
+      "sha256": "706edbc85226050896887bfa11da0e6dd65a1e9cdc1df69db221d10dc3033dac",
+      "visible_fraction": 0.9941,
+      "bytes": 608965
+    },
+    "CULTURE_EYE": {
+      "sha256": "1a97b1b841d4214db13e6ba8b51ae6fc75cb68d0d50ebc6516d5d470899a456c",
+      "visible_fraction": 0.9988,
+      "bytes": 659487
+    }
+  },
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "MakeCode": "NOT_EVALUATED",
+  "Minecraft": "FORBIDDEN"
+}
