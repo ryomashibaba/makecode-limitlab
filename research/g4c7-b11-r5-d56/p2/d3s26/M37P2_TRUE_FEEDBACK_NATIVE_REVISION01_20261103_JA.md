@@ -31,7 +31,7 @@
 
 真正な修正後3画像を直接閲覧した結果は、**孤立した箱状の2形状**のままで、居住内部、街の連続性、工場の実作業、見学境界、研究文化を示すものではなかった。暗い面があるが光源や法線の原因は未特定。**美術改善の証拠はゼロ**。面数が増えたという技術指標を美術的成功として扱わない。
 
-[CI実際の技術証拠artifact](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41554510076#artifacts)：`g4c7-p2-one-true-feedback-native-revision-before-after-not-art`。SHAを持つ修正証拠JSON、修正後の3真正Cycles画像、不採用フィードバック、HTMLレビュー。後続CIでは、本当の修正版`.blend`も同じ研究artifactへ保存する。
+[CI実際の技術証拠artifact](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41554510076#artifacts)：`g4c7-p2-one-true-feedback-native-revision-before-after-not-art`。SHAを持つ修正証拠JSON、修正後の3真正Cycles画像、不採用フィードバック、HTMLレビュー。[最終追加保護CI #41555143899 SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41555143899) で、実3PNGのバイトSHA再照合・改変拒否の回帰テストが通過し、**本物の別名修正版`.blend`をGitHub artifactに保存した**。artifact名 `g4c7-p2-one-true-feedback-native-revision-before-after-not-art`、ID `13194850787`。
 
 ## この工程で追加した安全契約
 
