@@ -1,0 +1,136 @@
+name: G4C7 R1 first inhabited civic estuary same-native 3-eye ART HOLD
+on:
+  push:
+    branches: [dev/g4c7-a17-monolithic-rift-fold-art-study]
+    paths:
+      - tools/g4c7_r1_civic_estuary_author_scene.py
+      - tools/g4c7_r1_native_gui_and_review.py
+      - tools/g4c7_r1_native_gui_author.sh
+      - .github/workflows/g4c7-r1-native-civic-estuary-art-trial.yml
+permissions:
+  contents: write
+concurrency:
+  group: g4c7-r1-real-art-trial-one-native
+  cancel-in-progress: false
+jobs:
+  native-r1-art-first:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      G4C7_R1_DIR: /tmp/g4c7-r1-civic-estuary-art-hold
+      XDG_CONFIG_HOME: /tmp/g4c7-r1-gui-prefs
+    steps:
+      - uses: actions/checkout@v4
+      - name: Guard charter, protected v3 original and safe syntax
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          protected=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $protected" | sha256sum -c -
+          python3 -m py_compile tools/g4c7_r1_civic_estuary_author_scene.py tools/g4c7_r1_native_gui_and_review.py
+          bash -n tools/g4c7_r1_native_gui_author.sh
+      - name: X11 native GUI and image inspection packages
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth xdotool scrot python3-pil libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1
+      - name: Official Blender 4.5.15 and official SHA-256
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g4c7-blender-r1
+          cd /tmp/g4c7-blender-r1
+          curl -fsSL --retry 3 --max-time 240 -o release.sha256 https://download.blender.org/release/Blender4.5/blender-4.5.15.sha256
+          curl -fsSL --retry 3 --max-time 240 -o blender.tar.xz https://download.blender.org/release/Blender4.5/blender-4.5.15-linux-x64.tar.xz
+          sha="$(grep -F blender-4.5.15-linux-x64.tar.xz release.sha256 | awk '{print $1}')"
+          echo "$sha  blender.tar.xz" | sha256sum -c -
+          tar -xf blender.tar.xz
+          test -x blender-4.5.15-linux-x64/blender
+      - name: Native FIRST R1 art content, concurrently authored macro + factory + inhabited interior
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-blender-r1/blender-4.5.15-linux-x64/blender
+          mkdir -p "$G4C7_R1_DIR"
+          timeout 180s "$blender" -b -t 2 --python-exit-code 31 --python tools/g4c7_r1_civic_estuary_author_scene.py 2>&1 | tee "$G4C7_R1_DIR/R1_CODE_ASSISTED_ORIGINAL_BUILD_LOG.txt"
+          input="$G4C7_R1_DIR/R1_CIVIC_ESTUARY_CODE_ASSISTED_INITIAL_NOT_ART.blend"
+          test -s "$input"
+          initial_sha="$(sha256sum "$input" | awk '{print $1}')"
+          printf 'G4C7_R1_INITIAL_SHA256=%s\n' "$initial_sha" >> "$GITHUB_ENV"
+          echo "R1_INITIAL_NATIVE_SHA256=$initial_sha"
+      - name: Real onscreen VIEW_3D architecture-specific GUI input, separate native saved source
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-blender-r1/blender-4.5.15-linux-x64/blender
+          # No Quick Setup modal; only temporary isolated user preferences.
+          timeout 60s "$blender" -b -t 2 --python-exit-code 32 --python-expr "import bpy; assert 'FINISHED' in bpy.ops.wm.save_userpref()"
+          source="$G4C7_R1_DIR/R1_CIVIC_ESTUARY_CODE_ASSISTED_INITIAL_NOT_ART.blend"
+          target="$G4C7_R1_DIR/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend"
+          timeout --signal=TERM --kill-after=10s 170s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' bash tools/g4c7_r1_native_gui_author.sh "$blender" "$source" "$target" "$G4C7_R1_DIR"
+          test -s "$target"
+      - name: Independent Blender re-open + THREE true Cycles from same saved 3D
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-blender-r1/blender-4.5.15-linux-x64/blender
+          file="$G4C7_R1_DIR/R1_CIVIC_ESTUARY_GUI_DIRECT_EDIT_NOT_ART.blend"
+          timeout --signal=TERM --kill-after=15s 600s "$blender" -b "$file" -t 2 --python-exit-code 33 --python tools/g4c7_r1_native_gui_and_review.py -- render 2>&1 | tee "$G4C7_R1_DIR/R1_INDEPENDENT_BLENDER_RENDER_LOG.txt"
+          test -s "$G4C7_R1_DIR/R1_INDEPENDENT_NATIVE_AND_RENDER_AUDIT.json"
+      - name: Byte-based PNG checks and vision-readable JPEG previews
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 - <<'PY'
+          from PIL import Image,ImageChops,ImageStat
+          from pathlib import Path
+          import base64
+          p=Path('/tmp/g4c7-r1-civic-estuary-art-hold')
+          a=Image.open(p/'R1_REAL_GUI_BEFORE.png').convert('RGB')
+          b=Image.open(p/'R1_REAL_GUI_AFTER.png').convert('RGB')
+          assert a.size==b.size and ImageChops.difference(a,b).getbbox() is not None
+          assert max(ImageStat.Stat(a).mean)>12 and max(ImageStat.Stat(b).mean)>12
+          for key in ('AERIAL','PUBLIC_EYE','HABITAT_EYE'):
+              im=Image.open(p/(key+'_TRUE_BLENDER_CYCLES.png')).convert('RGB')
+              assert im.width==840 and im.height==560
+              stat=ImageStat.Stat(im)
+              assert max(stat.stddev)>8, 'UNINFORMATIVE_RENDER:'+key
+              preview=im.resize((504,336))
+              path=p/(key+'_PREVIEW.jpg')
+              preview.save(path,quality=66,optimize=True)
+              (p/(key+'_PREVIEW_BASE64.txt')).write_text(base64.b64encode(path.read_bytes()).decode('ascii'))
+          print('REAL_SCENE_AND_THREE_DISTINCT_CYCLES_IMAGES_BYTES_CHECKED_NOT_ART_PASS')
+          PY
+          protected=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          echo "536e451c763c4326421b13285abf1056a3a11d755028f8ff20b54b99b08a0249  $protected" | sha256sum -c -
+          test -z "$(git status --porcelain -- "$protected")"
+      - name: Retain files even when early ART evidence is not renderable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-r1-first-real-city-author-source-and-three-eyes-NOT-ART-PASS
+          path: /tmp/g4c7-r1-civic-estuary-art-hold/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Append-only save first R1 art attempt ONLY after real Blender verify
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "dev/g4c7-a17-monolithic-rift-fold-art-study"
+          current="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | awk '{print $1}')"
+          if test "$current" != "$GITHUB_SHA"; then
+             echo "HEAD_CHANGED_SAFE_STOP_NO_FORCE_NO_OVERWRITE"; exit 23
+          fi
+          src="$G4C7_R1_DIR"
+          dst=artifacts/g4c7-r1-civic-estuary-first-real-urban-art-attempt-HOLD
+          test ! -e "$dst"
+          test -s "$src/R1_INDEPENDENT_NATIVE_AND_RENDER_AUDIT.json"
+          test -s "$src/AERIAL_TRUE_BLENDER_CYCLES.png"
+          test -s "$src/PUBLIC_EYE_TRUE_BLENDER_CYCLES.png"
+          test -s "$src/HABITAT_EYE_TRUE_BLENDER_CYCLES.png"
+          mkdir -p "$dst"
+          cp -n "$src"/R1_* "$dst"/
+          cp -n "$src"/AERIAL_* "$dst"/
+          cp -n "$src"/PUBLIC_EYE_* "$dst"/
+          cp -n "$src"/HABITAT_EYE_* "$dst"/
+          (cd "$dst"; sha256sum *.blend *.png *.json > SHA256_PRODUCED_EVIDENCE.txt)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$dst"
+          git commit -m "G4C7 R1: archive first same-native inhabited city visual trial; ART HOLD"
+          git push origin "HEAD:$GITHUB_REF_NAME"
