@@ -364,3 +364,8 @@
 - [真正Cycles画像4枚と独立美術批評](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_20261103_TRUE_CYCLES_FOUR_VIEW_FINAL_EARLY_ART_REJECT_JA.md)を保存。Blender 4.5.15のクラウド実run [#41577471323](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41577471323)は **SUCCESS**、Artifact 13210103003。実保存BLEND SHA256 `7b4fb821e75946ad763692d3887fb9f8e5d63dda61221c18c2def160f1e3bc71`、AERIAL/PUBLIC_EYE/HABITAT_EYE/CULTURE_EYEの真正Cycles 960×600 PNG 4枚のSHAを全件独立一致確認。Actionsが研究ブランチへ画像・原本・manifestを**append-only保存**（コミット `238ff83`）。
 - **直接目視で本クラウドbpy案をEARLY ART REJECT**。一様な同型塔・単純な海峡と平板地盤、研究室の机/棚、住戸のパネルと箱家具、工場の素朴な機体・ガントリーが中心で、街の密度・公共生活・製造・居住建築として不足。色調・照明も低密度な形態を救わない。旧案のパラメータ修正・類似プリミティブの再生成禁止。真正Blender bpy保存→再読込→Cycles→画像批評という**非GUIの限定閉ループTECH**は証明、クラウドGUIのAI直接操作・真正R1作者作品の品質は未成立。
 - Verify LimitLab #41584052963、および#41590756605が**SUCCESS**（既存テスト回帰）。この2系統のTECH成果を美術採用へ昇格しない。**全体ART HOLD／正式採用0、R0〜R5固定、331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main・保護v3変更禁止、PR #53 Draft維持、Work事前承認・Sol事前許可**は不変。次工程は真の同一3D都市・局所生活を同時制作できる作者経路を確立してR1の質的に異なる二方向へ進む。
+
+## 2026-11-03 M37-P2 — 追加の3D作者方法試作も実画像で不採用
+
+- [隔離Chatの新GLB＋8視点VTK実画像による反証](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_OFFLINE_CLOUD_3D_AUTHOR_METHOD_REJECT_20261103_JA.md)。1,562メッシュ/55,526三角面に拡張しても、**巨大彫刻と工場屋根中心**、住戸・研究カメラは外殻に遮られ、都市としての建築・生活が読めない。**試作METHOD REJECT、EARLY ART REJECT。正式R1の2候補には数えない**。GLB/VTKでありBlender/Cyclesではない。旧Blender実Cycles4枚の技術実証は維持。
+- これ以上自動プリミティブ生成器を増やして延命しない。真の同一ネイティブ3DでGUI視覚フィードバックを伴う作者編集経路が必要。ただしChat側のBlender GUI操作経路は未確立、Work・Solは事前承認がないため不使用。**R0〜R5・全体ART HOLD・正式採用0・安全331/993 NOT RUN・MakeCode未評価・Minecraft施工禁止・main/保護原本・Draft PR #53**不変。
