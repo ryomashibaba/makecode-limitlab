@@ -276,3 +276,12 @@
 - `tests/test_g4c7_m37p2_local_gui_vision_review.py` を11件から**15件**へ拡張：tRNS、ほぼ透明なRGBA、十分可視のRGBA、IEND末尾不正を追加。**GitHub保存とCI起動は試験合格を意味しない。CI実行完了を別途確認する。**
 - 既存Xvfbの本物のBlender GUIスクリーンショットが黒画像だった根本原因は未確定。外部の類似事例からフロントバッファ／表示サーバ問題が候補だが、今回の現物CI結果が出るまで断定しない。X11 rootは**原因切分け専用**で、正式なVIEW_3D画像に置換しない。
 - 新都市の直接Blender造形は未完成。旧2箱パッチ／旧単純生成へ戻らない。正式ART採用0・ART HOLD、331/993とG0/S1/G1/G2/G3未実施、MakeCode未評価、Minecraft施工禁止、main変更禁止、Draft PR #53、Work事前承認制を維持。
+
+
+
+## M37-P2 2026-11-03：GUI診断CIの実行中キャンセル抑止（美術未制作）
+
+- 現行[GUI診断ワークフロー](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)の `cancel-in-progress` を **false** に変更。[修正コミット](https://github.com/ryomashibaba/makecode-limitlab/commit/3e084c3dbff4c4e23d0f95c47dde7487887c89ac)。新コミットにより既に開始したBlender実画面診断が途中破棄されるのを防ぐ。ただしGitHubの古い「pending」が置換される可能性は残る。
+- 直近の旧[#41562899937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41562899937)は **CANCELLED**。新[#41567620889](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41567620889) は追補時点で **PENDING**。新CI成功・GUI黒画面根本原因の特定・視覚モデルへの実入力は**未確認**。結果が completed になるまで判定しない。
+- 真正BLENDの新都市美術造形はまだ0、ART HOLD・正式採用0。旧2箱の追加自動修正や旧Qwen頂点一括方式は再開しない。331人体/993足元・正式QA NOT RUN、MakeCode未評価、Minecraft施工禁止、main変更禁止、PR #53 Draft、Work事前承認制を維持。
+- 次は、確定したGUI診断artifactで独立X11ルート画面とBlender2VIEW_3D画像の**実画素**を比較し、未確定の原因を特定する。正常な真正GUIが得られない限り「AIによる直接3D作者制作」を達成したとは報告しない。

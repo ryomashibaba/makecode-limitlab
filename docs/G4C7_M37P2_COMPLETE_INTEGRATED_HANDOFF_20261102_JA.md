@@ -517,3 +517,15 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - `tests/test_g4c7_m37p2_local_gui_vision_review.py` を11件から**15件**へ拡張：tRNS、ほぼ透明なRGBA、十分可視のRGBA、IEND末尾不正を追加。**GitHub保存とCI起動は試験合格を意味しない。CI実行完了を別途確認する。**
 - 既存Xvfbの本物のBlender GUIスクリーンショットが黒画像だった根本原因は未確定。外部の類似事例からフロントバッファ／表示サーバ問題が候補だが、今回の現物CI結果が出るまで断定しない。X11 rootは**原因切分け専用**で、正式なVIEW_3D画像に置換しない。
 - 新都市の直接Blender造形は未完成。旧2箱パッチ／旧単純生成へ戻らない。正式ART採用0・ART HOLD、331/993とG0/S1/G1/G2/G3未実施、MakeCode未評価、Minecraft施工禁止、main変更禁止、Draft PR #53、Work事前承認制を維持。
+
+
+
+## 37. M37-P2：GUI可視診断を中断させないCI修正（2026-11-03 JST）
+
+**研究ブランチに限定して実装・GitHub保存済み。都市造形のART進捗ではない。**
+
+- 先行の[実GUI診断 #41562899937](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41562899937)は GitHub API 実測で `completed/cancelled`、成果artifactなし。従来のworkflowは `concurrency.group=g4c7-p2-genuine-live-context`、`cancel-in-progress:true` であり、ソース修正のpushが次の実行を発生させると進行中の診断が失われ得る。
+- [コミット 3e084c3](https://github.com/ryomashibaba/makecode-limitlab/commit/3e084c3dbff4c4e23d0f95c47dde7487887c89ac)で同workflowの `cancel-in-progress:false` に変更。**RUNNINGをキャンセルしないための運用改善**。古いPENDING runの置換や実行キュー遅延はなお起こり得る。美術品質やGUI画素を改善したという主張ではない。
+- 追補時点の新[GUI Actions #41567620889](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41567620889)は `pending`、通常Verify #41567620627 は `queued`。実行成功も画像有用性も未認定。先行の真っ黒な2 PNG・失格判定は不変。
+- 結果が得られたら、同一artifactの`MACRO_EDITOR`、`LIVED_EDITOR`、`X11_ROOT_DIAGNOSTIC`の独立画素分布・実画面を比較する。X11 rootは診断材料のみでネイティブGUI3D編集ビューを代替しない。黒画像の根本原因はなお**不明**。
+- 都市作品の美術・正式採用0、全体ART HOLD、正式331/993・G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draft未merge、Work事前承認制。単純な3D形状生成へ後退しない。
