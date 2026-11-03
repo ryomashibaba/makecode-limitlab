@@ -30,6 +30,8 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
+import subprocess
 from pathlib import Path
 import sys
 import uuid
@@ -298,6 +300,45 @@ def unregister():
         except (ValueError,RuntimeError):
             pass
 
+def _ci_x11_root_diagnostic(path):
+    """Capture the X11 framebuffer separately from Blender's screenshot API.
+
+    CI ONLY.  This is *diagnostic*, never substituted for Blender's native
+    viewport screenshots or counted as a visually valid city/art capture.
+    A root capture helps isolate a bad bpy screenshot from an undrawn Xvfb
+    window.  It may contain the whole display rather than either 3D editor.
+    """
+    output=Path(path).resolve()
+    output.mkdir(parents=True,exist_ok=True)
+    report={
+        "status":"NOT_AVAILABLE",
+        "mode":"X11_ROOT_DIAGNOSTIC_ONLY_NOT_ART_NOT_EDITOR_SCREENSHOT",
+        "original_blend_not_saved":True,
+    }
+    tool=shutil.which("import")
+    if os.environ.get("DISPLAY") and tool:
+        image=output/"P2_X11_ROOT_DIAGNOSTIC_ONLY.png"
+        try:
+            proc=subprocess.run([tool,"-window","root",str(image)],
+                  stdout=subprocess.PIPE,stderr=subprocess.PIPE,
+                  timeout=20,check=False)
+            report["exit_code"]=proc.returncode
+            report["stderr"]=proc.stderr.decode("utf-8","replace")[:1200]
+            if proc.returncode==0 and image.is_file():
+                report["status"]="CAPTURED_NEEDS_INDEPENDENT_PIXEL_INSPECTION"
+                report["bytes"]=image.stat().st_size
+                report["sha256"]=sha(image)
+            else:
+                report["status"]="X11_CAPTURE_COMMAND_FAILED"
+        except Exception as exc:
+            report["status"]="X11_DIAGNOSTIC_ERROR"
+            report["error"]=str(exc)[:250]
+    (output/"P2_X11_ROOT_DIAGNOSTIC_STATUS.json").write_text(
+        json.dumps(report,ensure_ascii=False,indent=2)+"\n",
+        encoding="utf-8")
+    print("P2_CI_X11_ROOT_DIAGNOSTIC",report["status"],flush=True)
+
+
 def _start():
     if "--" in sys.argv:
         args=sys.argv[sys.argv.index("--")+1:]
@@ -321,6 +362,9 @@ def _start():
             except Exception as exc:
                 print("FAIL_GENUINE_GUI_SCREENSHOT",repr(exc),flush=True)
                 code=8
+            # An independent X11 root snapshot, strictly diagnostic and NEVER
+            # accepted as a substitute for valid native VIEW_3D screenshots.
+            _ci_x11_root_diagnostic(ns.gui_ci_capture)
             # Blender will exit its native GUI event loop; do not touch .blend.
             marker=Path(ns.gui_ci_capture).parent/"G4C7_GUI_SMOKE_STATUS.txt"
             marker.write_text(str(code),encoding="utf-8")
