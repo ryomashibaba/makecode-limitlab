@@ -117,6 +117,26 @@ def validate(plan, feedback, source_sha, feedback_sha):
         errors.append("MUST_EDIT_BOTH_EXISTING_ROLES")
     return sorted(set(errors))
 
+def verify_visual_evidence_files(feedback_path, report):
+    """Verify original 3 true PNG bytes again immediately before editing."""
+    names = ("AERIAL", "PUBLIC_EYE", "HABITAT_EYE")
+    images = report.get("verified_images_sha256")
+    if not isinstance(images, dict) or set(images) != set(names):
+        raise ValueError("THREE_VERIFIED_REAL_IMAGE_DIGESTS_REQUIRED")
+    folder = Path(feedback_path).resolve().parent
+    for view in names:
+        filename = "P2_PAIRED_NATIVE_" + view + "_NO_ART.png"
+        file = folder / filename
+        if not file.is_file() or not 64 <= file.stat().st_size <= 2500000:
+            raise ValueError("VISUAL_SOURCE_PNG_MISSING_OR_TOO_LARGE_" + view)
+        with file.open("rb") as stream:
+            if stream.read(8) != b"\\x89PNG\\r\\n\\x1a\\n":
+                raise ValueError("VISUAL_SOURCE_NOT_PNG_" + view)
+        if sha(file) != images[view]:
+            raise ValueError("VISUAL_SOURCE_CHANGED_SINCE_FEEDBACK_" + view)
+    return True
+
+
 def native_revision(source_path, feedback_path, actions_path, out_dir):
     import bpy
     import bmesh
@@ -136,6 +156,9 @@ def native_revision(source_path, feedback_path, actions_path, out_dir):
     problems = validate(plan, report, before, feed_hash)
     if problems:
         raise ValueError("REVISION_PLAN_REJECT_HOLD:"+repr(problems))
+    # A feedback JSON alone is not sufficient: bind this one local
+    # revision to the exact three original genuine PNG byte streams.
+    verify_visual_evidence_files(feed, report)
     bpy.ops.wm.open_mainfile(filepath=str(source))
     scene=bpy.context.scene
     if (scene.get("P2_SOURCE_KIND")!="LOCAL_LLM_NATIVE_EDIT_OPERATOR_TRIAL_NOT_GUI_HUMAN" or
