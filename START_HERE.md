@@ -295,3 +295,12 @@
 - [.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)に`x11-utils/scrot`と新5テスト、X11全ウィンドウの独立画素診断を追加。CIのcompleted/success、真正VIEW_3Dの実画素は**新しいrunを実確認するまで未認定**。
 - 次はBlender内部2編集画像・X11 root・X11 Blenderフルウィンドウの**実画素**を比較。X11の実ウィンドウが見えても内部2 VIEW_3D が黒なら、Blender screenshot_area/region/swapの経路へ原因を絞る。全て黒ならXvfbやウィンドウ描画を優先調査。いずれも未実証の段階で断定しない。
 - 全体ART HOLD／正式採用0／331人体・993足元とG0/S1/G1/G2/G3 NOT RUN／Minecraft施工禁止／MakeCode未評価／main不変更／PR #53 Draft／Work不使用を維持。旧単純形状へ戻らない。
+
+
+
+## M37-P2 2026-11-03：Blender内部2画面とX11二経路の自動差分診断（限定TECH）
+
+- [保守的な4系統差分分類](tools/g4c7_m37p2_x11_differential_diagnosis.py)を新設：MACRO_EDITOR / LIVED_EDITOR / X11 root / X11 Blender window の独立Pillow実画素レポートを読み、黒画像・片側だけ可視・ウィンドウだけ可視・全経路黒・証拠欠落を区別する。可視X11ウィンドウをVIEW_3D証明と混同せず、**根本原因の確定、ART PASS、AI直接造形実績を絶対に発行しない**。
+- [10件の異常・正常比較回帰](tests/test_g4c7_m37p2_x11_differential_diagnosis.py)は隔離Python3.13環境で10/10 PASS（モデル/Blender本体未使用）。矛盾画素レポート、欠落、全黒、左右非対称、二次診断、保存ファイルの上書きを負例検査。
+- [GUI診断ワークフロー](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)はBlenderダウンロード前に10テストを実施し、実診断が失敗した場合でも `P2_X11_NATIVE_GUI_DIFFERENTIAL_HOLD.json` をartifactに保存する構成へ。実Blender CI結果とPNG現物はGitHub Actionsの実行完了まで**未検証**。
+- 次工程はartifactの4系統実画素と新診断コードを対照して、画面取得方法を具体的に修正すること。GUI実画像がなお未成立なので、自律ART制作成功とは呼ばない。ART HOLD/採用0、正式331人体993足元及びG0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main変更禁止、PR #53 Draft、Work事前承認制を維持。

@@ -6,6 +6,8 @@ on:
       - tools/g4c7_m37p2_live_gui_context_capture.py
       - tools/g4c7_m37p2_local_gui_vision_review.py
       - tools/g4c7_m37p2_x11_window_probe.py
+      - tools/g4c7_m37p2_x11_differential_diagnosis.py
+      - tests/test_g4c7_m37p2_x11_differential_diagnosis.py
       - tests/test_g4c7_m37p2_x11_window_probe.py
       - tests/test_g4c7_m37p2_local_gui_vision_review.py
       - .github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml
@@ -50,6 +52,12 @@ jobs:
           python3 -m py_compile tools/g4c7_m37p2_x11_window_probe.py
           python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_x11_window_probe.py' -v
           echo 'PASS_X11_DIAGNOSTIC_ONLY_NEVER_ART_GATE'
+      - name: Offline test fail-closed X11 versus true Blender VIEW_3D differential triage
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/g4c7_m37p2_x11_differential_diagnosis.py
+          python3 -m unittest discover -s tests -p 'test_g4c7_m37p2_x11_differential_diagnosis.py' -v
+          echo 'PASS_DIFFERENTIAL_DIAGNOSTIC_NOT_ART_GATE'
       - name: Install actual X display and OpenGL software drivers
         run: |
           sudo apt-get update -qq
@@ -141,6 +149,24 @@ jobs:
                   }
           print('G4C7_INDEPENDENT_REAL_GUI_PIXEL_DIAGNOSTIC:',json.dumps(stats,sort_keys=True),flush=True)
           (base/'P2_INDEPENDENT_PIXEL_DIAGNOSTIC.json').write_text(json.dumps(stats,indent=2)+'\n')
+          PY
+      - name: Always classify actual independent pixel evidence conservatively (NEVER ART PASS)
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 -u tools/g4c7_m37p2_x11_differential_diagnosis.py \
+            --source /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_INDEPENDENT_PIXEL_DIAGNOSTIC.json \
+            --output /tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_X11_NATIVE_GUI_DIFFERENTIAL_HOLD.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path('/tmp/G4C7_P2_REAL_EDITOR_SCREENSHOTS_NON_ART/P2_X11_NATIVE_GUI_DIFFERENTIAL_HOLD.json')
+          o=json.loads(d.read_text())
+          assert o['art']=='HOLD' and o['official_adoptions']==0
+          assert o['classification_is_root_cause_proof'] is False
+          assert o['x11_window_is_editor_evidence'] is False
+          assert o['minecraft']=='FORBIDDEN'
+          print('P2_DIFFERENTIAL_REPORT_ARCHIVED_DIAGNOSTIC_ONLY',o['decision'])
           PY
       - name: Prove genuine GUI context to AI advisory safety gate (empty studio MUST SKIP Ollama)
         run: |

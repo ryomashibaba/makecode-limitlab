@@ -538,3 +538,12 @@ R0〜R5/ART-FIRST絶対評価、公式採用0、正式331人体/993足元、G0/S
 - Blender GUI専用Actionsへ追加し、4対象（Blender2 VIEW_3D・X11 root・X11 Blender window）の実画素統計を残す。新Python負例5件を導入。隔離Xvfb＋xtermを用いたローカルの代替ウィンドウ撮影と5件の回帰は成功。ただし真正Blender on CIでの成功は**まだ確認できていない**。
 - 新画像が黒/不在/エラーなら直ちに有用視覚情報と認定しない。新GUI Actionsの completed/success とartifact画素を両方確認する。前回のCI待機結果や黒画像原因は未確定。Work未承認、ローカルユーザー操作なし。
 - R0〜R5と既存安全・美術ルール不変。真の都市メッシュ造形0、ART HOLD／公式採用0、331/993とG0/S1/G1/G2/G3未実施、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draft。
+
+
+
+## 39. M37-P2：真正Blender2編集画像と独立X11画像の4経路・差分原因診断（2026-11-03）
+
+- M37-P2 旧GUI 2画面の真っ黒偽陽性対策から継続。今回、真正2 VIEW_3D・X11 root・X11 Blender windowの実画素を**同じ保存診断JSON**で比較する独立分類器 `tools/g4c7_m37p2_x11_differential_diagnosis.py` を追加。全経路黒・X11ウィンドウのみ見える・片方のエディタだけ見える・画像不足・全て可視などを区別する。
+- 可視X11ウィンドウをネイティブVIEW_3Dそのものとは認定せず、画素比率が高くても**作品美術認定や原因特定を自動化しない**。記録だけから「Blender GUIが修復された」と偽称することを防ぐ。出力JSON `P2_X11_NATIVE_GUI_DIFFERENTIAL_HOLD.json` はappend-only、原診断SHA含有。
+- `tests/test_g4c7_m37p2_x11_differential_diagnosis.py` の10回帰を隔離Python3.13で実行し10/10 PASS。真正Blender GUIでの差分診断完走は、対象CIのcompleted/successと実証artifactの確認まで未認定。旧run #41568642864 は調査時点でpending・成果artifactなし。
+- M37-P2新都市真正3Dはまだ未制作、ART HOLD、正式採用0。工場/研究文化/居住部と都市外景を同一直接作者Blender原本で成立させる大目標を維持。331人体/993足元・正式G0/S1/G1/G2/G3 NOT RUN、MakeCode未評価、Minecraft施工禁止、main保護、PR #53 Draft未merge、Work事前許可制。
