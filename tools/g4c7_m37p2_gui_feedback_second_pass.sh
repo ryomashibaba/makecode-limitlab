@@ -11,7 +11,7 @@ command -v xdotool >/dev/null
 command -v scrot >/dev/null
 mkdir -p "$folder"
 next="$folder/M37P2_SECOND_REAL_GUI_NOT_ART.blend"
-"$blender" -t 2 "$source" >"$folder/BLENDER_GUI_LOG.txt" 2>&1 &
+G4C7_GUI_READY_MARKER="$folder/GUI_READY.json" "$blender" -t 2 "$source" --python tools/g4c7_m37p2_gui_feedback_restore_view3d.py >"$folder/BLENDER_GUI_LOG.txt" 2>&1 &
 pid=$!
 trap 'kill -TERM "$pid" 2>/dev/null || true; wait "$pid" 2>/dev/null || true' EXIT
 window=""
@@ -29,8 +29,12 @@ fi
 xdotool windowfocus --sync "$window"
 xdotool mousemove --window "$window" 460 300
 # The saved source had the native Python Console open: return to View3D.
-xdotool key --clearmodifiers shift+F5
-sleep 2
+for n in $(seq 1 60); do
+  test ! -s "$folder/GUI_READY.json" || break
+  sleep .25
+done
+test -s "$folder/GUI_READY.json" || { echo VIEW3D_BOOTSTRAP_NOT_CONFIRMED; exit 8; }
+sleep 1
 scrot --window "$window" --file "$folder/GUI_BEFORE_SECOND_PASS.png"
 # Human-reviewed prior screenshot showed oversized Suzanne. Actually edit
 # its persistent native data via Blender GUI keys, never bpy mesh methods.
