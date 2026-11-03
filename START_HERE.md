@@ -236,3 +236,10 @@
 - [作者造形能力ゲート](tools/g4c7_m37p2_art_gap_authoring_gate.py)／[7テスト](tests/test_g4c7_m37p2_art_gap_authoring_gate.py)／[実測報告](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_ART_GAP_AUTHOR_CAPABILITY_GATE_20261103_JA.md)／[統合引き継ぎ節31](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)を正本へ追記。ART PASSを自動発行しない。ソース・画像・フィードバックのSHA不一致なら安全STOP。
 - 真の次工程は新しい第三箱都市のプログラム生成ではなく、作者が**同じ真正Blender原本に連続高密度な街区＋玄関から居間の実断面＋製造設備と見学隔壁＋研究文化**を同時造形すること。現ChatからローカルBlender GUIへ直接操作できず、Workは使用しないため、**この本当の美術造形は未実施**。本工程はその不足に反するモデル呼出しと旧方式の繰り返しを止める守りの実装である。
 - ART HOLD／正式採用0、331人体993足元・G0/S1/G1/G2/G3 NOT RUN、MakeCodeコスト未評価、Minecraft施工禁止、保護v3不変、main変更禁止、PR #53 Draft未merge、Work事前承認制（今回不使用）を固定。
+
+
+## M37-P2 2026-11-03：Blenderの左右の真正GUI編集画面と実メッシュを同時取得
+
+- [新GUI Context Capture](tools/g4c7_m37p2_live_gui_context_capture.py)を研究ブランチに実装。Blenderの**実GUI**の2つのVIEW_3Dを別々のPNGでキャプチャし、投影状態・5コレクションの実頂点/面数/位置・元BLEND SHAをJSONと共に保存する。**保存済みCycles画像の再利用ではない。** このスクリプトはメッシュを作成せず、Blender原本を上書きせず、AIネットワーク呼出しも行わない。
+- [本物GUI CI](.github/workflows/g4c7-m37p2-genuine-live-gui-context-capture.yml)：初回実行 [#41558995077](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41558995077) は**FAIL**。原因は原本を開いた状態では左右2画面へ分割がまだ実行されていなかったこと。以前の真正BlenderでSUCCESSしたP2正規画面分割処理をSHA固定v3から起動してからPNG撮影する修正版へ変更。[修正CI #41559389596](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41559389596)は**実際の結果確認まで未認定**。
+- [技術・美術境界の研究正本](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_NATIVE_GUI_VIEWPORT_CONTEXT_BRIDGE_20261103_JA.md)／[統合引き継ぎ節32](docs/G4C7_M37P2_COMPLETE_INTEGRATED_HANDOFF_20261102_JA.md)。**この進捗は本人による都市造形ではない**。AIが実画面を見て本物の密集都市・造船設備・居住内部等を作者として編集する段階はまだ未実施。Work・main・Minecraft・保護原本は変更しない。ART HOLD正式採用0、331/993＆G0/S1/G1/G2/G3 NOT RUN、PR #53 Draftを維持。
