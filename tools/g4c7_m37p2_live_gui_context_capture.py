@@ -105,6 +105,44 @@ def _viewport_areas():
         raise RuntimeError("TWO_REAL_VIEW_3D_GUI_AREAS_REQUIRED")
     return result[:2]
 
+def _prepare_two_viewports_for_pinned_ci_only():
+    """Call the already-proven P2 GUI split operator from the pinned .blend.
+
+    Only the --gui-ci-capture test path ever invokes this. It changes the
+    transient visible Blender UI layout, not any meshes or saved original.
+    Embedded script origin is a SHA-pinned protected native Blender v3.
+    """
+    source=Path(bpy.data.filepath)
+    if not source.is_file() or sha(source)!=V3_SHA:
+        raise RuntimeError("ONLY_PINNED_V3_MAY_BOOTSTRAP_CI_GUI_SPLIT")
+    active=bpy.context.window or next(iter(bpy.context.window_manager.windows),None)
+    if active is None:
+        raise RuntimeError("REAL_NATIVE_WINDOW_REQUIRED_FOR_CI_SPLIT")
+    areas=[a for a in active.screen.areas if a.type=="VIEW_3D"]
+    if len(areas)>=2:
+        return
+    script=bpy.data.texts.get("M37P2_RUN_ONCE_PARALLEL_MACRO_LIVED_GUI.py")
+    if script is None:
+        raise RuntimeError("PINNED_V3_EMBEDDED_SPLIT_OPERATOR_MISSING")
+    scope={
+        "__name__":"g4c7_pinned_gui_split_ci",
+        "__file__":"PINNED_V3_EMBEDDED_BLENDER_UI_SCRIPT",
+    }
+    exec(compile(script.as_string(),"PINNED_V3_GUI_SPLIT", "exec"),scope)
+    scope["register"]()
+    area=areas[0] if areas else None
+    if area is None:
+        raise RuntimeError("REAL_V3_VIEW_3D_EDITOR_MISSING")
+    region=next((r for r in area.regions if r.type=="WINDOW"),None)
+    if region is None:
+        raise RuntimeError("REAL_V3_VIEW_WINDOW_REGION_MISSING")
+    with bpy.context.temp_override(window=active,screen=active.screen,area=area,region=region):
+        result=bpy.ops.g4c7.p2_parallel_split()
+    if "FINISHED" not in result:
+        raise RuntimeError("PINNED_V3_SPLIT_DID_NOT_EXECUTE")
+    print("G4C7_CI_ONLY_NATIVE_GUI_SPLIT_REQUESTED",flush=True)
+
+
 def capture_gui_context(directory):
     scene,source=_verify_scene()
     views=_viewport_areas()
@@ -112,7 +150,7 @@ def capture_gui_context(directory):
     if dest.exists():
         raise FileExistsError("APPEND_ONLY_GUI_CONTEXT_EXPORT_FOLDER_EXISTS")
     # Local export is outside the user's original .blend and source git tree.
-    if str(dest)==str(source.parent) or dest==source or source in dest.parents:
+    if dest==source.parent or source.parent in dest.parents:
         raise ValueError("OUTPUT_MUST_NOT_BE_INSIDE_PROTECTED_BLEND_SOURCE_LOCATION")
     before=sha(source)
     mesh_before={o.name:(len(o.data.vertices),len(o.data.polygons))
@@ -231,6 +269,7 @@ def _start():
     ns=p.parse_args(args)
     register()
     if ns.gui_ci_capture:
+        _prepare_two_viewports_for_pinned_ci_only()
         # Give the GUI real frames to present both live editors before taking
         # a real screenshot. No fake Cycles still renders are substituted.
         def once():
@@ -246,7 +285,9 @@ def _start():
             # Blender will exit its native GUI event loop; do not touch .blend.
             marker=Path(ns.gui_ci_capture).parent/"G4C7_GUI_SMOKE_STATUS.txt"
             marker.write_text(str(code),encoding="utf-8")
-            bpy.ops.wm.quit_blender()
+            # CI-only: stop without making any Blender session-recovery .blend
+            # or prompting to save the unchanged original editor scene.
+            os._exit(code)
             return None
         bpy.app.timers.register(once,first_interval=3.0)
 
