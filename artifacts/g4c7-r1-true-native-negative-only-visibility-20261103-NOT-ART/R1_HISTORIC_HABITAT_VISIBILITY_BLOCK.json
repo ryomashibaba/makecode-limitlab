@@ -1,0 +1,82 @@
+{
+  "schema": "g4c7-r1-negative-only-same-native-visibility-v1",
+  "result": "BLOCK_VISUAL_OBSERVABILITY",
+  "source_native_sha256": "002618e89a93d28cab309392011e69b729d9cfefc469258e4d2a72177910e95b",
+  "manifest_sha256": "66f74f25f435ee6dbbe21af75a66e133fe631824c96facf473449a90d605763a",
+  "views": {
+    "AERIAL": {
+      "file": "AERIAL_CYCLES_TRUE_NATIVE.png",
+      "sha256": "60ee0d1a83e11d5a1b3248a87856e608343fc6801b2aaae97d13dd25bb8a3e17",
+      "dimensions": [
+        960,
+        600
+      ],
+      "sample_distinct_colors": 2158,
+      "frame_dark_ratio": 0.0,
+      "center_dark_ratio": 0.0
+    },
+    "PUBLIC_EYE": {
+      "file": "PUBLIC_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "8eb4ca0eb07ad94f2bcd1aa347c8a0ea08c14cea3988554c2b6dc52b77d40a60",
+      "dimensions": [
+        960,
+        600
+      ],
+      "sample_distinct_colors": 3373,
+      "frame_dark_ratio": 0.000875,
+      "center_dark_ratio": 0.000313
+    },
+    "HABITAT_EYE": {
+      "file": "HABITAT_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "37091786e85896c2b60082af8d2a6827824b6f217d8a4cfdd3755e6b6927b7d7",
+      "dimensions": [
+        960,
+        600
+      ],
+      "sample_distinct_colors": 281,
+      "frame_dark_ratio": 0.987938,
+      "center_dark_ratio": 1.0
+    },
+    "FACTORY_EYE": {
+      "file": "FACTORY_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "adcb866ace6dfac51f70ae23b2f4af52c3f29a2657cbdd01250466d288993185",
+      "dimensions": [
+        960,
+        600
+      ],
+      "sample_distinct_colors": 1714,
+      "frame_dark_ratio": 0.0,
+      "center_dark_ratio": 0.0
+    },
+    "RESEARCH_EYE": {
+      "file": "RESEARCH_EYE_CYCLES_TRUE_NATIVE.png",
+      "sha256": "8c42964aad7fe3d439164f931c50ee6d152639b14a88243ed65e9c0bfb6a54bf",
+      "dimensions": [
+        960,
+        600
+      ],
+      "sample_distinct_colors": 3651,
+      "frame_dark_ratio": 0.020563,
+      "center_dark_ratio": 0.02875
+    }
+  },
+  "blocking_evidence": [
+    {
+      "view": "HABITAT_EYE",
+      "reason": "FATAL_INTERIOR_VISUAL_INACCESSIBILITY",
+      "center_dark_ratio": 1.0,
+      "threshold": 0.93
+    }
+  ],
+  "art": "HOLD",
+  "official_adoptions": 0,
+  "never_proves_visual_art_acceptance": true,
+  "human_quality_judgment": "REQUIRED_FOR_ANY_ART_DECISION",
+  "deliberately_dark_art_warning": "a dark design may be flagged; gate cannot judge intentionality",
+  "formal_331_993": "NOT_RUN",
+  "G0_S1_G1_G2_G3": "NOT_RUN",
+  "minecraft": "FORBIDDEN",
+  "world_writes": 0,
+  "work": "NOT_USED",
+  "sol": "NOT_USED"
+}
