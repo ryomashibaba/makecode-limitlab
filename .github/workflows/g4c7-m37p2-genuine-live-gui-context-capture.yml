@@ -9,6 +9,8 @@ on:
       - tools/g4c7_m37p2_x11_differential_diagnosis.py
       - tools/g4c7_m37p2_x11_native_region_crop.py
       - tools/g4c7_m37p2_x11_visual_context_bridge.py
+      - tools/g4c7_m37p2_real_x11_gui_control_probe.sh
+      - tools/g4c7_m37p2_real_x11_gui_control_verify.py
       - tests/test_g4c7_m37p2_x11_visual_context_bridge.py
       - tests/test_g4c7_m37p2_x11_native_region_crop.py
       - tests/test_g4c7_m37p2_x11_differential_diagnosis.py
@@ -68,7 +70,7 @@ jobs:
       - name: Install actual X display and OpenGL software drivers
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1 imagemagick python3-pil x11-utils scrot
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb xauth libgl1 libegl1 libxkbcommon0 libxi6 libxrender1 libsm6 libxrandr2 libxxf86vm1 imagemagick python3-pil x11-utils scrot xdotool
       - name: Test X11 native-window-region conservative crop before Blender fetch
         run: |
           set -euo pipefail
@@ -285,6 +287,29 @@ jobs:
           print('X11_BLENDER_EDITOR_PIXELS_RECOVERED; NATIVE_SCREENSHOT_STILL_BROKEN; NO_MODEL_OR_ART')
           PY
           fi
+      - name: Real GUI keyboard edit to distinct saved Blender copy, independent true Blender reload (TECH only)
+        run: |
+          set -euo pipefail
+          blender=/tmp/g4c7-p2-live-gui-bin/blender-4.5.15-linux-x64/blender
+          parent=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
+          result=/tmp/G4C7_REAL_GUI_SHORTCUT_SAVED_TECH_NOT_ART
+          timeout --signal=TERM --kill-after=10s 160s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' \
+            bash tools/g4c7_m37p2_real_x11_gui_control_probe.sh "$blender" "$parent" "$result"
+          timeout --signal=TERM --kill-after=10s 90s "$blender" -b \
+            "$result/M37P2_X11_GUI_SHORTCUT_TECH_NOT_ART.blend" -t 2 --python-exit-code 9 \
+            --python tools/g4c7_m37p2_real_x11_gui_control_verify.py -- \
+            "$parent" "$result/INDEPENDENT_REAL_BLENDER_REOPEN_TECH_ONLY.json"
+          test -s "$result/INDEPENDENT_REAL_BLENDER_REOPEN_TECH_ONLY.json"
+          test -z "$(git status --porcelain -- artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART)"
+          echo REAL_BLENDER_GUI_SHORTCUT_AND_REOPEN_SOURCE_TECH_ONLY_NOT_CITY_ART
+      - name: Retain failed or successful GUI native edit TECH artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4c7-p2-real-gui-shortcut-native-edit-tech-not-art
+          path: /tmp/G4C7_REAL_GUI_SHORTCUT_SAVED_TECH_NOT_ART/
+          if-no-files-found: warn
+          retention-days: 14
       - name: Preserve actual viewport PNGs and native scene JSON, not art
         if: always()
         uses: actions/upload-artifact@v4
