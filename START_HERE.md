@@ -1,5 +1,9 @@
 # START HERE — MakeCode LimitLab / G4-C7 Orbital Commons
 
+> **2026-11-03 R1真正画像の負例検査を実装・実画像で確認（限定TECH、ART不変）。** [独立GitHub CI #41624336875 completed/SUCCESS](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41624336875)、[監査JSONとSHA256の恒久保存](artifacts/g4c7-r1-true-native-negative-only-visibility-20261103-NOT-ART/)、[実証内容と禁止事項](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_20261103_NATIVE_NEGATIVE_ONLY_VISIBILITY_GATE_JA.md)。既存の不採用Civic Braid真正保存BLEND＋同一原本Cycles5枚を照合した結果、**住宅眼高の全画面暗部98.7938%、中央領域暗部100%**を検出してBLOCK_VISUAL_OBSERVABILITYを再現。検査本体・5負例テスト・CIを研究ブランチへ保存。**検査に通ってもART PASSではない。** コード式の街区自動生成はMETHOD HOLD、不採用候補の再生産/修復/採用は禁止。実際の高品質建築美術自律作者能力は依然未成立、次は作者制作体制そのものを成立させることが本筋。R0〜R5/ART-FIRST/全体ART HOLD正式採用0/331人体993足元とG0/S1/G1/G2/G3未実施/MakeCode未評価/Minecraft施工禁止/main・原本保護/PR #53 Draft/Work・Sol事前許可、全て不変。
+
+
+
 > **2026-11-03 R1 Civic Braidの新3D＋真正Cycles5視点は、画像現物を確認して全視点 EARLY ART REJECT。** [不採用の完全判断・保存証拠・停止指示](research/g4c7-b11-r5-d56/p2/d3s26/G4C7_R1_CIVIC_BRAID_20261103_FIVE_TRUE_CYCLES_EARLY_ART_REJECT_METHOD_HOLD_JA.md)、[新ネイティブBLENDとAERIAL/PUBLIC/HABITAT/FACTORY/RESEARCHの5真正PNG＋SHA256](artifacts/g4c7-r1-civic-braid-authorial-section-ART-UNREVIEWED/)、[制作・独立再読込・保存の成功CI #41616663811](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41616663811)。新規3Dにはメッシュ469個の実体があるが、**俯瞰で低密度キャンパス、公共と工場・研究は巨大板に遮蔽、住宅眼高はほぼ黒**。ART-UNREVIEWEDは保存時名のみで、**作品は正式不採用**。この方式を色やメッシュ数で延命せず、**コードで安易な形を並べるR1制作方法はMETHOD HOLD・高品質自律GUI作者能力未成立**とする。今後同型の生成案を繰り返さず、真の3D高度建築美術制作能力が成立するまでは正式R1新美術認定不可。従来のR0〜R5・ART-FIRST・全体ART HOLD/正式採用0・正式331人体993足元とG0/S1/G1/G2/G3未実施・MakeCode未評価・Minecraft施工禁止・main/保護原本維持・PR #53 Draft・Work/Sol事前許可は不変。
 
 
