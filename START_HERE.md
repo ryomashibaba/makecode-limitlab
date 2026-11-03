@@ -343,3 +343,9 @@
 - Latest [cloud true Blender CI #41577471323](https://github.com/ryomashibaba/makecode-limitlab/actions/runs/41577471323): 2026-11-03 13:19 JST **PENDING, no artifact**. The earlier #41577380073 references an obsolete Blender-Pillow assumption and must not be accepted as a validated final run. Real saved BLEND, four genuine Cycles frames and subsequent branch append-only archive are NOT VERIFIED until complete.
 - Strict R0-R5 unchanged: ART HOLD / 0 official adoptions, 331 body / 993 foot and G0/S1/G1/G2/G3 NOT RUN, MakeCode NOT EVALUATED, Minecraft writes FORBIDDEN; protected original/master, main and Draft PR #53 unchanged. Work requires preapproval, cloud creative quality comes first, Terra/Luna usual, Sol only on explicit consent, no local LLM quality downgrade.
 - Next: check completed CI/jobs/artifact and native source hash, visually inspect all actual native views; ART REJECT if prior primitive-centric skyline/campus or unconvincing factory/habitat recurs. Do NOT repeat old patch/box/bridge/tube revision loop or pretend the GUI capability exists.
+
+## 2026-11-03：クラウドbpy研究の作者方法に対する独立厳格監査
+
+- [原本ソース監査：METHOD HOLD（実画像未取得）](research/g4c7-b11-r5-d56/p2/d3s26/M37P2_CLOUD_BPY_AUTHOR_METHOD_INDEPENDENT_REVIEW_20261103_JA.md)。前工程のクラウドbpy研究コードは12棟が共通`tower()`から生成され、通路・大地・家具が定型関数で形成されるため、**旧不採用形態を克服した真のR1作者作品とは認定しない**。ソース検査の結果であり、実画像未確認の美術REJECTとは区別。
+- 既存クラウドCI #41577471323は実測時 PENDING／Artifacts 0。たとえ将来TECH PASSでも本命美術候補へ自動昇格させず、真Cycles画像を審査し、同型反復なら早期REJECT。追加の同型生成器や診断CIは増やさない。
+- 直接GUIを見て編集するクラウドAIの能力は**未実証**、Workは事前承認なしに使用しない。R0〜R5／ART HOLD正式採用0／安全QA未実施／Minecraft施工禁止／main・保護v3不変更／Draft PR #53／Terra・Luna優先／Sol事前承認は不変。
