@@ -70,9 +70,18 @@ jobs:
           blender=/tmp/g4c7-gui-blender/blender-4.5.15-linux-x64/blender
           source=/tmp/g4c7-prior-native/M37P2_X11_GUI_SHORTCUT_TECH_NOT_ART.blend
           out=/tmp/g4c7-real-gui-second-checkpoint-NOT-ART
+          seed_original="$source"
+          prepared=/tmp/g4c7-prior-native/M37P2_NATIVE_VIEW3D_PREPARED_NOT_ART.blend
+          test ! -e "$prepared"
+          # Only the saved editor layout is corrected on this throwaway copy.
+          # Never edit its original geometry or protected archived file.
+          timeout 75s "$blender" -b "$source" -t 2 --python-exit-code 9 --python-expr "import bpy; a=[x for s in bpy.data.screens for x in s.areas if x.type=='CONSOLE']; assert a; [setattr(x,'type','VIEW_3D') for x in a]; assert 'FINISHED' in bpy.ops.wm.save_as_mainfile(filepath='$prepared',compress=True)"
+          test -s "$prepared"
+          export G4C7_PREPARED_GUI_SHA="$(sha256sum "$prepared" | cut -d' ' -f1)"
+          source="$prepared"
           timeout --signal=TERM --kill-after=10s 150s xvfb-run -a -s '-screen 0 1600x900x24 +extension GLX +render -noreset' bash tools/g4c7_m37p2_gui_feedback_second_pass.sh "$blender" "$source" "$out"
           parent=artifacts/g4c7-m37p2-patched-native-author-editor-v3-NOT-ART/M37P2_DIRECT_AUTHOR_NATIVE_EDITOR_FIXED_REVIEW_V3_NOT_ART.blend
-          timeout 75s "$blender" -b "$out/M37P2_SECOND_REAL_GUI_NOT_ART.blend" -t 2 --python-exit-code 9 --python tools/g4c7_m37p2_gui_feedback_second_pass_verify.py -- "$source" "$parent" "$out/INDEPENDENT_GUI_STAGE2_RELOAD.json"
+          timeout 75s "$blender" -b "$out/M37P2_SECOND_REAL_GUI_NOT_ART.blend" -t 2 --python-exit-code 9 --python tools/g4c7_m37p2_gui_feedback_second_pass_verify.py -- "$seed_original" "$parent" "$out/INDEPENDENT_GUI_STAGE2_RELOAD.json"
           /usr/bin/python3 - <<'PY'
           from PIL import Image,ImageChops
           from pathlib import Path
