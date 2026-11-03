@@ -6,6 +6,8 @@ on:
       - tools/g4c7_m37p2_native_operator_author.py
       - tests/test_g4c7_m37p2_paired_operator_native.py
       - tools/g4c7_m37p2_paired_operator_three_view_evidence.py
+      - tools/g4c7_m37p2_visual_feedback_gate.py
+      - tests/test_g4c7_m37p2_visual_feedback_gate.py
       - tools/g4c7_m37p2_ollama_paired_native_action_proposal.py
       - tests/test_g4c7_m37p2_ollama_paired_operator_proposal.py
       - .github/workflows/g4c7-m37p2-paired-operator-native-blender-smoke.yml
@@ -29,6 +31,7 @@ jobs:
           python -m py_compile tools/g4c7_m37p2_native_operator_author.py tools/g4c7_m37p2_ollama_paired_native_action_proposal.py
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_paired_operator_native.py' -v
           python -m unittest discover -s tests -p 'test_g4c7_m37p2_ollama_paired_operator_proposal.py' -v
+          python -m unittest discover -s tests -p 'test_g4c7_m37p2_visual_feedback_gate.py' -v
       - name: Install real bpy 4.5 native runtime (source v3)
         run: |
           python -m pip install --disable-pip-version-check 'bpy==4.5.15' --extra-index-url https://download.blender.org/pypi/bpy/
@@ -93,6 +96,28 @@ jobs:
           assert (p/'OPEN_REAL_THREE_VIEW_NON_ART.html').is_file()
           print('PAIRED_NATIVE_ONE_SAVED_BLEND_THREE_REAL_CYCLES_PNG_TECH_PASS_NOT_ART')
           PY
+      - name: Use all three real PNGs as ART-FIRST feedback and assert EARLY ART REJECT (never PASS)
+        run: |
+          set -euo pipefail
+          python -u tools/g4c7_m37p2_visual_feedback_gate.py \
+            --report /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/P2_NATIVE_PAIRED_THREE_VIEW_REPORT.json \
+            --out /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY')
+          r=json.loads((p/'P2_REAL_IMAGE_ART_FEEDBACK.json').read_text())
+          assert r['outcome']=='EARLY_ART_REJECT',r
+          assert 'TWO_CUBOIDS_8_VERTICES_6_FACES_EACH' in r['reasons']
+          assert 'MISSING_HABITAT_LIVING_INTERIOR' in r['reasons']
+          assert r['official_adoptions']==0 and r['art']=='HOLD'
+          assert r['vision']['status']=='NOT_REQUESTED'
+          assert len(list(p.glob('*.png')))==3
+          assert (p/'OPEN_THREE_VIEW_VISUAL_FEEDBACK.html').is_file()
+          print('TRUE_CYCLES_THREE_IMAGES_ART_FIRST_EARLY_REJECT_TECH_NO_ART_PASS')
+          PY
+          cp /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/P2_REAL_IMAGE_ART_FEEDBACK.json /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/
+          cp /tmp/G4C7_PAIRED_VISUAL_FEEDBACK_ONLY/OPEN_THREE_VIEW_VISUAL_FEEDBACK.html /tmp/G4C7_PAIRED_THREE_REAL_VIEWS_NON_ART/
       - name: Upload THREE TRUE Blender renders strictly labeled NOT ART
         uses: actions/upload-artifact@v4
         if: always()
