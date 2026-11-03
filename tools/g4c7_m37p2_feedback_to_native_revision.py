@@ -130,7 +130,7 @@ def verify_visual_evidence_files(feedback_path, report):
         if not file.is_file() or not 64 <= file.stat().st_size <= 2500000:
             raise ValueError("VISUAL_SOURCE_PNG_MISSING_OR_TOO_LARGE_" + view)
         with file.open("rb") as stream:
-            if stream.read(8) != b"\\x89PNG\\r\\n\\x1a\\n":
+            if stream.read(8) != b"\x89PNG\r\n\x1a\n":
                 raise ValueError("VISUAL_SOURCE_NOT_PNG_" + view)
         if sha(file) != images[view]:
             raise ValueError("VISUAL_SOURCE_CHANGED_SINCE_FEEDBACK_" + view)
